@@ -10,7 +10,8 @@ public class Recipies {
 
 	public static void init()
 	{
-		
+		GameRegistry.addRecipe(new ShapedOreRecipe(  new ItemStack(ModItems.drillpipe),"i i","i i","i i",'i', "ingotIron"));
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(  new ItemStack(ModItems.drillhead)," p ","dpd"," d ",'p', "ingotIron",'d',"gemDiamond"));
 	}
 }
