@@ -1,0 +1,21 @@
+[
+{
+  "modid": "MachineMod",
+  "name": "Machine Mod",
+  "description": "TechStack's Machine mod",
+  "version":  "1.7.10-1.0-Pre-ALPHA",
+  "mcversion": "1.7.10",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "pahimar"
+  ],
+  "credits": "To all the gamers everywhere!",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]

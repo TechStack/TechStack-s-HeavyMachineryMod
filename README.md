@@ -1,2 +1,15 @@
-# TechStack-s-HeavyMachineryMod
-This is the new Repo home for TechStack's Heavy Machinery Mod.  - it is an attempt to remove unnecessary things from the repo, including the eclipse folders
+Heavy Machinery Mod
+==========
+
+
+Clone this repo using Git (GitHub for windows)
+
+If this is the first time you've cloned the repo run:
+gradlew setupDecompWorkspace
+
+Then run the following to setup your eclipse instance Could run for idea too if using  intelliJ idea: 
+gradlew eclipse 
+
+
+Note: To get the latest gradel run:
+gradlew clean --refresh-dependencies

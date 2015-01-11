@@ -1,0 +1,7 @@
+{
+      "parent": "machinemod:item/machinemod_item",
+      "textures": {
+        "layer0": "machinemod:items/bulldozer"
+        }
+ 
+}
