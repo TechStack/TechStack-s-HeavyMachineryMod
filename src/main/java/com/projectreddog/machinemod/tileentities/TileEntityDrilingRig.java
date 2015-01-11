@@ -29,7 +29,7 @@ public class TileEntityDrilingRig extends TileEntity  implements IUpdatePlayerLi
 	@Override
 	public void update(){
 
-		LogHelper.info("TE update entity called");
+		//LogHelper.info("TE update entity called");
 
 		if (currentDrillingLevel < startingLevel +16){
 			if (worldObj.getBlockState(this.getPos().offset(EnumFacing.DOWN, this.currentDrillingLevel)).getBlock() ==Blocks.stone
