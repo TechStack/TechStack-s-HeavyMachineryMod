@@ -7,7 +7,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
-import com.projectreddog.machinemod.utility.LogHelper;
 
 public class MachineModMessageEntityToClientHandler implements IMessageHandler<MachineModMessageEntityToClient,IMessage>{
 
@@ -36,8 +35,6 @@ public class MachineModMessageEntityToClientHandler implements IMessageHandler<M
 				}
 			}
 		}
-
-
 		return null;
 	}
 

@@ -35,13 +35,14 @@ public class MachineMod {
 		FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
 		ModItems.init();
 		ModBlocks.init();
+		ModNetwork.init();
+
 		
 	}
 	@Mod.EventHandler 
 	public void init(FMLInitializationEvent event){
 		// register gui, tile entites , crafting recipies (general event hanlders)
 		ModEntities.init(this);
-		ModNetwork.init();
 		FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
 		Recipies.init();
 		proxy.registerRenderers();
