@@ -7,12 +7,14 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
+import com.projectreddog.machinemod.utility.LogHelper;
 
 public class MachineModMessageEntityToClientHandler implements IMessageHandler<MachineModMessageEntityToClient,IMessage>{
 
 	@Override
 	public IMessage onMessage(MachineModMessageEntityToClient message, MessageContext ctx) {
-
+		LogHelper.info("in machineModMessageEntityToClient Handler");
+		LogHelper.info("Message data" + message);
 		if ( message != null){
 			if (Minecraft.getMinecraft().theWorld != null){
 				Entity entity=Minecraft.getMinecraft().theWorld.getEntityByID( message.entityid);

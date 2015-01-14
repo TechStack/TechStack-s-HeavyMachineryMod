@@ -1,5 +1,7 @@
 package com.projectreddog.machinemod.network;
 
+import com.projectreddog.machinemod.utility.LogHelper;
+
 import io.netty.buffer.ByteBuf;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
@@ -14,16 +16,19 @@ public class MachineModMessageEntityToClient implements IMessage{
 	public float Attribute1=0;
 	public MachineModMessageEntityToClient()
 	{
-		
+		LogHelper.info("in machineModMessageEntityToClientConstructor basic");
 	}
 	
-	
+	public String toString(){
+		return "MachineModMessageEntityToClient Class Details: \n posX=" + posX + "\n posY =" + posY + "\n posZ=" + posZ + "\n yaw=" +yaw + "\n Attribute1=" + Attribute1; 
+	}
 	
 	
 	
 	public MachineModMessageEntityToClient(int entityid, double posX,
 			double posY, double posZ, float yaw, float Attribute1) {
 		super();
+		LogHelper.info("in machineModMessageEntityToClientConstructor with parms");
 		this.entityid = entityid;
 		this.posX = posX;
 		this.posY = posY;
@@ -38,6 +43,7 @@ public class MachineModMessageEntityToClient implements IMessage{
 
 	@Override
 	public void fromBytes(ByteBuf buf) {
+		LogHelper.info("in machineModMessageEntityToClient from bytes");
         this.entityid= buf.readInt();
         this.posX=buf.readDouble();
         this.posY =buf.readDouble();
@@ -49,6 +55,7 @@ public class MachineModMessageEntityToClient implements IMessage{
 
 	@Override
 	public void toBytes(ByteBuf buf) {
+		LogHelper.info("in machineModMessageEntityToClient to bytes");
         buf.writeInt(entityid);
         buf.writeDouble(posX);
         buf.writeDouble(posY);
