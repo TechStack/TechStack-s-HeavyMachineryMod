@@ -13,8 +13,8 @@ public class MachineModMessageEntityToClientHandler implements IMessageHandler<M
 
 	@Override
 	public IMessage onMessage(MachineModMessageEntityToClient message, MessageContext ctx) {
-		LogHelper.info("in machineModMessageEntityToClient Handler");
-		LogHelper.info("Message data" + message);
+		//LogHelper.info("in machineModMessageEntityToClient Handler");
+		//LogHelper.info("Message data" + message);
 		if ( message != null){
 			if (Minecraft.getMinecraft().theWorld != null){
 				Entity entity=Minecraft.getMinecraft().theWorld.getEntityByID( message.entityid);

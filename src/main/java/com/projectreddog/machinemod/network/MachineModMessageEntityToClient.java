@@ -16,7 +16,7 @@ public class MachineModMessageEntityToClient implements IMessage{
 	public float Attribute1=0;
 	public MachineModMessageEntityToClient()
 	{
-		LogHelper.info("in machineModMessageEntityToClientConstructor basic");
+	//	LogHelper.info("in machineModMessageEntityToClientConstructor basic");
 	}
 	
 	public String toString(){
@@ -28,7 +28,7 @@ public class MachineModMessageEntityToClient implements IMessage{
 	public MachineModMessageEntityToClient(int entityid, double posX,
 			double posY, double posZ, float yaw, float Attribute1) {
 		super();
-		LogHelper.info("in machineModMessageEntityToClientConstructor with parms");
+		//LogHelper.info("in machineModMessageEntityToClientConstructor with parms");
 		this.entityid = entityid;
 		this.posX = posX;
 		this.posY = posY;
@@ -43,7 +43,7 @@ public class MachineModMessageEntityToClient implements IMessage{
 
 	@Override
 	public void fromBytes(ByteBuf buf) {
-		LogHelper.info("in machineModMessageEntityToClient from bytes");
+	//	LogHelper.info("in machineModMessageEntityToClient from bytes");
         this.entityid= buf.readInt();
         this.posX=buf.readDouble();
         this.posY =buf.readDouble();
@@ -55,7 +55,7 @@ public class MachineModMessageEntityToClient implements IMessage{
 
 	@Override
 	public void toBytes(ByteBuf buf) {
-		LogHelper.info("in machineModMessageEntityToClient to bytes");
+		//LogHelper.info("in machineModMessageEntityToClient to bytes");
         buf.writeInt(entityid);
         buf.writeDouble(posX);
         buf.writeDouble(posY);

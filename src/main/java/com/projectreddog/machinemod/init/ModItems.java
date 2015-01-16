@@ -11,12 +11,14 @@ import com.projectreddog.machinemod.item.ItemDrillingRig;
 import com.projectreddog.machinemod.item.ItemDumpTruck;
 import com.projectreddog.machinemod.item.ItemLoader;
 import com.projectreddog.machinemod.item.ItemMachineMod;
+import com.projectreddog.machinemod.item.ItemTractor;
 import com.projectreddog.machinemod.reference.Reference;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
 public class ModItems {
 
 	public static final ItemMachineMod bulldozer = new ItemBulldozer();
+	public static final ItemMachineMod tractor = new ItemTractor();
 
 	public static final ItemMachineMod drillingrig = new ItemDrillingRig();
 	public static final ItemMachineMod dumptruck= new ItemDumpTruck();
@@ -27,6 +29,8 @@ public class ModItems {
 	public static void init()
 	{
 		GameRegistry.registerItem(bulldozer,"bulldozer");
+		GameRegistry.registerItem(tractor,"tractor");
+
 		GameRegistry.registerItem(drillingrig,"drillingrig");
 		GameRegistry.registerItem(dumptruck,"dumptruck");
 		GameRegistry.registerItem(loader,"loader");
@@ -43,6 +47,8 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(loader, 0, new ModelResourceLocation (Reference.MOD_ID + ":"+ "loader", "inventory")   );
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(drillhead, 0, new ModelResourceLocation(Reference.MOD_ID + ":"+ "drillhead","inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(drillpipe, 0, new ModelResourceLocation(Reference.MOD_ID + ":"+ "drillpipe","inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tractor, 0, new ModelResourceLocation(Reference.MOD_ID + ":"+ "tractor","inventory"));
 
 	}
 }
