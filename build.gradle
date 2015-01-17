@@ -22,7 +22,7 @@ group= "com.projectreddog.machinemod" // http://maven.apache.org/guides/mini/gui
 archivesBaseName = "MachineMod"
 
 minecraft {
-    version = "1.8-11.14.0.1285-1.8"
+    version = "1.8-11.14.0.1289-1.8"
     runDir = "eclipse"
 }
 

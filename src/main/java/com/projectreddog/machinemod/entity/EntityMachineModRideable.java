@@ -215,7 +215,7 @@ public class EntityMachineModRideable extends Entity {
 		
 		ModNetwork.sendPacketToAllAround( (new MachineModMessageEntityToClient( this.getEntityId(),this.posX,this.posY,this.posZ,this.yaw,this.Attribute1)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
 
-    //    ModNetwork.simpleNetworkWrapper.sendToAllAround((new MachineModMessageEntityToClient( this.getEntityId(),this.posX,this.posY,this.posZ,this.yaw,this.Attribute1)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
+     //   ModNetwork.simpleNetworkWrapper.sendToAllAround((new MachineModMessageEntityToClient( this.getEntityId(),this.posX,this.posY,this.posZ,this.yaw,this.Attribute1)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
 	}
 	
 	
@@ -333,10 +333,47 @@ public class EntityMachineModRideable extends Entity {
 		return 0;
 	}
 	public double calcOffsetX(double distance){
-		return(distance * MathHelper.cos((float) ((this.yaw+90) * Math.PI / 180.0D)));
+		return(distance * MathHelper.cos((float) (clampAngelto360(this.yaw+90) * Math.PI / 180.0D)));
 	}
 	public double calcOffsetZ(double distance){
-		return (distance * MathHelper.sin((float) ((this.yaw+90)* Math.PI / 180.0D))); 
+		return (distance * MathHelper.sin((float) (clampAngelto360(this.yaw+90)* Math.PI / 180.0D))); 
 
+	}
+	public double calcTwoOffsetX(double distance, int secondOffsetAngle, double secondOffsetDistance)
+	{
+		
+		if (secondOffsetAngle == 0){
+			return (calcOffsetX(distance) );
+		}
+		//calc first xPos
+		double  firstX=calcOffsetX(distance);
+        
+		return firstX + (secondOffsetDistance * MathHelper.cos((float) (clampAngelto360(this.yaw+secondOffsetAngle+90) * Math.PI / 180.0D)));
+	}
+	
+	
+	
+	public double calcTwoOffsetZ(double distance, int secondOffsetAngle, double secondOffsetDistance)
+	{
+		
+		if (secondOffsetAngle == 0){
+			return (calcOffsetZ(distance) );
+		}
+		//calc first xPos
+		double  firstZ=calcOffsetZ(distance) ;
+        
+		return firstZ + (secondOffsetDistance * MathHelper.sin((float) (clampAngelto360(this.yaw+secondOffsetAngle+90) * Math.PI / 180.0D)));
+	}
+	public float clampAngelto360(float inAngle){
+		while (inAngle> 360 )
+		{
+			inAngle -=360;
+		}
+		
+		while (inAngle< 0 )
+		{
+			inAngle =360-inAngle;
+		}
+			return inAngle;
 	}
 }
