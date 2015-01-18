@@ -27,8 +27,7 @@ public class RenderDrillingRig extends Render {
 	}
 
 	@Override
-	public void doRender(Entity entity, double x, double y, double z,
-			float yaw, float pitch) {
+	public void doRender(Entity entity, double x, double y, double z, float yaw, float pitch) {
 
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) x, (float) y, (float) z);
@@ -51,16 +50,14 @@ public class RenderDrillingRig extends Render {
 		GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
 		this.bindEntityTexture(entity);
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
-		this.modelDrillingRig.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F,
-				0.0625F);
+		this.modelDrillingRig.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
 		GL11.glPopMatrix();
 	}
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		return new ResourceLocation("machinemod",
-				Reference.MODEL_DRILLINGRIG_TEXTURE_LOCATION);
+		return new ResourceLocation("machinemod", Reference.MODEL_DRILLINGRIG_TEXTURE_LOCATION);
 	}
 
 }

@@ -20,13 +20,10 @@ public class MachineModMessageEntityToClient implements IMessage {
 	}
 
 	public String toString() {
-		return "MachineModMessageEntityToClient Class Details: \n posX=" + posX
-				+ "\n posY =" + posY + "\n posZ=" + posZ + "\n yaw=" + yaw
-				+ "\n Attribute1=" + Attribute1;
+		return "MachineModMessageEntityToClient Class Details: \n posX=" + posX + "\n posY =" + posY + "\n posZ=" + posZ + "\n yaw=" + yaw + "\n Attribute1=" + Attribute1;
 	}
 
-	public MachineModMessageEntityToClient(int entityid, double posX,
-			double posY, double posZ, float yaw, float Attribute1) {
+	public MachineModMessageEntityToClient(int entityid, double posX, double posY, double posZ, float yaw, float Attribute1) {
 		super();
 		// LogHelper.info("in machineModMessageEntityToClientConstructor with parms");
 		this.entityid = entityid;

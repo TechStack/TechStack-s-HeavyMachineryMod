@@ -26,10 +26,7 @@ public class ConfigurationHandler {
 
 	private static void loadConfiguration() {
 
-		Reference.enableBulldozer = configuration.get(
-				Configuration.CATEGORY_GENERAL, "enableBulldozer", true,
-				"If true Bulldozer Enabled, if false BullDozer is disabled")
-				.getBoolean();
+		Reference.enableBulldozer = configuration.get(Configuration.CATEGORY_GENERAL, "enableBulldozer", true, "If true Bulldozer Enabled, if false BullDozer is disabled").getBoolean();
 
 		// save the config if it did not exits
 		if (configuration.hasChanged()) {
@@ -41,8 +38,7 @@ public class ConfigurationHandler {
 	}
 
 	@SubscribeEvent
-	public void onConfiguratoinChangedEvent(
-			ConfigChangedEvent.OnConfigChangedEvent event) {
+	public void onConfiguratoinChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event) {
 		if (event.modID.equalsIgnoreCase(Reference.MOD_ID)) {
 			// resync configs
 			loadConfiguration();

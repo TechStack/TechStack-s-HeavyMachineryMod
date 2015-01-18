@@ -25,8 +25,7 @@ import com.projectreddog.machinemod.model.advanced.obj.ObjModelLoader;
  */
 @SideOnly(Side.CLIENT)
 public class AdvancedModelLoader {
-	private static Map<String, IModelCustomLoader> instances = Maps
-			.newHashMap();
+	private static Map<String, IModelCustomLoader> instances = Maps.newHashMap();
 
 	/**
 	 * Register a new model handler
@@ -51,8 +50,7 @@ public class AdvancedModelLoader {
 	 * @throws ModelFormatException
 	 *             if the underlying model handler cannot parse the model format
 	 */
-	public static IModelCustom loadModel(ResourceLocation resource)
-			throws IllegalArgumentException, ModelFormatException {
+	public static IModelCustom loadModel(ResourceLocation resource) throws IllegalArgumentException, ModelFormatException {
 		String name = resource.getResourcePath();
 		int i = name.lastIndexOf('.');
 		if (i == -1) {
@@ -63,8 +61,7 @@ public class AdvancedModelLoader {
 		IModelCustomLoader loader = instances.get(suffix);
 		if (loader == null) {
 			FMLLog.severe("The resource name %s is not supported", resource);
-			throw new IllegalArgumentException(
-					"The resource name is not supported");
+			throw new IllegalArgumentException("The resource name is not supported");
 		}
 
 		return loader.loadInstance(resource);

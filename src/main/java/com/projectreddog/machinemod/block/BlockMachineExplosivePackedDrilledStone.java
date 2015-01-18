@@ -12,8 +12,7 @@ import net.minecraft.world.World;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.world.ModExplosion;
 
-public class BlockMachineExplosivePackedDrilledStone extends
-		BlockMachineModManyTexture {
+public class BlockMachineExplosivePackedDrilledStone extends BlockMachineModManyTexture {
 	public BlockMachineExplosivePackedDrilledStone() {
 		super();
 		// 1.8
@@ -26,8 +25,7 @@ public class BlockMachineExplosivePackedDrilledStone extends
 	@Override
 	// public void onNeighborBlockChange(World worldIn, BlockPos pos,
 	// IBlockState state, Block neighborBlock) {}
-	public void onNeighborBlockChange(World world, BlockPos bp, IBlockState bs,
-			Block neighborBlock) {
+	public void onNeighborBlockChange(World world, BlockPos bp, IBlockState bs, Block neighborBlock) {
 
 		world.scheduleUpdate(bp, this, this.tickRate(world));
 
@@ -36,14 +34,12 @@ public class BlockMachineExplosivePackedDrilledStone extends
 	@Override
 	// public void onBlockDestroyedByExplosion(World worldIn, BlockPos pos,
 	// Explosion explosionIn) {}
-	public void onBlockDestroyedByExplosion(World world, BlockPos pos,
-			Explosion explosion) {
+	public void onBlockDestroyedByExplosion(World world, BlockPos pos, Explosion explosion) {
 
 		detonate(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state,
-			Random rand) {
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		if (worldIn.isBlockPowered(pos)) {
 			detonate(worldIn, pos.getX(), pos.getY(), pos.getZ());
 		}
@@ -70,11 +66,9 @@ public class BlockMachineExplosivePackedDrilledStone extends
 	 * returns a new explosion. Does initiation (at time of writing Explosion is
 	 * not finished)
 	 */
-	public ModExplosion newExplosion(World world, double x, double y, double z,
-			float size, boolean flameing, boolean smoking) {
+	public ModExplosion newExplosion(World world, double x, double y, double z, float size, boolean flameing, boolean smoking) {
 
-		ModExplosion explosion = new ModExplosion(world, (Entity) null, x, y,
-				z, size);
+		ModExplosion explosion = new ModExplosion(world, (Entity) null, x, y, z, size);
 		// explosion.isFlaming = flameing;
 		explosion.isSmoking = smoking;
 		explosion.doExplosionA();

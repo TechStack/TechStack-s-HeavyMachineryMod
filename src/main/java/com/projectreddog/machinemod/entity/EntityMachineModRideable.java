@@ -125,8 +125,7 @@ public class EntityMachineModRideable extends Entity {
 			this.setDead();
 		}
 
-		if (worldObj.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY,
-				(int) (posZ - .5d)))) {
+		if (worldObj.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) {
 			// in air block so fall i'll actually park the entity inside the
 			// block below just a little bit.
 			this.motionY -= 0.03999999910593033D;
@@ -189,10 +188,8 @@ public class EntityMachineModRideable extends Entity {
 		// END Clamp values to max / min values as needed
 
 		// calc x & Z offsets needed for the given rotation & velocity
-		double speedX = (velocity * MathHelper.cos((float) ((yaw + 90)
-				* Math.PI / 180.0D)));
-		double speedZ = (velocity * MathHelper.sin((float) ((yaw + 90)
-				* Math.PI / 180.0D)));
+		double speedX = (velocity * MathHelper.cos((float) ((yaw + 90) * Math.PI / 180.0D)));
+		double speedZ = (velocity * MathHelper.sin((float) ((yaw + 90) * Math.PI / 180.0D)));
 		// double speedY=0;
 
 		motionX = speedX;
@@ -204,11 +201,7 @@ public class EntityMachineModRideable extends Entity {
 		// setPosition( posX+speedX,posY+motionY, posZ+speedZ);
 		moveEntity(motionX, motionY, motionZ);
 
-		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityToClient(
-				this.getEntityId(), this.posX, this.posY, this.posZ, this.yaw,
-				this.Attribute1)),
-				new TargetPoint(worldObj.provider.getDimensionId(), posX, posY,
-						posZ, 80));
+		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityToClient(this.getEntityId(), this.posX, this.posY, this.posZ, this.yaw, this.Attribute1)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
 
 		// ModNetwork.simpleNetworkWrapper.sendToAllAround((new
 		// MachineModMessageEntityToClient(
@@ -262,23 +255,17 @@ public class EntityMachineModRideable extends Entity {
 	// override the set position and rotation function to avoid MC from setting
 	// the postion of the entity so i can handle it
 	// in my network handler ... avoids jitter
-	public void func_180426_a(double p_70056_1_, double p_70056_3_,
-			double p_70056_5_, float p_70056_7_, float p_70056_8_,
-			int p_70056_9_, boolean bool) {
+	public void func_180426_a(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_, boolean bool) {
 
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void setPositionAndRotation2(double p_70056_1_, double p_70056_3_,
-			double p_70056_5_, float p_70056_7_, float p_70056_8_,
-			int p_70056_9_) {
+	public void setPositionAndRotation2(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_) {
 
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void setPositionAndRotation(double p_70056_1_, double p_70056_3_,
-			double p_70056_5_, float p_70056_7_, float p_70056_8_,
-			int p_70056_9_) {
+	public void setPositionAndRotation(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_) {
 
 	}
 
@@ -299,15 +286,10 @@ public class EntityMachineModRideable extends Entity {
 
 	public void updateRiderPosition() {
 		if (this.riddenByEntity != null) {
-			double d0 = Math.cos((double) this.rotationYaw * Math.PI / 180.0D)
-					* this.velocity;
-			double d1 = Math.sin((double) this.rotationYaw * Math.PI / 180.0D)
-					* this.velocity;
-			this.riddenByEntity.setPosition(
-					this.posX + d0 + this.getMountedXOffset(),
-					this.posY + this.getMountedYOffset()
-							+ this.riddenByEntity.getYOffset(), this.posZ + d1
-							+ this.getMountedZOffset());
+			double d0 = Math.cos((double) this.rotationYaw * Math.PI / 180.0D) * this.velocity;
+			double d1 = Math.sin((double) this.rotationYaw * Math.PI / 180.0D) * this.velocity;
+			this.riddenByEntity.setPosition(this.posX + d0 + this.getMountedXOffset(), this.posY + this.getMountedYOffset() + this.riddenByEntity.getYOffset(), this.posZ + d1
+					+ this.getMountedZOffset());
 			// this.riddenByEntity.setRotationYawHead(this.yaw);
 		}
 	}
@@ -323,18 +305,12 @@ public class EntityMachineModRideable extends Entity {
 		// TODO Auto-generated method stub
 
 		yaw = compound.getFloat(Reference.MACHINE_MOD_NBT_PREFIX + "YAW");
-		velocity = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX
-				+ "VELOCITY");
-		TargetposX = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX
-				+ "TARGET_X");
-		TargetposY = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX
-				+ "TARGET_Y");
-		TargetposZ = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX
-				+ "TARGET_Z");
-		TargetYaw = compound.getFloat(Reference.MACHINE_MOD_NBT_PREFIX
-				+ "TARGET_YAW");
-		Attribute1 = compound.getFloat(Reference.MACHINE_MOD_NBT_PREFIX
-				+ "ATTRIBUTE1");
+		velocity = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "VELOCITY");
+		TargetposX = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_X");
+		TargetposY = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_Y");
+		TargetposZ = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_Z");
+		TargetYaw = compound.getFloat(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_YAW");
+		Attribute1 = compound.getFloat(Reference.MACHINE_MOD_NBT_PREFIX + "ATTRIBUTE1");
 
 	}
 
@@ -342,18 +318,12 @@ public class EntityMachineModRideable extends Entity {
 	protected void writeEntityToNBT(NBTTagCompound compound) {
 
 		compound.setFloat(Reference.MACHINE_MOD_NBT_PREFIX + "YAW", yaw);
-		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "VELOCITY",
-				velocity);
-		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_X",
-				TargetposX);
-		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_Y",
-				TargetposY);
-		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_Z",
-				TargetposZ);
-		compound.setFloat(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_YAW",
-				TargetYaw);
-		compound.setFloat(Reference.MACHINE_MOD_NBT_PREFIX + "ATTRIBUTE1",
-				Attribute1);
+		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "VELOCITY", velocity);
+		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_X", TargetposX);
+		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_Y", TargetposY);
+		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_Z", TargetposZ);
+		compound.setFloat(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_YAW", TargetYaw);
+		compound.setFloat(Reference.MACHINE_MOD_NBT_PREFIX + "ATTRIBUTE1", Attribute1);
 
 		// TODO Auto-generated method stub
 
@@ -368,18 +338,15 @@ public class EntityMachineModRideable extends Entity {
 	}
 
 	public double calcOffsetX(double distance) {
-		return (distance * MathHelper
-				.cos((float) (clampAngelto360(this.yaw + 90) * Math.PI / 180.0D)));
+		return (distance * MathHelper.cos((float) (clampAngelto360(this.yaw + 90) * Math.PI / 180.0D)));
 	}
 
 	public double calcOffsetZ(double distance) {
-		return (distance * MathHelper
-				.sin((float) (clampAngelto360(this.yaw + 90) * Math.PI / 180.0D)));
+		return (distance * MathHelper.sin((float) (clampAngelto360(this.yaw + 90) * Math.PI / 180.0D)));
 
 	}
 
-	public double calcTwoOffsetX(double distance, int secondOffsetAngle,
-			double secondOffsetDistance) {
+	public double calcTwoOffsetX(double distance, int secondOffsetAngle, double secondOffsetDistance) {
 
 		if (secondOffsetAngle == 0) {
 			return (calcOffsetX(distance));
@@ -387,15 +354,10 @@ public class EntityMachineModRideable extends Entity {
 		// calc first xPos
 		double firstX = calcOffsetX(distance);
 
-		return firstX
-				+ (secondOffsetDistance * MathHelper
-						.cos((float) (clampAngelto360(this.yaw
-								+ secondOffsetAngle + 90)
-								* Math.PI / 180.0D)));
+		return firstX + (secondOffsetDistance * MathHelper.cos((float) (clampAngelto360(this.yaw + secondOffsetAngle + 90) * Math.PI / 180.0D)));
 	}
 
-	public double calcTwoOffsetZ(double distance, int secondOffsetAngle,
-			double secondOffsetDistance) {
+	public double calcTwoOffsetZ(double distance, int secondOffsetAngle, double secondOffsetDistance) {
 
 		if (secondOffsetAngle == 0) {
 			return (calcOffsetZ(distance));
@@ -403,11 +365,7 @@ public class EntityMachineModRideable extends Entity {
 		// calc first xPos
 		double firstZ = calcOffsetZ(distance);
 
-		return firstZ
-				+ (secondOffsetDistance * MathHelper
-						.sin((float) (clampAngelto360(this.yaw
-								+ secondOffsetAngle + 90)
-								* Math.PI / 180.0D)));
+		return firstZ + (secondOffsetDistance * MathHelper.sin((float) (clampAngelto360(this.yaw + secondOffsetAngle + 90) * Math.PI / 180.0D)));
 	}
 
 	public float clampAngelto360(float inAngle) {

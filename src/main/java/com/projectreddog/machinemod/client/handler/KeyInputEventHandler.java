@@ -20,11 +20,9 @@ public class KeyInputEventHandler {
 		if (Minecraft.getMinecraft().thePlayer.ridingEntity instanceof EntityMachineModRideable) {
 
 			sendPacket = true;
-			EntityMachineModRideable e = (EntityMachineModRideable) Minecraft
-					.getMinecraft().thePlayer.ridingEntity;
+			EntityMachineModRideable e = (EntityMachineModRideable) Minecraft.getMinecraft().thePlayer.ridingEntity;
 
-			if (Minecraft.getMinecraft().gameSettings.keyBindForward
-					.getIsKeyPressed()) {
+			if (Minecraft.getMinecraft().gameSettings.keyBindForward.getIsKeyPressed()) {
 				// player pressed forward & is in my entity send network message
 				// to server
 				e.isPlayerAccelerating = true;
@@ -32,15 +30,13 @@ public class KeyInputEventHandler {
 				e.isPlayerAccelerating = false;
 			}
 
-			if (Minecraft.getMinecraft().gameSettings.keyBindJump
-					.getIsKeyPressed()) {
+			if (Minecraft.getMinecraft().gameSettings.keyBindJump.getIsKeyPressed()) {
 				e.isPlayerPushingJumpButton = true;
 			} else {
 				e.isPlayerPushingJumpButton = false;
 			}
 
-			if (Minecraft.getMinecraft().gameSettings.keyBindSprint
-					.getIsKeyPressed()) {
+			if (Minecraft.getMinecraft().gameSettings.keyBindSprint.getIsKeyPressed()) {
 				// player pressed forward & is in my entity send network message
 				// to server
 				e.isPlayerPushingSprintButton = true;
@@ -48,8 +44,7 @@ public class KeyInputEventHandler {
 				e.isPlayerPushingSprintButton = false;
 			}
 
-			if (Minecraft.getMinecraft().gameSettings.keyBindBack
-					.getIsKeyPressed()) {
+			if (Minecraft.getMinecraft().gameSettings.keyBindBack.getIsKeyPressed()) {
 				// player pressed back & is in my entity send network message to
 				// server
 				e.isPlayerBreaking = true;
@@ -59,8 +54,7 @@ public class KeyInputEventHandler {
 				e.isPlayerBreaking = false;
 			}
 
-			if (Minecraft.getMinecraft().gameSettings.keyBindLeft
-					.getIsKeyPressed()) {
+			if (Minecraft.getMinecraft().gameSettings.keyBindLeft.getIsKeyPressed()) {
 				// player pressed left & is in my entity send network message to
 				// server
 				e.isPlayerTurningLeft = true;
@@ -68,8 +62,7 @@ public class KeyInputEventHandler {
 			} else {
 				e.isPlayerTurningLeft = false;
 			}
-			if (Minecraft.getMinecraft().gameSettings.keyBindRight
-					.getIsKeyPressed()) {
+			if (Minecraft.getMinecraft().gameSettings.keyBindRight.getIsKeyPressed()) {
 				// player pressed right & is in my entity send network message
 				// to server
 
@@ -80,11 +73,8 @@ public class KeyInputEventHandler {
 
 			}
 
-			if (Minecraft.getMinecraft().gameSettings.keyBindInventory
-					.isPressed()) {
-				ModNetwork.simpleNetworkWrapper
-						.sendToServer(new MachineModMessageInputToServerOpenGui(
-								e.getEntityId(), true));
+			if (Minecraft.getMinecraft().gameSettings.keyBindInventory.isPressed()) {
+				ModNetwork.simpleNetworkWrapper.sendToServer(new MachineModMessageInputToServerOpenGui(e.getEntityId(), true));
 
 			}
 
@@ -97,13 +87,7 @@ public class KeyInputEventHandler {
 				// +" Left: "+ e.isPlayerTurningLeft
 				// +" RIght:"+e.isPlayerTurningRight);
 
-				ModNetwork.simpleNetworkWrapper
-						.sendToServer(new MachineModMessageInputToServer(e
-								.getEntityId(), e.isPlayerAccelerating,
-								e.isPlayerBreaking, e.isPlayerTurningRight,
-								e.isPlayerTurningLeft,
-								e.isPlayerPushingSprintButton,
-								e.isPlayerPushingJumpButton));
+				ModNetwork.simpleNetworkWrapper.sendToServer(new MachineModMessageInputToServer(e.getEntityId(), e.isPlayerAccelerating, e.isPlayerBreaking, e.isPlayerTurningRight, e.isPlayerTurningLeft, e.isPlayerPushingSprintButton, e.isPlayerPushingJumpButton));
 
 			}
 

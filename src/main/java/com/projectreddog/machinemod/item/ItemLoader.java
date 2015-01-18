@@ -19,8 +19,7 @@ public class ItemLoader extends ItemMachineMod {
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world,
-			BlockPos pos, EnumFacing side, float xOff, float yOff, float zOff) {
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float xOff, float yOff, float zOff) {
 		boolean result = false;
 
 		if (!world.isRemote)// / only run on server

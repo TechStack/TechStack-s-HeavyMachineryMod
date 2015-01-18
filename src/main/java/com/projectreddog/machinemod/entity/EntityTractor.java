@@ -47,12 +47,9 @@ public class EntityTractor extends EntityMachineModRideable {
 					} else {
 						angle = 90;
 					}
-					bp = new BlockPos(posX + calcTwoOffsetX(-3.5, angle, i),
-							posY - 1, posZ + calcTwoOffsetZ(-3.5, angle, i));
-					if (worldObj.getBlockState(bp).getBlock() == Blocks.dirt
-							|| worldObj.getBlockState(bp).getBlock() == Blocks.grass) {
-						worldObj.setBlockState(bp,
-								Blocks.farmland.getDefaultState());
+					bp = new BlockPos(posX + calcTwoOffsetX(-3.5, angle, i), posY - 1, posZ + calcTwoOffsetZ(-3.5, angle, i));
+					if (worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.grass) {
+						worldObj.setBlockState(bp, Blocks.farmland.getDefaultState());
 					}
 				}
 

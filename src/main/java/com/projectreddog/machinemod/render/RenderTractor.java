@@ -24,8 +24,7 @@ public class RenderTractor extends Render {
 	}
 
 	@Override
-	public void doRender(Entity entity, double x, double y, double z,
-			float yaw, float pitch) {
+	public void doRender(Entity entity, double x, double y, double z, float yaw, float pitch) {
 
 		GL11.glPushMatrix();
 		GL11.glTranslated(x, y, z);
@@ -48,8 +47,7 @@ public class RenderTractor extends Render {
 		GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
 		this.bindEntityTexture(entity);
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
-		this.modelTractor
-				.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+		this.modelTractor.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
 		GL11.glPopMatrix();
 	}
@@ -57,8 +55,7 @@ public class RenderTractor extends Render {
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
 
-		return new ResourceLocation("machinemod",
-				Reference.MODEL_TRACTOR_TEXTURE_LOCATION);
+		return new ResourceLocation("machinemod", Reference.MODEL_TRACTOR_TEXTURE_LOCATION);
 	}
 
 }

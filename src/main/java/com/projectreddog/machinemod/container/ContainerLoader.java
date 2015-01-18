@@ -18,8 +18,7 @@ public class ContainerLoader extends Container {
 
 		for (int i = 0; i < 1; i++) {
 			for (int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(loader, j + i * 9, 8 + j * 18,
-						18 + i * 18));
+				addSlotToContainer(new Slot(loader, j + i * 9, 8 + j * 18, 18 + i * 18));
 			}
 		}
 
@@ -35,8 +34,7 @@ public class ContainerLoader extends Container {
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9,
-						8 + j * 18, 139 + i * 18));
+				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 139 + i * 18));
 			}
 		}
 
@@ -57,8 +55,7 @@ public class ContainerLoader extends Container {
 
 			// merges the item into player inventory since its in the Entity
 			if (slot < 9) {
-				if (!this.mergeItemStack(stackInSlot, 9,
-						this.inventorySlots.size(), true)) {
+				if (!this.mergeItemStack(stackInSlot, 9, this.inventorySlots.size(), true)) {
 					return null;
 				}
 			}

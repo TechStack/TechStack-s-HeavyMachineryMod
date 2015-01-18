@@ -42,10 +42,8 @@ public class EntityBulldozer extends EntityMachineModRideable {
 	public void digMethodA() {
 
 		int yOffset = 0;
-		double bladeOffsetX = (bladeOffset * MathHelper.cos((float) ((yaw + 90)
-				* Math.PI / 180.0D)));
-		double bladeOffsetZ = (bladeOffset * MathHelper.sin((float) ((yaw + 90)
-				* Math.PI / 180.0D)));
+		double bladeOffsetX = (bladeOffset * MathHelper.cos((float) ((yaw + 90) * Math.PI / 180.0D)));
+		double bladeOffsetZ = (bladeOffset * MathHelper.sin((float) ((yaw + 90) * Math.PI / 180.0D)));
 
 		if (this.riddenByEntity != null && this.isPlayerPushingSprintButton) {
 			yOffset = -1;
@@ -59,43 +57,29 @@ public class EntityBulldozer extends EntityMachineModRideable {
 		int y = (int) Math.round(this.posY + yOffset);
 		int z = (int) (this.posZ + bladeOffsetZ - .5d);
 		BlockPos bp = new BlockPos(x, y, z);
-		if (worldObj.getBlockState(bp).getBlock().getMaterial() == Material.grass
-				|| worldObj.getBlockState(bp).getBlock().getMaterial() == Material.ground
+		if (worldObj.getBlockState(bp).getBlock().getMaterial() == Material.grass || worldObj.getBlockState(bp).getBlock().getMaterial() == Material.ground
 				|| worldObj.getBlockState(bp).getBlock().getMaterial() == Material.sand) {
-			worldObj.getBlockState(bp)
-					.getBlock()
-					.dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp),
-							0);
+			worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
 			worldObj.setBlockToAir(bp);
 		}
 
-		double bladeOffsetX2 = (1 * MathHelper.cos((float) ((yaw + 90 + 90)
-				* Math.PI / 180.0D)));
-		double bladeOffsetZ2 = (1 * MathHelper.sin((float) ((yaw + 90 + 90)
-				* Math.PI / 180.0D)));
+		double bladeOffsetX2 = (1 * MathHelper.cos((float) ((yaw + 90 + 90) * Math.PI / 180.0D)));
+		double bladeOffsetZ2 = (1 * MathHelper.sin((float) ((yaw + 90 + 90) * Math.PI / 180.0D)));
 
 		x = (int) (this.posX + bladeOffsetX + bladeOffsetX2 - .5d);
 		z = (int) (this.posZ + bladeOffsetZ + bladeOffsetZ2 - .5d);
 		bp = new BlockPos(x, y, z);
-		if (worldObj.getBlockState(bp).getBlock().getMaterial() == Material.grass
-				|| worldObj.getBlockState(bp).getBlock().getMaterial() == Material.ground
+		if (worldObj.getBlockState(bp).getBlock().getMaterial() == Material.grass || worldObj.getBlockState(bp).getBlock().getMaterial() == Material.ground
 				|| worldObj.getBlockState(bp).getBlock().getMaterial() == Material.sand) {
-			worldObj.getBlockState(bp)
-					.getBlock()
-					.dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp),
-							0);
+			worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
 			worldObj.setBlockToAir(bp);
 		}
 		x = (int) (this.posX + bladeOffsetX - bladeOffsetX2 - .5d);
 		z = (int) (this.posZ + bladeOffsetZ - bladeOffsetZ2 - .5d);
 		bp = new BlockPos(x, y, z);
-		if (worldObj.getBlockState(bp).getBlock().getMaterial() == Material.grass
-				|| worldObj.getBlockState(bp).getBlock().getMaterial() == Material.ground
+		if (worldObj.getBlockState(bp).getBlock().getMaterial() == Material.grass || worldObj.getBlockState(bp).getBlock().getMaterial() == Material.ground
 				|| worldObj.getBlockState(bp).getBlock().getMaterial() == Material.sand) {
-			worldObj.getBlockState(bp)
-					.getBlock()
-					.dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp),
-							0);
+			worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
 			worldObj.setBlockToAir(bp);
 		}
 

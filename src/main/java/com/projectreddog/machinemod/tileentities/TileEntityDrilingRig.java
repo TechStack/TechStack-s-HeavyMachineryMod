@@ -11,8 +11,7 @@ import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.utility.LogHelper;
 
-public class TileEntityDrilingRig extends TileEntity implements
-		IUpdatePlayerListBox {
+public class TileEntityDrilingRig extends TileEntity implements IUpdatePlayerListBox {
 
 	private int currentDrillingLevel = 1;
 	private int EnergyLevel = 0;
@@ -33,18 +32,12 @@ public class TileEntityDrilingRig extends TileEntity implements
 		// LogHelper.info("TE update entity called");
 
 		if (currentDrillingLevel < startingLevel + 16) {
-			if (worldObj.getBlockState(
-					this.getPos().offset(EnumFacing.DOWN,
-							this.currentDrillingLevel)).getBlock() == Blocks.stone) {
+			if (worldObj.getBlockState(this.getPos().offset(EnumFacing.DOWN, this.currentDrillingLevel)).getBlock() == Blocks.stone) {
 
 				// worldObj.setBlockState(this.getPos().offset(EnumFacing.DOWN,
 				// this.current_drilling_level),ModBlocks.machinedrilledstone.getDefaultState());
 
-				worldObj.setBlockState(
-						this.getPos().offset(EnumFacing.DOWN,
-								this.currentDrillingLevel),
-						ModBlocks.machineexplosivepackeddrilledstone
-								.getDefaultState());
+				worldObj.setBlockState(this.getPos().offset(EnumFacing.DOWN, this.currentDrillingLevel), ModBlocks.machineexplosivepackeddrilledstone.getDefaultState());
 
 			}
 			currentDrillingLevel = currentDrillingLevel + 1;

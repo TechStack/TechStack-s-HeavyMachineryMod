@@ -56,29 +56,21 @@ public class Face {
 					offsetV = -offsetV;
 				}
 
-				worldrenderer.addVertexWithUV(vertices[i].x, vertices[i].y,
-						vertices[i].z, textureCoordinates[i].u + offsetU,
-						textureCoordinates[i].v + offsetV);
+				worldrenderer.addVertexWithUV(vertices[i].x, vertices[i].y, vertices[i].z, textureCoordinates[i].u + offsetU, textureCoordinates[i].v + offsetV);
 			} else {
-				worldrenderer.addVertex(vertices[i].x, vertices[i].y,
-						vertices[i].z);
+				worldrenderer.addVertex(vertices[i].x, vertices[i].y, vertices[i].z);
 			}
 		}
 	}
 
 	public Vertex calculateFaceNormal() {
 		// 1.8 cast doubles and removed vector helper
-		Vec3 v1 = new Vec3((double) vertices[1].x - vertices[0].x,
-				(double) vertices[1].y - vertices[0].y, (double) vertices[1].z
-						- vertices[0].z);
-		Vec3 v2 = new Vec3((double) vertices[2].x - vertices[0].x,
-				(double) vertices[2].y - vertices[0].y, (double) vertices[2].z
-						- vertices[0].z);
+		Vec3 v1 = new Vec3((double) vertices[1].x - vertices[0].x, (double) vertices[1].y - vertices[0].y, (double) vertices[1].z - vertices[0].z);
+		Vec3 v2 = new Vec3((double) vertices[2].x - vertices[0].x, (double) vertices[2].y - vertices[0].y, (double) vertices[2].z - vertices[0].z);
 		Vec3 normalVector = null;
 
 		normalVector = v1.crossProduct(v2).normalize();
 
-		return new Vertex((float) normalVector.xCoord,
-				(float) normalVector.yCoord, (float) normalVector.zCoord);
+		return new Vertex((float) normalVector.xCoord, (float) normalVector.yCoord, (float) normalVector.zCoord);
 	}
 }

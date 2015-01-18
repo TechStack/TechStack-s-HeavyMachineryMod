@@ -38,8 +38,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 
 	// / my 1.7 version
 	public void onBlockAdded(World world, int x, int y, int z) {
-		world.scheduleUpdate(new BlockPos(x, y, z), this,
-				getRandomizedUpdateTime(world));
+		world.scheduleUpdate(new BlockPos(x, y, z), this, getRandomizedUpdateTime(world));
 
 	}
 
@@ -49,29 +48,23 @@ public class BlockMachineModFalling extends BlockMachineMod {
 	 * neighbor Block
 	 */
 
-	public void onNeighborBlockChange(World worldIn, BlockPos pos,
-			IBlockState state, Block neighborBlock) {
-		onNeighborBlockChange(worldIn, pos.getX(), pos.getY(), pos.getZ(),
-				neighborBlock);
+	public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock) {
+		onNeighborBlockChange(worldIn, pos.getX(), pos.getY(), pos.getZ(), neighborBlock);
 	}
 
 	// / my 1.7 version
-	public void onNeighborBlockChange(World world, int x, int y, int z,
-			Block block) {
-		world.scheduleUpdate(new BlockPos(x, y, z), this,
-				getRandomizedUpdateTime(world));
+	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
+		world.scheduleUpdate(new BlockPos(x, y, z), this, getRandomizedUpdateTime(world));
 
 		if (world.getBlockState(new BlockPos(x, y + 1, z)).getBlock() == ModBlocks.machinemodblastedstone) {
-			world.scheduleUpdate(new BlockPos(x, y + 1, z), this,
-					getRandomizedUpdateTime(world));
+			world.scheduleUpdate(new BlockPos(x, y + 1, z), this, getRandomizedUpdateTime(world));
 		}
 	}
 
 	/**
 	 * Ticks the block if it's been scheduled
 	 */
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state,
-			Random rand) {
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		updateTick(worldIn, pos.getX(), pos.getY(), pos.getZ(), rand);
 
 	}
@@ -88,17 +81,12 @@ public class BlockMachineModFalling extends BlockMachineMod {
 			byte b0 = 32;
 
 			BlockPos pos = new BlockPos(x, y, z);
-			if (!fallInstantly
-					&& world.isAreaLoaded(pos.add(-b0, -b0, -b0),
-							pos.add(b0, b0, b0))) {
+			if (!fallInstantly && world.isAreaLoaded(pos.add(-b0, -b0, -b0), pos.add(b0, b0, b0))) {
 				if (!world.isRemote) {
 
 					// LogHelper.info("X:" + this.motionX + " Y:" + this.motionY
 					// + " Z:"+ this.motionZ);
-					EntityFallingBlock entityfallingblock = new EntityFallingBlock(
-							world, (double) ((float) x + 0.5F),
-							(double) ((float) y + 0.5F),
-							(double) ((float) z + 0.5F), this.getDefaultState());
+					EntityFallingBlock entityfallingblock = new EntityFallingBlock(world, (double) ((float) x + 0.5F), (double) ((float) y + 0.5F), (double) ((float) z + 0.5F), this.getDefaultState());
 					// TS removed
 					// this.func_149829_a(entityfallingblock);
 
@@ -148,8 +136,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 		for (int i = -1; i < 2; i++) {
 			for (int j = -1; j < 2; j++) {
 
-				if ((MathHelper.abs_int(i) == 1 && j == 0)
-						|| (i == 0 && MathHelper.abs_int(j) == 1)) {
+				if ((MathHelper.abs_int(i) == 1 && j == 0) || (i == 0 && MathHelper.abs_int(j) == 1)) {
 
 					bp = new BlockPos(x + i, y, z + j);
 					block = world.getBlockState(bp).getBlock();

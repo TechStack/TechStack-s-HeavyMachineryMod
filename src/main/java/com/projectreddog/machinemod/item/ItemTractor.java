@@ -21,8 +21,7 @@ public class ItemTractor extends ItemMachineMod {
 	// public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World
 	// worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float
 	// hitZ)
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world,
-			BlockPos pos, EnumFacing side, float xOff, float yOff, float zOff) {
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float xOff, float yOff, float zOff) {
 		boolean result = false;
 
 		if (!world.isRemote)// / only run on server

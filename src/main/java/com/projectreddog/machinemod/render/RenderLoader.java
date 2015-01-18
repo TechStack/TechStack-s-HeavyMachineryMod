@@ -34,8 +34,7 @@ public class RenderLoader extends Render {
 	}
 
 	@Override
-	public void doRender(Entity entity, double x, double y, double z,
-			float yaw, float pitch) {
+	public void doRender(Entity entity, double x, double y, double z, float yaw, float pitch) {
 
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) x, (float) y, (float) z);
@@ -68,8 +67,7 @@ public class RenderLoader extends Render {
 		// GL11.glTranslatef(0f, 1.2f, -1.2f);
 		GL11.glTranslatef(0f, 1.8f, -1.9f);
 		if (((EntityLoader) entity).Attribute1 < -30) {
-			GL11.glRotatef((((EntityLoader) entity).Attribute1 + 30) * -2f, 1,
-					0, 0);
+			GL11.glRotatef((((EntityLoader) entity).Attribute1 + 30) * -2f, 1, 0, 0);
 		}
 		((ModelLoader) this.modelLoader).renderGroupObject("Bucket_Cube.003");
 		GL11.glPopMatrix();
@@ -77,8 +75,7 @@ public class RenderLoader extends Render {
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		return new ResourceLocation("machinemod",
-				Reference.MODEL_LOADER_TEXTURE_LOCATION);
+		return new ResourceLocation("machinemod", Reference.MODEL_LOADER_TEXTURE_LOCATION);
 	}
 
 }

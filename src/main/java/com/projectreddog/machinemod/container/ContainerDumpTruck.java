@@ -13,14 +13,12 @@ public class ContainerDumpTruck extends Container {
 
 	protected EntityDumpTruck dumptruck;
 
-	public ContainerDumpTruck(InventoryPlayer inventoryPlayer,
-			EntityDumpTruck dumptruck) {
+	public ContainerDumpTruck(InventoryPlayer inventoryPlayer, EntityDumpTruck dumptruck) {
 		this.dumptruck = dumptruck;
 
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(dumptruck, j + i * 9, 8 + j * 18,
-						18 + i * 18));
+				addSlotToContainer(new Slot(dumptruck, j + i * 9, 8 + j * 18, 18 + i * 18));
 			}
 		}
 
@@ -36,8 +34,7 @@ public class ContainerDumpTruck extends Container {
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9,
-						8 + j * 18, 139 + i * 18));
+				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 139 + i * 18));
 			}
 		}
 
@@ -58,8 +55,7 @@ public class ContainerDumpTruck extends Container {
 
 			// merges the item into player inventory since its in the Entity
 			if (slot < 54) {
-				if (!this.mergeItemStack(stackInSlot, 54,
-						this.inventorySlots.size(), true)) {
+				if (!this.mergeItemStack(stackInSlot, 54, this.inventorySlots.size(), true)) {
 					return null;
 				}
 			}

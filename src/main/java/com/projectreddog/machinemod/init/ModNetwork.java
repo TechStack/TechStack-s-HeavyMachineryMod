@@ -26,33 +26,23 @@ public class ModNetwork {
 	public static SimpleNetworkWrapper simpleNetworkWrapper;
 
 	public static void init() {
-		simpleNetworkWrapper = NetworkRegistry.INSTANCE
-				.newSimpleChannel(Reference.MOD_ID);
-		simpleNetworkWrapper.registerMessage(
-				MachineModMessageInputToServerHandler.class,
-				MachineModMessageInputToServer.class, 0, Side.SERVER);// message
-																		// to
-																		// server
+		simpleNetworkWrapper = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
+		simpleNetworkWrapper.registerMessage(MachineModMessageInputToServerHandler.class, MachineModMessageInputToServer.class, 0, Side.SERVER);// message
+																																				// to
+																																				// server
 
-		simpleNetworkWrapper.registerMessage(
-				MachineModMessageEntityToClientHandler.class,
-				MachineModMessageEntityToClient.class, 1, Side.CLIENT);// message
-																		// to
-																		// client
-		simpleNetworkWrapper.registerMessage(
-				MachineModMessageInputToServerOpenGuiHandler.class,
-				MachineModMessageInputToServerOpenGui.class, 2, Side.SERVER);// message
-																				// to
-																				// server
+		simpleNetworkWrapper.registerMessage(MachineModMessageEntityToClientHandler.class, MachineModMessageEntityToClient.class, 1, Side.CLIENT);// message
+																																					// to
+																																					// client
+		simpleNetworkWrapper.registerMessage(MachineModMessageInputToServerOpenGuiHandler.class, MachineModMessageInputToServerOpenGui.class, 2, Side.SERVER);// message
+																																								// to
+																																								// server
 
-		NetworkRegistry.INSTANCE.registerGuiHandler(MachineMod.instance,
-				new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(MachineMod.instance, new GuiHandler());
 	}
 
 	public static void sendPacketToAllAround(IMessage packet, TargetPoint tp) {
-		for (EntityPlayerMP player : (List<EntityPlayerMP>) FMLCommonHandler
-				.instance().getMinecraftServerInstance()
-				.getConfigurationManager().playerEntityList) {
+		for (EntityPlayerMP player : (List<EntityPlayerMP>) FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().playerEntityList) {
 			if (player.dimension == tp.dimension) {
 				double d4 = tp.x - player.posX;
 				double d5 = tp.y - player.posY;

@@ -9,8 +9,7 @@ import net.minecraft.item.Item;
 public class CreativeTabMachineMod {
 	// all creative tabls should define icon & name
 
-	public static final CreativeTabs MACHINEMOD_TAB = new CreativeTabs(
-			Reference.MOD_ID) {
+	public static final CreativeTabs MACHINEMOD_TAB = new CreativeTabs(Reference.MOD_ID) {
 
 		@Override
 		public Item getTabIconItem() {

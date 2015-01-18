@@ -18,11 +18,7 @@ public class MachineModMessageInputToServer implements IMessage {
 
 	}
 
-	public MachineModMessageInputToServer(int entityId,
-			boolean isPlayerAccelerating, boolean isPlayerBreaking,
-			boolean isPlayerTurningRight, boolean isPlayerTurningLeft,
-			boolean isPlayerPushingSprintButton,
-			boolean isPlayerPushingJumpButton) {
+	public MachineModMessageInputToServer(int entityId, boolean isPlayerAccelerating, boolean isPlayerBreaking, boolean isPlayerTurningRight, boolean isPlayerTurningLeft, boolean isPlayerPushingSprintButton, boolean isPlayerPushingJumpButton) {
 		super();
 		this.isPlayerAccelerating = isPlayerAccelerating;
 		this.isPlayerBreaking = isPlayerBreaking;

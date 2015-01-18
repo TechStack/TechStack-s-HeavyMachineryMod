@@ -20,11 +20,9 @@ import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.LogHelper;
 
-public class EntityDumpTruck extends EntityMachineModRideable implements
-		IInventory {
+public class EntityDumpTruck extends EntityMachineModRideable implements IInventory {
 
-	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D,
-			0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
+	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 
 	private ItemStack[] inventory;
 
@@ -39,8 +37,7 @@ public class EntityDumpTruck extends EntityMachineModRideable implements
 	public void onUpdate() {
 		super.onUpdate();
 		if (!worldObj.isRemote) {
-			List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(
-					this, this.getEntityBoundingBox());
+			List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox());
 			collidedEntitiesInList(list);
 			if (this.Attribute1 == getMinAngle()) {
 				// need
@@ -50,14 +47,10 @@ public class EntityDumpTruck extends EntityMachineModRideable implements
 					if (item != null && item.stackSize > 0) {
 						;
 
-						EntityItem entityItem = new EntityItem(worldObj, posX
-								+ calcOffsetX(-3.5), posY - .1f, posZ
-								+ calcOffsetZ(-3.5), item);
+						EntityItem entityItem = new EntityItem(worldObj, posX + calcOffsetX(-3.5), posY - .1f, posZ + calcOffsetZ(-3.5), item);
 
 						if (item.hasTagCompound()) {
-							entityItem.getEntityItem().setTagCompound(
-									(NBTTagCompound) item.getTagCompound()
-											.copy());
+							entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
 						}
 
 						float factor = 0.05F;
@@ -111,28 +104,18 @@ public class EntityDumpTruck extends EntityMachineModRideable implements
 					if (getStackInSlot(j).getItem() == is.getItem()) {
 						// same item remove from is put into slot any amt not to
 						// excede stack max
-						if (getStackInSlot(j).stackSize < getStackInSlot(j)
-								.getMaxStackSize()) {
+						if (getStackInSlot(j).stackSize < getStackInSlot(j).getMaxStackSize()) {
 							// we have room to add to this stack
-							if (is.stackSize <= getStackInSlot(j)
-									.getMaxStackSize()
-									- getStackInSlot(j).stackSize) {
+							if (is.stackSize <= getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize) {
 								// /all of the stack will fit in this slot do
 								// so.
 
-								setInventorySlotContents(j, new ItemStack(
-										getStackInSlot(j).getItem(),
-										getStackInSlot(j).stackSize
-												+ is.stackSize));
+								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).stackSize + is.stackSize));
 								is = null;
 							} else {
 								// we have more
-								int countRemain = is.stackSize
-										- (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize);
-								setInventorySlotContents(j,
-										new ItemStack(is.getItem(),
-												getStackInSlot(j)
-														.getMaxStackSize()));
+								int countRemain = is.stackSize - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize);
+								setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize()));
 								is.stackSize = countRemain;
 							}
 
@@ -140,8 +123,7 @@ public class EntityDumpTruck extends EntityMachineModRideable implements
 					}
 				} else {
 					// nothign in slot so set contents
-					setInventorySlotContents(j, new ItemStack(is.getItem(),
-							is.stackSize));
+					setInventorySlotContents(j, new ItemStack(is.getItem(), is.stackSize));
 					is = null;
 				}
 
@@ -197,12 +179,10 @@ public class EntityDumpTruck extends EntityMachineModRideable implements
 				float ry = rand.nextFloat() * 0.8F + 0.1F;
 				float rz = rand.nextFloat() * 0.8F + 0.1F;
 
-				EntityItem entityItem = new EntityItem(worldObj, posX + rx,
-						posY + ry, posZ + rz, item);
+				EntityItem entityItem = new EntityItem(worldObj, posX + rx, posY + ry, posZ + rz, item);
 
 				if (item.hasTagCompound()) {
-					entityItem.getEntityItem().setTagCompound(
-							(NBTTagCompound) item.getTagCompound().copy());
+					entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
 				}
 
 				float factor = 0.05F;
@@ -278,8 +258,7 @@ public class EntityDumpTruck extends EntityMachineModRideable implements
 	public void readFromNBT(NBTTagCompound tagCompound) {
 		super.readFromNBT(tagCompound);
 
-		NBTTagList tagList = tagCompound.getTagList("Inventory",
-				tagCompound.getId());
+		NBTTagList tagList = tagCompound.getTagList("Inventory", tagCompound.getId());
 		for (int i = 0; i < tagList.tagCount(); i++) {
 			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
 			byte slot = tag.getByte("Slot");

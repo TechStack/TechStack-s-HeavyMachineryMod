@@ -32,6 +32,5 @@ public interface IModelCustomLoader {
 	 * @throws ModelFormatException
 	 *             if the model format is not correct
 	 */
-	IModelCustom loadInstance(ResourceLocation resource)
-			throws ModelFormatException;
+	IModelCustom loadInstance(ResourceLocation resource) throws ModelFormatException;
 }
