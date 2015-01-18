@@ -309,15 +309,13 @@ public class WavefrontObject implements IModelCustom {
 				if (currentGroupObject.glDrawingMode == -1) {
 					currentGroupObject.glDrawingMode = GL11.GL_TRIANGLES;
 				} else if (currentGroupObject.glDrawingMode != GL11.GL_TRIANGLES) {
-					throw new ModelFormatException("Error parsing entry ('" + line + "'" + ", line " + lineCount + ") in file '" + fileName
-							+ "' - Invalid number of points for face (expected 4, found " + tokens.length + ")");
+					throw new ModelFormatException("Error parsing entry ('" + line + "'" + ", line " + lineCount + ") in file '" + fileName + "' - Invalid number of points for face (expected 4, found " + tokens.length + ")");
 				}
 			} else if (tokens.length == 4) {
 				if (currentGroupObject.glDrawingMode == -1) {
 					currentGroupObject.glDrawingMode = GL11.GL_QUADS;
 				} else if (currentGroupObject.glDrawingMode != GL11.GL_QUADS) {
-					throw new ModelFormatException("Error parsing entry ('" + line + "'" + ", line " + lineCount + ") in file '" + fileName
-							+ "' - Invalid number of points for face (expected 3, found " + tokens.length + ")");
+					throw new ModelFormatException("Error parsing entry ('" + line + "'" + ", line " + lineCount + ") in file '" + fileName + "' - Invalid number of points for face (expected 3, found " + tokens.length + ")");
 				}
 			}
 

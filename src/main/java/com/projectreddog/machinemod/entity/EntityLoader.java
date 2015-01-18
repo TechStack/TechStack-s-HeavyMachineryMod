@@ -57,8 +57,7 @@ public class EntityLoader extends EntityMachineModRideable implements IInventory
 
 				}
 
-				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(3.5, 90, -1) + posX - .5d, posY, calcTwoOffsetZ(3.5, 90, -1) + posZ - .5d, calcTwoOffsetX(3.5, 90, 1) + posX + .5d, posY + 1, calcTwoOffsetZ(3.5, 90, 1)
-						+ posZ + .5d);
+				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(3.5, 90, -1) + posX - .5d, posY, calcTwoOffsetZ(3.5, 90, -1) + posZ - .5d, calcTwoOffsetX(3.5, 90, 1) + posX + .5d, posY + 1, calcTwoOffsetZ(3.5, 90, 1) + posZ + .5d);
 
 				List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
 				collidedEntitiesInList(list);

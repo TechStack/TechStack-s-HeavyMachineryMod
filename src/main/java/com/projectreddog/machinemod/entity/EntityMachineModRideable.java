@@ -288,8 +288,7 @@ public class EntityMachineModRideable extends Entity {
 		if (this.riddenByEntity != null) {
 			double d0 = Math.cos((double) this.rotationYaw * Math.PI / 180.0D) * this.velocity;
 			double d1 = Math.sin((double) this.rotationYaw * Math.PI / 180.0D) * this.velocity;
-			this.riddenByEntity.setPosition(this.posX + d0 + this.getMountedXOffset(), this.posY + this.getMountedYOffset() + this.riddenByEntity.getYOffset(), this.posZ + d1
-					+ this.getMountedZOffset());
+			this.riddenByEntity.setPosition(this.posX + d0 + this.getMountedXOffset(), this.posY + this.getMountedYOffset() + this.riddenByEntity.getYOffset(), this.posZ + d1 + this.getMountedZOffset());
 			// this.riddenByEntity.setRotationYawHead(this.yaw);
 		}
 	}
