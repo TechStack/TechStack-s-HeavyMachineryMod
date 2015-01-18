@@ -18,7 +18,7 @@ public class BlockMachineModDrillingRig extends BlockContainer {
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_TAB);
 
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_DRILLING_RIG);
+		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_DRILLING_RIG);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
 		this.setStepSound(soundTypeStone);

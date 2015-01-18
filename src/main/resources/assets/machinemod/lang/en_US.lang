@@ -12,6 +12,6 @@ item.machinemod:tractor.name=Tractor
 tile.machinemod:machineassemblytable.name=Machine Assembly Table
 tile.machinemod:machinedrilledstone.name=Drilled Stone
 tile.machinemod:machineblastedstone.name=Blasted Stone
-#tile.machinemod:machineexplosivepackeddrilledstone.name=Explosive Packed Drilled Stone
+tile.machinemod:machineexplosivepackeddrilledstone.name=Explosive Packed Drilled Stone
 tile.machinemod:machinedrillingrig.name=Drilling Rig
 
