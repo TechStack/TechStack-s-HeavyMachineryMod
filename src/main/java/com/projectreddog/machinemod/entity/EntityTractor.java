@@ -41,23 +41,24 @@ public class EntityTractor extends EntityMachineModRideable {
 			BlockPos bp;
 			int angle  = 0;
 			// this will calcl the offset for three positions behind the tractor (3 wide)
-			for (int i=-1;i <2;i++){
-				if  (i ==0){
-					angle =0 ;
+			if (this.isPlayerPushingSprintButton){
+				for (int i=-1;i <2;i++){
+					if  (i ==0){
+						angle =0 ;
+					}
+					else
+					{
+						angle =90;
+					}
+					bp = new BlockPos(posX + calcTwoOffsetX(-3.5,angle,i), posY -1, posZ + calcTwoOffsetZ(-3.5,angle,i));
+					if ( worldObj.getBlockState(bp).getBlock() == Blocks.dirt||
+							worldObj.getBlockState(bp).getBlock()== Blocks.grass )
+					{
+						worldObj.setBlockState(bp, Blocks.farmland.getDefaultState());
+					}
 				}
-				else
-				{
-					angle =90;
-				}
-				bp = new BlockPos(posX + calcTwoOffsetX(-3.5,angle,i), posY -1, posZ + calcTwoOffsetZ(-3.5,angle,i));
-				if ( worldObj.getBlockState(bp).getBlock() == Blocks.dirt||
-						worldObj.getBlockState(bp).getBlock()== Blocks.grass )
-				{
-					worldObj.setBlockState(bp, Blocks.farmland.getDefaultState());
-				}
+
 			}
-
-
 
 
 

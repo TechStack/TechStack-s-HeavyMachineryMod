@@ -16,7 +16,7 @@ public class ContainerLoader extends Container {
 		this.loader=loader;
 		
 		
-		for (int i = 0; i <6; i++) {
+		for (int i = 0; i <1; i++) {
             for (int j = 0; j < 9; j++) {
                     addSlotToContainer(new Slot(loader, j + i * 9,  8+j * 18, 18 + i * 18));
             }
@@ -58,13 +58,13 @@ public class ContainerLoader extends Container {
                     stack = stackInSlot.copy();
 
                     //merges the item into player inventory since its in the Entity
-                    if (slot < 54) {
-                            if (!this.mergeItemStack(stackInSlot, 54, this.inventorySlots.size(), true)) {
+                    if (slot < 9) {
+                            if (!this.mergeItemStack(stackInSlot, 9, this.inventorySlots.size(), true)) {
                                     return null;
                             }
                     }
                     //places it into the tileEntity is possible since its in the player inventory
-                    else if (!this.mergeItemStack(stackInSlot, 0, 54, false)) {
+                    else if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
                             return null;
                     }
 

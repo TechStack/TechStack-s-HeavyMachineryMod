@@ -9,12 +9,14 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 import com.projectreddog.machinemod.MachineMod;
@@ -32,8 +34,8 @@ public class EntityLoader extends EntityMachineModRideable implements IInventory
 	public EntityLoader(World world){
 		super(world);
 
-		setSize(2.5f, 2);
-		inventory = new ItemStack[54];
+		setSize(2.8f, 2.5f);
+		inventory = new ItemStack[9];
 	}
 
 
@@ -42,10 +44,66 @@ public class EntityLoader extends EntityMachineModRideable implements IInventory
 	public void onUpdate(){
 		super.onUpdate();
 		if (!worldObj.isRemote){
-			List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox());
-			collidedEntitiesInList(list); 
-		}
+			if (this.Attribute1 == this.getMaxAngle()){
+				//bucket Down
+				// break blocks first 
+				int angle;
+				for (int i=-1;i <2;i++){
+					if  (i ==0){
+						angle =0 ;
+					}
+					else
+					{
+						angle =90;
+					}
+					BlockPos bp ;
+					bp = new BlockPos(posX + calcTwoOffsetX(3.5,angle,i), posY , posZ + calcTwoOffsetZ(3.5,angle,i));
 
+					worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp,worldObj.getBlockState(bp)  , 0);
+					worldObj.setBlockToAir(bp);
+
+				}
+
+				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(3.5,90,-1)+posX-.5d, posY, calcTwoOffsetZ(3.5,90,-1)+posZ-.5d, calcTwoOffsetX(3.5,90,1)+posX+.5d, posY+1, calcTwoOffsetZ(3.5,90,1)+posZ+.5d);
+
+
+				List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
+				collidedEntitiesInList(list); 
+			}
+				if (this.Attribute1 == this.getMinAngle()){
+					//bucket up
+					// Drop blocks 
+					//TODO needs something to pace it a bit more now it drops everything way to fast.
+					for (int i = 0; i < this.getSizeInventory(); i++) {
+						ItemStack item = this.getStackInSlot(i);
+
+						if (item != null && item.stackSize > 0) {
+							;
+
+							EntityItem entityItem = new EntityItem(worldObj,
+									posX + calcOffsetX(3.5), posY +4, posZ + calcOffsetZ(3.5),
+									item);
+
+							if (item.hasTagCompound()) {
+								entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+							}
+
+							float factor = 0.05F;
+							//entityItem.motionX = rand.nextGaussian() * factor;
+							entityItem.motionY = 0;
+							//entityItem.motionZ = rand.nextGaussian() * factor;
+							entityItem.forceSpawn=true;
+							LogHelper.info(	worldObj.spawnEntityInWorld(entityItem));
+							//item.stackSize = 0;
+							this.setInventorySlotContents(i, null);
+						}
+					}
+
+
+
+				}
+			
+		}
 
 	}
 
@@ -109,7 +167,7 @@ public class EntityLoader extends EntityMachineModRideable implements IInventory
 					setInventorySlotContents(j, new ItemStack(is.getItem(), is.stackSize) );
 					is =null;
 				}
-				
+
 			}
 
 		}
@@ -124,8 +182,21 @@ public class EntityLoader extends EntityMachineModRideable implements IInventory
 	 */
 	public double getMountedYOffset()
 	{
-		return (double)this.height * 0.35D;
+		return (double)this.height * .6D;
 	}
+
+
+	@Override
+	public double getMountedXOffset()
+	{
+		return calcOffsetX(0.4d);
+	}
+	@Override
+	public double getMountedZOffset()
+	{
+		return calcOffsetZ(0.4d);
+	}
+
 
 
 	@Override
@@ -306,12 +377,12 @@ public class EntityLoader extends EntityMachineModRideable implements IInventory
 			inventory[i] = null;
 		}
 	}
-	
+
 	@Override
 	public float getMaxAngle() {
 		return 0;
 	}
-	
+
 	@Override
 	public float getMinAngle() {
 		return -90;

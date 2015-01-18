@@ -320,6 +320,7 @@ public class EntityMachineModRideable extends Entity {
 
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound p_70014_1_) {
+		
 		// TODO Auto-generated method stub
 
 	}
