@@ -1,25 +1,20 @@
 package com.projectreddog.machinemod.entity;
 
-import java.util.List;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
-import net.minecraftforge.fml.common.network.handshake.NetworkDispatcher;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageEntityToClient;
+import com.projectreddog.machinemod.reference.Reference;
 
 public class EntityMachineModRideable extends Entity {
 
@@ -36,10 +31,11 @@ public class EntityMachineModRideable extends Entity {
 	public double TargetposY;
 	public double TargetposZ;
 	public float TargetYaw;
-    public int MoveTickCount;
-	public int YawTickCount;
-	public AxisAlignedBB BoundingBox;
+	//    public int MoveTickCount;
+	//	public int YawTickCount;
 	public float Attribute1;// multipurpose variable use defined in extended class controled by sprint & space (down / up)
+
+	public AxisAlignedBB BoundingBox;
 	public EntityMachineModRideable(World world){
 		super(world);
 		setSize (1.5F , 0.6F); // should be overridden in Extened version.
@@ -51,49 +47,49 @@ public class EntityMachineModRideable extends Entity {
 		// created as method so extending class can easily override to allow for different speeds per machine
 		return 0.2d;
 	}
-	
-	//1.8
-//	@Override
-//	public AxisAlignedBB getBoundingBox(){
-//		return this.BoundingBox;
-//	}
 
-	
 	//1.8
-//	@Override 
-//	public AxisAlignedBB getCollisionBox(Entity entity){
-//		if (entity != riddenByEntity){
-//			return entity.boundingBox; 
-//		}
-//		else{
-//			return null;// do not colide with the rider
-//		}
-//	}
+	//	@Override
+	//	public AxisAlignedBB getBoundingBox(){
+	//		return this.BoundingBox;
+	//	}
+
+
+	//1.8
+	//	@Override 
+	//	public AxisAlignedBB getCollisionBox(Entity entity){
+	//		if (entity != riddenByEntity){
+	//			return entity.boundingBox; 
+	//		}
+	//		else{
+	//			return null;// do not colide with the rider
+	//		}
+	//	}
 
 	@Override 
 	public boolean canBeCollidedWith(){
 		return !isDead;
 	}
-	
- public Item getItemToBeDropped()
- {
-	 return null;
- }
+
+	public Item getItemToBeDropped()
+	{
+		return null;
+	}
 
 	@Override
 	public boolean interactFirst(EntityPlayer player) // should be proper class
 	{
 		if (!worldObj.isRemote && riddenByEntity==null){
 			// server side and no rider
-			
+
 			if (player.isSneaking()){
 				if ( getItemToBeDropped()!= null ){
 					this.dropItem(getItemToBeDropped(), 1);
 					this.setDead();
 				}
-			
+
 			}else{
-			player.mountEntity(this);
+				player.mountEntity(this);
 			}
 		}
 		return true;
@@ -104,60 +100,60 @@ public class EntityMachineModRideable extends Entity {
 		// should be overriden in exteneded class if not default;
 		return -0.15;
 	}
-	
+
 	public double getMountedXOffset(){
 		// should be overriden in exteneded class if not default;
 		return 0;
 	}
-	
+
 	public double getMountedZOffset(){
 		// should be overriden in exteneded class if not default;
 		return 0;
 	}
-	
+
 	public void updateServer() {
-		
+
 		//New for gravity
-//		this.motionY -= 0.03999999910593033D;
-//		if (onGround){
-//
-//            this.motionY *= -0.5D;
-//
-//		}
+		//		this.motionY -= 0.03999999910593033D;
+		//		if (onGround){
+		//
+		//            this.motionY *= -0.5D;
+		//
+		//		}
 		if (posY<0){
 			this.setDead();
 		}
-		
+
 		if (worldObj.isAirBlock(new BlockPos((int) (posX-.5d), (int) posY , (int)(posZ-.5d ))) ){
 			// in air block so fall i'll actually park the entity inside the block below just a little bit.
-		 this.motionY-= 0.03999999910593033D;
-	
+			this.motionY-= 0.03999999910593033D;
+
 		}else{
-		
-		 this.motionY =0;
-		 this.posY =(int) this.posY+1;
+
+			this.motionY =0;
+			this.posY =(int) this.posY+1;
 		}
-	
-		
-		
+
+
+
 		// end New for gravity
-		
+
 		if (riddenByEntity != null){
 
-	
-		if ( isPlayerAccelerating){
-			this.velocity += .1d;
-		}
-		if ( isPlayerBreaking){
-			this.velocity -= .1d;
-		}
-		if (isPlayerTurningRight){
-			yaw +=1.5d;
-		}
-		if (isPlayerTurningLeft){
-			yaw -=1.5d;
-		}
-		
+
+			if ( isPlayerAccelerating){
+				this.velocity += .1d;
+			}
+			if ( isPlayerBreaking){
+				this.velocity -= .1d;
+			}
+			if (isPlayerTurningRight){
+				yaw +=1.5d;
+			}
+			if (isPlayerTurningLeft){
+				yaw -=1.5d;
+			}
+
 		}
 		if ( isPlayerPushingJumpButton ){
 			Attribute1-=  1;
@@ -172,9 +168,9 @@ public class EntityMachineModRideable extends Entity {
 				Attribute1 = getMaxAngle();
 			}
 		}
-		
+
 		//end take user input
-		
+
 		// Clamp values to max / min values as needed 
 		if (this.velocity> this.getMaxVelocity()){
 			this.velocity = this.getMaxVelocity();
@@ -183,7 +179,7 @@ public class EntityMachineModRideable extends Entity {
 		}
 		if (this.velocity <0.0001d && this.velocity > 0.0d){
 			this.velocity=0d;
-			
+
 		}else if (this.velocity >-0.0001d && this.velocity < 0.0d){
 			this.velocity=0d;
 		}
@@ -193,99 +189,99 @@ public class EntityMachineModRideable extends Entity {
 			this.yaw =360-this.yaw;
 		}
 		//END Clamp values to max / min values as needed
-		
+
 		// calc x & Z offsets needed for the given rotation & velocity
 		double speedX =(velocity * MathHelper.cos((float) ((yaw+90) * Math.PI / 180.0D)));
 		double speedZ= (velocity * MathHelper.sin((float) ((yaw+90)* Math.PI / 180.0D))); 
 		//double speedY=0;
-		
-		
+
+
 		motionX = speedX;
 		motionZ = speedZ;
 		this.velocity*=.90;// apply friction
 		setRotation(this.yaw, this.rotationPitch);
 
-	
-		
-		
-//		motionY= speedY;
+
+
+
+		//		motionY= speedY;
 		//setPosition( posX+speedX,posY+motionY, posZ+speedZ);
 		moveEntity( motionX,motionY,  motionZ);
-		
-		
+
+
 		ModNetwork.sendPacketToAllAround( (new MachineModMessageEntityToClient( this.getEntityId(),this.posX,this.posY,this.posZ,this.yaw,this.Attribute1)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
 
-     //   ModNetwork.simpleNetworkWrapper.sendToAllAround((new MachineModMessageEntityToClient( this.getEntityId(),this.posX,this.posY,this.posZ,this.yaw,this.Attribute1)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
+		//   ModNetwork.simpleNetworkWrapper.sendToAllAround((new MachineModMessageEntityToClient( this.getEntityId(),this.posX,this.posY,this.posZ,this.yaw,this.Attribute1)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
 	}
-	
-	
-	
+
+
+
 	public void updateClient(){
 		//updateServer();
-		
+
 		//this.noClip = true;
 		this.motionX = 0;
 		this.motionY = 0;
 		this.motionZ = 0;
-		  
-	
-//		
-//		if(TargetYaw!=yaw){
-//			YawTickCount=3;
-//		}
-//		
-		
-			this.motionX = (this.TargetposX -this.posX )/(3);
-			this.motionY = (this.TargetposY -this.posY )/(3);
-			this.motionZ = (this.TargetposZ -this.posZ )/(3);
-			if (this.motionX > 1 || this.motionY> 1 || this.motionZ > 1){
-				// in cases of desync override the smoothing effect and just put the entity in place
-				// this resolves the issue of the entity jumping after placed.
-				this.motionX *=3;
-				this.motionY *=3;
-				this.motionZ *=3;
-			}
-			
-			setPosition( posX+motionX,posY+motionY, posZ+motionZ);
 
-//
-//		
-//		if(YawTickCount>0){
-//			
-//			this.rotationYaw += (TargetYaw -yaw)/YawTickCount;
-//			YawTickCount--;
-//		}
-//		if (YawTickCount==0){
-//			this.rotationYaw=TargetYaw;
-//		}
+
+		//		
+		//		if(TargetYaw!=yaw){
+		//			YawTickCount=3;
+		//		}
+		//		
+
+		this.motionX = (this.TargetposX -this.posX )/(3);
+		this.motionY = (this.TargetposY -this.posY )/(3);
+		this.motionZ = (this.TargetposZ -this.posZ )/(3);
+		if (this.motionX > 1 || this.motionY> 1 || this.motionZ > 1){
+			// in cases of desync override the smoothing effect and just put the entity in place
+			// this resolves the issue of the entity jumping after placed.
+			this.motionX *=3;
+			this.motionY *=3;
+			this.motionZ *=3;
+		}
+
+		setPosition( posX+motionX,posY+motionY, posZ+motionZ);
+
+		//
+		//		
+		//		if(YawTickCount>0){
+		//			
+		//			this.rotationYaw += (TargetYaw -yaw)/YawTickCount;
+		//			YawTickCount--;
+		//		}
+		//		if (YawTickCount==0){
+		//			this.rotationYaw=TargetYaw;
+		//		}
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	// override the set position and rotation function to avoid MC from setting the postion of the entity so i can handle it
 	// in my network handler ... avoids jitter
 	public void func_180426_a(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_ ,boolean bool){
-		
+
 	}
-	 @SideOnly(Side.CLIENT)
-	    public void setPositionAndRotation2(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_)
-	    {
-		 
-	    }
-	 @SideOnly(Side.CLIENT)
-	    public void setPositionAndRotation(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_)
-	    {
-		 
-	    }
-	 
-	
+	@SideOnly(Side.CLIENT)
+	public void setPositionAndRotation2(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_)
+	{
+
+	}
+	@SideOnly(Side.CLIENT)
+	public void setPositionAndRotation(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_)
+	{
+
+	}
+
+
 	@Override
 	public void onUpdate(){
-	 super.onUpdate();
+		super.onUpdate();
 		if(!worldObj.isRemote){
 			//server side
 			updateServer();
-		
+
 		}else{
 			// client
 
@@ -293,8 +289,8 @@ public class EntityMachineModRideable extends Entity {
 		}
 
 	}
-	
-	
+
+
 	public void updateRiderPosition()
 	{
 		if (this.riddenByEntity != null)
@@ -313,22 +309,40 @@ public class EntityMachineModRideable extends Entity {
 	}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound p_70037_1_) {
+	protected void readEntityFromNBT(NBTTagCompound compound) {
 		// TODO Auto-generated method stub
+
+		yaw=compound.getFloat(Reference.MACHINE_MOD_NBT_PREFIX+"YAW" );
+		velocity = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX+"VELOCITY" );
+		TargetposX= compound.getDouble (Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_X");
+		TargetposY=compound.getDouble (Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_Y");
+		TargetposZ=compound.getDouble (Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_Z");
+		TargetYaw =  compound.getFloat (Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_YAW");
+		Attribute1= compound.getFloat (Reference.MACHINE_MOD_NBT_PREFIX + "ATTRIBUTE1");
+
 
 	}
 
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound p_70014_1_) {
-		
+	protected void writeEntityToNBT(NBTTagCompound compound) {
+
+		compound.setFloat(Reference.MACHINE_MOD_NBT_PREFIX+"YAW",yaw );
+		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX+"VELOCITY",velocity );
+		compound.setDouble (Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_X",TargetposX);
+		compound.setDouble (Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_Y",TargetposY);
+		compound.setDouble (Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_Z",TargetposZ);
+		compound.setFloat (Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_YAW",TargetYaw);
+		compound.setFloat (Reference.MACHINE_MOD_NBT_PREFIX + "ATTRIBUTE1", Attribute1);
+
+
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	public float getMaxAngle() {
 		return 0;
 	}
-	
+
 
 	public float getMinAngle() {
 		return 0;
@@ -342,27 +356,27 @@ public class EntityMachineModRideable extends Entity {
 	}
 	public double calcTwoOffsetX(double distance, int secondOffsetAngle, double secondOffsetDistance)
 	{
-		
+
 		if (secondOffsetAngle == 0){
 			return (calcOffsetX(distance) );
 		}
 		//calc first xPos
 		double  firstX=calcOffsetX(distance);
-        
+
 		return firstX + (secondOffsetDistance * MathHelper.cos((float) (clampAngelto360(this.yaw+secondOffsetAngle+90) * Math.PI / 180.0D)));
 	}
-	
-	
-	
+
+
+
 	public double calcTwoOffsetZ(double distance, int secondOffsetAngle, double secondOffsetDistance)
 	{
-		
+
 		if (secondOffsetAngle == 0){
 			return (calcOffsetZ(distance) );
 		}
 		//calc first xPos
 		double  firstZ=calcOffsetZ(distance) ;
-        
+
 		return firstZ + (secondOffsetDistance * MathHelper.sin((float) (clampAngelto360(this.yaw+secondOffsetAngle+90) * Math.PI / 180.0D)));
 	}
 	public float clampAngelto360(float inAngle){
@@ -370,11 +384,11 @@ public class EntityMachineModRideable extends Entity {
 		{
 			inAngle -=360;
 		}
-		
+
 		while (inAngle< 0 )
 		{
 			inAngle =360-inAngle;
 		}
-			return inAngle;
+		return inAngle;
 	}
 }

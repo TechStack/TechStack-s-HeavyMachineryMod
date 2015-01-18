@@ -26,7 +26,7 @@ public class Reference {
 
 
 	public static final String MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE ="machineexplosivepackeddrilledstone";
-
+	public static final String MACHINE_MOD_NBT_PREFIX = "MACHINE_MOD_";
 	
 	// config file settings
 	public static	boolean enableBulldozer=true;
