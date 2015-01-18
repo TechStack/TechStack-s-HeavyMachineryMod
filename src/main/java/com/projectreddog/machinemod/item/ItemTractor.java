@@ -10,37 +10,35 @@ import com.projectreddog.machinemod.entity.EntityTractor;
 
 public class ItemTractor extends ItemMachineMod {
 
-	
-	public ItemTractor(){
+	public ItemTractor() {
 		super();
 		this.setUnlocalizedName("tractor");
-		this.maxStackSize =1;
+		this.maxStackSize = 1;
 
 	}
 
-	
-
 	@Override
-	//    public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
-
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side,float xOff, float yOff, float zOff)
-	{
+	// public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World
+	// worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float
+	// hitZ)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world,
+			BlockPos pos, EnumFacing side, float xOff, float yOff, float zOff) {
 		boolean result = false;
-		
-		if (!world.isRemote)/// only run on server
+
+		if (!world.isRemote)// / only run on server
 		{
-		//LogHelper.info("Item used on Bulldozer!");
-		int x = pos.getX();
-		int y = pos.getY();
-		int z = pos.getZ();
-		
-		EntityTractor entityTractor = new EntityTractor(world);
-		entityTractor.setPosition(x+.5d,y+1.0d,z+.5d);
-		entityTractor.prevPosX= x+.5d;
-		entityTractor.prevPosY= y+.5d;
-		entityTractor.prevPosZ= z+.5d;
-		result = world.spawnEntityInWorld(entityTractor);
-		//LogHelper.info("Spawn entity resutl:" + result );
+			// LogHelper.info("Item used on Bulldozer!");
+			int x = pos.getX();
+			int y = pos.getY();
+			int z = pos.getZ();
+
+			EntityTractor entityTractor = new EntityTractor(world);
+			entityTractor.setPosition(x + .5d, y + 1.0d, z + .5d);
+			entityTractor.prevPosX = x + .5d;
+			entityTractor.prevPosY = y + .5d;
+			entityTractor.prevPosZ = z + .5d;
+			result = world.spawnEntityInWorld(entityTractor);
+			// LogHelper.info("Spawn entity resutl:" + result );
 		}
 		return result;
 	}

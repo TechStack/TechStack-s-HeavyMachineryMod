@@ -18,20 +18,28 @@ import com.projectreddog.machinemod.render.RenderTractor;
 
 public class ClientProxy extends CommonProxy {
 	@Override
-	public void registerRenderers()
-	{
-		 
-		//LogHelper.info("in register Renderers");
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntityBulldozer.class, new RenderBulldozer(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityDrillingRig.class, new RenderDrillingRig(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityDumpTruck.class, new RenderDumpTruck(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityLoader.class, new RenderLoader(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityTractor.class, new RenderTractor(Minecraft.getMinecraft().getRenderManager()));
-		
+	public void registerRenderers() {
+
+		// LogHelper.info("in register Renderers");
+
+		RenderingRegistry
+				.registerEntityRenderingHandler(EntityBulldozer.class,
+						new RenderBulldozer(Minecraft.getMinecraft()
+								.getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(
+				EntityDrillingRig.class, new RenderDrillingRig(Minecraft
+						.getMinecraft().getRenderManager()));
+		RenderingRegistry
+				.registerEntityRenderingHandler(EntityDumpTruck.class,
+						new RenderDumpTruck(Minecraft.getMinecraft()
+								.getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityLoader.class,
+				new RenderLoader(Minecraft.getMinecraft().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityTractor.class,
+				new RenderTractor(Minecraft.getMinecraft().getRenderManager()));
+
 		ModBlocks.initBlockRender();
 		ModItems.initItemRender();
 	}
-	
-	
+
 }

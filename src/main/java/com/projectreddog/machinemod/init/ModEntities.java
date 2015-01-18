@@ -11,19 +11,21 @@ import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.reference.Reference;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
-
 public class ModEntities {
 
-	
-	//public static final EntityBulldozer entityBulldozer= new EntityBulldozer(new World);
-	public static void init(Object mod)
-	{
-		EntityRegistry.registerModEntity(EntityDrillingRig.class, "drillingrig", 1,mod , 80, 1, false);
-	    EntityRegistry.registerModEntity(EntityBulldozer.class, "bulldozer", 2,mod , 80,1, false);
-	    EntityRegistry.registerModEntity(EntityDumpTruck.class, "dumptruck", 3,mod , 80,1,false);
-	    EntityRegistry.registerModEntity(EntityLoader.class, "loader", 4,mod , 80,1,false);
-	    EntityRegistry.registerModEntity(EntityTractor.class, "tractor", 5,mod , 80,1,false);
-
+	// public static final EntityBulldozer entityBulldozer= new
+	// EntityBulldozer(new World);
+	public static void init(Object mod) {
+		EntityRegistry.registerModEntity(EntityDrillingRig.class,
+				"drillingrig", 1, mod, 80, 1, false);
+		EntityRegistry.registerModEntity(EntityBulldozer.class, "bulldozer", 2,
+				mod, 80, 1, false);
+		EntityRegistry.registerModEntity(EntityDumpTruck.class, "dumptruck", 3,
+				mod, 80, 1, false);
+		EntityRegistry.registerModEntity(EntityLoader.class, "loader", 4, mod,
+				80, 1, false);
+		EntityRegistry.registerModEntity(EntityTractor.class, "tractor", 5,
+				mod, 80, 1, false);
 
 	}
 }

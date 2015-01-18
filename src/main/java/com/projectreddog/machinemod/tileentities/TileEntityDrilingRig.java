@@ -11,38 +11,43 @@ import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.utility.LogHelper;
 
-public class TileEntityDrilingRig extends TileEntity  implements IUpdatePlayerListBox{
+public class TileEntityDrilingRig extends TileEntity implements
+		IUpdatePlayerListBox {
 
-	private int currentDrillingLevel =1;
-	private int EnergyLevel =0;
-	private int startingLevel=0;
+	private int currentDrillingLevel = 1;
+	private int EnergyLevel = 0;
+	private int startingLevel = 0;
 
-	public TileEntityDrilingRig(){
+	public TileEntityDrilingRig() {
 
 	}
 
-	public TileEntityDrilingRig(int currentDrillingLevel){
+	public TileEntityDrilingRig(int currentDrillingLevel) {
 		this.currentDrillingLevel = currentDrillingLevel;
-		startingLevel=currentDrillingLevel;
+		startingLevel = currentDrillingLevel;
 	}
 
 	@Override
-	public void update(){
+	public void update() {
 
-		//LogHelper.info("TE update entity called");
+		// LogHelper.info("TE update entity called");
 
-		if (currentDrillingLevel < startingLevel +16){
-			if (worldObj.getBlockState(this.getPos().offset(EnumFacing.DOWN, this.currentDrillingLevel)).getBlock() ==Blocks.stone
-					)
-			{
+		if (currentDrillingLevel < startingLevel + 16) {
+			if (worldObj.getBlockState(
+					this.getPos().offset(EnumFacing.DOWN,
+							this.currentDrillingLevel)).getBlock() == Blocks.stone) {
 
-				//worldObj.setBlockState(this.getPos().offset(EnumFacing.DOWN, this.current_drilling_level),ModBlocks.machinedrilledstone.getDefaultState());
+				// worldObj.setBlockState(this.getPos().offset(EnumFacing.DOWN,
+				// this.current_drilling_level),ModBlocks.machinedrilledstone.getDefaultState());
 
-				worldObj.setBlockState(this.getPos().offset(EnumFacing.DOWN, this.currentDrillingLevel),ModBlocks.machineexplosivepackeddrilledstone.getDefaultState());
-
+				worldObj.setBlockState(
+						this.getPos().offset(EnumFacing.DOWN,
+								this.currentDrillingLevel),
+						ModBlocks.machineexplosivepackeddrilledstone
+								.getDefaultState());
 
 			}
-			currentDrillingLevel=currentDrillingLevel+1;
+			currentDrillingLevel = currentDrillingLevel + 1;
 		}
 	}
 

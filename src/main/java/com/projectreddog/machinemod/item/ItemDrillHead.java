@@ -13,14 +13,11 @@ import com.projectreddog.machinemod.utility.LogHelper;
 
 public class ItemDrillHead extends ItemMachineMod {
 
-	public ItemDrillHead(){
+	public ItemDrillHead() {
 		super();
 		this.setUnlocalizedName("drillhead");
-		this.maxStackSize =1;
+		this.maxStackSize = 1;
 
 	}
-
-	
-
 
 }

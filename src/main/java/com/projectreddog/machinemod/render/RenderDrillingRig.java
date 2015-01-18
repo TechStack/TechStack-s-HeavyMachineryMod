@@ -14,44 +14,36 @@ import com.projectreddog.machinemod.utility.LogHelper;
 
 public class RenderDrillingRig extends Render {
 
+	protected ModelBase modelDrillingRig;
 
-	protected ModelBase  modelDrillingRig ;
+	public RenderDrillingRig(RenderManager renderManager) {
 
+		super(renderManager);
 
-
-		
-		public RenderDrillingRig(RenderManager renderManager)
-		{
-			
-			super(renderManager);
-		
-	//	LogHelper.info("in RenderDrillingRig constructor");
+		// LogHelper.info("in RenderDrillingRig constructor");
 		shadowSize = 1F;
-        this.modelDrillingRig = new ModelDrillingRig();
+		this.modelDrillingRig = new ModelDrillingRig();
 
 	}
 
-
-
 	@Override
-	public void doRender(Entity entity, double x, double y, double z, float yaw, float pitch)
-	{
-
+	public void doRender(Entity entity, double x, double y, double z,
+			float yaw, float pitch) {
 
 		GL11.glPushMatrix();
-		GL11.glTranslatef((float)x, (float)y, (float)z);
+		GL11.glTranslatef((float) x, (float) y, (float) z);
 		GL11.glRotatef(180.0F - yaw, 0.0F, 1.0F, 0.0F);
-		float f2 =  pitch;
+		float f2 = pitch;
 		float f3 = pitch;
 
-		if (f3 < 0.0F)
-		{
+		if (f3 < 0.0F) {
 			f3 = 0.0F;
 		}
 
-		if (f2 > 0.0F)
-		{
-//			GL11.glRotatef(MathHelper.sin(f2) * f2 * f3 / 10.0F * (float)((EntityBulldozer) entity).getForwardDirection(), 1.0F, 0.0F, 0.0F);
+		if (f2 > 0.0F) {
+			// GL11.glRotatef(MathHelper.sin(f2) * f2 * f3 / 10.0F *
+			// (float)((EntityBulldozer) entity).getForwardDirection(), 1.0F,
+			// 0.0F, 0.0F);
 		}
 
 		float f4 = 0.75F;
@@ -59,16 +51,16 @@ public class RenderDrillingRig extends Render {
 		GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
 		this.bindEntityTexture(entity);
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
-		this.modelDrillingRig.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		
+		this.modelDrillingRig.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F,
+				0.0625F);
+
 		GL11.glPopMatrix();
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return   new ResourceLocation(   "machinemod",Reference.MODEL_DRILLINGRIG_TEXTURE_LOCATION); 
+	protected ResourceLocation getEntityTexture(Entity entity) {
+		return new ResourceLocation("machinemod",
+				Reference.MODEL_DRILLINGRIG_TEXTURE_LOCATION);
 	}
 
 }
-

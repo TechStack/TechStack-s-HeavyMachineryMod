@@ -1,6 +1,5 @@
 package com.projectreddog.machinemod.model.advanced;
 
-
 /**
  * Thrown if there is a problem parsing the model
  *
@@ -9,26 +8,22 @@ package com.projectreddog.machinemod.model.advanced;
  */
 public class ModelFormatException extends RuntimeException {
 
-    private static final long serialVersionUID = 2023547503969671835L;
+	private static final long serialVersionUID = 2023547503969671835L;
 
-    public ModelFormatException()
-    {
-        super();
-    }
+	public ModelFormatException() {
+		super();
+	}
 
-    public ModelFormatException(String message, Throwable cause)
-    {
-        super(message, cause);
-    }
+	public ModelFormatException(String message, Throwable cause) {
+		super(message, cause);
+	}
 
-    public ModelFormatException(String message)
-    {
-        super(message);
-    }
+	public ModelFormatException(String message) {
+		super(message);
+	}
 
-    public ModelFormatException(Throwable cause)
-    {
-        super(cause);
-    }
+	public ModelFormatException(Throwable cause) {
+		super(cause);
+	}
 
 }

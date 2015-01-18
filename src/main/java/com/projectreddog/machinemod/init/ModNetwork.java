@@ -24,35 +24,46 @@ import com.projectreddog.machinemod.reference.Reference;
 public class ModNetwork {
 
 	public static SimpleNetworkWrapper simpleNetworkWrapper;
-	
-	public static void init(){
-		simpleNetworkWrapper = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
-		simpleNetworkWrapper.registerMessage(MachineModMessageInputToServerHandler.class, MachineModMessageInputToServer.class, 0, Side.SERVER);// message to server
-		
-		
-		simpleNetworkWrapper.registerMessage(MachineModMessageEntityToClientHandler.class, MachineModMessageEntityToClient.class, 1, Side.CLIENT);// message to client
-		simpleNetworkWrapper.registerMessage(MachineModMessageInputToServerOpenGuiHandler.class, MachineModMessageInputToServerOpenGui.class, 2, Side.SERVER);// message to server
 
-		NetworkRegistry.INSTANCE.registerGuiHandler(MachineMod.instance, new GuiHandler());
+	public static void init() {
+		simpleNetworkWrapper = NetworkRegistry.INSTANCE
+				.newSimpleChannel(Reference.MOD_ID);
+		simpleNetworkWrapper.registerMessage(
+				MachineModMessageInputToServerHandler.class,
+				MachineModMessageInputToServer.class, 0, Side.SERVER);// message
+																		// to
+																		// server
+
+		simpleNetworkWrapper.registerMessage(
+				MachineModMessageEntityToClientHandler.class,
+				MachineModMessageEntityToClient.class, 1, Side.CLIENT);// message
+																		// to
+																		// client
+		simpleNetworkWrapper.registerMessage(
+				MachineModMessageInputToServerOpenGuiHandler.class,
+				MachineModMessageInputToServerOpenGui.class, 2, Side.SERVER);// message
+																				// to
+																				// server
+
+		NetworkRegistry.INSTANCE.registerGuiHandler(MachineMod.instance,
+				new GuiHandler());
 	}
-	
-	public static void sendPacketToAllAround( IMessage packet, TargetPoint tp)
-	{
-		 for (EntityPlayerMP player : (List<EntityPlayerMP>)FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().playerEntityList)
-         {
-             if (player.dimension == tp.dimension)
-             {
-                 double d4 = tp.x - player.posX;
-                 double d5 = tp.y - player.posY;
-                 double d6 = tp.z - player.posZ;
 
-                 if (d4 * d4 + d5 * d5 + d6 * d6 < tp.range * tp.range)
-                 {
-                	 
-                	 ModNetwork.simpleNetworkWrapper.sendTo(packet,player );
-                 
-                 }
-             }
-         }
+	public static void sendPacketToAllAround(IMessage packet, TargetPoint tp) {
+		for (EntityPlayerMP player : (List<EntityPlayerMP>) FMLCommonHandler
+				.instance().getMinecraftServerInstance()
+				.getConfigurationManager().playerEntityList) {
+			if (player.dimension == tp.dimension) {
+				double d4 = tp.x - player.posX;
+				double d5 = tp.y - player.posY;
+				double d6 = tp.z - player.posZ;
+
+				if (d4 * d4 + d5 * d5 + d6 * d6 < tp.range * tp.range) {
+
+					ModNetwork.simpleNetworkWrapper.sendTo(packet, player);
+
+				}
+			}
+		}
 	}
 }

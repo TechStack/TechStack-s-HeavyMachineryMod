@@ -8,18 +8,18 @@ import net.minecraftforge.fml.client.IModGuiFactory;
 import net.minecraftforge.fml.client.IModGuiFactory.RuntimeOptionCategoryElement;
 import net.minecraftforge.fml.client.IModGuiFactory.RuntimeOptionGuiHandler;
 
-public class GuiFactory implements IModGuiFactory{
+public class GuiFactory implements IModGuiFactory {
 
 	@Override
 	public void initialize(Minecraft minecraftInstance) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public Class<? extends GuiScreen> mainConfigGuiClass() {
 		// TODO Auto-generated method stub
-		//will return the config gui class?
+		// will return the config gui class?
 		return ModGuiConfig.class;
 	}
 
