@@ -51,7 +51,6 @@ public class EntityLoader extends EntityMachineModRideable implements IInventory
 					}
 					BlockPos bp;
 					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY, posZ + calcTwoOffsetZ(3.5, angle, i));
-
 					worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
 					worldObj.setBlockToAir(bp);
 

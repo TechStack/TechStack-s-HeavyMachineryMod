@@ -1,13 +1,18 @@
 package com.projectreddog.machinemod.entity;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -34,7 +39,7 @@ public class EntityMachineModRideable extends Entity {
 	// public int MoveTickCount;
 	// public int YawTickCount;
 	public float Attribute1;// multipurpose variable use defined in extended
-							// class controled by sprint & space (down / up)
+	// class controled by sprint & space (down / up)
 
 	public AxisAlignedBB BoundingBox;
 
@@ -377,4 +382,32 @@ public class EntityMachineModRideable extends Entity {
 		}
 		return inAngle;
 	}
+
+	public void  toppleTree(BlockPos bp, int depth){
+		if (depth < Reference.MAX_TREE_DEPTH){
+			if (worldObj.getBlockState(bp).getBlock() == Blocks.log || 
+					worldObj.getBlockState(bp).getBlock() == Blocks.log2 || 
+					worldObj.getBlockState(bp).getBlock() == Blocks.leaves||
+					worldObj.getBlockState(bp).getBlock() == Blocks.leaves2
+					)
+			{
+
+
+					worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
+					worldObj.setBlockToAir(bp);
+					toppleTree(bp.offset(EnumFacing.DOWN), depth+1);
+					toppleTree(bp.offset(EnumFacing.UP), depth+1);
+					toppleTree(bp.offset(EnumFacing.SOUTH), depth+1);
+					toppleTree(bp.offset(EnumFacing.EAST), depth+1);
+					toppleTree(bp.offset(EnumFacing.WEST), depth+1);
+					toppleTree(bp.offset(EnumFacing.NORTH), depth+1);
+				
+
+			}
+		}
+	}
+
+
+
+
 }
