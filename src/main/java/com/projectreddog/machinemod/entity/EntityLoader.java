@@ -3,11 +3,9 @@ package com.projectreddog.machinemod.entity;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,10 +14,11 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
-import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.init.ModItems;
-import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.init.ModNetwork;
+import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClient;
 import com.projectreddog.machinemod.utility.LogHelper;
 
 public class EntityLoader extends EntityMachineModRideable implements IInventory {
@@ -241,6 +240,11 @@ public class EntityLoader extends EntityMachineModRideable implements IInventory
 		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
 			stack.stackSize = getInventoryStackLimit();
 		}
+		if (!(this.worldObj.isRemote)){
+			//send packet to notify client of contents of machine's inventory
+		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), slot,inventory[slot])), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
+		}
+
 	}
 
 	@Override

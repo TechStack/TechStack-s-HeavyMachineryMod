@@ -14,9 +14,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
 import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.init.ModItems;
+import com.projectreddog.machinemod.init.ModNetwork;
+import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClient;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.LogHelper;
 
@@ -214,6 +217,10 @@ public class EntityDumpTruck extends EntityMachineModRideable implements IInvent
 		inventory[slot] = stack;
 		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
 			stack.stackSize = getInventoryStackLimit();
+		}
+		if (!(this.worldObj.isRemote)){
+		//send packet to notify client of contents of machine's inventory
+		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), slot,inventory[slot])), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
 		}
 	}
 
