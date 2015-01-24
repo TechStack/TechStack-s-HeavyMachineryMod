@@ -100,17 +100,17 @@ public class EntityMachineModRideable extends Entity {
 
 	@Override
 	public double getMountedYOffset() {
-		// should be overriden in exteneded class if not default;
+		// should be overridden in extended class if not default;
 		return -0.15;
 	}
 
 	public double getMountedXOffset() {
-		// should be overriden in exteneded class if not default;
+		// should be overridden in extended class if not default;
 		return 0;
 	}
 
 	public double getMountedZOffset() {
-		// should be overriden in exteneded class if not default;
+		// should be overridden in extended class if not default;
 		return 0;
 	}
 
