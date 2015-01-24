@@ -264,15 +264,15 @@ public class EntityMachineModRideable extends Entity {
 
 	}
 
-	@SideOnly(Side.CLIENT)
-	public void setPositionAndRotation2(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_) {
-
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void setPositionAndRotation(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_) {
-
-	}
+//	@SideOnly(Side.CLIENT)
+//	public void setPositionAndRotation2(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_) {
+//
+//	}
+//
+//	@SideOnly(Side.CLIENT)
+//	public void setPositionAndRotation(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_) {
+//
+//	}
 
 	@Override
 	public void onUpdate() {
