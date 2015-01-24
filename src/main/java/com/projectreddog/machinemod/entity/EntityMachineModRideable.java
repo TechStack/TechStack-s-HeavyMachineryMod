@@ -1,7 +1,5 @@
 package com.projectreddog.machinemod.entity;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -12,7 +10,6 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -264,16 +261,17 @@ public class EntityMachineModRideable extends Entity {
 
 	}
 
-//	@SideOnly(Side.CLIENT)
-//	public void setPositionAndRotation2(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_) {
-//
-//	}
-//
-//	@SideOnly(Side.CLIENT)
-//	public void setPositionAndRotation(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_) {
-//
-//	}
-
+	// @SideOnly(Side.CLIENT)
+	// public void setPositionAndRotation2(double p_70056_1_, double p_70056_3_,
+	// double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_) {
+	//
+	// }
+	//
+	// @SideOnly(Side.CLIENT)
+	// public void setPositionAndRotation(double p_70056_1_, double p_70056_3_,
+	// double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_) {
+	//
+	// }
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
@@ -383,31 +381,21 @@ public class EntityMachineModRideable extends Entity {
 		return inAngle;
 	}
 
-	public void  toppleTree(BlockPos bp, int depth){
-		if (depth < Reference.MAX_TREE_DEPTH){
-			if (worldObj.getBlockState(bp).getBlock() == Blocks.log || 
-					worldObj.getBlockState(bp).getBlock() == Blocks.log2 || 
-					worldObj.getBlockState(bp).getBlock() == Blocks.leaves||
-					worldObj.getBlockState(bp).getBlock() == Blocks.leaves2
-					)
-			{
+	public void toppleTree(BlockPos bp, int depth) {
+		if (depth < Reference.MAX_TREE_DEPTH) {
+			if (worldObj.getBlockState(bp).getBlock() == Blocks.log || worldObj.getBlockState(bp).getBlock() == Blocks.log2 || worldObj.getBlockState(bp).getBlock() == Blocks.leaves || worldObj.getBlockState(bp).getBlock() == Blocks.leaves2) {
 
-
-					worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-					worldObj.setBlockToAir(bp);
-					toppleTree(bp.offset(EnumFacing.DOWN), depth+1);
-					toppleTree(bp.offset(EnumFacing.UP), depth+1);
-					toppleTree(bp.offset(EnumFacing.SOUTH), depth+1);
-					toppleTree(bp.offset(EnumFacing.EAST), depth+1);
-					toppleTree(bp.offset(EnumFacing.WEST), depth+1);
-					toppleTree(bp.offset(EnumFacing.NORTH), depth+1);
-				
+				worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
+				worldObj.setBlockToAir(bp);
+				toppleTree(bp.offset(EnumFacing.DOWN), depth + 1);
+				toppleTree(bp.offset(EnumFacing.UP), depth + 1);
+				toppleTree(bp.offset(EnumFacing.SOUTH), depth + 1);
+				toppleTree(bp.offset(EnumFacing.EAST), depth + 1);
+				toppleTree(bp.offset(EnumFacing.WEST), depth + 1);
+				toppleTree(bp.offset(EnumFacing.NORTH), depth + 1);
 
 			}
 		}
 	}
-
-
-
 
 }
