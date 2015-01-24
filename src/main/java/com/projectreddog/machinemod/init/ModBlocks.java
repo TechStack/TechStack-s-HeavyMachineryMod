@@ -1,12 +1,9 @@
 package com.projectreddog.machinemod.init;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.projectreddog.machinemod.block.BlockMachineAssemblyTable;
@@ -15,7 +12,6 @@ import com.projectreddog.machinemod.block.BlockMachineExplosivePackedDrilledSton
 import com.projectreddog.machinemod.block.BlockMachineMod;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
 import com.projectreddog.machinemod.block.BlockMachineModDrillingRig;
-import com.projectreddog.machinemod.block.BlockMoonshine;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityDrilingRig;
 
@@ -26,8 +22,6 @@ public class ModBlocks {
 	public static final BlockMachineMod machineexplosivepackeddrilledstone = new BlockMachineExplosivePackedDrilledStone();
 	public static final BlockMachineMod machinemodblastedstone = new BlockMachineModBlastedStone();
 	public static final Block machinedrillingrig = new BlockMachineModDrillingRig();
-	public static Fluid fluidmoonshine = new Fluid("moonshine");
-
 
 	public static void init() {
 		GameRegistry.registerBlock(machineassemblytable, Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
@@ -38,13 +32,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(machinedrillingrig, Reference.MODBLOCK_MACHINE_DRILLING_RIG);
 
 		GameRegistry.registerTileEntity(TileEntityDrilingRig.class, Reference.MODBLOCK_MACHINE_DRILLING_RIG);
-		///Register Fluids
-//		fluidmoonshine.setDensity(10);
-//		FluidRegistry.registerFluid(fluidmoonshine);
-//		BlockMoonshine moonshine = new BlockMoonshine(fluidmoonshine, Material.water) ;
-//
-//		GameRegistry.registerBlock(moonshine, Reference.MODBLOCK_MACHINE_FLUID_MOONSHINE);
-//		fluidmoonshine.setUnlocalizedName(moonshine.getUnlocalizedName());
+
 	}
 
 	public static void initBlockRender() {
