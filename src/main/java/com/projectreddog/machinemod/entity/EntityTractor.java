@@ -28,7 +28,7 @@ public class EntityTractor extends EntityMachineModRideable {
 
 	@Override
 	public Item getItemToBeDropped() {
-		return ModItems.bulldozer;
+		return ModItems.tractor;
 	}
 
 	@Override
