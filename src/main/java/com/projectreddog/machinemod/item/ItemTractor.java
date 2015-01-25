@@ -34,7 +34,7 @@ public class ItemTractor extends ItemMachineMod {
 			EntityTractor entityTractor = new EntityTractor(world);
 			entityTractor.setPosition(x + .5d, y + 1.0d, z + .5d);
 			entityTractor.prevPosX = x + .5d;
-			entityTractor.prevPosY = y + .5d;
+			entityTractor.prevPosY = y +  1.0d;
 			entityTractor.prevPosZ = z + .5d;
 			result = world.spawnEntityInWorld(entityTractor);
 			// LogHelper.info("Spawn entity resutl:" + result );

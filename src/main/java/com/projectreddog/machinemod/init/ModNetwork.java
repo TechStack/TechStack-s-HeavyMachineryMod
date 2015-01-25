@@ -6,13 +6,14 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
-import net.minecraftforge.fml.common.network.handshake.NetworkDispatcher;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
 import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.client.gui.GuiHandler;
+import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClient;
+import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClientHandler;
 import com.projectreddog.machinemod.network.MachineModMessageEntityToClient;
 import com.projectreddog.machinemod.network.MachineModMessageEntityToClientHandler;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServer;
@@ -37,6 +38,9 @@ public class ModNetwork {
 		simpleNetworkWrapper.registerMessage(MachineModMessageInputToServerOpenGuiHandler.class, MachineModMessageInputToServerOpenGui.class, 2, Side.SERVER);// message
 																																								// to
 																																								// server
+		simpleNetworkWrapper.registerMessage(MachineModMessageEntityInventoryChangedToClientHandler.class, MachineModMessageEntityInventoryChangedToClient.class, 3, Side.CLIENT);// message
+		// to
+		// client
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(MachineMod.instance, new GuiHandler());
 	}

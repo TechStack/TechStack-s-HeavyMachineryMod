@@ -32,7 +32,7 @@ public class ItemLoader extends ItemMachineMod {
 			EntityLoader entityLoader = new EntityLoader(world);
 			entityLoader.setPosition(x + .5d, y + 1.0d, z + .5d);
 			entityLoader.prevPosX = x + .5d;
-			entityLoader.prevPosY = y + .5d;
+			entityLoader.prevPosY = y + 1.0d;
 			entityLoader.prevPosZ = z + .5d;
 			result = world.spawnEntityInWorld(entityLoader);
 			// LogHelper.info("Spawn entity resutl:" + result );
