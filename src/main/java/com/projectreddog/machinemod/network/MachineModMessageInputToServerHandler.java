@@ -10,7 +10,17 @@ import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 public class MachineModMessageInputToServerHandler implements IMessageHandler<MachineModMessageInputToServer, IMessage> {
 
 	@Override
-	public IMessage onMessage(MachineModMessageInputToServer message, MessageContext ctx) {
+	public IMessage onMessage(final MachineModMessageInputToServer message, final MessageContext ctx) {
+
+		ctx.getServerHandler().playerEntity.getServerForPlayer().addScheduledTask(new Runnable() {
+			public void run() {
+				processMessage(message, ctx);
+			}
+		});
+		return null;
+	}
+
+	public void processMessage(MachineModMessageInputToServer message, MessageContext ctx) {
 
 		Entity entity = ctx.getServerHandler().playerEntity.worldObj.getEntityByID(message.entityid);
 
@@ -28,6 +38,5 @@ public class MachineModMessageInputToServerHandler implements IMessageHandler<Ma
 				}
 			}
 		}
-		return null;
 	}
 }

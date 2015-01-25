@@ -15,7 +15,17 @@ import com.projectreddog.machinemod.reference.Reference;
 public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHandler<MachineModMessageInputToServerOpenGui, IMessage> {
 
 	@Override
-	public IMessage onMessage(MachineModMessageInputToServerOpenGui message, MessageContext ctx) {
+	public IMessage onMessage(final MachineModMessageInputToServerOpenGui message, final MessageContext ctx) {
+
+		ctx.getServerHandler().playerEntity.getServerForPlayer().addScheduledTask(new Runnable() {
+			public void run() {
+				processMessage(message, ctx);
+			}
+		});
+		return null;
+	}
+
+	public void processMessage(MachineModMessageInputToServerOpenGui message, MessageContext ctx) {
 
 		Entity entity = ctx.getServerHandler().playerEntity.worldObj.getEntityByID(message.entityid);
 
@@ -37,6 +47,5 @@ public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHan
 				}
 			}
 		}
-		return null;
 	}
 }

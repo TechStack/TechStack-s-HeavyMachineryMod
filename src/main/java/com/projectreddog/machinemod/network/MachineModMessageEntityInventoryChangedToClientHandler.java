@@ -13,33 +13,48 @@ import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 public class MachineModMessageEntityInventoryChangedToClientHandler implements IMessageHandler<MachineModMessageEntityInventoryChangedToClient, IMessage> {
 
 	@Override
-	public IMessage onMessage(MachineModMessageEntityInventoryChangedToClient message, MessageContext ctx) {
-		// LogHelper.info("in machineModMessageEntityToClient Handler");
-		// LogHelper.info("Message data" + message);
+	public IMessage onMessage(final MachineModMessageEntityInventoryChangedToClient message, MessageContext ctx) {
+
+		Minecraft.getMinecraft().addScheduledTask(new Runnable() {
+			public void run() {
+				processMessage(message);
+			}
+		});
+		return null;
+	}
+
+	public void processMessage(MachineModMessageEntityInventoryChangedToClient message) {
 		if (message != null) {
 			if (Minecraft.getMinecraft().theWorld != null) {
-				if (Minecraft.getMinecraft().thePlayer != null){
+				if (Minecraft.getMinecraft().thePlayer != null) {
 
 					Entity entity = Minecraft.getMinecraft().theWorld.getEntityByID(message.entityid);
 
 					if (entity != null) {
 
 						if (entity instanceof EntityMachineModRideable) {
-							//						// its ridden by this player (avoid some hacks)
-							//						((EntityMachineModRideable) entity).TargetposX = message.posX;
-							//						((EntityMachineModRideable) entity).TargetposY = message.posY;
-							//						((EntityMachineModRideable) entity).TargetposZ = message.posZ;
-							//						((EntityMachineModRideable) entity).rotationYaw = message.yaw;
-							//						((EntityMachineModRideable) entity).yaw = message.yaw;
-							//						((EntityMachineModRideable) entity).Attribute1 = message.Attribute1;
+							// // its ridden by this player (avoid some hacks)
+							// ((EntityMachineModRideable) entity).TargetposX =
+							// message.posX;
+							// ((EntityMachineModRideable) entity).TargetposY =
+							// message.posY;
+							// ((EntityMachineModRideable) entity).TargetposZ =
+							// message.posZ;
+							// ((EntityMachineModRideable) entity).rotationYaw =
+							// message.yaw;
+							// ((EntityMachineModRideable) entity).yaw =
+							// message.yaw;
+							// ((EntityMachineModRideable) entity).Attribute1 =
+							// message.Attribute1;
 							//
-							//						// LogHelper.info("RECIEVED ENTITY PACKET FROM SERVER"
-							//						// );
-							if (entity instanceof EntityLoader){
+							// //
+							// LogHelper.info("RECIEVED ENTITY PACKET FROM SERVER"
+							// // );
+							if (entity instanceof EntityLoader) {
 								EntityLoader eL = (EntityLoader) entity;
 								eL.setInventorySlotContents(message.slot, message.is);
 							}
-							if (entity instanceof EntityDumpTruck){
+							if (entity instanceof EntityDumpTruck) {
 								EntityDumpTruck eDT = (EntityDumpTruck) entity;
 								eDT.setInventorySlotContents(message.slot, message.is);
 							}
@@ -49,7 +64,6 @@ public class MachineModMessageEntityInventoryChangedToClientHandler implements I
 				}
 			}
 		}
-		return null;
 	}
 
 }
