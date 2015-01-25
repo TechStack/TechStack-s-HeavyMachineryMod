@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
@@ -16,20 +17,17 @@ public class EntityTractor extends EntityMachineModRideable {
 	public EntityTractor(World world) {
 		super(world);
 		setSize(1.5F, 2F);
+		inventory = new ItemStack[1];
+		this.mountedOffsetY = 0.55D;
+		this.mountedOffsetX = 0.65d;
+		this.mountedOffsetZ = 0.65d;
+		this.maxAngle = 0;
+		this.minAngle = -60;
+		this.droppedItem = ModItems.tractor;
 	}
 
-	@Override
-	/**
-	 * Returns the Y offset from the entity's position for any entity riding this one.
-	 */
-	public double getMountedYOffset() {
-		return (double) this.height * 0.55D;
-	}
 
-	@Override
-	public Item getItemToBeDropped() {
-		return ModItems.tractor;
-	}
+
 
 	@Override
 	public void onUpdate() {
@@ -58,29 +56,4 @@ public class EntityTractor extends EntityMachineModRideable {
 		}
 	}
 
-	@Override
-	public double getMountedXOffset() {
-		return calcOffsetX(0.65d);
-	}
-
-	@Override
-	public double getMountedZOffset() {
-		return calcOffsetZ(0.65d);
-	}
-
-	// /**
-	// * Sets the forward direction of the entity.
-	// */
-	// public void setForwardDirection(int value)
-	// {
-	// this.dataWatcher.updateObject(18, Integer.valueOf(value));
-	// }
-	//
-	// /**
-	// * Gets the forward direction of the entity.
-	// */
-	// public int getForwardDirection()
-	// {
-	// return this.dataWatcher.getWatchableObjectInt(18);
-	// }
 }

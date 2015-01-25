@@ -23,17 +23,23 @@ import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChan
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.LogHelper;
 
-public class EntityDumpTruck extends EntityMachineModRideable implements IInventory {
+public class EntityDumpTruck extends EntityMachineModRideable {
 
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 
-	private ItemStack[] inventory;
+	
 
 	public EntityDumpTruck(World world) {
 		super(world);
 
 		setSize(3, 2);
 		inventory = new ItemStack[54];
+		this.mountedOffsetY = 0.35D;
+		this.mountedOffsetX = 1.5D;
+		this.mountedOffsetZ = 1.5D;
+		this.maxAngle = 0;
+		this.minAngle = -60;
+		this.droppedItem = ModItems.dumptruck;
 	}
 
 	@Override
@@ -93,258 +99,8 @@ public class EntityDumpTruck extends EntityMachineModRideable implements IInvent
 				}
 			}
 		}
-	}
+	}	
 
-	// adds to this objects inventory if it can
-	// any remaining amount will be returned
-	private ItemStack addToinventory(ItemStack is) {
-		int i = getSizeInventory();
 
-		for (int j = 0; j < i && is != null && is.stackSize > 0; ++j) {
-			if (is != null) {
-
-				if (getStackInSlot(j) != null) {
-					if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getItemDamage()== is.getItemDamage()) {
-						// same item remove from is put into slot any amt not to
-						// excede stack max
-						if (getStackInSlot(j).stackSize < getStackInSlot(j).getMaxStackSize()) {
-							// we have room to add to this stack
-							if (is.stackSize <= getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize) {
-								// /all of the stack will fit in this slot do
-								// so.
-
-								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).stackSize + is.stackSize, is.getItemDamage()));
-								is = null;
-							} else {
-								// we have more
-								int countRemain = is.stackSize - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize);
-								setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getItemDamage()));
-								is.stackSize = countRemain;
-							}
-
-						}
-					}
-				} else {
-					// nothign in slot so set contents
-					setInventorySlotContents(j, new ItemStack(is.getItem(), is.stackSize, is.getItemDamage()));
-					is = null;
-				}
-
-			}
-
-		}
-
-		return null;
-
-	}
-
-	@Override
-	/**
-	 * Returns the Y offset from the entity's position for any entity riding this one.
-	 */
-	public double getMountedYOffset() {
-		return (double) this.height * 0.35D;
-	}
-
-	@Override
-	public double getMountedXOffset() {
-		return calcOffsetX(1.5d);
-	}
-
-	@Override
-	public double getMountedZOffset() {
-		return calcOffsetZ(1.5d);
-	}
-
-	@Override
-	public boolean interactFirst(EntityPlayer player) // should be proper class
-	{
-
-		super.interactFirst(player);
-		// LogHelper.info("TEST");
-		// moved open gui call to the networkhandler
-		// player.openGui(MachineMod.instance, Reference.GUI_DUMP_TRUCK,
-		// worldObj, (int) this.getEntityId(), (int) 0,(int) 0);
-		return true;
-	}
-
-	@Override
-	public Item getItemToBeDropped() {
-
-		// need to drop additional items from the inventory of the item
-		Random rand = new Random();
-
-		for (int i = 0; i < this.getSizeInventory(); i++) {
-			ItemStack item = this.getStackInSlot(i);
-
-			if (item != null && item.stackSize > 0) {
-				float rx = rand.nextFloat() * 0.8F + 0.1F;
-				float ry = rand.nextFloat() * 0.8F + 0.1F;
-				float rz = rand.nextFloat() * 0.8F + 0.1F;
-
-				EntityItem entityItem = new EntityItem(worldObj, posX + rx, posY + ry, posZ + rz, item);
-
-				if (item.hasTagCompound()) {
-					entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
-				}
-
-				float factor = 0.05F;
-				entityItem.motionX = rand.nextGaussian() * factor;
-				entityItem.motionY = rand.nextGaussian() * factor + 0.2F;
-				entityItem.motionZ = rand.nextGaussian() * factor;
-				worldObj.spawnEntityInWorld(entityItem);
-				// item.stackSize = 0;
-				this.setInventorySlotContents(i, null);
-
-			}
-		}
-
-		return ModItems.dumptruck;
-	}
-
-	@Override
-	public int getSizeInventory() {
-		return inventory.length;
-	}
-
-	@Override
-	public ItemStack getStackInSlot(int slot) {
-		return inventory[slot];
-	}
-
-	@Override
-	public void setInventorySlotContents(int slot, ItemStack stack) {
-		inventory[slot] = stack;
-		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
-			stack.stackSize = getInventoryStackLimit();
-		}
-		if (!(this.worldObj.isRemote)){
-		//send packet to notify client of contents of machine's inventory
-		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), slot,inventory[slot])), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
-		}
-	}
-
-	@Override
-	public ItemStack decrStackSize(int slot, int amt) {
-		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			if (stack.stackSize <= amt) {
-				setInventorySlotContents(slot, null);
-			} else {
-				stack = stack.splitStack(amt);
-				if (stack.stackSize == 0) {
-					setInventorySlotContents(slot, null);
-				}
-
-			}
-		}
-		return stack;
-	}
-
-	@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
-		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			setInventorySlotContents(slot, null);
-		}
-		return stack;
-	}
-
-	@Override
-	public int getInventoryStackLimit() {
-		return 64;
-	}
-
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
-		// check if the player is near the entity.
-		return player.getDistanceSq(posX, posY, posZ) < 64;
-	}
-
-	@Override
-	public void readFromNBT(NBTTagCompound tagCompound) {
-		super.readFromNBT(tagCompound);
-
-		NBTTagList tagList = tagCompound.getTagList("Inventory", tagCompound.getId());
-		for (int i = 0; i < tagList.tagCount(); i++) {
-			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
-			byte slot = tag.getByte("Slot");
-			if (slot >= 0 && slot < inventory.length) {
-				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
-			}
-		}
-	}
-
-	@Override
-	public void writeToNBT(NBTTagCompound tagCompound) {
-		super.writeToNBT(tagCompound);
-
-		NBTTagList itemList = new NBTTagList();
-		for (int i = 0; i < inventory.length; i++) {
-			ItemStack stack = inventory[i];
-			if (stack != null) {
-				NBTTagCompound tag = new NBTTagCompound();
-				tag.setByte("Slot", (byte) i);
-				stack.writeToNBT(tag);
-				itemList.appendTag(tag);
-			}
-		}
-		tagCompound.setTag("Inventory", itemList);
-	}
-
-	@Override
-	public void markDirty() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void openInventory(EntityPlayer playerIn) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void closeInventory(EntityPlayer playerIn) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		return true;
-	}
-
-	@Override
-	public int getField(int id) {
-		return 0;
-	}
-
-	@Override
-	public void setField(int id, int value) {
-
-	}
-
-	@Override
-	public int getFieldCount() {
-		return 0;
-	}
-
-	@Override
-	public void clear() {
-		for (int i = 0; i < inventory.length; ++i) {
-			inventory[i] = null;
-		}
-	}
-
-	@Override
-	public float getMaxAngle() {
-		return 0;
-	}
-
-	@Override
-	public float getMinAngle() {
-		return -60;
-	}
 
 }

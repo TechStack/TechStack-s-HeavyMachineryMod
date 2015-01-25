@@ -1,10 +1,16 @@
 package com.projectreddog.machinemod.entity;
 
+import java.util.Random;
+
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -15,13 +21,16 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.projectreddog.machinemod.init.ModNetwork;
+import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClient;
 import com.projectreddog.machinemod.network.MachineModMessageEntityToClient;
 import com.projectreddog.machinemod.reference.Reference;
 
-public class EntityMachineModRideable extends Entity {
+public class EntityMachineModRideable extends Entity   implements IInventory
+{
 
 	public double velocity;
 	public float yaw;
+	protected ItemStack[] inventory;
 
 	public boolean isPlayerAccelerating = false;
 	public boolean isPlayerBreaking = false;
@@ -33,17 +42,26 @@ public class EntityMachineModRideable extends Entity {
 	public double TargetposY;
 	public double TargetposZ;
 	public float TargetYaw;
-	// public int MoveTickCount;
-	// public int YawTickCount;
-	public float Attribute1;// multipurpose variable use defined in extended
-	// class controled by sprint & space (down / up)
+
+	public float Attribute1;// multi-purpose variable use defined in extended
 
 	public AxisAlignedBB BoundingBox;
 
+	
+	protected double mountedOffsetY =0d;
+	protected double mountedOffsetX =0d;
+	protected double mountedOffsetZ =0d;
+	protected float maxAngle = 0;
+	protected float minAngle = 0;
+	
+	protected Item droppedItem =null;
+	
 	public EntityMachineModRideable(World world) {
 		super(world);
 		setSize(1.5F, 0.6F); // should be overridden in Extened version.
 		this.stepHeight = 1;
+		inventory = new ItemStack[0];
+
 
 	}
 
@@ -76,7 +94,35 @@ public class EntityMachineModRideable extends Entity {
 	}
 
 	public Item getItemToBeDropped() {
-		return null;
+		// need to drop additional items from the inventory of the item
+		Random rand = new Random();
+
+		for (int i = 0; i < this.getSizeInventory(); i++) {
+			ItemStack item = this.getStackInSlot(i);
+
+			if (item != null && item.stackSize > 0) {
+				float rx = rand.nextFloat() * 0.8F + 0.1F;
+				float ry = rand.nextFloat() * 0.8F + 0.1F;
+				float rz = rand.nextFloat() * 0.8F + 0.1F;
+
+				EntityItem entityItem = new EntityItem(worldObj, posX + rx, posY + ry, posZ + rz, item);
+
+				if (item.hasTagCompound()) {
+					entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+				}
+
+				float factor = 0.05F;
+				entityItem.motionX = rand.nextGaussian() * factor;
+				entityItem.motionY = rand.nextGaussian() * factor + 0.2F;
+				entityItem.motionZ = rand.nextGaussian() * factor;
+				worldObj.spawnEntityInWorld(entityItem);
+				// item.stackSize = 0;
+				this.setInventorySlotContents(i, null);
+
+			}
+		}
+		return droppedItem;
+		
 	}
 
 	@Override
@@ -101,17 +147,17 @@ public class EntityMachineModRideable extends Entity {
 	@Override
 	public double getMountedYOffset() {
 		// should be overridden in extended class if not default;
-		return -0.15;
+		return this.height * mountedOffsetY;
 	}
 
 	public double getMountedXOffset() {
 		// should be overridden in extended class if not default;
-		return 0;
+		return calcOffsetX(mountedOffsetX);
 	}
 
 	public double getMountedZOffset() {
 		// should be overridden in extended class if not default;
-		return 0;
+		return calcOffsetZ(mountedOffsetZ);
 	}
 
 	public void updateServer() {
@@ -306,6 +352,10 @@ public class EntityMachineModRideable extends Entity {
 	protected void readEntityFromNBT(NBTTagCompound compound) {
 		// TODO Auto-generated method stub
 
+		
+		//super.readFromNBT(compound);
+		// no need to call super it calls this method instead.
+
 		yaw = compound.getFloat(Reference.MACHINE_MOD_NBT_PREFIX + "YAW");
 		velocity = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "VELOCITY");
 		TargetposX = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_X");
@@ -314,11 +364,21 @@ public class EntityMachineModRideable extends Entity {
 		TargetYaw = compound.getFloat(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_YAW");
 		Attribute1 = compound.getFloat(Reference.MACHINE_MOD_NBT_PREFIX + "ATTRIBUTE1");
 
+		// inventory
+		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX +"Inventory", compound.getId());
+		for (int i = 0; i < tagList.tagCount(); i++) {
+			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
+			byte slot = tag.getByte("Slot");
+			if (slot >= 0 && slot < inventory.length) {
+				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
+			}
+		}
 	}
 
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound compound) {
-
+		//super.writeToNBT(compound);
+		//no need to call the super it calls this  method instead
 		compound.setFloat(Reference.MACHINE_MOD_NBT_PREFIX + "YAW", yaw);
 		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "VELOCITY", velocity);
 		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_X", TargetposX);
@@ -326,17 +386,28 @@ public class EntityMachineModRideable extends Entity {
 		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_Z", TargetposZ);
 		compound.setFloat(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_YAW", TargetYaw);
 		compound.setFloat(Reference.MACHINE_MOD_NBT_PREFIX + "ATTRIBUTE1", Attribute1);
-
-		// TODO Auto-generated method stub
+		
+// inventory
+		NBTTagList itemList = new NBTTagList();
+		for (int i = 0; i < inventory.length; i++) {
+			ItemStack stack = inventory[i];
+			if (stack != null) {
+				NBTTagCompound tag = new NBTTagCompound();
+				tag.setByte("Slot", (byte) i);
+				stack.writeToNBT(tag);
+				itemList.appendTag(tag);
+			}
+		}
+		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX +"Inventory", itemList);
 
 	}
 
 	public float getMaxAngle() {
-		return 0;
+		return this.maxAngle;
 	}
 
 	public float getMinAngle() {
-		return 0;
+		return this.minAngle;
 	}
 
 	public double calcOffsetX(double distance) {
@@ -397,5 +468,152 @@ public class EntityMachineModRideable extends Entity {
 			}
 		}
 	}
+	
+	// adds to this objects inventory if it can
+		// any remaining amount will be returned
+		protected ItemStack addToinventory(ItemStack is) {
+			int i = getSizeInventory();
 
+			for (int j = 0; j < i && is != null && is.stackSize > 0; ++j) {
+				if (is != null) {
+
+					if (getStackInSlot(j) != null) {
+						if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getItemDamage()== is.getItemDamage()) {
+							// same item remove from is put into slot any amt not to
+							// excede stack max
+							if (getStackInSlot(j).stackSize < getStackInSlot(j).getMaxStackSize()) {
+								// we have room to add to this stack
+								if (is.stackSize <= getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize) {
+									// /all of the stack will fit in this slot do
+									// so.
+
+									setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).stackSize + is.stackSize, is.getItemDamage()));
+									is = null;
+								} else {
+									// we have more
+									int countRemain = is.stackSize - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize);
+									setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getItemDamage()));
+									is.stackSize = countRemain;
+								}
+
+							}
+						}
+					} else {
+						// nothign in slot so set contents
+						setInventorySlotContents(j, new ItemStack(is.getItem(), is.stackSize, is.getItemDamage()));
+						is = null;
+					}
+
+				}
+
+			}
+
+			return null;
+
+		}
+
+	@Override
+	public int getSizeInventory() {
+		return inventory.length;
+	}
+
+	@Override
+	public ItemStack getStackInSlot(int slot) {
+		return inventory[slot];
+	}
+
+	@Override
+	public void setInventorySlotContents(int slot, ItemStack stack) {
+		inventory[slot] = stack;
+		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
+			stack.stackSize = getInventoryStackLimit();
+		}
+		if (!(this.worldObj.isRemote)){
+			//send packet to notify client of contents of machine's inventory
+		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), slot,inventory[slot])), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
+		}
+
+	}
+
+	@Override
+	public void markDirty() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void openInventory(EntityPlayer playerIn) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void closeInventory(EntityPlayer playerIn) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean isItemValidForSlot(int index, ItemStack stack) {
+		return true;
+	}
+	@Override
+	public int getInventoryStackLimit() {
+		return 64;
+	}
+
+	@Override
+	public boolean isUseableByPlayer(EntityPlayer player) {
+		// check if the player is near the entity.
+		return player.getDistanceSq(posX, posY, posZ) < 64;
+	}
+	
+	
+	@Override
+	public ItemStack decrStackSize(int slot, int amt) {
+		ItemStack stack = getStackInSlot(slot);
+		if (stack != null) {
+			if (stack.stackSize <= amt) {
+				setInventorySlotContents(slot, null);
+			} else {
+				stack = stack.splitStack(amt);
+				if (stack.stackSize == 0) {
+					setInventorySlotContents(slot, null);
+				}
+
+			}
+		}
+		return stack;
+	}
+
+	@Override
+	public ItemStack getStackInSlotOnClosing(int slot) {
+		ItemStack stack = getStackInSlot(slot);
+		if (stack != null) {
+			setInventorySlotContents(slot, null);
+		}
+		return stack;
+	}
+
+	@Override
+	public int getField(int id) {
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {
+
+	}
+
+	@Override
+	public int getFieldCount() {
+		return 0;
+	}
+
+	@Override
+	public void clear() {
+		for (int i = 0; i < inventory.length; ++i) {
+			inventory[i] = null;
+		}
+	}
 }
