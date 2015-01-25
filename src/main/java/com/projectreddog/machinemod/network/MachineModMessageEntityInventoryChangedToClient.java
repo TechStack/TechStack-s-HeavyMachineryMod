@@ -60,19 +60,19 @@ public class MachineModMessageEntityInventoryChangedToClient implements IMessage
             {
             	buf.readerIndex(i);
 	            try {
-					itemstack.setTagCompound(CompressedStreamTools.func_152456_a(new ByteBufInputStream(buf), new NBTSizeTracker(2097152L)));
+					itemstack.setTagCompound(CompressedStreamTools.func_152456_a(new ByteBufInputStream(buf), NBTSizeTracker.INFINITE));
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					// will toss error when it passes end of stream
+					//e.printStackTrace();
 				}
             }
             
             
             try {
-				itemstack.setTagCompound(CompressedStreamTools.func_152456_a(new ByteBufInputStream(buf), new NBTSizeTracker(2097152L)));
+				itemstack.setTagCompound(CompressedStreamTools.func_152456_a(new ByteBufInputStream(buf), NBTSizeTracker.INFINITE));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				// will toss error when it passes end of stream
+				//e.printStackTrace();
 			}
         }
         this.is = itemstack;

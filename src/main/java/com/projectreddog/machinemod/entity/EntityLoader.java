@@ -104,7 +104,7 @@ public class EntityLoader extends EntityMachineModRideable implements IInventory
 			if (entity != null) {
 				if (entity instanceof EntityItem) {
 					ItemStack is = ((EntityItem) entity).getEntityItem().copy();
-
+					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
 					ItemStack is1 = addToinventory(is);
 
 					if (is1 != null && is1.stackSize != 0) {
@@ -126,7 +126,7 @@ public class EntityLoader extends EntityMachineModRideable implements IInventory
 			if (is != null) {
 
 				if (getStackInSlot(j) != null) {
-					if (getStackInSlot(j).getItem() == is.getItem()) {
+					if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getItemDamage()== is.getItemDamage()) {
 						// same item remove from is put into slot any amt not to
 						// excede stack max
 						if (getStackInSlot(j).stackSize < getStackInSlot(j).getMaxStackSize()) {
@@ -135,12 +135,12 @@ public class EntityLoader extends EntityMachineModRideable implements IInventory
 								// /all of the stack will fit in this slot do
 								// so.
 
-								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).stackSize + is.stackSize));
+								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).stackSize + is.stackSize, is.getItemDamage()));
 								is = null;
 							} else {
 								// we have more
 								int countRemain = is.stackSize - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize);
-								setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize()));
+								setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getItemDamage()));
 								is.stackSize = countRemain;
 							}
 
@@ -148,7 +148,7 @@ public class EntityLoader extends EntityMachineModRideable implements IInventory
 					}
 				} else {
 					// nothign in slot so set contents
-					setInventorySlotContents(j, new ItemStack(is.getItem(), is.stackSize));
+					setInventorySlotContents(j, new ItemStack(is.getItem(), is.stackSize, is.getItemDamage()));
 					is = null;
 				}
 
