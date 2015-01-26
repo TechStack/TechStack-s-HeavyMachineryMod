@@ -27,10 +27,15 @@ public class ModelTractor extends ModelBase {
 
 	}
 
+	public void renderGroupObject(String groupName) {
+		myModel.renderPart(groupName);
+
+	}
+
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
-		myModel.renderAll();
-
+		// myModel.renderAll();
+		// will now call rendering for each individual object
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
