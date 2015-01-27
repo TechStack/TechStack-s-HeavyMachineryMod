@@ -1,14 +1,15 @@
 package com.projectreddog.machinemod.entity;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 import com.projectreddog.machinemod.init.ModItems;
+import com.projectreddog.machinemod.item.ItemTractorAttachment;
+import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
+import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
 
 public class EntityTractor extends EntityMachineModRideable {
 
@@ -26,9 +27,6 @@ public class EntityTractor extends EntityMachineModRideable {
 		this.droppedItem = ModItems.tractor;
 	}
 
-
-
-
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
@@ -40,14 +38,28 @@ public class EntityTractor extends EntityMachineModRideable {
 			// (3 wide)
 			if (this.isPlayerPushingSprintButton) {
 				for (int i = -1; i < 2; i++) {
+
 					if (i == 0) {
 						angle = 0;
 					} else {
 						angle = 90;
 					}
 					bp = new BlockPos(posX + calcTwoOffsetX(-3.5, angle, i), posY - 1, posZ + calcTwoOffsetZ(-3.5, angle, i));
-					if (worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.grass) {
-						worldObj.setBlockState(bp, Blocks.farmland.getDefaultState());
+
+					if (this.getStackInSlot(0) != null) {
+						if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachment) {
+							if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlow) {
+								if (worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.grass) {
+									worldObj.setBlockState(bp, Blocks.farmland.getDefaultState());
+								}
+							} else if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {
+								if (worldObj.getBlockState(bp).getBlock() == Blocks.farmland && worldObj.isAirBlock(bp.offset(EnumFacing.UP, 1))) {
+
+									worldObj.setBlockState(bp.offset(EnumFacing.UP, 1), Blocks.wheat.getDefaultState());
+								}
+							}
+
+						}
 					}
 				}
 

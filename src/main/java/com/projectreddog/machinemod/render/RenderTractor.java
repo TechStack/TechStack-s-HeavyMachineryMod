@@ -8,6 +8,10 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import com.projectreddog.machinemod.entity.EntityTractor;
+import com.projectreddog.machinemod.item.ItemTractorAttachment;
+import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
+import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
 import com.projectreddog.machinemod.model.ModelTractor;
 import com.projectreddog.machinemod.reference.Reference;
 
@@ -49,9 +53,19 @@ public class RenderTractor extends Render {
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelTractor.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		((ModelTractor) this.modelTractor).renderGroupObject("Tractor_Cube.001");
+		if (((EntityTractor) entity).getStackInSlot(0) != null) {
+			if (((EntityTractor) entity).getStackInSlot(0).getItem() instanceof ItemTractorAttachment) {
+				if (((EntityTractor) entity).getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlow) {
 
+					((ModelTractor) this.modelTractor).renderGroupObject("Plow_Cube");
+				} else if (((EntityTractor) entity).getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {
+					((ModelTractor) this.modelTractor).renderGroupObject("Planter_Cube.002");
+
+				}
+
+			}
+		}
 		// ((ModelTractor) this.modelTractor).renderGroupObject("Plow_Cube");
-		((ModelTractor) this.modelTractor).renderGroupObject("Planter_Cube.002");
 
 		GL11.glPopMatrix();
 	}

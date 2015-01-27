@@ -14,4 +14,7 @@ tile.machinemod:machinedrilledston .name=Drilled Stone
 tile.machinemod:machineblastedstone.name=Blasted Stone
 tile.machinemod:machineexplosivepackeddrilledstone.name=Explosive Packed Drilled Stone
 tile.machinemod:machinedrillingrig.name=Drilling Rig
+tile.machinemod:machineplanter.name=Planter
+tile.machinemod:machineplow.name=Plow
+
 

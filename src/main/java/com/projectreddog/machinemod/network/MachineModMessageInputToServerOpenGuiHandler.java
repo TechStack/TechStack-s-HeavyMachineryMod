@@ -10,6 +10,7 @@ import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
+import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.reference.Reference;
 
 public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHandler<MachineModMessageInputToServerOpenGui, IMessage> {
@@ -40,6 +41,8 @@ public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHan
 							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_DUMP_TRUCK, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityLoader) {
 							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_LOADER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+						} else if (entity instanceof EntityTractor) {
+							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_TRACTOR, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						}
 
 					}
