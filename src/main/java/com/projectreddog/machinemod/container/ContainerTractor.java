@@ -16,7 +16,7 @@ public class ContainerTractor extends Container {
 		this.tractor = tractor;
 
 		for (int i = 0; i < 1; i++) {
-			for (int j = 0; j < 1; j++) {
+			for (int j = 0; j < 9; j++) {
 				addSlotToContainer(new Slot(tractor, j + i * 9, 8 + j * 18, 18 + i * 18));
 			}
 		}
@@ -53,7 +53,7 @@ public class ContainerTractor extends Container {
 			stack = stackInSlot.copy();
 
 			// merges the item into player inventory since its in the Entity
-			if (slot < 1) {
+			if (slot < 9) {
 				if (!this.mergeItemStack(stackInSlot, 9, this.inventorySlots.size(), true)) {
 					return null;
 				}

@@ -1,10 +1,12 @@
 package com.projectreddog.machinemod.entity;
 
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
 
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.item.ItemTractorAttachment;
@@ -18,7 +20,7 @@ public class EntityTractor extends EntityMachineModRideable {
 	public EntityTractor(World world) {
 		super(world);
 		setSize(1.5F, 2F);
-		inventory = new ItemStack[1];
+		inventory = new ItemStack[9];
 		this.mountedOffsetY = 0.55D;
 		this.mountedOffsetX = 0.65d;
 		this.mountedOffsetZ = 0.65d;
@@ -53,10 +55,28 @@ public class EntityTractor extends EntityMachineModRideable {
 									worldObj.setBlockState(bp, Blocks.farmland.getDefaultState());
 								}
 							} else if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {
-								if (worldObj.getBlockState(bp).getBlock() == Blocks.farmland && worldObj.isAirBlock(bp.offset(EnumFacing.UP, 1))) {
 
-									worldObj.setBlockState(bp.offset(EnumFacing.UP, 1), Blocks.wheat.getDefaultState());
+								for (int j=1 ; j<9 ;j++ )// start at 1 because frist slot is attachment only
+								{
+									if (this.getStackInSlot(j) != null){
+										if (this.getStackInSlot(j).stackSize > 0){
+											
+											if (this.getStackInSlot(j).getItem() instanceof IPlantable ){
+												if (worldObj.getBlockState(bp).getBlock().canSustainPlant(worldObj, bp, EnumFacing.UP, (IPlantable) this.getStackInSlot(j).getItem()) && worldObj.isAirBlock(bp.offsetUp())){
+
+													worldObj.setBlockState(bp.offsetUp(), ((IPlantable) this.getStackInSlot(j).getItem()).getPlant(worldObj, bp.offsetUp()));
+													this.decrStackSize(j, 1);
+													j=9;
+
+												}
+											}
+										}
+									}
 								}
+								//								if (worldObj.getBlockState(bp).getBlock() == Blocks.farmland && worldObj.isAirBlock(bp.offset(EnumFacing.UP, 1))) {
+								//
+								//									worldObj.setBlockState(bp.offset(EnumFacing.UP, 1), Blocks.wheat.getDefaultState());
+								//								}
 							}
 
 						}
