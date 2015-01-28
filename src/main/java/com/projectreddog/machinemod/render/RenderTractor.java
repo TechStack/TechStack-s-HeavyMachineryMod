@@ -12,6 +12,7 @@ import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.item.ItemTractorAttachment;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
+import com.projectreddog.machinemod.item.ItemTractorAttachmentSprayer;
 import com.projectreddog.machinemod.model.ModelTractor;
 import com.projectreddog.machinemod.reference.Reference;
 
@@ -60,6 +61,9 @@ public class RenderTractor extends Render {
 					((ModelTractor) this.modelTractor).renderGroupObject("Plow_Cube");
 				} else if (((EntityTractor) entity).getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {
 					((ModelTractor) this.modelTractor).renderGroupObject("Planter_Cube.002");
+
+				} else if (((EntityTractor) entity).getStackInSlot(0).getItem() instanceof ItemTractorAttachmentSprayer)  {
+					((ModelTractor) this.modelTractor).renderGroupObject("Sprayer_Cube.004");
 
 				}
 

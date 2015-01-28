@@ -6,7 +6,9 @@ item.machinemod:loader.name=Loader
 item.machinemod:drillpipe.name=Drlling Pipe
 item.machinemod:drillhead.name=Drill Head
 item.machinemod:tractor.name=Tractor
-
+item.machinemod:planter.name=Planter
+item.machinemod:plow.name=Plow
+item.machinemod:sprayer.name=Sprayer
 
 # Block Localizations
 tile.machinemod:machineassemblytable.name=Machine Assembly Table
@@ -14,7 +16,6 @@ tile.machinemod:machinedrilledston .name=Drilled Stone
 tile.machinemod:machineblastedstone.name=Blasted Stone
 tile.machinemod:machineexplosivepackeddrilledstone.name=Explosive Packed Drilled Stone
 tile.machinemod:machinedrillingrig.name=Drilling Rig
-tile.machinemod:machineplanter.name=Planter
-tile.machinemod:machineplow.name=Plow
+
 
 

@@ -1,7 +1,9 @@
 package com.projectreddog.machinemod.entity;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemBlock;
+import net.minecraft.item.EnumDyeColor;
+import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -12,6 +14,7 @@ import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.item.ItemTractorAttachment;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
+import com.projectreddog.machinemod.item.ItemTractorAttachmentSprayer;
 
 public class EntityTractor extends EntityMachineModRideable {
 
@@ -56,11 +59,11 @@ public class EntityTractor extends EntityMachineModRideable {
 								}
 							} else if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {
 
-								for (int j=1 ; j<9 ;j++ )// start at 1 because frist slot is attachment only
+								for (int j=1 ; j<9 ;j++ )// start at 1 because first slot is attachment only
 								{
 									if (this.getStackInSlot(j) != null){
 										if (this.getStackInSlot(j).stackSize > 0){
-											
+
 											if (this.getStackInSlot(j).getItem() instanceof IPlantable ){
 												if (worldObj.getBlockState(bp).getBlock().canSustainPlant(worldObj, bp, EnumFacing.UP, (IPlantable) this.getStackInSlot(j).getItem()) && worldObj.isAirBlock(bp.offsetUp())){
 
@@ -77,6 +80,46 @@ public class EntityTractor extends EntityMachineModRideable {
 								//
 								//									worldObj.setBlockState(bp.offset(EnumFacing.UP, 1), Blocks.wheat.getDefaultState());
 								//								}
+							}else if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentSprayer) {
+								// Fertilize checks & actions
+
+
+								for (int j=1 ; j<9 ;j++ )// start at 1 because first slot is attachment only
+								{
+									if (this.getStackInSlot(j) != null){
+										if (this.getStackInSlot(j).stackSize > 0){
+
+											if (this.getStackInSlot(j).getItem() instanceof ItemDye ){
+												
+												/// NOT UPDATE PROOF ( CALLS non named function ) 
+												if (  EnumDyeColor.func_176766_a(  this.getStackInSlot(j).getItemDamage())  ==EnumDyeColor.WHITE ){
+											
+													EntityPlayer p ;
+													if (this.riddenByEntity != null   && this.riddenByEntity instanceof EntityPlayer) {
+														 p =  ((EntityPlayer)this.riddenByEntity );
+													}else
+													{
+														p =  net.minecraftforge.common.util.FakePlayerFactory.getMinecraft((net.minecraft.world.WorldServer)worldObj);
+													}
+														boolean didUse = ((ItemDye)this.getStackInSlot(j).getItem()).applyBonemeal(this.getStackInSlot(j), worldObj, bp.offsetUp(),p);
+														
+														if (didUse){
+															//used to clear out 0 size stack
+															if (this.getStackInSlot(j).stackSize == 0) {
+																setInventorySlotContents(j, null);
+															}
+
+															j=9;
+														}
+
+											
+												}
+											}
+										}
+									}
+								}
+
+								
 							}
 
 						}
