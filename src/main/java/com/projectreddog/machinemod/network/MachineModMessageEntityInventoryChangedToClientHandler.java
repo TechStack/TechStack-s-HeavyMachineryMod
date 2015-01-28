@@ -15,12 +15,14 @@ public class MachineModMessageEntityInventoryChangedToClientHandler implements I
 	@Override
 	public IMessage onMessage(final MachineModMessageEntityInventoryChangedToClient message, MessageContext ctx) {
 		if (Minecraft.getMinecraft().theWorld != null) {
+			if ( Minecraft.getMinecraft().theWorld.isRemote){
 
-			Minecraft.getMinecraft().addScheduledTask(new Runnable() {
-				public void run() {
-					processMessage(message);
-				}
-			});
+				Minecraft.getMinecraft().addScheduledTask(new Runnable() {
+					public void run() {
+						processMessage(message);
+					}
+				});
+			}
 		}
 		return null;
 	}
