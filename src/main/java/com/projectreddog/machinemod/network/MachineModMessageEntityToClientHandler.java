@@ -14,11 +14,14 @@ public class MachineModMessageEntityToClientHandler implements IMessageHandler<M
 	public IMessage onMessage(final MachineModMessageEntityToClient message, MessageContext ctx) {
 		// LogHelper.info("in machineModMessageEntityToClient Handler");
 		// LogHelper.info("Message data" + message);
-		Minecraft.getMinecraft().addScheduledTask(new Runnable() {
-			public void run() {
-				processMessage(message);
-			}
-		});
+		if (Minecraft.getMinecraft().theWorld != null) {
+
+			Minecraft.getMinecraft().addScheduledTask(new Runnable() {
+				public void run() {
+					processMessage(message);
+				}
+			});
+		}
 		return null;
 	}
 
