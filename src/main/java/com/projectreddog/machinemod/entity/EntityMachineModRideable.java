@@ -304,7 +304,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 		setPosition(posX + motionX, posY + motionY, posZ + motionZ);
 
-		LogHelper.info("Client: isinvis:" + this.isInvisibleToPlayer(Minecraft.getMinecraft().thePlayer) + " DIMID:" + worldObj.provider.getDimensionId() + " X:" + posX + "         Y:" + posY + "       Z:" + posZ);
+		//LogHelper.info("Client: isinvis:" + this.isInvisibleToPlayer(Minecraft.getMinecraft().thePlayer) + " DIMID:" + worldObj.provider.getDimensionId() + " X:" + posX + "         Y:" + posY + "       Z:" + posZ);
 		//
 		//
 		// if(YawTickCount>0){

@@ -15,7 +15,7 @@ public class MachineModMessageEntityInventoryChangedToClientHandler implements I
 
 	@Override
 	public IMessage onMessage(final MachineModMessageEntityInventoryChangedToClient message, MessageContext ctx) {
-		LogHelper.info("on message MachineModMessageEntityInventoryChangedToClient");
+		//LogHelper.info("on message MachineModMessageEntityInventoryChangedToClient");
 		if (Minecraft.getMinecraft().theWorld != null) {
 			if ( Minecraft.getMinecraft().theWorld.isRemote){
 
@@ -32,7 +32,7 @@ public class MachineModMessageEntityInventoryChangedToClientHandler implements I
 	public void processMessage(MachineModMessageEntityInventoryChangedToClient message) {
 		if (message != null) {
 			if (Minecraft.getMinecraft().theWorld != null) {
-				//if (Minecraft.getMinecraft().thePlayer != null) {
+				if (Minecraft.getMinecraft().thePlayer != null) {
 
 					Entity entity = Minecraft.getMinecraft().theWorld.getEntityByID(message.entityid);
 
@@ -66,7 +66,7 @@ public class MachineModMessageEntityInventoryChangedToClientHandler implements I
 							}
 
 						}
-				//	}
+					}
 				}
 			}
 		}
