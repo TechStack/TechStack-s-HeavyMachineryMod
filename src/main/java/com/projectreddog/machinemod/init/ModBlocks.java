@@ -39,12 +39,12 @@ public class ModBlocks {
 
 		GameRegistry.registerTileEntity(TileEntityDrilingRig.class, Reference.MODBLOCK_MACHINE_DRILLING_RIG);
 		///Register Fluids
-//		fluidmoonshine.setDensity(10);
-//		FluidRegistry.registerFluid(fluidmoonshine);
-//		BlockMoonshine moonshine = new BlockMoonshine(fluidmoonshine, Material.water) ;
-//
-//		GameRegistry.registerBlock(moonshine, Reference.MODBLOCK_MACHINE_FLUID_MOONSHINE);
-//		fluidmoonshine.setUnlocalizedName(moonshine.getUnlocalizedName());
+		fluidmoonshine.setDensity(10);
+		FluidRegistry.registerFluid(fluidmoonshine);
+		BlockMoonshine moonshine = new BlockMoonshine(fluidmoonshine, Material.water) ;
+
+		GameRegistry.registerBlock(moonshine, Reference.MODBLOCK_MACHINE_FLUID_MOONSHINE);
+		fluidmoonshine.setUnlocalizedName(moonshine.getUnlocalizedName());
 	}
 
 	public static void initBlockRender() {
