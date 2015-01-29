@@ -42,18 +42,6 @@ public class BlockMoonshine extends BlockFluidClassic    {
             return super.displaceIfPossible(world, bp);
     }
 
-   @Override
-    protected void flowIntoBlock(World world, BlockPos pos, int meta)
-    {
-        if (meta < 0) return;
-        if (displaceIfPossible(world, pos))
-        {
-        	world.setBlockState(pos, this.getBlockState().getBaseState().withProperty(LEVEL, meta), 3);
-        			
-        			
-  
-        	}
-    }
-
+ 
 
 }
