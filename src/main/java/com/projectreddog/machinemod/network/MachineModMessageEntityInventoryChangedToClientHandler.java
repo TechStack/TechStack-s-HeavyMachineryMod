@@ -56,14 +56,15 @@ public class MachineModMessageEntityInventoryChangedToClientHandler implements I
 							// //
 							// LogHelper.info("RECIEVED ENTITY PACKET FROM SERVER"
 							// // );
-							if (entity instanceof EntityLoader) {
-								EntityLoader eL = (EntityLoader) entity;
-								eL.setInventorySlotContents(message.slot, message.is);
-							}
-							if (entity instanceof EntityDumpTruck) {
-								EntityDumpTruck eDT = (EntityDumpTruck) entity;
-								eDT.setInventorySlotContents(message.slot, message.is);
-							}
+//							if (entity instanceof EntityLoader) {
+//								EntityLoader eL = (EntityLoader) entity;
+//								eL.setInventorySlotContents(message.slot, message.is);
+//							}
+//							if (entity instanceof EntityDumpTruck) {
+//								EntityDumpTruck eDT = (EntityDumpTruck) entity;
+							EntityMachineModRideable eMMR = (EntityMachineModRideable) entity;
+								eMMR.setInventorySlotContents(message.slot, message.is);
+//							}
 
 						}
 					}
