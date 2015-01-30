@@ -38,6 +38,8 @@ public class EntityLoader extends EntityMachineModRideable  {
 		this.maxAngle = 0;
 		this.minAngle = -90;
 		this.droppedItem = ModItems.loader;
+		this.shouldSendClientInvetoryUpdates=true;
+	
 	}
 
 	@Override

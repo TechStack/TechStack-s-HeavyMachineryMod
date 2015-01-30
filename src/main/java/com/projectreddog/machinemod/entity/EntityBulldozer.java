@@ -23,6 +23,7 @@ public class EntityBulldozer extends EntityMachineModRideable {
 		this.maxAngle = 0;
 		this.minAngle = 0;
 		this.droppedItem = ModItems.bulldozer;
+
 	}
 
 

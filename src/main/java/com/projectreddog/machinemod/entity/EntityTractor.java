@@ -30,6 +30,9 @@ public class EntityTractor extends EntityMachineModRideable {
 		this.maxAngle = 0;
 		this.minAngle = -60;
 		this.droppedItem = ModItems.tractor;
+		this.shouldSendClientInvetoryUpdates=true;
+		
+			
 	}
 
 	@Override

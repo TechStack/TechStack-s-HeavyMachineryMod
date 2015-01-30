@@ -40,6 +40,8 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 		this.maxAngle = 0;
 		this.minAngle = -60;
 		this.droppedItem = ModItems.dumptruck;
+		this.shouldSendClientInvetoryUpdates=true;
+	
 	}
 
 	@Override

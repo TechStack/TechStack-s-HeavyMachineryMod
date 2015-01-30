@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
@@ -24,14 +25,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClient;
 import com.projectreddog.machinemod.network.MachineModMessageEntityToClient;
+import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServer;
 import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.utility.LogHelper;
 
 public class EntityMachineModRideable extends Entity implements IInventory {
 
 	public double velocity;
 	public float yaw;
 	protected ItemStack[] inventory;
+	public boolean shouldSendClientInvetoryUpdates=false;
 
 	public boolean isPlayerAccelerating = false;
 	public boolean isPlayerBreaking = false;
@@ -43,7 +45,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public double TargetposY;
 	public double TargetposZ;
 	public float TargetYaw;
-
+    public boolean isFristTick = true;
 	public double lastPosX = 0d;
 	public double lastPosY = 0d;
 	public double lastPosZ = 0d;
@@ -67,7 +69,20 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		setSize(1.5F, 0.6F); // should be overridden in Extened version.
 		this.stepHeight = 1;
 		inventory = new ItemStack[0];
+		
+		
 
+	}
+	
+	
+	public void clientInit(){
+		if (worldObj.isRemote){
+			// client side  so request inventory
+			if ( shouldSendClientInvetoryUpdates){
+			ModNetwork.simpleNetworkWrapper.sendToServer((new MachineModMessageRequestAllInventoryToServer(this.getEntityId() )));
+			}
+
+		}
 	}
 
 	public double getMaxVelocity() {
@@ -315,6 +330,13 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		// if (YawTickCount==0){
 		// this.rotationYaw=TargetYaw;
 		// }
+		
+		if (isFristTick){ 
+			clientInit();
+		} else {
+			isFristTick=false;
+		}
+
 	}
 
 	@Override
@@ -548,7 +570,19 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		}
 		if (!(this.worldObj.isRemote)) {
 			// send packet to notify client of contents of machine's inventory
+			if (this.shouldSendClientInvetoryUpdates){
 			ModNetwork.sendPacketToAllAround((new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), slot, inventory[slot])), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
+			}
+		}
+
+	}
+	
+	
+	public void sendAllInventoryToPlayer(EntityPlayerMP player){
+		for (int i=0; i < inventory.length; i++){
+			
+			ModNetwork.simpleNetworkWrapper.sendTo(new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), i, inventory[i]), player);
+			
 		}
 
 	}

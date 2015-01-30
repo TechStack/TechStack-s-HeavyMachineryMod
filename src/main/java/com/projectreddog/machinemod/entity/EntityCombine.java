@@ -38,6 +38,7 @@ public class EntityCombine extends EntityMachineModRideable  {
 		this.maxAngle = 0;
 		this.minAngle = -90;
 		this.droppedItem = ModItems.combine;
+	
 	}
 
 	@Override

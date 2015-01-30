@@ -20,6 +20,8 @@ import com.projectreddog.machinemod.network.MachineModMessageInputToServer;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServerHandler;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServerOpenGui;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServerOpenGuiHandler;
+import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServer;
+import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServerHandler;
 import com.projectreddog.machinemod.reference.Reference;
 
 public class ModNetwork {
@@ -39,6 +41,8 @@ public class ModNetwork {
 																																								// to
 																																								// server
 		simpleNetworkWrapper.registerMessage(MachineModMessageEntityInventoryChangedToClientHandler.class, MachineModMessageEntityInventoryChangedToClient.class, 3, Side.CLIENT);// message
+		simpleNetworkWrapper.registerMessage(MachineModMessageRequestAllInventoryToServerHandler.class, MachineModMessageRequestAllInventoryToServer.class, 4, Side.SERVER);// message
+
 		// to
 		// client
 
