@@ -15,7 +15,7 @@ import com.projectreddog.machinemod.block.BlockMachineExplosivePackedDrilledSton
 import com.projectreddog.machinemod.block.BlockMachineMod;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
 import com.projectreddog.machinemod.block.BlockMachineModDrillingRig;
-import com.projectreddog.machinemod.block.BlockMoonshine;
+import com.projectreddog.machinemod.block.BlockBioFuel;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityDrilingRig;
 
@@ -26,8 +26,8 @@ public class ModBlocks {
 	public static final BlockMachineMod machineexplosivepackeddrilledstone = new BlockMachineExplosivePackedDrilledStone();
 	public static final BlockMachineMod machinemodblastedstone = new BlockMachineModBlastedStone();
 	public static final Block machinedrillingrig = new BlockMachineModDrillingRig();
-	public static Fluid fluidmoonshine = new Fluid("moonshine");
-
+	public static Fluid fluidBioFuel = new Fluid("BioFuel");
+	public static BlockBioFuel biofuel ;
 
 	public static void init() {
 		GameRegistry.registerBlock(machineassemblytable, Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
@@ -39,12 +39,12 @@ public class ModBlocks {
 
 		GameRegistry.registerTileEntity(TileEntityDrilingRig.class, Reference.MODBLOCK_MACHINE_DRILLING_RIG);
 		///Register Fluids
-		fluidmoonshine.setDensity(10);
-		FluidRegistry.registerFluid(fluidmoonshine);
-		BlockMoonshine moonshine = new BlockMoonshine(fluidmoonshine, Material.water) ;
+		fluidBioFuel.setDensity(10);
+		FluidRegistry.registerFluid(fluidBioFuel);
+		 biofuel = new BlockBioFuel(fluidBioFuel, Material.water) ;
 
-		GameRegistry.registerBlock(moonshine, Reference.MODBLOCK_MACHINE_FLUID_MOONSHINE);
-		fluidmoonshine.setUnlocalizedName(moonshine.getUnlocalizedName());
+		GameRegistry.registerBlock(biofuel, Reference.MODBLOCK_MACHINE_FLUID_BIOFUEL);
+		fluidBioFuel.setUnlocalizedName(biofuel.getUnlocalizedName());
 	}
 
 	public static void initBlockRender() {
@@ -54,6 +54,9 @@ public class ModBlocks {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineexplosivepackeddrilledstone), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinemodblastedstone), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinedrillingrig), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_DRILLING_RIG, "inventory"));
+
+		
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(biofuel), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FLUID_BIOFUEL, "inventory"));
 
 	}
 }

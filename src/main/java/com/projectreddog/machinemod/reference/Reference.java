@@ -26,7 +26,7 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_BLASTED_STONE = "machineblastedstone";
 	public static final String MODBLOCK_MACHINE_DRILLING_RIG = "machinedrillingrig";
 	
-	public static final String MODBLOCK_MACHINE_FLUID_MOONSHINE = "moonshine";
+	public static final String MODBLOCK_MACHINE_FLUID_BIOFUEL = "biofuel";
 
 
 	public static final String MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE = "machineexplosivepackeddrilledstone";

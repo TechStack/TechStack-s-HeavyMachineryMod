@@ -1,0 +1,21 @@
+{
+    "variants": {
+        "normal": { "model": "machinemod:biofuel" },
+        "level=0": {"model": "machinemod:biofuel" },
+        "level=1": {"model": "machinemod:biofuel" },
+        "level=2": {"model": "machinemod:biofuel" },
+        "level=3": {"model": "machinemod:biofuel" },
+        "level=4": {"model": "machinemod:biofuel" },
+        "level=5": {"model": "machinemod:biofuel" },
+        "level=6": {"model": "machinemod:biofuel" },
+        "level=7": {"model": "machinemod:biofuel" },
+        "level=8": {"model": "machinemod:biofuel" },       
+        "level=9": {"model": "machinemod:biofuel" },
+        "level=10": {"model": "machinemod:biofuel" },
+        "level=11": {"model": "machinemod:biofuel" },
+        "level=12": {"model": "machinemod:biofuel" },
+        "level=13": {"model": "machinemod:biofuel" },
+        "level=14": {"model": "machinemod:biofuel" },
+        "level=15": {"model": "machinemod:biofuel" }
+    }
+}

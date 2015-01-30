@@ -5,6 +5,7 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.projectreddog.machinemod.item.ItemBulldozer;
+import com.projectreddog.machinemod.item.ItemCombine;
 import com.projectreddog.machinemod.item.ItemDrillHead;
 import com.projectreddog.machinemod.item.ItemDrillPipe;
 import com.projectreddog.machinemod.item.ItemDumpTruck;
@@ -25,6 +26,7 @@ public class ModItems {
 	// public static final ItemMachineMod drillingrig = new ItemDrillingRig();
 	public static final ItemMachineMod dumptruck = new ItemDumpTruck();
 	public static final ItemMachineMod loader = new ItemLoader();
+	public static final ItemMachineMod combine = new ItemCombine();
 	public static final ItemMachineMod drillhead = new ItemDrillHead();
 	public static final ItemMachineMod drillpipe = new ItemDrillPipe();
 	public static final ItemMachineMod plow = new ItemTractorAttachmentPlow();
@@ -38,6 +40,7 @@ public class ModItems {
 		// GameRegistry.registerItem(drillingrig, "drillingrig");
 		GameRegistry.registerItem(dumptruck, "dumptruck");
 		GameRegistry.registerItem(loader, "loader");
+		GameRegistry.registerItem(combine, "combine");
 		GameRegistry.registerItem(drillhead, "drillhead");
 		GameRegistry.registerItem(drillpipe, "drillpipe");
 		GameRegistry.registerItem(plow, "plow");

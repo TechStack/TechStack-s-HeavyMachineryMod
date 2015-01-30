@@ -17,13 +17,13 @@ import com.google.common.collect.ImmutableMap;
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 
-public class BlockMoonshine extends BlockFluidClassic    {
+public class BlockBioFuel extends BlockFluidClassic    {
 
-	public BlockMoonshine(Fluid fluid, Material material) {
+	public BlockBioFuel(Fluid fluid, Material material) {
 		super(fluid, material);
 		// TODO Auto-generated constructor stub
 		setCreativeTab(CreativeTabMachineMod.MACHINEMOD_TAB);
-		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" +Reference.MODBLOCK_MACHINE_FLUID_MOONSHINE);
+		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" +Reference.MODBLOCK_MACHINE_FLUID_BIOFUEL);
 
 	}
 	
