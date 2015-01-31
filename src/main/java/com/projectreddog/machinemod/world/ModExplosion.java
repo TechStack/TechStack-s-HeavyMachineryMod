@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockStone;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.google.common.collect.Lists;
+import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
 import com.projectreddog.machinemod.init.ModBlocks;
 
 public class ModExplosion extends Explosion {
@@ -119,29 +121,51 @@ public class ModExplosion extends Explosion {
 	private void changeBlockType(int x, int y, int z, Block block) {
 
 		if (block == ModBlocks.machineexplosivepackeddrilledstone) {
-			// do the explosion! if it's blasted stone so we can propigate the
+			// do the explosion! if it's blasted stone so we can propagate the
 			// explosion on to the next block !
 			block.onBlockExploded(this.worldObj, new BlockPos(x, y, z), this);
 		} else {
 
 			if (!this.worldObj.isRemote) {
 
-				// only spawn if its air above the block
-				// if (this.worldObj.isAirBlock(x,y+1,
-				// z)||this.worldObj.isAirBlock(x,y+2, z))
-				// {
-				// EntityFallingBlock entityfallingblock = new
-				// EntityFallingBlock(this.worldObj, (double)((float)x + 0.5F),
-				// (double)((float)y + 0.7F), (double)((float)z + 0.5F),
-				// ModBlocks.machinemodblastesStone, 0);
-				// entityfallingblock.motionY=.6d;
-				// this.worldObj.spawnEntityInWorld(entityfallingblock);
-				// }
+				// Determine block to turn this block into
+				BlockPos bp = new BlockPos(x, y, z);
 
-				// this.worldObj.setBlockToAir(x,y,z);
+				if ( this.worldObj.getBlockState(bp).getBlock()== Blocks.stone) {
+					//its stone so get variant
+					if ( this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT_PROP) == BlockStone.EnumType.STONE){
+						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machinemodblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE,BlockMachineModBlastedStone.EnumVanillaOres.STONE ));
+					}else if ( this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT_PROP) == BlockStone.EnumType.GRANITE){
+						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machinemodblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE,BlockMachineModBlastedStone.EnumVanillaOres.GRANITE ));
+					}else if ( this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT_PROP) == BlockStone.EnumType.DIORITE){
+						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machinemodblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE,BlockMachineModBlastedStone.EnumVanillaOres.DIORITE ));
+					}else if ( this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT_PROP) == BlockStone.EnumType.ANDESITE){
+						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machinemodblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE,BlockMachineModBlastedStone.EnumVanillaOres.ANDESITE ));
+					}
+				} 
+				// not stone
+				else if(this.worldObj.getBlockState(bp).getBlock()== Blocks.gold_ore) {
+					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machinemodblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE,BlockMachineModBlastedStone.EnumVanillaOres.GOLD));
+				}else if(this.worldObj.getBlockState(bp).getBlock()== Blocks.iron_ore) {
+					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machinemodblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE,BlockMachineModBlastedStone.EnumVanillaOres.IRON ));
+				}else if(this.worldObj.getBlockState(bp).getBlock()== Blocks.coal_ore) {
+					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machinemodblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE,BlockMachineModBlastedStone.EnumVanillaOres.COAL ));
+				}else if(this.worldObj.getBlockState(bp).getBlock()== Blocks.lapis_ore) {
+					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machinemodblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE,BlockMachineModBlastedStone.EnumVanillaOres.LAPIS ));
+				}else if(this.worldObj.getBlockState(bp).getBlock()== Blocks.diamond_ore) {
+					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machinemodblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE,BlockMachineModBlastedStone.EnumVanillaOres.DIAMOND ));
+				}else if(this.worldObj.getBlockState(bp).getBlock()== Blocks.redstone_ore ) {
+					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machinemodblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE,BlockMachineModBlastedStone.EnumVanillaOres.REDSTONE ));
+				}else if(this.worldObj.getBlockState(bp).getBlock()== Blocks.emerald_ore) {
+					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machinemodblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE,BlockMachineModBlastedStone.EnumVanillaOres.EMERALD ));
+				}else if( this.worldObj.getBlockState(bp).getBlock()== ModBlocks.machinemodblastedstone || this.worldObj.getBlockState(bp).getBlock()== ModBlocks.machinemodblastedstone2 ) {
+				}else{
+					// check for mod blocks here using ore dictionary & set it to ModBlocks.machinemodblastedstone2 ......
 
-				this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machinemodblastedstone.getDefaultState());
-
+					block.dropBlockAsItem(this.worldObj, bp, this.worldObj.getBlockState(bp),0);
+					block.onBlockExploded(this.worldObj, bp, this);
+					//this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machinemodblastedstone.getDefaultState());
+				}	
 			}
 
 		}

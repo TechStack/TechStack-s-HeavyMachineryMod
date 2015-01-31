@@ -10,9 +10,6 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-import com.projectreddog.machinemod.init.ModBlocks;
-import com.projectreddog.machinemod.utility.LogHelper;
-
 public class BlockMachineModFalling extends BlockMachineMod {
 	public static boolean fallInstantly;
 
@@ -56,7 +53,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
 		world.scheduleUpdate(new BlockPos(x, y, z), this, getRandomizedUpdateTime(world));
 
-		if (world.getBlockState(new BlockPos(x, y + 1, z)).getBlock() == ModBlocks.machinemodblastedstone) {
+		if (world.getBlockState(new BlockPos(x, y + 1, z)).getBlock() == this) {
 			world.scheduleUpdate(new BlockPos(x, y + 1, z), this, getRandomizedUpdateTime(world));
 		}
 	}
@@ -86,7 +83,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 
 					// LogHelper.info("X:" + this.motionX + " Y:" + this.motionY
 					// + " Z:"+ this.motionZ);
-					EntityFallingBlock entityfallingblock = new EntityFallingBlock(world, (double) ((float) x + 0.5F), (double) ((float) y + 0.5F), (double) ((float) z + 0.5F), this.getDefaultState());
+					EntityFallingBlock entityfallingblock = new EntityFallingBlock(world, (double) ((float) x + 0.5F), (double) ((float) y + 0.5F), (double) ((float) z + 0.5F), world.getBlockState(pos));
 					// TS removed
 					// this.func_149829_a(entityfallingblock);
 
@@ -101,6 +98,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 			} else {
 
 				BlockPos bp = new BlockPos(x, y, z);
+				IBlockState tmpBS  = world.getBlockState(bp);
 				world.setBlockToAir(bp);
 
 				while (canFallMore(world, x, y - 1, z) && y > 0) {
@@ -110,7 +108,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 				if (y > 0) {
 					bp = new BlockPos(x, y, z);
 
-					world.setBlockState(bp, this.getDefaultState());
+					world.setBlockState(bp,tmpBS  );
 				}
 			}
 		}
@@ -124,8 +122,13 @@ public class BlockMachineModFalling extends BlockMachineMod {
 		this.motionZ = 0;
 		this.motionY = 0;
 		Block block2;
-		BlockPos bp = new BlockPos(x, y - 1, z);
+		BlockPos bp = new BlockPos(x, y , z);
+		IBlockState tmpBS  = world.getBlockState(bp);
+		
+		 bp = new BlockPos(x, y - 1, z);
 		Block block = world.getBlockState(bp).getBlock();
+		
+
 		if (block == Blocks.air || block == Blocks.fire)// test fall down this x
 														// z
 		{
@@ -140,6 +143,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 
 					bp = new BlockPos(x + i, y, z + j);
 					block = world.getBlockState(bp).getBlock();
+					
 
 					if (block == Blocks.air || block == Blocks.fire)// test fall
 																	// down this
@@ -159,7 +163,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 							world.setBlockToAir(bp);
 
 							bp = new BlockPos(x + i, y - 1, z + j);
-							world.setBlockState(bp, this.getDefaultState());
+							world.setBlockState(bp, tmpBS);
 							return false;
 						}
 					}

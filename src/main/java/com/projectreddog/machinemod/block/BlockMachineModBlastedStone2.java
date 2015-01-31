@@ -4,56 +4,57 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
 
 import com.projectreddog.machinemod.reference.Reference;
 
-public class BlockMachineModBlastedStone extends BlockMachineModBlastedStoneBase {
-	  public static final PropertyEnum PROPERTYORE = PropertyEnum.create("ore", EnumVanillaOres.class);
+public class BlockMachineModBlastedStone2 extends BlockMachineModBlastedStoneBase {
+	  public static final PropertyEnum PROPERTYORE = PropertyEnum.create("ore", EnumModOres.class);
 
-	public BlockMachineModBlastedStone() {
+	public BlockMachineModBlastedStone2() {
 		super();
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
+		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLASTED_STONE2);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
 		this.setStepSound(soundTypeStone);
 	}
+
+	
 	@Override
 	  public IBlockState getStateFromMeta(int meta)
 	  {
-		EnumVanillaOres ore = EnumVanillaOres.byMetadata(meta);
+		EnumModOres ore = EnumModOres.byMetadata(meta);
 	    return this.getDefaultState().withProperty(PROPERTYORE, ore);
 	  }
 
 	  @Override
 	  public int getMetaFromState(IBlockState state)
 	  {
-		  EnumVanillaOres ore = (EnumVanillaOres)state.getValue(PROPERTYORE);
+		  EnumModOres ore = (EnumModOres)state.getValue(PROPERTYORE);
 
 	    return ore.getMetadata();
 	  }
-	  
+
+
 	  @Override
 	  protected BlockState createBlockState()
 	  {
 	    return new BlockState(this, new IProperty[] {PROPERTYORE});
 	  }
 	
-	
-	 public static enum EnumVanillaOres implements IStringSerializable
+	 public static enum EnumModOres implements IStringSerializable
 	  {
-		 STONE(0,"STONE"),
-		 GRANITE(1,"GRANITE"),
-		 DIORITE(2,"DIORITE"),
-		 ANDESITE(3,"ANDESITE"),
-		 GOLD(4,"GOLD"),
-		 IRON(5,"IRON"),
-		 COAL(6,"COAL"),
-		 LAPIS(7,"LAPIS"),
-		 DIAMOND(8,"DIAMOND"),
-		 REDSTONE(9,"REDSTONE"),
-		 EMERALD(10,"EMERALD");
+		 COPPER(0,"COPPER"),
+		 TIN(1,"TIN"),
+		 SILVER(2,"SILVER"),
+		 LEAD(3,"LEAD"),
+		 QUARTZ(4,"QUARTZ"),
+		 RUBY(5,"RUBY"),
+		 SAPPHIRE(6,"SAPPHIRE"),
+		 URANIUM(7,"URANIUM"),
+		 ALUMINUM(8,"ALUMINUM");
 		 
 	    public int getMetadata()
 	    {
@@ -66,7 +67,7 @@ public class BlockMachineModBlastedStone extends BlockMachineModBlastedStoneBase
 	      return this.name;
 	    }
 
-	    public static EnumVanillaOres byMetadata(int meta)
+	    public static EnumModOres byMetadata(int meta)
 	    {
 	      if (meta < 0 || meta >= META_LOOKUP.length)
 	      {
@@ -83,9 +84,9 @@ public class BlockMachineModBlastedStone extends BlockMachineModBlastedStoneBase
 
 	    private final int meta;
 	    private final String name;
-	    private static final EnumVanillaOres[] META_LOOKUP = new EnumVanillaOres[values().length];
+	    private static final EnumModOres[] META_LOOKUP = new EnumModOres[values().length];
 
-	    private EnumVanillaOres(int i_meta, String i_name)
+	    private EnumModOres(int i_meta, String i_name)
 	    {
 	      this.meta = i_meta;
 	      this.name = i_name;
@@ -93,10 +94,12 @@ public class BlockMachineModBlastedStone extends BlockMachineModBlastedStoneBase
 
 	    static
 	    {
-	      for (EnumVanillaOres ore : values()) {
+	      for (EnumModOres ore : values()) {
 	        META_LOOKUP[ore.getMetadata()] = ore;
 	      }
 	    }
 	  }
+	 
+	 
 	 
 }
