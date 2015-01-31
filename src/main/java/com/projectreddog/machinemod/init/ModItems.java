@@ -33,6 +33,8 @@ public class ModItems {
 	public static final ItemMachineMod planter = new ItemTractorAttachmentPlanter();
 	public static final ItemMachineMod sprayer= new ItemTractorAttachmentSprayer();
 
+	
+	
 	public static void init() {
 		GameRegistry.registerItem(bulldozer, "bulldozer");
 		GameRegistry.registerItem(tractor, "tractor");

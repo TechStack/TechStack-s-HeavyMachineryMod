@@ -1,5 +1,17 @@
 {
     "variants": {
-        "ore=stone": { "model": "machinemod:machineblastedstone" }
+        "ore=stone": { "model": "machinemod:machineblastedstone_variants_stone" },
+        "ore=granite": { "model": "machinemod:machineblastedstone_variants_granite" },
+        "ore=diorite": { "model": "machinemod:machineblastedstone_variants_diorite" },
+        "ore=andesite": { "model": "machinemod:machineblastedstone_variants_andesite" },
+        "ore=gold": { "model": "machinemod:machineblastedstone_variants_gold" },
+        "ore=iron": { "model": "machinemod:machineblastedstone_variants_iron" },
+        "ore=coal": { "model": "machinemod:machineblastedstone_variants_coal" },
+        "ore=lapis": { "model": "machinemod:machineblastedstone_variants_lapis" },
+        "ore=diamond": { "model": "machinemod:machineblastedstone_variants_diamond" },
+        "ore=redstone": { "model": "machinemod:machineblastedstone_variants_redstone" },
+        "ore=emerald": { "model": "machinemod:machineblastedstone_variants_emerald" }
+        
+        
     }
 }

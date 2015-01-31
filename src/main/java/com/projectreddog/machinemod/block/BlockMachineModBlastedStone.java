@@ -1,5 +1,6 @@
 package com.projectreddog.machinemod.block;
 
+import net.minecraft.block.BlockStone;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
@@ -19,6 +20,17 @@ public class BlockMachineModBlastedStone extends BlockMachineModBlastedStoneBase
 		// this.setHardness(15f);// not sure on the hardness
 		this.setStepSound(soundTypeStone);
 	}
+	
+	@Override
+	 /**
+     * Get the damage value that this Block should drop
+     */
+    public int damageDropped(IBlockState state)
+    {
+		
+        return this.getMetaFromState(state);
+    }
+
 	@Override
 	  public IBlockState getStateFromMeta(int meta)
 	  {

@@ -36,7 +36,15 @@ public class BlockMachineModBlastedStone2 extends BlockMachineModBlastedStoneBas
 
 	    return ore.getMetadata();
 	  }
-
+		@Override
+		 /**
+	     * Get the damage value that this Block should drop
+	     */
+	    public int damageDropped(IBlockState state)
+	    {
+			
+	        return this.getMetaFromState(state);
+	    }
 
 	  @Override
 	  protected BlockState createBlockState()
