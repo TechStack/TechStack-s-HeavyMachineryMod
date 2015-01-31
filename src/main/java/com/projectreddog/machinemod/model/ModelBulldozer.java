@@ -15,7 +15,7 @@ import com.projectreddog.machinemod.model.advanced.AdvancedModelLoader;
 import com.projectreddog.machinemod.model.advanced.IModelCustom;
 import com.projectreddog.machinemod.reference.Reference;
 
-public class ModelBulldozer extends ModelBase {
+public class ModelBulldozer extends ModelTransportable {
 	// fields
 	private IModelCustom myModel;
 
@@ -41,6 +41,13 @@ public class ModelBulldozer extends ModelBase {
 
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity e) {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, e);
+	}
+
+	
+
+	public ResourceLocation getTexture() {
+
+		return new ResourceLocation("machinemod", Reference.MODEL_BULLDOZER_TEXTURE_LOCATION);
 	}
 
 }

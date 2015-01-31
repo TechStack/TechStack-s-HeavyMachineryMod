@@ -7,9 +7,13 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
-import com.projectreddog.machinemod.utility.LogHelper;
+import com.projectreddog.machinemod.model.ModelBulldozer;
+import com.projectreddog.machinemod.model.ModelDumpTruck;
+import com.projectreddog.machinemod.model.ModelTransportable;
 
 public class ItemDumpTruck extends ItemMachineMod {
+
+//	public ModelTransportable mt ;
 
 	public ItemDumpTruck() {
 		super();
@@ -39,4 +43,11 @@ public class ItemDumpTruck extends ItemMachineMod {
 		}
 		return result;
 	}
+//	@Override
+//	public ModelTransportable getModel() {
+//		if (mt == null){
+//			mt = new ModelDumpTruck();
+//		}
+//		return mt;
+//	}
 }

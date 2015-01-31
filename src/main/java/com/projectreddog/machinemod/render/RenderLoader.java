@@ -76,18 +76,6 @@ public class RenderLoader extends Render {
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelLoader.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
-		((ModelLoader) this.modelLoader).renderGroupObject("LoaderBody_Cube");
-		// GL11.glTranslatef(0f, -1.5f, -0.5f);
-		GL11.glTranslatef(0f, -2.25f, -1.05f);
-		GL11.glRotatef(((EntityLoader) entity).Attribute1, 1, 0, 0);
-		((ModelLoader) this.modelLoader).renderGroupObject("Arm2_Cube.002");
-		// GL11.glTranslatef(0f, 1.2f, -1.2f);
-		GL11.glTranslatef(0f, 1.8f, -1.9f);
-		if (((EntityLoader) entity).Attribute1 < -30) {
-			GL11.glRotatef((((EntityLoader) entity).Attribute1 + 30) * -2f, 1, 0, 0);
-		}
-		((ModelLoader) this.modelLoader).renderGroupObject("Bucket_Cube.003");
-		
 		
 		
 		

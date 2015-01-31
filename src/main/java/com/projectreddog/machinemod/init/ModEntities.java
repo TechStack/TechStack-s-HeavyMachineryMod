@@ -9,6 +9,7 @@ import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityTractor;
+import com.projectreddog.machinemod.entity.EntityWideBedTruck;
 import com.projectreddog.machinemod.reference.Reference;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
@@ -25,6 +26,7 @@ public class ModEntities {
 		EntityRegistry.registerModEntity(EntityTractor.class, "tractor", 5, mod, 80, 1, false);
 		EntityRegistry.registerModEntity(EntityCombine.class, "combine", 6, mod, 80, 1, false);
 
+		EntityRegistry.registerModEntity(EntityWideBedTruck.class, "widebedtruck",7, mod, 80, 1, false);
 
 	}
 }

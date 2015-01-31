@@ -11,6 +11,7 @@ import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityTractor;
+import com.projectreddog.machinemod.entity.EntityWideBedTruck;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
@@ -19,6 +20,7 @@ import com.projectreddog.machinemod.render.RenderCombine;
 import com.projectreddog.machinemod.render.RenderDumpTruck;
 import com.projectreddog.machinemod.render.RenderLoader;
 import com.projectreddog.machinemod.render.RenderTractor;
+import com.projectreddog.machinemod.render.RenderWideBedTruck;
 
 public class ClientProxy extends CommonProxy {
 	@Override
@@ -34,6 +36,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityLoader.class, new RenderLoader(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityTractor.class, new RenderTractor(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityCombine.class, new RenderCombine(Minecraft.getMinecraft().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityWideBedTruck.class, new RenderWideBedTruck(Minecraft.getMinecraft().getRenderManager()));
 
 		
 

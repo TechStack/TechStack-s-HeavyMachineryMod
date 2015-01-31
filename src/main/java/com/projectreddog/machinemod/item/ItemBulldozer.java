@@ -7,9 +7,13 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 import com.projectreddog.machinemod.entity.EntityBulldozer;
+import com.projectreddog.machinemod.model.ModelBulldozer;
+import com.projectreddog.machinemod.model.ModelTransportable;
 
-public class ItemBulldozer extends ItemMachineMod {
-
+public class ItemBulldozer extends ItemTransportable {
+	
+	
+	public ModelTransportable mt ;
 	public ItemBulldozer() {
 		super();
 		this.setUnlocalizedName("bulldozer");
@@ -40,6 +44,14 @@ public class ItemBulldozer extends ItemMachineMod {
 			// LogHelper.info("Spawn entity resutl:" + result );
 		}
 		return result;
+	}
+	
+	@Override
+	public ModelTransportable getModel() {
+		if (mt == null){
+			mt = new ModelBulldozer();
+		}
+		return mt;
 	}
 
 }

@@ -2,7 +2,8 @@ package com.projectreddog.machinemod.entity;
 
 import java.util.Random;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -45,13 +46,13 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public double TargetposY;
 	public double TargetposZ;
 	public float TargetYaw;
-    public boolean isFristTick = true;
+	public boolean isFristTick = true;
 	public double lastPosX = 0d;
 	public double lastPosY = 0d;
 	public double lastPosZ = 0d;
 	public float lastAttribute1 = 0f;
 	public int sendInterval = 0;
-
+	public double maxSpeed=0.2d;
 	public float Attribute1;// multi-purpose variable use defined in extended
 
 	public AxisAlignedBB BoundingBox;
@@ -69,17 +70,17 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		setSize(1.5F, 0.6F); // should be overridden in Extened version.
 		this.stepHeight = 1;
 		inventory = new ItemStack[0];
-		
-		
+
+
 
 	}
-	
-	
+
+
 	public void clientInit(){
 		if (worldObj.isRemote){
 			// client side  so request inventory
 			if ( shouldSendClientInvetoryUpdates){
-			ModNetwork.simpleNetworkWrapper.sendToServer((new MachineModMessageRequestAllInventoryToServer(this.getEntityId() )));
+				ModNetwork.simpleNetworkWrapper.sendToServer((new MachineModMessageRequestAllInventoryToServer(this.getEntityId() )));
 			}
 
 		}
@@ -88,7 +89,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public double getMaxVelocity() {
 		// created as method so extending class can easily override to allow for
 		// different speeds per machine
-		return 0.2d;
+		return maxSpeed;
 	}
 
 	// 1.8
@@ -197,7 +198,11 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			this.setDead();
 		}
 
-		if (worldObj.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) {
+		if (worldObj.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))) ||
+				worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.water ||
+				worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.lava ||
+				worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock()== Blocks.snow_layer
+				) {
 			// in air block so fall i'll actually park the entity inside the
 			// block below just a little bit.
 			this.motionY -= 0.03999999910593033D;
@@ -330,7 +335,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		// if (YawTickCount==0){
 		// this.rotationYaw=TargetYaw;
 		// }
-		
+
 		if (isFristTick){ 
 			clientInit();
 		} else {
@@ -491,20 +496,26 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		}
 		return inAngle;
 	}
-
-	public void toppleTree(BlockPos bp, int depth) {
+//&& (previousBlock == Blocks.log  || previousBlock == Blocks.log2)
+	 //&& (previousBlock == Blocks.log  || previousBlock == Blocks.log2)
+	public void toppleTree(BlockPos bp, int depth, int widthDepth, Block previousBlock) {
 		if (depth < Reference.MAX_TREE_DEPTH) {
-			if (worldObj.getBlockState(bp).getBlock() == Blocks.log || worldObj.getBlockState(bp).getBlock() == Blocks.log2 || worldObj.getBlockState(bp).getBlock() == Blocks.leaves || worldObj.getBlockState(bp).getBlock() == Blocks.leaves2) {
+			if (widthDepth< Reference.MAX_TREE_WIDTH){
+				if (worldObj.getBlockState(bp).getBlock() == Blocks.log   ||
+						worldObj.getBlockState(bp).getBlock() == Blocks.log2  ||
+						worldObj.getBlockState(bp).getBlock() == Blocks.leaves ||
+						worldObj.getBlockState(bp).getBlock() == Blocks.leaves2) {
+					previousBlock=worldObj.getBlockState(bp).getBlock();
+					worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
+					worldObj.setBlockToAir(bp);
+					toppleTree(bp.offset(EnumFacing.DOWN), depth + 1,widthDepth,previousBlock);
+					toppleTree(bp.offset(EnumFacing.UP), depth + 1,widthDepth,previousBlock);
+					toppleTree(bp.offset(EnumFacing.SOUTH), depth + 1,widthDepth+1,previousBlock);
+					toppleTree(bp.offset(EnumFacing.EAST), depth + 1,widthDepth+1,previousBlock);
+					toppleTree(bp.offset(EnumFacing.WEST), depth + 1,widthDepth+1,previousBlock);
+					toppleTree(bp.offset(EnumFacing.NORTH), depth + 1,widthDepth+1,previousBlock);
 
-				worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-				worldObj.setBlockToAir(bp);
-				toppleTree(bp.offset(EnumFacing.DOWN), depth + 1);
-				toppleTree(bp.offset(EnumFacing.UP), depth + 1);
-				toppleTree(bp.offset(EnumFacing.SOUTH), depth + 1);
-				toppleTree(bp.offset(EnumFacing.EAST), depth + 1);
-				toppleTree(bp.offset(EnumFacing.WEST), depth + 1);
-				toppleTree(bp.offset(EnumFacing.NORTH), depth + 1);
-
+				}
 			}
 		}
 	}
@@ -571,18 +582,18 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		if (!(this.worldObj.isRemote)) {
 			// send packet to notify client of contents of machine's inventory
 			if (this.shouldSendClientInvetoryUpdates){
-			ModNetwork.sendPacketToAllAround((new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), slot, inventory[slot])), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
+				ModNetwork.sendPacketToAllAround((new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), slot, inventory[slot])), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
 			}
 		}
 
 	}
-	
-	
+
+
 	public void sendAllInventoryToPlayer(EntityPlayerMP player){
 		for (int i=0; i < inventory.length; i++){
-			
+
 			ModNetwork.simpleNetworkWrapper.sendTo(new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), i, inventory[i]), player);
-			
+
 		}
 
 	}

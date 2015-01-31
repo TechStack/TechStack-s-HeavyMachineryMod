@@ -72,14 +72,11 @@ public class RenderDumpTruck extends Render {
 		GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
 		this.bindEntityTexture(entity);
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
-		// this.modelDumpTruck.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F,
-		// 0.0625F);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
-		((ModelDumpTruck) this.modelDumpTruck).renderGroupObject("Truck_Base_Cube.002");
-		GL11.glTranslatef(0f, -1.1f, 2.8f);
-		GL11.glRotatef(((EntityDumpTruck) entity).Attribute1, 1, 0, 0);
-		((ModelDumpTruck) this.modelDumpTruck).renderGroupObject("Bed_Cube.000");
+		this.modelDumpTruck.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F,0.0625F);
 
+	
 		GlStateManager.translate(-1.1f, -1.0F, -2.9F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glScalef(.5f, .5f, .5f);

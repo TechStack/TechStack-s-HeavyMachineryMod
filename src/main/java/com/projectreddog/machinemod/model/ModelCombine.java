@@ -10,7 +10,7 @@ import com.projectreddog.machinemod.model.advanced.IModelCustom;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.LogHelper;
 
-public class ModelCombine extends ModelBase {
+public class ModelCombine extends ModelTransportable {
 	// fields
 	private IModelCustom myModel;
 
@@ -42,6 +42,13 @@ public class ModelCombine extends ModelBase {
 
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity e) {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, e);
+	}
+	
+
+
+	public ResourceLocation getTexture() {
+
+		return new ResourceLocation("machinemod", Reference.MODEL_TRACTOR_TEXTURE_LOCATION);
 	}
 
 }

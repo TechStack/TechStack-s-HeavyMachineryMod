@@ -15,7 +15,7 @@ import com.projectreddog.machinemod.model.advanced.AdvancedModelLoader;
 import com.projectreddog.machinemod.model.advanced.IModelCustom;
 import com.projectreddog.machinemod.reference.Reference;
 
-public class ModelTractor extends ModelBase {
+public class ModelTractor extends ModelTransportable {
 	// fields
 	private IModelCustom myModel;
 
@@ -36,6 +36,8 @@ public class ModelTractor extends ModelBase {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		// myModel.renderAll();
 		// will now call rendering for each individual object
+		this.renderGroupObject("Tractor_Cube.001");
+
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -46,6 +48,12 @@ public class ModelTractor extends ModelBase {
 
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity e) {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, e);
+	}
+
+
+	public ResourceLocation getTexture() {
+
+		return new ResourceLocation("machinemod", Reference.MODEL_TRACTOR_TEXTURE_LOCATION);
 	}
 
 }

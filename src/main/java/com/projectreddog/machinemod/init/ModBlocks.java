@@ -44,12 +44,12 @@ public class ModBlocks {
 
 		GameRegistry.registerTileEntity(TileEntityDrilingRig.class, Reference.MODBLOCK_MACHINE_DRILLING_RIG);
 		///Register Fluids
-		fluidBioFuel.setDensity(10);
-		FluidRegistry.registerFluid(fluidBioFuel);
-		 biofuel = new BlockBioFuel(fluidBioFuel, Material.water) ;
-
-		GameRegistry.registerBlock(biofuel, Reference.MODBLOCK_MACHINE_FLUID_BIOFUEL);
-		fluidBioFuel.setUnlocalizedName(biofuel.getUnlocalizedName());
+//		fluidBioFuel.setDensity(10);
+//		FluidRegistry.registerFluid(fluidBioFuel);
+//		 biofuel = new BlockBioFuel(fluidBioFuel, Material.water) ;
+//
+//		GameRegistry.registerBlock(biofuel, Reference.MODBLOCK_MACHINE_FLUID_BIOFUEL);
+//		fluidBioFuel.setUnlocalizedName(biofuel.getUnlocalizedName());
 	}
 
 	public static void initBlockRender() {

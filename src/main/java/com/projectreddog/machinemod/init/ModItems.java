@@ -15,6 +15,7 @@ import com.projectreddog.machinemod.item.ItemTractor;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentSprayer;
+import com.projectreddog.machinemod.item.ItemWideBedTruck;
 import com.projectreddog.machinemod.reference.Reference;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
@@ -32,6 +33,7 @@ public class ModItems {
 	public static final ItemMachineMod plow = new ItemTractorAttachmentPlow();
 	public static final ItemMachineMod planter = new ItemTractorAttachmentPlanter();
 	public static final ItemMachineMod sprayer= new ItemTractorAttachmentSprayer();
+	public static final ItemMachineMod widebedtruck= new ItemWideBedTruck();
 
 	
 	
@@ -48,6 +50,8 @@ public class ModItems {
 		GameRegistry.registerItem(plow, "plow");
 		GameRegistry.registerItem(planter, "planter");
 		GameRegistry.registerItem(sprayer,"sprayer");
+		GameRegistry.registerItem(widebedtruck,"widebedtruck");
+
 	}
 
 	public static void initItemRender() {
@@ -70,6 +74,7 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(sprayer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "sprayer", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tractor, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tractor", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(widebedtruck, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "widebedtruck", "inventory"));
 
 	}
 }

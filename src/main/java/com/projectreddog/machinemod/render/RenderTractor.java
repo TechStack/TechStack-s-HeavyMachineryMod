@@ -53,7 +53,6 @@ public class RenderTractor extends Render {
 		this.bindEntityTexture(entity);
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelTractor.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		((ModelTractor) this.modelTractor).renderGroupObject("Tractor_Cube.001");
 		if (((EntityTractor) entity).getStackInSlot(0) != null) {
 			if (((EntityTractor) entity).getStackInSlot(0).getItem() instanceof ItemTractorAttachment) {
 				if (((EntityTractor) entity).getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlow) {

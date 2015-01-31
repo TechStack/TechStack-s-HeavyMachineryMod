@@ -7,9 +7,13 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 import com.projectreddog.machinemod.entity.EntityLoader;
-import com.projectreddog.machinemod.utility.LogHelper;
+import com.projectreddog.machinemod.model.ModelDumpTruck;
+import com.projectreddog.machinemod.model.ModelLoader;
+import com.projectreddog.machinemod.model.ModelTransportable;
 
-public class ItemLoader extends ItemMachineMod {
+public class ItemLoader extends ItemTransportable {
+
+	public ModelTransportable mt ;
 
 	public ItemLoader() {
 		super();
@@ -38,5 +42,12 @@ public class ItemLoader extends ItemMachineMod {
 			// LogHelper.info("Spawn entity resutl:" + result );
 		}
 		return result;
+	}
+	@Override
+	public ModelTransportable getModel() {
+		if (mt == null){
+			mt = new ModelLoader();
+		}
+		return mt;
 	}
 }

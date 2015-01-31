@@ -7,8 +7,14 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 import com.projectreddog.machinemod.entity.EntityCombine;
+import com.projectreddog.machinemod.model.ModelBulldozer;
+import com.projectreddog.machinemod.model.ModelCombine;
+import com.projectreddog.machinemod.model.ModelDumpTruck;
+import com.projectreddog.machinemod.model.ModelTransportable;
 
-public class ItemCombine extends ItemMachineMod {
+public class ItemCombine extends ItemTransportable {
+
+	public ModelTransportable mt ;
 
 	public ItemCombine() {
 		super();
@@ -37,5 +43,12 @@ public class ItemCombine extends ItemMachineMod {
 			// LogHelper.info("Spawn entity resutl:" + result );
 		}
 		return result;
+	}
+	@Override
+	public ModelTransportable getModel() {
+		if (mt == null){
+			mt = new ModelCombine();
+		}
+		return mt;
 	}
 }
