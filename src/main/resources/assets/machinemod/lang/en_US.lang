@@ -9,6 +9,36 @@ item.machinemod:tractor.name=Tractor
 item.machinemod:planter.name=Planter
 item.machinemod:plow.name=Plow
 item.machinemod:sprayer.name=Sprayer
+item.machinemod:woodengear.name=Wooden Gear
+item.machinemod:stonegear.name=Stone Gear
+item.machinemod:irongear.name=Iron Gear
+item.machinemod:transmission.name=Transmission
+item.machinemod:turbofan.name=Turbo Fan
+
+
+item.machinemod:camshaft.name=Camshaft
+item.machinemod:piston.name=piston
+item.machinemod:turbo.name=Turbo
+item.machinemod:turboengine.name=Turbo Engine
+item.machinemod:flatbedtrailer.name=Flat Bed Trailer
+item.machinemod:dozerblade.name=Dozer Blade
+item.machinemod:tracks.name=Tracks
+item.machinemod:wheel.name=Wheel
+item.machinemod:loaderbucket.name=Loader Bucket
+item.machinemod:dumperbed.name=Dumpper Bed
+item.machinemod:transmission.name=Transmission
+item.machinemod:engine.name=Engine
+
+
+
+
+
+
+
+
+
+
+
 
 # Block Localizations
 tile.machinemod:machineassemblytable.name=Machine Assembly Table

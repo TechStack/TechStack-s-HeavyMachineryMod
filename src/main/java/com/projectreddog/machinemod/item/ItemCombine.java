@@ -41,6 +41,9 @@ public class ItemCombine extends ItemTransportable {
 			entityCombine.prevPosZ = z + .5d;
 			result = world.spawnEntityInWorld(entityCombine);
 			// LogHelper.info("Spawn entity resutl:" + result );
+			if (result && !player.capabilities.isCreativeMode){
+				stack.stackSize --;
+			}
 		}
 		return result;
 	}

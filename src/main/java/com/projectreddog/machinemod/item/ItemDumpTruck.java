@@ -40,6 +40,9 @@ public class ItemDumpTruck extends ItemMachineMod {
 			entityDumpTruck.prevPosZ = z + .5d;
 			result = world.spawnEntityInWorld(entityDumpTruck);
 			// LogHelper.info("Spawn entity resutl:" + result );
+			if (result && !player.capabilities.isCreativeMode){
+				stack.stackSize --;
+			}
 		}
 		return result;
 	}

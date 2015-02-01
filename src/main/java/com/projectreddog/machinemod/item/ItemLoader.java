@@ -40,6 +40,9 @@ public class ItemLoader extends ItemTransportable {
 			entityLoader.prevPosZ = z + .5d;
 			result = world.spawnEntityInWorld(entityLoader);
 			// LogHelper.info("Spawn entity resutl:" + result );
+			if (result && !player.capabilities.isCreativeMode){
+				stack.stackSize --;
+			}
 		}
 		return result;
 	}

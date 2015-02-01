@@ -1,5 +1,6 @@
 package com.projectreddog.machinemod.item;
 
+import ibxm.Player;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -42,6 +43,9 @@ public class ItemBulldozer extends ItemTransportable {
 			entityBulldozer.prevPosZ = z + .5d;
 			result = world.spawnEntityInWorld(entityBulldozer);
 			// LogHelper.info("Spawn entity resutl:" + result );
+			if (result && !player.capabilities.isCreativeMode){
+				stack.stackSize --;
+			}
 		}
 		return result;
 	}

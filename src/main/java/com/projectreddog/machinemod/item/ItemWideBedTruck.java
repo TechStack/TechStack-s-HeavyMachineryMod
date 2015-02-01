@@ -35,6 +35,9 @@ public class ItemWideBedTruck extends ItemMachineMod {
 			entityWideBedTruck.prevPosZ = z + .5d;
 			result = world.spawnEntityInWorld(entityWideBedTruck);
 			// LogHelper.info("Spawn entity resutl:" + result );
+			if (result && !player.capabilities.isCreativeMode){
+				stack.stackSize --;
+			}
 		}
 		return result;
 	}

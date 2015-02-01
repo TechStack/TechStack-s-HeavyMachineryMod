@@ -43,6 +43,9 @@ public class ItemTractor extends ItemTransportable {
 			entityTractor.prevPosZ = z + .5d;
 			result = world.spawnEntityInWorld(entityTractor);
 			// LogHelper.info("Spawn entity resutl:" + result );
+			if (result && !player.capabilities.isCreativeMode){
+				stack.stackSize --;
+			}
 		}
 		return result;
 	}
