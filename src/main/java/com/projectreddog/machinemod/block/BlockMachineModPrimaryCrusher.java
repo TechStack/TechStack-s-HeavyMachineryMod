@@ -35,5 +35,10 @@ public class BlockMachineModPrimaryCrusher extends BlockContainer {
 		// NEED TO return the TE here
 		return new TileEntityPrimaryCrusher();
 	}
+	@Override
+	 public int getRenderType()
+	    {
+	        return 3;
+	    }
 
 }

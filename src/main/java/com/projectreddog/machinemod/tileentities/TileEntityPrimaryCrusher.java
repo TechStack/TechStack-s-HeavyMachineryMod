@@ -171,7 +171,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 
 	@Override
 	public boolean canInsertItem(int slot, ItemStack itemStackIn, EnumFacing direction) {
-		if (slot < 55 && direction == EnumFacing.UP){
+		if (slot < 54 && direction == EnumFacing.UP){
 		return true;
 		}
 		return false;
@@ -179,7 +179,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 
 	@Override
 	public boolean canExtractItem(int slot, ItemStack stack, EnumFacing direction) {
-		if (slot > 55 && direction == EnumFacing.DOWN){
+		if (slot >= 54 && direction == EnumFacing.DOWN){
 			return true;
 			}
 			return false;
