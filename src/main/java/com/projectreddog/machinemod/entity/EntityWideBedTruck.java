@@ -35,8 +35,8 @@ public class EntityWideBedTruck extends EntityMachineModRideable {
 		setSize(3, 2);
 		inventory = new ItemStack[9];
 		this.mountedOffsetY = 0.35D;
-		this.mountedOffsetX = 1.5D;
-		this.mountedOffsetZ = 1.5D;
+		this.mountedOffsetX = 0.0D;
+		this.mountedOffsetZ = 0.0D;
 		this.maxAngle = 0;
 		this.minAngle = 0;
 		this.droppedItem = ModItems.widebedtruck;

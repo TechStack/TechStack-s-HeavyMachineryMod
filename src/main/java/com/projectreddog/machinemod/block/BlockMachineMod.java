@@ -17,7 +17,6 @@ public class BlockMachineMod extends Block {
 
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_TAB);
-
 	}
 
 	public BlockMachineMod() {

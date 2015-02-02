@@ -73,6 +73,12 @@ public class Recipies {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.plow ),  "   ", "iii", "hhh", 'i', "ingotIron", 'h',Items.iron_hoe));
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.planter),  "ccc", "hhh", "ddd", 'c', Blocks.chest, 'h', Blocks.hopper, 'd', Blocks.dispenser));
+		
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.havesterhead), " s ", "sis", " s ", 's', Items.shears, 'i', "gearIron"));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.combine), " cc", "het", " ww", 'c', Blocks.chest, 'h', ModItems.havesterhead, 'e', ModItems.engine ,'t', ModItems.transmission ,'w', ModItems.wheel ));
+
 	}
 	
 }

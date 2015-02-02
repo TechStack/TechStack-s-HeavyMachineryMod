@@ -19,6 +19,8 @@ public class BlockMachineModBlastedStone extends BlockMachineModBlastedStoneBase
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
 		this.setStepSound(soundTypeStone);
+		this.setHardness(1.5f);
+
 	}
 	
 	@Override

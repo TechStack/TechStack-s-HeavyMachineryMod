@@ -14,7 +14,7 @@ item.machinemod:stonegear.name=Stone Gear
 item.machinemod:irongear.name=Iron Gear
 item.machinemod:transmission.name=Transmission
 item.machinemod:turbofan.name=Turbo Fan
-
+item.machinemod:combine.name=Combine
 
 item.machinemod:camshaft.name=Camshaft
 item.machinemod:piston.name=piston
@@ -25,28 +25,33 @@ item.machinemod:dozerblade.name=Dozer Blade
 item.machinemod:tracks.name=Tracks
 item.machinemod:wheel.name=Wheel
 item.machinemod:loaderbucket.name=Loader Bucket
-item.machinemod:dumperbed.name=Dumpper Bed
+item.machinemod:dumperbed.name=Dumper Bed
 item.machinemod:transmission.name=Transmission
 item.machinemod:engine.name=Engine
-
-
-
-
-
-
-
-
-
+item.machinemod:harvesterhead.name=Harvest Head
 
 
 
 # Block Localizations
 tile.machinemod:machineassemblytable.name=Machine Assembly Table
-tile.machinemod:machinedrilledston .name=Drilled Stone
+tile.machinemod:machinedrilledstone.name=Drilled Stone
 tile.machinemod:machineblastedstone.name=Blasted Stone
 tile.machinemod:machineexplosivepackeddrilledstone.name=Explosive Packed Drilled Stone
 tile.machinemod:machinedrillingrig.name=Drilling Rig
 tile.machinemod:moonshine.name=Moonshine AKA Fire water
+tile.machinemod:machineblastedstone.STONE.name=Blasted Stone
+tile.machinemod:machineblastedstone.GRANITE.name=Blasted Granite
+tile.machinemod:machineblastedstone.DIORITE.name=Blasted Diorite
+tile.machinemod:machineblastedstone.ANDESITE.name=Blasted Andesite
+tile.machinemod:machineblastedstone.GOLD.name=Blasted Gold
+tile.machinemod:machineblastedstone.IRON.name=Blasted Iron
+tile.machinemod:machineblastedstone.COAL.name=Blasted Coal
+tile.machinemod:machineblastedstone.LAPIS.name=Blasted Lapis
+tile.machinemod:machineblastedstone.DIAMOND.name=Blasted Diamond
+tile.machinemod:machineblastedstone.REDSTONE.name=Blasted Redstone
+tile.machinemod:machineblastedstone.EMERALD.name=Blasted Emerald
+
+
 
 
 

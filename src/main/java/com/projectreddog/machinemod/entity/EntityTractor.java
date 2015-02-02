@@ -1,5 +1,6 @@
 package com.projectreddog.machinemod.entity;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
@@ -15,6 +16,7 @@ import com.projectreddog.machinemod.item.ItemTractorAttachment;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentSprayer;
+import com.projectreddog.machinemod.utility.LogHelper;
 
 public class EntityTractor extends EntityMachineModRideable {
 
@@ -59,6 +61,15 @@ public class EntityTractor extends EntityMachineModRideable {
 							if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlow) {
 								if (worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.grass) {
 									worldObj.setBlockState(bp, Blocks.farmland.getDefaultState());
+									if ( worldObj.getBlockState(bp.offsetUp()).getBlock().getMaterial() == Material.plants 	||
+											worldObj.getBlockState(bp.offsetUp()).getBlock().getMaterial().isReplaceable() 		){
+										worldObj.getBlockState(bp.offsetUp()).getBlock().dropBlockAsItem(worldObj, bp.offsetUp(), worldObj.getBlockState(bp.offsetUp()), 0);
+										worldObj.setBlockToAir(bp.offsetUp());
+
+										
+									}else {
+										LogHelper.info (worldObj.getBlockState(bp.offsetUp()).getBlock().getMaterial() );
+									}
 								}
 							} else if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {
 
