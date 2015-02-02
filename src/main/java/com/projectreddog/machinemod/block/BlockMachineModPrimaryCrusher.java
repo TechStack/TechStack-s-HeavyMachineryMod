@@ -7,24 +7,24 @@ import net.minecraft.world.World;
 
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.tileentities.TileEntityDrilingRig;
+import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 
-public class BlockMachineModDrillingRig extends BlockContainer {
+public class BlockMachineModPrimaryCrusher extends BlockContainer {
 
-	protected BlockMachineModDrillingRig(Material material) {
+	protected BlockMachineModPrimaryCrusher(Material material) {
 		super(material);
 
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_TAB);
 
 		// 1.8
-		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_DRILLING_RIG);
+		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
 		this.setStepSound(soundTypeStone);
 	}
 
-	public BlockMachineModDrillingRig() {
+	public BlockMachineModPrimaryCrusher() {
 		// Generic constructor (set to rock by default)
 		this(Material.rock);
 	}
@@ -33,7 +33,7 @@ public class BlockMachineModDrillingRig extends BlockContainer {
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 
 		// NEED TO return the TE here
-		return new TileEntityDrilingRig();
+		return new TileEntityPrimaryCrusher();
 	}
 
 }
