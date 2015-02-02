@@ -13,7 +13,7 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModEntities;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.init.ModNetwork;
-import com.projectreddog.machinemod.init.Recipies;
+import com.projectreddog.machinemod.init.Recipes;
 import com.projectreddog.machinemod.proxy.IProxy;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.LogHelper;
@@ -45,7 +45,7 @@ public class MachineMod {
 		// hanlders)
 		ModEntities.init(this);
 		FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
-		Recipies.init();
+		Recipes.init();
 		proxy.registerRenderers();
 	}
 
