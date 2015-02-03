@@ -201,7 +201,9 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		if (worldObj.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))) ||
 				worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.water ||
 				worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.lava ||
-				worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock()== Blocks.snow_layer
+				worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock()== Blocks.snow_layer ||
+				worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.plants 	||
+				worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial().isReplaceable()
 				) {
 			// in air block so fall i'll actually park the entity inside the
 			// block below just a little bit.
