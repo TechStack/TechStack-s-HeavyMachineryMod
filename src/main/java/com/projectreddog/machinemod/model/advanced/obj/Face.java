@@ -27,6 +27,8 @@ public class Face {
 		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
 		// worldrenderer.set
 		// tessellator.setNormal(faceNormal.x, faceNormal.y, faceNormal.z);
+		// set normal function?		
+		 worldrenderer.func_178980_d(faceNormal.x, faceNormal.y, faceNormal.z);
 		//
 		float averageU = 0F;
 		float averageV = 0F;
