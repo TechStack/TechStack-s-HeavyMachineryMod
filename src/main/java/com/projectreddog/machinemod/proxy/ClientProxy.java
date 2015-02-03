@@ -1,8 +1,11 @@
 package com.projectreddog.machinemod.proxy;
 
+import javax.rmi.CORBA.Tie;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -21,6 +24,8 @@ import com.projectreddog.machinemod.render.RenderDumpTruck;
 import com.projectreddog.machinemod.render.RenderLoader;
 import com.projectreddog.machinemod.render.RenderTractor;
 import com.projectreddog.machinemod.render.RenderWideBedTruck;
+import com.projectreddog.machinemod.render.tileentity.TileEntityPrimaryCrusherRenderer;
+import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 
 public class ClientProxy extends CommonProxy {
 	@Override
@@ -37,7 +42,6 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityTractor.class, new RenderTractor(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityCombine.class, new RenderCombine(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityWideBedTruck.class, new RenderWideBedTruck(Minecraft.getMinecraft().getRenderManager()));
-
 		
 
 		Item ItemblockBlastedStone = GameRegistry.findItem(Reference.MOD_ID, Reference.MODBLOCK_MACHINE_BLASTED_STONE);
@@ -58,6 +62,10 @@ public class ClientProxy extends CommonProxy {
 		
 		ModBlocks.initBlockRender();
 		ModItems.initItemRender();
+		
+		
+		// Register TESR (tile Entity Special renderes
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPrimaryCrusher.class, new TileEntityPrimaryCrusherRenderer());
 		
 	}
 

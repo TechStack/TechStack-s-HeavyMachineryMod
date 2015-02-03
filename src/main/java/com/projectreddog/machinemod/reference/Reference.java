@@ -9,13 +9,17 @@ public class Reference {
 	public static final String CLIENT_PROXY_CLASS = "com.projectreddog.machinemod.proxy.ClientProxy";
 	public static final String SERVER_PROXY_CLASS = "com.projectreddog.machinemod.proxy.ServerProxy";
 	public static final String GUI_FACTORY_CLASS = "com.projectreddog.machinemod.client.gui.GuiFactory";
+	//textures for Entities
 	public static final String MODEL_BULLDOZER_TEXTURE_LOCATION = "models/modelbulldozer2.png";
 	public static final String MODEL_TRACTOR_TEXTURE_LOCATION = "models/modeltractor.png";
-
 	public static final String MODEL_DRILLINGRIG_TEXTURE_LOCATION = "models/drillingrig.png";
 	public static final String MODEL_DUMPTRUCK_TEXTURE_LOCATION = "models/dumptruck.png";
 	public static final String MODEL_LOADER_TEXTURE_LOCATION = "models/modelloader.png";
+	
+	//textures for Tile Entities
+	public static final String MODEL_TILEENTITY_PRIMARY_CRUSHER_TEXTURE_LOCATION ="models/primarycrusher.png";
 
+	
 	public static final int GUI_DUMP_TRUCK = 0;
 	public static final int GUI_LOADER = 1;
 	public static final int GUI_TRACTOR = 2;

@@ -42,6 +42,8 @@ public class ModBlocks {
 
 		GameRegistry.registerBlock(machineprimarycrhuser, Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
 
+		
+		//next section for tile entities regsistration.		
 		GameRegistry.registerTileEntity(TileEntityPrimaryCrusher.class, Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
 		///Register Fluids
 //		fluidBioFuel.setDensity(10);
