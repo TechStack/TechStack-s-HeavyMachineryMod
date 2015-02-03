@@ -21,11 +21,6 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 		inventory = new ItemStack[108];
 		
 	}
-
-	public TileEntityPrimaryCrusher(int currentDrillingLevel) {
-		
-	}
-
 	@Override
 	public void update() {
 

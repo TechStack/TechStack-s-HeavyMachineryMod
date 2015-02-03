@@ -16,9 +16,11 @@ import com.projectreddog.machinemod.block.BlockMachineExplosivePackedDrilledSton
 import com.projectreddog.machinemod.block.BlockMachineMod;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone2;
+import com.projectreddog.machinemod.block.BlockMachineModConveyor;
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.item.ItemBlockBlastedStone;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.tileentities.TileEntityConveyor;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
@@ -29,6 +31,7 @@ public class ModBlocks {
 	public static final BlockMachineMod machinemodblastedstone = new BlockMachineModBlastedStone();
 	public static final BlockMachineMod machinemodblastedstone2 = new BlockMachineModBlastedStone2();
 	public static final Block machineprimarycrhuser = new BlockMachineModPrimaryCrusher();
+	public static final Block machineconveyor= new BlockMachineModConveyor();
 	public static Fluid fluidBioFuel = new Fluid("BioFuel");
 	public static BlockBioFuel biofuel ;
 
@@ -41,10 +44,12 @@ public class ModBlocks {
 		GameRegistry.registerBlock(machinemodblastedstone2, Reference.MODBLOCK_MACHINE_BLASTED_STONE2);
 
 		GameRegistry.registerBlock(machineprimarycrhuser, Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
+		GameRegistry.registerBlock(machineconveyor, Reference.MODBLOCK_MACHINE_CONVEYOR);
 
 		
 		//next section for tile entities regsistration.		
 		GameRegistry.registerTileEntity(TileEntityPrimaryCrusher.class, Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
+		GameRegistry.registerTileEntity(TileEntityConveyor.class, Reference.MODBLOCK_MACHINE_CONVEYOR);
 		///Register Fluids
 //		fluidBioFuel.setDensity(10);
 //		FluidRegistry.registerFluid(fluidBioFuel);
@@ -61,6 +66,7 @@ public class ModBlocks {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineexplosivepackeddrilledstone), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinemodblastedstone), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineprimarycrhuser), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineconveyor), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_CONVEYOR, "inventory"));
 
 		
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(biofuel), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FLUID_BIOFUEL, "inventory"));

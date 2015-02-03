@@ -28,13 +28,13 @@ public class TileEntityPrimaryCrusherRenderer extends TileEntitySpecialRenderer 
 		
 		
 		GL11.glPushMatrix();
-	    GL11.glPushAttrib(GL11.GL_ENABLE_BIT);
+	
 
-	//	GL11.glEnable(GL11.GL_LIGHTING); 
+	 
 	//	GL11.glEnable(GL12.GL_RESCALE_NORMAL); 
 		GL11.glTranslated(x, y, z);
 			
-	//	GL11.glEnable(GL11.GL_SMOOTH);
+	
 		//GL11.glEnable(GL11.GL_DEPTH_TEST);
 
 		//GL11.glEnableClientState(GL11.GL_LIGHTING);
@@ -47,8 +47,7 @@ public class TileEntityPrimaryCrusherRenderer extends TileEntitySpecialRenderer 
 
 		// ((ModelTractor) this.modelTractor).renderGroupObject("Plow_Cube");
 		//GL11.glDisableClientState(GL11.GL_LIGHTING);
-	    GL11.glPopAttrib();
-
+	
 		GL11.glPopMatrix();
 		
 		
