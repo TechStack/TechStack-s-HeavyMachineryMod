@@ -46,8 +46,7 @@ public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListB
 		for (int i = 0; i < par1List.size(); ++i) {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
-				entity.setVelocity(.1, 0, 0);
-
+				entity.setPosition(entity.getPosition().getX()+0.1d, entity.getPosition().getY(), entity.getPosition().getZ());
 			}
 		}
 	}
