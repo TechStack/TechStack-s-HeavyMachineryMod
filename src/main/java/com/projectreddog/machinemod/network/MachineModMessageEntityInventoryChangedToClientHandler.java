@@ -15,9 +15,9 @@ public class MachineModMessageEntityInventoryChangedToClientHandler implements I
 
 	@Override
 	public IMessage onMessage(final MachineModMessageEntityInventoryChangedToClient message, MessageContext ctx) {
-		//LogHelper.info("on message MachineModMessageEntityInventoryChangedToClient");
+		// LogHelper.info("on message MachineModMessageEntityInventoryChangedToClient");
 		if (Minecraft.getMinecraft().theWorld != null) {
-			if ( Minecraft.getMinecraft().theWorld.isRemote){
+			if (Minecraft.getMinecraft().theWorld.isRemote) {
 
 				Minecraft.getMinecraft().addScheduledTask(new Runnable() {
 					public void run() {
@@ -56,15 +56,16 @@ public class MachineModMessageEntityInventoryChangedToClientHandler implements I
 							// //
 							// LogHelper.info("RECIEVED ENTITY PACKET FROM SERVER"
 							// // );
-//							if (entity instanceof EntityLoader) {
-//								EntityLoader eL = (EntityLoader) entity;
-//								eL.setInventorySlotContents(message.slot, message.is);
-//							}
-//							if (entity instanceof EntityDumpTruck) {
-//								EntityDumpTruck eDT = (EntityDumpTruck) entity;
+							// if (entity instanceof EntityLoader) {
+							// EntityLoader eL = (EntityLoader) entity;
+							// eL.setInventorySlotContents(message.slot,
+							// message.is);
+							// }
+							// if (entity instanceof EntityDumpTruck) {
+							// EntityDumpTruck eDT = (EntityDumpTruck) entity;
 							EntityMachineModRideable eMMR = (EntityMachineModRideable) entity;
-								eMMR.setInventorySlotContents(message.slot, message.is);
-//							}
+							eMMR.setInventorySlotContents(message.slot, message.is);
+							// }
 
 						}
 					}

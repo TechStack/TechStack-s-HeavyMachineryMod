@@ -44,7 +44,7 @@ public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHan
 							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_LOADER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityTractor) {
 							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_TRACTOR, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
-						}else if (entity instanceof EntityWideBedTruck) {
+						} else if (entity instanceof EntityWideBedTruck) {
 							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_WIDEBEDTRUCK, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						}
 

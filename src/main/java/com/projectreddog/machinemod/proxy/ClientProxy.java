@@ -42,31 +42,19 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityTractor.class, new RenderTractor(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityCombine.class, new RenderCombine(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityWideBedTruck.class, new RenderWideBedTruck(Minecraft.getMinecraft().getRenderManager()));
-		
 
 		Item ItemblockBlastedStone = GameRegistry.findItem(Reference.MOD_ID, Reference.MODBLOCK_MACHINE_BLASTED_STONE);
-		
-		ModelBakery.addVariantName(ItemblockBlastedStone, 
-				Reference.MOD_ID + ":" +Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "stone",		
-				Reference.MOD_ID + ":" +Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" +"granite",
-				Reference.MOD_ID + ":" +Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" +"diorite",
-				Reference.MOD_ID + ":" +Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" +"andesite",
-				Reference.MOD_ID + ":" +Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" +"gold",
-				Reference.MOD_ID + ":" +Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" +"iron",
-				Reference.MOD_ID + ":" +Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" +"coal",
-				Reference.MOD_ID + ":" +Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" +"lapis",
-				Reference.MOD_ID + ":" +Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" +"diamond",
-				Reference.MOD_ID + ":" +Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" +"redstone",
-				Reference.MOD_ID + ":" +Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" +"emerald");
-		
-		
+
+		ModelBakery.addVariantName(ItemblockBlastedStone, Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "stone", Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "granite", Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "diorite", Reference.MOD_ID + ":"
+				+ Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "andesite", Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "gold", Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "iron", Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "coal", Reference.MOD_ID + ":"
+				+ Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "lapis", Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "diamond", Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "redstone", Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "emerald");
+
 		ModBlocks.initBlockRender();
 		ModItems.initItemRender();
-		
-		
+
 		// Register TESR (tile Entity Special renderes
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPrimaryCrusher.class, new TileEntityPrimaryCrusherRenderer());
-		
+
 	}
 
 }

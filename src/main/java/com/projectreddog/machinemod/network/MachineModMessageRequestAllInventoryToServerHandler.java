@@ -29,8 +29,8 @@ public class MachineModMessageRequestAllInventoryToServerHandler implements IMes
 			if (entity instanceof EntityMachineModRideable) {
 
 				// do function to send inventory to client
-				
-				((EntityMachineModRideable)entity).sendAllInventoryToPlayer( ctx.getServerHandler().playerEntity);
+
+				((EntityMachineModRideable) entity).sendAllInventoryToPlayer(ctx.getServerHandler().playerEntity);
 			}
 		}
 	}

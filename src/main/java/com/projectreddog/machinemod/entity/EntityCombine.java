@@ -21,24 +21,23 @@ import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClient;
 import com.projectreddog.machinemod.utility.LogHelper;
 
-public class EntityCombine extends EntityMachineModRideable  {
+public class EntityCombine extends EntityMachineModRideable {
 
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
-
 
 	public EntityCombine(World world) {
 		super(world);
 
 		setSize(2.8f, 2.5f);
 		inventory = new ItemStack[9];
-		
+
 		this.mountedOffsetY = 0.6D;
 		this.mountedOffsetX = 0.4D;
 		this.mountedOffsetZ = 0.4D;
 		this.maxAngle = 0;
 		this.minAngle = -90;
 		this.droppedItem = ModItems.combine;
-	
+
 	}
 
 	@Override

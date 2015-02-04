@@ -27,8 +27,6 @@ public class EntityWideBedTruck extends EntityMachineModRideable {
 
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 
-	
-
 	public EntityWideBedTruck(World world) {
 		super(world);
 
@@ -40,23 +38,18 @@ public class EntityWideBedTruck extends EntityMachineModRideable {
 		this.maxAngle = 0;
 		this.minAngle = 0;
 		this.droppedItem = ModItems.widebedtruck;
-		this.shouldSendClientInvetoryUpdates=true;
+		this.shouldSendClientInvetoryUpdates = true;
 		this.maxSpeed = 0.4d;
 	}
 
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		
 
 	}
 
 	public AxisAlignedBB getBoundingBox() {
 		return boundingBox;
 	}
-
-	
-
-
 
 }

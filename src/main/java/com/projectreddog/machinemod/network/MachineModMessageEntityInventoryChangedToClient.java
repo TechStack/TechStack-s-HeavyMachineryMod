@@ -25,8 +25,7 @@ public class MachineModMessageEntityInventoryChangedToClient implements IMessage
 		// LogHelper.info("in machineModMessageEntityToClientConstructor basic");
 	}
 
-
-	public MachineModMessageEntityInventoryChangedToClient(int entityid,int slot, ItemStack is) {
+	public MachineModMessageEntityInventoryChangedToClient(int entityid, int slot, ItemStack is) {
 		super();
 		// LogHelper.info("in machineModMessageEntityToClientConstructor with parms");
 		this.entityid = entityid;
@@ -40,43 +39,36 @@ public class MachineModMessageEntityInventoryChangedToClient implements IMessage
 		this.entityid = buf.readInt();
 		this.slot = buf.readInt();
 		ItemStack itemstack = null;
-        short short1 = buf.readShort();
+		short short1 = buf.readShort();
 
-        if (short1 >= 0)
-        {
-            byte b0 = buf.readByte();
-            short short2 = buf.readShort();
-            itemstack = new ItemStack(Item.getItemById(short1), b0, short2);
-            
-            
-            int i = buf.readerIndex();
-            byte b01 = buf.readByte();
+		if (short1 >= 0) {
+			byte b0 = buf.readByte();
+			short short2 = buf.readShort();
+			itemstack = new ItemStack(Item.getItemById(short1), b0, short2);
 
-            if (b01 == 0)
-            {
-	            itemstack.setTagCompound( null);
-            }
-            else
-            {
-            	buf.readerIndex(i);
-	            try {
+			int i = buf.readerIndex();
+			byte b01 = buf.readByte();
+
+			if (b01 == 0) {
+				itemstack.setTagCompound(null);
+			} else {
+				buf.readerIndex(i);
+				try {
 					itemstack.setTagCompound(CompressedStreamTools.func_152456_a(new ByteBufInputStream(buf), NBTSizeTracker.INFINITE));
 				} catch (IOException e) {
 					// will toss error when it passes end of stream
-					//e.printStackTrace();
+					// e.printStackTrace();
 				}
-            }
-            
-            
-            try {
+			}
+
+			try {
 				itemstack.setTagCompound(CompressedStreamTools.func_152456_a(new ByteBufInputStream(buf), NBTSizeTracker.INFINITE));
 			} catch (IOException e) {
 				// will toss error when it passes end of stream
-				//e.printStackTrace();
+				// e.printStackTrace();
 			}
-        }
-        this.is = itemstack;
-		
+		}
+		this.is = itemstack;
 
 	}
 
@@ -84,52 +76,33 @@ public class MachineModMessageEntityInventoryChangedToClient implements IMessage
 	public void toBytes(ByteBuf buf) {
 		// LogHelper.info("in machineModMessageEntityToClient to bytes");
 		buf.writeInt(entityid);
-		
-		buf.writeInt(this.slot) ;
-		if (this.is == null)
-        {
-        	
-            buf.writeShort(-1);
-        }
-        else
-        {
-        	buf.writeShort(Item.getIdFromItem(this.is.getItem()));
-        	buf.writeByte(this.is.stackSize);
-        	buf.writeShort(this.is.getMetadata());
-            NBTTagCompound nbttagcompound = null;
 
-            if (this.is.getItem().isDamageable() || this.is.getItem().getShareTag())
-            {
-                nbttagcompound = this.is.getTagCompound();
-            }
+		buf.writeInt(this.slot);
+		if (this.is == null) {
 
-            
-            
-            if (nbttagcompound == null)
-            {
-                buf.writeByte(0);
-            }
-            else
-            {
-                try
-                {
-                    CompressedStreamTools.write(nbttagcompound, new ByteBufOutputStream(buf));
-                }
-                catch (IOException ioexception)
-                {
-                    throw new EncoderException(ioexception);
-                }
-            }
-            
-            
-            
-            
-        }
-		  
+			buf.writeShort(-1);
+		} else {
+			buf.writeShort(Item.getIdFromItem(this.is.getItem()));
+			buf.writeByte(this.is.stackSize);
+			buf.writeShort(this.is.getMetadata());
+			NBTTagCompound nbttagcompound = null;
+
+			if (this.is.getItem().isDamageable() || this.is.getItem().getShareTag()) {
+				nbttagcompound = this.is.getTagCompound();
+			}
+
+			if (nbttagcompound == null) {
+				buf.writeByte(0);
+			} else {
+				try {
+					CompressedStreamTools.write(nbttagcompound, new ByteBufOutputStream(buf));
+				} catch (IOException ioexception) {
+					throw new EncoderException(ioexception);
+				}
+			}
+
+		}
+
 	}
-	
-	
-  
-    
-    
+
 }

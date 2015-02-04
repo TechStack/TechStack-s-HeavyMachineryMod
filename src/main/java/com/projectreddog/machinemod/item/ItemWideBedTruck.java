@@ -31,12 +31,12 @@ public class ItemWideBedTruck extends ItemMachineMod {
 			EntityWideBedTruck entityWideBedTruck = new EntityWideBedTruck(world);
 			entityWideBedTruck.setPosition(x + .5d, y + 1.0d, z + .5d);
 			entityWideBedTruck.prevPosX = x + .5d;
-			entityWideBedTruck.prevPosY = y +  1.0d;
+			entityWideBedTruck.prevPosY = y + 1.0d;
 			entityWideBedTruck.prevPosZ = z + .5d;
 			result = world.spawnEntityInWorld(entityWideBedTruck);
 			// LogHelper.info("Spawn entity resutl:" + result );
-			if (result && !player.capabilities.isCreativeMode){
-				stack.stackSize --;
+			if (result && !player.capabilities.isCreativeMode) {
+				stack.stackSize--;
 			}
 		}
 		return result;

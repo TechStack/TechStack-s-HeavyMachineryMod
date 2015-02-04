@@ -61,7 +61,7 @@ public class RenderTractor extends Render {
 				} else if (((EntityTractor) entity).getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {
 					((ModelTractor) this.modelTractor).renderGroupObject("Planter_Cube.002");
 
-				} else if (((EntityTractor) entity).getStackInSlot(0).getItem() instanceof ItemTractorAttachmentSprayer)  {
+				} else if (((EntityTractor) entity).getStackInSlot(0).getItem() instanceof ItemTractorAttachmentSprayer) {
 					((ModelTractor) this.modelTractor).renderGroupObject("Sprayer_Cube.004");
 
 				}

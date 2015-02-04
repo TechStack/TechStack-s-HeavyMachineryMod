@@ -13,7 +13,7 @@ import com.projectreddog.machinemod.model.ModelTransportable;
 
 public class ItemDumpTruck extends ItemMachineMod {
 
-//	public ModelTransportable mt ;
+	// public ModelTransportable mt ;
 
 	public ItemDumpTruck() {
 		super();
@@ -36,21 +36,21 @@ public class ItemDumpTruck extends ItemMachineMod {
 			EntityDumpTruck entityDumpTruck = new EntityDumpTruck(world);
 			entityDumpTruck.setPosition(x + .5d, y + 1.0d, z + .5d);
 			entityDumpTruck.prevPosX = x + .5d;
-			entityDumpTruck.prevPosY = y +  1.0d;
+			entityDumpTruck.prevPosY = y + 1.0d;
 			entityDumpTruck.prevPosZ = z + .5d;
 			result = world.spawnEntityInWorld(entityDumpTruck);
 			// LogHelper.info("Spawn entity resutl:" + result );
-			if (result && !player.capabilities.isCreativeMode){
-				stack.stackSize --;
+			if (result && !player.capabilities.isCreativeMode) {
+				stack.stackSize--;
 			}
 		}
 		return result;
 	}
-//	@Override
-//	public ModelTransportable getModel() {
-//		if (mt == null){
-//			mt = new ModelDumpTruck();
-//		}
-//		return mt;
-//	}
+	// @Override
+	// public ModelTransportable getModel() {
+	// if (mt == null){
+	// mt = new ModelDumpTruck();
+	// }
+	// return mt;
+	// }
 }

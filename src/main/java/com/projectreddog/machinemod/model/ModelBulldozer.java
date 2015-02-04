@@ -43,8 +43,6 @@ public class ModelBulldozer extends ModelTransportable {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, e);
 	}
 
-	
-
 	public ResourceLocation getTexture() {
 
 		return new ResourceLocation("machinemod", Reference.MODEL_BULLDOZER_TEXTURE_LOCATION);

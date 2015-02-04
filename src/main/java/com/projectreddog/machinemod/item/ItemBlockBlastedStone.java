@@ -13,19 +13,15 @@ public class ItemBlockBlastedStone extends ItemBlock {
 		this.setMaxDamage(0);
 		this.setHasSubtypes(true);
 	}
-	
-	@Override
-	  public int getMetadata(int metadata)
-	  {
-	    return metadata;
-	  }
 
-	
-	
-	 @Override
-	  public String getUnlocalizedName(ItemStack stack)
-	  {
-		 BlockMachineModBlastedStone.EnumVanillaOres ore = BlockMachineModBlastedStone.EnumVanillaOres.byMetadata(stack.getMetadata());
-	    return super.getUnlocalizedName() + "." + ore.toString();
-	  }
+	@Override
+	public int getMetadata(int metadata) {
+		return metadata;
+	}
+
+	@Override
+	public String getUnlocalizedName(ItemStack stack) {
+		BlockMachineModBlastedStone.EnumVanillaOres ore = BlockMachineModBlastedStone.EnumVanillaOres.byMetadata(stack.getMetadata());
+		return super.getUnlocalizedName() + "." + ore.toString();
+	}
 }

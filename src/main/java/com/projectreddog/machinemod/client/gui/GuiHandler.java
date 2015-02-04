@@ -47,7 +47,7 @@ public class GuiHandler implements IGuiHandler {
 					return new ContainerTractor(player.inventory, (EntityTractor) entity);
 				}
 			}
-		}else if (id == Reference.GUI_WIDEBEDTRUCK) {
+		} else if (id == Reference.GUI_WIDEBEDTRUCK) {
 
 			Entity entity = world.getEntityByID(x);
 			if (entity != null) {
@@ -88,7 +88,7 @@ public class GuiHandler implements IGuiHandler {
 					return new GuiTractor(player.inventory, (EntityTractor) entity);
 				}
 			}
-		}else if (id == Reference.GUI_WIDEBEDTRUCK) {
+		} else if (id == Reference.GUI_WIDEBEDTRUCK) {
 
 			Entity entity = world.getEntityByID(x);
 			if (entity != null) {

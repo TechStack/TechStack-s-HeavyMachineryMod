@@ -23,25 +23,24 @@ import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClient;
 import com.projectreddog.machinemod.utility.LogHelper;
 
-public class EntityLoader extends EntityMachineModRideable  {
+public class EntityLoader extends EntityMachineModRideable {
 
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
-
 
 	public EntityLoader(World world) {
 		super(world);
 
 		setSize(2.8f, 2.5f);
 		inventory = new ItemStack[9];
-		
+
 		this.mountedOffsetY = 0.6D;
 		this.mountedOffsetX = 0.4D;
 		this.mountedOffsetZ = 0.4D;
 		this.maxAngle = 0;
 		this.minAngle = -90;
 		this.droppedItem = ModItems.loader;
-		this.shouldSendClientInvetoryUpdates=true;
-	
+		this.shouldSendClientInvetoryUpdates = true;
+
 	}
 
 	@Override
@@ -60,18 +59,8 @@ public class EntityLoader extends EntityMachineModRideable  {
 					}
 					BlockPos bp;
 					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY, posZ + calcTwoOffsetZ(3.5, angle, i));
-					if ( worldObj.getBlockState(bp).getBlock() == Blocks.snow_layer
-							||  worldObj.getBlockState(bp).getBlock() == Blocks.snow
-							||  worldObj.getBlockState(bp).getBlock() == Blocks.dirt
-							||  worldObj.getBlockState(bp).getBlock() == Blocks.sand
-							||  worldObj.getBlockState(bp).getBlock() == Blocks.gravel
-							||  worldObj.getBlockState(bp).getBlock() == Blocks.grass
-							||  worldObj.getBlockState(bp).getBlock() == Blocks.clay
-							||  worldObj.getBlockState(bp).getBlock() == ModBlocks.machinemodblastedstone
-							||  worldObj.getBlockState(bp).getBlock() == ModBlocks.machinemodblastedstone2
-							||  worldObj.getBlockState(bp).getBlock() == Blocks.soul_sand
-							)
-					{
+					if (worldObj.getBlockState(bp).getBlock() == Blocks.snow_layer || worldObj.getBlockState(bp).getBlock() == Blocks.snow || worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.sand || worldObj.getBlockState(bp).getBlock() == Blocks.gravel || worldObj.getBlockState(bp).getBlock() == Blocks.grass
+							|| worldObj.getBlockState(bp).getBlock() == Blocks.clay || worldObj.getBlockState(bp).getBlock() == ModBlocks.machinemodblastedstone || worldObj.getBlockState(bp).getBlock() == ModBlocks.machinemodblastedstone2 || worldObj.getBlockState(bp).getBlock() == Blocks.soul_sand) {
 						worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
 						worldObj.setBlockToAir(bp);
 					}

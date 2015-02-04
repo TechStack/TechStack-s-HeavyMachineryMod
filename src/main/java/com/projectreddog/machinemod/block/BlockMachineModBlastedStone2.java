@@ -10,7 +10,7 @@ import net.minecraft.util.IStringSerializable;
 import com.projectreddog.machinemod.reference.Reference;
 
 public class BlockMachineModBlastedStone2 extends BlockMachineModBlastedStoneBase {
-	  public static final PropertyEnum PROPERTYORE = PropertyEnum.create("ore", EnumModOres.class);
+	public static final PropertyEnum PROPERTYORE = PropertyEnum.create("ore", EnumModOres.class);
 
 	public BlockMachineModBlastedStone2() {
 		super();
@@ -21,93 +21,71 @@ public class BlockMachineModBlastedStone2 extends BlockMachineModBlastedStoneBas
 		this.setStepSound(soundTypeStone);
 	}
 
-	
 	@Override
-	  public IBlockState getStateFromMeta(int meta)
-	  {
+	public IBlockState getStateFromMeta(int meta) {
 		EnumModOres ore = EnumModOres.byMetadata(meta);
-	    return this.getDefaultState().withProperty(PROPERTYORE, ore);
-	  }
+		return this.getDefaultState().withProperty(PROPERTYORE, ore);
+	}
 
-	  @Override
-	  public int getMetaFromState(IBlockState state)
-	  {
-		  EnumModOres ore = (EnumModOres)state.getValue(PROPERTYORE);
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		EnumModOres ore = (EnumModOres) state.getValue(PROPERTYORE);
 
-	    return ore.getMetadata();
-	  }
+		return ore.getMetadata();
+	}
+
+	@Override
+	/**
+	 * Get the damage value that this Block should drop
+	 */
+	public int damageDropped(IBlockState state) {
+
+		return this.getMetaFromState(state);
+	}
+
+	@Override
+	protected BlockState createBlockState() {
+		return new BlockState(this, new IProperty[] { PROPERTYORE });
+	}
+
+	public static enum EnumModOres implements IStringSerializable {
+		COPPER(0, "COPPER"), TIN(1, "TIN"), SILVER(2, "SILVER"), LEAD(3, "LEAD"), QUARTZ(4, "QUARTZ"), RUBY(5, "RUBY"), SAPPHIRE(6, "SAPPHIRE"), URANIUM(7, "URANIUM"), ALUMINUM(8, "ALUMINUM");
+
+		public int getMetadata() {
+			return this.meta;
+		}
+
 		@Override
-		 /**
-	     * Get the damage value that this Block should drop
-	     */
-	    public int damageDropped(IBlockState state)
-	    {
-			
-	        return this.getMetaFromState(state);
-	    }
+		public String toString() {
+			return this.name;
+		}
 
-	  @Override
-	  protected BlockState createBlockState()
-	  {
-	    return new BlockState(this, new IProperty[] {PROPERTYORE});
-	  }
-	
-	 public static enum EnumModOres implements IStringSerializable
-	  {
-		 COPPER(0,"COPPER"),
-		 TIN(1,"TIN"),
-		 SILVER(2,"SILVER"),
-		 LEAD(3,"LEAD"),
-		 QUARTZ(4,"QUARTZ"),
-		 RUBY(5,"RUBY"),
-		 SAPPHIRE(6,"SAPPHIRE"),
-		 URANIUM(7,"URANIUM"),
-		 ALUMINUM(8,"ALUMINUM");
-		 
-	    public int getMetadata()
-	    {
-	      return this.meta;
-	    }
+		public static EnumModOres byMetadata(int meta) {
+			if (meta < 0 || meta >= META_LOOKUP.length) {
+				meta = 0;
+			}
 
-	    @Override
-	    public String toString()
-	    {
-	      return this.name;
-	    }
+			return META_LOOKUP[meta];
+		}
 
-	    public static EnumModOres byMetadata(int meta)
-	    {
-	      if (meta < 0 || meta >= META_LOOKUP.length)
-	      {
-	        meta = 0;
-	      }
+		public String getName() {
+			return this.name;
+		}
 
-	      return META_LOOKUP[meta];
-	    }
+		private final int meta;
+		private final String name;
+		private static final EnumModOres[] META_LOOKUP = new EnumModOres[values().length];
 
-	    public String getName()
-	    {
-	      return this.name;
-	    }
+		private EnumModOres(int i_meta, String i_name) {
+			this.meta = i_meta;
+			this.name = i_name;
+		}
 
-	    private final int meta;
-	    private final String name;
-	    private static final EnumModOres[] META_LOOKUP = new EnumModOres[values().length];
+		static {
+			for (EnumModOres ore : values()) {
+				META_LOOKUP[ore.getMetadata()] = ore;
+			}
+		}
+	}
 
-	    private EnumModOres(int i_meta, String i_name)
-	    {
-	      this.meta = i_meta;
-	      this.name = i_name;
-	    }
-
-	    static
-	    {
-	      for (EnumModOres ore : values()) {
-	        META_LOOKUP[ore.getMetadata()] = ore;
-	      }
-	    }
-	  }
-	 
-	 
-	 
 }

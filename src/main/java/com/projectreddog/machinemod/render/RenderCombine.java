@@ -74,14 +74,8 @@ public class RenderCombine extends Render {
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelCombine.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
-		
-
-		
 		GL11.glPopMatrix();
 	}
-	
-
-
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {

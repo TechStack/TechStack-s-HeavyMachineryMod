@@ -27,8 +27,6 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 
-	
-
 	public EntityDumpTruck(World world) {
 		super(world);
 
@@ -40,8 +38,8 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 		this.maxAngle = 0;
 		this.minAngle = -60;
 		this.droppedItem = ModItems.dumptruck;
-		this.shouldSendClientInvetoryUpdates=true;
-	
+		this.shouldSendClientInvetoryUpdates = true;
+
 	}
 
 	@Override
@@ -101,8 +99,6 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 				}
 			}
 		}
-	}	
-
-
+	}
 
 }

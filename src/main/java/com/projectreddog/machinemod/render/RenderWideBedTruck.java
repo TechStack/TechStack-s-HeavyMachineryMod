@@ -35,7 +35,6 @@ public class RenderWideBedTruck extends Render {
 		shadowSize = 1F;
 		this.modelWideBedTruck = new ModelWideBedTruck();
 		itemRenderer = Minecraft.getMinecraft().getRenderItem();
-		
 
 	}
 
@@ -63,12 +62,11 @@ public class RenderWideBedTruck extends Render {
 		GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
 		this.bindEntityTexture(entity);
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
-		 this.modelWideBedTruck.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-
+		this.modelWideBedTruck.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
 		GlStateManager.translate(0f, -0.72F, +4F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		//GL11.glScalef(.75f, .75f, .75f);
+		// GL11.glScalef(.75f, .75f, .75f);
 		// attempt to render the items in inventory
 		EntityWideBedTruck eDT = ((EntityWideBedTruck) entity);
 		GL11.glRotatef(180, 0, 1, 0);
@@ -77,19 +75,17 @@ public class RenderWideBedTruck extends Render {
 		for (int i = 0; i < eDT.getSizeInventory(); i++) {
 			ItemStack is = eDT.getStackInSlot(i);
 			if (is != null) {
-				if ( is.getItem()   instanceof ItemTransportable) {
+				if (is.getItem() instanceof ItemTransportable) {
 					ItemTransportable it = (ItemTransportable) is.getItem();
 					modelCarriedEntity = (it).getModel();
 					this.bindTexture(((ItemTransportable) is.getItem()).getModel().getTexture());
-					((ItemTransportable) is.getItem()).getModel().render(null,0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+					((ItemTransportable) is.getItem()).getModel().render(null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 				}
 			}
 		}
 
 		GL11.glPopMatrix();
 	}
-
-	
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {

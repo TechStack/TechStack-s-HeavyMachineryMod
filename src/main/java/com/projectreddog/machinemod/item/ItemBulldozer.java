@@ -12,9 +12,9 @@ import com.projectreddog.machinemod.model.ModelBulldozer;
 import com.projectreddog.machinemod.model.ModelTransportable;
 
 public class ItemBulldozer extends ItemTransportable {
-	
-	
-	public ModelTransportable mt ;
+
+	public ModelTransportable mt;
+
 	public ItemBulldozer() {
 		super();
 		this.setUnlocalizedName("bulldozer");
@@ -39,20 +39,20 @@ public class ItemBulldozer extends ItemTransportable {
 			EntityBulldozer entityBulldozer = new EntityBulldozer(world);
 			entityBulldozer.setPosition(x + .5d, y + 1.0d, z + .5d);
 			entityBulldozer.prevPosX = x + .5d;
-			entityBulldozer.prevPosY = y +  1.0d;
+			entityBulldozer.prevPosY = y + 1.0d;
 			entityBulldozer.prevPosZ = z + .5d;
 			result = world.spawnEntityInWorld(entityBulldozer);
 			// LogHelper.info("Spawn entity resutl:" + result );
-			if (result && !player.capabilities.isCreativeMode){
-				stack.stackSize --;
+			if (result && !player.capabilities.isCreativeMode) {
+				stack.stackSize--;
 			}
 		}
 		return result;
 	}
-	
+
 	@Override
 	public ModelTransportable getModel() {
-		if (mt == null){
+		if (mt == null) {
 			mt = new ModelBulldozer();
 		}
 		return mt;

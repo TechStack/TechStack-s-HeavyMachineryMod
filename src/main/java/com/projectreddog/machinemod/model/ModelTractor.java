@@ -50,7 +50,6 @@ public class ModelTractor extends ModelTransportable {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, e);
 	}
 
-
 	public ResourceLocation getTexture() {
 
 		return new ResourceLocation("machinemod", Reference.MODEL_TRACTOR_TEXTURE_LOCATION);

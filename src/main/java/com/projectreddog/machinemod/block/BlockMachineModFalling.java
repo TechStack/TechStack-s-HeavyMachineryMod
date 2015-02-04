@@ -98,7 +98,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 			} else {
 
 				BlockPos bp = new BlockPos(x, y, z);
-				IBlockState tmpBS  = world.getBlockState(bp);
+				IBlockState tmpBS = world.getBlockState(bp);
 				world.setBlockToAir(bp);
 
 				while (canFallMore(world, x, y - 1, z) && y > 0) {
@@ -108,7 +108,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 				if (y > 0) {
 					bp = new BlockPos(x, y, z);
 
-					world.setBlockState(bp,tmpBS  );
+					world.setBlockState(bp, tmpBS);
 				}
 			}
 		}
@@ -122,12 +122,11 @@ public class BlockMachineModFalling extends BlockMachineMod {
 		this.motionZ = 0;
 		this.motionY = 0;
 		Block block2;
-		BlockPos bp = new BlockPos(x, y , z);
-		IBlockState tmpBS  = world.getBlockState(bp);
-		
-		 bp = new BlockPos(x, y - 1, z);
+		BlockPos bp = new BlockPos(x, y, z);
+		IBlockState tmpBS = world.getBlockState(bp);
+
+		bp = new BlockPos(x, y - 1, z);
 		Block block = world.getBlockState(bp).getBlock();
-		
 
 		if (block == Blocks.air || block == Blocks.fire)// test fall down this x
 														// z
@@ -143,7 +142,6 @@ public class BlockMachineModFalling extends BlockMachineMod {
 
 					bp = new BlockPos(x + i, y, z + j);
 					block = world.getBlockState(bp).getBlock();
-					
 
 					if (block == Blocks.air || block == Blocks.fire)// test fall
 																	// down this

@@ -31,7 +31,7 @@ public class ModelDumpTruck extends ModelTransportable {
 		// myModel.renderAll();
 		this.renderGroupObject("Truck_Base_Cube.002");
 		GL11.glTranslatef(0f, -1.1f, 2.8f);
-		if (entity != null ) {
+		if (entity != null) {
 			GL11.glRotatef(((EntityDumpTruck) entity).Attribute1, 1, 0, 0);
 		}
 		this.renderGroupObject("Bed_Cube.000");
@@ -52,9 +52,6 @@ public class ModelDumpTruck extends ModelTransportable {
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity e) {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, e);
 	}
-
-	
-
 
 	public ResourceLocation getTexture() {
 

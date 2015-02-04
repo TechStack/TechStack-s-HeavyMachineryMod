@@ -14,7 +14,7 @@ import com.projectreddog.machinemod.model.ModelTransportable;
 
 public class ItemCombine extends ItemTransportable {
 
-	public ModelTransportable mt ;
+	public ModelTransportable mt;
 
 	public ItemCombine() {
 		super();
@@ -41,15 +41,16 @@ public class ItemCombine extends ItemTransportable {
 			entityCombine.prevPosZ = z + .5d;
 			result = world.spawnEntityInWorld(entityCombine);
 			// LogHelper.info("Spawn entity resutl:" + result );
-			if (result && !player.capabilities.isCreativeMode){
-				stack.stackSize --;
+			if (result && !player.capabilities.isCreativeMode) {
+				stack.stackSize--;
 			}
 		}
 		return result;
 	}
+
 	@Override
 	public ModelTransportable getModel() {
-		if (mt == null){
+		if (mt == null) {
 			mt = new ModelCombine();
 		}
 		return mt;

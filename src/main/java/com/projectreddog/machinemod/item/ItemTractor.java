@@ -13,7 +13,7 @@ import com.projectreddog.machinemod.model.ModelTransportable;
 
 public class ItemTractor extends ItemTransportable {
 
-	public ModelTransportable mt ;
+	public ModelTransportable mt;
 
 	public ItemTractor() {
 		super();
@@ -39,12 +39,12 @@ public class ItemTractor extends ItemTransportable {
 			EntityTractor entityTractor = new EntityTractor(world);
 			entityTractor.setPosition(x + .5d, y + 1.0d, z + .5d);
 			entityTractor.prevPosX = x + .5d;
-			entityTractor.prevPosY = y +  1.0d;
+			entityTractor.prevPosY = y + 1.0d;
 			entityTractor.prevPosZ = z + .5d;
 			result = world.spawnEntityInWorld(entityTractor);
 			// LogHelper.info("Spawn entity resutl:" + result );
-			if (result && !player.capabilities.isCreativeMode){
-				stack.stackSize --;
+			if (result && !player.capabilities.isCreativeMode) {
+				stack.stackSize--;
 			}
 		}
 		return result;
@@ -52,7 +52,7 @@ public class ItemTractor extends ItemTransportable {
 
 	@Override
 	public ModelTransportable getModel() {
-		if (mt == null){
+		if (mt == null) {
 			mt = new ModelTractor();
 		}
 		return mt;

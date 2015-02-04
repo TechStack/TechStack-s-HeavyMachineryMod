@@ -76,10 +76,6 @@ public class RenderLoader extends Render {
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelLoader.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
-		
-		
-		
-
 		GlStateManager.translate(-1.4f, -0.25F, -.85F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glScalef(.5f, .5f, .5f);
@@ -134,10 +130,9 @@ public class RenderLoader extends Render {
 			}
 		}
 
-		
 		GL11.glPopMatrix();
 	}
-	
+
 	private void RenderHelper_B(WorldRenderer p_175033_1_, BakedQuad p_175033_2_, int p_175033_3_) {
 		p_175033_1_.func_178981_a(p_175033_2_.func_178209_a());
 		p_175033_1_.func_178968_d(p_175033_3_);
@@ -169,7 +164,6 @@ public class RenderLoader extends Render {
 			}
 		}
 	}
-
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {

@@ -7,7 +7,6 @@ public class MachineModMessageRequestAllInventoryToServer implements IMessage {
 
 	public int entityid;
 
-	
 	public MachineModMessageRequestAllInventoryToServer() {
 
 	}

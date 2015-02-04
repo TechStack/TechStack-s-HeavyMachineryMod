@@ -35,17 +35,15 @@ public class BlockMachineModPrimaryCrusher extends BlockContainer {
 		// NEED TO return the TE here
 		return new TileEntityPrimaryCrusher();
 	}
-	@Override
-	 public int getRenderType()
-	    {
-		// 3 for normal block 2 for TESR 1 liquid  -1 nothing ( like air)
-	        return 2;
-	    }
 
-	
 	@Override
-    public boolean isOpaqueCube()
-    {
-        return false;
-    }
+	public int getRenderType() {
+		// 3 for normal block 2 for TESR 1 liquid -1 nothing ( like air)
+		return 2;
+	}
+
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
 }
