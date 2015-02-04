@@ -5,18 +5,21 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
+import org.lwjgl.opengl.GL11;
+
+import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.model.advanced.AdvancedModelLoader;
 import com.projectreddog.machinemod.model.advanced.IModelCustom;
 import com.projectreddog.machinemod.reference.Reference;
 
-public class ModelCombine extends ModelBase {
+public class ModelCrane extends ModelBase {
 	// fields
 	private IModelCustom myModel;
 
-	public ModelCombine() {
+	public ModelCrane() {
 
 		// LogHelper.info("LOADING dump truck MODEL!");
-		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/modelcombine.obj"));
+		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/crane.obj"));
 		// casinoTexture = new ResourceLocation("modid",
 		// "textures/casinoTexture.png");
 
@@ -25,6 +28,11 @@ public class ModelCombine extends ModelBase {
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		myModel.renderAll();
+
+		if (entity != null) {
+			GL11.glTranslatef(0f, ((EntityMachineModRideable) entity).Attribute1, 2.8f);
+		}
+		this.renderGroupObject("Wrecking_ball_Sphere");
 
 	}
 
@@ -45,7 +53,7 @@ public class ModelCombine extends ModelBase {
 
 	public ResourceLocation getTexture() {
 
-		return new ResourceLocation("machinemod", Reference.MODEL_TRACTOR_TEXTURE_LOCATION);
+		return new ResourceLocation("machinemod", Reference.MODEL_CRANE_TEXTURE_LOCATION);
 	}
 
 }

@@ -5,35 +5,36 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
-import com.projectreddog.machinemod.item.ItemBulldozer;
-import com.projectreddog.machinemod.item.ItemCamshaft;
-import com.projectreddog.machinemod.item.ItemCombine;
-import com.projectreddog.machinemod.item.ItemDozerBlade;
 import com.projectreddog.machinemod.item.ItemDrillHead;
 import com.projectreddog.machinemod.item.ItemDrillPipe;
-import com.projectreddog.machinemod.item.ItemDumpTruck;
-import com.projectreddog.machinemod.item.ItemDumperBed;
-import com.projectreddog.machinemod.item.ItemEngine;
-import com.projectreddog.machinemod.item.ItemFlatBedTrailer;
-import com.projectreddog.machinemod.item.ItemHavesterHead;
-import com.projectreddog.machinemod.item.ItemIronGear;
-import com.projectreddog.machinemod.item.ItemLoader;
-import com.projectreddog.machinemod.item.ItemLoaderBucket;
 import com.projectreddog.machinemod.item.ItemMachineMod;
-import com.projectreddog.machinemod.item.ItemPiston;
-import com.projectreddog.machinemod.item.ItemStoneGear;
-import com.projectreddog.machinemod.item.ItemTracks;
-import com.projectreddog.machinemod.item.ItemTractor;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentSprayer;
-import com.projectreddog.machinemod.item.ItemTransmission;
-import com.projectreddog.machinemod.item.ItemTruboFan;
-import com.projectreddog.machinemod.item.ItemTurbo;
-import com.projectreddog.machinemod.item.ItemTurboEngine;
-import com.projectreddog.machinemod.item.ItemWheel;
-import com.projectreddog.machinemod.item.ItemWideBedTruck;
-import com.projectreddog.machinemod.item.ItemWoodenGear;
+import com.projectreddog.machinemod.item.components.ItemCamshaft;
+import com.projectreddog.machinemod.item.components.ItemDozerBlade;
+import com.projectreddog.machinemod.item.components.ItemDumperBed;
+import com.projectreddog.machinemod.item.components.ItemEngine;
+import com.projectreddog.machinemod.item.components.ItemFlatBedTrailer;
+import com.projectreddog.machinemod.item.components.ItemHavesterHead;
+import com.projectreddog.machinemod.item.components.ItemIronGear;
+import com.projectreddog.machinemod.item.components.ItemLoaderBucket;
+import com.projectreddog.machinemod.item.components.ItemPiston;
+import com.projectreddog.machinemod.item.components.ItemStoneGear;
+import com.projectreddog.machinemod.item.components.ItemTracks;
+import com.projectreddog.machinemod.item.components.ItemTransmission;
+import com.projectreddog.machinemod.item.components.ItemTruboFan;
+import com.projectreddog.machinemod.item.components.ItemTurbo;
+import com.projectreddog.machinemod.item.components.ItemTurboEngine;
+import com.projectreddog.machinemod.item.components.ItemWheel;
+import com.projectreddog.machinemod.item.components.ItemWoodenGear;
+import com.projectreddog.machinemod.item.machines.ItemBulldozer;
+import com.projectreddog.machinemod.item.machines.ItemCombine;
+import com.projectreddog.machinemod.item.machines.ItemCrane;
+import com.projectreddog.machinemod.item.machines.ItemDumpTruck;
+import com.projectreddog.machinemod.item.machines.ItemLoader;
+import com.projectreddog.machinemod.item.machines.ItemTractor;
+import com.projectreddog.machinemod.item.machines.ItemWideBedTruck;
 import com.projectreddog.machinemod.reference.Reference;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
@@ -46,6 +47,8 @@ public class ModItems {
 	public static final ItemMachineMod dumptruck = new ItemDumpTruck();
 	public static final ItemMachineMod loader = new ItemLoader();
 	public static final ItemMachineMod combine = new ItemCombine();
+	public static final ItemMachineMod crane = new ItemCrane();
+
 	public static final ItemMachineMod drillhead = new ItemDrillHead();
 	public static final ItemMachineMod drillpipe = new ItemDrillPipe();
 	public static final ItemMachineMod plow = new ItemTractorAttachmentPlow();
@@ -79,6 +82,8 @@ public class ModItems {
 		GameRegistry.registerItem(dumptruck, "dumptruck");
 		GameRegistry.registerItem(loader, "loader");
 		GameRegistry.registerItem(combine, "combine");
+		GameRegistry.registerItem(crane, "crane");
+
 		GameRegistry.registerItem(drillhead, "drillhead");
 		GameRegistry.registerItem(drillpipe, "drillpipe");
 		GameRegistry.registerItem(plow, "plow");
@@ -134,6 +139,7 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(transmission, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "transmission", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(turbofan, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "turbofan", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(combine, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "combine", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(crane, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "crane", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(camshaft, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "camshaft", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(piston, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "piston", "inventory"));

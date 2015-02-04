@@ -5,6 +5,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.projectreddog.machinemod.entity.EntityBulldozer;
 import com.projectreddog.machinemod.entity.EntityCombine;
+import com.projectreddog.machinemod.entity.EntityCrane;
 //import com.projectreddog.machinemod.entity.EntityDrillingRig;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityLoader;
@@ -25,8 +26,8 @@ public class ModEntities {
 		EntityRegistry.registerModEntity(EntityLoader.class, "loader", 4, mod, 80, 1, false);
 		EntityRegistry.registerModEntity(EntityTractor.class, "tractor", 5, mod, 80, 1, false);
 		EntityRegistry.registerModEntity(EntityCombine.class, "combine", 6, mod, 80, 1, false);
-
 		EntityRegistry.registerModEntity(EntityWideBedTruck.class, "widebedtruck", 7, mod, 80, 1, false);
+		EntityRegistry.registerModEntity(EntityCrane.class, "crane", 8, mod, 80, 1, false);
 
 	}
 }

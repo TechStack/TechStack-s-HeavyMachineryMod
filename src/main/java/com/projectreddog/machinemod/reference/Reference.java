@@ -15,6 +15,7 @@ public class Reference {
 	public static final String MODEL_DRILLINGRIG_TEXTURE_LOCATION = "models/drillingrig.png";
 	public static final String MODEL_DUMPTRUCK_TEXTURE_LOCATION = "models/dumptruck.png";
 	public static final String MODEL_LOADER_TEXTURE_LOCATION = "models/modelloader.png";
+	public static final String MODEL_CRANE_TEXTURE_LOCATION = "models/crane.png";
 
 	// textures for Tile Entities
 	public static final String MODEL_TILEENTITY_PRIMARY_CRUSHER_TEXTURE_LOCATION = "models/primarycrusher.png";
