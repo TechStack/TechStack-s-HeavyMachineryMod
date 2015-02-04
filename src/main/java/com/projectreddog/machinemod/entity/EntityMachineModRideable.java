@@ -200,8 +200,6 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			isPlayerPushingJumpButton = false;
 		}
 
-		
-		bad code here 
 		lastPosX = posX;
 		lastPosY = posY;
 		lastPosZ = posZ;
