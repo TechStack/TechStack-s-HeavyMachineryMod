@@ -1,21 +1,21 @@
-[
 {
-  "modid": "MachineMod",
-  "name": "Machine Mod",
-  "description": "TechStack's Machine mod",
-  "version":  "1.7.10-1.0-Pre-ALPHA",
-  "mcversion": "1.7.10",
-  "url": "",
-  "updateUrl": "",
-  "authorList": [
-    "pahimar"
-  ],
-  "credits": "To all the gamers everywhere!",
-  "logoFile": "",
-  "screenshots": [
-  ],
-  "parent":"",
-  "dependencies": [
-  ]
+  "modListVersion": 2,
+  "modList": [{
+    "modid": "machinemod",
+    "name": "TechStack's Heavy Machinery Mod",
+    "description": "Adding Heavy Machines to MC since 1.8",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [ "TechStack"],
+    "credits": "Authored by TechStack",
+    "logoFile": "",
+    "screenshots": [],
+    "parent": "",
+    "requiredMods": [ "Forge" ],
+    "dependencies": [],
+    "dependants": [],
+    "useDependencyInformation": true
+  }]
 }
-]
