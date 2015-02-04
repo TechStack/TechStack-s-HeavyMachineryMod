@@ -190,6 +190,18 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		// this.motionY *= -0.5D;
 		//
 		// }
+		
+		// need to reset vars because player is no longer riding in the machine should cause it to stop & not star when the re-enter if they leave
+		// while the machine is moving
+		if (this.riddenByEntity == null){
+		isPlayerAccelerating = false;
+		isPlayerBreaking = false;
+		isPlayerTurningRight = false;
+		isPlayerTurningLeft = false;
+		isPlayerPushingSprintButton = false;
+		isPlayerPushingJumpButton = false;
+		}
+
 		lastPosX = posX;
 		lastPosY = posY;
 		lastPosZ = posZ;
