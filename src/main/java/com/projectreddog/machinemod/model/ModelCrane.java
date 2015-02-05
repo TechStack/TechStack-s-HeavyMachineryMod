@@ -30,7 +30,7 @@ public class ModelCrane extends ModelBase {
 		myModel.renderAll();
 
 		if (entity != null) {
-			GL11.glTranslatef(0f, ((EntityMachineModRideable) entity).Attribute1, 2.8f);
+			GL11.glTranslatef(0f, ((EntityMachineModRideable) entity).Attribute1, 0f);
 		}
 		this.renderGroupObject("Wrecking_ball_Sphere");
 

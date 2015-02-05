@@ -17,9 +17,9 @@ public class EntityCrane extends EntityMachineModRideable {
 		setSize(9f, 24f);
 		inventory = new ItemStack[9];
 
-		this.mountedOffsetY = 0.6D;
-		this.mountedOffsetX = 0.4D;
-		this.mountedOffsetZ = 0.4D;
+		this.mountedOffsetY = .2D;
+		this.mountedOffsetX = 5D;
+		this.mountedOffsetZ = 5D;
 		this.maxAngle = 256;
 		this.minAngle = 0;
 		this.droppedItem = ModItems.crane;
@@ -33,15 +33,26 @@ public class EntityCrane extends EntityMachineModRideable {
 			// if (this.Attribute1 == this.getMaxAngle()) {
 			// bucket Down
 			// break blocks first
+			int angle;
+			for (int i = -1; i < 2; i++) {
+				for (int j = -1; j < 2; j++) {
+					for (int k = -1; k < 2; k++) {
+						if (i == 0) {
+							angle = 0;
+						} else {
+							angle = 90;
+						}
+						BlockPos bp;
+						bp = new BlockPos(posX + calcTwoOffsetX(10 + j, angle, i), posY + k + 26 - ((int) this.Attribute1), posZ + calcTwoOffsetZ(10 + j, angle, i));
+						if (worldObj.getBlockState(bp).getBlock().getBlockHardness(worldObj, bp) < 100) {
+							// TODO : need to BreakEvent
+							worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
+							worldObj.setBlockToAir(bp);
+						}
+					}
+				}
 
-			BlockPos bp;
-			bp = new BlockPos(posX + calcTwoOffsetX(10, 0, 0), posY - ((int) this.Attribute1), posZ + calcTwoOffsetZ(10, 0, 0));
-			if (worldObj.getBlockState(bp).getBlock().getBlockHardness(worldObj, bp) < 100) {
-				// TODO : need to BreakEvent
-				worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-				worldObj.setBlockToAir(bp);
 			}
-
 			// }
 		}
 
