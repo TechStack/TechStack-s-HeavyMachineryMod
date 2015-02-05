@@ -32,6 +32,7 @@ import com.projectreddog.machinemod.item.machines.ItemBulldozer;
 import com.projectreddog.machinemod.item.machines.ItemCombine;
 import com.projectreddog.machinemod.item.machines.ItemCrane;
 import com.projectreddog.machinemod.item.machines.ItemDumpTruck;
+import com.projectreddog.machinemod.item.machines.ItemExcavator;
 import com.projectreddog.machinemod.item.machines.ItemLoader;
 import com.projectreddog.machinemod.item.machines.ItemTractor;
 import com.projectreddog.machinemod.item.machines.ItemWideBedTruck;
@@ -48,6 +49,7 @@ public class ModItems {
 	public static final ItemMachineMod loader = new ItemLoader();
 	public static final ItemMachineMod combine = new ItemCombine();
 	public static final ItemMachineMod crane = new ItemCrane();
+	public static final ItemMachineMod excavator = new ItemExcavator();
 
 	public static final ItemMachineMod drillhead = new ItemDrillHead();
 	public static final ItemMachineMod drillpipe = new ItemDrillPipe();
@@ -83,6 +85,7 @@ public class ModItems {
 		GameRegistry.registerItem(loader, "loader");
 		GameRegistry.registerItem(combine, "combine");
 		GameRegistry.registerItem(crane, "crane");
+		GameRegistry.registerItem(excavator, "excavator");
 
 		GameRegistry.registerItem(drillhead, "drillhead");
 		GameRegistry.registerItem(drillpipe, "drillpipe");
@@ -140,6 +143,7 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(turbofan, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "turbofan", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(combine, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "combine", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(crane, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "crane", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(excavator, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "excavator", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(camshaft, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "camshaft", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(piston, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "piston", "inventory"));

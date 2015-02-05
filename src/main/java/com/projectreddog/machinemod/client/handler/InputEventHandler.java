@@ -1,16 +1,57 @@
 package com.projectreddog.machinemod.client.handler;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 
+import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServer;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServerOpenGui;
-import com.projectreddog.machinemod.utility.LogHelper;
+import com.projectreddog.machinemod.network.MachineModMessageMouseInputToServer;
 
-public class KeyInputEventHandler {
+public class InputEventHandler {
+
+	BlockPos lastBlockPos = null; // holds last block the player looked at
+
+	@SubscribeEvent
+	public void MouseInputEvent(InputEvent.MouseInputEvent event) {
+
+		if (Minecraft.getMinecraft().thePlayer.ridingEntity != null) {
+			if (Minecraft.getMinecraft().thePlayer.ridingEntity instanceof EntityExcavator) {
+				Entity e = Minecraft.getMinecraft().thePlayer.ridingEntity;
+				// playre riding a excavator so we should check which block they are looking at.
+				MovingObjectPosition currentMouseOver;
+				// LogHelper.info("MIE" + event);
+				currentMouseOver = Minecraft.getMinecraft().objectMouseOver;
+
+				if (currentMouseOver != null && currentMouseOver.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
+
+					// return blockpos of this movingbojectposition
+					BlockPos currentBlockpos = currentMouseOver.func_178782_a();
+
+					if (Minecraft.getMinecraft().thePlayer.worldObj.getBlockState(currentBlockpos).getBlock().getMaterial() != Material.air) {
+						// this.effectRenderer.addBlockHitEffects(blockpos, this.objectMouseOver);
+						// this.thePlayer.swingItem();
+
+						// Player is looking at a block check if its the same as the "Last block" if it is then we can
+						if (lastBlockPos != currentBlockpos) {
+							// Its a new block tell the server which block this player is looking at.
+							ModNetwork.simpleNetworkWrapper.sendToServer(new MachineModMessageMouseInputToServer(e.getEntityId(), currentBlockpos.getX(), currentBlockpos.getY(), currentBlockpos.getZ()));
+							// save for use on the client
+							((EntityExcavator) e).targetBlockPos = currentBlockpos;
+							lastBlockPos = currentBlockpos;
+						}
+					}
+				}
+			}
+		}
+	}
 
 	@SubscribeEvent
 	public void handleKeyInputevent(InputEvent.KeyInputEvent event) {
@@ -49,7 +90,7 @@ public class KeyInputEventHandler {
 				// server
 				e.isPlayerBreaking = true;
 				e.isPlayerAccelerating = false;// for cases where both accel &
-												// break are pressed
+				// break are pressed
 			} else {
 				e.isPlayerBreaking = false;
 			}

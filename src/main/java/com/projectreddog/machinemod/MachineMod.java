@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-import com.projectreddog.machinemod.client.handler.KeyInputEventHandler;
+import com.projectreddog.machinemod.client.handler.InputEventHandler;
 import com.projectreddog.machinemod.handler.ConfigurationHandler;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModEntities;
@@ -44,7 +44,7 @@ public class MachineMod {
 		// register gui, tile entites , crafting recipies (general event
 		// hanlders)
 		ModEntities.init(this);
-		FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
+		FMLCommonHandler.instance().bus().register(new InputEventHandler());
 		Recipes.init();
 		proxy.registerRenderers();
 	}

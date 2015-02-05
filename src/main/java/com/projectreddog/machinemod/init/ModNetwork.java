@@ -12,6 +12,8 @@ import net.minecraftforge.fml.relauncher.Side;
 
 import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.client.gui.GuiHandler;
+import com.projectreddog.machinemod.network.MachineModMessageEntityCurrentTargetPosToClient;
+import com.projectreddog.machinemod.network.MachineModMessageEntityCurrentTargetPosToClientHandler;
 import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClient;
 import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClientHandler;
 import com.projectreddog.machinemod.network.MachineModMessageEntityToClient;
@@ -20,6 +22,8 @@ import com.projectreddog.machinemod.network.MachineModMessageInputToServer;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServerHandler;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServerOpenGui;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServerOpenGuiHandler;
+import com.projectreddog.machinemod.network.MachineModMessageMouseInputToServer;
+import com.projectreddog.machinemod.network.MachineModMessageMouseInputToServerHandler;
 import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServer;
 import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServerHandler;
 import com.projectreddog.machinemod.reference.Reference;
@@ -41,10 +45,12 @@ public class ModNetwork {
 																																								// to
 																																								// server
 		simpleNetworkWrapper.registerMessage(MachineModMessageEntityInventoryChangedToClientHandler.class, MachineModMessageEntityInventoryChangedToClient.class, 3, Side.CLIENT);// message
-		simpleNetworkWrapper.registerMessage(MachineModMessageRequestAllInventoryToServerHandler.class, MachineModMessageRequestAllInventoryToServer.class, 4, Side.SERVER);// message
-
-		// to
+		simpleNetworkWrapper.registerMessage(MachineModMessageRequestAllInventoryToServerHandler.class, MachineModMessageRequestAllInventoryToServer.class, 4, Side.SERVER);// message // to
 		// client
+
+		simpleNetworkWrapper.registerMessage(MachineModMessageMouseInputToServerHandler.class, MachineModMessageMouseInputToServer.class, 5, Side.SERVER);// message to server
+
+		simpleNetworkWrapper.registerMessage(MachineModMessageEntityCurrentTargetPosToClientHandler.class, MachineModMessageEntityCurrentTargetPosToClient.class, 6, Side.CLIENT);// message to server
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(MachineMod.instance, new GuiHandler());
 	}

@@ -8,6 +8,7 @@ import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.entity.EntityCrane;
 //import com.projectreddog.machinemod.entity.EntityDrillingRig;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
+import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.entity.EntityWideBedTruck;
@@ -28,6 +29,7 @@ public class ModEntities {
 		EntityRegistry.registerModEntity(EntityCombine.class, "combine", 6, mod, 80, 1, false);
 		EntityRegistry.registerModEntity(EntityWideBedTruck.class, "widebedtruck", 7, mod, 80, 1, false);
 		EntityRegistry.registerModEntity(EntityCrane.class, "crane", 8, mod, 80, 1, false);
+		EntityRegistry.registerModEntity(EntityExcavator.class, "excavator", 9, mod, 80, 1, false);
 
 	}
 }
