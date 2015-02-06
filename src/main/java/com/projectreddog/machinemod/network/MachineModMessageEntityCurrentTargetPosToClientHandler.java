@@ -42,7 +42,10 @@ public class MachineModMessageEntityCurrentTargetPosToClientHandler implements I
 							((EntityExcavator) entity).currPosX = message.currPosX;
 							((EntityExcavator) entity).currPosY = message.currPosY;
 							((EntityExcavator) entity).currPosZ = message.currPosZ;
-
+							((EntityExcavator) entity).angleArm1 = message.angleArm1;
+							((EntityExcavator) entity).angleArm2 = message.angleArm2;
+							((EntityExcavator) entity).angleArm3 = message.angleArm3;
+							((EntityExcavator) entity).mainBodyRotation = message.mainBodyRotation;
 							// LogHelper.info("RECIEVED ENTITY PACKET FROM SERVER"
 							// );
 						}

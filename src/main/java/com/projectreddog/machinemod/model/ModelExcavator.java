@@ -44,9 +44,14 @@ public class ModelExcavator extends ModelTransportable {
 			// }
 			GL11.glRotatef(calcRot, 0.0F, 1.0F, 0.0F);
 			// GL11.glRotatef((float) ((EntityExcavator) entity).mainBodyRotation, 0, 1, 0f);
+			if (((EntityExcavator) entity).riddenByEntity != null && ((EntityExcavator) entity).riddenByEntity == Minecraft.getMinecraft().thePlayer) {
+				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+				GL11.glEnable(GL11.GL_BLEND);
+				GL11.glColor4d(1, 1, 1, .50d);
+			}
 		}
 		this.renderGroupObject("body_Cube");
-		GL11.glTranslatef(0f, -.8f, 1.4f);
+		GL11.glTranslatef(0f, -.8f, EntityExcavator.armPiviotForward);
 		if (entity != null) {
 
 			GL11.glRotatef((float) ((EntityExcavator) entity).angleArm1 * -1, 1, 0, 0f);
@@ -54,17 +59,12 @@ public class ModelExcavator extends ModelTransportable {
 			// change to rotate
 			// GL11.glTranslatef(0f, , 0f);
 
-			if (((EntityExcavator) entity).riddenByEntity != null && ((EntityExcavator) entity).riddenByEntity == Minecraft.getMinecraft().thePlayer) {
-				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-				GL11.glEnable(GL11.GL_BLEND);
-				GL11.glColor4d(1, 1, 1, .50d);
-			}
 		}
 
 		this.renderGroupObject("Arm1_Cube.002");
 
-		GL11.glTranslatef(0f, -6, 0f);
-		GL11.glRotatef(-90f, 1, 0, 0f);
+		GL11.glTranslatef(0f, EntityExcavator.AmrLength * -1, 0f);
+		GL11.glRotatef((float) ((EntityExcavator) entity).angleArm2 * -1, 1, 0, 0f);
 
 		this.renderGroupObject("Arm2_Cube.001");
 

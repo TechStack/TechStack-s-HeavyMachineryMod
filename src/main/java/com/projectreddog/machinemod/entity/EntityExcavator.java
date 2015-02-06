@@ -9,11 +9,12 @@ import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageEntityCurrentTargetPosToClient;
-import com.projectreddog.machinemod.utility.LogHelper;
 
 public class EntityExcavator extends EntityMachineModRideable {
 
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
+	public static float AmrLength = 3.1f;
+	public static float armPiviotForward = 1.4f;
 	public BlockPos targetBlockPos;
 	public double currPosX;
 	public double currPosY;
@@ -22,6 +23,8 @@ public class EntityExcavator extends EntityMachineModRideable {
 
 	public double angleArm1 = 0;
 	public double angleArm2 = 0;
+
+	public double angleArm3 = 0;
 
 	public EntityExcavator(World world) {
 		super(world);
@@ -84,7 +87,35 @@ public class EntityExcavator extends EntityMachineModRideable {
 					currPosZ = targetBlockPos.getZ() + .5d;
 				}
 
-				ModNetwork.sendPacketToAllAround((new MachineModMessageEntityCurrentTargetPosToClient(this.getEntityId(), this.currPosX, this.currPosY, this.currPosZ)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
+				double l = currPosX - this.posX;
+				double w = currPosZ - this.posZ;
+				double c = Math.sqrt(l * l + w * w);
+				double alpha1 = (Math.asin(l / c) * -1) / Math.PI * 180;
+				double alpha2 = (Math.acos(w / c)) / Math.PI * 180;
+				if (alpha2 > 90) {
+					this.mainBodyRotation = 180 - alpha1;
+				} else {
+					this.mainBodyRotation = alpha1;
+				}
+				if (this.mainBodyRotation > 360) {
+					this.mainBodyRotation = 360 - this.mainBodyRotation;
+				} else if (this.mainBodyRotation < 0) {
+					this.mainBodyRotation = 360 + this.mainBodyRotation;
+				}
+				// LogHelper.info("Rotation vlaue:" + this.mainBodyRotation + " " + currPosX + " " + currPosZ);
+				// adjust distance for the
+				double o = (c - EntityExcavator.armPiviotForward) / 2;
+				double h = EntityExcavator.AmrLength;
+
+				// soh cah toa
+				// 1 need to find arcsin of (o/h) /math.PI *180; (this is the angle of the first arm)
+				// 2 and take 180-90- result of above
+				// 3 this(#2) will be 50% of the angle needed for the 2nd arm.
+
+				angleArm1 = Math.asin(o / h) / Math.PI * 180;
+				angleArm2 = (180 - 90 - angleArm1) * 2;
+
+				ModNetwork.sendPacketToAllAround((new MachineModMessageEntityCurrentTargetPosToClient(this.getEntityId(), this.currPosX, this.currPosY, this.currPosZ, this.angleArm1, this.angleArm2, this.angleArm3, this.mainBodyRotation)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
 
 				if (this.isPlayerPushingSprintButton) {
 					// player wants to break the block
@@ -107,33 +138,9 @@ public class EntityExcavator extends EntityMachineModRideable {
 		} else {
 			// move client bucket based on client smoothing logic???
 			if (targetBlockPos != null) {
-				double l = currPosX - this.posX;
-				double w = currPosZ - this.posZ;
-				double c = Math.sqrt(l * l + w * w);
-				double alpha1 = (Math.asin(l / c) * -1) / Math.PI * 180;
-				double alpha2 = (Math.acos(w / c)) / Math.PI * 180;
-				if (alpha2 > 90) {
-					this.mainBodyRotation = 180 - alpha1;
-				} else {
-					this.mainBodyRotation = alpha1;
-				}
-				if (this.mainBodyRotation > 360) {
-					this.mainBodyRotation = 360 - this.mainBodyRotation;
-				} else if (this.mainBodyRotation < 0) {
-					this.mainBodyRotation = 360 + this.mainBodyRotation;
-				}
-				LogHelper.info("Rotation vlaue:" + this.mainBodyRotation + " " + currPosX + " " + currPosZ);
-				// adjust distance for the
-				double o = (c - 6) / 2;
-				double h = 10d;
 
-				// soh cah toa
-				// 1 need to find arcsin of (o/h) /math.PI *180; (this is the angle of the first arm)
-				// 2 and take 180-90- result of above
-				// 3 this(#2) will be 50% of the angle needed for the 2nd arm.
+				// get arm 1 vert offset for all arm segments
 
-				angleArm1 = Math.asin(o / h) / Math.PI * 180;
-				angleArm2 = (180 - 90 - angleArm2) * 2;
 			}
 
 		}
