@@ -20,6 +20,9 @@ public class EntityExcavator extends EntityMachineModRideable {
 	public double currPosZ;
 	public double mainBodyRotation = 0;
 
+	public double angleArm1 = 0;
+	public double angleArm2 = 0;
+
 	public EntityExcavator(World world) {
 		super(world);
 
@@ -104,24 +107,6 @@ public class EntityExcavator extends EntityMachineModRideable {
 		} else {
 			// move client bucket based on client smoothing logic???
 			if (targetBlockPos != null) {
-
-				// // do calc of angel in this client side update so its 20 per second instead of 120 (if fps is 120 per second) should help avoid fps hit
-				// double dX = this.posX - currPosX;
-				// double dZ = this.posZ - currPosZ;
-				// // * 180 / Math.PI if need to convert from raidians to degrees i believe it returns degrees after
-				// // inital testing orig Z over X
-				// this.mainBodyRotation = (Math.atan(dX / dZ) * 180 / Math.PI);
-				// LogHelper.info("Rotation vlaue:" + this.mainBodyRotation + " " + currPosX + " " + currPosZ);
-				//
-				// // clamp to 360 for my sanity
-				// if (this.mainBodyRotation > 360) {
-				// this.mainBodyRotation = 360 - this.mainBodyRotation;
-				// } else if (this.mainBodyRotation < 0) {
-				// this.mainBodyRotation = 360 + this.mainBodyRotation;
-				// }
-				// x = currPos
-				// x0 = pos
-
 				double l = currPosX - this.posX;
 				double w = currPosZ - this.posZ;
 				double c = Math.sqrt(l * l + w * w);
@@ -138,6 +123,17 @@ public class EntityExcavator extends EntityMachineModRideable {
 					this.mainBodyRotation = 360 + this.mainBodyRotation;
 				}
 				LogHelper.info("Rotation vlaue:" + this.mainBodyRotation + " " + currPosX + " " + currPosZ);
+				// adjust distance for the
+				double o = (c - 6) / 2;
+				double h = 10d;
+
+				// soh cah toa
+				// 1 need to find arcsin of (o/h) /math.PI *180; (this is the angle of the first arm)
+				// 2 and take 180-90- result of above
+				// 3 this(#2) will be 50% of the angle needed for the 2nd arm.
+
+				angleArm1 = Math.asin(o / h) / Math.PI * 180;
+				angleArm2 = (180 - 90 - angleArm2) * 2;
 			}
 
 		}
