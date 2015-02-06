@@ -26,6 +26,8 @@ public class EntityExcavator extends EntityMachineModRideable {
 
 	public double angleArm3 = 0;
 
+	public double armSpeed = .1d;
+
 	public EntityExcavator(World world) {
 		super(world);
 
@@ -56,34 +58,34 @@ public class EntityExcavator extends EntityMachineModRideable {
 				// + .5d for center of block
 				//
 				if (currPosX > targetBlockPos.getX() + .5d) {
-					currPosX -= .05d;
+					currPosX -= armSpeed;
 				} else if (currPosX < targetBlockPos.getX() + .5d) {
-					currPosX += .05d;
+					currPosX += armSpeed;
 				}
 				if (currPosY > targetBlockPos.getY() + .5d) {
-					currPosY -= .05d;
+					currPosY -= armSpeed;
 				} else if (currPosY < targetBlockPos.getY() + .5d) {
-					currPosY += .05d;
+					currPosY += armSpeed;
 				}
 				if (currPosZ > targetBlockPos.getZ() + .5d) {
-					currPosZ -= .05d;
+					currPosZ -= armSpeed;
 				} else if (currPosZ < targetBlockPos.getZ() + .5d) {
-					currPosZ += .05d;
+					currPosZ += armSpeed;
 				}
 
-				if (currPosX - targetBlockPos.getX() < .55d && currPosX - targetBlockPos.getX() > 0) {
+				if (currPosX - targetBlockPos.getX() < .5d + armSpeed && currPosX - targetBlockPos.getX() > 0) {
 					currPosX = targetBlockPos.getX() + .5d;
-				} else if (currPosX - targetBlockPos.getX() < -.55d && currPosX - targetBlockPos.getX() < 0) {
+				} else if (currPosX - targetBlockPos.getX() < -.5d + armSpeed && currPosX - targetBlockPos.getX() < 0) {
 					currPosX = targetBlockPos.getX() + .5d;
 				}
-				if (currPosY - targetBlockPos.getY() < .55d && currPosY - targetBlockPos.getY() > 0) {
+				if (currPosY - targetBlockPos.getY() < .5d + armSpeed && currPosY - targetBlockPos.getY() > 0) {
 					currPosY = targetBlockPos.getY() + .5d;
-				} else if (currPosY - targetBlockPos.getY() + .5d < -.05d && currPosY - targetBlockPos.getY() < 0) {
+				} else if (currPosY - targetBlockPos.getY() + .5d + armSpeed < -.05d && currPosY - targetBlockPos.getY() < 0) {
 					currPosY = targetBlockPos.getY() + .5d;
 				}
-				if (currPosZ - targetBlockPos.getZ() < .55d && currPosZ - targetBlockPos.getZ() > 0) {
+				if (currPosZ - targetBlockPos.getZ() < .5d + armSpeed && currPosZ - targetBlockPos.getZ() > 0) {
 					currPosZ = targetBlockPos.getZ() + .5d;
-				} else if (currPosZ - targetBlockPos.getZ() < -.55d && currPosZ - targetBlockPos.getZ() < 0) {
+				} else if (currPosZ - targetBlockPos.getZ() < -.5d + armSpeed && currPosZ - targetBlockPos.getZ() < 0) {
 					currPosZ = targetBlockPos.getZ() + .5d;
 				}
 

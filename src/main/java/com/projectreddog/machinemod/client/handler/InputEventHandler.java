@@ -5,8 +5,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Vec3;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
@@ -28,8 +31,10 @@ public class InputEventHandler {
 				// playre riding a excavator so we should check which block they are looking at.
 				MovingObjectPosition currentMouseOver;
 				// LogHelper.info("MIE" + event);
-				currentMouseOver = Minecraft.getMinecraft().objectMouseOver;
-
+				// currentMouseOver = Minecraft.getMinecraft().objectMouseOver;
+				currentMouseOver = rayTrace(7);
+				// look position
+				// Minecraft.getMinecraft().theWorld.rayTraceBlocks(Minecraft.getMinecraft().thePlayer.getPosition(),Minecraft.getMinecraft().thePlayer.getPosition().addv)
 				if (currentMouseOver != null && currentMouseOver.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
 
 					// return blockpos of this movingbojectposition
@@ -135,4 +140,17 @@ public class InputEventHandler {
 		}
 
 	}
+
+	@SideOnly(Side.CLIENT)
+	/**
+	 * Performs a ray trace for the distance specified *
+	 *  Args: distance
+	 */
+	public MovingObjectPosition rayTrace(double par1) {
+		Vec3 var4 = Minecraft.getMinecraft().thePlayer.getPositionEyes(1);
+		Vec3 var5 = Minecraft.getMinecraft().thePlayer.getLook(1);
+		Vec3 var6 = var4.addVector(var5.xCoord * par1, var5.yCoord * par1, var5.zCoord * par1);
+		return Minecraft.getMinecraft().theWorld.rayTraceBlocks(var4, var6);
+	}
+
 }
