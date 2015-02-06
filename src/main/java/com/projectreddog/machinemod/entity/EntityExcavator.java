@@ -105,18 +105,38 @@ public class EntityExcavator extends EntityMachineModRideable {
 			// move client bucket based on client smoothing logic???
 			if (targetBlockPos != null) {
 
-				// do calc of angel in this client side update so its 20 per second instead of 120 (if fps is 120 per second) should help avoid fps hit
-				double dX = this.posX - currPosX;
-				double dZ = this.posZ - currPosZ;
-				this.mainBodyRotation = (Math.atan(dZ / dX) * 180 / Math.PI);
+				// // do calc of angel in this client side update so its 20 per second instead of 120 (if fps is 120 per second) should help avoid fps hit
+				// double dX = this.posX - currPosX;
+				// double dZ = this.posZ - currPosZ;
+				// // * 180 / Math.PI if need to convert from raidians to degrees i believe it returns degrees after
+				// // inital testing orig Z over X
+				// this.mainBodyRotation = (Math.atan(dX / dZ) * 180 / Math.PI);
+				// LogHelper.info("Rotation vlaue:" + this.mainBodyRotation + " " + currPosX + " " + currPosZ);
+				//
+				// // clamp to 360 for my sanity
+				// if (this.mainBodyRotation > 360) {
+				// this.mainBodyRotation = 360 - this.mainBodyRotation;
+				// } else if (this.mainBodyRotation < 0) {
+				// this.mainBodyRotation = 360 + this.mainBodyRotation;
+				// }
+				// x = currPos
+				// x0 = pos
 
-				// clamp to 360 for my sanity
+				double l = currPosX - this.posX;
+				double w = currPosZ - this.posZ;
+				double c = Math.sqrt(l * l + w * w);
+				double alpha1 = (Math.asin(l / c) * -1) / Math.PI * 180;
+				double alpha2 = (Math.acos(w / c)) / Math.PI * 180;
+				if (alpha2 > 90) {
+					this.mainBodyRotation = 180 - alpha1;
+				} else {
+					this.mainBodyRotation = alpha1;
+				}
 				if (this.mainBodyRotation > 360) {
 					this.mainBodyRotation = 360 - this.mainBodyRotation;
 				} else if (this.mainBodyRotation < 0) {
 					this.mainBodyRotation = 360 + this.mainBodyRotation;
 				}
-
 				LogHelper.info("Rotation vlaue:" + this.mainBodyRotation + " " + currPosX + " " + currPosZ);
 			}
 

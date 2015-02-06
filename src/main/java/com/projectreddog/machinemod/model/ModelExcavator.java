@@ -31,14 +31,18 @@ public class ModelExcavator extends ModelTransportable {
 
 		// render tracks before anything
 		this.renderGroupObject("tracks_Cube.003");
-		GL11.glPopMatrix();
-		GL11.glPushMatrix();
 
 		// rotate rest of machine to correct orentation (first)
 		if (entity != null) {
-			// GL11.glRotatef(180.0F - ((EntityMachineModRideable) entity).yaw , 0.0F, 1.0F, 0.0F);
-
-			GL11.glRotatef((float) ((EntityExcavator) entity).mainBodyRotation, 0, 1, 0f);
+			// (180.0F - ((EntityMachineModRideable) entity).yaw + )
+			float calcRot = (float) (((EntityExcavator) entity).mainBodyRotation - 180 - ((EntityMachineModRideable) entity).yaw);
+			// if (calcRot > 360) {
+			// calcRot = 360 - calcRot;
+			// } else if (calcRot < 0) {
+			// calcRot = 360 + calcRot;
+			// }
+			GL11.glRotatef(calcRot, 0.0F, 1.0F, 0.0F);
+			// GL11.glRotatef((float) ((EntityExcavator) entity).mainBodyRotation, 0, 1, 0f);
 		}
 		this.renderGroupObject("body_Cube");
 		GL11.glTranslatef(0f, -.8f, 1.4f);
