@@ -1,13 +1,12 @@
 package com.projectreddog.machinemod.entity;
 
-import com.projectreddog.machinemod.init.ModItems;
-
 import net.minecraft.block.material.Material;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
+import com.projectreddog.machinemod.init.ModItems;
 
 public class EntityBulldozer extends EntityMachineModRideable {
 
@@ -15,11 +14,11 @@ public class EntityBulldozer extends EntityMachineModRideable {
 
 	public EntityBulldozer(World world) {
 		super(world);
-		setSize(1.5F, 2F);
+		setSize(4.5F, 2F);
 		inventory = new ItemStack[0];
-		this.mountedOffsetY = 0.35D;
-		this.mountedOffsetX = 0D;
-		this.mountedOffsetZ = 0D;
+		this.mountedOffsetY = 0.5D;
+		this.mountedOffsetX = -1.5D;
+		this.mountedOffsetZ = -1.5D;
 		this.maxAngle = 0;
 		this.minAngle = 0;
 		this.droppedItem = ModItems.bulldozer;

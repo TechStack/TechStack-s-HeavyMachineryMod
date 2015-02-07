@@ -475,6 +475,15 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 	}
 
+	public double calcOffsetX(double distance, float rot) {
+		return (distance * MathHelper.cos((float) (clampAngelto360(rot + 90f) * Math.PI / 180.0D)));
+	}
+
+	public double calcOffsetZ(double distance, float rot) {
+		return (distance * MathHelper.sin((float) (clampAngelto360(rot + 90f) * Math.PI / 180.0D)));
+
+	}
+
 	public double calcTwoOffsetX(double distance, int secondOffsetAngle, double secondOffsetDistance) {
 
 		if (secondOffsetAngle == 0) {
@@ -498,6 +507,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	}
 
 	public float clampAngelto360(float inAngle) {
+
 		while (inAngle > 360) {
 			inAngle -= 360;
 		}

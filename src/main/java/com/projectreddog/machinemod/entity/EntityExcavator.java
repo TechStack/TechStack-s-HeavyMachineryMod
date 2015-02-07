@@ -9,12 +9,15 @@ import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageEntityCurrentTargetPosToClient;
+import com.projectreddog.machinemod.utility.LogHelper;
 
 public class EntityExcavator extends EntityMachineModRideable {
 
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 	public static float AmrLength = 3.1f;
 	public static float armPiviotForward = 1.4f;
+	public static float armPiviotUp = -.8f;
+
 	public BlockPos targetBlockPos;
 	public double currPosX;
 	public double currPosY;
@@ -104,9 +107,15 @@ public class EntityExcavator extends EntityMachineModRideable {
 				} else if (this.mainBodyRotation < 0) {
 					this.mainBodyRotation = 360 + this.mainBodyRotation;
 				}
+
+				l = currPosX - this.posX - calcOffsetX(EntityExcavator.armPiviotForward, (float) this.mainBodyRotation);
+				w = currPosZ - this.posZ - calcOffsetZ(EntityExcavator.armPiviotForward, (float) this.mainBodyRotation);
+				double h2 = currPosY - (this.posY - armPiviotUp);
+				c = Math.sqrt(l * l + w * w + h2 * h2);
+
 				// LogHelper.info("Rotation vlaue:" + this.mainBodyRotation + " " + currPosX + " " + currPosZ);
 				// adjust distance for the
-				double o = (c - EntityExcavator.armPiviotForward) / 2;
+				double o = (c) / 2;
 				double h = EntityExcavator.AmrLength;
 
 				// soh cah toa
@@ -116,6 +125,12 @@ public class EntityExcavator extends EntityMachineModRideable {
 
 				angleArm1 = Math.asin(o / h) / Math.PI * 180;
 				angleArm2 = (180 - 90 - angleArm1) * 2;
+
+				double a = c;
+				o = (currPosY - (this.posY - armPiviotUp)); // height up or down.
+
+				angleArm3 = Math.atan(o / a) / Math.PI * 180;
+				LogHelper.info("Rotation vlaue ARM3:" + angleArm1 + ", " + angleArm2 + ", " + angleArm3 + ", ");
 
 				ModNetwork.sendPacketToAllAround((new MachineModMessageEntityCurrentTargetPosToClient(this.getEntityId(), this.currPosX, this.currPosY, this.currPosZ, this.angleArm1, this.angleArm2, this.angleArm3, this.mainBodyRotation)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
 

@@ -52,11 +52,12 @@ public class ModelExcavator extends ModelTransportable {
 			}
 		}
 		this.renderGroupObject("body_Cube");
-		GL11.glTranslatef(0f, -.8f, EntityExcavator.armPiviotForward);
+		GL11.glTranslatef(0f, EntityExcavator.armPiviotUp, EntityExcavator.armPiviotForward);
 		if (entity != null) {
 
-			GL11.glRotatef((float) ((EntityExcavator) entity).angleArm1 * -1, 1, 0, 0f);
+			GL11.glRotatef((float) ((((EntityExcavator) entity).angleArm1 * -1) + (((EntityExcavator) entity).angleArm3)), 1, 0, 0);
 
+			// GL11.glRotatef((float) , 1, 0, 0);
 			// change to rotate
 			// GL11.glTranslatef(0f, , 0f);
 
