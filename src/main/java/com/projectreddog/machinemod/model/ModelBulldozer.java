@@ -10,6 +10,9 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
+import org.lwjgl.opengl.GL11;
+
+import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.model.advanced.AdvancedModelLoader;
 import com.projectreddog.machinemod.model.advanced.IModelCustom;
 import com.projectreddog.machinemod.reference.Reference;
@@ -28,7 +31,20 @@ public class ModelBulldozer extends ModelTransportable {
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
-		myModel.renderAll();
+		// myModel.renderAll();
+
+		this.renderGroupObject("Body_Cube.001");
+
+		if (entity != null) {
+			GL11.glRotatef((((EntityMachineModRideable) entity).Attribute1), 1, 0, 0);
+
+		}
+		this.renderGroupObject("Bucket_Cube.002");
+
+	}
+
+	public void renderGroupObject(String groupName) {
+		myModel.renderPart(groupName);
 
 	}
 

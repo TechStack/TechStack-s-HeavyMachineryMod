@@ -1,6 +1,7 @@
 package com.projectreddog.machinemod.entity;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
@@ -14,13 +15,13 @@ public class EntityBulldozer extends EntityMachineModRideable {
 
 	public EntityBulldozer(World world) {
 		super(world);
-		setSize(4.5F, 2F);
+		setSize(4.2F, 2.5F);
 		inventory = new ItemStack[0];
-		this.mountedOffsetY = 0.5D;
+		this.mountedOffsetY = 1D;
 		this.mountedOffsetX = -1.5D;
 		this.mountedOffsetZ = -1.5D;
-		this.maxAngle = 0;
-		this.minAngle = 0;
+		this.maxAngle = 15;
+		this.minAngle = -15;
 		this.droppedItem = ModItems.bulldozer;
 
 	}
@@ -29,7 +30,34 @@ public class EntityBulldozer extends EntityMachineModRideable {
 	public void onUpdate() {
 		super.onUpdate();
 		if (!worldObj.isRemote) {
-			digMethodA();
+			int bucketOffsetY = 0;
+			if (this.Attribute1 > 7) {
+				bucketOffsetY = -1;
+			} else if (this.Attribute1 < -7) {
+				bucketOffsetY = 1;
+			}
+			// bucket Down
+			// break blocks first
+			int angle;
+			for (int j = 0; j < 2; j++) {
+				for (int i = -2; i < 3; i++) {
+					if (i == 0) {
+						angle = 0;
+					} else {
+						angle = 90;
+					}
+					BlockPos bp;
+					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + j + bucketOffsetY, posZ + calcTwoOffsetZ(3.5, angle, i));
+					if (worldObj.getBlockState(bp).getBlock() == Blocks.snow_layer || worldObj.getBlockState(bp).getBlock() == Blocks.snow || worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.sand || worldObj.getBlockState(bp).getBlock() == Blocks.gravel || worldObj.getBlockState(bp).getBlock() == Blocks.grass
+							|| worldObj.getBlockState(bp).getBlock() == Blocks.clay || worldObj.getBlockState(bp).getBlock() == Blocks.soul_sand || worldObj.getBlockState(bp).getBlock() == Blocks.tallgrass) {
+						worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
+						worldObj.setBlockToAir(bp);
+
+					}
+					toppleTree(bp, 0, 0, worldObj.getBlockState(bp).getBlock());
+
+				}
+			}
 
 		}
 	}
