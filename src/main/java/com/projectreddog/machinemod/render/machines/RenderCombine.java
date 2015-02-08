@@ -1,34 +1,16 @@
 package com.projectreddog.machinemod.render.machines;
 
-import java.util.Iterator;
-import java.util.List;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.EntityRenderer;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
-import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.texture.TextureUtil;
-import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.resources.model.IBakedModel;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Vec3i;
 
 import org.lwjgl.opengl.GL11;
 
-import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.model.ModelCombine;
-import com.projectreddog.machinemod.model.ModelLoader;
 import com.projectreddog.machinemod.reference.Reference;
 
 public class RenderCombine extends Render {
@@ -79,7 +61,7 @@ public class RenderCombine extends Render {
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		return new ResourceLocation("machinemod", Reference.MODEL_LOADER_TEXTURE_LOCATION);
+		return new ResourceLocation("machinemod", Reference.MODEL_COMBINE_TEXTURE_LOCATION);
 	}
 
 }

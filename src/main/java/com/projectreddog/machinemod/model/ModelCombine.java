@@ -16,7 +16,7 @@ public class ModelCombine extends ModelBase {
 	public ModelCombine() {
 
 		// LogHelper.info("LOADING dump truck MODEL!");
-		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/modelcombine.obj"));
+		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/combine.obj"));
 		// casinoTexture = new ResourceLocation("modid",
 		// "textures/casinoTexture.png");
 
@@ -45,7 +45,7 @@ public class ModelCombine extends ModelBase {
 
 	public ResourceLocation getTexture() {
 
-		return new ResourceLocation("machinemod", Reference.MODEL_TRACTOR_TEXTURE_LOCATION);
+		return new ResourceLocation("machinemod", Reference.MODEL_COMBINE_TEXTURE_LOCATION);
 	}
 
 }

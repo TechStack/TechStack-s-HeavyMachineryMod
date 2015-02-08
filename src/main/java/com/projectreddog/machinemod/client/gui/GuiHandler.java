@@ -5,10 +5,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
+import com.projectreddog.machinemod.container.ContainerCombine;
 import com.projectreddog.machinemod.container.ContainerDumpTruck;
 import com.projectreddog.machinemod.container.ContainerLoader;
 import com.projectreddog.machinemod.container.ContainerTractor;
 import com.projectreddog.machinemod.container.ContainerWideBedTruck;
+import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityTractor;
@@ -56,6 +58,15 @@ public class GuiHandler implements IGuiHandler {
 					return new ContainerWideBedTruck(player.inventory, (EntityWideBedTruck) entity);
 				}
 			}
+		} else if (id == Reference.GUI_COMBINE) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityCombine) {
+
+					return new ContainerCombine(player.inventory, (EntityCombine) entity);
+				}
+			}
 		}
 		return null;
 	}
@@ -94,6 +105,14 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null) {
 				if (entity instanceof EntityWideBedTruck) {
 					return new GuiWideBedTruck(player.inventory, (EntityWideBedTruck) entity);
+				}
+			}
+		} else if (id == Reference.GUI_COMBINE) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityCombine) {
+					return new GuiCombine(player.inventory, (EntityCombine) entity);
 				}
 			}
 		}

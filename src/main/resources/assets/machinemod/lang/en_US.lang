@@ -29,7 +29,7 @@ item.machinemod:dumperbed.name=Dumper Bed
 item.machinemod:transmission.name=Transmission
 item.machinemod:engine.name=Engine
 item.machinemod:harvesterhead.name=Harvest Head
-
+item.machinemod:cornseed.name=Corn Seeds
 
 
 # Block Localizations
