@@ -8,6 +8,8 @@ import net.minecraftforge.oredict.OreDictionary;
 import com.projectreddog.machinemod.item.ItemCornSeed;
 import com.projectreddog.machinemod.item.ItemDrillHead;
 import com.projectreddog.machinemod.item.ItemDrillPipe;
+import com.projectreddog.machinemod.item.ItemGoldDust;
+import com.projectreddog.machinemod.item.ItemIronDust;
 import com.projectreddog.machinemod.item.ItemMachineMod;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
@@ -52,6 +54,9 @@ public class ModItems {
 	public static final ItemMachineMod crane = new ItemCrane();
 	public static final ItemMachineMod excavator = new ItemExcavator();
 
+	public static final ItemMachineMod irondust = new ItemIronDust();
+	public static final ItemMachineMod golddust = new ItemGoldDust();
+
 	public static final ItemMachineMod drillhead = new ItemDrillHead();
 	public static final ItemMachineMod cornseed = new ItemCornSeed();
 
@@ -90,6 +95,11 @@ public class ModItems {
 		GameRegistry.registerItem(crane, "crane");
 		GameRegistry.registerItem(excavator, "excavator");
 		GameRegistry.registerItem(cornseed, "cornseed");
+
+		GameRegistry.registerItem(irondust, "irondust");
+		OreDictionary.registerOre("dustIron", irondust);
+		GameRegistry.registerItem(golddust, "golddust");
+		OreDictionary.registerOre("dustGold", golddust);
 
 		GameRegistry.registerItem(drillhead, "drillhead");
 		GameRegistry.registerItem(drillpipe, "drillpipe");
@@ -139,6 +149,8 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(drillpipe, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "drillpipe", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(plow, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "plow", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(cornseed, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "cornseed", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(irondust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "irondust", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(golddust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "golddust", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(planter, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "planter", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(sprayer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "sprayer", "inventory"));

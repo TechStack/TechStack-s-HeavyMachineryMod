@@ -577,8 +577,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			}
 
 		}
-
-		return null;
+		// bug fix for picking up items that cannot be put in inventory
+		return is;
 
 	}
 

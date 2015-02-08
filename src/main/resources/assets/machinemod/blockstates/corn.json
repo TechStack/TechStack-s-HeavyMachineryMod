@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "age=0": { "model": "machinemod:cornstalkgrowth0" },
+        "age=1": { "model": "machinemod:cornstalkgrowth1" },
+        "age=2": { "model": "machinemod:cornstalkgrowth2" },
+        "age=3": { "model": "machinemod:cornstalkgrowth3" },
+        "age=4": { "model": "machinemod:cornstalkgrowth4" },
+        "age=5": { "model": "machinemod:cornstalkgrowth5" },
+        "age=6": { "model": "machinemod:cornstalkgrowth6" }
+       
+    }
+}

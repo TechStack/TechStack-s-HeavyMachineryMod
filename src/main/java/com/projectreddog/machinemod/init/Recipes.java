@@ -1,8 +1,5 @@
 package com.projectreddog.machinemod.init;
 
-import com.projectreddog.machinemod.item.ItemDrillHead;
-
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -71,7 +68,11 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.havesterhead), " s ", "sis", " s ", 's', Items.shears, 'i', "gearIron"));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.combine), " cc", "het", " ww", 'c', Blocks.chest, 'h', ModItems.havesterhead, 'e', ModItems.engine, 't', ModItems.transmission, 'w', ModItems.wheel));
-
+		SmeltingRecipes();
 	}
 
+	public static void SmeltingRecipes() {
+		GameRegistry.addSmelting(ModItems.irondust, new ItemStack(Items.iron_ingot), 0);
+		GameRegistry.addSmelting(ModItems.golddust, new ItemStack(Items.gold_ingot), 0);
+	}
 }

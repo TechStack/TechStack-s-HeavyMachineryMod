@@ -2,19 +2,11 @@ package com.projectreddog.machinemod.tileentities;
 
 import java.util.List;
 
-import com.projectreddog.machinemod.utility.LogHelper;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.IChatComponent;
 
 public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListBox {
 
@@ -50,4 +42,5 @@ public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListB
 			}
 		}
 	}
+
 }
