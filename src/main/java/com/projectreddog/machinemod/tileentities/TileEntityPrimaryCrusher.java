@@ -2,10 +2,14 @@ package com.projectreddog.machinemod.tileentities;
 
 import java.util.List;
 
+import net.minecraft.block.BlockStone;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -27,6 +31,13 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 	private static int[] topSlots = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 };
 	public AxisAlignedBB boundingBox;
 
+	public final int BlastedStoneOreMultiplier = 3;
+	public final int VanillaOreMultiplier = 2;
+	public final int BlastedStoneCoalMultiplier = 3;
+	public final int BlastedStoneGemMultiplier = 2;
+	public final int BlastedStoneLapisMultiplier = 2;
+	public final int BlastedStoneRedstoneMultiplier = 2;
+
 	public TileEntityPrimaryCrusher() {
 		inventory = new ItemStack[54];
 
@@ -44,27 +55,83 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 				if (item != null) {
 					if (item.getItem() == Item.getItemFromBlock(ModBlocks.machinemodblastedstone)) {
 						if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.IRON.getMetadata()) {
-							decrStackSize(i, 1);
-
-							EntityItem entityItem = new EntityItem(worldObj, this.pos.getX(), this.pos.getY(), this.pos.getZ(), new ItemStack(ModItems.irondust, 3));
-							entityItem.forceSpawn = true;
-							worldObj.spawnEntityInWorld(entityItem);
-
+							dropDust(i, new ItemStack(ModItems.irondust, BlastedStoneOreMultiplier));
+							return;
 						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.GOLD.getMetadata()) {
-							decrStackSize(i, 1);
-
-							EntityItem entityItem = new EntityItem(worldObj, this.pos.getX(), this.pos.getY(), this.pos.getZ(), new ItemStack(ModItems.golddust, 3));
-							entityItem.forceSpawn = true;
-							worldObj.spawnEntityInWorld(entityItem);
-
+							dropDust(i, new ItemStack(ModItems.golddust, BlastedStoneOreMultiplier));
+							return;
+						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.STONE.getMetadata()) {
+							dropDust(i, new ItemStack(Blocks.cobblestone, 1));
+							return;
+						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.ANDESITE.getMetadata()) {
+							dropDust(i, new ItemStack(Blocks.stone, 1, BlockStone.EnumType.ANDESITE.getMetaFromState()));
+							return;
+						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.DIORITE.getMetadata()) {
+							dropDust(i, new ItemStack(Blocks.stone, 1, BlockStone.EnumType.DIORITE.getMetaFromState()));
+							return;
+						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.GRANITE.getMetadata()) {
+							dropDust(i, new ItemStack(Blocks.stone, 1, BlockStone.EnumType.GRANITE.getMetaFromState()));
+							return;
+						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.COAL.getMetadata()) {
+							dropDust(i, new ItemStack(Items.coal, BlastedStoneCoalMultiplier));
+							return;
+						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.DIAMOND.getMetadata()) {
+							dropDust(i, new ItemStack(Items.diamond, BlastedStoneGemMultiplier));
+							return;
+						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.EMERALD.getMetadata()) {
+							dropDust(i, new ItemStack(Items.emerald, BlastedStoneGemMultiplier));
+							return;
+						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.LAPIS.getMetadata()) {
+							dropDust(i, new ItemStack(Items.dye, BlastedStoneLapisMultiplier, EnumDyeColor.BLUE.getDyeColorDamage()));
+							return;
+						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.REDSTONE.getMetadata()) {
+							dropDust(i, new ItemStack(Items.redstone, BlastedStoneRedstoneMultiplier));
+							return;
 						}
-
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.iron_ore)) {
+						dropDust(i, new ItemStack(ModItems.irondust, VanillaOreMultiplier));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.gold_ore)) {
+						dropDust(i, new ItemStack(ModItems.golddust, VanillaOreMultiplier));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.stone) && item.getMetadata() == BlockStone.EnumType.STONE.getMetaFromState()) {
+						dropDust(i, new ItemStack(Blocks.cobblestone, 1));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.stone)) {
+						dropDust(i, new ItemStack(item.getItem(), 1));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.coal_ore)) {
+						dropDust(i, new ItemStack(Items.coal, 1));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.diamond_ore)) {
+						dropDust(i, new ItemStack(Items.diamond, 1));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.emerald_ore)) {
+						dropDust(i, new ItemStack(Items.emerald, 1));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.lapis_ore)) {
+						dropDust(i, new ItemStack(Items.dye, 1, EnumDyeColor.BLUE.getDyeColorDamage()));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.redstone_ore)) {
+						dropDust(i, new ItemStack(Items.redstone, 1));
+						return;
+					} else {
+						dropDust(i, new ItemStack(item.getItem(), 1));
+						return;
 					}
 				}
-
 			}
 		}
+	}
 
+	/*
+	 * Drops an item on the ground after reducing the
+	 */
+	private void dropDust(int slot, ItemStack is) {
+		decrStackSize(slot, 1);
+		EntityItem entityItem = new EntityItem(worldObj, this.pos.getX(), this.pos.getY(), this.pos.getZ(), is);
+		entityItem.forceSpawn = true;
+		worldObj.spawnEntityInWorld(entityItem);
 	}
 
 	private void processEntitiesInList(List par1List) {

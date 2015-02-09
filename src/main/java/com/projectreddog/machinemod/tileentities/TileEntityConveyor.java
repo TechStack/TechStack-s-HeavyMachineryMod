@@ -3,6 +3,7 @@ package com.projectreddog.machinemod.tileentities;
 import java.util.List;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
@@ -32,13 +33,23 @@ public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListB
 		boundingBox = new AxisAlignedBB(this.pos.offsetUp(), this.pos.offsetUp().add(1, 1, 1));
 		List list = worldObj.getEntitiesWithinAABB(EntityItem.class, boundingBox);
 		processEntitiesInList(list);
+		boundingBox = new AxisAlignedBB(this.pos.offsetUp(), this.pos.offsetUp().add(1, 1, 1));
+		list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, boundingBox);
+		processEntitiesInList(list);
+
 	}
 
 	private void processEntitiesInList(List par1List) {
 		for (int i = 0; i < par1List.size(); ++i) {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
-				entity.setPosition(entity.getPosition().getX() + 0.1d, entity.getPosition().getY(), entity.getPosition().getZ());
+				if (entity instanceof EntityLivingBase) {
+					((EntityLivingBase) entity).moveEntity(.1d, 0, 0);
+				} else {
+
+					entity.moveEntity(.1d, 0, 0);
+					// entity.setPosition(entity.getPosition().getX() + 0.1d, entity.getPosition().getY(), entity.getPosition().getZ());
+				}
 			}
 		}
 	}
