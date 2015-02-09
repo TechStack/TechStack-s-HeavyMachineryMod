@@ -1,8 +1,10 @@
 {
-    "parent": "block/orientable",
+    "parent": "machinemod:block/direction",
     "textures": {
         "top": "machinemod:blocks/machineconveyor",
-        "front": "blocks/furnace_side",
-        "side": "blocks/furnace_side"
+        "front": "machinemod:blocks/machineconveyor" ,
+        "side": "machinemod:blocks/machineconveyor_side",
+        "back": "machinemod:blocks/machineconveyor"
+        
     }
 }
