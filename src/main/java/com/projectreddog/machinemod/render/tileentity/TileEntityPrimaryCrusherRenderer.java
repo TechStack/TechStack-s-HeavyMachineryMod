@@ -1,15 +1,14 @@
 package com.projectreddog.machinemod.render.tileentity;
 
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 
+import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.model.tileentity.ModelPrimaryCrusher;
 import com.projectreddog.machinemod.reference.Reference;
 
@@ -29,7 +28,7 @@ public class TileEntityPrimaryCrusherRenderer extends TileEntitySpecialRenderer 
 		GL11.glPushMatrix();
 
 		// GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-		GL11.glTranslated(x, y, z);
+		GL11.glTranslated(x + .5d, y, z + .5d);
 
 		// GL11.glEnable(GL11.GL_DEPTH_TEST);
 
@@ -38,7 +37,26 @@ public class TileEntityPrimaryCrusherRenderer extends TileEntitySpecialRenderer 
 		// GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
 		this.bindTexture(getResourceLocation());
-		GL11.glScalef(-1.0F, -1.0F, 1.0F);
+		GL11.glScalef(-.5F, -.5F, .5F);
+
+		EnumFacing ef = (EnumFacing) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
+		switch (ef) {
+		case NORTH:
+			// no rotate?
+			break;
+		case SOUTH:
+			// rotate to south
+			GL11.glRotatef(180f, 0, 1, 0);
+			break;
+		case EAST:
+			GL11.glRotatef(90f, 0, 1, 0);
+			break;
+		case WEST:
+			GL11.glRotatef(270f, 0, 1, 0);
+			break;
+
+		}
+
 		this.teModel.render(tileentity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
 		// ((ModelTractor) this.modelTractor).renderGroupObject("Plow_Cube");

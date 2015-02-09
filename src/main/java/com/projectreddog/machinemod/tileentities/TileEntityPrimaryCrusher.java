@@ -21,6 +21,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
 
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
+import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
@@ -129,8 +130,34 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 	 */
 	private void dropDust(int slot, ItemStack is) {
 		decrStackSize(slot, 1);
-		EntityItem entityItem = new EntityItem(worldObj, this.pos.getX(), this.pos.getY(), this.pos.getZ(), is);
+		// TODO position entity based on enum facing :D
+		double ejectOffsetX = 0d;
+		double ejectOffsetZ = 0d;
+		EnumFacing ef = (EnumFacing) worldObj.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
+		switch (ef) {
+		case NORTH:
+			// no rotate?
+			ejectOffsetX = .5d;
+			ejectOffsetZ = -.2d;
+			break;
+		case SOUTH:
+			// rotate to south
+			ejectOffsetX = .5d;
+			ejectOffsetZ = 1.2d;
+			break;
+		case EAST:
+			ejectOffsetX = 1.2d;
+			ejectOffsetZ = .5d;
+			break;
+		case WEST:
+			ejectOffsetX = -.2d;
+			ejectOffsetZ = .5d;
+			break;
+
+		}
+		EntityItem entityItem = new EntityItem(worldObj, this.pos.getX() + ejectOffsetX, this.pos.getY(), this.pos.getZ() + ejectOffsetZ, is);
 		entityItem.forceSpawn = true;
+		entityItem.setVelocity(0, 0, 0);
 		worldObj.spawnEntityInWorld(entityItem);
 	}
 
