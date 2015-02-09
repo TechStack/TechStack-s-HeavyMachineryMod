@@ -306,6 +306,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 	public void updateClient() {
 		// updateServer();
+		// play the sound
+		// worldObj.playSoundAtEntity(this, "engine", 1f, 1f);
 
 		// this.noClip = true;
 		this.motionX = 0;
