@@ -8,10 +8,14 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.EnumFacing;
+
+import com.projectreddog.machinemod.block.BlockMachineModConveyor;
 
 public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListBox {
 
 	public AxisAlignedBB boundingBox;
+	public final double MoveSpeed = .1d;
 
 	public TileEntityConveyor() {
 
@@ -43,13 +47,32 @@ public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListB
 		for (int i = 0; i < par1List.size(); ++i) {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
-				if (entity instanceof EntityLivingBase) {
-					((EntityLivingBase) entity).moveEntity(.1d, 0, 0);
+				// if (entity instanceof EntityLivingBase) {
+				// ((EntityLivingBase) entity).moveEntity(.1d, 0, 0);
+				// } else {
+				EnumFacing ef = (EnumFacing) worldObj.getBlockState(this.pos).getValue(BlockMachineModConveyor.FACING);
+				double x = 0, y = 0, z = 0;
+				if (ef == EnumFacing.EAST) {
+					x = MoveSpeed;
+					z = 0;
+				} else if (ef == EnumFacing.WEST) {
+					x = -MoveSpeed;
+					z = 0;
+				} else if (ef == EnumFacing.NORTH) {
+					x = 0;
+					z = -MoveSpeed;
+				} else if (ef == EnumFacing.SOUTH) {
+					x = 0;
+					z = MoveSpeed;
 				} else {
-
-					entity.moveEntity(.1d, 0, 0);
-					// entity.setPosition(entity.getPosition().getX() + 0.1d, entity.getPosition().getY(), entity.getPosition().getZ());
+					// err so no moment to prevent err?
+					x = 0;
+					z = 0;
 				}
+
+				entity.moveEntity(x, y, z);
+				// entity.setPosition(entity.getPosition().getX() + 0.1d, entity.getPosition().getY(), entity.getPosition().getZ());
+				// }
 			}
 		}
 	}
