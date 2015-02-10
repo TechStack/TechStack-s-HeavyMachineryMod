@@ -172,13 +172,16 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 				if (entity instanceof EntityItem) {
 					ItemStack is = ((EntityItem) entity).getEntityItem();
 					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
+					if (!entity.isDead) {
+						if (is.stackSize > 0) {
+							ItemStack is1 = addToinventory(is);
 
-					ItemStack is1 = addToinventory(is);
-
-					if (is1 != null && is1.stackSize != 0) {
-						((EntityItem) entity).setEntityItemStack(is1);
-					} else {
-						entity.setDead();
+							if (is1 != null && is1.stackSize != 0) {
+								((EntityItem) entity).setEntityItemStack(is1);
+							} else {
+								entity.setDead();
+							}
+						}
 					}
 				}
 				// entity.setPosition(entity.getPosition().getX() + 0.1d, entity.getPosition().getY(), entity.getPosition().getZ());
