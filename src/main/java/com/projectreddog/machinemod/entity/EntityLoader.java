@@ -109,12 +109,16 @@ public class EntityLoader extends EntityMachineModRideable {
 				if (entity instanceof EntityItem) {
 					ItemStack is = ((EntityItem) entity).getEntityItem().copy();
 					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
-					ItemStack is1 = addToinventory(is);
+					if (!entity.isDead) {
+						if (is.stackSize > 0) {
+							ItemStack is1 = addToinventory(is);
 
-					if (is1 != null && is1.stackSize != 0) {
-						((EntityItem) entity).setEntityItemStack(is1);
-					} else {
-						entity.setDead();
+							if (is1 != null && is1.stackSize != 0) {
+								((EntityItem) entity).setEntityItemStack(is1);
+							} else {
+								entity.setDead();
+							}
+						}
 					}
 				}
 			}
