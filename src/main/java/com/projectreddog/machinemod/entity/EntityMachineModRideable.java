@@ -62,6 +62,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	protected double mountedOffsetZ = 0d;
 	protected float maxAngle = 0;
 	protected float minAngle = 0;
+	public double accelerationAmount = .02d;
 
 	protected Item droppedItem = null;
 
@@ -226,10 +227,10 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		if (riddenByEntity != null) {
 
 			if (isPlayerAccelerating) {
-				this.velocity += .1d;
+				this.velocity += accelerationAmount;
 			}
 			if (isPlayerBreaking) {
-				this.velocity -= .1d;
+				this.velocity -= accelerationAmount;
 			}
 			if (isPlayerTurningRight) {
 				yaw += 1.5d;
