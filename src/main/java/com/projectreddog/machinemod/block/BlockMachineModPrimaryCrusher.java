@@ -37,6 +37,8 @@ public class BlockMachineModPrimaryCrusher extends BlockContainer {
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
 		this.setStepSound(soundTypeStone);
+		this.setHardness(1.5f);
+
 	}
 
 	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
