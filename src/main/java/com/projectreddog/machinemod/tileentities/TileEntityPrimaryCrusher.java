@@ -28,7 +28,7 @@ import com.projectreddog.machinemod.reference.Reference;
 
 public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlayerListBox, ISidedInventory {
 	protected ItemStack[] inventory;
-	private static int[] bottomSlots = new int[] { 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107 };
+	private static int[] bottomSlots = new int[] {};
 	private static int[] topSlots = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 };
 	public AxisAlignedBB boundingBox;
 
@@ -117,7 +117,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 						dropDust(i, new ItemStack(Items.redstone, 1));
 						return;
 					} else {
-						dropDust(i, new ItemStack(item.getItem(), 1));
+						dropDust(i, new ItemStack(item.getItem(), 1, item.getMetadata()));
 						return;
 					}
 				}
@@ -159,6 +159,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 
 		}
 		EntityItem entityItem = new EntityItem(worldObj, this.pos.getX() + ejectOffsetX, this.pos.getY(), this.pos.getZ() + ejectOffsetZ, is);
+
 		entityItem.forceSpawn = true;
 		entityItem.setVelocity(0, 0, 0);
 		worldObj.spawnEntityInWorld(entityItem);
@@ -171,6 +172,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 				if (entity instanceof EntityItem) {
 					ItemStack is = ((EntityItem) entity).getEntityItem();
 					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
+
 					ItemStack is1 = addToinventory(is);
 
 					if (is1 != null && is1.stackSize != 0) {
@@ -392,7 +394,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 
 	@Override
 	public boolean canExtractItem(int slot, ItemStack stack, EnumFacing direction) {
-		if (slot >= 54 && direction == EnumFacing.DOWN) {
+		if (slot < 54 && direction == EnumFacing.DOWN) {
 			return true;
 		}
 		return false;
