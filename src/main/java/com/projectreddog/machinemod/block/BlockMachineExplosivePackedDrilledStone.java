@@ -20,6 +20,8 @@ public class BlockMachineExplosivePackedDrilledStone extends BlockMachineModMany
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
 		this.setStepSound(soundTypeStone);
+		this.setHardness(1.5f);
+
 	}
 
 	@Override
@@ -63,8 +65,7 @@ public class BlockMachineExplosivePackedDrilledStone extends BlockMachineModMany
 	// (World p_i1948_1_, Entity p_i1948_2_, double p_i1948_3_, double
 	// p_i1948_5_, double p_i1948_7_, float size)
 	/**
-	 * returns a new explosion. Does initiation (at time of writing Explosion is
-	 * not finished)
+	 * returns a new explosion. Does initiation (at time of writing Explosion is not finished)
 	 */
 	public ModExplosion newExplosion(World world, double x, double y, double z, float size, boolean flameing, boolean smoking) {
 

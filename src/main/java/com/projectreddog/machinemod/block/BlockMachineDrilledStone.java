@@ -12,6 +12,8 @@ public class BlockMachineDrilledStone extends BlockMachineModManyTexture {
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_DRILLED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
 		this.setStepSound(soundTypeStone);
+		this.setHardness(1.5f);
+
 	}
 
 }
