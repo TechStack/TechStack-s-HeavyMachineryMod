@@ -99,7 +99,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 						dropDust(i, new ItemStack(Blocks.cobblestone, 1));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.stone)) {
-						dropDust(i, new ItemStack(item.getItem(), 1));
+						dropDust(i, new ItemStack(item.getItem(), 1, item.getItemDamage()));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.coal_ore)) {
 						dropDust(i, new ItemStack(Items.coal, 1));
