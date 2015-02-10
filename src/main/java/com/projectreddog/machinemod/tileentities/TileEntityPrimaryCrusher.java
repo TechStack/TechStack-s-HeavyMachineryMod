@@ -153,6 +153,9 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 			ejectOffsetX = -.2d;
 			ejectOffsetZ = .5d;
 			break;
+		default:
+			// should never happen because we are constrained to the horizontal plane so just break with 0 (default) offsets
+			break;
 
 		}
 		EntityItem entityItem = new EntityItem(worldObj, this.pos.getX() + ejectOffsetX, this.pos.getY(), this.pos.getZ() + ejectOffsetZ, is);

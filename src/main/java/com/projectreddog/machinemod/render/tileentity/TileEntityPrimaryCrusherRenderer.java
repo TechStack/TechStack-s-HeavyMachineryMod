@@ -54,7 +54,9 @@ public class TileEntityPrimaryCrusherRenderer extends TileEntitySpecialRenderer 
 		case WEST:
 			GL11.glRotatef(270f, 0, 1, 0);
 			break;
-
+		default:
+			// should never happen because we are constrained to the horizontal plane so just break with no addtional rotation applied
+			break;
 		}
 
 		this.teModel.render(tileentity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
