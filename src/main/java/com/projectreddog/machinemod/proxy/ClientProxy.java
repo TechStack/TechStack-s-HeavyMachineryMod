@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import com.projectreddog.machinemod.entity.EntityBulldozer;
 import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.entity.EntityCrane;
+import com.projectreddog.machinemod.entity.EntityDrillingRig;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityLoader;
@@ -21,6 +22,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.render.machines.RenderBulldozer;
 import com.projectreddog.machinemod.render.machines.RenderCombine;
 import com.projectreddog.machinemod.render.machines.RenderCrane;
+import com.projectreddog.machinemod.render.machines.RenderDrillingRig;
 import com.projectreddog.machinemod.render.machines.RenderDumpTruck;
 import com.projectreddog.machinemod.render.machines.RenderExcavator;
 import com.projectreddog.machinemod.render.machines.RenderLoader;
@@ -36,9 +38,7 @@ public class ClientProxy extends CommonProxy {
 		// LogHelper.info("in register Renderers");
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityBulldozer.class, new RenderBulldozer(Minecraft.getMinecraft().getRenderManager()));
-		// RenderingRegistry.registerEntityRenderingHandler(
-		// EntityDrillingRig.class, new RenderDrillingRig(Minecraft
-		// .getMinecraft().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityDrillingRig.class, new RenderDrillingRig(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDumpTruck.class, new RenderDumpTruck(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityLoader.class, new RenderLoader(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityTractor.class, new RenderTractor(Minecraft.getMinecraft().getRenderManager()));
