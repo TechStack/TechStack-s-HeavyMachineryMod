@@ -39,7 +39,11 @@ public class ModelDrillingRig extends ModelTransportable {
 		GL11.glTranslatef(0f, -1.58f, -2.75f);
 
 		if (entity != null) {
-			GL11.glRotatef((((EntityMachineModRideable) entity).Attribute1), 1, 0, 0);
+			float currentAngle = (((EntityMachineModRideable) entity).Attribute1);
+			if (currentAngle > 90) {
+				currentAngle = 90;
+			}
+			GL11.glRotatef(currentAngle, 1, 0, 0);
 
 		}
 		this.renderGroupObject("Arm_Cube.001");
