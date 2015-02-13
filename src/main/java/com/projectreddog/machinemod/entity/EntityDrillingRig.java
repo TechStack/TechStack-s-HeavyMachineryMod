@@ -47,9 +47,9 @@ public class EntityDrillingRig extends EntityMachineModRideable {
 			if (this.Attribute1 > 90) {
 				// drilling arm fully extended so now for every 10 units drill another block
 				currentDepth = (int) ((this.Attribute1 - 90) / 10);
-				if (currentDepth > 16) {
+				if (currentDepth > 15) {
 					// fail safe limit
-					currentDepth = 16;
+					currentDepth = 15;
 				}
 
 				BlockPos bp = new BlockPos(posX + calcTwoOffsetX(5, 0, 0), posY - currentDepth - 1, posZ + calcTwoOffsetZ(5, 0, 0));

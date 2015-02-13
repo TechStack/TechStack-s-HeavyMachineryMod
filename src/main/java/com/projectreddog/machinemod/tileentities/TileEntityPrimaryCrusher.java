@@ -161,7 +161,9 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 		EntityItem entityItem = new EntityItem(worldObj, this.pos.getX() + ejectOffsetX, this.pos.getY(), this.pos.getZ() + ejectOffsetZ, is);
 
 		entityItem.forceSpawn = true;
-		entityItem.setVelocity(0, 0, 0);
+		entityItem.motionX = 0;
+		entityItem.motionY = 0;
+		entityItem.motionZ = 0;
 		worldObj.spawnEntityInWorld(entityItem);
 	}
 
