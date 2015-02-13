@@ -8,6 +8,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import com.projectreddog.machinemod.item.ItemCornSeed;
 import com.projectreddog.machinemod.item.ItemDrillHead;
 import com.projectreddog.machinemod.item.ItemDrillPipe;
+import com.projectreddog.machinemod.item.ItemFuelCan;
 import com.projectreddog.machinemod.item.ItemGoldDust;
 import com.projectreddog.machinemod.item.ItemIronDust;
 import com.projectreddog.machinemod.item.ItemMachineMod;
@@ -84,6 +85,7 @@ public class ModItems {
 	public static final ItemMachineMod dumperbed = new ItemDumperBed();
 	public static final ItemMachineMod engine = new ItemEngine();
 	public static final ItemMachineMod havesterhead = new ItemHavesterHead();
+	public static final ItemMachineMod fuelcan = new ItemFuelCan();
 
 	public static void init() {
 		GameRegistry.registerItem(bulldozer, "bulldozer");
@@ -130,6 +132,7 @@ public class ModItems {
 		GameRegistry.registerItem(dumperbed, "dumperbed");
 		GameRegistry.registerItem(engine, "engine");
 		GameRegistry.registerItem(havesterhead, "havesterhead");
+		GameRegistry.registerItem(fuelcan, "fuelcan");
 
 	}
 
@@ -169,6 +172,7 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(engine, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "engine", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(havesterhead, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "havesterhead", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(fuelcan, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "fuelcan", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tractor, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tractor", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(widebedtruck, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "widebedtruck", "inventory"));
