@@ -17,7 +17,7 @@ public class EntityBulldozer extends EntityMachineModRideable {
 		super(world);
 		setSize(4.2F, 2.5F);
 		inventory = new ItemStack[0];
-		this.mountedOffsetY = 1D;
+		this.mountedOffsetY = .8D;
 		this.mountedOffsetX = -1.5D;
 		this.mountedOffsetZ = -1.5D;
 		this.maxAngle = 15;
