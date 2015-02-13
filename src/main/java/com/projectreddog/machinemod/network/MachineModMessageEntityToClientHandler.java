@@ -7,7 +7,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
-import com.projectreddog.machinemod.utility.LogHelper;
 
 public class MachineModMessageEntityToClientHandler implements IMessageHandler<MachineModMessageEntityToClient, IMessage> {
 
@@ -45,6 +44,7 @@ public class MachineModMessageEntityToClientHandler implements IMessageHandler<M
 							((EntityMachineModRideable) entity).rotationYaw = message.yaw;
 							((EntityMachineModRideable) entity).yaw = message.yaw;
 							((EntityMachineModRideable) entity).Attribute1 = message.Attribute1;
+							((EntityMachineModRideable) entity).currentFuelLevel = message.currentFuelLevel;
 
 							// LogHelper.info("RECIEVED ENTITY PACKET FROM SERVER"
 							// );

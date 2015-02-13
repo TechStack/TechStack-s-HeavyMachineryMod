@@ -23,6 +23,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClient;
 import com.projectreddog.machinemod.network.MachineModMessageEntityToClient;
@@ -65,6 +66,12 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public double accelerationAmount = .02d;
 
 	protected Item droppedItem = null;
+
+	public int currentFuelLevel = 0;
+	public int maxFuelLevel = 1000;
+
+	public int runTimeTillNextFuelUsage = 20;
+	public int maxRunTimeTillNextFuelUsage = 20;
 
 	public EntityMachineModRideable(World world) {
 		super(world);
@@ -149,15 +156,35 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	{
 		if (!worldObj.isRemote && riddenByEntity == null) {
 			// server side and no rider
+			if (player.getHeldItem().getItem() == ModItems.fuelcan && player.getHeldItem().getItemDamage() < player.getHeldItem().getMaxDamage()) {
+				// player holding a fuel can & it has fuel in it so put fuel into the machine !
+				if (this.currentFuelLevel < maxFuelLevel) {
+					// can hold more fuel.
+					// calc remaining fuel in can see if it is = or > than the remaining fuel storage of this machine
+					int amountInCan = (player.getHeldItem().getMaxDamage() - player.getHeldItem().getItemDamage());
+					int roomInEntityTank = this.maxFuelLevel - this.currentFuelLevel;
+					if (amountInCan > roomInEntityTank) {
 
-			if (player.isSneaking()) {
-				if (getItemToBeDropped() != null) {
-					this.dropItem(getItemToBeDropped(), 1);
-					this.setDead();
+						player.getHeldItem().setItemDamage(player.getHeldItem().getMaxDamage() - (amountInCan - roomInEntityTank));
+						// will fill machine completely !
+						this.currentFuelLevel = this.maxFuelLevel;
+					} else {
+						// can will be empty becuase entity can hold 100% of the fuel from the can :O
+						player.getHeldItem().setItemDamage(player.getHeldItem().getMaxDamage());
+						this.currentFuelLevel = this.currentFuelLevel + amountInCan;
+					}
 				}
 
 			} else {
-				player.mountEntity(this);
+				if (player.isSneaking()) {
+					if (getItemToBeDropped() != null) {
+						this.dropItem(getItemToBeDropped(), 1);
+						this.setDead();
+					}
+
+				} else {
+					player.mountEntity(this);
+				}
 			}
 		}
 		return true;
@@ -224,7 +251,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 		// end New for gravity
 
-		if (riddenByEntity != null) {
+		if (riddenByEntity != null && currentFuelLevel > 0) {
 
 			if (isPlayerAccelerating) {
 				this.velocity += accelerationAmount;
@@ -240,18 +267,17 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			}
 
 		}
-		if (isPlayerPushingJumpButton) {
+		if (isPlayerPushingJumpButton && currentFuelLevel > 0) {
 			Attribute1 -= 1;
 			if (Attribute1 < getMinAngle()) {
 				Attribute1 = getMinAngle();
 			}
-		} else if (isPlayerPushingSprintButton) {
+		} else if (isPlayerPushingSprintButton && currentFuelLevel > 0) {
 			Attribute1 += 1;
 			if (Attribute1 > getMaxAngle()) {
 				Attribute1 = getMaxAngle();
 			}
 		}
-
 		// end take user input
 
 		// Clamp values to max / min values as needed
@@ -293,7 +319,17 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		// // network traffic if the entity is idle(just sitting still)
 		// LogHelper.info("SendPacket");
 
-		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityToClient(this.getEntityId(), this.posX, this.posY, this.posZ, this.yaw, this.Attribute1)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
+		if (this.velocity != 0 || isPlayerTurningLeft || isPlayerTurningRight || isPlayerPushingJumpButton || isPlayerPushingSprintButton) {
+			// machine is doing an activity
+			runTimeTillNextFuelUsage = runTimeTillNextFuelUsage - 1;
+			if (runTimeTillNextFuelUsage < 0) {
+				runTimeTillNextFuelUsage = maxRunTimeTillNextFuelUsage;
+				if (currentFuelLevel > 0) {
+					currentFuelLevel--;// use fuel
+				}
+			}
+		}
+		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityToClient(this.getEntityId(), this.posX, this.posY, this.posZ, this.yaw, this.Attribute1, this.currentFuelLevel)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
 		// sendInterval = 0;
 		// }
 		//
@@ -422,7 +458,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		TargetposZ = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_Z");
 		TargetYaw = compound.getFloat(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_YAW");
 		Attribute1 = compound.getFloat(Reference.MACHINE_MOD_NBT_PREFIX + "ATTRIBUTE1");
-
+		currentFuelLevel = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_FUEL");
+		runTimeTillNextFuelUsage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "RUN_TIMER_EMAIN");
 		// inventory
 		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
 		for (int i = 0; i < tagList.tagCount(); i++) {
@@ -445,7 +482,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_Z", TargetposZ);
 		compound.setFloat(Reference.MACHINE_MOD_NBT_PREFIX + "TARGET_YAW", TargetYaw);
 		compound.setFloat(Reference.MACHINE_MOD_NBT_PREFIX + "ATTRIBUTE1", Attribute1);
-
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_FUEL", currentFuelLevel);
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "RUN_TIMER_EMAIN", runTimeTillNextFuelUsage);
 		// inventory
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < inventory.length; i++) {

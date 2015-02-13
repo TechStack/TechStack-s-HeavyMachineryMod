@@ -3,6 +3,7 @@ package com.projectreddog.machinemod.proxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -16,6 +17,7 @@ import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.entity.EntityWideBedTruck;
+import com.projectreddog.machinemod.handler.events.RenderOverlayHandler;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
@@ -58,6 +60,9 @@ public class ClientProxy extends CommonProxy {
 
 		// Register TESR (tile Entity Special renderes
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPrimaryCrusher.class, new TileEntityPrimaryCrusherRenderer());
+
+		// regsiter event for overlay
+		MinecraftForge.EVENT_BUS.register(new RenderOverlayHandler());
 
 	}
 

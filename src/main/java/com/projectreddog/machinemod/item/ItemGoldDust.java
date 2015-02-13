@@ -1,5 +1,6 @@
 package com.projectreddog.machinemod.item;
 
+
 public class ItemGoldDust extends ItemMachineMod {
 
 	public ItemGoldDust() {
