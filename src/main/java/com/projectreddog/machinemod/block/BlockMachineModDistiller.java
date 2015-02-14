@@ -18,6 +18,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
@@ -40,6 +41,17 @@ public class BlockMachineModDistiller extends BlockContainer {
 		this.setHardness(1.5f);
 
 	}
+
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+		TileEntity te = worldIn.getTileEntity(pos);
+		if (te != null && !playerIn.isSneaking()) {
+			playerIn.openGui(MachineMod.instance, Reference.GUI_DISTILLER, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			return true;
+		} else {
+			return false;
+		}
+	};
 
 	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		return this.getDefaultState().withProperty(FACING, placer.func_174811_aO().getOpposite());

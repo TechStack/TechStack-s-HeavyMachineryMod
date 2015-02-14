@@ -16,6 +16,7 @@ import com.projectreddog.machinemod.iface.IFuelContainer;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.utility.LogHelper;
 
 public class TileEntityFermenter extends TileEntity implements IUpdatePlayerListBox, ISidedInventory, IFuelContainer {
 	protected ItemStack[] inventory;
@@ -68,6 +69,7 @@ public class TileEntityFermenter extends TileEntity implements IUpdatePlayerList
 
 			// LogHelper.info("TE update entity called");
 			cooldown = cooldown - 1;
+			LogHelper.info("TE FERMENTER CD" + cooldown);
 			if (cooldown <= 0) {
 				cooldown = coolDownReset;
 				for (int i = 0; i < this.getSizeInventory(); i++) {

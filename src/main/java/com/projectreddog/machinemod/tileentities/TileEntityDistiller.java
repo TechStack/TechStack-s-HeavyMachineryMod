@@ -1,5 +1,6 @@
 package com.projectreddog.machinemod.tileentities;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
@@ -101,6 +102,11 @@ public class TileEntityDistiller extends TileEntity implements IUpdatePlayerList
 			return null;
 		}
 
+	}
+
+	public boolean isUseableByPlayer(EntityPlayer player) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

@@ -27,6 +27,9 @@ public class Reference {
 	public static final int GUI_TRACTOR = 2;
 	public static final int GUI_WIDEBEDTRUCK = 3;
 	public static final int GUI_COMBINE = 4;
+	public static final int GUI_CANNER = 5;
+	public static final int GUI_FERMENTER = 6;
+	public static final int GUI_DISTILLER = 7;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;
