@@ -156,7 +156,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	{
 		if (!worldObj.isRemote && riddenByEntity == null) {
 			// server side and no rider
-			if (player.getHeldItem().getItem() == ModItems.fuelcan && player.getHeldItem().getItemDamage() < player.getHeldItem().getMaxDamage()) {
+			if (player.getHeldItem() != null && player.getHeldItem().getItem() == ModItems.fuelcan && player.getHeldItem().getItemDamage() < player.getHeldItem().getMaxDamage()) {
 				// player holding a fuel can & it has fuel in it so put fuel into the machine !
 				if (this.currentFuelLevel < maxFuelLevel) {
 					// can hold more fuel.
