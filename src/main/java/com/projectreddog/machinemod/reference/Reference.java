@@ -37,6 +37,10 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_CORN = "corn";
 	public static final String MODBLOCK_MACHINE_BLASTED_STONE2 = "machineblastedstone2";
 	public static final String MODBLOCK_MACHINE_PRIMARY_CRUSHER = "machineprimarycrhuser";
+	public static final String MODBLOCK_MACHINE_DISTILLER = "machinedistiller";
+	public static final String MODBLOCK_MACHINE_FERMENTER = "machinefermenter";
+	public static final String MODBLOCK_MACHINE_CANNER = "machinecanner";
+
 	public static final String MODBLOCK_MACHINE_CONVEYOR = "machineconveyor";
 
 	public static final String MODBLOCK_MACHINE_FLUID_BIOFUEL = "biofuel";

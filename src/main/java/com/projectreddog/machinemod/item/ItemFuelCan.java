@@ -11,8 +11,7 @@ public class ItemFuelCan extends ItemMachineMod {
 	public ItemFuelCan() {
 		super();
 		this.setUnlocalizedName("fuelcan");
-		this.maxStackSize = 64;
-
+		this.maxStackSize = 1;
 		this.setMaxDamage(1000);
 	}
 
