@@ -9,6 +9,7 @@ import net.minecraft.util.EnumFacing;
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.iface.IFuelContainer;
 import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.reference.Reference;
 
 public class TileEntityDistiller extends TileEntity implements IUpdatePlayerListBox, IFuelContainer {
 
@@ -44,11 +45,15 @@ public class TileEntityDistiller extends TileEntity implements IUpdatePlayerList
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
+		fuelStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE");
+
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE", fuelStorage);
+
 	}
 
 	public int addFluid(int amount) {
@@ -102,6 +107,34 @@ public class TileEntityDistiller extends TileEntity implements IUpdatePlayerList
 			return null;
 		}
 
+	}
+
+	public int getField(int id) {
+		switch (id) {
+		case 0:
+			return this.fuelStorage;
+
+		default:
+			break;
+		}
+		return 0;
+
+	}
+
+	public void setField(int id, int value) {
+		switch (id) {
+		case 0:
+			this.fuelStorage = value;
+			break;
+
+		default:
+			break;
+		}
+
+	}
+
+	public int getFieldCount() {
+		return 1;
 	}
 
 	public boolean isUseableByPlayer(EntityPlayer player) {

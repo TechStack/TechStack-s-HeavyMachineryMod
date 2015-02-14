@@ -90,7 +90,7 @@ public class TileEntityFermenter extends TileEntity implements IUpdatePlayerList
 	}
 
 	public boolean transferFuel() {
-		if (this.fuelStorage > 1) {
+		if (this.fuelStorage > 0) {
 
 			if (worldObj.getBlockState(this.pos.offset(this.outputDirection())).getBlock() == ModBlocks.machinemoddistiller) {
 				// its a distiller so we can transfer fuel!
@@ -98,6 +98,7 @@ public class TileEntityFermenter extends TileEntity implements IUpdatePlayerList
 				if (tED.canAcceptFluid()) {
 					tED.addFluid(1);
 					this.fuelStorage = this.fuelStorage - 1;
+					this.markDirty();
 					return true;
 				}
 			}
@@ -110,6 +111,7 @@ public class TileEntityFermenter extends TileEntity implements IUpdatePlayerList
 		if (canAcceptFluid()) {
 			decrStackSize(slot, 1);
 			addFluid(fuelAmountFromCorn);// any excess will go to waste :O
+			this.markDirty();
 			return true;
 		} else {
 			return false;
@@ -162,6 +164,8 @@ public class TileEntityFermenter extends TileEntity implements IUpdatePlayerList
 		super.readFromNBT(compound);
 
 		// inventory
+		fuelStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE");
+
 		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
 		for (int i = 0; i < tagList.tagCount(); i++) {
 			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
@@ -177,6 +181,9 @@ public class TileEntityFermenter extends TileEntity implements IUpdatePlayerList
 		super.writeToNBT(compound);
 
 		// inventory
+
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE", fuelStorage);
+
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < inventory.length; i++) {
 			ItemStack stack = inventory[i];
@@ -281,17 +288,33 @@ public class TileEntityFermenter extends TileEntity implements IUpdatePlayerList
 
 	@Override
 	public int getField(int id) {
+		switch (id) {
+		case 0:
+			return this.fuelStorage;
+
+		default:
+			break;
+		}
 		return 0;
+
 	}
 
 	@Override
 	public void setField(int id, int value) {
+		switch (id) {
+		case 0:
+			this.fuelStorage = value;
+			break;
+
+		default:
+			break;
+		}
 
 	}
 
 	@Override
 	public int getFieldCount() {
-		return 0;
+		return 1;
 	}
 
 	@Override

@@ -143,6 +143,7 @@ public class TileEntityCanner extends TileEntity implements IUpdatePlayerListBox
 	public void readFromNBT(NBTTagCompound compound) {
 
 		super.readFromNBT(compound);
+		fuelStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE");
 
 		// inventory
 		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
@@ -158,6 +159,7 @@ public class TileEntityCanner extends TileEntity implements IUpdatePlayerListBox
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE", fuelStorage);
 
 		// inventory
 		NBTTagList itemList = new NBTTagList();
@@ -264,17 +266,33 @@ public class TileEntityCanner extends TileEntity implements IUpdatePlayerListBox
 
 	@Override
 	public int getField(int id) {
+		switch (id) {
+		case 0:
+			return this.fuelStorage;
+
+		default:
+			break;
+		}
 		return 0;
+
 	}
 
 	@Override
 	public void setField(int id, int value) {
+		switch (id) {
+		case 0:
+			this.fuelStorage = value;
+			break;
+
+		default:
+			break;
+		}
 
 	}
 
 	@Override
 	public int getFieldCount() {
-		return 0;
+		return 1;
 	}
 
 	@Override

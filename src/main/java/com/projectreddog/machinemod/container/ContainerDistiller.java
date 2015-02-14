@@ -3,14 +3,18 @@ package com.projectreddog.machinemod.container;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 
 public class ContainerDistiller extends Container {
 
 	protected TileEntityDistiller distiller;
+	private int lastFuelStorage;
 
 	public ContainerDistiller(InventoryPlayer inventoryPlayer, TileEntityDistiller distiller) {
 		this.distiller = distiller;
@@ -77,5 +81,29 @@ public class ContainerDistiller extends Container {
 			slotObject.onPickupFromSlot(player, stackInSlot);
 		}
 		return stack;
+	}
+
+	/**
+	 * Looks for changes made in the container, sends them to every listener.
+	 */
+	public void detectAndSendChanges() {
+		super.detectAndSendChanges();
+
+		for (int i = 0; i < this.crafters.size(); ++i) {
+			ICrafting icrafting = (ICrafting) this.crafters.get(i);
+
+			if (this.lastFuelStorage != this.distiller.getField(0)) {
+				icrafting.sendProgressBarUpdate(this, 0, this.distiller.getField(0));
+			}
+
+		}
+
+		this.lastFuelStorage = this.distiller.getField(0);
+
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void updateProgressBar(int id, int data) {
+		this.distiller.setField(id, data);
 	}
 }

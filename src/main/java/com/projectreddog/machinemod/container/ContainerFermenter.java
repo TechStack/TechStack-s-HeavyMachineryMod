@@ -3,8 +3,11 @@ package com.projectreddog.machinemod.container;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 
@@ -13,6 +16,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 public class ContainerFermenter extends Container {
 
 	protected TileEntityFermenter fermenter;
+	protected int lastFuelStorage;
 
 	public ContainerFermenter(InventoryPlayer inventoryPlayer, TileEntityFermenter fermenter) {
 		this.fermenter = fermenter;
@@ -79,4 +83,29 @@ public class ContainerFermenter extends Container {
 		}
 		return stack;
 	}
+
+	/**
+	 * Looks for changes made in the container, sends them to every listener.
+	 */
+	public void detectAndSendChanges() {
+		super.detectAndSendChanges();
+
+		for (int i = 0; i < this.crafters.size(); ++i) {
+			ICrafting icrafting = (ICrafting) this.crafters.get(i);
+
+			if (this.lastFuelStorage != this.fermenter.getField(0)) {
+				icrafting.sendProgressBarUpdate(this, 0, this.fermenter.getField(0));
+			}
+
+		}
+
+		this.lastFuelStorage = this.fermenter.getField(0);
+
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void updateProgressBar(int id, int data) {
+		this.fermenter.setField(id, data);
+	}
+
 }
