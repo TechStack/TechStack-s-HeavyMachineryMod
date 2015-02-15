@@ -37,7 +37,7 @@ public class GuiFermenter extends GuiContainer {
 		// //draws "Inventory" or your regional equivalent
 		// fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"),
 		// 8, ySize - 96 + 2, 4210752);
-		fontRendererObj.drawString("Fule: " + fermenter.getField(0), 0, 0, 4210752);
+		fontRendererObj.drawString("Fermented Mash: " + fermenter.getField(0), 5, 5, 4210752);
 	}
 
 	@Override

@@ -165,6 +165,7 @@ public class TileEntityFermenter extends TileEntity implements IUpdatePlayerList
 
 		// inventory
 		fuelStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE");
+		cooldown = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN");
 
 		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
 		for (int i = 0; i < tagList.tagCount(); i++) {
@@ -183,6 +184,7 @@ public class TileEntityFermenter extends TileEntity implements IUpdatePlayerList
 		// inventory
 
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE", fuelStorage);
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN", cooldown);
 
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < inventory.length; i++) {
@@ -353,18 +355,18 @@ public class TileEntityFermenter extends TileEntity implements IUpdatePlayerList
 	@Override
 	public EnumFacing outputDirection() {
 		EnumFacing ef = (EnumFacing) worldObj.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
-		switch (ef) {
-		case NORTH:
-			return EnumFacing.SOUTH;
-		case SOUTH:
-			return EnumFacing.NORTH;
-		case EAST:
-			return EnumFacing.WEST;
-		case WEST:
-			return EnumFacing.EAST;
-		default:
-			return null;
-		}
-
+		// switch (ef) {
+		// case NORTH:
+		// return EnumFacing.SOUTH;
+		// case SOUTH:
+		// return EnumFacing.NORTH;
+		// case EAST:
+		// return EnumFacing.WEST;
+		// case WEST:
+		// return EnumFacing.EAST;
+		// default:
+		// return null;
+		// }
+		return ef;
 	}
 }

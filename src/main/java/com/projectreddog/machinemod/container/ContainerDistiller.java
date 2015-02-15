@@ -15,16 +15,16 @@ public class ContainerDistiller extends Container {
 
 	protected TileEntityDistiller distiller;
 	private int lastFuelStorage;
+	private int lastRemainBurnTime;
 
 	public ContainerDistiller(InventoryPlayer inventoryPlayer, TileEntityDistiller distiller) {
 		this.distiller = distiller;
 
-		// distilller has no inventory :O
-		// for (int i = 0; i < 1; i++) {
-		// for (int j = 0; j < 9; j++) {
-		// addSlotToContainer(new Slot(distiller, j + i * 9, 8 + j * 18, 18 + i * 18));
-		// }
-		// }
+		for (int i = 0; i < 1; i++) {
+			for (int j = 0; j < 1; j++) {
+				addSlotToContainer(new Slot(distiller, j + i * 9, 8 + j * 18, 18 + i * 18));
+			}
+		}
 
 		// commonly used vanilla code that adds the player's inventory
 		bindPlayerInventory(inventoryPlayer);
@@ -58,14 +58,14 @@ public class ContainerDistiller extends Container {
 			stack = stackInSlot.copy();
 
 			// merges the item into player inventory since its in the Entity
-			if (slot < 9) {
+			if (slot < 1) {
 				if (!this.mergeItemStack(stackInSlot, 9, this.inventorySlots.size(), true)) {
 					return null;
 				}
 			}
 			// places it into the tileEntity is possible since its in the player
 			// inventory
-			else if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
+			else if (!this.mergeItemStack(stackInSlot, 0, 1, false)) {
 				return null;
 			}
 
@@ -95,10 +95,14 @@ public class ContainerDistiller extends Container {
 			if (this.lastFuelStorage != this.distiller.getField(0)) {
 				icrafting.sendProgressBarUpdate(this, 0, this.distiller.getField(0));
 			}
+			if (this.lastRemainBurnTime != this.distiller.getField(1)) {
+				icrafting.sendProgressBarUpdate(this, 1, this.distiller.getField(1));
+			}
 
 		}
 
 		this.lastFuelStorage = this.distiller.getField(0);
+		this.lastRemainBurnTime = this.distiller.getField(1);
 
 	}
 

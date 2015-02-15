@@ -70,7 +70,7 @@ public class TileEntityCanner extends TileEntity implements IUpdatePlayerListBox
 
 	public boolean transferFuel() {
 		// this being the canner will transfer its fuel into the fuel cans int its slots 0-8
-		if (this.fuelStorage > 1) {
+		if (this.fuelStorage > 0) {
 			for (int i = 0; i < this.getSizeInventory(); i++) {
 				ItemStack item = this.getStackInSlot(i);
 				if (item != null) {
@@ -78,7 +78,6 @@ public class TileEntityCanner extends TileEntity implements IUpdatePlayerListBox
 						if (item.getItemDamage() > 0) {
 							item.setItemDamage(item.getItemDamage() - 1);
 							this.fuelStorage = this.fuelStorage - 1;
-							i = this.getSizeInventory();
 							if (item.getItemDamage() == 0) {
 								EntityItem entityItem = new EntityItem(worldObj, this.pos.getX(), this.pos.getY(), this.pos.getZ(), item);
 
@@ -89,6 +88,8 @@ public class TileEntityCanner extends TileEntity implements IUpdatePlayerListBox
 								worldObj.spawnEntityInWorld(entityItem);
 								decrStackSize(i, 1);
 							}
+							i = this.getSizeInventory();
+
 							return true;
 						}
 					}
@@ -144,7 +145,7 @@ public class TileEntityCanner extends TileEntity implements IUpdatePlayerListBox
 
 		super.readFromNBT(compound);
 		fuelStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE");
-
+		cooldown = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN");
 		// inventory
 		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
 		for (int i = 0; i < tagList.tagCount(); i++) {
@@ -160,7 +161,7 @@ public class TileEntityCanner extends TileEntity implements IUpdatePlayerListBox
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE", fuelStorage);
-
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN", cooldown);
 		// inventory
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < inventory.length; i++) {
@@ -331,18 +332,18 @@ public class TileEntityCanner extends TileEntity implements IUpdatePlayerListBox
 	@Override
 	public EnumFacing outputDirection() {
 		EnumFacing ef = (EnumFacing) worldObj.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
-		switch (ef) {
-		case NORTH:
-			return EnumFacing.SOUTH;
-		case SOUTH:
-			return EnumFacing.NORTH;
-		case EAST:
-			return EnumFacing.WEST;
-		case WEST:
-			return EnumFacing.EAST;
-		default:
-			return null;
-		}
-
+		// switch (ef) {
+		// case NORTH:
+		// return EnumFacing.SOUTH;
+		// case SOUTH:
+		// return EnumFacing.NORTH;
+		// case EAST:
+		// return EnumFacing.WEST;
+		// case WEST:
+		// return EnumFacing.EAST;
+		// default:
+		// return null;
+		// }
+		return ef;
 	}
 }

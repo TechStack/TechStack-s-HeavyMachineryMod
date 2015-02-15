@@ -36,7 +36,7 @@ public class GuiDistiller extends GuiContainer {
 		// //draws "Inventory" or your regional equivalent
 		// fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"),
 		// 8, ySize - 96 + 2, 4210752);
-		fontRendererObj.drawString("Fule: " + distiller.fuelStorage, 0, 0, 4210752);
+		fontRendererObj.drawString("Fermented Mash: " + distiller.fuelStorage + "Burn Time:" + distiller.remainBurnTime, 5, 5, 4210752);
 
 	}
 
