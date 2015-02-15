@@ -16,6 +16,7 @@ import com.projectreddog.machinemod.item.ItemTractorAttachment;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentSprayer;
+import com.projectreddog.machinemod.item.ItemTractorAttachmentTrencher;
 import com.projectreddog.machinemod.utility.LogHelper;
 
 public class EntityTractor extends EntityMachineModRideable {
@@ -71,8 +72,8 @@ public class EntityTractor extends EntityMachineModRideable {
 							} else if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {
 
 								for (int j = 1; j < 9; j++)// start at 1 because
-															// first slot is
-															// attachment only
+								// first slot is
+								// attachment only
 								{
 									if (this.getStackInSlot(j) != null) {
 										if (this.getStackInSlot(j).stackSize > 0) {
@@ -101,8 +102,8 @@ public class EntityTractor extends EntityMachineModRideable {
 								// Fertilize checks & actions
 
 								for (int j = 1; j < 9; j++)// start at 1 because
-															// first slot is
-															// attachment only
+								// first slot is
+								// attachment only
 								{
 									if (this.getStackInSlot(j) != null) {
 										if (this.getStackInSlot(j).stackSize > 0) {
@@ -137,6 +138,15 @@ public class EntityTractor extends EntityMachineModRideable {
 									}
 								}
 
+							} else if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentTrencher) {
+								// Fertilize checks & actions
+								if (i == 0) {
+									if (worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.grass || worldObj.getBlockState(bp).getBlock() == Blocks.farmland) {
+										worldObj.setBlockToAir(bp);
+
+									}
+								}
+
 							}
 
 						}
@@ -147,5 +157,4 @@ public class EntityTractor extends EntityMachineModRideable {
 
 		}
 	}
-
 }

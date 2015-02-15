@@ -34,12 +34,15 @@ public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListB
 		// property of the block
 		// need to add the block state's enum facing to this block so it can be
 		// rotated.
-		boundingBox = new AxisAlignedBB(this.pos.offsetUp(), this.pos.offsetUp().add(1, 1, 1));
-		List list = worldObj.getEntitiesWithinAABB(EntityItem.class, boundingBox);
-		processEntitiesInList(list);
-		boundingBox = new AxisAlignedBB(this.pos.offsetUp(), this.pos.offsetUp().add(1, 1, 1));
-		list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, boundingBox);
-		processEntitiesInList(list);
+
+		if (!worldObj.isBlockPowered(this.pos)) {
+			boundingBox = new AxisAlignedBB(this.pos.offsetUp(), this.pos.offsetUp().add(1, 1, 1));
+			List list = worldObj.getEntitiesWithinAABB(EntityItem.class, boundingBox);
+			processEntitiesInList(list);
+			boundingBox = new AxisAlignedBB(this.pos.offsetUp(), this.pos.offsetUp().add(1, 1, 1));
+			list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, boundingBox);
+			processEntitiesInList(list);
+		}
 
 	}
 

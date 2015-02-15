@@ -2,6 +2,7 @@ package com.projectreddog.machinemod.init;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -68,6 +69,9 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.havesterhead), " s ", "sis", " s ", 's', Items.shears, 'i', "gearIron"));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.combine), " cc", "het", " ww", 'c', Blocks.chest, 'h', ModItems.havesterhead, 'e', ModItems.engine, 't', ModItems.transmission, 'w', ModItems.wheel));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.anfo, 16), "bbb", "bfb", "bbb", 'b', new ItemStack(Items.dye, 1, EnumDyeColor.WHITE.getDyeColorDamage()), 'f', ModItems.fuelcan.setContainerItem(ModItems.fuelcan)));
+
 		SmeltingRecipes();
 	}
 

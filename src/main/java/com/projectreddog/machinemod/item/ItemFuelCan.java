@@ -25,4 +25,20 @@ public class ItemFuelCan extends ItemMachineMod {
 		return true;
 
 	}
+
+	/**
+	 * ItemStack sensitive version of getContainerItem. Returns a full ItemStack instance of the result.
+	 *
+	 * @param itemStack
+	 *            The current ItemStack
+	 * @return The resulting ItemStack
+	 */
+	@Override
+	public ItemStack getContainerItem(ItemStack itemStack) {
+
+		if (!hasContainerItem(itemStack)) {
+			return null;
+		}
+		return new ItemStack(getContainerItem(), 1, this.getMaxDamage());
+	}
 }

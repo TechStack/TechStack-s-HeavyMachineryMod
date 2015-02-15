@@ -39,6 +39,13 @@ public class BlockMachineModConveyor extends BlockContainer {
 
 	}
 
+	/**
+	 * Can this block provide power. Only wire currently seems to have this change based on its state.
+	 */
+	public boolean canProvidePower() {
+		return true;
+	}
+
 	public BlockMachineModConveyor() {
 		// Generic constructor (set to rock by default)
 		this(Material.rock);
