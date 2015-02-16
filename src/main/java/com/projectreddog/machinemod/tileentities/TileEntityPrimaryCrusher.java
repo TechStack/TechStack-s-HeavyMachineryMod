@@ -36,8 +36,8 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 	public final int VanillaOreMultiplier = 2;
 	public final int BlastedStoneCoalMultiplier = 3;
 	public final int BlastedStoneGemMultiplier = 2;
-	public final int BlastedStoneLapisMultiplier = 2;
-	public final int BlastedStoneRedstoneMultiplier = 2;
+	public final int BlastedStoneLapisMultiplier = 12;
+	public final int BlastedStoneRedstoneMultiplier = 8;
 
 	public TileEntityPrimaryCrusher() {
 		inventory = new ItemStack[54];
@@ -111,10 +111,13 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 						dropDust(i, new ItemStack(Items.emerald, 1));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.lapis_ore)) {
-						dropDust(i, new ItemStack(Items.dye, 1, EnumDyeColor.BLUE.getDyeColorDamage()));
+						dropDust(i, new ItemStack(Items.dye, 7, EnumDyeColor.BLUE.getDyeColorDamage()));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.redstone_ore)) {
-						dropDust(i, new ItemStack(Items.redstone, 1));
+						dropDust(i, new ItemStack(Items.redstone, 5));
+						return;
+					} else if (item.getItem() == Items.bone) {
+						dropDust(i, new ItemStack(Items.dye, 5, EnumDyeColor.WHITE.getDyeColorDamage()));
 						return;
 					} else {
 						dropDust(i, new ItemStack(item.getItem(), 1, item.getMetadata()));

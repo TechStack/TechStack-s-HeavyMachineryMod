@@ -21,7 +21,7 @@ public class EntityDrillingRig extends EntityMachineModRideable {
 		this.mountedOffsetY = .5D;
 		this.mountedOffsetX = 3D;
 		this.mountedOffsetZ = 3D;
-		this.maxAngle = 250;
+		this.maxAngle = 170;
 		this.minAngle = 0;
 		this.droppedItem = ModItems.drillingrig;
 
@@ -46,7 +46,7 @@ public class EntityDrillingRig extends EntityMachineModRideable {
 
 			if (this.Attribute1 > 90) {
 				// drilling arm fully extended so now for every 10 units drill another block
-				currentDepth = (int) ((this.Attribute1 - 90) / 10);
+				currentDepth = (int) ((this.Attribute1 - 90) / 5);
 				if (currentDepth > 15) {
 					// fail safe limit
 					currentDepth = 15;

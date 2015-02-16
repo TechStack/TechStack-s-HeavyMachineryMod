@@ -7,6 +7,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import com.projectreddog.machinemod.entity.EntityDrillingRig;
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 
 public class RenderOverlayHandler extends Gui {
@@ -23,7 +24,18 @@ public class RenderOverlayHandler extends Gui {
 			if (Minecraft.getMinecraft().thePlayer.ridingEntity instanceof EntityMachineModRideable) {
 				EntityMachineModRideable emr = (EntityMachineModRideable) Minecraft.getMinecraft().thePlayer.ridingEntity;
 				this.fontRenderer.drawString("Fuel:" + emr.currentFuelLevel, 0, 0, 14737632);
-				// emr.currentFuelLevel;
+
+				if (Minecraft.getMinecraft().thePlayer.ridingEntity instanceof EntityDrillingRig) {
+
+					EntityDrillingRig edr = (EntityDrillingRig) Minecraft.getMinecraft().thePlayer.ridingEntity;
+					int depth = (int) (((edr.Attribute1) - 90) / 5);
+					if (depth < 0) {
+						depth = 0;
+					}
+
+					this.fontRenderer.drawString("Depth:" + (depth), 0, 20, 14737632);
+				}
+
 			}
 		}
 	}
