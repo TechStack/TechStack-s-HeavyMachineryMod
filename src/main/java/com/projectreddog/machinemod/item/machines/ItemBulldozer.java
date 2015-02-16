@@ -1,6 +1,5 @@
 package com.projectreddog.machinemod.item.machines;
 
-import ibxm.Player;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -8,6 +7,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 import com.projectreddog.machinemod.entity.EntityBulldozer;
+import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.item.ItemTransportable;
 import com.projectreddog.machinemod.model.ModelBulldozer;
 import com.projectreddog.machinemod.model.ModelTransportable;
@@ -37,7 +37,7 @@ public class ItemBulldozer extends ItemTransportable {
 			int y = pos.getY();
 			int z = pos.getZ();
 
-			EntityBulldozer entityBulldozer = new EntityBulldozer(world);
+			EntityMachineModRideable entityBulldozer = getEntityToSpawn(world);
 			entityBulldozer.setPosition(x + .5d, y + 1.0d, z + .5d);
 			entityBulldozer.prevPosX = x + .5d;
 			entityBulldozer.prevPosY = y + 1.0d;
@@ -49,6 +49,11 @@ public class ItemBulldozer extends ItemTransportable {
 			}
 		}
 		return result;
+	}
+
+	public EntityMachineModRideable getEntityToSpawn(World world) {
+		return new EntityBulldozer(world);
+
 	}
 
 	@Override

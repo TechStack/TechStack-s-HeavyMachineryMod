@@ -6,9 +6,9 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
+import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.item.ItemTransportable;
-import com.projectreddog.machinemod.model.ModelLoader;
 import com.projectreddog.machinemod.model.ModelTractor;
 import com.projectreddog.machinemod.model.ModelTransportable;
 
@@ -37,7 +37,7 @@ public class ItemTractor extends ItemTransportable {
 			int y = pos.getY();
 			int z = pos.getZ();
 
-			EntityTractor entityTractor = new EntityTractor(world);
+			EntityMachineModRideable entityTractor = getEntityToSpawn(world);
 			entityTractor.setPosition(x + .5d, y + 1.0d, z + .5d);
 			entityTractor.prevPosX = x + .5d;
 			entityTractor.prevPosY = y + 1.0d;
@@ -49,6 +49,11 @@ public class ItemTractor extends ItemTransportable {
 			}
 		}
 		return result;
+	}
+
+	public EntityMachineModRideable getEntityToSpawn(World world) {
+		return new EntityTractor(world);
+
 	}
 
 	@Override

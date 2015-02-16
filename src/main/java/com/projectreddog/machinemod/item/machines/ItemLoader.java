@@ -7,6 +7,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 import com.projectreddog.machinemod.entity.EntityLoader;
+import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.item.ItemTransportable;
 import com.projectreddog.machinemod.model.ModelLoader;
 import com.projectreddog.machinemod.model.ModelTransportable;
@@ -33,7 +34,7 @@ public class ItemLoader extends ItemTransportable {
 			int y = pos.getY();
 			int z = pos.getZ();
 
-			EntityLoader entityLoader = new EntityLoader(world);
+			EntityMachineModRideable entityLoader = getEntityToSpawn(world);
 			entityLoader.setPosition(x + .5d, y + 1.0d, z + .5d);
 			entityLoader.prevPosX = x + .5d;
 			entityLoader.prevPosY = y + 1.0d;
@@ -45,6 +46,11 @@ public class ItemLoader extends ItemTransportable {
 			}
 		}
 		return result;
+	}
+
+	public EntityMachineModRideable getEntityToSpawn(World world) {
+		return new EntityLoader(world);
+
 	}
 
 	@Override

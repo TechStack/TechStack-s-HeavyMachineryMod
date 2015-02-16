@@ -7,6 +7,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 import com.projectreddog.machinemod.entity.EntityDrillingRig;
+import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.item.ItemTransportable;
 import com.projectreddog.machinemod.model.ModelDrillingRig;
 import com.projectreddog.machinemod.model.ModelTransportable;
@@ -48,6 +49,11 @@ public class ItemDrillingRig extends ItemTransportable {
 			}
 		}
 		return result;
+	}
+
+	public EntityMachineModRideable getEntityToSpawn(World world) {
+		return new EntityDrillingRig(world);
+
 	}
 
 	@Override
