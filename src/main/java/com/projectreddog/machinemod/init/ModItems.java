@@ -6,12 +6,17 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 import com.projectreddog.machinemod.item.ItemANFO;
+import com.projectreddog.machinemod.item.ItemBoomArmSegment;
+import com.projectreddog.machinemod.item.ItemConeCrusher;
 import com.projectreddog.machinemod.item.ItemCornSeed;
 import com.projectreddog.machinemod.item.ItemDrillHead;
 import com.projectreddog.machinemod.item.ItemDrillPipe;
 import com.projectreddog.machinemod.item.ItemFuelCan;
 import com.projectreddog.machinemod.item.ItemGoldDust;
+import com.projectreddog.machinemod.item.ItemHandDrill;
+import com.projectreddog.machinemod.item.ItemHose;
 import com.projectreddog.machinemod.item.ItemIronDust;
+import com.projectreddog.machinemod.item.ItemLidWithSpout;
 import com.projectreddog.machinemod.item.ItemMachineMod;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
@@ -51,6 +56,11 @@ public class ModItems {
 	public static final ItemMachineMod bulldozer = new ItemBulldozer();
 	public static final ItemMachineMod tractor = new ItemTractor();
 	public static final ItemMachineMod anfo = new ItemANFO();
+	public static final ItemMachineMod conecrusher = new ItemConeCrusher();
+	public static final ItemMachineMod lidwithspout = new ItemLidWithSpout();
+	public static final ItemMachineMod handdrill = new ItemHandDrill();
+
+	public static final ItemMachineMod boomarmsegment = new ItemBoomArmSegment();
 
 	public static final ItemMachineMod drillingrig = new ItemDrillingRig();
 	public static final ItemMachineMod dumptruck = new ItemDumpTruck();
@@ -61,6 +71,7 @@ public class ModItems {
 	public static final ItemMachineMod trencher = new ItemTractorAttachmentTrencher();
 	public static final ItemMachineMod irondust = new ItemIronDust();
 	public static final ItemMachineMod golddust = new ItemGoldDust();
+	public static final ItemMachineMod hose = new ItemHose();
 
 	public static final ItemMachineMod drillhead = new ItemDrillHead();
 	public static final ItemMachineMod cornseed = new ItemCornSeed();
@@ -93,6 +104,13 @@ public class ModItems {
 	public static void init() {
 		GameRegistry.registerItem(bulldozer, "bulldozer");
 		GameRegistry.registerItem(tractor, "tractor");
+		GameRegistry.registerItem(conecrusher, "conecrusher");
+
+		GameRegistry.registerItem(boomarmsegment, "boomarmsegment");
+
+		GameRegistry.registerItem(hose, "hose");
+		GameRegistry.registerItem(lidwithspout, "lidwithspout");
+		GameRegistry.registerItem(handdrill, "handdrill");
 		GameRegistry.registerItem(anfo, "anfo");
 		GameRegistry.registerItem(drillingrig, "drillingrig");
 		GameRegistry.registerItem(dumptruck, "dumptruck");
@@ -163,6 +181,13 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(crane, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "crane", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(excavator, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "excavator", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(trencher, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "trencher", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(conecrusher, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "conecrusher", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(hose, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "hose", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(handdrill, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "handdrill", "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(boomarmsegment, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "boomarmsegment", "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(lidwithspout, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "lidwithspout", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(camshaft, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "camshaft", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(piston, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "piston", "inventory"));

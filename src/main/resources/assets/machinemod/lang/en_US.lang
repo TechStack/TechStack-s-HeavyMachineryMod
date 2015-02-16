@@ -3,7 +3,7 @@ item.machinemod:bulldozer.name=Bulldozer
 item.machinemod:drillingrig.name=Drilling Rig
 item.machinemod:dumptruck.name=Dump Truck
 item.machinemod:loader.name=Loader
-item.machinemod:drillpipe.name=Drlling Pipe
+item.machinemod:drillpipe.name=Drilling Pipe
 item.machinemod:drillhead.name=Drill Head
 item.machinemod:tractor.name=Tractor
 item.machinemod:planter.name=Planter
@@ -34,6 +34,7 @@ item.machinemod:harvesterhead.name=Harvest Head
 item.machinemod:cornseed.name=Corn Seeds
 item.machinemod:fuelcan.name=Fuel Can
 item.machinemod:anfo.name=ANFO Explosives
+item.machinemod:conecrusher.name=Cone Crusher
 
 # Block Localizations
 tile.machinemod:machineassemblytable.name=Machine Assembly Table
