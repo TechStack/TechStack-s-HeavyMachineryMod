@@ -1,5 +1,11 @@
 {
     "variants": {
-        "normal": { "model": "machinemod:machinedrilledstone" }
-    }
+                "facing=up": { "model": "machinemod:machinedrilledstone"},
+        "facing=dowm": { "model": "machinemod:machinedrilledstone"},
+        "facing=north": { "model": "machinemod:machinedrilledstone", "x": 90  },
+        "facing=south": { "model": "machinemod:machinedrilledstone", "x": 90,"y": 180 },
+        "facing=west":  { "model": "machinemod:machinedrilledstone", "x": 90,"y": 270 },
+        "facing=east":  { "model": "machinemod:machinedrilledstone", "x": 90,"y": 90 }
+    }  
+    
 }
