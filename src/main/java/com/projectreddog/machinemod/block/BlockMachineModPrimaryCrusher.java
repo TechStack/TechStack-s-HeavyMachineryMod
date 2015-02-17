@@ -47,26 +47,29 @@ public class BlockMachineModPrimaryCrusher extends BlockContainer {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te != null && !playerIn.isSneaking()) {
 			ItemStack playerItem = playerIn.getHeldItem();
-			if (playerItem.getItem() == ModItems.fuelcan && playerItem.getItemDamage() < playerItem.getMaxDamage()) {
 
-				// put its a fuel can and has fuel !
+			if (playerItem != null) {
+				if (playerItem.getItem() == ModItems.fuelcan && playerItem.getItemDamage() < playerItem.getMaxDamage()) {
 
-				if (te instanceof TileEntityPrimaryCrusher) {
-					TileEntityPrimaryCrusher tEPC = (TileEntityPrimaryCrusher) te;
-					if (tEPC.fuelStorage < tEPC.maxFuelStorage) {
-						// can hold more fuel.
-						// calc remaining fuel in can see if it is = or > than the remaining fuel storage of this machine
-						int amountInCan = (playerIn.getHeldItem().getMaxDamage() - playerIn.getHeldItem().getItemDamage());
-						int roomInEntityTank = tEPC.maxFuelStorage - tEPC.fuelStorage;
-						if (amountInCan > roomInEntityTank) {
+					// put its a fuel can and has fuel !
 
-							playerIn.getHeldItem().setItemDamage(playerIn.getHeldItem().getMaxDamage() - (amountInCan - roomInEntityTank));
-							// will fill machine completely !
-							tEPC.fuelStorage = tEPC.maxFuelStorage;
-						} else {
-							// can will be empty becuase entity can hold 100% of the fuel from the can :O
-							playerIn.getHeldItem().setItemDamage(playerIn.getHeldItem().getMaxDamage());
-							tEPC.fuelStorage = tEPC.fuelStorage + amountInCan;
+					if (te instanceof TileEntityPrimaryCrusher) {
+						TileEntityPrimaryCrusher tEPC = (TileEntityPrimaryCrusher) te;
+						if (tEPC.fuelStorage < tEPC.maxFuelStorage) {
+							// can hold more fuel.
+							// calc remaining fuel in can see if it is = or > than the remaining fuel storage of this machine
+							int amountInCan = (playerIn.getHeldItem().getMaxDamage() - playerIn.getHeldItem().getItemDamage());
+							int roomInEntityTank = tEPC.maxFuelStorage - tEPC.fuelStorage;
+							if (amountInCan > roomInEntityTank) {
+
+								playerIn.getHeldItem().setItemDamage(playerIn.getHeldItem().getMaxDamage() - (amountInCan - roomInEntityTank));
+								// will fill machine completely !
+								tEPC.fuelStorage = tEPC.maxFuelStorage;
+							} else {
+								// can will be empty becuase entity can hold 100% of the fuel from the can :O
+								playerIn.getHeldItem().setItemDamage(playerIn.getHeldItem().getMaxDamage());
+								tEPC.fuelStorage = tEPC.fuelStorage + amountInCan;
+							}
 						}
 					}
 				}

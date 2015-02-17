@@ -1,5 +1,6 @@
 package com.projectreddog.machinemod.item;
 
+import net.minecraft.block.BlockStone;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -24,7 +25,7 @@ public class ItemHandDrill extends ItemMachineMod {
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float xOff, float yOff, float zOff) {
 		boolean result = false;
-		if (world.getBlockState(pos).getBlock() == Blocks.stone) {
+		if (world.getBlockState(pos).getBlock() == Blocks.stone && world.getBlockState(pos).getValue(BlockStone.VARIANT_PROP) == BlockStone.EnumType.STONE) {
 			// facing constarined to a horizontal plane
 			EnumFacing ef = player.func_174811_aO();
 			// EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineDrilledStone.FACING);
@@ -36,7 +37,7 @@ public class ItemHandDrill extends ItemMachineMod {
 			EnumFacing ef = player.func_174811_aO();
 
 			for (int i = 0; i < 8; i++) {
-				if (world.getBlockState(pos.offset(ef, i)).getBlock() == Blocks.stone) {
+				if (world.getBlockState(pos.offset(ef, i)).getBlock() == Blocks.stone && world.getBlockState(pos.offset(ef, i)).getValue(BlockStone.VARIANT_PROP) == BlockStone.EnumType.STONE) {
 					world.setBlockState(pos.offset(ef, i), ModBlocks.machinedrilledstone.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()));
 					i = 8;
 					player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);

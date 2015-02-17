@@ -34,7 +34,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 	public final int maxFuelStorage = 5000; // store up to 10k (can fill all 9 cans & have room for one more
 	public int fuelStorage = 0;
 	public AxisAlignedBB boundingBox;
-	public int coolDownAmount = 500;
+	public int coolDownAmount = 5;
 	public int timeTillCoolDown = 0;
 
 	public final int BlastedStoneOreMultiplier = 3;
