@@ -19,6 +19,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
+import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 
@@ -40,6 +41,41 @@ public class BlockMachineModPrimaryCrusher extends BlockContainer {
 		this.setHardness(1.5f);
 
 	}
+
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+		TileEntity te = worldIn.getTileEntity(pos);
+		if (te != null && !playerIn.isSneaking()) {
+			ItemStack playerItem = playerIn.getHeldItem();
+			if (playerItem.getItem() == ModItems.fuelcan && playerItem.getItemDamage() < playerItem.getMaxDamage()) {
+
+				// put its a fuel can and has fuel !
+
+				if (te instanceof TileEntityPrimaryCrusher) {
+					TileEntityPrimaryCrusher tEPC = (TileEntityPrimaryCrusher) te;
+					if (tEPC.fuelStorage < tEPC.maxFuelStorage) {
+						// can hold more fuel.
+						// calc remaining fuel in can see if it is = or > than the remaining fuel storage of this machine
+						int amountInCan = (playerIn.getHeldItem().getMaxDamage() - playerIn.getHeldItem().getItemDamage());
+						int roomInEntityTank = tEPC.maxFuelStorage - tEPC.fuelStorage;
+						if (amountInCan > roomInEntityTank) {
+
+							playerIn.getHeldItem().setItemDamage(playerIn.getHeldItem().getMaxDamage() - (amountInCan - roomInEntityTank));
+							// will fill machine completely !
+							tEPC.fuelStorage = tEPC.maxFuelStorage;
+						} else {
+							// can will be empty becuase entity can hold 100% of the fuel from the can :O
+							playerIn.getHeldItem().setItemDamage(playerIn.getHeldItem().getMaxDamage());
+							tEPC.fuelStorage = tEPC.fuelStorage + amountInCan;
+						}
+					}
+				}
+			}
+			return true;
+		} else {
+			return false;
+		}
+	};
 
 	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		return this.getDefaultState().withProperty(FACING, placer.func_174811_aO().getOpposite());

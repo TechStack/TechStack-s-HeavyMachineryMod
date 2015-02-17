@@ -20,7 +20,7 @@ public class ItemFuelCan extends ItemMachineMod {
 		// testing code
 		boolean result = false;
 
-		this.setDamage(stack, this.getDamage(stack) + 1);
+		// this.setDamage(stack, this.getDamage(stack) + 1);
 
 		return true;
 

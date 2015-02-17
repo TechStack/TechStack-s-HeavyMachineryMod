@@ -22,14 +22,17 @@ import net.minecraft.util.IChatComponent;
 
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
+import com.projectreddog.machinemod.iface.IFuelContainer;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
 
-public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlayerListBox, ISidedInventory {
+public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlayerListBox, ISidedInventory, IFuelContainer {
 	protected ItemStack[] inventory;
 	private static int[] bottomSlots = new int[] {};
 	private static int[] topSlots = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 };
+	public final int maxFuelStorage = 5000; // store up to 10k (can fill all 9 cans & have room for one more
+	public int fuelStorage = 0;
 	public AxisAlignedBB boundingBox;
 
 	public final int BlastedStoneOreMultiplier = 3;
@@ -132,42 +135,45 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 	 * Drops an item on the ground after reducing the
 	 */
 	private void dropDust(int slot, ItemStack is) {
-		decrStackSize(slot, 1);
-		// TODO position entity based on enum facing :D
-		double ejectOffsetX = 0d;
-		double ejectOffsetZ = 0d;
-		EnumFacing ef = (EnumFacing) worldObj.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
-		switch (ef) {
-		case NORTH:
-			// no rotate?
-			ejectOffsetX = .5d;
-			ejectOffsetZ = -.2d;
-			break;
-		case SOUTH:
-			// rotate to south
-			ejectOffsetX = .5d;
-			ejectOffsetZ = 1.2d;
-			break;
-		case EAST:
-			ejectOffsetX = 1.2d;
-			ejectOffsetZ = .5d;
-			break;
-		case WEST:
-			ejectOffsetX = -.2d;
-			ejectOffsetZ = .5d;
-			break;
-		default:
-			// should never happen because we are constrained to the horizontal plane so just break with 0 (default) offsets
-			break;
+		if (fuelStorage > 0) {
+			decrStackSize(slot, 1);
+			fuelStorage = fuelStorage - 1;
+			// TODO position entity based on enum facing :D
+			double ejectOffsetX = 0d;
+			double ejectOffsetZ = 0d;
+			EnumFacing ef = (EnumFacing) worldObj.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
+			switch (ef) {
+			case NORTH:
+				// no rotate?
+				ejectOffsetX = .5d;
+				ejectOffsetZ = -.2d;
+				break;
+			case SOUTH:
+				// rotate to south
+				ejectOffsetX = .5d;
+				ejectOffsetZ = 1.2d;
+				break;
+			case EAST:
+				ejectOffsetX = 1.2d;
+				ejectOffsetZ = .5d;
+				break;
+			case WEST:
+				ejectOffsetX = -.2d;
+				ejectOffsetZ = .5d;
+				break;
+			default:
+				// should never happen because we are constrained to the horizontal plane so just break with 0 (default) offsets
+				break;
 
+			}
+			EntityItem entityItem = new EntityItem(worldObj, this.pos.getX() + ejectOffsetX, this.pos.getY(), this.pos.getZ() + ejectOffsetZ, is);
+
+			entityItem.forceSpawn = true;
+			entityItem.motionX = 0;
+			entityItem.motionY = 0;
+			entityItem.motionZ = 0;
+			worldObj.spawnEntityInWorld(entityItem);
 		}
-		EntityItem entityItem = new EntityItem(worldObj, this.pos.getX() + ejectOffsetX, this.pos.getY(), this.pos.getZ() + ejectOffsetZ, is);
-
-		entityItem.forceSpawn = true;
-		entityItem.motionX = 0;
-		entityItem.motionY = 0;
-		entityItem.motionZ = 0;
-		worldObj.spawnEntityInWorld(entityItem);
 	}
 
 	private void processEntitiesInList(List par1List) {
@@ -406,6 +412,39 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 			return true;
 		}
 		return false;
+	}
+
+	public int addFluid(int amount) {
+		int returnAmount;
+		if (canAcceptFluid()) {
+			if (fuelStorage + amount > maxFuelStorage) {
+				// fill to brim return amount left over
+				returnAmount = (fuelStorage + amount - maxFuelStorage);
+
+				fuelStorage = maxFuelStorage;
+			} else {
+				// not going to return any this container can hold all of the fuel
+				fuelStorage = fuelStorage + amount;
+				returnAmount = 0;
+			}
+		} else {
+			returnAmount = amount;
+		}
+		return returnAmount;
+	}
+
+	public boolean canAcceptFluid() {
+		if (fuelStorage < maxFuelStorage) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public EnumFacing outputDirection() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
