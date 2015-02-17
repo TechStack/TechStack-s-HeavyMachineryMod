@@ -34,6 +34,8 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 	public final int maxFuelStorage = 5000; // store up to 10k (can fill all 9 cans & have room for one more
 	public int fuelStorage = 0;
 	public AxisAlignedBB boundingBox;
+	public int coolDownAmount = 500;
+	public int timeTillCoolDown = 0;
 
 	public final int BlastedStoneOreMultiplier = 3;
 	public final int VanillaOreMultiplier = 2;
@@ -50,6 +52,12 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 	@Override
 	public void update() {
 		if (!worldObj.isRemote) {
+			if (timeTillCoolDown > 0) {
+				timeTillCoolDown--;
+				return;
+			}
+			timeTillCoolDown = coolDownAmount;
+
 			// LogHelper.info("TE update entity called");
 			boundingBox = new AxisAlignedBB(this.pos.offsetUp(), this.pos.offsetUp().add(1, 1, 1));
 			List list = worldObj.getEntitiesWithinAABB(EntityItem.class, boundingBox);
@@ -246,6 +254,9 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 
 		super.readFromNBT(compound);
 
+		timeTillCoolDown = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN");
+		fuelStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL");
+
 		// inventory
 		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
 		for (int i = 0; i < tagList.tagCount(); i++) {
@@ -260,6 +271,9 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
+
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN", timeTillCoolDown);
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL", fuelStorage);
 
 		// inventory
 		NBTTagList itemList = new NBTTagList();
