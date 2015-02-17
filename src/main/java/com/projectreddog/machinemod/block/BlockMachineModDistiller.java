@@ -28,6 +28,7 @@ public class BlockMachineModDistiller extends BlockContainer {
 
 	protected BlockMachineModDistiller(Material material) {
 		super(material);
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.5F, 1.0F);
 
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_TAB);

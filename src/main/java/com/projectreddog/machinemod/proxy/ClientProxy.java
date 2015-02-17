@@ -30,6 +30,7 @@ import com.projectreddog.machinemod.render.machines.RenderExcavator;
 import com.projectreddog.machinemod.render.machines.RenderLoader;
 import com.projectreddog.machinemod.render.machines.RenderTractor;
 import com.projectreddog.machinemod.render.machines.RenderWideBedTruck;
+import com.projectreddog.machinemod.render.tileentity.TileEntityDistillerRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityFuelPumpRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityPrimaryCrusherRenderer;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
@@ -66,7 +67,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPrimaryCrusher.class, new TileEntityPrimaryCrusherRenderer());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFuelPump.class, new TileEntityFuelPumpRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDistiller.class, new TileEntityPrimaryCrusherRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDistiller.class, new TileEntityDistillerRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFermenter.class, new TileEntityPrimaryCrusherRenderer());
 
 		// regsiter event for overlay
