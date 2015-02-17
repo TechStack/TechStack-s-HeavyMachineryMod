@@ -17,7 +17,6 @@ import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentSprayer;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentTrencher;
-import com.projectreddog.machinemod.utility.LogHelper;
 
 public class EntityTractor extends EntityMachineModRideable {
 
@@ -66,7 +65,7 @@ public class EntityTractor extends EntityMachineModRideable {
 										worldObj.setBlockToAir(bp.offsetUp());
 
 									} else {
-										LogHelper.info(worldObj.getBlockState(bp.offsetUp()).getBlock().getMaterial());
+										// LogHelper.info(worldObj.getBlockState(bp.offsetUp()).getBlock().getMaterial());
 									}
 								}
 							} else if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {

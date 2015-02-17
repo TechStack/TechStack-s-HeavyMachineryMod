@@ -9,7 +9,6 @@ import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageEntityCurrentTargetPosToClient;
-import com.projectreddog.machinemod.utility.LogHelper;
 
 public class EntityExcavator extends EntityMachineModRideable {
 
@@ -130,9 +129,9 @@ public class EntityExcavator extends EntityMachineModRideable {
 				o = (currPosY - (this.posY - armPiviotUp)); // height up or down.
 
 				angleArm3 = Math.atan(o / a) / Math.PI * 180;
-				LogHelper.info("Rotation vlaue ARM3:" + angleArm1 + ", " + angleArm2 + ", " + angleArm3 + ", ");
+				// LogHelper.info("Rotation vlaue ARM3:" + angleArm1 + ", " + angleArm2 + ", " + angleArm3 + ", ");
 
-				ModNetwork.sendPacketToAllAround((new MachineModMessageEntityCurrentTargetPosToClient(this.getEntityId(), this.currPosX, this.currPosY, this.currPosZ, this.angleArm1, this.angleArm2, this.angleArm3, this.mainBodyRotation)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
+				ModNetwork.simpleNetworkWrapper.sendToAllAround((new MachineModMessageEntityCurrentTargetPosToClient(this.getEntityId(), this.currPosX, this.currPosY, this.currPosZ, this.angleArm1, this.angleArm2, this.angleArm3, this.mainBodyRotation)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
 
 				if (this.isPlayerPushingSprintButton) {
 					// player wants to break the block

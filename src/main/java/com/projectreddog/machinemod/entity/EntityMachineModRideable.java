@@ -329,7 +329,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 				}
 			}
 		}
-		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityToClient(this.getEntityId(), this.posX, this.posY, this.posZ, this.yaw, this.Attribute1, this.currentFuelLevel)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
+		ModNetwork.simpleNetworkWrapper.sendToAllAround((new MachineModMessageEntityToClient(this.getEntityId(), this.posX, this.posY, this.posZ, this.yaw, this.Attribute1, this.currentFuelLevel)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
 		// sendInterval = 0;
 		// }
 		//
@@ -642,7 +642,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		if (!(this.worldObj.isRemote)) {
 			// send packet to notify client of contents of machine's inventory
 			if (this.shouldSendClientInvetoryUpdates) {
-				ModNetwork.sendPacketToAllAround((new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), slot, inventory[slot])), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
+				ModNetwork.simpleNetworkWrapper.sendToAllAround((new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), slot, inventory[slot])), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
 			}
 		}
 

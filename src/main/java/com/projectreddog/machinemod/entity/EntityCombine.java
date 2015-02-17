@@ -12,7 +12,6 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 import com.projectreddog.machinemod.init.ModItems;
-import com.projectreddog.machinemod.utility.LogHelper;
 
 public class EntityCombine extends EntityMachineModRideable {
 
@@ -90,7 +89,7 @@ public class EntityCombine extends EntityMachineModRideable {
 					entityItem.motionY = 0;
 					// entityItem.motionZ = rand.nextGaussian() * factor;
 					entityItem.forceSpawn = true;
-					LogHelper.info(worldObj.spawnEntityInWorld(entityItem));
+					// LogHelper.info(worldObj.spawnEntityInWorld(entityItem));
 					// item.stackSize = 0;
 					this.setInventorySlotContents(i, null);
 				}

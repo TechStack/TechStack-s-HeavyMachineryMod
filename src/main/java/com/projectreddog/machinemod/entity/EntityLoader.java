@@ -13,7 +13,6 @@ import net.minecraft.world.World;
 
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
-import com.projectreddog.machinemod.utility.LogHelper;
 
 public class EntityLoader extends EntityMachineModRideable {
 
@@ -86,7 +85,7 @@ public class EntityLoader extends EntityMachineModRideable {
 						entityItem.motionY = 0;
 						// entityItem.motionZ = rand.nextGaussian() * factor;
 						entityItem.forceSpawn = true;
-						LogHelper.info(worldObj.spawnEntityInWorld(entityItem));
+						// LogHelper.info(worldObj.spawnEntityInWorld(entityItem));
 						// item.stackSize = 0;
 						this.setInventorySlotContents(i, null);
 					}
