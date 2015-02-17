@@ -14,6 +14,7 @@ public class Reference {
 	public static final String MODEL_TRACTOR_TEXTURE_LOCATION = "models/modeltractor.png";
 	public static final String MODEL_FUEL_PUMP_TEXTURE_LOCATION = "models/fuelpump.png";
 	public static final String MODEL_DISTILLER_TEXTURE_LOCATION = "models/distiller.png";
+	public static final String MODEL_FERMENTER_TEXTURE_LOCATION = "models/fermenter.png";
 
 	public static final String MODEL_COMBINE_TEXTURE_LOCATION = "models/combine.png";
 	public static final String MODEL_DRILLINGRIG_TEXTURE_LOCATION = "models/drillingrig.png";

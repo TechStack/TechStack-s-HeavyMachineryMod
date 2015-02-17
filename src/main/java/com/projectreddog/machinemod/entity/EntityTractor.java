@@ -141,7 +141,7 @@ public class EntityTractor extends EntityMachineModRideable {
 								// Fertilize checks & actions
 								if (i == 0) {
 									if (worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.grass || worldObj.getBlockState(bp).getBlock() == Blocks.farmland) {
-										worldObj.getBlockState(bp.offsetUp()).getBlock().dropBlockAsItem(worldObj, bp.offsetUp(), worldObj.getBlockState(bp.offsetUp()), 0);
+										worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
 										worldObj.setBlockToAir(bp);
 
 									}
