@@ -36,6 +36,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public float yaw;
 	protected ItemStack[] inventory;
 	public boolean shouldSendClientInvetoryUpdates = false;
+	public int tickssincelastbroadcast = 0;
 
 	public boolean isPlayerAccelerating = false;
 	public boolean isPlayerBreaking = false;
@@ -52,6 +53,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public double lastPosY = 0d;
 	public double lastPosZ = 0d;
 	public float lastAttribute1 = 0f;
+	public float lastYaw = 0;
+	public int lastCurrentFuelLevel = 0;
 	public int sendInterval = 0;
 	public double maxSpeed = 0.2d;
 	public float Attribute1;// multi-purpose variable use defined in extended
@@ -232,6 +235,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		lastPosY = posY;
 		lastPosZ = posZ;
 		lastAttribute1 = Attribute1;
+		lastYaw = yaw;
+		lastCurrentFuelLevel = currentFuelLevel;
 		if (posY < 0) {
 			this.setDead();
 		}
@@ -329,7 +334,13 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 				}
 			}
 		}
+
+		// if (tickssincelastbroadcast > 20 || lastPosX != posX || lastPosY != posY || lastPosZ != posZ || lastAttribute1 != Attribute1 || lastYaw != yaw || lastCurrentFuelLevel != currentFuelLevel) {
+		// something changed (or its been 1 second) so send it to clients in need
 		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityToClient(this.getEntityId(), this.posX, this.posY, this.posZ, this.yaw, this.Attribute1, this.currentFuelLevel)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80)); // sendInterval = 0;
+		// tickssincelastbroadcast = 0;
+		// }
+		// tickssincelastbroadcast = tickssincelastbroadcast + 1;
 		// }
 		//
 		// sendInterval++;

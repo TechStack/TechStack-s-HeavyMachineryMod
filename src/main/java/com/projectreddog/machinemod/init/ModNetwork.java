@@ -59,10 +59,10 @@ public class ModNetwork {
 		for (EntityPlayerMP player : (List<EntityPlayerMP>) FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().playerEntityList) {
 			if (player.dimension == tp.dimension) {
 				double d4 = tp.x - player.posX;
-				double d5 = tp.y - player.posY;
 				double d6 = tp.z - player.posZ;
 
-				if (d4 * d4 + d5 * d5 + d6 * d6 < tp.range * tp.range) {
+				// base distance only on the x & Z axis so you can see machines way above / below you. (blast a machine up and you'll understand why
+				if (d4 * d4 + d6 * d6 < tp.range * tp.range) {
 
 					ModNetwork.simpleNetworkWrapper.sendTo(packet, player);
 
