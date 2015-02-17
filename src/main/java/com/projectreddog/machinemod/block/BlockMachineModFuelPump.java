@@ -28,7 +28,7 @@ public class BlockMachineModFuelPump extends BlockContainer {
 
 	protected BlockMachineModFuelPump(Material material) {
 		super(material);
-
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.5F, 1.0F);
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_TAB);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
