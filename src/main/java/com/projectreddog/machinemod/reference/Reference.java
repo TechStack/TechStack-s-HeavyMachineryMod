@@ -42,7 +42,7 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_PRIMARY_CRUSHER = "machineprimarycrhuser";
 	public static final String MODBLOCK_MACHINE_DISTILLER = "machinedistiller";
 	public static final String MODBLOCK_MACHINE_FERMENTER = "machinefermenter";
-	public static final String MODBLOCK_MACHINE_CANNER = "machinecanner";
+	public static final String MODBLOCK_MACHINE_FUEL_PUMP = "machinefuelpump";
 
 	public static final String MODBLOCK_MACHINE_CONVEYOR = "machineconveyor";
 

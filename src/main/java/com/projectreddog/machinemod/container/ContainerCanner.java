@@ -9,14 +9,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.projectreddog.machinemod.tileentities.TileEntityCanner;
+import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 
 public class ContainerCanner extends Container {
 
-	protected TileEntityCanner canner;
+	protected TileEntityFuelPump canner;
 	private int lastFuelStorage;
 
-	public ContainerCanner(InventoryPlayer inventoryPlayer, TileEntityCanner canner) {
+	public ContainerCanner(InventoryPlayer inventoryPlayer, TileEntityFuelPump canner) {
 		this.canner = canner;
 
 		for (int i = 0; i < 1; i++) {

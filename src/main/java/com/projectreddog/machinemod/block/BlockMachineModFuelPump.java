@@ -21,12 +21,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.tileentities.TileEntityCanner;
+import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 
-public class BlockMachineModCanner extends BlockContainer {
+public class BlockMachineModFuelPump extends BlockContainer {
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
-	protected BlockMachineModCanner(Material material) {
+	protected BlockMachineModFuelPump(Material material) {
 		super(material);
 
 		// can override later ;)
@@ -34,7 +34,7 @@ public class BlockMachineModCanner extends BlockContainer {
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 
 		// 1.8
-		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_CANNER);
+		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_FUEL_PUMP);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
 		this.setStepSound(soundTypeStone);
@@ -133,7 +133,7 @@ public class BlockMachineModCanner extends BlockContainer {
 		}
 	}
 
-	public BlockMachineModCanner() {
+	public BlockMachineModFuelPump() {
 		// Generic constructor (set to rock by default)
 		this(Material.rock);
 	}
@@ -142,7 +142,7 @@ public class BlockMachineModCanner extends BlockContainer {
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 
 		// NEED TO return the TE here
-		return new TileEntityCanner();
+		return new TileEntityFuelPump();
 	}
 
 	@Override

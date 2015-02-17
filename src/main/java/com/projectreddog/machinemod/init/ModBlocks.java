@@ -14,18 +14,18 @@ import com.projectreddog.machinemod.block.BlockMachineExplosivePackedDrilledSton
 import com.projectreddog.machinemod.block.BlockMachineMod;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone2;
-import com.projectreddog.machinemod.block.BlockMachineModCanner;
 import com.projectreddog.machinemod.block.BlockMachineModConveyor;
 import com.projectreddog.machinemod.block.BlockMachineModCorn;
 import com.projectreddog.machinemod.block.BlockMachineModDistiller;
 import com.projectreddog.machinemod.block.BlockMachineModFermenter;
+import com.projectreddog.machinemod.block.BlockMachineModFuelPump;
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.item.ItemBlockBlastedStone;
 import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.tileentities.TileEntityCanner;
 import com.projectreddog.machinemod.tileentities.TileEntityConveyor;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
+import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
@@ -38,7 +38,7 @@ public class ModBlocks {
 	public static final Block machinemodcorn = new BlockMachineModCorn();
 	public static final Block machinemoddistiller = new BlockMachineModDistiller();
 	public static final Block machinemodfermenter = new BlockMachineModFermenter();
-	public static final Block machinemodcanner = new BlockMachineModCanner();
+	public static final Block machinemodcanner = new BlockMachineModFuelPump();
 
 	public static final Block machineprimarycrhuser = new BlockMachineModPrimaryCrusher();
 	public static final Block machineconveyor = new BlockMachineModConveyor();
@@ -57,7 +57,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(machineprimarycrhuser, Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
 		GameRegistry.registerBlock(machineconveyor, Reference.MODBLOCK_MACHINE_CONVEYOR);
 
-		GameRegistry.registerBlock(machinemodcanner, Reference.MODBLOCK_MACHINE_CANNER);
+		GameRegistry.registerBlock(machinemodcanner, Reference.MODBLOCK_MACHINE_FUEL_PUMP);
 		GameRegistry.registerBlock(machinemoddistiller, Reference.MODBLOCK_MACHINE_DISTILLER);
 		GameRegistry.registerBlock(machinemodfermenter, Reference.MODBLOCK_MACHINE_FERMENTER);
 
@@ -65,7 +65,7 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileEntityPrimaryCrusher.class, Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
 		GameRegistry.registerTileEntity(TileEntityConveyor.class, Reference.MODBLOCK_MACHINE_CONVEYOR);
 
-		GameRegistry.registerTileEntity(TileEntityCanner.class, Reference.MODBLOCK_MACHINE_CANNER);
+		GameRegistry.registerTileEntity(TileEntityFuelPump.class, Reference.MODBLOCK_MACHINE_FUEL_PUMP);
 		GameRegistry.registerTileEntity(TileEntityDistiller.class, Reference.MODBLOCK_MACHINE_DISTILLER);
 		GameRegistry.registerTileEntity(TileEntityFermenter.class, Reference.MODBLOCK_MACHINE_FERMENTER);
 		// /Register Fluids
@@ -89,7 +89,7 @@ public class ModBlocks {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineprimarycrhuser), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineconveyor), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_CONVEYOR, "inventory"));
 
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinemodcanner), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_CANNER, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinemodcanner), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FUEL_PUMP, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinemoddistiller), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_DISTILLER, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinemodfermenter), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FERMENTER, "inventory"));
 

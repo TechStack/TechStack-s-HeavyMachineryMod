@@ -8,13 +8,13 @@ import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.container.ContainerCanner;
 import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.tileentities.TileEntityCanner;
+import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 
 public class GuiCanner extends GuiContainer {
 
-	private TileEntityCanner canner;
+	private TileEntityFuelPump canner;
 
-	public GuiCanner(InventoryPlayer inventoryPlayer, TileEntityCanner canner) {
+	public GuiCanner(InventoryPlayer inventoryPlayer, TileEntityFuelPump canner) {
 		// the container is instanciated and passed to the superclass for
 		// handling
 

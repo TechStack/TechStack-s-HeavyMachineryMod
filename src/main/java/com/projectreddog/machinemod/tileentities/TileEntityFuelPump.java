@@ -16,7 +16,7 @@ import com.projectreddog.machinemod.iface.IFuelContainer;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
 
-public class TileEntityCanner extends TileEntity implements IUpdatePlayerListBox, ISidedInventory, IFuelContainer {
+public class TileEntityFuelPump extends TileEntity implements IUpdatePlayerListBox, ISidedInventory, IFuelContainer {
 	protected ItemStack[] inventory;
 	private static int[] sideSlots = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
 	public final int maxFuelStorage = 10000; // store up to 10k (can fill all 9 cans & have room for one more
@@ -25,7 +25,7 @@ public class TileEntityCanner extends TileEntity implements IUpdatePlayerListBox
 	public final int coolDownReset = 1200;
 	public int cooldown = coolDownReset;
 
-	public TileEntityCanner() {
+	public TileEntityFuelPump() {
 		inventory = new ItemStack[inventorySize];
 
 	}

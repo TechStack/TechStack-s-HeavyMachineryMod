@@ -31,7 +31,7 @@ import com.projectreddog.machinemod.render.machines.RenderLoader;
 import com.projectreddog.machinemod.render.machines.RenderTractor;
 import com.projectreddog.machinemod.render.machines.RenderWideBedTruck;
 import com.projectreddog.machinemod.render.tileentity.TileEntityPrimaryCrusherRenderer;
-import com.projectreddog.machinemod.tileentities.TileEntityCanner;
+import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
@@ -64,7 +64,7 @@ public class ClientProxy extends CommonProxy {
 		// Register TESR (tile Entity Special renderes
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPrimaryCrusher.class, new TileEntityPrimaryCrusherRenderer());
 
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCanner.class, new TileEntityPrimaryCrusherRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFuelPump.class, new TileEntityPrimaryCrusherRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDistiller.class, new TileEntityPrimaryCrusherRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFermenter.class, new TileEntityPrimaryCrusherRenderer());
 

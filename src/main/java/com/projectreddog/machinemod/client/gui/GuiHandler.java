@@ -21,7 +21,7 @@ import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.entity.EntityWideBedTruck;
 import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.tileentities.TileEntityCanner;
+import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 
@@ -81,9 +81,9 @@ public class GuiHandler implements IGuiHandler {
 
 			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
 			if (entity != null) {
-				if (entity instanceof TileEntityCanner) {
+				if (entity instanceof TileEntityFuelPump) {
 
-					return new ContainerCanner(player.inventory, (TileEntityCanner) entity);
+					return new ContainerCanner(player.inventory, (TileEntityFuelPump) entity);
 				}
 			}
 		}
@@ -163,8 +163,8 @@ public class GuiHandler implements IGuiHandler {
 
 			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
 			if (entity != null) {
-				if (entity instanceof TileEntityCanner) {
-					return new GuiCanner(player.inventory, (TileEntityCanner) entity);
+				if (entity instanceof TileEntityFuelPump) {
+					return new GuiCanner(player.inventory, (TileEntityFuelPump) entity);
 				}
 			}
 		}
