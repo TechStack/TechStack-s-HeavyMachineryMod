@@ -55,7 +55,7 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 						entityItem.motionY = 0;
 						// entityItem.motionZ = rand.nextGaussian() * factor;
 						entityItem.forceSpawn = true;
-						// LogHelper.info(worldObj.spawnEntityInWorld(entityItem));
+						worldObj.spawnEntityInWorld(entityItem);
 						// item.stackSize = 0;
 						this.setInventorySlotContents(i, null);
 					}
