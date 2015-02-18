@@ -1,6 +1,5 @@
 package com.projectreddog.machinemod.tileentities;
 
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -74,19 +73,19 @@ public class TileEntityFuelPump extends TileEntity implements IUpdatePlayerListB
 			for (int i = 0; i < this.getSizeInventory(); i++) {
 				ItemStack item = this.getStackInSlot(i);
 				if (item != null) {
-					if (item.getItem() == ModItems.fuelcan) {
+					if (item.getItem() == ModItems.fuelcan || item.getItem() == ModItems.handdrill) {
 						if (item.getItemDamage() > 0) {
 							item.setItemDamage(item.getItemDamage() - 1);
 							this.fuelStorage = this.fuelStorage - 1;
 							if (item.getItemDamage() == 0) {
-								EntityItem entityItem = new EntityItem(worldObj, this.pos.getX(), this.pos.getY(), this.pos.getZ(), item);
-
-								entityItem.forceSpawn = true;
-								entityItem.motionX = 0;
-								entityItem.motionY = 0;
-								entityItem.motionZ = 0;
-								worldObj.spawnEntityInWorld(entityItem);
-								decrStackSize(i, 1);
+								// EntityItem entityItem = new EntityItem(worldObj, this.pos.getX(), this.pos.getY(), this.pos.getZ(), item);
+								//
+								// entityItem.forceSpawn = true;
+								// entityItem.motionX = 0;
+								// entityItem.motionY = 0;
+								// entityItem.motionZ = 0;
+								// worldObj.spawnEntityInWorld(entityItem);
+								// decrStackSize(i, 1);
 							}
 							i = this.getSizeInventory();
 

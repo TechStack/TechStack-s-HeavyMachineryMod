@@ -77,7 +77,7 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.drillingrig), "pgg", "pet", "drr", 'p', ModItems.drillpipe, 'g', Blocks.glass, 'e', ModItems.engine, 't', ModItems.transmission, 'd', ModItems.drillhead, 'r', ModItems.tracks));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.trencher), "i  ", "i  ", " i ", 'i', "ingotIron"));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.handdrill), "   ", "dpi", "  i", 'i', "ingotIron", 'd', ModItems.drillhead, 'p', ModItems.drillpipe));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.handdrill, 1, ModItems.handdrill.getMaxDamage()), "   ", "dpi", "  i", 'i', "ingotIron", 'd', ModItems.drillhead, 'p', ModItems.drillpipe));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sprayer), " c ", " h ", "w w", 'c', Blocks.chest, 'h', Blocks.hopper, 'w', ModItems.wheel));
 
