@@ -33,10 +33,10 @@ public class EntityExcavator extends EntityMachineModRideable {
 	public EntityExcavator(World world) {
 		super(world);
 
-		setSize(2f, 1f);
+		setSize(4f, 3f);
 		inventory = new ItemStack[9];
 
-		this.mountedOffsetY = .2D;
+		this.mountedOffsetY = .5D;
 		this.mountedOffsetX = 0D;
 		this.mountedOffsetZ = 0D;
 		this.maxAngle = 256;
