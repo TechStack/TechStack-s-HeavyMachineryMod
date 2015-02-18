@@ -35,6 +35,14 @@ item.machinemod:cornseed.name=Corn Seeds
 item.machinemod:fuelcan.name=Fuel Can
 item.machinemod:anfo.name=ANFO Explosives
 item.machinemod:conecrusher.name=Cone Crusher
+item.machinemod:excavator.name=Excavator
+item.machinemod:widebedtruck.name=Wide Bed Truck
+item.machinemod:trencher.name=Trencher
+item.machinemod:boomarmsegment.name=Boom Arm Segment
+item.machinemod:handdrill.name=Hand Drill
+item.machinemod:hose.name=Hose
+item.machinemod:lidwithspout.name=Lid with Spout
+
 
 # Block Localizations
 tile.machinemod:machineassemblytable.name=Machine Assembly Table
@@ -57,6 +65,10 @@ tile.machinemod:machineblastedstone.LAPIS.name=Blasted Lapis
 tile.machinemod:machineblastedstone.DIAMOND.name=Blasted Diamond
 tile.machinemod:machineblastedstone.REDSTONE.name=Blasted Redstone
 tile.machinemod:machineblastedstone.EMERALD.name=Blasted Emerald
+
+tile.machinemod:machineblastedstone2.name=Blasted Stone for Mods - (WIP)
+tile.machinemod:machineconveyor.name=Conveyor
+
 
 
 
