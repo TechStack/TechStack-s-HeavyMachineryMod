@@ -2,6 +2,7 @@ package com.projectreddog.machinemod.item;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -12,10 +13,12 @@ import net.minecraftforge.common.IPlantable;
 
 import com.projectreddog.machinemod.init.ModBlocks;
 
-public class ItemCornSeed extends ItemMachineMod implements IPlantable {
+public class ItemCornSeed extends ItemFood implements IPlantable {
 
 	public ItemCornSeed() {
-		super();
+
+		// heal sat wolf fav
+		super(2, 0.3F, false);
 		this.setUnlocalizedName("cornseed");
 		this.maxStackSize = 64;
 

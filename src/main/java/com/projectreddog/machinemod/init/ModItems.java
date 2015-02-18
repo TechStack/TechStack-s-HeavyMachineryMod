@@ -2,6 +2,7 @@ package com.projectreddog.machinemod.init;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.item.ItemFood;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -74,7 +75,7 @@ public class ModItems {
 	public static final ItemMachineMod hose = new ItemHose();
 
 	public static final ItemMachineMod drillhead = new ItemDrillHead();
-	public static final ItemMachineMod cornseed = new ItemCornSeed();
+	public static final ItemFood cornseed = new ItemCornSeed();
 
 	public static final ItemMachineMod drillpipe = new ItemDrillPipe();
 	public static final ItemMachineMod plow = new ItemTractorAttachmentPlow();
