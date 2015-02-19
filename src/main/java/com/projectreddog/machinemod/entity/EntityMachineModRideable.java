@@ -364,7 +364,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 							// its alive & its not the rider
 
 							EntityLivingBase eLB = (EntityLivingBase) entity;
-							eLB.attackEntityFrom(new DamageSource("Crushed By Machine"), 5);
+							eLB.attackEntityFrom(new DamageSource(randomDethMessage()), 5);
 							// special case creepers because Evil !
 							if (eLB instanceof EntityCreeper) {
 								EntityCreeper eC = (EntityCreeper) eLB;
@@ -377,6 +377,11 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			}
 		}
 
+	}
+
+	public String randomDethMessage() {
+
+		return Reference.MOD_ID + ":" + "GENERIC_CRUSH_MACHINE" + (this.rand.nextInt(5) + 1);
 	}
 
 	public void updateClient() {

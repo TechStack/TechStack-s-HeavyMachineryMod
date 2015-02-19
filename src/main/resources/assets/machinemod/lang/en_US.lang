@@ -74,3 +74,10 @@ tile.machinemod:machineconveyor.name=Conveyor
 
 
 
+
+death.attack.machinemod:GENERIC_CRUSH_MACHINE1=%s was flattened by a heavy machine. Ouch !
+death.attack.machinemod:GENERIC_CRUSH_MACHINE2=%s was squashed by a heavy machine. Ouch !
+death.attack.machinemod:GENERIC_CRUSH_MACHINE3=%s played chicken with heavy machine GG... GG.
+death.attack.machinemod:GENERIC_CRUSH_MACHINE4=%s can be found stuck to the bottom of the wheels of a heavy machine. 
+death.attack.machinemod:GENERIC_CRUSH_MACHINE5=%s didn't wear a hard hat on a construction site, RIP.
+
