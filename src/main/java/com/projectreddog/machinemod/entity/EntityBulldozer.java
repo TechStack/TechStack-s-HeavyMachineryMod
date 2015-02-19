@@ -3,6 +3,7 @@ package com.projectreddog.machinemod.entity;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -10,6 +11,7 @@ import net.minecraft.world.World;
 import com.projectreddog.machinemod.init.ModItems;
 
 public class EntityBulldozer extends EntityMachineModRideable {
+	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 
 	public double bladeOffset = 2.0d;
 
@@ -24,6 +26,10 @@ public class EntityBulldozer extends EntityMachineModRideable {
 		this.minAngle = -15;
 		this.droppedItem = ModItems.bulldozer;
 
+	}
+
+	public AxisAlignedBB getBoundingBox() {
+		return boundingBox;
 	}
 
 	@Override

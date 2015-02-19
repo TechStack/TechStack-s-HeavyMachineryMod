@@ -6,6 +6,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
@@ -19,6 +20,7 @@ import com.projectreddog.machinemod.item.ItemTractorAttachmentSprayer;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentTrencher;
 
 public class EntityTractor extends EntityMachineModRideable {
+	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 
 	public double bladeOffset = 2.0d;
 
@@ -34,6 +36,10 @@ public class EntityTractor extends EntityMachineModRideable {
 		this.droppedItem = ModItems.tractor;
 		this.shouldSendClientInvetoryUpdates = true;
 
+	}
+
+	public AxisAlignedBB getBoundingBox() {
+		return boundingBox;
 	}
 
 	@Override

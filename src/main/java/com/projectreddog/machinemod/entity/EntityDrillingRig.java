@@ -3,6 +3,7 @@ package com.projectreddog.machinemod.entity;
 import net.minecraft.block.BlockStone;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
@@ -10,6 +11,7 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 
 public class EntityDrillingRig extends EntityMachineModRideable {
+	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 
 	public double bladeOffset = 2.0d;
 	public int currentDepth = 0;
@@ -25,6 +27,10 @@ public class EntityDrillingRig extends EntityMachineModRideable {
 		this.minAngle = 0;
 		this.droppedItem = ModItems.drillingrig;
 
+	}
+
+	public AxisAlignedBB getBoundingBox() {
+		return boundingBox;
 	}
 
 	@Override

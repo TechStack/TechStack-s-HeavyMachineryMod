@@ -1,11 +1,14 @@
 package com.projectreddog.machinemod.entity;
 
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
@@ -16,6 +19,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -349,6 +353,30 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		// this.getEntityId(),this.posX,this.posY,this.posZ,this.yaw,this.Attribute1)),
 		// new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ,
 		// 80));
+
+		List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox());
+		for (int i = 0; i < list.size(); ++i) {
+			Entity entity = (Entity) list.get(i);
+			if (entity != null) {
+				if (entity instanceof EntityLivingBase) {
+					if (!entity.isDead) {
+						if (entity != this.riddenByEntity) {
+							// its alive & its not the rider
+
+							EntityLivingBase eLB = (EntityLivingBase) entity;
+							eLB.attackEntityFrom(new DamageSource("Crushed By Machine"), 5);
+							// special case creepers because Evil !
+							if (eLB instanceof EntityCreeper) {
+								EntityCreeper eC = (EntityCreeper) eLB;
+								// state 1 = ignited!
+								eC.setCreeperState(1);
+							}
+						}
+					}
+				}
+			}
+		}
+
 	}
 
 	public void updateClient() {
