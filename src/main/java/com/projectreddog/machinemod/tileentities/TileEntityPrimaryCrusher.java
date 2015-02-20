@@ -65,7 +65,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 			for (int i = 0; i < this.getSizeInventory(); i++) {
 				ItemStack item = this.getStackInSlot(i);
 				if (item != null) {
-					if (item.getItem() == Item.getItemFromBlock(ModBlocks.machinemodblastedstone)) {
+					if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedstone)) {
 						if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.IRON.getMetadata()) {
 							dropDust(i, new ItemStack(ModItems.irondust, BlastedStoneOreMultiplier));
 							return;

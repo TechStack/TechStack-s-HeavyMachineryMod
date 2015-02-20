@@ -69,6 +69,7 @@ public class BlockMachineModConveyor extends BlockContainer {
 				this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 			}
 		} else {
+			// needs to be handled by the ray trace it self
 			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		}
 	}

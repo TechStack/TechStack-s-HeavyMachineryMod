@@ -38,7 +38,7 @@ public class ItemCornSeed extends ItemFood implements IPlantable {
 		} else if (!playerIn.func_175151_a(pos.offset(side), side, stack)) {
 			return false;
 		} else if (worldIn.getBlockState(pos).getBlock().canSustainPlant(worldIn, pos, EnumFacing.UP, this) && worldIn.isAirBlock(pos.offsetUp())) {
-			worldIn.setBlockState(pos.offsetUp(), ModBlocks.machinemodcorn.getDefaultState());
+			worldIn.setBlockState(pos.offsetUp(), ModBlocks.corn.getDefaultState());
 			--stack.stackSize;
 			return true;
 		} else {
@@ -53,6 +53,6 @@ public class ItemCornSeed extends ItemFood implements IPlantable {
 
 	@Override
 	public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
-		return ModBlocks.machinemodcorn.getDefaultState();
+		return ModBlocks.corn.getDefaultState();
 	}
 }

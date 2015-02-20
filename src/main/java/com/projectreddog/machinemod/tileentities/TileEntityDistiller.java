@@ -124,7 +124,7 @@ public class TileEntityDistiller extends TileEntity implements IUpdatePlayerList
 	public boolean transferFuel() {
 		if (this.fuelStorage > 0) {
 
-			if (worldObj.getBlockState(this.pos.offset(this.outputDirection())).getBlock() == ModBlocks.machinemodcanner) {
+			if (worldObj.getBlockState(this.pos.offset(this.outputDirection())).getBlock() == ModBlocks.machinefuelpump) {
 				// its a distiller so we can transfer fuel!
 				TileEntityFuelPump tEC = (TileEntityFuelPump) worldObj.getTileEntity(this.pos.offset(this.outputDirection()));
 				if (tEC.canAcceptFluid()) {
