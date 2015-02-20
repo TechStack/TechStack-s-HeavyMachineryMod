@@ -36,10 +36,10 @@ public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListB
 		// rotated.
 
 		if (!worldObj.isBlockPowered(this.pos)) {
-			boundingBox = new AxisAlignedBB(this.pos.offsetUp(), this.pos.offsetUp().add(1, 1, 1));
+			boundingBox = new AxisAlignedBB(this.pos, this.pos.offsetUp().add(1, 1, 1));
 			List list = worldObj.getEntitiesWithinAABB(EntityItem.class, boundingBox);
 			processEntitiesInList(list);
-			boundingBox = new AxisAlignedBB(this.pos.offsetUp(), this.pos.offsetUp().add(1, 1, 1));
+			boundingBox = new AxisAlignedBB(this.pos, this.pos.offsetUp().add(1, 1, 1));
 			list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, boundingBox);
 			processEntitiesInList(list);
 		}
@@ -73,6 +73,10 @@ public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListB
 					z = 0;
 				}
 
+				if (BlockMachineModConveyor.isSlopped(worldObj, this.pos)) {
+					entity.fallDistance = 0;
+					y = (entity.motionY * -1) + (MoveSpeed / 2);
+				}
 				entity.moveEntity(x, y, z);
 				// entity.setPosition(entity.getPosition().getX() + 0.1d, entity.getPosition().getY(), entity.getPosition().getZ());
 				// }

@@ -1,5 +1,7 @@
 package com.projectreddog.machinemod.block;
 
+import java.util.List;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -7,14 +9,14 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.Vec3;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -60,30 +62,70 @@ public class BlockMachineModConveyor extends BlockContainer {
 		return state;
 	}
 
-	public void setBlockBoundsBasedOnState(IBlockAccess worldIn, BlockPos pos) {
+	public static boolean isSlopped(IBlockAccess worldIn, BlockPos pos) {
 		EnumFacing direction = ((EnumFacing) worldIn.getBlockState(pos).getValue(FACING));
-		if (!rayTrace) {
-			if (worldIn.getBlockState(pos.offset(direction.getOpposite()).offsetDown()).getBlock() == ModBlocks.machineconveyor && worldIn.getBlockState(pos.offset(direction.getOpposite()).offsetDown()).getValue(FACING) == direction && worldIn.isAirBlock(pos.offset(direction.getOpposite()))) {
-				this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F);
-			} else {
-				this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-			}
+
+		if (worldIn.getBlockState(pos.offset(direction.getOpposite()).offsetDown()).getBlock() == ModBlocks.machineconveyor && worldIn.getBlockState(pos.offset(direction.getOpposite()).offsetDown()).getValue(FACING) == direction && worldIn.isAirBlock(pos.offset(direction.getOpposite()))) {
+			return true;
 		} else {
-			// needs to be handled by the ray trace it self
+			return false;
+		}
+
+	}
+
+	public void addCollisionBoxesToList(World worldIn, BlockPos pos, IBlockState state, AxisAlignedBB mask, List list, Entity collidingEntity) {
+
+		if (isSlopped(worldIn, pos)) {
+			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F);
+		} else {
 			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		}
+
+		super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
+
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 	}
 
-	public boolean rayTrace = false;
+	// public boolean canCollideCheck(IBlockState state, boolean p_176209_2_) {
+	// if (state.getValue(UP) == Boolean.valueOf(false)) {
+	// return false;
+	// } else {
+	// return true;
+	// }
+	// }
 
-	public MovingObjectPosition collisionRayTrace(World worldIn, BlockPos pos, Vec3 start, Vec3 end) {
+	// public void setBlockBoundsBasedOnState(IBlockAccess worldIn, BlockPos pos) {
+	// EnumFacing direction = ((EnumFacing) worldIn.getBlockState(pos).getValue(FACING));
+	// // if (!rayTrace) {
+	// if (isSlopped(worldIn, pos)) {
+	// this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F);
+	// } else {
+	// this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+	// }
+	// // } else {
+	// // // needs to be handled by the ray trace it self
+	// // this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+	// // }
+	// }
+	//
+	// public boolean rayTrace = false;
 
-		rayTrace = true;
-		MovingObjectPosition mOP = super.collisionRayTrace(worldIn, pos, start, end);
-		rayTrace = false;
-		return mOP;
-
-	}
+	// public MovingObjectPosition collisionRayTrace(World worldIn, BlockPos pos, Vec3 start, Vec3 end) {
+	//
+	// rayTrace = true;
+	// MovingObjectPosition mOP = null;
+	//
+	// if (isSlopped(worldIn, pos)) {
+	// this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F);
+	// } else {
+	// this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+	// }
+	// mOP = super.collisionRayTrace(worldIn, pos, start, end);
+	//
+	// rayTrace = false;
+	// return mOP;
+	//
+	// }
 
 	public BlockMachineModConveyor() {
 		// Generic constructor (set to rock by default)
