@@ -91,7 +91,7 @@ public class TileEntityFermenter extends TileEntity implements IUpdatePlayerList
 	public boolean transferFuel() {
 		if (this.fuelStorage > 0) {
 
-			if (worldObj.getBlockState(this.pos.offset(this.outputDirection())).getBlock() == ModBlocks.machinemoddistiller) {
+			if (worldObj.getBlockState(this.pos.offset(this.outputDirection())).getBlock() == ModBlocks.machinedistiller) {
 				// its a distiller so we can transfer fuel!
 				TileEntityDistiller tED = (TileEntityDistiller) worldObj.getTileEntity(this.pos.offset(this.outputDirection()));
 				if (tED.canAcceptFluid()) {
