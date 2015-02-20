@@ -13,6 +13,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -27,9 +29,6 @@ public class BlockMachineModConveyor extends BlockContainer {
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	// public static final PropertyBool POWERED = PropertyBool.create("powered");
 	public static final PropertyBool UP = PropertyBool.create("up");
-	private static final int[][] field_150150_a = new int[][] { { 4, 5 }, { 5, 7 }, { 6, 7 }, { 4, 6 }, { 0, 1 }, { 1, 3 }, { 2, 3 }, { 0, 2 } };
-	private boolean field_150152_N;
-	private int field_150153_O;
 
 	protected BlockMachineModConveyor(Material material) {
 		super(material);
@@ -59,6 +58,30 @@ public class BlockMachineModConveyor extends BlockContainer {
 		}
 
 		return state;
+	}
+
+	public void setBlockBoundsBasedOnState(IBlockAccess worldIn, BlockPos pos) {
+		EnumFacing direction = ((EnumFacing) worldIn.getBlockState(pos).getValue(FACING));
+		if (!rayTrace) {
+			if (worldIn.getBlockState(pos.offset(direction.getOpposite()).offsetDown()).getBlock() == ModBlocks.machineconveyor && worldIn.getBlockState(pos.offset(direction.getOpposite()).offsetDown()).getValue(FACING) == direction && worldIn.isAirBlock(pos.offset(direction.getOpposite()))) {
+				this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F);
+			} else {
+				this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+			}
+		} else {
+			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		}
+	}
+
+	public boolean rayTrace = false;
+
+	public MovingObjectPosition collisionRayTrace(World worldIn, BlockPos pos, Vec3 start, Vec3 end) {
+
+		rayTrace = true;
+		MovingObjectPosition mOP = super.collisionRayTrace(worldIn, pos, start, end);
+		rayTrace = false;
+		return mOP;
+
 	}
 
 	public BlockMachineModConveyor() {
