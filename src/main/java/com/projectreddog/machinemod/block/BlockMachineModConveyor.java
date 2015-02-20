@@ -3,6 +3,7 @@ package com.projectreddog.machinemod.block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
@@ -12,23 +13,30 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
+import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityConveyor;
 
 public class BlockMachineModConveyor extends BlockContainer {
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+	// public static final PropertyBool POWERED = PropertyBool.create("powered");
+	public static final PropertyBool UP = PropertyBool.create("up");
+	private static final int[][] field_150150_a = new int[][] { { 4, 5 }, { 5, 7 }, { 6, 7 }, { 4, 6 }, { 0, 1 }, { 1, 3 }, { 2, 3 }, { 0, 2 } };
+	private boolean field_150152_N;
+	private int field_150153_O;
 
 	protected BlockMachineModConveyor(Material material) {
 		super(material);
 
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_TAB);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(UP, Boolean.valueOf(false)));
 
 		// 1.8
 		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_CONVEYOR);
@@ -37,6 +45,20 @@ public class BlockMachineModConveyor extends BlockContainer {
 		this.setStepSound(soundTypeMetal);
 		this.setHardness(1.5f);
 
+	}
+
+	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+		EnumFacing direction = ((EnumFacing) state.getValue(FACING));
+
+		if (worldIn.getBlockState(pos.offset(direction.getOpposite()).offsetDown()).getBlock() == ModBlocks.machineconveyor && worldIn.getBlockState(pos.offset(direction.getOpposite()).offsetDown()).getValue(FACING) == direction && worldIn.isAirBlock(pos.offset(direction.getOpposite()))) {
+			// is conveyor down one in the source direction & the source direction is air above the other conveyor
+			state = state.withProperty(UP, Boolean.valueOf(true));
+		} else {
+			// state = state.withProperty(UP, Boolean.valueOf(false));
+
+		}
+
+		return state;
 	}
 
 	public BlockMachineModConveyor() {
@@ -63,7 +85,7 @@ public class BlockMachineModConveyor extends BlockContainer {
 	}
 
 	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-		return this.getDefaultState().withProperty(FACING, placer.func_174811_aO().getOpposite());
+		return this.getDefaultState().withProperty(FACING, placer.func_174811_aO().getOpposite()).withProperty(UP, Boolean.valueOf(false));
 	}
 
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
@@ -107,7 +129,7 @@ public class BlockMachineModConveyor extends BlockContainer {
 	}
 
 	protected BlockState createBlockState() {
-		return new BlockState(this, new IProperty[] { FACING });
+		return new BlockState(this, new IProperty[] { FACING, UP });
 	}
 
 	@SideOnly(Side.CLIENT)

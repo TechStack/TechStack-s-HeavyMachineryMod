@@ -1,8 +1,12 @@
 {
     "variants": {
-        "facing=north": { "model": "machinemod:machineconveyor" },
-        "facing=south": { "model": "machinemod:machineconveyor", "y": 180 },
-        "facing=west":  { "model": "machinemod:machineconveyor", "y": 270 },
-        "facing=east":  { "model": "machinemod:machineconveyor", "y": 90 }
+        "facing=north,up=false": { "model": "machinemod:machineconveyor" },
+        "facing=north,up=true": { "model": "machinemod:machineconveyor_up" },
+        "facing=south,up=false": { "model": "machinemod:machineconveyor", "y": 180 },
+        "facing=south,up=true": { "model": "machinemod:machineconveyor_up", "y": 180 },
+        "facing=west,up=false":  { "model": "machinemod:machineconveyor", "y": 270 },
+        "facing=west,up=true":  { "model": "machinemod:machineconveyor_up", "y": 270 },
+        "facing=east,up=false":  { "model": "machinemod:machineconveyor", "y": 90 },
+        "facing=east,up=true":  { "model": "machinemod:machineconveyor_up", "y": 90 }
     }
 }

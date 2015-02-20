@@ -1,0 +1,12 @@
+{
+    "parent": "machinemod:block/flippedfront_up",
+    "textures": {
+        "particle": "#front",
+        "down": "#top",
+        "up": "#top",
+        "north": "#front",
+        "east": "#side",
+        "south": "#back",
+        "west": "#side"
+    }
+}
