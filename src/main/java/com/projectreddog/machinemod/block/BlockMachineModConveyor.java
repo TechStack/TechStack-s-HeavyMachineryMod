@@ -66,6 +66,17 @@ public class BlockMachineModConveyor extends BlockContainer {
 		return this.getDefaultState().withProperty(FACING, placer.func_174811_aO().getOpposite());
 	}
 
+	public static boolean shouldLift(World worldIn, BlockPos pos) {
+		EnumFacing direction = ((EnumFacing) worldIn.getBlockState(pos).getValue(FACING));
+
+		if (worldIn.isAirBlock(pos.offset(direction.getOpposite()))) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		worldIn.setBlockState(pos, state.withProperty(FACING, placer.func_174811_aO().getOpposite()), 2);
 
