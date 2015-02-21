@@ -27,7 +27,7 @@ public class EntityLoader extends EntityMachineModRideable {
 		this.mountedOffsetY = 0.6D;
 		this.mountedOffsetX = 0.4D;
 		this.mountedOffsetZ = 0.4D;
-		this.maxAngle = 0;
+		this.maxAngle = 15;
 		this.minAngle = -90;
 		this.droppedItem = ModItems.loader;
 		this.shouldSendClientInvetoryUpdates = true;
@@ -38,7 +38,16 @@ public class EntityLoader extends EntityMachineModRideable {
 	public void onUpdate() {
 		super.onUpdate();
 		if (!worldObj.isRemote) {
-			if (this.Attribute1 == this.getMaxAngle()) {
+
+			int bucketOffsetY = 0;
+
+			if (this.Attribute1 > 7) {
+				bucketOffsetY = -1;
+			} else if (this.Attribute1 < -7) {
+				bucketOffsetY = 1;
+
+			}
+			if (this.Attribute1 > -20) {
 				// bucket Down
 				// break blocks first
 				int angle;
@@ -49,7 +58,7 @@ public class EntityLoader extends EntityMachineModRideable {
 						angle = 90;
 					}
 					BlockPos bp;
-					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY, posZ + calcTwoOffsetZ(3.5, angle, i));
+					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + bucketOffsetY, posZ + calcTwoOffsetZ(3.5, angle, i));
 					if (worldObj.getBlockState(bp).getBlock() == Blocks.snow_layer || worldObj.getBlockState(bp).getBlock() == Blocks.snow || worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.sand || worldObj.getBlockState(bp).getBlock() == Blocks.gravel || worldObj.getBlockState(bp).getBlock() == Blocks.grass
 							|| worldObj.getBlockState(bp).getBlock() == Blocks.clay || worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2 || worldObj.getBlockState(bp).getBlock() == Blocks.soul_sand || worldObj.getBlockState(bp).getBlock() == Blocks.tallgrass) {
 						worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
@@ -58,7 +67,7 @@ public class EntityLoader extends EntityMachineModRideable {
 
 				}
 
-				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(3.5, 90, -1) + posX - .5d, posY, calcTwoOffsetZ(3.5, 90, -1) + posZ - .5d, calcTwoOffsetX(3.5, 90, 1) + posX + .5d, posY + 1, calcTwoOffsetZ(3.5, 90, 1) + posZ + .5d);
+				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(3.5, 90, -1) + posX - .5d, posY + bucketOffsetY, calcTwoOffsetZ(3.5, 90, -1) + posZ - .5d, calcTwoOffsetX(3.5, 90, 1) + posX + .5d, posY + 1, calcTwoOffsetZ(3.5, 90, 1) + posZ + .5d);
 
 				List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
 				collidedEntitiesInList(list);

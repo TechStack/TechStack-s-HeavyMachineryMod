@@ -62,7 +62,7 @@ public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListB
 
 					boundingBox = new AxisAlignedBB(bp, bp2);
 
-					LogHelper.info("Block at" + this.pos + "pos1" + bp + "POS2" + bp2 + "EF" + checkDirection);
+					// LogHelper.info("Block at" + this.pos + "pos1" + bp + "POS2" + bp2 + "EF" + checkDirection);
 				} else {
 					boundingBox = new AxisAlignedBB(this.pos.offsetUp(), this.pos.offsetUp().add(1, 1, 1));
 				}
@@ -80,7 +80,7 @@ public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListB
 		for (int i = 0; i < par1List.size(); ++i) {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
-				LogHelper.info("ent in bounds");
+				// LogHelper.info("ent in bounds");
 
 				// if (entity instanceof EntityLivingBase) {
 				// ((EntityLivingBase) entity).moveEntity(.1d, 0, 0);
@@ -109,10 +109,10 @@ public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListB
 					// Should lift maybe?
 					if (new BlockPos(entity.posX, entity.posY, entity.posZ).getX() == this.pos.getX() && new BlockPos(entity.posX, entity.posY, entity.posZ).getZ() == this.pos.getZ()) {
 						// entity in same pos no Y adustment
-						LogHelper.info("ent Y" + entity.posY + " bock pos " + this.pos.getY());
+						// LogHelper.info("ent Y" + entity.posY + " bock pos " + this.pos.getY());
 
 					} else {
-						LogHelper.info("ent Y" + entity.posY + " bock pos " + this.pos.getY());
+						// LogHelper.info("ent Y" + entity.posY + " bock pos " + this.pos.getY());
 
 						if (entity.posY < this.pos.getY() + 1) {
 							LogHelper.info("ent Y" + entity.posY + " bock pos " + this.pos.getY());
