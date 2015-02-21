@@ -361,15 +361,17 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 				if (entity instanceof EntityLivingBase) {
 					if (!entity.isDead) {
 						if (entity != this.riddenByEntity) {
-							// its alive & its not the rider
+							if (this.riddenByEntity != null) {
+								// its alive & its not the rider & has a driver (prevents player exiting the machine from getting damaged)
 
-							EntityLivingBase eLB = (EntityLivingBase) entity;
-							eLB.attackEntityFrom(new DamageSource(randomDethMessage()), 5);
-							// special case creepers because Evil !
-							if (eLB instanceof EntityCreeper) {
-								EntityCreeper eC = (EntityCreeper) eLB;
-								// state 1 = ignited!
-								eC.setCreeperState(1);
+								EntityLivingBase eLB = (EntityLivingBase) entity;
+								eLB.attackEntityFrom(new DamageSource(randomDethMessage()), 5);
+								// special case creepers because Evil !
+								if (eLB instanceof EntityCreeper) {
+									EntityCreeper eC = (EntityCreeper) eLB;
+									// state 1 = ignited!
+									eC.setCreeperState(1);
+								}
 							}
 						}
 					}
