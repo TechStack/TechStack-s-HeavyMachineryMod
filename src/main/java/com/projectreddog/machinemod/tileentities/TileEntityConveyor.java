@@ -43,22 +43,26 @@ public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListB
 			if (worldObj.getBlockState(pos).getBlock() == ModBlocks.machineconveyor) {
 				if (BlockMachineModConveyor.shouldLift(worldObj, this.pos)) {
 					EnumFacing checkDirection = (EnumFacing) worldObj.getBlockState(this.pos).getValue(BlockMachineModConveyor.FACING);
-					BlockPos bp = this.pos.offset(checkDirection.getOpposite());
+					BlockPos bp = this.pos;// this.pos.offset(checkDirection);
+					BlockPos bp2 = this.pos.offsetUp().add(1, 1, 1);
+					BlockPos temp;
 					double xOffset = 0, zOffset = 0;
 					if (checkDirection == EnumFacing.EAST) {
 						bp = bp.offsetWest();
+						// working
 					} else if (checkDirection == EnumFacing.WEST) {
-						bp = bp.offsetEast();
+						bp2 = bp2.offsetEast();
 					} else if (checkDirection == EnumFacing.NORTH) {
-						bp = bp.offsetSouth();
-
+						bp2 = bp2.offsetSouth();
+						// not working :(
 					} else if (checkDirection == EnumFacing.SOUTH) {
 						bp = bp.offsetNorth();
+						// works naturally
 					}
 
-					boundingBox = new AxisAlignedBB(bp, this.pos.offsetUp().add(1, 1, 1));
+					boundingBox = new AxisAlignedBB(bp, bp2);
 
-					LogHelper.info("Block at" + this.pos + "pos1" + bp + "POS2" + this.pos.offsetUp().add(1, 1, 1) + "EF" + checkDirection);
+					LogHelper.info("Block at" + this.pos + "pos1" + bp + "POS2" + bp2 + "EF" + checkDirection);
 				} else {
 					boundingBox = new AxisAlignedBB(this.pos.offsetUp(), this.pos.offsetUp().add(1, 1, 1));
 				}
@@ -108,6 +112,7 @@ public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListB
 						LogHelper.info("ent Y" + entity.posY + " bock pos " + this.pos.getY());
 
 					} else {
+						LogHelper.info("ent Y" + entity.posY + " bock pos " + this.pos.getY());
 
 						if (entity.posY < this.pos.getY() + 1) {
 							LogHelper.info("ent Y" + entity.posY + " bock pos " + this.pos.getY());
