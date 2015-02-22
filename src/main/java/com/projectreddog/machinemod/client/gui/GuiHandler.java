@@ -13,6 +13,7 @@ import com.projectreddog.machinemod.container.ContainerDistiller;
 import com.projectreddog.machinemod.container.ContainerDumpTruck;
 import com.projectreddog.machinemod.container.ContainerFermenter;
 import com.projectreddog.machinemod.container.ContainerLoader;
+import com.projectreddog.machinemod.container.ContainerScreen;
 import com.projectreddog.machinemod.container.ContainerTractor;
 import com.projectreddog.machinemod.container.ContainerWideBedTruck;
 import com.projectreddog.machinemod.entity.EntityCombine;
@@ -21,9 +22,10 @@ import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.entity.EntityWideBedTruck;
 import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
+import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
+import com.projectreddog.machinemod.tileentities.TileEntityScreen;
 
 public class GuiHandler implements IGuiHandler {
 	// returns an instance of the Container you made earlier
@@ -108,6 +110,15 @@ public class GuiHandler implements IGuiHandler {
 					return new ContainerFermenter(player.inventory, (TileEntityFermenter) entity);
 				}
 			}
+		} else if (id == Reference.GUI_SCREEN) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityScreen) {
+
+					return new ContainerScreen(player.inventory, (TileEntityScreen) entity);
+				}
+			}
 		}
 
 		return null;
@@ -185,6 +196,16 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null) {
 				if (entity instanceof TileEntityFermenter) {
 					return new GuiFermenter(player.inventory, (TileEntityFermenter) entity);
+				}
+			}
+		}
+
+		else if (id == Reference.GUI_SCREEN) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityScreen) {
+					return new GuiScreen(player.inventory, (TileEntityScreen) entity);
 				}
 			}
 		}

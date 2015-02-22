@@ -34,6 +34,7 @@ public class Reference {
 	public static final int GUI_CANNER = 5;
 	public static final int GUI_FERMENTER = 6;
 	public static final int GUI_DISTILLER = 7;
+	public static final int GUI_SCREEN = 8;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;
@@ -49,6 +50,7 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_FUEL_PUMP = "machinefuelpump";
 
 	public static final String MODBLOCK_MACHINE_CONVEYOR = "machineconveyor";
+	public static final String MODBLOCK_MACHINE_SCREEN = "machinescreen";
 
 	public static final String MODBLOCK_MACHINE_FLUID_BIOFUEL = "biofuel";
 
