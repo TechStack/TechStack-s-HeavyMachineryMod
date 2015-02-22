@@ -14,6 +14,7 @@ import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityTank;
 import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.entity.EntityWideBedTruck;
+import com.projectreddog.machinemod.entity.projectile.EntityTankShell;
 import com.projectreddog.machinemod.reference.Reference;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
@@ -32,6 +33,7 @@ public class ModEntities {
 		EntityRegistry.registerModEntity(EntityCrane.class, "crane", 8, mod, 80, 1, false);
 		EntityRegistry.registerModEntity(EntityExcavator.class, "excavator", 9, mod, 80, 1, false);
 		EntityRegistry.registerModEntity(EntityTank.class, "tank", 10, mod, 80, 1, false);
+		EntityRegistry.registerModEntity(EntityTankShell.class, "tankshell", 11, mod, 80, 1, false);
 
 	}
 }

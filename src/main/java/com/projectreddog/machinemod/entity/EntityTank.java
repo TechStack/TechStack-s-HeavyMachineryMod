@@ -1,9 +1,11 @@
 package com.projectreddog.machinemod.entity;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
+import com.projectreddog.machinemod.entity.projectile.EntityTankShell;
 import com.projectreddog.machinemod.init.ModItems;
 
 public class EntityTank extends EntityMachineModRideable {
@@ -19,8 +21,8 @@ public class EntityTank extends EntityMachineModRideable {
 		this.mountedOffsetY = 0.6D;
 		this.mountedOffsetX = 0.4D;
 		this.mountedOffsetZ = 0.4D;
-		this.maxAngle = 0;
-		this.minAngle = -90;
+		this.maxAngle = 10;
+		this.minAngle = 0;
 		this.droppedItem = ModItems.tank;
 		this.shouldSendClientInvetoryUpdates = true;
 
@@ -30,7 +32,14 @@ public class EntityTank extends EntityMachineModRideable {
 	public void onUpdate() {
 		super.onUpdate();
 		if (!worldObj.isRemote) {
+			if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityLivingBase) {
+				if (this.Attribute1 > 0) {
 
+					EntityTankShell ets = new EntityTankShell(worldObj, (EntityLivingBase) this.riddenByEntity, 2.0F);
+					worldObj.spawnEntityInWorld(ets);
+
+				}
+			}
 		}
 
 	}

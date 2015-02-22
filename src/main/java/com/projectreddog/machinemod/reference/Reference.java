@@ -21,6 +21,8 @@ public class Reference {
 	public static final String MODEL_DUMPTRUCK_TEXTURE_LOCATION = "models/dumptruck.png";
 	public static final String MODEL_LOADER_TEXTURE_LOCATION = "models/modelloader.png";
 	public static final String MODEL_TANK_TEXTURE_LOCATION = "models/tank.png";
+	public static final String MODEL_TANK_SHELL_TEXTURE_LOCATION = "models/tankshell.png";
+
 	public static final String MODEL_CRANE_TEXTURE_LOCATION = "models/crane.png";
 	public static final String MODEL_EXCAVATOR_TEXTURE_LOCATION = "models/excavator.png";
 
