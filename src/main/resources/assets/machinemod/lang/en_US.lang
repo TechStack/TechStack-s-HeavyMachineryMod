@@ -46,6 +46,8 @@ item.machinemod:lidwithspout.name=Lid with Spout
 
 # Block Localizations
 tile.machinemod:machineassemblytable.name=Machine Assembly Table
+tile.machinemod:machinescreen.name=Screen
+
 tile.machinemod:machinedrilledstone.name=Drilled Stone
 tile.machinemod:machineblastedstone.name=Blasted Stone
 tile.machinemod:machineexplosivepackeddrilledstone.name=Explosive Packed Drilled Stone

@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "top": "machinemod:blocks/screen_top",
+        "side": "machinemod:blocks/screen_side",
+        "bottom": "machinemod:blocks/screen_top"
+    }
+}

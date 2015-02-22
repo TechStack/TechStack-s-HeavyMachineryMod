@@ -7,17 +7,22 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IChatComponent;
 
 import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.reference.Reference;
 
 public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox, IInventory {
 	protected ItemStack[] inventory;
 	public final int inventorySize = 5;
 	public AxisAlignedBB boundingBox;
+	public int coolDownAmount = 5;
+	public int timeTillCoolDown = 0;
 
 	// slot 0 = north
 	// slot 1 = east
@@ -33,6 +38,12 @@ public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox
 	public void update() {
 
 		if (!worldObj.isRemote) {
+			if (timeTillCoolDown > 0) {
+				timeTillCoolDown--;
+				return;
+			}
+			timeTillCoolDown = coolDownAmount;
+
 			if (worldObj.getBlockState(pos).getBlock() == ModBlocks.machinescreen) {
 
 				boundingBox = new AxisAlignedBB(this.pos.offsetUp(), this.pos.offsetUp().add(1, 1, 1));
@@ -276,6 +287,45 @@ public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox
 	@Override
 	public void clear() {
 		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void readFromNBT(NBTTagCompound compound) {
+
+		super.readFromNBT(compound);
+
+		timeTillCoolDown = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN");
+
+		// inventory
+		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
+		for (int i = 0; i < tagList.tagCount(); i++) {
+			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
+			byte slot = tag.getByte("Slot");
+			if (slot >= 0 && slot < inventory.length) {
+				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
+			}
+		}
+	}
+
+	@Override
+	public void writeToNBT(NBTTagCompound compound) {
+		super.writeToNBT(compound);
+
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN", timeTillCoolDown);
+
+		// inventory
+		NBTTagList itemList = new NBTTagList();
+		for (int i = 0; i < inventory.length; i++) {
+			ItemStack stack = inventory[i];
+			if (stack != null) {
+				NBTTagCompound tag = new NBTTagCompound();
+				tag.setByte("Slot", (byte) i);
+				stack.writeToNBT(tag);
+				itemList.appendTag(tag);
+			}
+		}
+		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
 
 	}
 }
