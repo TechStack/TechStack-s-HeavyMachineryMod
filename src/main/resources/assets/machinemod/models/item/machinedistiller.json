@@ -1,5 +1,8 @@
 {
-    "parent": "machinemod:block/machinedistiller",
+  "parent": "builtin/generated",
+      "textures": {
+    "layer0": "machinemod:items/distiller"
+    },
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

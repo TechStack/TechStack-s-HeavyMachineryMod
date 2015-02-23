@@ -1,5 +1,8 @@
 {
-    "parent": "machinemod:block/machinefuelpump",
+  "parent": "builtin/generated",
+       "textures": {
+    "layer0": "machinemod:items/fuelpump"
+    },
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

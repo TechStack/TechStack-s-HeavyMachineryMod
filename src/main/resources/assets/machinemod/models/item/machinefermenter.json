@@ -1,5 +1,8 @@
 {
-    "parent": "machinemod:block/machinefermenter",
+  "parent": "builtin/generated",
+       "textures": {
+    "layer0": "machinemod:items/fermenter"
+    },
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

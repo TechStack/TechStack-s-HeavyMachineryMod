@@ -97,6 +97,12 @@ public class Recipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.anfo, 16), "bbb", "bfb", "bbb", 'b', new ItemStack(Items.dye, 1, EnumDyeColor.WHITE.getDyeColorDamage()), 'f', ModItems.fuelcan.setContainerItem(ModItems.fuelcan)));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinescreen, 1), "d d", "pbp", "iii", 'b', Blocks.iron_bars, 'd', Items.diamond, 'p', Blocks.piston, 'i', Items.iron_ingot));
+
+		// D D
+		// PBP
+		// III
+
 		SmeltingRecipes();
 	}
 
