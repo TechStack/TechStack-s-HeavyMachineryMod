@@ -12,6 +12,7 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
 import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.reference.Reference;
 
 public class ItemCornSeed extends ItemFood implements IPlantable {
 
@@ -19,7 +20,7 @@ public class ItemCornSeed extends ItemFood implements IPlantable {
 
 		// heal sat wolf fav
 		super(2, 0.3F, false);
-		this.setUnlocalizedName("cornseed");
+		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + "cornseed");
 		this.maxStackSize = 64;
 
 	}

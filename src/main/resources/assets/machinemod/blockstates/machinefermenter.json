@@ -1,5 +1,9 @@
 {
     "variants": {
-        "normal": { "model": "machinemod:machinefermenter" }
+        "facing=west": { "model": "machinemod:machinefermenter" },
+        "facing=east": { "model": "machinemod:machinefermenter" },
+        "facing=south": { "model": "machinemod:machinefermenter" },
+        "facing=north": { "model": "machinemod:machinefermenter" }
+
     }
 }

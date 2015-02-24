@@ -1,5 +1,8 @@
 {
     "variants": {
-        "normal": { "model": "machinemod:machinefuelpump" }
+        "facing=east": { "model": "machinemod:machinefuelpump" },
+        "facing=west": { "model": "machinemod:machinefuelpump" },
+        "facing=north": { "model": "machinemod:machinefuelpump" },
+        "facing=south": { "model": "machinemod:machinefuelpump" }
     }
 }

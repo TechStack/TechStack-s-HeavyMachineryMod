@@ -1,5 +1,9 @@
 {
     "variants": {
-        "normal": { "model": "machinemod:machinedistiller" }
+        "facing=west": { "model": "machinemod:machinedistiller" },
+        "facing=east": { "model": "machinemod:machinedistiller" },
+        "facing=south": { "model": "machinemod:machinedistiller" },
+        "facing=north": { "model": "machinemod:machinedistiller" }
+        
     }
 }

@@ -1,4 +1,5 @@
 {
+    "parent": "block/cube_all",
  "textures": {
         "all": "machinemod:items/fermenter"
     }
