@@ -13,7 +13,6 @@ import net.minecraft.util.EnumFacing;
 
 import com.projectreddog.machinemod.block.BlockMachineModConveyor;
 import com.projectreddog.machinemod.init.ModBlocks;
-import com.projectreddog.machinemod.utility.LogHelper;
 
 public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListBox {
 
@@ -115,7 +114,7 @@ public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListB
 						// LogHelper.info("ent Y" + entity.posY + " bock pos " + this.pos.getY());
 
 						if (entity.posY < this.pos.getY() + 1) {
-							LogHelper.info("ent Y" + entity.posY + " bock pos " + this.pos.getY());
+							// LogHelper.info("ent Y" + entity.posY + " bock pos " + this.pos.getY());
 							entity.fallDistance = 0; // set so no damage to players going up long virt shafts
 							entity.motionY = 0;
 							y = MoveSpeed;

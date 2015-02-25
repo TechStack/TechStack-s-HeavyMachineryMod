@@ -13,7 +13,6 @@ import org.lwjgl.opengl.GL11;
 import com.projectreddog.machinemod.entity.EntityDrillingRig;
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.utility.LogHelper;
 
 public class RenderOverlayHandler extends Gui {
 	private final FontRenderer fontRenderer;
@@ -30,7 +29,7 @@ public class RenderOverlayHandler extends Gui {
 		// if (event.isCancelable() || event.type != ElementType.HEALTH) {
 		// return;
 		// }
-		LogHelper.info(event.type);
+		// LogHelper.info(event.type);
 		if (Minecraft.getMinecraft().thePlayer.isRiding()) {
 			if (Minecraft.getMinecraft().thePlayer.ridingEntity instanceof EntityMachineModRideable) {
 				EntityMachineModRideable emr = (EntityMachineModRideable) Minecraft.getMinecraft().thePlayer.ridingEntity;
