@@ -39,7 +39,7 @@ public class RenderOverlayHandler extends Gui {
 
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 				GL11.glDisable(GL11.GL_LIGHTING);
-				GL11.glEnable(GL11.GL_ALPHA);
+				// GL11.glEnable(GL11.GL_ALPHA);
 				this.mc.renderEngine.bindTexture(getTextureLocationGage());
 				this.drawTexturedModalRect(xPos, yPos, 0, 0, 16, 64);
 
