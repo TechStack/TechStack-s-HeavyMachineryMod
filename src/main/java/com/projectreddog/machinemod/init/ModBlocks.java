@@ -8,6 +8,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.projectreddog.machinemod.block.BlockBioFuel;
+import com.projectreddog.machinemod.block.BlockMachineAsphalt;
 import com.projectreddog.machinemod.block.BlockMachineAssemblyTable;
 import com.projectreddog.machinemod.block.BlockMachineDrilledStone;
 import com.projectreddog.machinemod.block.BlockMachineExplosivePackedDrilledStone;
@@ -33,6 +34,8 @@ import com.projectreddog.machinemod.tileentities.TileEntityScreen;
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
 public class ModBlocks {
 	public static final BlockMachineMod machineassemblytable = new BlockMachineAssemblyTable();
+	public static final BlockMachineMod machineasphalt = new BlockMachineAsphalt();
+
 	public static final BlockMachineMod machinedrilledstone = new BlockMachineDrilledStone();
 	public static final BlockMachineMod machineexplosivepackeddrilledstone = new BlockMachineExplosivePackedDrilledStone();
 	public static final BlockMachineMod machineblastedstone = new BlockMachineModBlastedStone();
@@ -51,6 +54,8 @@ public class ModBlocks {
 
 	public static void init() {
 		GameRegistry.registerBlock(machineassemblytable, Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
+		GameRegistry.registerBlock(machineasphalt, Reference.MODBLOCK_MACHINE_ASPHALT);
+
 		GameRegistry.registerBlock(corn, Reference.MODBLOCK_MACHINE_CORN);
 
 		GameRegistry.registerBlock(machinedrilledstone, Reference.MODBLOCK_MACHINE_DRILLED_STONE);
@@ -87,6 +92,8 @@ public class ModBlocks {
 	public static void initBlockRender() {
 		// TODO Auto-generated method stub
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineassemblytable), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineasphalt), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_ASPHALT, "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinedrilledstone), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_DRILLED_STONE, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineexplosivepackeddrilledstone), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineblastedstone), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE, "inventory"));
