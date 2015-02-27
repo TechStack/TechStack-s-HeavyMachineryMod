@@ -65,7 +65,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 	public AxisAlignedBB BoundingBox;
 	public int ticksSinceLastParticle;
-	public static int nextParticleAtTick = 20;
+	public int nextParticleAtTick = 20;
 
 	protected double mountedOffsetY = 0d;
 	protected double mountedOffsetX = 0d;
