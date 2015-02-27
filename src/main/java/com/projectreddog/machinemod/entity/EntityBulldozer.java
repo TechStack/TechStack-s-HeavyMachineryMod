@@ -5,6 +5,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -26,6 +27,12 @@ public class EntityBulldozer extends EntityMachineModRideable {
 		this.minAngle = -15;
 		this.droppedItem = ModItems.bulldozer;
 
+	}
+
+	public void doParticleEffects() {
+		if (this.currentFuelLevel > 0 && this.riddenByEntity != null) {
+			worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX + calcTwoOffsetX(2.1, -90, .7), this.posY + 3.5, this.posZ + calcTwoOffsetZ(2.1, -90, .7), 0, 0, 0, 0);
+		}
 	}
 
 	public AxisAlignedBB getBoundingBox() {

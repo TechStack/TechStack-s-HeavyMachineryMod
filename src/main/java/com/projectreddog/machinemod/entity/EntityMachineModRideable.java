@@ -64,6 +64,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public float Attribute1;// multi-purpose variable use defined in extended
 
 	public AxisAlignedBB BoundingBox;
+	public int ticksSinceLastParticle;
+	public static int nextParticleAtTick = 20;
 
 	protected double mountedOffsetY = 0d;
 	protected double mountedOffsetX = 0d;
@@ -85,6 +87,10 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		setSize(1.5F, 0.6F); // should be overridden in Extened version.
 		this.stepHeight = 1;
 		inventory = new ItemStack[0];
+
+	}
+
+	public void doParticleEffects() {
 
 	}
 
@@ -387,6 +393,13 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	}
 
 	public void updateClient() {
+
+		if (ticksSinceLastParticle > nextParticleAtTick) {
+			doParticleEffects();
+			ticksSinceLastParticle = 0;
+		}
+		ticksSinceLastParticle++;
+
 		// updateServer();
 		// play the sound
 		// worldObj.playSoundAtEntity(this, "engine", 1f, 1f);
