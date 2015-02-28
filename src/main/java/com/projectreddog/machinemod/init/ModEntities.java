@@ -11,6 +11,7 @@ import com.projectreddog.machinemod.entity.EntityDrillingRig;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityLoader;
+import com.projectreddog.machinemod.entity.EntityPaver;
 import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.entity.EntityWideBedTruck;
 import com.projectreddog.machinemod.reference.Reference;
@@ -30,6 +31,8 @@ public class ModEntities {
 		EntityRegistry.registerModEntity(EntityWideBedTruck.class, "widebedtruck", 7, mod, 80, 1, false);
 		EntityRegistry.registerModEntity(EntityCrane.class, "crane", 8, mod, 80, 1, false);
 		EntityRegistry.registerModEntity(EntityExcavator.class, "excavator", 9, mod, 80, 1, false);
+
+		EntityRegistry.registerModEntity(EntityPaver.class, "paver", 12, mod, 80, 1, false);
 
 	}
 }
