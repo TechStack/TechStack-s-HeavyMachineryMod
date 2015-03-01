@@ -51,7 +51,7 @@ public class BlockMachineExplosivePackedDrilledStone extends BlockMachineModMany
 
 		// if (!world.isRemote){
 
-		ModExplosion explosion = newExplosion(world, x, y, z, 6.0F, false, true);
+		ModExplosion explosion = newExplosion(world, x, y, z, 8.0F, false, true);
 
 		// world.createExplosion(p_72876_1_, p_72876_2_, p_72876_4_, p_72876_6_,
 		// p_72876_8_, p_72876_9_)

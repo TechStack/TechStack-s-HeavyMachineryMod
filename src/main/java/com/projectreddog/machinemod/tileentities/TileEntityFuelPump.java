@@ -79,14 +79,14 @@ public class TileEntityFuelPump extends TileEntity implements IUpdatePlayerListB
 							if (amtToTransefer > this.fuelStorage) {
 								amtToTransefer = this.fuelStorage;
 							}
-							if (amtToTransefer > item.getItemDamage()) {
+							if (amtToTransefer > item.getItemDamage() ){
 								amtToTransefer = item.getItemDamage();
 							}
-
+							
 							item.setItemDamage(item.getItemDamage() - amtToTransefer);
 							this.fuelStorage = this.fuelStorage - amtToTransefer;
 							if (item.getItemDamage() == 0) {
-
+						
 							}
 							i = this.getSizeInventory();
 
