@@ -1,0 +1,11 @@
+{
+    "variants": {
+                "facing=up": { "model": "machinemod:machinedrilledandesite"},
+        "facing=down": { "model": "machinemod:machinedrilledandesite"},
+        "facing=north": { "model": "machinemod:machinedrilledandesite", "x": 90  },
+        "facing=south": { "model": "machinemod:machinedrilledandesite", "x": 90,"y": 180 },
+        "facing=west":  { "model": "machinemod:machinedrilledandesite", "x": 90,"y": 270 },
+        "facing=east":  { "model": "machinemod:machinedrilledandesite", "x": 90,"y": 90 }
+    }  
+    
+}

@@ -46,6 +46,12 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_ASPHALT = "machineasphalt";
 
 	public static final String MODBLOCK_MACHINE_DRILLED_STONE = "machinedrilledstone";
+	public static final String MODBLOCK_MACHINE_DRILLED_ANDESITE = "machinedrilledandesite";
+
+	public static final String MODBLOCK_MACHINE_DRILLED_DIORITE = "machinedrilleddiorite";
+
+	public static final String MODBLOCK_MACHINE_DRILLED_GRANITE = "machinedrilledgranite";
+
 	public static final String MODBLOCK_MACHINE_BLASTED_STONE = "machineblastedstone";
 	public static final String MODBLOCK_MACHINE_CORN = "corn";
 	public static final String MODBLOCK_MACHINE_BLASTED_STONE2 = "machineblastedstone2";

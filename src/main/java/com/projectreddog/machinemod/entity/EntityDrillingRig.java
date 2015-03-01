@@ -64,6 +64,21 @@ public class EntityDrillingRig extends EntityMachineModRideable {
 					// worldObj.setBlockToAir(bp);
 					worldObj.setBlockState(bp, ModBlocks.machinedrilledstone.getDefaultState());
 
+				} else if (worldObj.getBlockState(bp).getBlock() == Blocks.stone && worldObj.getBlockState(bp).getBlock().getMetaFromState(worldObj.getBlockState(bp)) == BlockStone.EnumType.ANDESITE.getMetaFromState()) {
+					// worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
+					// worldObj.setBlockToAir(bp);
+					worldObj.setBlockState(bp, ModBlocks.machinedrilledandesite.getDefaultState());
+
+				} else if (worldObj.getBlockState(bp).getBlock() == Blocks.stone && worldObj.getBlockState(bp).getBlock().getMetaFromState(worldObj.getBlockState(bp)) == BlockStone.EnumType.DIORITE.getMetaFromState()) {
+					// worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
+					// worldObj.setBlockToAir(bp);
+					worldObj.setBlockState(bp, ModBlocks.machinedrilleddiorite.getDefaultState());
+
+				} else if (worldObj.getBlockState(bp).getBlock() == Blocks.stone && worldObj.getBlockState(bp).getBlock().getMetaFromState(worldObj.getBlockState(bp)) == BlockStone.EnumType.GRANITE.getMetaFromState()) {
+					// worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
+					// worldObj.setBlockToAir(bp);
+					worldObj.setBlockState(bp, ModBlocks.machinedrilledgranite.getDefaultState());
+
 				}
 			}
 

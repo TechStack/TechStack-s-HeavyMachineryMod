@@ -21,14 +21,14 @@ public class ItemANFO extends ItemMachineMod {
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float xOff, float yOff, float zOff) {
 		boolean result = false;
-		if (world.getBlockState(pos).getBlock() == ModBlocks.machinedrilledstone) {
+		if (world.getBlockState(pos).getBlock() == ModBlocks.machinedrilledstone || world.getBlockState(pos).getBlock() == ModBlocks.machinedrilledandesite || world.getBlockState(pos).getBlock() == ModBlocks.machinedrilleddiorite || world.getBlockState(pos).getBlock() == ModBlocks.machinedrilledgranite) {
 
 			EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineDrilledStone.FACING);
 			if (ef == EnumFacing.DOWN || ef == EnumFacing.UP) {
 
 				BlockPos bottom = null;
 				for (int i = 0; i < 17; i++) {
-					if (world.getBlockState(pos.offsetDown(i)).getBlock() == ModBlocks.machinedrilledstone) {
+					if (world.getBlockState(pos.offsetDown(i)).getBlock() == ModBlocks.machinedrilledstone || world.getBlockState(pos.offsetDown(i)).getBlock() == ModBlocks.machinedrilledandesite || world.getBlockState(pos.offsetDown(i)).getBlock() == ModBlocks.machinedrilleddiorite || world.getBlockState(pos.offsetDown(i)).getBlock() == ModBlocks.machinedrilledgranite) {
 						bottom = pos.offsetDown(i);
 					}
 				}
@@ -40,7 +40,8 @@ public class ItemANFO extends ItemMachineMod {
 
 				BlockPos bottom = null;
 				for (int i = 0; i < 9; i++) {
-					if (world.getBlockState(pos.offset(ef.getOpposite(), i)).getBlock() == ModBlocks.machinedrilledstone) {
+					if (world.getBlockState(pos.offset(ef.getOpposite(), i)).getBlock() == ModBlocks.machinedrilledstone || world.getBlockState(pos.offset(ef.getOpposite(), i)).getBlock() == ModBlocks.machinedrilledandesite || world.getBlockState(pos.offset(ef.getOpposite(), i)).getBlock() == ModBlocks.machinedrilleddiorite
+							|| world.getBlockState(pos.offset(ef.getOpposite(), i)).getBlock() == ModBlocks.machinedrilledgranite) {
 						bottom = pos.offset(ef.getOpposite(), i);
 					}
 				}

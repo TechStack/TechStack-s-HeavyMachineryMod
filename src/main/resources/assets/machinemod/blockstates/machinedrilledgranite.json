@@ -1,0 +1,11 @@
+{
+    "variants": {
+                "facing=up": { "model": "machinemod:machinedrilledgranite"},
+        "facing=down": { "model": "machinemod:machinedrilledgranite"},
+        "facing=north": { "model": "machinemod:machinedrilledgranite", "x": 90  },
+        "facing=south": { "model": "machinemod:machinedrilledgranite", "x": 90,"y": 180 },
+        "facing=west":  { "model": "machinemod:machinedrilledgranite", "x": 90,"y": 270 },
+        "facing=east":  { "model": "machinemod:machinedrilledgranite", "x": 90,"y": 90 }
+    }  
+    
+}

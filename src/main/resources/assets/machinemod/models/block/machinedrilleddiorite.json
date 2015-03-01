@@ -1,0 +1,13 @@
+{
+    "parent": "block/cube_all",
+    "textures": {        
+         "down": "machinemod:blocks/machinedrilleddiorite_hole",
+         "up": "machinemod:blocks/machinedrilleddiorite_hole",
+         "north": "machinemod:blocks/machinedrilleddiorite_no_hole",
+         "south": "machinemod:blocks/machinedrilleddiorite_no_hole",
+         "east": "machinemod:blocks/machinedrilleddiorite_no_hole",
+         "west": "machinemod:blocks/machinedrilleddiorite_no_hole",     
+          "particle": "machinemod:blocks/machinedrilleddiorite_no_hole"     
+         
+    }
+}
