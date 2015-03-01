@@ -91,7 +91,7 @@ public class Recipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.conecrusher), "   ", " i ", " b ", 'i', "ingotIron", 'b', Blocks.iron_block));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machineconveyor), "lll", "rir", "lll", 'l', Items.leather, 'r', Items.redstone, 'i', Items.iron_ingot));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machineconveyor, 4), "lll", "rir", "lll", 'l', Items.leather, 'r', Items.redstone, 'i', Items.iron_ingot));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machineprimarycrhuser), "o o", "o o", "scs", 'o', Blocks.obsidian, 's', Blocks.sticky_piston, 'c', ModItems.conecrusher));
 
