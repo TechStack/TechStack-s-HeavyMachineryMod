@@ -8,6 +8,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
 import com.projectreddog.machinemod.container.ContainerCanner;
+import com.projectreddog.machinemod.container.ContainerCentrifuge;
 import com.projectreddog.machinemod.container.ContainerCombine;
 import com.projectreddog.machinemod.container.ContainerDistiller;
 import com.projectreddog.machinemod.container.ContainerDumpTruck;
@@ -22,6 +23,7 @@ import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.entity.EntityWideBedTruck;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
@@ -119,6 +121,15 @@ public class GuiHandler implements IGuiHandler {
 					return new ContainerScreen(player.inventory, (TileEntityScreen) entity);
 				}
 			}
+		} else if (id == Reference.GUI_CENTRIFUGE) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityCentrifuge) {
+
+					return new ContainerCentrifuge(player.inventory, (TileEntityCentrifuge) entity);
+				}
+			}
 		}
 
 		return null;
@@ -206,6 +217,14 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null) {
 				if (entity instanceof TileEntityScreen) {
 					return new GuiScreen(player.inventory, (TileEntityScreen) entity);
+				}
+			}
+		} else if (id == Reference.GUI_CENTRIFUGE) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityCentrifuge) {
+					return new GuiCentrifuge(player.inventory, (TileEntityCentrifuge) entity);
 				}
 			}
 		}

@@ -17,6 +17,7 @@ item.machinemod:turbofan.name=Turbo Fan
 item.machinemod:combine.name=Combine
 item.machinemod:irondust.name=Iron Dust
 item.machinemod:golddust.name=Gold Dust
+item.machinemod:rawasphalt.name=Raw Asphalt
 
 item.machinemod:camshaft.name=Camshaft
 item.machinemod:piston.name=piston
@@ -49,9 +50,15 @@ tile.machinemod:machineassemblytable.name=Machine Assembly Table
 tile.machinemod:machinescreen.name=Screen
 
 tile.machinemod:machinedrilledstone.name=Drilled Stone
+tile.machinemod:machinedrilledandesite.name=Andisite Stone
+tile.machinemod:machinedrilleddiorite.name=Diorite Stone
+tile.machinemod:machinedrilledgranite.name=Granite Stone
+
+
 tile.machinemod:machineblastedstone.name=Blasted Stone
 tile.machinemod:machineexplosivepackeddrilledstone.name=Explosive Packed Drilled Stone
 tile.machinemod:machineprimarycrhuser.name=Primary Crusher
+tile.machinemod:machinecentrifuge.name=Centrifuge
 tile.machinemod:moonshine.name=Moonshine AKA Fire water
 tile.machinemod:machinefuelpump.name=Fuel Pump
 tile.machinemod:machinedistiller.name=Distiller

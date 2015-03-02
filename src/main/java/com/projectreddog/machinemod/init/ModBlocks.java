@@ -18,6 +18,7 @@ import com.projectreddog.machinemod.block.BlockMachineExplosivePackedDrilledSton
 import com.projectreddog.machinemod.block.BlockMachineMod;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone2;
+import com.projectreddog.machinemod.block.BlockMachineModCentrifuge;
 import com.projectreddog.machinemod.block.BlockMachineModConveyor;
 import com.projectreddog.machinemod.block.BlockMachineModCorn;
 import com.projectreddog.machinemod.block.BlockMachineModDistiller;
@@ -27,6 +28,7 @@ import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.block.BlockMachineModScreen;
 import com.projectreddog.machinemod.item.ItemBlockBlastedStone;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 import com.projectreddog.machinemod.tileentities.TileEntityConveyor;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
@@ -54,7 +56,10 @@ public class ModBlocks {
 	public static final Block machinefuelpump = new BlockMachineModFuelPump();
 
 	public static final Block machineprimarycrhuser = new BlockMachineModPrimaryCrusher();
+	public static final Block machinecentrifuge = new BlockMachineModCentrifuge();
+
 	public static final Block machineconveyor = new BlockMachineModConveyor();
+
 	public static Fluid fluidBioFuel = new Fluid("BioFuel");
 	public static final Block machinescreen = new BlockMachineModScreen();
 
@@ -78,6 +83,8 @@ public class ModBlocks {
 		GameRegistry.registerBlock(machineblastedstone2, Reference.MODBLOCK_MACHINE_BLASTED_STONE2);
 
 		GameRegistry.registerBlock(machineprimarycrhuser, Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
+		GameRegistry.registerBlock(machinecentrifuge, Reference.MODBLOCK_MACHINE_CENTRIFUGE);
+
 		GameRegistry.registerBlock(machineconveyor, Reference.MODBLOCK_MACHINE_CONVEYOR);
 		GameRegistry.registerBlock(machinescreen, Reference.MODBLOCK_MACHINE_SCREEN);
 
@@ -87,6 +94,8 @@ public class ModBlocks {
 
 		// next section for tile entities regsistration.
 		GameRegistry.registerTileEntity(TileEntityPrimaryCrusher.class, Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
+		GameRegistry.registerTileEntity(TileEntityCentrifuge.class, Reference.MODBLOCK_MACHINE_CENTRIFUGE);
+
 		GameRegistry.registerTileEntity(TileEntityConveyor.class, Reference.MODBLOCK_MACHINE_CONVEYOR);
 		GameRegistry.registerTileEntity(TileEntityScreen.class, Reference.MODBLOCK_MACHINE_SCREEN);
 
@@ -118,6 +127,8 @@ public class ModBlocks {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(corn), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_CORN, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineprimarycrhuser), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinecentrifuge), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_CENTRIFUGE, "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineconveyor), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_CONVEYOR, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinescreen), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_SCREEN, "inventory"));
 

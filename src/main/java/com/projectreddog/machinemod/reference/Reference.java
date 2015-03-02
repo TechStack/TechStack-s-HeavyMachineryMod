@@ -29,6 +29,7 @@ public class Reference {
 	public static final String GUI_FUEL_LEVEL_TEXTURE_LOCATION = "textures/gui/gui_fuel_level_marker.png";
 	// textures for Tile Entities
 	public static final String MODEL_TILEENTITY_PRIMARY_CRUSHER_TEXTURE_LOCATION = "models/primarycrusher.png";
+	public static final String MODEL_TILEENTITY_CENRIFUGE_TEXTURE_LOCATION = "models/centrifuge.png";
 
 	public static final int GUI_DUMP_TRUCK = 0;
 	public static final int GUI_LOADER = 1;
@@ -39,6 +40,7 @@ public class Reference {
 	public static final int GUI_FERMENTER = 6;
 	public static final int GUI_DISTILLER = 7;
 	public static final int GUI_SCREEN = 8;
+	public static final int GUI_CENTRIFUGE = 9;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;
@@ -56,7 +58,9 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_CORN = "corn";
 	public static final String MODBLOCK_MACHINE_BLASTED_STONE2 = "machineblastedstone2";
 	public static final String MODBLOCK_MACHINE_PRIMARY_CRUSHER = "machineprimarycrhuser";
+	public static final String MODBLOCK_MACHINE_CENTRIFUGE = "machinecentrifuge";
 	public static final String MODBLOCK_MACHINE_DISTILLER = "machinedistiller";
+
 	public static final String MODBLOCK_MACHINE_FERMENTER = "machinefermenter";
 	public static final String MODBLOCK_MACHINE_FUEL_PUMP = "machinefuelpump";
 

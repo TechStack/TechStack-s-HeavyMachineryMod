@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "facing=east": { "model": "machinemod:machinecentrifuge" },
+        "facing=west": { "model": "machinemod:machinecentrifuge" },
+        "facing=north": { "model": "machinemod:machinecentrifuge" },
+        "facing=south": { "model": "machinemod:machinecentrifuge" }
+                
+    }
+}
