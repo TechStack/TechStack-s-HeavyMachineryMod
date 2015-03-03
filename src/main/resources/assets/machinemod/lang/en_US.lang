@@ -50,7 +50,7 @@ tile.machinemod:machineassemblytable.name=Machine Assembly Table
 tile.machinemod:machinescreen.name=Screen
 
 tile.machinemod:machinedrilledstone.name=Drilled Stone
-tile.machinemod:machinedrilledandesite.name=Andisite Stone
+tile.machinemod:machinedrilledandesite.name=Andesite Stone
 tile.machinemod:machinedrilleddiorite.name=Diorite Stone
 tile.machinemod:machinedrilledgranite.name=Granite Stone
 
