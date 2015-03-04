@@ -6,8 +6,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
+import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 
 public class EntityPaver extends EntityMachineModRideable {
@@ -17,7 +19,7 @@ public class EntityPaver extends EntityMachineModRideable {
 	public EntityPaver(World world) {
 		super(world);
 
-		setSize(2.8f, 2.5f);
+		setSize(5.5f, 4f);
 		inventory = new ItemStack[9];
 
 		this.mountedOffsetY = 0.6D;
@@ -34,9 +36,34 @@ public class EntityPaver extends EntityMachineModRideable {
 	public void onUpdate() {
 		super.onUpdate();
 		if (!worldObj.isRemote) {
+			if (this.isPlayerPushingSprintButton) {
+				// player trying
+				for (int j = 0; j < this.getSizeInventory(); j++) {
 
+					if (this.getStackInSlot(j) != null && this.getStackInSlot(j).getItem() == ModItems.rawasphalt && this.getStackInSlot(j).stackSize > 1) {
+						int angle;
+						for (int i = -2; i < 3; i++) {
+							if (i == 0) {
+								angle = 0;
+							} else {
+								angle = 90;
+							}
+							BlockPos bp;
+							if (this.getStackInSlot(j) != null && this.getStackInSlot(j).getItem() == ModItems.rawasphalt && this.getStackInSlot(j).stackSize > 1) {
+								bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY - 1, posZ + calcTwoOffsetZ(3.5, angle, i));
+								if (worldObj.isAirBlock(bp)) {
+									worldObj.setBlockState(bp, ModBlocks.machineasphalt.getDefaultState());
+
+									this.decrStackSize(j, 1);
+								}
+							}
+						}
+						return;
+
+					}
+				}
+			}
 		}
-
 	}
 
 	public AxisAlignedBB getBoundingBox() {

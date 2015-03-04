@@ -41,6 +41,7 @@ public class Reference {
 	public static final int GUI_DISTILLER = 7;
 	public static final int GUI_SCREEN = 8;
 	public static final int GUI_CENTRIFUGE = 9;
+	public static final int GUI_PAVER = 10;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;
