@@ -20,7 +20,7 @@ import com.projectreddog.machinemod.proxy.IProxy;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.LogHelper;
 
-//adding comment to test build on jenkins new server
+//adding comment to test build on jenkins new server test2
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, guiFactory = Reference.GUI_FACTORY_CLASS)
 public class MachineMod {
 
