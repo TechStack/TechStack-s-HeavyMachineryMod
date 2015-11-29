@@ -51,7 +51,7 @@ public class BlockMachineDrilledGranite extends BlockMachineModManyTexture {
 			}
 		}
 
-		return p_180695_2_.func_174811_aO().getOpposite();
+		return p_180695_2_.getHorizontalFacing().getOpposite();
 	}
 
 	/**

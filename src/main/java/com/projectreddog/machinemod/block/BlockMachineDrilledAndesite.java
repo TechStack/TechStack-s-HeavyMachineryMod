@@ -51,11 +51,11 @@ public class BlockMachineDrilledAndesite extends BlockMachineModManyTexture {
 			}
 		}
 
-		return p_180695_2_.func_174811_aO().getOpposite();
+		return p_180695_2_.getHorizontalFacing().getOpposite();
 	}
 
 	/**
-	 * Possibly modify the given BlockState before rendering it on an Entity (Minecarts, Endermen, ...)
+	 * s Possibly modify the given BlockState before rendering it on an Entity (Minecarts, Endermen, ...)
 	 */
 	@SideOnly(Side.CLIENT)
 	public IBlockState getStateForEntityRender(IBlockState state) {
