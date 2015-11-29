@@ -1,0 +1,9 @@
+[16:44:12] [Client thread/INFO]: Setting user: Player968
+[16:44:14] [Client thread/INFO]: LWJGL Version: 2.9.1
+[16:44:17] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:TechStack's Heavy Machinery Mod
+[16:44:17] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[16:44:17] [Thread-8/INFO]: Initializing LWJGL OpenAL
+[16:44:17] [Thread-8/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[16:44:17] [Thread-8/INFO]: OpenAL initialized.
+[16:44:18] [Sound Library Loader/INFO]: Sound engine started
+[16:44:20] [Client thread/INFO]: Created: 16x16 textures-atlas
