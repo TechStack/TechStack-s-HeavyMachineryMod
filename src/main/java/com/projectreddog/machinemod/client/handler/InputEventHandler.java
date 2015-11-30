@@ -68,7 +68,7 @@ public class InputEventHandler {
 			sendPacket = true;
 			EntityMachineModRideable e = (EntityMachineModRideable) Minecraft.getMinecraft().thePlayer.ridingEntity;
 
-			if (Minecraft.getMinecraft().gameSettings.keyBindForward.isPressed()) {
+			if (Minecraft.getMinecraft().gameSettings.keyBindForward.isKeyDown()) {
 				// player pressed forward & is in my entity send network message
 				// to server
 				e.isPlayerAccelerating = true;
@@ -76,13 +76,13 @@ public class InputEventHandler {
 				e.isPlayerAccelerating = false;
 			}
 
-			if (Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed()) {
+			if (Minecraft.getMinecraft().gameSettings.keyBindJump.isKeyDown()) {
 				e.isPlayerPushingJumpButton = true;
 			} else {
 				e.isPlayerPushingJumpButton = false;
 			}
 
-			if (Minecraft.getMinecraft().gameSettings.keyBindSprint.isPressed()) {
+			if (Minecraft.getMinecraft().gameSettings.keyBindSprint.isKeyDown()) {
 				// player pressed forward & is in my entity send network message
 				// to server
 				e.isPlayerPushingSprintButton = true;
@@ -90,7 +90,7 @@ public class InputEventHandler {
 				e.isPlayerPushingSprintButton = false;
 			}
 
-			if (Minecraft.getMinecraft().gameSettings.keyBindBack.isPressed()) {
+			if (Minecraft.getMinecraft().gameSettings.keyBindBack.isKeyDown()) {
 				// player pressed back & is in my entity send network message to
 				// server
 				e.isPlayerBreaking = true;
@@ -100,7 +100,7 @@ public class InputEventHandler {
 				e.isPlayerBreaking = false;
 			}
 
-			if (Minecraft.getMinecraft().gameSettings.keyBindLeft.isPressed()) {
+			if (Minecraft.getMinecraft().gameSettings.keyBindLeft.isKeyDown()) {
 				// player pressed left & is in my entity send network message to
 				// server
 				e.isPlayerTurningLeft = true;
@@ -108,7 +108,7 @@ public class InputEventHandler {
 			} else {
 				e.isPlayerTurningLeft = false;
 			}
-			if (Minecraft.getMinecraft().gameSettings.keyBindRight.isPressed()) {
+			if (Minecraft.getMinecraft().gameSettings.keyBindRight.isKeyDown()) {
 				// player pressed right & is in my entity send network message
 				// to server
 
@@ -119,7 +119,7 @@ public class InputEventHandler {
 
 			}
 
-			if (Minecraft.getMinecraft().gameSettings.keyBindInventory.isPressed()) {
+			if (Minecraft.getMinecraft().gameSettings.keyBindInventory.isKeyDown()) {
 				ModNetwork.simpleNetworkWrapper.sendToServer(new MachineModMessageInputToServerOpenGui(e.getEntityId(), true));
 
 			}

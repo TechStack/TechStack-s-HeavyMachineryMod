@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.projectreddog.machinemod.block.BlockBioFuel;
@@ -60,7 +59,8 @@ public class ModBlocks {
 
 	public static final Block machineconveyor = new BlockMachineModConveyor();
 
-	public static Fluid fluidBioFuel = new Fluid("BioFuel");
+	// TODO RE- work the Fluds
+	// public static Fluid fluidBioFuel = new Fluid("BioFuel");
 	public static final Block machinescreen = new BlockMachineModScreen();
 
 	public static BlockBioFuel biofuel;

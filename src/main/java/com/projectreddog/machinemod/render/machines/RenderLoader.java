@@ -26,12 +26,9 @@ import net.minecraft.util.Vec3i;
 
 import org.lwjgl.opengl.GL11;
 
-import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.model.ModelLoader;
-import com.projectreddog.machinemod.model.advanced.IModelCustom;
 import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.utility.LogHelper;
 
 public class RenderLoader extends Render {
 
@@ -112,17 +109,17 @@ public class RenderLoader extends Render {
 					Tessellator tessellator = Tessellator.getInstance();
 					WorldRenderer worldrenderer = tessellator.getWorldRenderer();
 					worldrenderer.startDrawingQuads();
-					worldrenderer.setVertexFormat(DefaultVertexFormats.field_176599_b);
+					worldrenderer.setVertexFormat(DefaultVertexFormats.ITEM);
 					this.renderManager.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 					EnumFacing[] aenumfacing = EnumFacing.values();
 					int j = aenumfacing.length;
 
 					for (int k = 0; k < j; ++k) {
 						EnumFacing enumfacing = aenumfacing[k];
-						this.RenderHelper_a(worldrenderer, ibakedmodel.func_177551_a(enumfacing), -1, is);
+						this.RenderHelper_a(worldrenderer, ibakedmodel.getFaceQuads(enumfacing), -1, is);
 					}
 
-					this.RenderHelper_a(worldrenderer, ibakedmodel.func_177550_a(), -1, is);
+					this.RenderHelper_a(worldrenderer, ibakedmodel.getGeneralQuads(), -1, is);
 					tessellator.draw();
 				}
 				GL11.glRotatef(-45, 1, 1, 0);
@@ -134,14 +131,14 @@ public class RenderLoader extends Render {
 	}
 
 	private void RenderHelper_B(WorldRenderer p_175033_1_, BakedQuad p_175033_2_, int p_175033_3_) {
-		p_175033_1_.func_178981_a(p_175033_2_.func_178209_a());
-		p_175033_1_.func_178968_d(p_175033_3_);
+		p_175033_1_.addVertexData(p_175033_2_.getVertexData());
+		p_175033_1_.putColor4(p_175033_3_);
 		this.RenderHelper_C(p_175033_1_, p_175033_2_);
 	}
 
 	private void RenderHelper_C(WorldRenderer p_175038_1_, BakedQuad p_175038_2_) {
 		Vec3i vec3i = p_175038_2_.getFace().getDirectionVec();
-		p_175038_1_.func_178975_e((float) vec3i.getX(), (float) vec3i.getY(), (float) vec3i.getZ());
+		p_175038_1_.putNormal((float) vec3i.getX(), (float) vec3i.getY(), (float) vec3i.getZ());
 	}
 
 	private void RenderHelper_a(WorldRenderer p_175032_1_, List p_175032_2_, int p_175032_3_, ItemStack p_175032_4_) {
@@ -153,11 +150,11 @@ public class RenderLoader extends Render {
 			bakedquad = (BakedQuad) iterator.next();
 			j = p_175032_3_;
 
-			if (flag && bakedquad.func_178212_b()) {
-				j = p_175032_4_.getItem().getColorFromItemStack(p_175032_4_, bakedquad.func_178211_c());
+			if (flag && bakedquad.hasTintIndex()) {
+				j = p_175032_4_.getItem().getColorFromItemStack(p_175032_4_, bakedquad.getTintIndex());
 
 				if (EntityRenderer.anaglyphEnable) {
-					j = TextureUtil.func_177054_c(j);
+					j = TextureUtil.anaglyphColor(j);
 				}
 
 				j |= -16777216;
