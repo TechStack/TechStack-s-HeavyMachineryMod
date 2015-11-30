@@ -48,7 +48,7 @@ public class ModExplosion extends Explosion {
 	@Override
 	public void doExplosionB(boolean p_77279_1_) {
 
-		this.affectedBlockPositions = super.func_180343_e();
+		this.affectedBlockPositions = super.getAffectedBlockPositions();
 		this.worldObj.playSoundEffect(this.explosionX, this.explosionY, this.explosionZ, "random.explode", 4.0F, (1.0F + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
 
 		if (this.explosionSize >= 2.0F && this.isSmoking) {

@@ -10,17 +10,17 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ITickable;
 
 import com.projectreddog.machinemod.iface.IFuelContainer;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
 
-public class TileEntityCentrifuge extends TileEntity implements IUpdatePlayerListBox, ISidedInventory, IFuelContainer {
+public class TileEntityCentrifuge extends TileEntity implements ITickable, ISidedInventory, IFuelContainer {
 	protected ItemStack[] inventory;
 	private static int[] bottomSlots = new int[] { 1 };
 	private static int[] topSlots = new int[] { 0 };
@@ -198,11 +198,11 @@ public class TileEntityCentrifuge extends TileEntity implements IUpdatePlayerLis
 
 	}
 
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public String getName() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public boolean hasCustomName() {
@@ -380,6 +380,12 @@ public class TileEntityCentrifuge extends TileEntity implements IUpdatePlayerLis
 
 	@Override
 	public EnumFacing outputDirection() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getCommandSenderName() {
 		// TODO Auto-generated method stub
 		return null;
 	}

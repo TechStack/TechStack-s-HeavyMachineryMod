@@ -1,57 +1,57 @@
-[17:47:39] [main/DEBUG] [FML/]: Injecting tracing printstreams for STDOUT/STDERR.
-[17:47:39] [main/INFO] [FML/]: Forge Mod Loader version 11.14.4.1577 for Minecraft 1.8 loading
-[17:47:39] [main/INFO] [FML/]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.7.0_71, running on Windows 8.1:amd64:6.3, installed at C:\Program Files\Java\jre7
-[17:47:39] [main/DEBUG] [FML/]: Java classpath at launch is D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\bin;C:\Users\TechStack\.gradle\caches\minecraft\net\minecraftforge\forge\1.8-11.14.4.1577\snapshot\20141130\forgeSrc-1.8-11.14.4.1577.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.minecraft\launchwrapper\1.12\111e7bea9c968cdb3d06ef4632bf7ff0824d0f36\launchwrapper-1.12.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-debug-all\5.0.3\f9e364ae2a66ce2a543012a4668856e84e5dab74\asm-debug-all-5.0.3.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.typesafe.akka\akka-actor_2.11\2.3.3\ed62e9fc709ca0f2ff1a3220daa8b70a2870078e\akka-actor_2.11-2.3.3.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.typesafe\config\1.2.1\f771f71fdae3df231bcd54d5ca2d57f0bf93f467\config-1.2.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-actors-migration_2.11\1.1.0\dfa8bc42b181d5b9f1a5dd147f8ae308b893eb6f\scala-actors-migration_2.11-1.1.0.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-compiler\2.11.1\56ea2e6c025e0821f28d73ca271218b8dd04926a\scala-compiler-2.11.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.plugins\scala-continuations-library_2.11\1.0.2\e517c53a7e9acd6b1668c5a35eccbaa3bab9aac\scala-continuations-library_2.11-1.0.2.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.plugins\scala-continuations-plugin_2.11.1\1.0.2\f361a3283452c57fa30c1ee69448995de23c60f7\scala-continuations-plugin_2.11.1-1.0.2.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-library\2.11.1\e11da23da3eabab9f4777b9220e60d44c1aab6a\scala-library-2.11.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-parser-combinators_2.11\1.0.1\f05d7345bf5a58924f2837c6c1f4d73a938e1ff0\scala-parser-combinators_2.11-1.0.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-reflect\2.11.1\6580347e61cc7f8e802941e7fde40fa83b8badeb\scala-reflect-2.11.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-swing_2.11\1.0.1\b1cdd92bd47b1e1837139c1c53020e86bb9112ae\scala-swing_2.11-1.0.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-xml_2.11\1.0.2\820fbca7e524b530fdadc594c39d49a21ea0337e\scala-xml_2.11-1.0.2.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\lzma\lzma\0.0.1\521616dc7487b42bef0e803bd2fa3faf668101d7\lzma-0.0.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\java3d\vecmath\1.5.2\79846ba34cbd89e2422d74d53752f993dcc2ccaf\vecmath-1.5.2.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.sf.trove4j\trove4j\3.0.3\42ccaf4761f0dfdfa805c9e340d99a755907e2dd\trove4j-3.0.3.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.ibm.icu\icu4j-core-mojang\51.2\63d216a9311cca6be337c1e458e587f99d382b84\icu4j-core-mojang-51.2.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.sf.jopt-simple\jopt-simple\4.6\306816fb57cf94f108a43c95731b08934dcae15c\jopt-simple-4.6.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\codecjorbis\20101023\c73b5636faf089d9f00e8732a829577de25237ee\codecjorbis-20101023.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\codecwav\20101023\12f031cfe88fef5c1dd36c563c0a3a69bd7261da\codecwav-20101023.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\libraryjavasound\20101123\5c5e304366f75f9eaa2e8cca546a1fb6109348b3\libraryjavasound-20101123.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\librarylwjglopenal\20100824\73e80d0794c39665aec3f62eee88ca91676674ef\librarylwjglopenal-20100824.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\soundsystem\20120107\419c05fe9be71f792b2d76cfc9b67f1ed0fec7f6\soundsystem-20120107.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\io.netty\netty-all\4.0.15.Final\85cad5eb4fc8ae2ecc990dc7c411771a091ded5\netty-all-4.0.15.Final.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\17.0\9c6ef172e8de35fd8d4d8783e4821e57cdef7445\guava-17.0.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.3.2\90a3822c38ec8c996e84c16a3477ef632cbc87a3\commons-lang3-3.3.2.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\2.4\b1b6ea3b7e4aa4f492509a4952029cd8e48019ad\commons-io-2.4.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\commons-codec\commons-codec\1.9\9ce04e34240f674bc72680f8b843b1457383161a\commons-codec-1.9.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput\2.0.5\39c7796b469a600f72380316f6b1f11db6c2c7c4\jinput-2.0.5.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jutils\jutils\1.0.0\e12fe1fda814bd348c1579329c86943d2cd3c6a6\jutils-1.0.0.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.mojang\authlib\1.5.17\893a8c553c0cfc9b6fbdff023747e30152ab09ec\authlib-1.5.17.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.mojang\realms\1.6.1\5655f6fb44aece10e5b3ad7cfee3e6936031c068\realms-1.6.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-compress\1.8.1\a698750c16740fd5b3871425f4cb3bbaa87f529d\commons-compress-1.8.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient\4.3.3\18f4247ff4572a074444572cee34647c43e7c9c7\httpclient-4.3.3.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\commons-logging\commons-logging\1.1.3\f6f66e966c70a83ffbdb6f17a0919eaf7c8aca7f\commons-logging-1.1.3.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpcore\4.3.2\31fbbff1ddbf98f3aa7377c94d33b0447c646b6e\httpcore-4.3.2.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-api\2.0-beta9\1dd66e68cccd907880229f9e2de1314bd13ff785\log4j-api-2.0-beta9.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-core\2.0-beta9\678861ba1b2e1fccb594bb0ca03114bb05da9695\log4j-core-2.0-beta9.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl\2.9.1\f58c5aabcef0e41718a564be9f8e412fff8db847\lwjgl-2.9.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl_util\2.9.1\290d7ba8a1bd9566f5ddf16ad06f09af5ec9b20e\lwjgl_util-2.9.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch\6.5\320a2dfd18513a5f41b4e75729df684488cbd925\twitch-6.5.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-actors\2.11.0\8ccfb6541de179bb1c4d45cf414acee069b7f78b\scala-actors-2.11.0.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\7ff832a6eb9ab6a767f1ade2b548092d0fa64795\jinput-platform-2.0.5-natives-linux.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\385ee093e01f587f30ee1c8a2ee7d408fd732e16\jinput-platform-2.0.5-natives-windows.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\53f9c919f34d2ca9de8c51fc4e1e8282029a9232\jinput-platform-2.0.5-natives-osx.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\206c4ccaecdbcfd2a1631150c69a97bbc9c20c11\twitch-platform-6.5-natives-windows-32.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\9fdd0fd5aed0817063dcf95b69349a171f447ebd\twitch-platform-6.5-natives-windows-64.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\5f9d1ee26257b3a33f0ca06fed335ef462af659f\twitch-platform-6.5-natives-osx.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-external-platform\4.5\18215140f010c05b9f86ef6f0f8871954d2ccebf\twitch-external-platform-4.5-natives-windows-32.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-external-platform\4.5\c3cde57891b935d41b6680a9c5e1502eeab76d86\twitch-external-platform-4.5-natives-windows-64.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\4c517eca808522457dd95ee8fc1fbcdbb602efbe\lwjgl-platform-2.9.1-natives-windows.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\aa9aae879af8eb378e22cfc64db56ec2ca9a44d1\lwjgl-platform-2.9.1-natives-linux.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\2d12c83fdfbc04ecabf02c7bc8cc54d034f0daac\lwjgl-platform-2.9.1-natives-osx.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\2.0.1\516c03b21d50a644d538de0f0369c620989cd8f0\jsr305-2.0.1.jar;C:\Users\TechStack\.gradle\caches\minecraft\deobfedDeps\compileDummy.jar;C:\Users\TechStack\.gradle\caches\minecraft\deobfedDeps\providedDummy.jar;C:\Users\TechStack\.gradle\caches\minecraft\net\minecraftforge\forge\1.8-11.14.4.1577\start
-[17:47:39] [main/DEBUG] [FML/]: Java library path at launch is C:\Program Files\Java\jre7\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Python27;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Git\cmd;C:\Program Files (x86)\Windows Live\Shared;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;.;C:/Users/TechStack/.gradle/caches/minecraft/net/minecraft/natives/1.8
-[17:47:39] [main/INFO] [FML/]: Managed to load a deobfuscated Minecraft name- we are in a deobfuscated environment. Skipping runtime deobfuscation
-[17:47:39] [main/DEBUG] [FML/]: Instantiating coremod class FMLCorePlugin
-[17:47:39] [main/DEBUG] [FML/]: Added access transformer class net.minecraftforge.fml.common.asm.transformers.AccessTransformer to enqueued access transformers
-[17:47:39] [main/DEBUG] [FML/]: Enqueued coremod FMLCorePlugin
-[17:47:39] [main/DEBUG] [FML/]: Instantiating coremod class FMLForgePlugin
-[17:47:39] [main/DEBUG] [FML/]: Enqueued coremod FMLForgePlugin
-[17:47:39] [main/DEBUG] [FML/]: All fundamental core mods are successfully located
-[17:47:39] [main/DEBUG] [FML/]: Attempting to load commandline specified mods, relative to D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\run\.
-[17:47:39] [main/DEBUG] [FML/]: Discovering coremods
-[17:47:39] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.gradle.tweakers.CoremodTweaker
-[17:47:39] [main/INFO] [GradleStart/]: Injecting location in coremod net.minecraftforge.fml.relauncher.FMLCorePlugin
-[17:47:39] [main/INFO] [GradleStart/]: Injecting location in coremod net.minecraftforge.classloading.FMLForgePlugin
-[17:47:39] [main/INFO] [LaunchWrapper/]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
-[17:47:39] [main/INFO] [LaunchWrapper/]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
-[17:47:39] [main/INFO] [LaunchWrapper/]: Loading tweak class name net.minecraftforge.gradle.tweakers.AccessTransformerTweaker
-[17:47:39] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
-[17:47:39] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
-[17:47:39] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
-[17:47:39] [main/DEBUG] [FML/]: Injecting coremod FMLCorePlugin {net.minecraftforge.fml.relauncher.FMLCorePlugin} class transformers
-[17:47:39] [main/TRACE] [FML/]: Registering transformer net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
-[17:47:39] [main/TRACE] [FML/]: Registering transformer net.minecraftforge.fml.common.asm.transformers.SideTransformer
-[17:47:39] [main/TRACE] [FML/]: Registering transformer net.minecraftforge.fml.common.asm.transformers.EventSubscriptionTransformer
-[17:47:39] [main/TRACE] [FML/]: Registering transformer net.minecraftforge.fml.common.asm.transformers.EventSubscriberTransformer
-[17:47:39] [main/DEBUG] [FML/]: Injection complete
-[17:47:39] [main/DEBUG] [FML/]: Running coremod plugin for FMLCorePlugin {net.minecraftforge.fml.relauncher.FMLCorePlugin}
-[17:47:39] [main/DEBUG] [FML/]: Running coremod plugin FMLCorePlugin
-[17:47:39] [main/ERROR] [FML/]: The binary patch set is missing. Either you are in a development environment, or things are not going to work!
-[17:47:41] [main/ERROR] [FML/]: FML appears to be missing any signature data. This is not a good thing
-[17:47:41] [main/DEBUG] [FML/]: Coremod plugin class FMLCorePlugin run successfully
-[17:47:41] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
-[17:47:41] [main/DEBUG] [FML/]: Injecting coremod FMLForgePlugin {net.minecraftforge.classloading.FMLForgePlugin} class transformers
-[17:47:41] [main/TRACE] [FML/]: Registering transformer net.minecraftforge.classloading.FluidIdTransformer
-[17:47:41] [main/DEBUG] [FML/]: Injection complete
-[17:47:41] [main/DEBUG] [FML/]: Running coremod plugin for FMLForgePlugin {net.minecraftforge.classloading.FMLForgePlugin}
-[17:47:41] [main/DEBUG] [FML/]: Running coremod plugin FMLForgePlugin
-[17:47:41] [main/DEBUG] [FML/]: Coremod plugin class FMLForgePlugin run successfully
-[17:47:41] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
-[17:47:41] [main/DEBUG] [FML/]: Loaded 159 rules from AccessTransformer config file forge_at.cfg
-[17:47:41] [main/DEBUG] [FML/]: Validating minecraft
-[17:47:41] [main/DEBUG] [FML/]: Minecraft validated, launching...
-[17:47:41] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.gradle.tweakers.AccessTransformerTweaker
-[17:47:41] [main/INFO] [LaunchWrapper/]: Loading tweak class name net.minecraftforge.fml.common.launcher.TerminalTweaker
-[17:47:41] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.common.launcher.TerminalTweaker
-[17:47:41] [main/INFO] [LaunchWrapper/]: Launching wrapped minecraft {net.minecraft.client.main.Main}
-[17:47:44] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - LanguageManager took 0.004s
-[17:47:44] [Client thread/INFO] [STDOUT/]: [net.minecraftforge.fml.client.SplashProgress:start:246]: ---- Minecraft Crash Report ----
-// Oops.
+[18:02:00] [main/DEBUG] [FML/]: Injecting tracing printstreams for STDOUT/STDERR.
+[18:02:00] [main/INFO] [FML/]: Forge Mod Loader version 11.14.4.1577 for Minecraft 1.8 loading
+[18:02:00] [main/INFO] [FML/]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.7.0_71, running on Windows 8.1:amd64:6.3, installed at C:\Program Files\Java\jre7
+[18:02:00] [main/DEBUG] [FML/]: Java classpath at launch is D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\bin;C:\Users\TechStack\.gradle\caches\minecraft\net\minecraftforge\forge\1.8-11.14.4.1577\snapshot\20141130\forgeSrc-1.8-11.14.4.1577.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.minecraft\launchwrapper\1.12\111e7bea9c968cdb3d06ef4632bf7ff0824d0f36\launchwrapper-1.12.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-debug-all\5.0.3\f9e364ae2a66ce2a543012a4668856e84e5dab74\asm-debug-all-5.0.3.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.typesafe.akka\akka-actor_2.11\2.3.3\ed62e9fc709ca0f2ff1a3220daa8b70a2870078e\akka-actor_2.11-2.3.3.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.typesafe\config\1.2.1\f771f71fdae3df231bcd54d5ca2d57f0bf93f467\config-1.2.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-actors-migration_2.11\1.1.0\dfa8bc42b181d5b9f1a5dd147f8ae308b893eb6f\scala-actors-migration_2.11-1.1.0.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-compiler\2.11.1\56ea2e6c025e0821f28d73ca271218b8dd04926a\scala-compiler-2.11.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.plugins\scala-continuations-library_2.11\1.0.2\e517c53a7e9acd6b1668c5a35eccbaa3bab9aac\scala-continuations-library_2.11-1.0.2.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.plugins\scala-continuations-plugin_2.11.1\1.0.2\f361a3283452c57fa30c1ee69448995de23c60f7\scala-continuations-plugin_2.11.1-1.0.2.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-library\2.11.1\e11da23da3eabab9f4777b9220e60d44c1aab6a\scala-library-2.11.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-parser-combinators_2.11\1.0.1\f05d7345bf5a58924f2837c6c1f4d73a938e1ff0\scala-parser-combinators_2.11-1.0.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-reflect\2.11.1\6580347e61cc7f8e802941e7fde40fa83b8badeb\scala-reflect-2.11.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-swing_2.11\1.0.1\b1cdd92bd47b1e1837139c1c53020e86bb9112ae\scala-swing_2.11-1.0.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-xml_2.11\1.0.2\820fbca7e524b530fdadc594c39d49a21ea0337e\scala-xml_2.11-1.0.2.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\lzma\lzma\0.0.1\521616dc7487b42bef0e803bd2fa3faf668101d7\lzma-0.0.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\java3d\vecmath\1.5.2\79846ba34cbd89e2422d74d53752f993dcc2ccaf\vecmath-1.5.2.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.sf.trove4j\trove4j\3.0.3\42ccaf4761f0dfdfa805c9e340d99a755907e2dd\trove4j-3.0.3.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.ibm.icu\icu4j-core-mojang\51.2\63d216a9311cca6be337c1e458e587f99d382b84\icu4j-core-mojang-51.2.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.sf.jopt-simple\jopt-simple\4.6\306816fb57cf94f108a43c95731b08934dcae15c\jopt-simple-4.6.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\codecjorbis\20101023\c73b5636faf089d9f00e8732a829577de25237ee\codecjorbis-20101023.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\codecwav\20101023\12f031cfe88fef5c1dd36c563c0a3a69bd7261da\codecwav-20101023.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\libraryjavasound\20101123\5c5e304366f75f9eaa2e8cca546a1fb6109348b3\libraryjavasound-20101123.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\librarylwjglopenal\20100824\73e80d0794c39665aec3f62eee88ca91676674ef\librarylwjglopenal-20100824.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\soundsystem\20120107\419c05fe9be71f792b2d76cfc9b67f1ed0fec7f6\soundsystem-20120107.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\io.netty\netty-all\4.0.15.Final\85cad5eb4fc8ae2ecc990dc7c411771a091ded5\netty-all-4.0.15.Final.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\17.0\9c6ef172e8de35fd8d4d8783e4821e57cdef7445\guava-17.0.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.3.2\90a3822c38ec8c996e84c16a3477ef632cbc87a3\commons-lang3-3.3.2.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\2.4\b1b6ea3b7e4aa4f492509a4952029cd8e48019ad\commons-io-2.4.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\commons-codec\commons-codec\1.9\9ce04e34240f674bc72680f8b843b1457383161a\commons-codec-1.9.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput\2.0.5\39c7796b469a600f72380316f6b1f11db6c2c7c4\jinput-2.0.5.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jutils\jutils\1.0.0\e12fe1fda814bd348c1579329c86943d2cd3c6a6\jutils-1.0.0.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.mojang\authlib\1.5.17\893a8c553c0cfc9b6fbdff023747e30152ab09ec\authlib-1.5.17.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.mojang\realms\1.6.1\5655f6fb44aece10e5b3ad7cfee3e6936031c068\realms-1.6.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-compress\1.8.1\a698750c16740fd5b3871425f4cb3bbaa87f529d\commons-compress-1.8.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient\4.3.3\18f4247ff4572a074444572cee34647c43e7c9c7\httpclient-4.3.3.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\commons-logging\commons-logging\1.1.3\f6f66e966c70a83ffbdb6f17a0919eaf7c8aca7f\commons-logging-1.1.3.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpcore\4.3.2\31fbbff1ddbf98f3aa7377c94d33b0447c646b6e\httpcore-4.3.2.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-api\2.0-beta9\1dd66e68cccd907880229f9e2de1314bd13ff785\log4j-api-2.0-beta9.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-core\2.0-beta9\678861ba1b2e1fccb594bb0ca03114bb05da9695\log4j-core-2.0-beta9.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl\2.9.1\f58c5aabcef0e41718a564be9f8e412fff8db847\lwjgl-2.9.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl_util\2.9.1\290d7ba8a1bd9566f5ddf16ad06f09af5ec9b20e\lwjgl_util-2.9.1.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch\6.5\320a2dfd18513a5f41b4e75729df684488cbd925\twitch-6.5.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-actors\2.11.0\8ccfb6541de179bb1c4d45cf414acee069b7f78b\scala-actors-2.11.0.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\7ff832a6eb9ab6a767f1ade2b548092d0fa64795\jinput-platform-2.0.5-natives-linux.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\385ee093e01f587f30ee1c8a2ee7d408fd732e16\jinput-platform-2.0.5-natives-windows.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\53f9c919f34d2ca9de8c51fc4e1e8282029a9232\jinput-platform-2.0.5-natives-osx.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\206c4ccaecdbcfd2a1631150c69a97bbc9c20c11\twitch-platform-6.5-natives-windows-32.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\9fdd0fd5aed0817063dcf95b69349a171f447ebd\twitch-platform-6.5-natives-windows-64.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\5f9d1ee26257b3a33f0ca06fed335ef462af659f\twitch-platform-6.5-natives-osx.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-external-platform\4.5\18215140f010c05b9f86ef6f0f8871954d2ccebf\twitch-external-platform-4.5-natives-windows-32.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-external-platform\4.5\c3cde57891b935d41b6680a9c5e1502eeab76d86\twitch-external-platform-4.5-natives-windows-64.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\4c517eca808522457dd95ee8fc1fbcdbb602efbe\lwjgl-platform-2.9.1-natives-windows.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\aa9aae879af8eb378e22cfc64db56ec2ca9a44d1\lwjgl-platform-2.9.1-natives-linux.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\2d12c83fdfbc04ecabf02c7bc8cc54d034f0daac\lwjgl-platform-2.9.1-natives-osx.jar;C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\2.0.1\516c03b21d50a644d538de0f0369c620989cd8f0\jsr305-2.0.1.jar;C:\Users\TechStack\.gradle\caches\minecraft\deobfedDeps\compileDummy.jar;C:\Users\TechStack\.gradle\caches\minecraft\deobfedDeps\providedDummy.jar;C:\Users\TechStack\.gradle\caches\minecraft\net\minecraftforge\forge\1.8-11.14.4.1577\start
+[18:02:00] [main/DEBUG] [FML/]: Java library path at launch is C:\Program Files\Java\jre7\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Python27;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Git\cmd;C:\Program Files (x86)\Windows Live\Shared;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;.;C:/Users/TechStack/.gradle/caches/minecraft/net/minecraft/natives/1.8
+[18:02:00] [main/INFO] [FML/]: Managed to load a deobfuscated Minecraft name- we are in a deobfuscated environment. Skipping runtime deobfuscation
+[18:02:00] [main/DEBUG] [FML/]: Instantiating coremod class FMLCorePlugin
+[18:02:00] [main/DEBUG] [FML/]: Added access transformer class net.minecraftforge.fml.common.asm.transformers.AccessTransformer to enqueued access transformers
+[18:02:00] [main/DEBUG] [FML/]: Enqueued coremod FMLCorePlugin
+[18:02:00] [main/DEBUG] [FML/]: Instantiating coremod class FMLForgePlugin
+[18:02:00] [main/DEBUG] [FML/]: Enqueued coremod FMLForgePlugin
+[18:02:00] [main/DEBUG] [FML/]: All fundamental core mods are successfully located
+[18:02:00] [main/DEBUG] [FML/]: Attempting to load commandline specified mods, relative to D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\run\.
+[18:02:00] [main/DEBUG] [FML/]: Discovering coremods
+[18:02:00] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.gradle.tweakers.CoremodTweaker
+[18:02:00] [main/INFO] [GradleStart/]: Injecting location in coremod net.minecraftforge.fml.relauncher.FMLCorePlugin
+[18:02:00] [main/INFO] [GradleStart/]: Injecting location in coremod net.minecraftforge.classloading.FMLForgePlugin
+[18:02:00] [main/INFO] [LaunchWrapper/]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[18:02:00] [main/INFO] [LaunchWrapper/]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
+[18:02:00] [main/INFO] [LaunchWrapper/]: Loading tweak class name net.minecraftforge.gradle.tweakers.AccessTransformerTweaker
+[18:02:00] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[18:02:00] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweaker
+[18:02:00] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[18:02:00] [main/DEBUG] [FML/]: Injecting coremod FMLCorePlugin {net.minecraftforge.fml.relauncher.FMLCorePlugin} class transformers
+[18:02:00] [main/TRACE] [FML/]: Registering transformer net.minecraftforge.fml.common.asm.transformers.BlamingTransformer
+[18:02:00] [main/TRACE] [FML/]: Registering transformer net.minecraftforge.fml.common.asm.transformers.SideTransformer
+[18:02:00] [main/TRACE] [FML/]: Registering transformer net.minecraftforge.fml.common.asm.transformers.EventSubscriptionTransformer
+[18:02:00] [main/TRACE] [FML/]: Registering transformer net.minecraftforge.fml.common.asm.transformers.EventSubscriberTransformer
+[18:02:00] [main/DEBUG] [FML/]: Injection complete
+[18:02:00] [main/DEBUG] [FML/]: Running coremod plugin for FMLCorePlugin {net.minecraftforge.fml.relauncher.FMLCorePlugin}
+[18:02:00] [main/DEBUG] [FML/]: Running coremod plugin FMLCorePlugin
+[18:02:00] [main/ERROR] [FML/]: The binary patch set is missing. Either you are in a development environment, or things are not going to work!
+[18:02:01] [main/ERROR] [FML/]: FML appears to be missing any signature data. This is not a good thing
+[18:02:01] [main/DEBUG] [FML/]: Coremod plugin class FMLCorePlugin run successfully
+[18:02:01] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapper
+[18:02:01] [main/DEBUG] [FML/]: Injecting coremod FMLForgePlugin {net.minecraftforge.classloading.FMLForgePlugin} class transformers
+[18:02:01] [main/TRACE] [FML/]: Registering transformer net.minecraftforge.classloading.FluidIdTransformer
+[18:02:01] [main/DEBUG] [FML/]: Injection complete
+[18:02:01] [main/DEBUG] [FML/]: Running coremod plugin for FMLForgePlugin {net.minecraftforge.classloading.FMLForgePlugin}
+[18:02:01] [main/DEBUG] [FML/]: Running coremod plugin FMLForgePlugin
+[18:02:01] [main/DEBUG] [FML/]: Coremod plugin class FMLForgePlugin run successfully
+[18:02:01] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLDeobfTweaker
+[18:02:01] [main/DEBUG] [FML/]: Loaded 159 rules from AccessTransformer config file forge_at.cfg
+[18:02:01] [main/DEBUG] [FML/]: Validating minecraft
+[18:02:02] [main/DEBUG] [FML/]: Minecraft validated, launching...
+[18:02:02] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.gradle.tweakers.AccessTransformerTweaker
+[18:02:02] [main/INFO] [LaunchWrapper/]: Loading tweak class name net.minecraftforge.fml.common.launcher.TerminalTweaker
+[18:02:02] [main/INFO] [LaunchWrapper/]: Calling tweak class net.minecraftforge.fml.common.launcher.TerminalTweaker
+[18:02:02] [main/INFO] [LaunchWrapper/]: Launching wrapped minecraft {net.minecraft.client.main.Main}
+[18:02:05] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - LanguageManager took 0.004s
+[18:02:05] [Client thread/INFO] [STDOUT/]: [net.minecraftforge.fml.client.SplashProgress:start:246]: ---- Minecraft Crash Report ----
+// Ooh. Shiny.
 
-Time: 11/29/15 5:47 PM
+Time: 11/29/15 6:02 PM
 Description: Loading screen debug info
 
 This is just a prompt for computer specs to be printed. THIS IS NOT A ERROR
@@ -66,232 +66,232 @@ Details:
 	Operating System: Windows 8.1 (amd64) version 6.3
 	Java Version: 1.7.0_71, Oracle Corporation
 	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
-	Memory: 330852088 bytes (315 MB) / 621281280 bytes (592 MB) up to 7616856064 bytes (7264 MB)
+	Memory: 308922584 bytes (294 MB) / 622329856 bytes (593 MB) up to 7616856064 bytes (7264 MB)
 	JVM Flags: 0 total; 
 	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
 	FML: 
 	Loaded coremods (and transformers): 
 	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.5.0 NVIDIA 355.60' Renderer: 'GeForce GTX 760/PCIe/SSE2'
-[17:47:44] [Client thread/INFO] [MinecraftForge/]: Attempting early MinecraftForge initialization
-[17:47:44] [Client thread/INFO] [FML/]: MinecraftForge v11.14.4.1577 Initialized
-[17:47:44] [Client thread/INFO] [FML/]: Replaced 204 ore recipies
-[17:47:44] [Client thread/INFO] [MinecraftForge/]: Completed early MinecraftForge initialization
-[17:47:44] [Client thread/DEBUG] [FML/]: File D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\run\config\injectedDependencies.json not found. No dependencies injected
-[17:47:45] [Client thread/DEBUG] [FML/]: Building injected Mod Containers [net.minecraftforge.fml.common.FMLContainer, net.minecraftforge.common.ForgeModContainer]
-[17:47:45] [Client thread/DEBUG] [FML/]: Attempting to load mods contained in the minecraft jar file and associated classes
-[17:47:45] [Client thread/DEBUG] [FML/]: Found a minecraft related directory at D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\bin, examining for mod candidates
-[17:47:45] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\TechStack\.gradle\caches\minecraft\net\minecraftforge\forge\1.8-11.14.4.1577\snapshot\20141130\forgeSrc-1.8-11.14.4.1577.jar, examining for mod candidates
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.minecraft\launchwrapper\1.12\111e7bea9c968cdb3d06ef4632bf7ff0824d0f36\launchwrapper-1.12.jar
-[17:47:45] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-debug-all\5.0.3\f9e364ae2a66ce2a543012a4668856e84e5dab74\asm-debug-all-5.0.3.jar, examining for mod candidates
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.typesafe.akka\akka-actor_2.11\2.3.3\ed62e9fc709ca0f2ff1a3220daa8b70a2870078e\akka-actor_2.11-2.3.3.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.typesafe\config\1.2.1\f771f71fdae3df231bcd54d5ca2d57f0bf93f467\config-1.2.1.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-actors-migration_2.11\1.1.0\dfa8bc42b181d5b9f1a5dd147f8ae308b893eb6f\scala-actors-migration_2.11-1.1.0.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-compiler\2.11.1\56ea2e6c025e0821f28d73ca271218b8dd04926a\scala-compiler-2.11.1.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.plugins\scala-continuations-library_2.11\1.0.2\e517c53a7e9acd6b1668c5a35eccbaa3bab9aac\scala-continuations-library_2.11-1.0.2.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.plugins\scala-continuations-plugin_2.11.1\1.0.2\f361a3283452c57fa30c1ee69448995de23c60f7\scala-continuations-plugin_2.11.1-1.0.2.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-library\2.11.1\e11da23da3eabab9f4777b9220e60d44c1aab6a\scala-library-2.11.1.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-parser-combinators_2.11\1.0.1\f05d7345bf5a58924f2837c6c1f4d73a938e1ff0\scala-parser-combinators_2.11-1.0.1.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-reflect\2.11.1\6580347e61cc7f8e802941e7fde40fa83b8badeb\scala-reflect-2.11.1.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-swing_2.11\1.0.1\b1cdd92bd47b1e1837139c1c53020e86bb9112ae\scala-swing_2.11-1.0.1.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-xml_2.11\1.0.2\820fbca7e524b530fdadc594c39d49a21ea0337e\scala-xml_2.11-1.0.2.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\lzma\lzma\0.0.1\521616dc7487b42bef0e803bd2fa3faf668101d7\lzma-0.0.1.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\java3d\vecmath\1.5.2\79846ba34cbd89e2422d74d53752f993dcc2ccaf\vecmath-1.5.2.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.sf.trove4j\trove4j\3.0.3\42ccaf4761f0dfdfa805c9e340d99a755907e2dd\trove4j-3.0.3.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.ibm.icu\icu4j-core-mojang\51.2\63d216a9311cca6be337c1e458e587f99d382b84\icu4j-core-mojang-51.2.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.sf.jopt-simple\jopt-simple\4.6\306816fb57cf94f108a43c95731b08934dcae15c\jopt-simple-4.6.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\codecjorbis\20101023\c73b5636faf089d9f00e8732a829577de25237ee\codecjorbis-20101023.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\codecwav\20101023\12f031cfe88fef5c1dd36c563c0a3a69bd7261da\codecwav-20101023.jar
-[17:47:45] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\libraryjavasound\20101123\5c5e304366f75f9eaa2e8cca546a1fb6109348b3\libraryjavasound-20101123.jar, examining for mod candidates
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\librarylwjglopenal\20100824\73e80d0794c39665aec3f62eee88ca91676674ef\librarylwjglopenal-20100824.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\soundsystem\20120107\419c05fe9be71f792b2d76cfc9b67f1ed0fec7f6\soundsystem-20120107.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\io.netty\netty-all\4.0.15.Final\85cad5eb4fc8ae2ecc990dc7c411771a091ded5\netty-all-4.0.15.Final.jar
-[17:47:45] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\17.0\9c6ef172e8de35fd8d4d8783e4821e57cdef7445\guava-17.0.jar, examining for mod candidates
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.3.2\90a3822c38ec8c996e84c16a3477ef632cbc87a3\commons-lang3-3.3.2.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\2.4\b1b6ea3b7e4aa4f492509a4952029cd8e48019ad\commons-io-2.4.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\commons-codec\commons-codec\1.9\9ce04e34240f674bc72680f8b843b1457383161a\commons-codec-1.9.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput\2.0.5\39c7796b469a600f72380316f6b1f11db6c2c7c4\jinput-2.0.5.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jutils\jutils\1.0.0\e12fe1fda814bd348c1579329c86943d2cd3c6a6\jutils-1.0.0.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.mojang\authlib\1.5.17\893a8c553c0cfc9b6fbdff023747e30152ab09ec\authlib-1.5.17.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.mojang\realms\1.6.1\5655f6fb44aece10e5b3ad7cfee3e6936031c068\realms-1.6.1.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-compress\1.8.1\a698750c16740fd5b3871425f4cb3bbaa87f529d\commons-compress-1.8.1.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient\4.3.3\18f4247ff4572a074444572cee34647c43e7c9c7\httpclient-4.3.3.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\commons-logging\commons-logging\1.1.3\f6f66e966c70a83ffbdb6f17a0919eaf7c8aca7f\commons-logging-1.1.3.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpcore\4.3.2\31fbbff1ddbf98f3aa7377c94d33b0447c646b6e\httpcore-4.3.2.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-api\2.0-beta9\1dd66e68cccd907880229f9e2de1314bd13ff785\log4j-api-2.0-beta9.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-core\2.0-beta9\678861ba1b2e1fccb594bb0ca03114bb05da9695\log4j-core-2.0-beta9.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl\2.9.1\f58c5aabcef0e41718a564be9f8e412fff8db847\lwjgl-2.9.1.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl_util\2.9.1\290d7ba8a1bd9566f5ddf16ad06f09af5ec9b20e\lwjgl_util-2.9.1.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch\6.5\320a2dfd18513a5f41b4e75729df684488cbd925\twitch-6.5.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-actors\2.11.0\8ccfb6541de179bb1c4d45cf414acee069b7f78b\scala-actors-2.11.0.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\7ff832a6eb9ab6a767f1ade2b548092d0fa64795\jinput-platform-2.0.5-natives-linux.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\385ee093e01f587f30ee1c8a2ee7d408fd732e16\jinput-platform-2.0.5-natives-windows.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\53f9c919f34d2ca9de8c51fc4e1e8282029a9232\jinput-platform-2.0.5-natives-osx.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\206c4ccaecdbcfd2a1631150c69a97bbc9c20c11\twitch-platform-6.5-natives-windows-32.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\9fdd0fd5aed0817063dcf95b69349a171f447ebd\twitch-platform-6.5-natives-windows-64.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\5f9d1ee26257b3a33f0ca06fed335ef462af659f\twitch-platform-6.5-natives-osx.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-external-platform\4.5\18215140f010c05b9f86ef6f0f8871954d2ccebf\twitch-external-platform-4.5-natives-windows-32.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-external-platform\4.5\c3cde57891b935d41b6680a9c5e1502eeab76d86\twitch-external-platform-4.5-natives-windows-64.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\4c517eca808522457dd95ee8fc1fbcdbb602efbe\lwjgl-platform-2.9.1-natives-windows.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\aa9aae879af8eb378e22cfc64db56ec2ca9a44d1\lwjgl-platform-2.9.1-natives-linux.jar
-[17:47:45] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\2d12c83fdfbc04ecabf02c7bc8cc54d034f0daac\lwjgl-platform-2.9.1-natives-osx.jar
-[17:47:45] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\2.0.1\516c03b21d50a644d538de0f0369c620989cd8f0\jsr305-2.0.1.jar, examining for mod candidates
-[17:47:45] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\TechStack\.gradle\caches\minecraft\deobfedDeps\compileDummy.jar, examining for mod candidates
-[17:47:45] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\TechStack\.gradle\caches\minecraft\deobfedDeps\providedDummy.jar, examining for mod candidates
-[17:47:45] [Client thread/DEBUG] [FML/]: Found a minecraft related directory at C:\Users\TechStack\.gradle\caches\minecraft\net\minecraftforge\forge\1.8-11.14.4.1577\start, examining for mod candidates
-[17:47:45] [Client thread/DEBUG] [FML/]: Minecraft jar mods loaded successfully
-[17:47:45] [Client thread/INFO] [FML/]: Found 0 mods from the command line. Injecting into mod discoverer
-[17:47:45] [Client thread/INFO] [FML/]: Searching D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\run\mods for mods
-[17:47:45] [Client thread/DEBUG] [FML/]: Examining directory bin for potential mods
-[17:47:45] [Client thread/DEBUG] [FML/]: Found an mcmod.info file in directory bin
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package assets
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.blockstates
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.lang
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.models
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.models.block
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.models.item
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.sounds
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.textures
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.textures.blocks
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.textures.gui
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.textures.items
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.block
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.client
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.client.gui
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.client.handler
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.container
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.creativetab
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.energy
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.entity
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.handler
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.handler.events
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.iface
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.init
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.item
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.item.components
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.item.machines
-[17:47:45] [Client thread/DEBUG] [FML/]: Identified a mod of type Lnet/minecraftforge/fml/common/Mod; (com.projectreddog.machinemod.MachineMod) - loading
-[17:47:45] [Client thread/TRACE] [machinemod/]: Using mcmod dependency info : [Forge] [] []
-[17:47:45] [Client thread/DEBUG] [machinemod/]: Attempting to load the file version.properties from bin to locate a version number for machinemod
-[17:47:45] [Client thread/WARN] [machinemod/]: Mod machinemod is missing the required element 'version' and a version.properties file could not be found. Falling back to metadata version ${version}
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.model
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.model.advanced
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.model.advanced.obj
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.model.tileentity
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.network
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.proxy
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.reference
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.render
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.render.machines
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.render.tileentity
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.tileentities
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.utility
-[17:47:45] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.world
-[17:47:45] [Client thread/DEBUG] [FML/]: Examining file forgeSrc-1.8-11.14.4.1577.jar for potential mods
-[17:47:45] [Client thread/DEBUG] [FML/]: The mod container forgeSrc-1.8-11.14.4.1577.jar appears to be missing an mcmod.info file
-[17:47:46] [Client thread/DEBUG] [FML/]: Examining file asm-debug-all-5.0.3.jar for potential mods
-[17:47:46] [Client thread/DEBUG] [FML/]: The mod container asm-debug-all-5.0.3.jar appears to be missing an mcmod.info file
-[17:47:46] [Client thread/DEBUG] [FML/]: Examining file libraryjavasound-20101123.jar for potential mods
-[17:47:46] [Client thread/DEBUG] [FML/]: The mod container libraryjavasound-20101123.jar appears to be missing an mcmod.info file
-[17:47:46] [Client thread/DEBUG] [FML/]: Examining file guava-17.0.jar for potential mods
-[17:47:46] [Client thread/DEBUG] [FML/]: The mod container guava-17.0.jar appears to be missing an mcmod.info file
-[17:47:46] [Client thread/DEBUG] [FML/]: Examining file jsr305-2.0.1.jar for potential mods
-[17:47:46] [Client thread/DEBUG] [FML/]: The mod container jsr305-2.0.1.jar appears to be missing an mcmod.info file
-[17:47:46] [Client thread/DEBUG] [FML/]: Examining file compileDummy.jar for potential mods
-[17:47:46] [Client thread/DEBUG] [FML/]: The mod container compileDummy.jar appears to be missing an mcmod.info file
-[17:47:46] [Client thread/DEBUG] [FML/]: Examining file providedDummy.jar for potential mods
-[17:47:46] [Client thread/DEBUG] [FML/]: The mod container providedDummy.jar appears to be missing an mcmod.info file
-[17:47:46] [Client thread/DEBUG] [FML/]: Examining directory start for potential mods
-[17:47:46] [Client thread/DEBUG] [FML/]: No mcmod.info file found in directory start
-[17:47:46] [Client thread/TRACE] [FML/]: Recursing into package net
-[17:47:46] [Client thread/TRACE] [FML/]: Recursing into package net.minecraftforge
-[17:47:46] [Client thread/TRACE] [FML/]: Recursing into package net.minecraftforge.gradle
-[17:47:46] [Client thread/TRACE] [FML/]: Recursing into package net.minecraftforge.gradle.tweakers
-[17:47:46] [Client thread/INFO] [FML/]: Forge Mod Loader has identified 4 mods to load
-[17:47:46] [Client thread/TRACE] [FML/]: Received a system property request ''
-[17:47:46] [Client thread/TRACE] [FML/]: System property request managing the state of 0 mods
-[17:47:46] [Client thread/DEBUG] [FML/]: After merging, found state information for 0 mods
-[17:47:46] [Client thread/DEBUG] [FML/]: Found translations in forgeSrc-1.8-11.14.4.1577.jar [en_US, en_US]
-[17:47:46] [Client thread/DEBUG] [FML/]: Found translations in forgeSrc-1.8-11.14.4.1577.jar [en_US, en_US]
-[17:47:46] [Client thread/DEBUG] [machinemod/]: Enabling mod machinemod
-[17:47:46] [Client thread/DEBUG] [FML/]: Injecting found translation assets for lang en_US at assets/machinemod/lang/en_US.lang into language system
-[17:47:46] [Client thread/TRACE] [FML/]: Verifying mod requirements are satisfied
-[17:47:46] [Client thread/TRACE] [FML/]: All mod requirements are satisfied
-[17:47:46] [Client thread/TRACE] [FML/]: Sorting mods into an ordered list
-[17:47:46] [Client thread/TRACE] [FML/]: Mod sorting completed successfully
-[17:47:46] [Client thread/DEBUG] [FML/]: Mod sorting data
-[17:47:46] [Client thread/DEBUG] [FML/]: 	machinemod(TechStack's Heavy Machinery Mod:${version}): bin ()
-[17:47:46] [Client thread/TRACE] [mcp/mcp]: Sending event FMLConstructionEvent to mod mcp
-[17:47:46] [Client thread/TRACE] [mcp/mcp]: Sent event FMLConstructionEvent to mod mcp
-[17:47:46] [Client thread/DEBUG] [FML/]: Bar Step: Construction - Minecraft Coder Pack took 0.002s
-[17:47:46] [Client thread/TRACE] [FML/FML]: Sending event FMLConstructionEvent to mod FML
-[17:47:46] [Client thread/TRACE] [FML/FML]: Mod FML is using network checker : Invoking method checkModLists
-[17:47:46] [Client thread/TRACE] [FML/FML]: Testing mod FML to verify it accepts its own version in a remote connection
-[17:47:46] [Client thread/TRACE] [FML/FML]: The mod FML accepts its own version (8.0.99.99)
-[17:47:46] [Client thread/INFO] [FML/FML]: Attempting connection with missing mods [mcp, FML, Forge, machinemod] at CLIENT
-[17:47:46] [Client thread/INFO] [FML/FML]: Attempting connection with missing mods [mcp, FML, Forge, machinemod] at SERVER
-[17:47:46] [Client thread/TRACE] [FML/FML]: Sent event FMLConstructionEvent to mod FML
-[17:47:46] [Client thread/DEBUG] [FML/]: Bar Step: Construction - Forge Mod Loader took 0.326s
-[17:47:46] [Client thread/TRACE] [Forge/Forge]: Sending event FMLConstructionEvent to mod Forge
-[17:47:46] [Client thread/TRACE] [FML/Forge]: Mod Forge is using network checker : No network checking performed
-[17:47:46] [Client thread/TRACE] [FML/Forge]: Testing mod Forge to verify it accepts its own version in a remote connection
-[17:47:46] [Client thread/TRACE] [FML/Forge]: The mod Forge accepts its own version (11.14.4.1577)
-[17:47:46] [Client thread/TRACE] [Forge/Forge]: Sent event FMLConstructionEvent to mod Forge
-[17:47:46] [Client thread/DEBUG] [FML/]: Bar Step: Construction - Minecraft Forge took 0.010s
-[17:47:46] [Client thread/TRACE] [machinemod/machinemod]: Sending event FMLConstructionEvent to mod machinemod
-[17:47:47] [Client thread/TRACE] [FML/machinemod]: Mod machinemod is using network checker : Accepting version ${version}
-[17:47:47] [Client thread/TRACE] [FML/machinemod]: Testing mod machinemod to verify it accepts its own version in a remote connection
-[17:47:47] [Client thread/TRACE] [FML/machinemod]: The mod machinemod accepts its own version (${version})
-[17:47:47] [Client thread/DEBUG] [FML/machinemod]: Attempting to inject @SidedProxy classes into machinemod
-[17:47:47] [Client thread/TRACE] [machinemod/machinemod]: Sent event FMLConstructionEvent to mod machinemod
-[17:47:47] [Client thread/DEBUG] [FML/]: Bar Step: Construction - TechStack's Heavy Machinery Mod took 0.035s
-[17:47:47] [Client thread/DEBUG] [FML/]: Bar Finished: Construction took 0.373s
-[17:47:47] [Client thread/DEBUG] [FML/]: Mod signature data
-[17:47:47] [Client thread/DEBUG] [FML/]:  	Valid Signatures:
-[17:47:47] [Client thread/DEBUG] [FML/]:  	Missing Signatures:
-[17:47:47] [Client thread/DEBUG] [FML/]: 		mcp	(Minecraft Coder Pack	9.05)	minecraft.jar
-[17:47:47] [Client thread/DEBUG] [FML/]: 		FML	(Forge Mod Loader	8.0.99.99)	forgeSrc-1.8-11.14.4.1577.jar
-[17:47:47] [Client thread/DEBUG] [FML/]: 		Forge	(Minecraft Forge	11.14.4.1577)	forgeSrc-1.8-11.14.4.1577.jar
-[17:47:47] [Client thread/DEBUG] [FML/]: 		machinemod	(TechStack's Heavy Machinery Mod	${version})	bin
-[17:47:47] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - Default took 0.004s
-[17:47:47] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - FMLFileResourcePack:Forge Mod Loader took 0.009s
-[17:47:47] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - FMLFileResourcePack:Minecraft Forge took 0.010s
-[17:47:47] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - FMLFileResourcePack:TechStack's Heavy Machinery Mod took 0.003s
-[17:47:47] [Client thread/DEBUG] [FML/]: Bar Finished: Reloading - LanguageManager took 0.045s
-[17:47:47] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - Reloading listeners took 0.046s
-[17:47:47] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resources took 0.073s
-[17:47:47] [Client thread/DEBUG] [Forge Mod Loader/]: Mod Forge Mod Loader is missing a pack.mcmeta file, substituting a dummy one
-[17:47:47] [Client thread/DEBUG] [Minecraft Forge/]: Mod Minecraft Forge is missing a pack.mcmeta file, substituting a dummy one
-[17:47:47] [Client thread/DEBUG] [TechStack's Heavy Machinery Mod/]: Mod TechStack's Heavy Machinery Mod is missing a pack.mcmeta file, substituting a dummy one
-[17:47:47] [Client thread/INFO] [FML/]: Processing ObjectHolder annotations
-[17:47:47] [Client thread/INFO] [FML/]: Found 445 ObjectHolder annotations
-[17:47:47] [Client thread/INFO] [FML/]: Identifying ItemStackHolder annotations
-[17:47:47] [Client thread/INFO] [FML/]: Found 0 ItemStackHolder annotations
-[17:47:47] [Client thread/TRACE] [mcp/mcp]: Sending event FMLPreInitializationEvent to mod mcp
-[17:47:47] [Client thread/TRACE] [mcp/mcp]: Sent event FMLPreInitializationEvent to mod mcp
-[17:47:47] [Client thread/DEBUG] [FML/]: Bar Step: PreInitialization - Minecraft Coder Pack took 0.001s
-[17:47:47] [Client thread/TRACE] [FML/FML]: Sending event FMLPreInitializationEvent to mod FML
-[17:47:47] [Client thread/TRACE] [FML/FML]: Sent event FMLPreInitializationEvent to mod FML
-[17:47:47] [Client thread/DEBUG] [FML/]: Bar Step: PreInitialization - Forge Mod Loader took 0.014s
-[17:47:47] [Client thread/TRACE] [Forge/Forge]: Sending event FMLPreInitializationEvent to mod Forge
-[17:47:47] [Client thread/INFO] [FML/Forge]: Configured a dormant chunk cache size of 0
-[17:47:47] [Client thread/TRACE] [Forge/Forge]: Sent event FMLPreInitializationEvent to mod Forge
-[17:47:47] [Client thread/DEBUG] [FML/]: Bar Step: PreInitialization - Minecraft Forge took 0.029s
-[17:47:47] [Forge Version Check/INFO] [ForgeVersionCheck/Forge]: [Forge] Starting version check at http://files.minecraftforge.net/maven/net/minecraftforge/forge/promotions_slim.json
-[17:47:47] [Client thread/TRACE] [machinemod/machinemod]: Sending event FMLPreInitializationEvent to mod machinemod
-[17:47:47] [Client thread/TRACE] [machinemod/machinemod]: Sent event FMLPreInitializationEvent to mod machinemod
-[17:47:47] [Client thread/DEBUG] [FML/]: Bar Step: PreInitialization - TechStack's Heavy Machinery Mod took 0.042s
-[17:47:47] [Client thread/DEBUG] [FML/]: Bar Finished: PreInitialization took 0.086s
-[17:47:47] [Client thread/INFO] [FML/]: Applying holder lookups
-[17:47:47] [Client thread/INFO] [FML/]: Holder lookups applied
-[17:47:47] [Client thread/INFO] [FML/]: Injecting itemstacks
-[17:47:47] [Client thread/INFO] [FML/]: Itemstack injection complete
-[17:47:47] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - TextureManager took 0.000s
-[17:47:47] [Forge Version Check/DEBUG] [ForgeVersionCheck/Forge]: [Forge] Received version check data:
+[18:02:05] [Client thread/INFO] [MinecraftForge/]: Attempting early MinecraftForge initialization
+[18:02:05] [Client thread/INFO] [FML/]: MinecraftForge v11.14.4.1577 Initialized
+[18:02:05] [Client thread/INFO] [FML/]: Replaced 204 ore recipies
+[18:02:06] [Client thread/INFO] [MinecraftForge/]: Completed early MinecraftForge initialization
+[18:02:06] [Client thread/DEBUG] [FML/]: File D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\run\config\injectedDependencies.json not found. No dependencies injected
+[18:02:06] [Client thread/DEBUG] [FML/]: Building injected Mod Containers [net.minecraftforge.fml.common.FMLContainer, net.minecraftforge.common.ForgeModContainer]
+[18:02:06] [Client thread/DEBUG] [FML/]: Attempting to load mods contained in the minecraft jar file and associated classes
+[18:02:06] [Client thread/DEBUG] [FML/]: Found a minecraft related directory at D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\bin, examining for mod candidates
+[18:02:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\TechStack\.gradle\caches\minecraft\net\minecraftforge\forge\1.8-11.14.4.1577\snapshot\20141130\forgeSrc-1.8-11.14.4.1577.jar, examining for mod candidates
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.minecraft\launchwrapper\1.12\111e7bea9c968cdb3d06ef4632bf7ff0824d0f36\launchwrapper-1.12.jar
+[18:02:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-debug-all\5.0.3\f9e364ae2a66ce2a543012a4668856e84e5dab74\asm-debug-all-5.0.3.jar, examining for mod candidates
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.typesafe.akka\akka-actor_2.11\2.3.3\ed62e9fc709ca0f2ff1a3220daa8b70a2870078e\akka-actor_2.11-2.3.3.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.typesafe\config\1.2.1\f771f71fdae3df231bcd54d5ca2d57f0bf93f467\config-1.2.1.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-actors-migration_2.11\1.1.0\dfa8bc42b181d5b9f1a5dd147f8ae308b893eb6f\scala-actors-migration_2.11-1.1.0.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-compiler\2.11.1\56ea2e6c025e0821f28d73ca271218b8dd04926a\scala-compiler-2.11.1.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.plugins\scala-continuations-library_2.11\1.0.2\e517c53a7e9acd6b1668c5a35eccbaa3bab9aac\scala-continuations-library_2.11-1.0.2.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.plugins\scala-continuations-plugin_2.11.1\1.0.2\f361a3283452c57fa30c1ee69448995de23c60f7\scala-continuations-plugin_2.11.1-1.0.2.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-library\2.11.1\e11da23da3eabab9f4777b9220e60d44c1aab6a\scala-library-2.11.1.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-parser-combinators_2.11\1.0.1\f05d7345bf5a58924f2837c6c1f4d73a938e1ff0\scala-parser-combinators_2.11-1.0.1.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-reflect\2.11.1\6580347e61cc7f8e802941e7fde40fa83b8badeb\scala-reflect-2.11.1.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-swing_2.11\1.0.1\b1cdd92bd47b1e1837139c1c53020e86bb9112ae\scala-swing_2.11-1.0.1.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang.modules\scala-xml_2.11\1.0.2\820fbca7e524b530fdadc594c39d49a21ea0337e\scala-xml_2.11-1.0.2.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\lzma\lzma\0.0.1\521616dc7487b42bef0e803bd2fa3faf668101d7\lzma-0.0.1.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\java3d\vecmath\1.5.2\79846ba34cbd89e2422d74d53752f993dcc2ccaf\vecmath-1.5.2.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.sf.trove4j\trove4j\3.0.3\42ccaf4761f0dfdfa805c9e340d99a755907e2dd\trove4j-3.0.3.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.ibm.icu\icu4j-core-mojang\51.2\63d216a9311cca6be337c1e458e587f99d382b84\icu4j-core-mojang-51.2.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.sf.jopt-simple\jopt-simple\4.6\306816fb57cf94f108a43c95731b08934dcae15c\jopt-simple-4.6.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\codecjorbis\20101023\c73b5636faf089d9f00e8732a829577de25237ee\codecjorbis-20101023.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\codecwav\20101023\12f031cfe88fef5c1dd36c563c0a3a69bd7261da\codecwav-20101023.jar
+[18:02:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\libraryjavasound\20101123\5c5e304366f75f9eaa2e8cca546a1fb6109348b3\libraryjavasound-20101123.jar, examining for mod candidates
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\librarylwjglopenal\20100824\73e80d0794c39665aec3f62eee88ca91676674ef\librarylwjglopenal-20100824.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.paulscode\soundsystem\20120107\419c05fe9be71f792b2d76cfc9b67f1ed0fec7f6\soundsystem-20120107.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\io.netty\netty-all\4.0.15.Final\85cad5eb4fc8ae2ecc990dc7c411771a091ded5\netty-all-4.0.15.Final.jar
+[18:02:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\17.0\9c6ef172e8de35fd8d4d8783e4821e57cdef7445\guava-17.0.jar, examining for mod candidates
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.3.2\90a3822c38ec8c996e84c16a3477ef632cbc87a3\commons-lang3-3.3.2.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\2.4\b1b6ea3b7e4aa4f492509a4952029cd8e48019ad\commons-io-2.4.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\commons-codec\commons-codec\1.9\9ce04e34240f674bc72680f8b843b1457383161a\commons-codec-1.9.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput\2.0.5\39c7796b469a600f72380316f6b1f11db6c2c7c4\jinput-2.0.5.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jutils\jutils\1.0.0\e12fe1fda814bd348c1579329c86943d2cd3c6a6\jutils-1.0.0.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.mojang\authlib\1.5.17\893a8c553c0cfc9b6fbdff023747e30152ab09ec\authlib-1.5.17.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.mojang\realms\1.6.1\5655f6fb44aece10e5b3ad7cfee3e6936031c068\realms-1.6.1.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-compress\1.8.1\a698750c16740fd5b3871425f4cb3bbaa87f529d\commons-compress-1.8.1.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient\4.3.3\18f4247ff4572a074444572cee34647c43e7c9c7\httpclient-4.3.3.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\commons-logging\commons-logging\1.1.3\f6f66e966c70a83ffbdb6f17a0919eaf7c8aca7f\commons-logging-1.1.3.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpcore\4.3.2\31fbbff1ddbf98f3aa7377c94d33b0447c646b6e\httpcore-4.3.2.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-api\2.0-beta9\1dd66e68cccd907880229f9e2de1314bd13ff785\log4j-api-2.0-beta9.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-core\2.0-beta9\678861ba1b2e1fccb594bb0ca03114bb05da9695\log4j-core-2.0-beta9.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl\2.9.1\f58c5aabcef0e41718a564be9f8e412fff8db847\lwjgl-2.9.1.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl_util\2.9.1\290d7ba8a1bd9566f5ddf16ad06f09af5ec9b20e\lwjgl_util-2.9.1.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch\6.5\320a2dfd18513a5f41b4e75729df684488cbd925\twitch-6.5.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.scala-lang\scala-actors\2.11.0\8ccfb6541de179bb1c4d45cf414acee069b7f78b\scala-actors-2.11.0.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\7ff832a6eb9ab6a767f1ade2b548092d0fa64795\jinput-platform-2.0.5-natives-linux.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\385ee093e01f587f30ee1c8a2ee7d408fd732e16\jinput-platform-2.0.5-natives-windows.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput-platform\2.0.5\53f9c919f34d2ca9de8c51fc4e1e8282029a9232\jinput-platform-2.0.5-natives-osx.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\206c4ccaecdbcfd2a1631150c69a97bbc9c20c11\twitch-platform-6.5-natives-windows-32.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\9fdd0fd5aed0817063dcf95b69349a171f447ebd\twitch-platform-6.5-natives-windows-64.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-platform\6.5\5f9d1ee26257b3a33f0ca06fed335ef462af659f\twitch-platform-6.5-natives-osx.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-external-platform\4.5\18215140f010c05b9f86ef6f0f8871954d2ccebf\twitch-external-platform-4.5-natives-windows-32.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\tv.twitch\twitch-external-platform\4.5\c3cde57891b935d41b6680a9c5e1502eeab76d86\twitch-external-platform-4.5-natives-windows-64.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\4c517eca808522457dd95ee8fc1fbcdbb602efbe\lwjgl-platform-2.9.1-natives-windows.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\aa9aae879af8eb378e22cfc64db56ec2ca9a44d1\lwjgl-platform-2.9.1-natives-linux.jar
+[18:02:06] [Client thread/TRACE] [FML/]: Skipping known library file C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl-platform\2.9.1\2d12c83fdfbc04ecabf02c7bc8cc54d034f0daac\lwjgl-platform-2.9.1-natives-osx.jar
+[18:02:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\TechStack\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\2.0.1\516c03b21d50a644d538de0f0369c620989cd8f0\jsr305-2.0.1.jar, examining for mod candidates
+[18:02:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\TechStack\.gradle\caches\minecraft\deobfedDeps\compileDummy.jar, examining for mod candidates
+[18:02:06] [Client thread/DEBUG] [FML/]: Found a minecraft related file at C:\Users\TechStack\.gradle\caches\minecraft\deobfedDeps\providedDummy.jar, examining for mod candidates
+[18:02:06] [Client thread/DEBUG] [FML/]: Found a minecraft related directory at C:\Users\TechStack\.gradle\caches\minecraft\net\minecraftforge\forge\1.8-11.14.4.1577\start, examining for mod candidates
+[18:02:06] [Client thread/DEBUG] [FML/]: Minecraft jar mods loaded successfully
+[18:02:06] [Client thread/INFO] [FML/]: Found 0 mods from the command line. Injecting into mod discoverer
+[18:02:06] [Client thread/INFO] [FML/]: Searching D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\run\mods for mods
+[18:02:06] [Client thread/DEBUG] [FML/]: Examining directory bin for potential mods
+[18:02:06] [Client thread/DEBUG] [FML/]: Found an mcmod.info file in directory bin
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package assets
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.blockstates
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.lang
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.models
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.models.block
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.models.item
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.sounds
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.textures
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.textures.blocks
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.textures.gui
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package assets.machinemod.textures.items
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.block
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.client
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.client.gui
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.client.handler
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.container
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.creativetab
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.energy
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.entity
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.handler
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.handler.events
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.iface
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.init
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.item
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.item.components
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.item.machines
+[18:02:06] [Client thread/DEBUG] [FML/]: Identified a mod of type Lnet/minecraftforge/fml/common/Mod; (com.projectreddog.machinemod.MachineMod) - loading
+[18:02:06] [Client thread/TRACE] [machinemod/]: Using mcmod dependency info : [Forge] [] []
+[18:02:06] [Client thread/DEBUG] [machinemod/]: Attempting to load the file version.properties from bin to locate a version number for machinemod
+[18:02:06] [Client thread/WARN] [machinemod/]: Mod machinemod is missing the required element 'version' and a version.properties file could not be found. Falling back to metadata version ${version}
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.model
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.model.advanced
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.model.advanced.obj
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.model.tileentity
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.network
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.proxy
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.reference
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.render
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.render.machines
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.render.tileentity
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.tileentities
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.utility
+[18:02:06] [Client thread/TRACE] [FML/]: Recursing into package com.projectreddog.machinemod.world
+[18:02:06] [Client thread/DEBUG] [FML/]: Examining file forgeSrc-1.8-11.14.4.1577.jar for potential mods
+[18:02:06] [Client thread/DEBUG] [FML/]: The mod container forgeSrc-1.8-11.14.4.1577.jar appears to be missing an mcmod.info file
+[18:02:07] [Client thread/DEBUG] [FML/]: Examining file asm-debug-all-5.0.3.jar for potential mods
+[18:02:07] [Client thread/DEBUG] [FML/]: The mod container asm-debug-all-5.0.3.jar appears to be missing an mcmod.info file
+[18:02:07] [Client thread/DEBUG] [FML/]: Examining file libraryjavasound-20101123.jar for potential mods
+[18:02:07] [Client thread/DEBUG] [FML/]: The mod container libraryjavasound-20101123.jar appears to be missing an mcmod.info file
+[18:02:07] [Client thread/DEBUG] [FML/]: Examining file guava-17.0.jar for potential mods
+[18:02:07] [Client thread/DEBUG] [FML/]: The mod container guava-17.0.jar appears to be missing an mcmod.info file
+[18:02:07] [Client thread/DEBUG] [FML/]: Examining file jsr305-2.0.1.jar for potential mods
+[18:02:07] [Client thread/DEBUG] [FML/]: The mod container jsr305-2.0.1.jar appears to be missing an mcmod.info file
+[18:02:07] [Client thread/DEBUG] [FML/]: Examining file compileDummy.jar for potential mods
+[18:02:07] [Client thread/DEBUG] [FML/]: The mod container compileDummy.jar appears to be missing an mcmod.info file
+[18:02:07] [Client thread/DEBUG] [FML/]: Examining file providedDummy.jar for potential mods
+[18:02:07] [Client thread/DEBUG] [FML/]: The mod container providedDummy.jar appears to be missing an mcmod.info file
+[18:02:07] [Client thread/DEBUG] [FML/]: Examining directory start for potential mods
+[18:02:07] [Client thread/DEBUG] [FML/]: No mcmod.info file found in directory start
+[18:02:07] [Client thread/TRACE] [FML/]: Recursing into package net
+[18:02:07] [Client thread/TRACE] [FML/]: Recursing into package net.minecraftforge
+[18:02:07] [Client thread/TRACE] [FML/]: Recursing into package net.minecraftforge.gradle
+[18:02:07] [Client thread/TRACE] [FML/]: Recursing into package net.minecraftforge.gradle.tweakers
+[18:02:07] [Client thread/INFO] [FML/]: Forge Mod Loader has identified 4 mods to load
+[18:02:07] [Client thread/TRACE] [FML/]: Received a system property request ''
+[18:02:07] [Client thread/TRACE] [FML/]: System property request managing the state of 0 mods
+[18:02:07] [Client thread/DEBUG] [FML/]: After merging, found state information for 0 mods
+[18:02:07] [Client thread/DEBUG] [FML/]: Found translations in forgeSrc-1.8-11.14.4.1577.jar [en_US, en_US]
+[18:02:07] [Client thread/DEBUG] [FML/]: Found translations in forgeSrc-1.8-11.14.4.1577.jar [en_US, en_US]
+[18:02:07] [Client thread/DEBUG] [machinemod/]: Enabling mod machinemod
+[18:02:07] [Client thread/DEBUG] [FML/]: Injecting found translation assets for lang en_US at assets/machinemod/lang/en_US.lang into language system
+[18:02:07] [Client thread/TRACE] [FML/]: Verifying mod requirements are satisfied
+[18:02:07] [Client thread/TRACE] [FML/]: All mod requirements are satisfied
+[18:02:07] [Client thread/TRACE] [FML/]: Sorting mods into an ordered list
+[18:02:07] [Client thread/TRACE] [FML/]: Mod sorting completed successfully
+[18:02:07] [Client thread/DEBUG] [FML/]: Mod sorting data
+[18:02:07] [Client thread/DEBUG] [FML/]: 	machinemod(TechStack's Heavy Machinery Mod:${version}): bin ()
+[18:02:07] [Client thread/TRACE] [mcp/mcp]: Sending event FMLConstructionEvent to mod mcp
+[18:02:07] [Client thread/TRACE] [mcp/mcp]: Sent event FMLConstructionEvent to mod mcp
+[18:02:07] [Client thread/DEBUG] [FML/]: Bar Step: Construction - Minecraft Coder Pack took 0.002s
+[18:02:07] [Client thread/TRACE] [FML/FML]: Sending event FMLConstructionEvent to mod FML
+[18:02:08] [Client thread/TRACE] [FML/FML]: Mod FML is using network checker : Invoking method checkModLists
+[18:02:08] [Client thread/TRACE] [FML/FML]: Testing mod FML to verify it accepts its own version in a remote connection
+[18:02:08] [Client thread/TRACE] [FML/FML]: The mod FML accepts its own version (8.0.99.99)
+[18:02:08] [Client thread/INFO] [FML/FML]: Attempting connection with missing mods [mcp, FML, Forge, machinemod] at CLIENT
+[18:02:08] [Client thread/INFO] [FML/FML]: Attempting connection with missing mods [mcp, FML, Forge, machinemod] at SERVER
+[18:02:08] [Client thread/TRACE] [FML/FML]: Sent event FMLConstructionEvent to mod FML
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Step: Construction - Forge Mod Loader took 0.307s
+[18:02:08] [Client thread/TRACE] [Forge/Forge]: Sending event FMLConstructionEvent to mod Forge
+[18:02:08] [Client thread/TRACE] [FML/Forge]: Mod Forge is using network checker : No network checking performed
+[18:02:08] [Client thread/TRACE] [FML/Forge]: Testing mod Forge to verify it accepts its own version in a remote connection
+[18:02:08] [Client thread/TRACE] [FML/Forge]: The mod Forge accepts its own version (11.14.4.1577)
+[18:02:08] [Client thread/TRACE] [Forge/Forge]: Sent event FMLConstructionEvent to mod Forge
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Step: Construction - Minecraft Forge took 0.009s
+[18:02:08] [Client thread/TRACE] [machinemod/machinemod]: Sending event FMLConstructionEvent to mod machinemod
+[18:02:08] [Client thread/TRACE] [FML/machinemod]: Mod machinemod is using network checker : Accepting version ${version}
+[18:02:08] [Client thread/TRACE] [FML/machinemod]: Testing mod machinemod to verify it accepts its own version in a remote connection
+[18:02:08] [Client thread/TRACE] [FML/machinemod]: The mod machinemod accepts its own version (${version})
+[18:02:08] [Client thread/DEBUG] [FML/machinemod]: Attempting to inject @SidedProxy classes into machinemod
+[18:02:08] [Client thread/TRACE] [machinemod/machinemod]: Sent event FMLConstructionEvent to mod machinemod
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Step: Construction - TechStack's Heavy Machinery Mod took 0.030s
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Finished: Construction took 0.349s
+[18:02:08] [Client thread/DEBUG] [FML/]: Mod signature data
+[18:02:08] [Client thread/DEBUG] [FML/]:  	Valid Signatures:
+[18:02:08] [Client thread/DEBUG] [FML/]:  	Missing Signatures:
+[18:02:08] [Client thread/DEBUG] [FML/]: 		mcp	(Minecraft Coder Pack	9.05)	minecraft.jar
+[18:02:08] [Client thread/DEBUG] [FML/]: 		FML	(Forge Mod Loader	8.0.99.99)	forgeSrc-1.8-11.14.4.1577.jar
+[18:02:08] [Client thread/DEBUG] [FML/]: 		Forge	(Minecraft Forge	11.14.4.1577)	forgeSrc-1.8-11.14.4.1577.jar
+[18:02:08] [Client thread/DEBUG] [FML/]: 		machinemod	(TechStack's Heavy Machinery Mod	${version})	bin
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - Default took 0.004s
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - FMLFileResourcePack:Forge Mod Loader took 0.008s
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - FMLFileResourcePack:Minecraft Forge took 0.008s
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - FMLFileResourcePack:TechStack's Heavy Machinery Mod took 0.003s
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Finished: Reloading - LanguageManager took 0.046s
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - Reloading listeners took 0.047s
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resources took 0.070s
+[18:02:08] [Client thread/DEBUG] [Forge Mod Loader/]: Mod Forge Mod Loader is missing a pack.mcmeta file, substituting a dummy one
+[18:02:08] [Client thread/DEBUG] [Minecraft Forge/]: Mod Minecraft Forge is missing a pack.mcmeta file, substituting a dummy one
+[18:02:08] [Client thread/DEBUG] [TechStack's Heavy Machinery Mod/]: Mod TechStack's Heavy Machinery Mod is missing a pack.mcmeta file, substituting a dummy one
+[18:02:08] [Client thread/INFO] [FML/]: Processing ObjectHolder annotations
+[18:02:08] [Client thread/INFO] [FML/]: Found 445 ObjectHolder annotations
+[18:02:08] [Client thread/INFO] [FML/]: Identifying ItemStackHolder annotations
+[18:02:08] [Client thread/INFO] [FML/]: Found 0 ItemStackHolder annotations
+[18:02:08] [Client thread/TRACE] [mcp/mcp]: Sending event FMLPreInitializationEvent to mod mcp
+[18:02:08] [Client thread/TRACE] [mcp/mcp]: Sent event FMLPreInitializationEvent to mod mcp
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Step: PreInitialization - Minecraft Coder Pack took 0.001s
+[18:02:08] [Client thread/TRACE] [FML/FML]: Sending event FMLPreInitializationEvent to mod FML
+[18:02:08] [Client thread/TRACE] [FML/FML]: Sent event FMLPreInitializationEvent to mod FML
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Step: PreInitialization - Forge Mod Loader took 0.014s
+[18:02:08] [Client thread/TRACE] [Forge/Forge]: Sending event FMLPreInitializationEvent to mod Forge
+[18:02:08] [Client thread/INFO] [FML/Forge]: Configured a dormant chunk cache size of 0
+[18:02:08] [Client thread/TRACE] [Forge/Forge]: Sent event FMLPreInitializationEvent to mod Forge
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Step: PreInitialization - Minecraft Forge took 0.029s
+[18:02:08] [Forge Version Check/INFO] [ForgeVersionCheck/Forge]: [Forge] Starting version check at http://files.minecraftforge.net/maven/net/minecraftforge/forge/promotions_slim.json
+[18:02:08] [Client thread/TRACE] [machinemod/machinemod]: Sending event FMLPreInitializationEvent to mod machinemod
+[18:02:08] [Client thread/TRACE] [machinemod/machinemod]: Sent event FMLPreInitializationEvent to mod machinemod
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Step: PreInitialization - TechStack's Heavy Machinery Mod took 0.043s
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Finished: PreInitialization took 0.087s
+[18:02:08] [Client thread/INFO] [FML/]: Applying holder lookups
+[18:02:08] [Client thread/INFO] [FML/]: Holder lookups applied
+[18:02:08] [Client thread/INFO] [FML/]: Injecting itemstacks
+[18:02:08] [Client thread/INFO] [FML/]: Itemstack injection complete
+[18:02:08] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - TextureManager took 0.000s
+[18:02:08] [Forge Version Check/DEBUG] [ForgeVersionCheck/Forge]: [Forge] Received version check data:
 {
   "homepage": "http://files.minecraftforge.net/maven/net/minecraftforge/forge/",
   "promos": {
@@ -316,633 +316,181 @@ Details:
     "recommended": "11.14.4.1563"
   }
 }
-[17:47:47] [Forge Version Check/INFO] [ForgeVersionCheck/Forge]: [Forge] Found status: AHEAD Target: null
-[17:47:48] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - SoundHandler took 1.118s
-[17:47:48] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - FontRenderer took 0.003s
-[17:47:48] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - FontRenderer took 0.002s
-[17:47:48] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - GrassColorReloadListener took 0.006s
-[17:47:48] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - FoliageColorReloadListener took 0.007s
-[17:47:48] [Client thread/DEBUG] [FML/]: Bar Step: Rendering Setup - GL Setup took 0.000s
-[17:47:48] [Client thread/DEBUG] [FML/]: Bar Step: Rendering Setup - Loading Texture Map took 0.007s
-[17:47:48] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - ModelLoaderRegistry$1 took 0.001s
-[17:47:48] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - ModelLoaderRegistry$1 took 0.000s
-[17:47:48] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - ModelLoaderRegistry$1 took 0.000s
-[17:47:48] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - ModelLoaderRegistry$1 took 0.000s
-[17:47:49] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_ruby' for variant: 'machinemod:machineblastedstone2#ore=ruby': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_ruby.json
-[17:47:49] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_lead' for variant: 'machinemod:machineblastedstone2#ore=lead': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_lead.json
-[17:47:49] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_aluminum' for variant: 'machinemod:machineblastedstone2#ore=aluminum': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_aluminum.json
-[17:47:49] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_uranium' for variant: 'machinemod:machineblastedstone2#ore=uranium': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_uranium.json
-[17:47:49] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_quartz' for variant: 'machinemod:machineblastedstone2#ore=quartz': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_quartz.json
-[17:47:49] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_silver' for variant: 'machinemod:machineblastedstone2#ore=silver': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_silver.json
-[17:47:49] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_copper' for variant: 'machinemod:machineblastedstone2#ore=copper': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_copper.json
-[17:47:49] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_tin' for variant: 'machinemod:machineblastedstone2#ore=tin': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_tin.json
-[17:47:49] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_sapphire' for variant: 'machinemod:machineblastedstone2#ore=sapphire': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_sapphire.json
-[17:47:50] [Client thread/DEBUG] [FML/]: Item json isn't found for 'machinemod:machineblastedstone2#inventory', trying to load the variant from the blockstate json
-[17:47:50] [Client thread/DEBUG] [FML/]: Item json isn't found for 'machinemod:crane#inventory', trying to load the variant from the blockstate json
-[17:47:50] [Client thread/INFO] [FML/]: Max texture size: 16384
-[17:47:50] [Client thread/DEBUG] [FML/]: Bar Finished: Texture stitching - missingno took 0.001s
-[17:47:50] [Client thread/DEBUG] [FML/]: Bar Finished: Texture creation took 0.003s
-[17:47:50] [Client thread/ERROR] [FML/]: Model definition for location machinemod:crane#inventory not found
-[17:47:50] [Client thread/ERROR] [FML/]: Model definition for location machinemod:machineblastedstone2#inventory not found
-[17:47:50] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - ModelManager took 1.961s
-[17:47:50] [Client thread/DEBUG] [FML/]: Bar Step: Rendering Setup - Loading Model Manager took 2.035s
-[17:47:50] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - RenderItem took 0.003s
-[17:47:50] [Client thread/DEBUG] [FML/]: Bar Step: Rendering Setup - Loading Item Renderer took 0.181s
-[17:47:50] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - EntityRenderer took 0.000s
-[17:47:50] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - BlockRendererDispatcher took 0.000s
-[17:47:50] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - RenderGlobal took 0.000s
-[17:47:50] [Client thread/DEBUG] [FML/]: Bar Step: Rendering Setup - Loading Entity Renderer took 0.144s
-[17:47:50] [Client thread/DEBUG] [FML/]: Bar Finished: Rendering Setup took 2.367s
-[17:47:50] [Client thread/TRACE] [mcp/mcp]: Sending event FMLInitializationEvent to mod mcp
-[17:47:50] [Client thread/TRACE] [mcp/mcp]: Sent event FMLInitializationEvent to mod mcp
-[17:47:50] [Client thread/DEBUG] [FML/]: Bar Step: Initialization - Minecraft Coder Pack took 0.000s
-[17:47:50] [Client thread/TRACE] [FML/FML]: Sending event FMLInitializationEvent to mod FML
-[17:47:50] [Client thread/TRACE] [FML/FML]: Sent event FMLInitializationEvent to mod FML
-[17:47:50] [Client thread/DEBUG] [FML/]: Bar Step: Initialization - Forge Mod Loader took 0.000s
-[17:47:50] [Client thread/TRACE] [Forge/Forge]: Sending event FMLInitializationEvent to mod Forge
-[17:47:50] [Client thread/TRACE] [Forge/Forge]: Sent event FMLInitializationEvent to mod Forge
-[17:47:50] [Client thread/DEBUG] [FML/]: Bar Step: Initialization - Minecraft Forge took 0.000s
-[17:47:50] [Client thread/TRACE] [machinemod/machinemod]: Sending event FMLInitializationEvent to mod machinemod
-[17:47:50] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity drillingrig as machinemod.drillingrig
-[17:47:50] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity bulldozer as machinemod.bulldozer
-[17:47:50] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity dumptruck as machinemod.dumptruck
-[17:47:50] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity loader as machinemod.loader
-[17:47:50] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity tractor as machinemod.tractor
-[17:47:50] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity combine as machinemod.combine
-[17:47:50] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity widebedtruck as machinemod.widebedtruck
-[17:47:50] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity crane as machinemod.crane
-[17:47:50] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity excavator as machinemod.excavator
-[17:47:50] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity paver as machinemod.paver
-[17:47:51] [Client thread/TRACE] [machinemod/machinemod]: Sent event FMLInitializationEvent to mod machinemod
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: Initialization - TechStack's Heavy Machinery Mod took 0.425s
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Finished: Initialization took 0.426s
-[17:47:51] [Client thread/TRACE] [FML/]: Attempting to deliver 0 IMC messages to mod mcp
-[17:47:51] [Client thread/TRACE] [mcp/mcp]: Sending event IMCEvent to mod mcp
-[17:47:51] [Client thread/TRACE] [mcp/mcp]: Sent event IMCEvent to mod mcp
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: InterModComms$IMC - Minecraft Coder Pack took 0.004s
-[17:47:51] [Client thread/TRACE] [FML/]: Attempting to deliver 0 IMC messages to mod FML
-[17:47:51] [Client thread/TRACE] [FML/FML]: Sending event IMCEvent to mod FML
-[17:47:51] [Client thread/TRACE] [FML/FML]: Sent event IMCEvent to mod FML
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: InterModComms$IMC - Forge Mod Loader took 0.000s
-[17:47:51] [Client thread/TRACE] [FML/]: Attempting to deliver 0 IMC messages to mod Forge
-[17:47:51] [Client thread/TRACE] [Forge/Forge]: Sending event IMCEvent to mod Forge
-[17:47:51] [Client thread/TRACE] [Forge/Forge]: Sent event IMCEvent to mod Forge
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: InterModComms$IMC - Minecraft Forge took 0.001s
-[17:47:51] [Client thread/TRACE] [FML/]: Attempting to deliver 0 IMC messages to mod machinemod
-[17:47:51] [Client thread/TRACE] [machinemod/machinemod]: Sending event IMCEvent to mod machinemod
-[17:47:51] [Client thread/TRACE] [machinemod/machinemod]: Sent event IMCEvent to mod machinemod
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: InterModComms$IMC - TechStack's Heavy Machinery Mod took 0.001s
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Finished: InterModComms$IMC took 0.005s
-[17:47:51] [Client thread/INFO] [FML/]: Injecting itemstacks
-[17:47:51] [Client thread/INFO] [FML/]: Itemstack injection complete
-[17:47:51] [Client thread/TRACE] [mcp/mcp]: Sending event FMLPostInitializationEvent to mod mcp
-[17:47:51] [Client thread/TRACE] [mcp/mcp]: Sent event FMLPostInitializationEvent to mod mcp
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: PostInitialization - Minecraft Coder Pack took 0.000s
-[17:47:51] [Client thread/TRACE] [FML/FML]: Sending event FMLPostInitializationEvent to mod FML
-[17:47:51] [Client thread/TRACE] [FML/FML]: Sent event FMLPostInitializationEvent to mod FML
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: PostInitialization - Forge Mod Loader took 0.000s
-[17:47:51] [Client thread/TRACE] [Forge/Forge]: Sending event FMLPostInitializationEvent to mod Forge
-[17:47:51] [Client thread/TRACE] [Forge/Forge]: Sent event FMLPostInitializationEvent to mod Forge
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: PostInitialization - Minecraft Forge took 0.116s
-[17:47:51] [Client thread/TRACE] [machinemod/machinemod]: Sending event FMLPostInitializationEvent to mod machinemod
-[17:47:51] [Client thread/DEBUG] [MachineMod/machinemod]: Is Bulldozer Enabled: true
-[17:47:51] [Client thread/TRACE] [machinemod/machinemod]: Sent event FMLPostInitializationEvent to mod machinemod
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: PostInitialization - TechStack's Heavy Machinery Mod took 0.002s
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Finished: PostInitialization took 0.119s
-[17:47:51] [Client thread/TRACE] [mcp/mcp]: Sending event FMLLoadCompleteEvent to mod mcp
-[17:47:51] [Client thread/TRACE] [mcp/mcp]: Sent event FMLLoadCompleteEvent to mod mcp
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: LoadComplete - Minecraft Coder Pack took 0.000s
-[17:47:51] [Client thread/TRACE] [FML/FML]: Sending event FMLLoadCompleteEvent to mod FML
-[17:47:51] [Client thread/TRACE] [FML/FML]: Sent event FMLLoadCompleteEvent to mod FML
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: LoadComplete - Forge Mod Loader took 0.000s
-[17:47:51] [Client thread/TRACE] [Forge/Forge]: Sending event FMLLoadCompleteEvent to mod Forge
-[17:47:51] [Client thread/DEBUG] [FML/Forge]: Forge RecipeSorter Baking:
-[17:47:51] [Client thread/DEBUG] [FML/Forge]:   14: RecipeEntry("Before", UNKNOWN, )
-[17:47:51] [Client thread/DEBUG] [FML/Forge]:   13: RecipeEntry("minecraft:shaped", SHAPED, net.minecraft.item.crafting.ShapedRecipes) Before: minecraft:shapeless
-[17:47:51] [Client thread/DEBUG] [FML/Forge]:   12: RecipeEntry("minecraft:mapextending", SHAPED, net.minecraft.item.crafting.RecipesMapExtending) Before: minecraft:shapeless After: minecraft:shaped
-[17:47:51] [Client thread/DEBUG] [FML/Forge]:   11: RecipeEntry("forge:shapedore", SHAPED, net.minecraftforge.oredict.ShapedOreRecipe) Before: minecraft:shapeless After: minecraft:shaped
-[17:47:51] [Client thread/DEBUG] [FML/Forge]:   10: RecipeEntry("minecraft:shapeless", SHAPELESS, net.minecraft.item.crafting.ShapelessRecipes) After: minecraft:shaped
-[17:47:51] [Client thread/DEBUG] [FML/Forge]:   9: RecipeEntry("forge:shapelessore", SHAPELESS, net.minecraftforge.oredict.ShapelessOreRecipe) After: minecraft:shapeless
-[17:47:51] [Client thread/DEBUG] [FML/Forge]:   8: RecipeEntry("minecraft:pattern_add", SHAPELESS, net.minecraft.item.crafting.RecipesBanners$RecipeAddPattern) After: minecraft:shapeless
-[17:47:51] [Client thread/DEBUG] [FML/Forge]:   7: RecipeEntry("minecraft:pattern_dupe", SHAPELESS, net.minecraft.item.crafting.RecipesBanners$RecipeDuplicatePattern) After: minecraft:shapeless
-[17:47:51] [Client thread/DEBUG] [FML/Forge]:   6: RecipeEntry("minecraft:armordyes", SHAPELESS, net.minecraft.item.crafting.RecipesArmorDyes) After: minecraft:shapeless
-[17:47:51] [Client thread/DEBUG] [FML/Forge]:   5: RecipeEntry("minecraft:bookcloning", SHAPELESS, net.minecraft.item.crafting.RecipeBookCloning) After: minecraft:shapeless
-[17:47:51] [Client thread/DEBUG] [FML/Forge]:   4: RecipeEntry("minecraft:mapcloning", SHAPELESS, net.minecraft.item.crafting.RecipesMapCloning) After: minecraft:shapeless
-[17:47:51] [Client thread/DEBUG] [FML/Forge]:   3: RecipeEntry("minecraft:repair", SHAPELESS, net.minecraft.item.crafting.RecipeRepairItem) After: minecraft:shapeless
-[17:47:51] [Client thread/DEBUG] [FML/Forge]:   2: RecipeEntry("minecraft:fireworks", SHAPELESS, net.minecraft.item.crafting.RecipeFireworks) After: minecraft:shapeless
-[17:47:51] [Client thread/DEBUG] [FML/Forge]:   1: RecipeEntry("After", UNKNOWN, )
-[17:47:51] [Client thread/DEBUG] [FML/Forge]: Sorting recipies
-[17:47:51] [Client thread/TRACE] [Forge/Forge]: Sent event FMLLoadCompleteEvent to mod Forge
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: LoadComplete - Minecraft Forge took 0.007s
-[17:47:51] [Client thread/TRACE] [machinemod/machinemod]: Sending event FMLLoadCompleteEvent to mod machinemod
-[17:47:51] [Client thread/TRACE] [machinemod/machinemod]: Sent event FMLLoadCompleteEvent to mod machinemod
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: LoadComplete - TechStack's Heavy Machinery Mod took 0.000s
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Finished: LoadComplete took 0.008s
-[17:47:51] [Client thread/DEBUG] [FML/]: Freezing block and item id maps
-[17:47:51] [Client thread/DEBUG] [FML/]: Registry consistency check successful
-[17:47:51] [Client thread/DEBUG] [FML/]: Registry consistency check successful
-[17:47:51] [Client thread/INFO] [FML/]: Forge Mod Loader has successfully loaded 4 mods
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - Default took 0.000s
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - FMLFileResourcePack:Forge Mod Loader took 0.008s
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - FMLFileResourcePack:Minecraft Forge took 0.009s
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - FMLFileResourcePack:TechStack's Heavy Machinery Mod took 0.001s
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: Reloading Texture Manager - minecraft:textures/atlas/blocks.png took 0.000s
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: Reloading Texture Manager - minecraft:textures/font/ascii.png took 0.005s
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: Reloading Texture Manager - minecraft:textures/font/ascii_sga.png took 0.003s
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: Reloading Texture Manager - minecraft:textures/misc/forcefield.png took 0.002s
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Step: Reloading Texture Manager - minecraft:dynamic/lightMap_1 took 0.000s
-[17:47:51] [Client thread/DEBUG] [FML/]: Bar Finished: Reloading Texture Manager took 0.010s
-[17:47:53] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_ruby' for variant: 'machinemod:machineblastedstone2#ore=ruby': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_ruby.json
-[17:47:53] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_lead' for variant: 'machinemod:machineblastedstone2#ore=lead': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_lead.json
-[17:47:53] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_aluminum' for variant: 'machinemod:machineblastedstone2#ore=aluminum': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_aluminum.json
-[17:47:53] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_uranium' for variant: 'machinemod:machineblastedstone2#ore=uranium': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_uranium.json
-[17:47:53] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_quartz' for variant: 'machinemod:machineblastedstone2#ore=quartz': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_quartz.json
-[17:47:53] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_silver' for variant: 'machinemod:machineblastedstone2#ore=silver': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_silver.json
-[17:47:53] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_copper' for variant: 'machinemod:machineblastedstone2#ore=copper': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_copper.json
-[17:47:53] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_tin' for variant: 'machinemod:machineblastedstone2#ore=tin': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_tin.json
-[17:47:53] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_sapphire' for variant: 'machinemod:machineblastedstone2#ore=sapphire': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_sapphire.json
-[17:47:53] [Client thread/DEBUG] [FML/]: Item json isn't found for 'machinemod:machineblastedstone2#inventory', trying to load the variant from the blockstate json
-[17:47:53] [Client thread/DEBUG] [FML/]: Item json isn't found for 'machinemod:crane#inventory', trying to load the variant from the blockstate json
-[17:47:53] [Client thread/INFO] [FML/]: Max texture size: 16384
-[17:47:53] [Client thread/DEBUG] [FML/]: Bar Finished: Texture stitching took 0.295s
-[17:47:54] [Client thread/DEBUG] [FML/]: Bar Finished: Mipmap generation took 0.221s
-[17:47:54] [Client thread/DEBUG] [FML/]: Bar Finished: Texture stitching took 0.056s
-[17:47:54] [Client thread/DEBUG] [FML/]: Bar Finished: Texture creation took 0.076s
-[17:47:54] [Client thread/ERROR] [FML/]: Model definition for location machinemod:crane#inventory not found
-[17:47:54] [Client thread/ERROR] [FML/]: Model definition for location machinemod:machineblastedstone2#inventory not found
-[17:47:54] [Client thread/DEBUG] [FML/]: Bar Finished: Reloading took 2.912s
-[17:47:54] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - Reloading listeners took 2.912s
-[17:47:54] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resources took 2.931s
-[17:47:54] [Client thread/DEBUG] [Forge Mod Loader/]: Mod Forge Mod Loader is missing a pack.mcmeta file, substituting a dummy one
-[17:47:54] [Client thread/DEBUG] [Minecraft Forge/]: Mod Minecraft Forge is missing a pack.mcmeta file, substituting a dummy one
-[17:47:54] [Client thread/DEBUG] [TechStack's Heavy Machinery Mod/]: Mod TechStack's Heavy Machinery Mod is missing a pack.mcmeta file, substituting a dummy one
-[17:47:54] [Client thread/DEBUG] [FML/]: Bar Finished: Loading took 9.524s
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]: +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]: The following texture errors were found.
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]: ==================================================
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]:   DOMAIN machinemod
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]: --------------------------------------------------
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]:   domain machinemod is missing 3 textures
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]:     domain machinemod has 1 location:
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]:       mod machinemod resources at D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\bin
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]: -------------------------
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]:     The missing resources for domain machinemod are:
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]:       textures/items/centrifugeicon.png
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]:       textures/items/paver.png
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]:       textures/items/rawasphalt.png
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]: -------------------------
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]:     No other errors exist for domain machinemod
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]: ==================================================
-[17:47:54] [Client thread/ERROR] [TEXTURE ERRORS/]: +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-[17:48:27] [Client thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:48:27] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerAboutToStartEvent to mod mcp
-[17:48:27] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerAboutToStartEvent to mod mcp
-[17:48:27] [Server thread/DEBUG] [FML/]: Bar Step: ServerAboutToStart - Minecraft Coder Pack took 0.001s
-[17:48:27] [Server thread/TRACE] [FML/FML]: Sending event FMLServerAboutToStartEvent to mod FML
-[17:48:27] [Server thread/TRACE] [FML/FML]: Sent event FMLServerAboutToStartEvent to mod FML
-[17:48:27] [Server thread/DEBUG] [FML/]: Bar Step: ServerAboutToStart - Forge Mod Loader took 0.000s
-[17:48:27] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerAboutToStartEvent to mod Forge
-[17:48:27] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerAboutToStartEvent to mod Forge
-[17:48:27] [Server thread/DEBUG] [FML/]: Bar Step: ServerAboutToStart - Minecraft Forge took 0.000s
-[17:48:27] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLServerAboutToStartEvent to mod machinemod
-[17:48:27] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLServerAboutToStartEvent to mod machinemod
-[17:48:27] [Server thread/DEBUG] [FML/]: Bar Step: ServerAboutToStart - TechStack's Heavy Machinery Mod took 0.001s
-[17:48:27] [Server thread/DEBUG] [FML/]: Bar Finished: ServerAboutToStart took 0.002s
-[17:48:27] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:48:27] [Server thread/INFO] [FML/]: Injecting existing block and item data into this server instance
-[17:48:27] [Server thread/DEBUG] [FML/]: Registry consistency check successful
-[17:48:27] [Server thread/DEBUG] [FML/]: Registry consistency check successful
-[17:48:27] [Server thread/TRACE] [mcp/mcp]: Sending event FMLModIdMappingEvent to mod mcp
-[17:48:27] [Server thread/TRACE] [mcp/mcp]: Sent event FMLModIdMappingEvent to mod mcp
-[17:48:27] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Minecraft Coder Pack took 0.001s
-[17:48:27] [Server thread/TRACE] [FML/FML]: Sending event FMLModIdMappingEvent to mod FML
-[17:48:27] [Server thread/TRACE] [FML/FML]: Sent event FMLModIdMappingEvent to mod FML
-[17:48:27] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Forge Mod Loader took 0.000s
-[17:48:27] [Server thread/TRACE] [Forge/Forge]: Sending event FMLModIdMappingEvent to mod Forge
-[17:48:27] [Server thread/TRACE] [Forge/Forge]: Sent event FMLModIdMappingEvent to mod Forge
-[17:48:27] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Minecraft Forge took 0.001s
-[17:48:27] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLModIdMappingEvent to mod machinemod
-[17:48:27] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLModIdMappingEvent to mod machinemod
-[17:48:27] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - TechStack's Heavy Machinery Mod took 0.000s
-[17:48:27] [Server thread/DEBUG] [FML/]: Bar Finished: ModIdMapping took 0.002s
-[17:48:27] [Server thread/INFO] [FML/]: Applying holder lookups
-[17:48:27] [Server thread/INFO] [FML/]: Holder lookups applied
-[17:48:27] [Server thread/DEBUG] [FML/]: Loading persistent fluid defaults from world
-[17:48:27] [Server thread/DEBUG] [FML/]: The fluid minecraft:water has been selected as the default fluid for water
-[17:48:27] [Server thread/DEBUG] [FML/]: The fluid minecraft:lava has been selected as the default fluid for lava
-[17:48:27] [Server thread/INFO] [FML/]: Loading dimension 0 (New World) (net.minecraft.server.integrated.IntegratedServer@4312053f)
-[17:48:27] [Server thread/INFO] [FML/]: Loading dimension 1 (New World) (net.minecraft.server.integrated.IntegratedServer@4312053f)
-[17:48:27] [Server thread/INFO] [FML/]: Loading dimension -1 (New World) (net.minecraft.server.integrated.IntegratedServer@4312053f)
-[17:48:35] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerStartingEvent to mod mcp
-[17:48:35] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerStartingEvent to mod mcp
-[17:48:35] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarting - Minecraft Coder Pack took 0.001s
-[17:48:35] [Server thread/TRACE] [FML/FML]: Sending event FMLServerStartingEvent to mod FML
-[17:48:35] [Server thread/TRACE] [FML/FML]: Sent event FMLServerStartingEvent to mod FML
-[17:48:35] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarting - Forge Mod Loader took 0.000s
-[17:48:35] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerStartingEvent to mod Forge
-[17:48:35] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerStartingEvent to mod Forge
-[17:48:35] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarting - Minecraft Forge took 0.002s
-[17:48:35] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLServerStartingEvent to mod machinemod
-[17:48:35] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLServerStartingEvent to mod machinemod
-[17:48:35] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarting - TechStack's Heavy Machinery Mod took 0.000s
-[17:48:35] [Server thread/DEBUG] [FML/]: Bar Finished: ServerStarting took 0.004s
-[17:48:35] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerStartedEvent to mod mcp
-[17:48:35] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerStartedEvent to mod mcp
-[17:48:35] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarted - Minecraft Coder Pack took 0.000s
-[17:48:35] [Server thread/TRACE] [FML/FML]: Sending event FMLServerStartedEvent to mod FML
-[17:48:35] [Server thread/TRACE] [FML/FML]: Sent event FMLServerStartedEvent to mod FML
-[17:48:35] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarted - Forge Mod Loader took 0.000s
-[17:48:35] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerStartedEvent to mod Forge
-[17:48:35] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerStartedEvent to mod Forge
-[17:48:35] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarted - Minecraft Forge took 0.000s
-[17:48:35] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLServerStartedEvent to mod machinemod
-[17:48:35] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLServerStartedEvent to mod machinemod
-[17:48:35] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarted - TechStack's Heavy Machinery Mod took 0.001s
-[17:48:35] [Server thread/DEBUG] [FML/]: Bar Finished: ServerStarted took 0.002s
-[17:48:36] [Netty Local Client IO #0/TRACE] [FML/]: Handshake channel activating
-[17:48:36] [Netty Local Client IO #0/DEBUG] [FML/]: FMLHandshakeClientState: null->FMLHandshakeClientState$1:START
-[17:48:36] [Netty Local Client IO #0/DEBUG] [FML/]:   Next: HELLO
-[17:48:36] [Netty Server IO #1/TRACE] [FML/]: Handshake channel activating
-[17:48:36] [Netty Server IO #1/DEBUG] [FML/]: FMLHandshakeServerState: null->FMLHandshakeServerState$1:START
-[17:48:36] [Netty Server IO #1/DEBUG] [FML/]:   Next: HELLO
-[17:48:36] [Netty Local Client IO #0/DEBUG] [FML/]: Server FML protocol version 2, 4 byte dimension received 0
-[17:48:36] [Netty Local Client IO #0/DEBUG] [FML/]: FMLHandshakeClientState: $ServerHello->FMLHandshakeClientState$2:HELLO
-[17:48:36] [Netty Local Client IO #0/INFO] [FML/]: Server protocol version 2
-[17:48:36] [Netty Local Client IO #0/DEBUG] [FML/]: Received override dimension 0
-[17:48:36] [Netty Server IO #1/DEBUG] [FML/]: FMLHandshakeServerState: $ClientHello->FMLHandshakeServerState$2:HELLO
-[17:48:36] [Netty Server IO #1/INFO] [FML/]: Client protocol version 2
-[17:48:36] [Netty Server IO #1/DEBUG] [FML/]:   Next: HELLO
-[17:48:36] [Netty Local Client IO #0/DEBUG] [FML/]:   Next: WAITINGSERVERDATA
-[17:48:36] [Netty Server IO #1/DEBUG] [FML/]: FMLHandshakeServerState: $ModList:4 mods->FMLHandshakeServerState$2:HELLO
-[17:48:36] [Netty Server IO #1/INFO] [FML/]: Client attempting to join with 4 mods : mcp@9.05,FML@8.0.99.99,machinemod@${version},Forge@11.14.4.1577
-[17:48:36] [Netty Server IO #1/DEBUG] [FML/]:   Next: WAITINGCACK
-[17:48:36] [Netty Local Client IO #0/DEBUG] [FML/]: FMLHandshakeClientState: $ModList:4 mods->FMLHandshakeClientState$3:WAITINGSERVERDATA
-[17:48:36] [Netty Local Client IO #0/DEBUG] [FML/]:   Next: PENDINGCOMPLETE
-[17:48:36] [Netty Server IO #1/DEBUG] [FML/]: FMLHandshakeServerState: $HandshakeAck:{2}->FMLHandshakeServerState$3:WAITINGCACK
-[17:48:36] [Netty Local Client IO #0/DEBUG] [FML/]: FMLHandshakeClientState: $HandshakeAck:{2}->FMLHandshakeClientState$5:PENDINGCOMPLETE
-[17:48:36] [Netty Local Client IO #0/DEBUG] [FML/]:   Next: COMPLETE
-[17:48:36] [Netty Server IO #1/DEBUG] [FML/]:   Next: COMPLETE
-[17:48:36] [Netty Server IO #1/DEBUG] [FML/]: FMLHandshakeServerState: $HandshakeAck:{4}->FMLHandshakeServerState$4:COMPLETE
-[17:48:36] [Netty Local Client IO #0/DEBUG] [FML/]: The fluid minecraft:water has been selected as the default fluid for water
-[17:48:36] [Netty Local Client IO #0/DEBUG] [FML/]: The fluid minecraft:lava has been selected as the default fluid for lava
-[17:48:36] [Netty Server IO #1/DEBUG] [FML/]:   Next: DONE
-[17:48:36] [Netty Local Client IO #0/DEBUG] [FML/]: FMLHandshakeClientState: $HandshakeAck:{3}->FMLHandshakeClientState$6:COMPLETE
-[17:48:36] [Netty Local Client IO #0/DEBUG] [FML/]:   Next: DONE
-[17:48:36] [Netty Server IO #1/DEBUG] [FML/]: FMLHandshakeServerState: $HandshakeAck:{5}->FMLHandshakeServerState$5:DONE
-[17:48:36] [Netty Server IO #1/DEBUG] [FML/]:   Next: DONE
-[17:48:36] [Netty Local Client IO #0/INFO] [FML/]: [Netty Local Client IO #0] Client side modded connection established
-[17:48:36] [Server thread/INFO] [FML/]: [Server thread] Server side modded connection established
-[17:48:36] [Client thread/DEBUG] [FML/]: Overriding dimension: using 0
-[17:49:20] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:49:39] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:49:50] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:49:51] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:49:52] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerStoppingEvent to mod mcp
-[17:49:52] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerStoppingEvent to mod mcp
-[17:49:52] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopping - Minecraft Coder Pack took 0.000s
-[17:49:52] [Server thread/TRACE] [FML/FML]: Sending event FMLServerStoppingEvent to mod FML
-[17:49:52] [Server thread/TRACE] [FML/FML]: Sent event FMLServerStoppingEvent to mod FML
-[17:49:52] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopping - Forge Mod Loader took 0.000s
-[17:49:52] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerStoppingEvent to mod Forge
-[17:49:52] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerStoppingEvent to mod Forge
-[17:49:52] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopping - Minecraft Forge took 0.000s
-[17:49:52] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLServerStoppingEvent to mod machinemod
-[17:49:52] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLServerStoppingEvent to mod machinemod
-[17:49:52] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopping - TechStack's Heavy Machinery Mod took 0.000s
-[17:49:52] [Server thread/DEBUG] [FML/]: Bar Finished: ServerStopping took 0.001s
-[17:49:52] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:49:53] [Server thread/INFO] [FML/]: Unloading dimension 0
-[17:49:53] [Server thread/INFO] [FML/]: Unloading dimension -1
-[17:49:53] [Server thread/INFO] [FML/]: Unloading dimension 1
-[17:49:53] [Server thread/DEBUG] [FML/]: Reverting to frozen data state.
-[17:49:53] [Server thread/TRACE] [mcp/mcp]: Sending event FMLModIdMappingEvent to mod mcp
-[17:49:53] [Server thread/TRACE] [mcp/mcp]: Sent event FMLModIdMappingEvent to mod mcp
-[17:49:53] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Minecraft Coder Pack took 0.000s
-[17:49:53] [Server thread/TRACE] [FML/FML]: Sending event FMLModIdMappingEvent to mod FML
-[17:49:53] [Server thread/TRACE] [FML/FML]: Sent event FMLModIdMappingEvent to mod FML
-[17:49:53] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Forge Mod Loader took 0.000s
-[17:49:53] [Server thread/TRACE] [Forge/Forge]: Sending event FMLModIdMappingEvent to mod Forge
-[17:49:53] [Server thread/TRACE] [Forge/Forge]: Sent event FMLModIdMappingEvent to mod Forge
-[17:49:53] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Minecraft Forge took 0.001s
-[17:49:53] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLModIdMappingEvent to mod machinemod
-[17:49:53] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLModIdMappingEvent to mod machinemod
-[17:49:53] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - TechStack's Heavy Machinery Mod took 0.000s
-[17:49:53] [Server thread/DEBUG] [FML/]: Bar Finished: ModIdMapping took 0.002s
-[17:49:53] [Server thread/INFO] [FML/]: Applying holder lookups
-[17:49:53] [Server thread/INFO] [FML/]: Holder lookups applied
-[17:49:53] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerStoppedEvent to mod mcp
-[17:49:53] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerStoppedEvent to mod mcp
-[17:49:53] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopped - Minecraft Coder Pack took 0.000s
-[17:49:53] [Server thread/TRACE] [FML/FML]: Sending event FMLServerStoppedEvent to mod FML
-[17:49:53] [Server thread/TRACE] [FML/FML]: Sent event FMLServerStoppedEvent to mod FML
-[17:49:53] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopped - Forge Mod Loader took 0.000s
-[17:49:53] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerStoppedEvent to mod Forge
-[17:49:53] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerStoppedEvent to mod Forge
-[17:49:53] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopped - Minecraft Forge took 0.000s
-[17:49:53] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLServerStoppedEvent to mod machinemod
-[17:49:53] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLServerStoppedEvent to mod machinemod
-[17:49:53] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopped - TechStack's Heavy Machinery Mod took 0.000s
-[17:49:53] [Server thread/DEBUG] [FML/]: Bar Finished: ServerStopped took 0.001s
-[17:49:56] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerAboutToStartEvent to mod mcp
-[17:49:56] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerAboutToStartEvent to mod mcp
-[17:49:56] [Server thread/DEBUG] [FML/]: Bar Step: ServerAboutToStart - Minecraft Coder Pack took 0.000s
-[17:49:56] [Server thread/TRACE] [FML/FML]: Sending event FMLServerAboutToStartEvent to mod FML
-[17:49:56] [Server thread/TRACE] [FML/FML]: Sent event FMLServerAboutToStartEvent to mod FML
-[17:49:56] [Server thread/DEBUG] [FML/]: Bar Step: ServerAboutToStart - Forge Mod Loader took 0.000s
-[17:49:56] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerAboutToStartEvent to mod Forge
-[17:49:56] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerAboutToStartEvent to mod Forge
-[17:49:56] [Server thread/DEBUG] [FML/]: Bar Step: ServerAboutToStart - Minecraft Forge took 0.000s
-[17:49:56] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLServerAboutToStartEvent to mod machinemod
-[17:49:56] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLServerAboutToStartEvent to mod machinemod
-[17:49:56] [Server thread/DEBUG] [FML/]: Bar Step: ServerAboutToStart - TechStack's Heavy Machinery Mod took 0.000s
-[17:49:56] [Server thread/DEBUG] [FML/]: Bar Finished: ServerAboutToStart took 0.001s
-[17:49:56] [Server thread/INFO] [FML/]: Injecting existing block and item data into this server instance
-[17:49:56] [Server thread/DEBUG] [FML/]: Registry consistency check successful
-[17:49:56] [Server thread/DEBUG] [FML/]: Registry consistency check successful
-[17:49:56] [Server thread/TRACE] [mcp/mcp]: Sending event FMLModIdMappingEvent to mod mcp
-[17:49:56] [Server thread/TRACE] [mcp/mcp]: Sent event FMLModIdMappingEvent to mod mcp
-[17:49:56] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Minecraft Coder Pack took 0.000s
-[17:49:56] [Server thread/TRACE] [FML/FML]: Sending event FMLModIdMappingEvent to mod FML
-[17:49:56] [Server thread/TRACE] [FML/FML]: Sent event FMLModIdMappingEvent to mod FML
-[17:49:56] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Forge Mod Loader took 0.000s
-[17:49:56] [Server thread/TRACE] [Forge/Forge]: Sending event FMLModIdMappingEvent to mod Forge
-[17:49:56] [Server thread/TRACE] [Forge/Forge]: Sent event FMLModIdMappingEvent to mod Forge
-[17:49:56] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Minecraft Forge took 0.001s
-[17:49:56] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLModIdMappingEvent to mod machinemod
-[17:49:56] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLModIdMappingEvent to mod machinemod
-[17:49:56] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - TechStack's Heavy Machinery Mod took 0.001s
-[17:49:56] [Server thread/DEBUG] [FML/]: Bar Finished: ModIdMapping took 0.002s
-[17:49:56] [Server thread/INFO] [FML/]: Applying holder lookups
-[17:49:56] [Server thread/INFO] [FML/]: Holder lookups applied
-[17:49:56] [Server thread/DEBUG] [FML/]: Loading persistent fluid defaults from world
-[17:49:56] [Server thread/DEBUG] [FML/]: The fluid minecraft:water has been selected as the default fluid for water
-[17:49:56] [Server thread/DEBUG] [FML/]: The fluid minecraft:lava has been selected as the default fluid for lava
-[17:49:56] [Server thread/INFO] [FML/]: Loading dimension 0 (New World) (net.minecraft.server.integrated.IntegratedServer@5777abcc)
-[17:49:56] [Server thread/INFO] [FML/]: Loading dimension 1 (New World) (net.minecraft.server.integrated.IntegratedServer@5777abcc)
-[17:49:56] [Server thread/INFO] [FML/]: Loading dimension -1 (New World) (net.minecraft.server.integrated.IntegratedServer@5777abcc)
-[17:49:57] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerStartingEvent to mod mcp
-[17:49:57] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerStartingEvent to mod mcp
-[17:49:57] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarting - Minecraft Coder Pack took 0.000s
-[17:49:57] [Server thread/TRACE] [FML/FML]: Sending event FMLServerStartingEvent to mod FML
-[17:49:57] [Server thread/TRACE] [FML/FML]: Sent event FMLServerStartingEvent to mod FML
-[17:49:57] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarting - Forge Mod Loader took 0.000s
-[17:49:57] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerStartingEvent to mod Forge
-[17:49:57] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerStartingEvent to mod Forge
-[17:49:57] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarting - Minecraft Forge took 0.001s
-[17:49:57] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLServerStartingEvent to mod machinemod
-[17:49:57] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLServerStartingEvent to mod machinemod
-[17:49:57] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarting - TechStack's Heavy Machinery Mod took 0.000s
-[17:49:57] [Server thread/DEBUG] [FML/]: Bar Finished: ServerStarting took 0.002s
-[17:49:57] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerStartedEvent to mod mcp
-[17:49:57] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerStartedEvent to mod mcp
-[17:49:57] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarted - Minecraft Coder Pack took 0.000s
-[17:49:57] [Server thread/TRACE] [FML/FML]: Sending event FMLServerStartedEvent to mod FML
-[17:49:57] [Server thread/TRACE] [FML/FML]: Sent event FMLServerStartedEvent to mod FML
-[17:49:57] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarted - Forge Mod Loader took 0.000s
-[17:49:57] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerStartedEvent to mod Forge
-[17:49:57] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerStartedEvent to mod Forge
-[17:49:57] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarted - Minecraft Forge took 0.000s
-[17:49:57] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLServerStartedEvent to mod machinemod
-[17:49:57] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLServerStartedEvent to mod machinemod
-[17:49:57] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarted - TechStack's Heavy Machinery Mod took 0.000s
-[17:49:57] [Server thread/DEBUG] [FML/]: Bar Finished: ServerStarted took 0.001s
-[17:49:57] [Netty Local Client IO #1/TRACE] [FML/]: Handshake channel activating
-[17:49:57] [Netty Local Client IO #1/DEBUG] [FML/]: FMLHandshakeClientState: null->FMLHandshakeClientState$1:START
-[17:49:57] [Netty Local Client IO #1/DEBUG] [FML/]:   Next: HELLO
-[17:49:57] [Netty Server IO #3/TRACE] [FML/]: Handshake channel activating
-[17:49:57] [Netty Server IO #3/DEBUG] [FML/]: FMLHandshakeServerState: null->FMLHandshakeServerState$1:START
-[17:49:57] [Netty Server IO #3/DEBUG] [FML/]:   Next: HELLO
-[17:49:57] [Netty Local Client IO #1/DEBUG] [FML/]: Server FML protocol version 2, 4 byte dimension received 0
-[17:49:57] [Netty Local Client IO #1/DEBUG] [FML/]: FMLHandshakeClientState: $ServerHello->FMLHandshakeClientState$2:HELLO
-[17:49:57] [Netty Local Client IO #1/INFO] [FML/]: Server protocol version 2
-[17:49:57] [Netty Local Client IO #1/DEBUG] [FML/]: Received override dimension 0
-[17:49:57] [Netty Server IO #3/DEBUG] [FML/]: FMLHandshakeServerState: $ClientHello->FMLHandshakeServerState$2:HELLO
-[17:49:57] [Netty Local Client IO #1/DEBUG] [FML/]:   Next: WAITINGSERVERDATA
-[17:49:57] [Netty Server IO #3/INFO] [FML/]: Client protocol version 2
-[17:49:57] [Netty Server IO #3/DEBUG] [FML/]:   Next: HELLO
-[17:49:57] [Netty Server IO #3/DEBUG] [FML/]: FMLHandshakeServerState: $ModList:4 mods->FMLHandshakeServerState$2:HELLO
-[17:49:57] [Netty Server IO #3/INFO] [FML/]: Client attempting to join with 4 mods : mcp@9.05,FML@8.0.99.99,machinemod@${version},Forge@11.14.4.1577
-[17:49:57] [Netty Server IO #3/DEBUG] [FML/]:   Next: WAITINGCACK
-[17:49:57] [Netty Local Client IO #1/DEBUG] [FML/]: FMLHandshakeClientState: $ModList:4 mods->FMLHandshakeClientState$3:WAITINGSERVERDATA
-[17:49:57] [Netty Local Client IO #1/DEBUG] [FML/]:   Next: PENDINGCOMPLETE
-[17:49:57] [Netty Server IO #3/DEBUG] [FML/]: FMLHandshakeServerState: $HandshakeAck:{2}->FMLHandshakeServerState$3:WAITINGCACK
-[17:49:57] [Netty Local Client IO #1/DEBUG] [FML/]: FMLHandshakeClientState: $HandshakeAck:{2}->FMLHandshakeClientState$5:PENDINGCOMPLETE
-[17:49:57] [Netty Local Client IO #1/DEBUG] [FML/]:   Next: COMPLETE
-[17:49:57] [Netty Server IO #3/DEBUG] [FML/]:   Next: COMPLETE
-[17:49:57] [Netty Local Client IO #1/DEBUG] [FML/]: The fluid minecraft:water has been selected as the default fluid for water
-[17:49:57] [Netty Server IO #3/DEBUG] [FML/]: FMLHandshakeServerState: $HandshakeAck:{4}->FMLHandshakeServerState$4:COMPLETE
-[17:49:57] [Netty Local Client IO #1/DEBUG] [FML/]: The fluid minecraft:lava has been selected as the default fluid for lava
-[17:49:57] [Netty Server IO #3/DEBUG] [FML/]:   Next: DONE
-[17:49:57] [Netty Local Client IO #1/DEBUG] [FML/]: FMLHandshakeClientState: $HandshakeAck:{3}->FMLHandshakeClientState$6:COMPLETE
-[17:49:57] [Netty Local Client IO #1/DEBUG] [FML/]:   Next: DONE
-[17:49:57] [Netty Server IO #3/DEBUG] [FML/]: FMLHandshakeServerState: $HandshakeAck:{5}->FMLHandshakeServerState$5:DONE
-[17:49:57] [Netty Server IO #3/DEBUG] [FML/]:   Next: DONE
-[17:49:57] [Netty Local Client IO #1/INFO] [FML/]: [Netty Local Client IO #1] Client side modded connection established
-[17:49:57] [Server thread/INFO] [FML/]: [Server thread] Server side modded connection established
-[17:49:57] [Client thread/DEBUG] [FML/]: Overriding dimension: using 0
-[17:49:58] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:49:59] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerStoppingEvent to mod mcp
-[17:49:59] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerStoppingEvent to mod mcp
-[17:49:59] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopping - Minecraft Coder Pack took 0.001s
-[17:49:59] [Server thread/TRACE] [FML/FML]: Sending event FMLServerStoppingEvent to mod FML
-[17:49:59] [Server thread/TRACE] [FML/FML]: Sent event FMLServerStoppingEvent to mod FML
-[17:49:59] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopping - Forge Mod Loader took 0.001s
-[17:49:59] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerStoppingEvent to mod Forge
-[17:49:59] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerStoppingEvent to mod Forge
-[17:49:59] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopping - Minecraft Forge took 0.000s
-[17:49:59] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLServerStoppingEvent to mod machinemod
-[17:49:59] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLServerStoppingEvent to mod machinemod
-[17:49:59] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopping - TechStack's Heavy Machinery Mod took 0.001s
-[17:49:59] [Server thread/DEBUG] [FML/]: Bar Finished: ServerStopping took 0.003s
-[17:49:59] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:49:59] [Server thread/INFO] [FML/]: Unloading dimension 0
-[17:49:59] [Server thread/INFO] [FML/]: Unloading dimension -1
-[17:49:59] [Server thread/INFO] [FML/]: Unloading dimension 1
-[17:49:59] [Server thread/DEBUG] [FML/]: Reverting to frozen data state.
-[17:49:59] [Server thread/TRACE] [mcp/mcp]: Sending event FMLModIdMappingEvent to mod mcp
-[17:49:59] [Server thread/TRACE] [mcp/mcp]: Sent event FMLModIdMappingEvent to mod mcp
-[17:49:59] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Minecraft Coder Pack took 0.001s
-[17:49:59] [Server thread/TRACE] [FML/FML]: Sending event FMLModIdMappingEvent to mod FML
-[17:49:59] [Server thread/TRACE] [FML/FML]: Sent event FMLModIdMappingEvent to mod FML
-[17:49:59] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Forge Mod Loader took 0.001s
-[17:49:59] [Server thread/TRACE] [Forge/Forge]: Sending event FMLModIdMappingEvent to mod Forge
-[17:49:59] [Server thread/TRACE] [Forge/Forge]: Sent event FMLModIdMappingEvent to mod Forge
-[17:49:59] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Minecraft Forge took 0.001s
-[17:49:59] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLModIdMappingEvent to mod machinemod
-[17:49:59] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLModIdMappingEvent to mod machinemod
-[17:49:59] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - TechStack's Heavy Machinery Mod took 0.001s
-[17:49:59] [Server thread/DEBUG] [FML/]: Bar Finished: ModIdMapping took 0.004s
-[17:49:59] [Server thread/INFO] [FML/]: Applying holder lookups
-[17:49:59] [Server thread/INFO] [FML/]: Holder lookups applied
-[17:49:59] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerStoppedEvent to mod mcp
-[17:49:59] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerStoppedEvent to mod mcp
-[17:49:59] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopped - Minecraft Coder Pack took 0.001s
-[17:49:59] [Server thread/TRACE] [FML/FML]: Sending event FMLServerStoppedEvent to mod FML
-[17:49:59] [Server thread/TRACE] [FML/FML]: Sent event FMLServerStoppedEvent to mod FML
-[17:49:59] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopped - Forge Mod Loader took 0.000s
-[17:49:59] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerStoppedEvent to mod Forge
-[17:49:59] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerStoppedEvent to mod Forge
-[17:49:59] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopped - Minecraft Forge took 0.000s
-[17:49:59] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLServerStoppedEvent to mod machinemod
-[17:49:59] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLServerStoppedEvent to mod machinemod
-[17:49:59] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopped - TechStack's Heavy Machinery Mod took 0.000s
-[17:49:59] [Server thread/DEBUG] [FML/]: Bar Finished: ServerStopped took 0.001s
-[17:50:04] [Client thread/DEBUG] [FML/]: Gathering id map for writing to world save New World-
-[17:50:05] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerAboutToStartEvent to mod mcp
-[17:50:05] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerAboutToStartEvent to mod mcp
-[17:50:05] [Server thread/DEBUG] [FML/]: Bar Step: ServerAboutToStart - Minecraft Coder Pack took 0.000s
-[17:50:05] [Server thread/TRACE] [FML/FML]: Sending event FMLServerAboutToStartEvent to mod FML
-[17:50:05] [Server thread/TRACE] [FML/FML]: Sent event FMLServerAboutToStartEvent to mod FML
-[17:50:05] [Server thread/DEBUG] [FML/]: Bar Step: ServerAboutToStart - Forge Mod Loader took 0.000s
-[17:50:05] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerAboutToStartEvent to mod Forge
-[17:50:05] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerAboutToStartEvent to mod Forge
-[17:50:05] [Server thread/DEBUG] [FML/]: Bar Step: ServerAboutToStart - Minecraft Forge took 0.000s
-[17:50:05] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLServerAboutToStartEvent to mod machinemod
-[17:50:05] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLServerAboutToStartEvent to mod machinemod
-[17:50:05] [Server thread/DEBUG] [FML/]: Bar Step: ServerAboutToStart - TechStack's Heavy Machinery Mod took 0.000s
-[17:50:05] [Server thread/DEBUG] [FML/]: Bar Finished: ServerAboutToStart took 0.001s
-[17:50:05] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World-
-[17:50:05] [Server thread/INFO] [FML/]: Injecting existing block and item data into this server instance
-[17:50:05] [Server thread/DEBUG] [FML/]: Registry consistency check successful
-[17:50:05] [Server thread/DEBUG] [FML/]: Registry consistency check successful
-[17:50:05] [Server thread/TRACE] [mcp/mcp]: Sending event FMLModIdMappingEvent to mod mcp
-[17:50:05] [Server thread/TRACE] [mcp/mcp]: Sent event FMLModIdMappingEvent to mod mcp
-[17:50:05] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Minecraft Coder Pack took 0.000s
-[17:50:05] [Server thread/TRACE] [FML/FML]: Sending event FMLModIdMappingEvent to mod FML
-[17:50:05] [Server thread/TRACE] [FML/FML]: Sent event FMLModIdMappingEvent to mod FML
-[17:50:05] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Forge Mod Loader took 0.000s
-[17:50:05] [Server thread/TRACE] [Forge/Forge]: Sending event FMLModIdMappingEvent to mod Forge
-[17:50:05] [Server thread/TRACE] [Forge/Forge]: Sent event FMLModIdMappingEvent to mod Forge
-[17:50:05] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Minecraft Forge took 0.000s
-[17:50:05] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLModIdMappingEvent to mod machinemod
-[17:50:05] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLModIdMappingEvent to mod machinemod
-[17:50:05] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - TechStack's Heavy Machinery Mod took 0.000s
-[17:50:05] [Server thread/DEBUG] [FML/]: Bar Finished: ModIdMapping took 0.001s
-[17:50:05] [Server thread/INFO] [FML/]: Applying holder lookups
-[17:50:05] [Server thread/INFO] [FML/]: Holder lookups applied
-[17:50:05] [Server thread/DEBUG] [FML/]: Loading persistent fluid defaults from world
-[17:50:05] [Server thread/DEBUG] [FML/]: The fluid minecraft:water has been selected as the default fluid for water
-[17:50:05] [Server thread/DEBUG] [FML/]: The fluid minecraft:lava has been selected as the default fluid for lava
-[17:50:05] [Server thread/INFO] [FML/]: Loading dimension 0 (New World) (net.minecraft.server.integrated.IntegratedServer@56b67a67)
-[17:50:05] [Server thread/INFO] [FML/]: Loading dimension 1 (New World) (net.minecraft.server.integrated.IntegratedServer@56b67a67)
-[17:50:05] [Server thread/INFO] [FML/]: Loading dimension -1 (New World) (net.minecraft.server.integrated.IntegratedServer@56b67a67)
-[17:50:10] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerStartingEvent to mod mcp
-[17:50:10] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerStartingEvent to mod mcp
-[17:50:10] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarting - Minecraft Coder Pack took 0.000s
-[17:50:10] [Server thread/TRACE] [FML/FML]: Sending event FMLServerStartingEvent to mod FML
-[17:50:10] [Server thread/TRACE] [FML/FML]: Sent event FMLServerStartingEvent to mod FML
-[17:50:10] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarting - Forge Mod Loader took 0.000s
-[17:50:10] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerStartingEvent to mod Forge
-[17:50:10] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerStartingEvent to mod Forge
-[17:50:10] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarting - Minecraft Forge took 0.000s
-[17:50:10] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLServerStartingEvent to mod machinemod
-[17:50:10] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLServerStartingEvent to mod machinemod
-[17:50:10] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarting - TechStack's Heavy Machinery Mod took 0.000s
-[17:50:10] [Server thread/DEBUG] [FML/]: Bar Finished: ServerStarting took 0.001s
-[17:50:10] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerStartedEvent to mod mcp
-[17:50:10] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerStartedEvent to mod mcp
-[17:50:10] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarted - Minecraft Coder Pack took 0.000s
-[17:50:10] [Server thread/TRACE] [FML/FML]: Sending event FMLServerStartedEvent to mod FML
-[17:50:10] [Server thread/TRACE] [FML/FML]: Sent event FMLServerStartedEvent to mod FML
-[17:50:10] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarted - Forge Mod Loader took 0.000s
-[17:50:10] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerStartedEvent to mod Forge
-[17:50:10] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerStartedEvent to mod Forge
-[17:50:10] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarted - Minecraft Forge took 0.000s
-[17:50:10] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLServerStartedEvent to mod machinemod
-[17:50:10] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLServerStartedEvent to mod machinemod
-[17:50:10] [Server thread/DEBUG] [FML/]: Bar Step: ServerStarted - TechStack's Heavy Machinery Mod took 0.000s
-[17:50:10] [Server thread/DEBUG] [FML/]: Bar Finished: ServerStarted took 0.001s
-[17:50:10] [Netty Local Client IO #2/TRACE] [FML/]: Handshake channel activating
-[17:50:10] [Netty Local Client IO #2/DEBUG] [FML/]: FMLHandshakeClientState: null->FMLHandshakeClientState$1:START
-[17:50:10] [Netty Local Client IO #2/DEBUG] [FML/]:   Next: HELLO
-[17:50:10] [Netty Server IO #5/TRACE] [FML/]: Handshake channel activating
-[17:50:10] [Netty Server IO #5/DEBUG] [FML/]: FMLHandshakeServerState: null->FMLHandshakeServerState$1:START
-[17:50:10] [Netty Server IO #5/DEBUG] [FML/]:   Next: HELLO
-[17:50:10] [Netty Local Client IO #2/DEBUG] [FML/]: Server FML protocol version 2, 4 byte dimension received 0
-[17:50:10] [Netty Local Client IO #2/DEBUG] [FML/]: FMLHandshakeClientState: $ServerHello->FMLHandshakeClientState$2:HELLO
-[17:50:10] [Netty Local Client IO #2/INFO] [FML/]: Server protocol version 2
-[17:50:10] [Netty Local Client IO #2/DEBUG] [FML/]: Received override dimension 0
-[17:50:10] [Netty Server IO #5/DEBUG] [FML/]: FMLHandshakeServerState: $ClientHello->FMLHandshakeServerState$2:HELLO
-[17:50:10] [Netty Local Client IO #2/DEBUG] [FML/]:   Next: WAITINGSERVERDATA
-[17:50:10] [Netty Server IO #5/INFO] [FML/]: Client protocol version 2
-[17:50:10] [Netty Server IO #5/DEBUG] [FML/]:   Next: HELLO
-[17:50:10] [Netty Server IO #5/DEBUG] [FML/]: FMLHandshakeServerState: $ModList:4 mods->FMLHandshakeServerState$2:HELLO
-[17:50:10] [Netty Server IO #5/INFO] [FML/]: Client attempting to join with 4 mods : mcp@9.05,FML@8.0.99.99,machinemod@${version},Forge@11.14.4.1577
-[17:50:10] [Netty Server IO #5/DEBUG] [FML/]:   Next: WAITINGCACK
-[17:50:10] [Netty Local Client IO #2/DEBUG] [FML/]: FMLHandshakeClientState: $ModList:4 mods->FMLHandshakeClientState$3:WAITINGSERVERDATA
-[17:50:10] [Netty Local Client IO #2/DEBUG] [FML/]:   Next: PENDINGCOMPLETE
-[17:50:10] [Netty Server IO #5/DEBUG] [FML/]: FMLHandshakeServerState: $HandshakeAck:{2}->FMLHandshakeServerState$3:WAITINGCACK
-[17:50:10] [Netty Local Client IO #2/DEBUG] [FML/]: FMLHandshakeClientState: $HandshakeAck:{2}->FMLHandshakeClientState$5:PENDINGCOMPLETE
-[17:50:10] [Netty Server IO #5/DEBUG] [FML/]:   Next: COMPLETE
-[17:50:10] [Netty Local Client IO #2/DEBUG] [FML/]:   Next: COMPLETE
-[17:50:10] [Netty Server IO #5/DEBUG] [FML/]: FMLHandshakeServerState: $HandshakeAck:{4}->FMLHandshakeServerState$4:COMPLETE
-[17:50:10] [Netty Server IO #5/DEBUG] [FML/]:   Next: DONE
-[17:50:10] [Netty Local Client IO #2/DEBUG] [FML/]: The fluid minecraft:water has been selected as the default fluid for water
-[17:50:10] [Netty Local Client IO #2/DEBUG] [FML/]: The fluid minecraft:lava has been selected as the default fluid for lava
-[17:50:10] [Netty Local Client IO #2/DEBUG] [FML/]: FMLHandshakeClientState: $HandshakeAck:{3}->FMLHandshakeClientState$6:COMPLETE
-[17:50:10] [Netty Local Client IO #2/DEBUG] [FML/]:   Next: DONE
-[17:50:10] [Netty Server IO #5/DEBUG] [FML/]: FMLHandshakeServerState: $HandshakeAck:{5}->FMLHandshakeServerState$5:DONE
-[17:50:10] [Netty Server IO #5/DEBUG] [FML/]:   Next: DONE
-[17:50:10] [Netty Local Client IO #2/INFO] [FML/]: [Netty Local Client IO #2] Client side modded connection established
-[17:50:10] [Server thread/INFO] [FML/]: [Server thread] Server side modded connection established
-[17:50:10] [Client thread/DEBUG] [FML/]: Overriding dimension: using 0
-[17:50:55] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:51:40] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:52:25] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:53:10] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:53:55] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:54:40] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:55:25] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:56:10] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:56:55] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:57:21] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:57:53] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:58:38] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[17:59:23] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[18:00:01] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[18:00:02] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerStoppingEvent to mod mcp
-[18:00:02] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerStoppingEvent to mod mcp
-[18:00:02] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopping - Minecraft Coder Pack took 0.000s
-[18:00:02] [Server thread/TRACE] [FML/FML]: Sending event FMLServerStoppingEvent to mod FML
-[18:00:02] [Server thread/TRACE] [FML/FML]: Sent event FMLServerStoppingEvent to mod FML
-[18:00:02] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopping - Forge Mod Loader took 0.000s
-[18:00:02] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerStoppingEvent to mod Forge
-[18:00:02] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerStoppingEvent to mod Forge
-[18:00:02] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopping - Minecraft Forge took 0.000s
-[18:00:02] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLServerStoppingEvent to mod machinemod
-[18:00:02] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLServerStoppingEvent to mod machinemod
-[18:00:02] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopping - TechStack's Heavy Machinery Mod took 0.000s
-[18:00:02] [Server thread/DEBUG] [FML/]: Bar Finished: ServerStopping took 0.001s
-[18:00:02] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save New World
-[18:00:02] [Server thread/INFO] [FML/]: Unloading dimension 0
-[18:00:02] [Server thread/INFO] [FML/]: Unloading dimension -1
-[18:00:02] [Server thread/INFO] [FML/]: Unloading dimension 1
-[18:00:02] [Server thread/DEBUG] [FML/]: Reverting to frozen data state.
-[18:00:03] [Server thread/TRACE] [mcp/mcp]: Sending event FMLModIdMappingEvent to mod mcp
-[18:00:03] [Server thread/TRACE] [mcp/mcp]: Sent event FMLModIdMappingEvent to mod mcp
-[18:00:03] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Minecraft Coder Pack took 0.000s
-[18:00:03] [Server thread/TRACE] [FML/FML]: Sending event FMLModIdMappingEvent to mod FML
-[18:00:03] [Server thread/TRACE] [FML/FML]: Sent event FMLModIdMappingEvent to mod FML
-[18:00:03] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Forge Mod Loader took 0.000s
-[18:00:03] [Server thread/TRACE] [Forge/Forge]: Sending event FMLModIdMappingEvent to mod Forge
-[18:00:03] [Server thread/TRACE] [Forge/Forge]: Sent event FMLModIdMappingEvent to mod Forge
-[18:00:03] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - Minecraft Forge took 0.000s
-[18:00:03] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLModIdMappingEvent to mod machinemod
-[18:00:03] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLModIdMappingEvent to mod machinemod
-[18:00:03] [Server thread/DEBUG] [FML/]: Bar Step: ModIdMapping - TechStack's Heavy Machinery Mod took 0.000s
-[18:00:03] [Server thread/DEBUG] [FML/]: Bar Finished: ModIdMapping took 0.001s
-[18:00:03] [Server thread/INFO] [FML/]: Applying holder lookups
-[18:00:03] [Server thread/INFO] [FML/]: Holder lookups applied
-[18:00:03] [Server thread/TRACE] [mcp/mcp]: Sending event FMLServerStoppedEvent to mod mcp
-[18:00:03] [Server thread/TRACE] [mcp/mcp]: Sent event FMLServerStoppedEvent to mod mcp
-[18:00:03] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopped - Minecraft Coder Pack took 0.000s
-[18:00:03] [Server thread/TRACE] [FML/FML]: Sending event FMLServerStoppedEvent to mod FML
-[18:00:03] [Server thread/TRACE] [FML/FML]: Sent event FMLServerStoppedEvent to mod FML
-[18:00:03] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopped - Forge Mod Loader took 0.000s
-[18:00:03] [Server thread/TRACE] [Forge/Forge]: Sending event FMLServerStoppedEvent to mod Forge
-[18:00:03] [Server thread/TRACE] [Forge/Forge]: Sent event FMLServerStoppedEvent to mod Forge
-[18:00:03] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopped - Minecraft Forge took 0.000s
-[18:00:03] [Server thread/TRACE] [machinemod/machinemod]: Sending event FMLServerStoppedEvent to mod machinemod
-[18:00:03] [Server thread/TRACE] [machinemod/machinemod]: Sent event FMLServerStoppedEvent to mod machinemod
-[18:00:03] [Server thread/DEBUG] [FML/]: Bar Step: ServerStopped - TechStack's Heavy Machinery Mod took 0.000s
-[18:00:03] [Server thread/DEBUG] [FML/]: Bar Finished: ServerStopped took 0.001s
+[18:02:08] [Forge Version Check/INFO] [ForgeVersionCheck/Forge]: [Forge] Found status: AHEAD Target: null
+[18:02:09] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - SoundHandler took 1.104s
+[18:02:09] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - FontRenderer took 0.002s
+[18:02:09] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - FontRenderer took 0.003s
+[18:02:09] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - GrassColorReloadListener took 0.007s
+[18:02:09] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - FoliageColorReloadListener took 0.007s
+[18:02:09] [Client thread/DEBUG] [FML/]: Bar Step: Rendering Setup - GL Setup took 0.000s
+[18:02:09] [Client thread/DEBUG] [FML/]: Bar Step: Rendering Setup - Loading Texture Map took 0.008s
+[18:02:09] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - ModelLoaderRegistry$1 took 0.000s
+[18:02:09] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - ModelLoaderRegistry$1 took 0.000s
+[18:02:09] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - ModelLoaderRegistry$1 took 0.000s
+[18:02:09] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - ModelLoaderRegistry$1 took 0.000s
+[18:02:10] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_aluminum' for variant: 'machinemod:machineblastedstone2#ore=aluminum': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_aluminum.json
+[18:02:10] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_sapphire' for variant: 'machinemod:machineblastedstone2#ore=sapphire': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_sapphire.json
+[18:02:10] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_tin' for variant: 'machinemod:machineblastedstone2#ore=tin': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_tin.json
+[18:02:10] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_copper' for variant: 'machinemod:machineblastedstone2#ore=copper': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_copper.json
+[18:02:10] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_silver' for variant: 'machinemod:machineblastedstone2#ore=silver': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_silver.json
+[18:02:11] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_uranium' for variant: 'machinemod:machineblastedstone2#ore=uranium': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_uranium.json
+[18:02:11] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_ruby' for variant: 'machinemod:machineblastedstone2#ore=ruby': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_ruby.json
+[18:02:11] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_lead' for variant: 'machinemod:machineblastedstone2#ore=lead': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_lead.json
+[18:02:11] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_quartz' for variant: 'machinemod:machineblastedstone2#ore=quartz': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_quartz.json
+[18:02:11] [Client thread/DEBUG] [FML/]: Item json isn't found for 'machinemod:machineblastedstone2#inventory', trying to load the variant from the blockstate json
+[18:02:11] [Client thread/DEBUG] [FML/]: Item json isn't found for 'machinemod:crane#inventory', trying to load the variant from the blockstate json
+[18:02:11] [Client thread/INFO] [FML/]: Max texture size: 16384
+[18:02:11] [Client thread/DEBUG] [FML/]: Bar Finished: Texture stitching - missingno took 0.001s
+[18:02:11] [Client thread/DEBUG] [FML/]: Bar Finished: Texture creation took 0.002s
+[18:02:11] [Client thread/ERROR] [FML/]: Model definition for location machinemod:crane#inventory not found
+[18:02:11] [Client thread/ERROR] [FML/]: Model definition for location machinemod:machineblastedstone2#inventory not found
+[18:02:11] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - ModelManager took 1.928s
+[18:02:11] [Client thread/DEBUG] [FML/]: Bar Step: Rendering Setup - Loading Model Manager took 2.009s
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - RenderItem took 0.003s
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Step: Rendering Setup - Loading Item Renderer took 0.349s
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - EntityRenderer took 0.000s
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - BlockRendererDispatcher took 0.000s
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resource - RenderGlobal took 0.000s
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Step: Rendering Setup - Loading Entity Renderer took 0.251s
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Finished: Rendering Setup took 2.616s
+[18:02:12] [Client thread/TRACE] [mcp/mcp]: Sending event FMLInitializationEvent to mod mcp
+[18:02:12] [Client thread/TRACE] [mcp/mcp]: Sent event FMLInitializationEvent to mod mcp
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Step: Initialization - Minecraft Coder Pack took 0.000s
+[18:02:12] [Client thread/TRACE] [FML/FML]: Sending event FMLInitializationEvent to mod FML
+[18:02:12] [Client thread/TRACE] [FML/FML]: Sent event FMLInitializationEvent to mod FML
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Step: Initialization - Forge Mod Loader took 0.001s
+[18:02:12] [Client thread/TRACE] [Forge/Forge]: Sending event FMLInitializationEvent to mod Forge
+[18:02:12] [Client thread/TRACE] [Forge/Forge]: Sent event FMLInitializationEvent to mod Forge
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Step: Initialization - Minecraft Forge took 0.000s
+[18:02:12] [Client thread/TRACE] [machinemod/machinemod]: Sending event FMLInitializationEvent to mod machinemod
+[18:02:12] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity drillingrig as machinemod.drillingrig
+[18:02:12] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity bulldozer as machinemod.bulldozer
+[18:02:12] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity dumptruck as machinemod.dumptruck
+[18:02:12] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity loader as machinemod.loader
+[18:02:12] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity tractor as machinemod.tractor
+[18:02:12] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity combine as machinemod.combine
+[18:02:12] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity widebedtruck as machinemod.widebedtruck
+[18:02:12] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity crane as machinemod.crane
+[18:02:12] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity excavator as machinemod.excavator
+[18:02:12] [Client thread/TRACE] [FML/machinemod]: Automatically registered mod machinemod entity paver as machinemod.paver
+[18:02:12] [Client thread/TRACE] [machinemod/machinemod]: Sent event FMLInitializationEvent to mod machinemod
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Step: Initialization - TechStack's Heavy Machinery Mod took 0.443s
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Finished: Initialization took 0.444s
+[18:02:12] [Client thread/TRACE] [FML/]: Attempting to deliver 0 IMC messages to mod mcp
+[18:02:12] [Client thread/TRACE] [mcp/mcp]: Sending event IMCEvent to mod mcp
+[18:02:12] [Client thread/TRACE] [mcp/mcp]: Sent event IMCEvent to mod mcp
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Step: InterModComms$IMC - Minecraft Coder Pack took 0.003s
+[18:02:12] [Client thread/TRACE] [FML/]: Attempting to deliver 0 IMC messages to mod FML
+[18:02:12] [Client thread/TRACE] [FML/FML]: Sending event IMCEvent to mod FML
+[18:02:12] [Client thread/TRACE] [FML/FML]: Sent event IMCEvent to mod FML
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Step: InterModComms$IMC - Forge Mod Loader took 0.000s
+[18:02:12] [Client thread/TRACE] [FML/]: Attempting to deliver 0 IMC messages to mod Forge
+[18:02:12] [Client thread/TRACE] [Forge/Forge]: Sending event IMCEvent to mod Forge
+[18:02:12] [Client thread/TRACE] [Forge/Forge]: Sent event IMCEvent to mod Forge
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Step: InterModComms$IMC - Minecraft Forge took 0.001s
+[18:02:12] [Client thread/TRACE] [FML/]: Attempting to deliver 0 IMC messages to mod machinemod
+[18:02:12] [Client thread/TRACE] [machinemod/machinemod]: Sending event IMCEvent to mod machinemod
+[18:02:12] [Client thread/TRACE] [machinemod/machinemod]: Sent event IMCEvent to mod machinemod
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Step: InterModComms$IMC - TechStack's Heavy Machinery Mod took 0.000s
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Finished: InterModComms$IMC took 0.004s
+[18:02:12] [Client thread/INFO] [FML/]: Injecting itemstacks
+[18:02:12] [Client thread/INFO] [FML/]: Itemstack injection complete
+[18:02:12] [Client thread/TRACE] [mcp/mcp]: Sending event FMLPostInitializationEvent to mod mcp
+[18:02:12] [Client thread/TRACE] [mcp/mcp]: Sent event FMLPostInitializationEvent to mod mcp
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Step: PostInitialization - Minecraft Coder Pack took 0.000s
+[18:02:12] [Client thread/TRACE] [FML/FML]: Sending event FMLPostInitializationEvent to mod FML
+[18:02:12] [Client thread/TRACE] [FML/FML]: Sent event FMLPostInitializationEvent to mod FML
+[18:02:12] [Client thread/DEBUG] [FML/]: Bar Step: PostInitialization - Forge Mod Loader took 0.000s
+[18:02:12] [Client thread/TRACE] [Forge/Forge]: Sending event FMLPostInitializationEvent to mod Forge
+[18:02:13] [Client thread/TRACE] [Forge/Forge]: Sent event FMLPostInitializationEvent to mod Forge
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Step: PostInitialization - Minecraft Forge took 0.079s
+[18:02:13] [Client thread/TRACE] [machinemod/machinemod]: Sending event FMLPostInitializationEvent to mod machinemod
+[18:02:13] [Client thread/DEBUG] [MachineMod/machinemod]: Is Bulldozer Enabled: true
+[18:02:13] [Client thread/TRACE] [machinemod/machinemod]: Sent event FMLPostInitializationEvent to mod machinemod
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Step: PostInitialization - TechStack's Heavy Machinery Mod took 0.002s
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Finished: PostInitialization took 0.082s
+[18:02:13] [Client thread/TRACE] [mcp/mcp]: Sending event FMLLoadCompleteEvent to mod mcp
+[18:02:13] [Client thread/TRACE] [mcp/mcp]: Sent event FMLLoadCompleteEvent to mod mcp
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Step: LoadComplete - Minecraft Coder Pack took 0.000s
+[18:02:13] [Client thread/TRACE] [FML/FML]: Sending event FMLLoadCompleteEvent to mod FML
+[18:02:13] [Client thread/TRACE] [FML/FML]: Sent event FMLLoadCompleteEvent to mod FML
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Step: LoadComplete - Forge Mod Loader took 0.000s
+[18:02:13] [Client thread/TRACE] [Forge/Forge]: Sending event FMLLoadCompleteEvent to mod Forge
+[18:02:13] [Client thread/DEBUG] [FML/Forge]: Forge RecipeSorter Baking:
+[18:02:13] [Client thread/DEBUG] [FML/Forge]:   14: RecipeEntry("Before", UNKNOWN, )
+[18:02:13] [Client thread/DEBUG] [FML/Forge]:   13: RecipeEntry("minecraft:shaped", SHAPED, net.minecraft.item.crafting.ShapedRecipes) Before: minecraft:shapeless
+[18:02:13] [Client thread/DEBUG] [FML/Forge]:   12: RecipeEntry("minecraft:mapextending", SHAPED, net.minecraft.item.crafting.RecipesMapExtending) Before: minecraft:shapeless After: minecraft:shaped
+[18:02:13] [Client thread/DEBUG] [FML/Forge]:   11: RecipeEntry("forge:shapedore", SHAPED, net.minecraftforge.oredict.ShapedOreRecipe) Before: minecraft:shapeless After: minecraft:shaped
+[18:02:13] [Client thread/DEBUG] [FML/Forge]:   10: RecipeEntry("minecraft:shapeless", SHAPELESS, net.minecraft.item.crafting.ShapelessRecipes) After: minecraft:shaped
+[18:02:13] [Client thread/DEBUG] [FML/Forge]:   9: RecipeEntry("forge:shapelessore", SHAPELESS, net.minecraftforge.oredict.ShapelessOreRecipe) After: minecraft:shapeless
+[18:02:13] [Client thread/DEBUG] [FML/Forge]:   8: RecipeEntry("minecraft:pattern_add", SHAPELESS, net.minecraft.item.crafting.RecipesBanners$RecipeAddPattern) After: minecraft:shapeless
+[18:02:13] [Client thread/DEBUG] [FML/Forge]:   7: RecipeEntry("minecraft:pattern_dupe", SHAPELESS, net.minecraft.item.crafting.RecipesBanners$RecipeDuplicatePattern) After: minecraft:shapeless
+[18:02:13] [Client thread/DEBUG] [FML/Forge]:   6: RecipeEntry("minecraft:armordyes", SHAPELESS, net.minecraft.item.crafting.RecipesArmorDyes) After: minecraft:shapeless
+[18:02:13] [Client thread/DEBUG] [FML/Forge]:   5: RecipeEntry("minecraft:bookcloning", SHAPELESS, net.minecraft.item.crafting.RecipeBookCloning) After: minecraft:shapeless
+[18:02:13] [Client thread/DEBUG] [FML/Forge]:   4: RecipeEntry("minecraft:mapcloning", SHAPELESS, net.minecraft.item.crafting.RecipesMapCloning) After: minecraft:shapeless
+[18:02:13] [Client thread/DEBUG] [FML/Forge]:   3: RecipeEntry("minecraft:repair", SHAPELESS, net.minecraft.item.crafting.RecipeRepairItem) After: minecraft:shapeless
+[18:02:13] [Client thread/DEBUG] [FML/Forge]:   2: RecipeEntry("minecraft:fireworks", SHAPELESS, net.minecraft.item.crafting.RecipeFireworks) After: minecraft:shapeless
+[18:02:13] [Client thread/DEBUG] [FML/Forge]:   1: RecipeEntry("After", UNKNOWN, )
+[18:02:13] [Client thread/DEBUG] [FML/Forge]: Sorting recipies
+[18:02:13] [Client thread/TRACE] [Forge/Forge]: Sent event FMLLoadCompleteEvent to mod Forge
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Step: LoadComplete - Minecraft Forge took 0.007s
+[18:02:13] [Client thread/TRACE] [machinemod/machinemod]: Sending event FMLLoadCompleteEvent to mod machinemod
+[18:02:13] [Client thread/TRACE] [machinemod/machinemod]: Sent event FMLLoadCompleteEvent to mod machinemod
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Step: LoadComplete - TechStack's Heavy Machinery Mod took 0.000s
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Finished: LoadComplete took 0.008s
+[18:02:13] [Client thread/DEBUG] [FML/]: Freezing block and item id maps
+[18:02:13] [Client thread/DEBUG] [FML/]: Registry consistency check successful
+[18:02:13] [Client thread/DEBUG] [FML/]: Registry consistency check successful
+[18:02:13] [Client thread/INFO] [FML/]: Forge Mod Loader has successfully loaded 4 mods
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - Default took 0.000s
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - FMLFileResourcePack:Forge Mod Loader took 0.013s
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - FMLFileResourcePack:Minecraft Forge took 0.008s
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - FMLFileResourcePack:TechStack's Heavy Machinery Mod took 0.001s
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Step: Reloading Texture Manager - minecraft:textures/atlas/blocks.png took 0.000s
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Step: Reloading Texture Manager - minecraft:textures/font/ascii.png took 0.004s
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Step: Reloading Texture Manager - minecraft:textures/font/ascii_sga.png took 0.003s
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Step: Reloading Texture Manager - minecraft:textures/misc/forcefield.png took 0.002s
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Step: Reloading Texture Manager - minecraft:dynamic/lightMap_1 took 0.000s
+[18:02:13] [Client thread/DEBUG] [FML/]: Bar Finished: Reloading Texture Manager took 0.009s
+[18:02:14] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_aluminum' for variant: 'machinemod:machineblastedstone2#ore=aluminum': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_aluminum.json
+[18:02:14] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_sapphire' for variant: 'machinemod:machineblastedstone2#ore=sapphire': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_sapphire.json
+[18:02:14] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_tin' for variant: 'machinemod:machineblastedstone2#ore=tin': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_tin.json
+[18:02:14] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_copper' for variant: 'machinemod:machineblastedstone2#ore=copper': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_copper.json
+[18:02:14] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_silver' for variant: 'machinemod:machineblastedstone2#ore=silver': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_silver.json
+[18:02:14] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_uranium' for variant: 'machinemod:machineblastedstone2#ore=uranium': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_uranium.json
+[18:02:14] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_ruby' for variant: 'machinemod:machineblastedstone2#ore=ruby': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_ruby.json
+[18:02:15] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_lead' for variant: 'machinemod:machineblastedstone2#ore=lead': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_lead.json
+[18:02:15] [Client thread/WARN] [FML/]: Unable to load block model: 'machinemod:block/machineblastedstone2_variants_quartz' for variant: 'machinemod:machineblastedstone2#ore=quartz': java.io.FileNotFoundException: machinemod:models/block/machineblastedstone2_variants_quartz.json
+[18:02:15] [Client thread/DEBUG] [FML/]: Item json isn't found for 'machinemod:machineblastedstone2#inventory', trying to load the variant from the blockstate json
+[18:02:15] [Client thread/DEBUG] [FML/]: Item json isn't found for 'machinemod:crane#inventory', trying to load the variant from the blockstate json
+[18:02:15] [Client thread/INFO] [FML/]: Max texture size: 16384
+[18:02:15] [Client thread/DEBUG] [FML/]: Bar Finished: Texture stitching took 0.294s
+[18:02:15] [Client thread/DEBUG] [FML/]: Bar Finished: Mipmap generation took 0.211s
+[18:02:15] [Client thread/DEBUG] [FML/]: Bar Finished: Texture stitching took 0.060s
+[18:02:15] [Client thread/DEBUG] [FML/]: Bar Finished: Texture creation took 0.084s
+[18:02:15] [Client thread/ERROR] [FML/]: Model definition for location machinemod:crane#inventory not found
+[18:02:15] [Client thread/ERROR] [FML/]: Model definition for location machinemod:machineblastedstone2#inventory not found
+[18:02:15] [Client thread/DEBUG] [FML/]: Bar Finished: Reloading took 2.922s
+[18:02:15] [Client thread/DEBUG] [FML/]: Bar Step: Loading Resources - Reloading listeners took 2.923s
+[18:02:15] [Client thread/DEBUG] [FML/]: Bar Finished: Loading Resources took 2.944s
+[18:02:15] [Client thread/DEBUG] [Forge Mod Loader/]: Mod Forge Mod Loader is missing a pack.mcmeta file, substituting a dummy one
+[18:02:15] [Client thread/DEBUG] [Minecraft Forge/]: Mod Minecraft Forge is missing a pack.mcmeta file, substituting a dummy one
+[18:02:15] [Client thread/DEBUG] [TechStack's Heavy Machinery Mod/]: Mod TechStack's Heavy Machinery Mod is missing a pack.mcmeta file, substituting a dummy one
+[18:02:16] [Client thread/DEBUG] [FML/]: Bar Finished: Loading took 9.978s
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]: +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]: The following texture errors were found.
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]: ==================================================
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]:   DOMAIN machinemod
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]: --------------------------------------------------
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]:   domain machinemod is missing 3 textures
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]:     domain machinemod has 1 location:
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]:       mod machinemod resources at D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\bin
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]: -------------------------
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]:     The missing resources for domain machinemod are:
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]:       textures/items/centrifugeicon.png
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]:       textures/items/paver.png
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]:       textures/items/rawasphalt.png
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]: -------------------------
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]:     No other errors exist for domain machinemod
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]: ==================================================
+[18:02:16] [Client thread/ERROR] [TEXTURE ERRORS/]: +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=

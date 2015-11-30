@@ -110,9 +110,12 @@ public class RenderDumpTruck extends Render {
 
 				} else {
 					Tessellator tessellator = Tessellator.getInstance();
-					\ worldrenderer = tessellator.getWorldRenderer();
-					worldrenderer.startDrawingQuads();
-					worldrenderer.setVertexFormat(DefaultVertexFormats.ITEM);
+					WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+					// 1.8 code 
+				//	worldrenderer.startDrawingQuads();
+				//	worldrenderer.setVertexFormat(DefaultVertexFormats.ITEM);
+					// 1.8.8 code
+					worldrenderer.func_181668_a(GL11.GL_QUADS,DefaultVertexFormats.ITEM);
 					this.renderManager.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 					EnumFacing[] aenumfacing = EnumFacing.values();
 					int j = aenumfacing.length;

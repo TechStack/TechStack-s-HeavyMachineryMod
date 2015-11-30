@@ -2,19 +2,19 @@ package com.projectreddog.machinemod.tileentities;
 
 import java.util.List;
 
+import com.projectreddog.machinemod.block.BlockMachineModConveyor;
+import com.projectreddog.machinemod.init.ModBlocks;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ITickable;
 
-import com.projectreddog.machinemod.block.BlockMachineModConveyor;
-import com.projectreddog.machinemod.init.ModBlocks;
-
-public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListBox {
+public class TileEntityConveyor extends TileEntity implements ITickable {
 
 	public AxisAlignedBB boundingBox;
 	public final double MoveSpeed = .1d;

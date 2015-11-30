@@ -2,6 +2,9 @@ package com.projectreddog.machinemod.tileentities;
 
 import java.util.List;
 
+import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.reference.Reference;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,15 +12,12 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ITickable;
 
-import com.projectreddog.machinemod.init.ModBlocks;
-import com.projectreddog.machinemod.reference.Reference;
-
-public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox, IInventory {
+public class TileEntityScreen extends TileEntity implements ITickable, IInventory {
 	protected ItemStack[] inventory;
 	public final int inventorySize = 5;
 	public AxisAlignedBB boundingBox;
@@ -181,11 +181,11 @@ public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox
 		return is;
 
 	}
-
-	@Override
-	public String getName() {
-		return null;
-	}
+//
+//	@Override
+//	public String getName() {
+//		return null;
+//	}
 
 	@Override
 	public boolean hasCustomName() {
@@ -327,5 +327,11 @@ public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox
 		}
 		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
 
+	}
+
+	@Override
+	public String getCommandSenderName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

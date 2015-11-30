@@ -8,18 +8,19 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
-import net.minecraft.client.resources.IResource;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.model.advanced.IModelCustom;
 import com.projectreddog.machinemod.model.advanced.ModelFormatException;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.resources.IResource;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Wavefront Object importer Based heavily off of the specifications found at
@@ -140,9 +141,11 @@ public class WavefrontObject implements IModelCustom {
 		Tessellator tessellator = Tessellator.getInstance();
 		WorldRenderer worldRenderer = tessellator.getWorldRenderer();
 		if (currentGroupObject != null) {
-			worldRenderer.startDrawing(currentGroupObject.glDrawingMode);
+			//worldRenderer.startDrawing(currentGroupObject.glDrawingMode);
+			worldRenderer.func_181668_a(currentGroupObject.glDrawingMode,DefaultVertexFormats.field_181703_c);
 		} else {
-			worldRenderer.startDrawing(GL11.GL_TRIANGLES);
+			//worldRenderer.startDrawing(GL11.GL_TRIANGLES);
+			worldRenderer.func_181668_a(GL11.GL_TRIANGLES,DefaultVertexFormats.field_181703_c);
 		}
 		tessellateAll(tessellator);
 

@@ -1,21 +1,21 @@
 package com.projectreddog.machinemod.tileentities;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.IChatComponent;
-
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.iface.IFuelContainer;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
 
-public class TileEntityFuelPump extends TileEntity implements IUpdatePlayerListBox, ISidedInventory, IFuelContainer {
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ITickable;
+
+public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedInventory, IFuelContainer {
 	protected ItemStack[] inventory;
 	private static int[] sideSlots = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
 	public final int maxFuelStorage = 10000; // store up to 10k (can fill all 9 cans & have room for one more
@@ -177,11 +177,11 @@ public class TileEntityFuelPump extends TileEntity implements IUpdatePlayerListB
 
 	}
 
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public String getName() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public boolean hasCustomName() {
@@ -345,5 +345,11 @@ public class TileEntityFuelPump extends TileEntity implements IUpdatePlayerListB
 		// return null;
 		// }
 		return ef;
+	}
+
+	@Override
+	public String getCommandSenderName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
