@@ -9,6 +9,7 @@ package com.projectreddog.machinemod.model;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.obj.OBJLoader;
 
 import org.lwjgl.opengl.GL11;
 
@@ -23,7 +24,9 @@ public class ModelBulldozer extends ModelTransportable {
 
 	public ModelBulldozer() {
 
-		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/bulldozer.obj"));
+//		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/bulldozer.obj"));
+		myModel = OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/bulldozer.obj"));
+
 		// casinoTexture = new ResourceLocation("modid",
 		// "textures/casinoTexture.png");
 
