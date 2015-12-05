@@ -131,13 +131,13 @@ public class ModExplosion extends Explosion {
 
 				if (this.worldObj.getBlockState(bp).getBlock() == Blocks.stone) {
 					// its stone so get variant
-					if (this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT_PROP) == BlockStone.EnumType.STONE) {
+					if (this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT) == BlockStone.EnumType.STONE) {
 						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.STONE));
-					} else if (this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT_PROP) == BlockStone.EnumType.GRANITE) {
+					} else if (this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT) == BlockStone.EnumType.GRANITE) {
 						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.GRANITE));
-					} else if (this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT_PROP) == BlockStone.EnumType.DIORITE) {
+					} else if (this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT) == BlockStone.EnumType.DIORITE) {
 						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.DIORITE));
-					} else if (this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT_PROP) == BlockStone.EnumType.ANDESITE) {
+					} else if (this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT) == BlockStone.EnumType.ANDESITE) {
 						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.ANDESITE));
 					}
 				}

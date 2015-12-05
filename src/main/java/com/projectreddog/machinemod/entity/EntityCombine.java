@@ -52,7 +52,7 @@ public class EntityCombine extends EntityMachineModRideable {
 
 						IGrowable iGrowable = (IGrowable) worldObj.getBlockState(bp).getBlock();
 
-						if (!iGrowable.isStillGrowing(worldObj, bp, worldObj.getBlockState(bp), worldObj.isRemote)) {
+						if (!iGrowable.canGrow(worldObj, bp, worldObj.getBlockState(bp), worldObj.isRemote)) {
 
 							worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
 							worldObj.setBlockToAir(bp);

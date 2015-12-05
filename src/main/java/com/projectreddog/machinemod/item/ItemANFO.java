@@ -28,8 +28,8 @@ public class ItemANFO extends ItemMachineMod {
 
 				BlockPos bottom = null;
 				for (int i = 0; i < 17; i++) {
-					if (world.getBlockState(pos.offsetDown(i)).getBlock() == ModBlocks.machinedrilledstone || world.getBlockState(pos.offsetDown(i)).getBlock() == ModBlocks.machinedrilledandesite || world.getBlockState(pos.offsetDown(i)).getBlock() == ModBlocks.machinedrilleddiorite || world.getBlockState(pos.offsetDown(i)).getBlock() == ModBlocks.machinedrilledgranite) {
-						bottom = pos.offsetDown(i);
+					if (world.getBlockState(pos.down(i)).getBlock() == ModBlocks.machinedrilledstone || world.getBlockState(pos.down(i)).getBlock() == ModBlocks.machinedrilledandesite || world.getBlockState(pos.down(i)).getBlock() == ModBlocks.machinedrilleddiorite || world.getBlockState(pos.down(i)).getBlock() == ModBlocks.machinedrilledgranite) {
+						bottom = pos.down(i);
 					}
 				}
 				if (bottom != null) {

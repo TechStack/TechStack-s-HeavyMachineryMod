@@ -46,7 +46,7 @@ public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox
 
 			if (worldObj.getBlockState(pos).getBlock() == ModBlocks.machinescreen) {
 
-				boundingBox = new AxisAlignedBB(this.pos.offsetUp(), this.pos.offsetUp().add(1, 1, 1));
+				boundingBox = new AxisAlignedBB(this.pos.up(), this.pos.up().add(1, 1, 1));
 			}
 			List list = worldObj.getEntitiesWithinAABB(EntityItem.class, boundingBox);
 			processEntitiesInList(list);
