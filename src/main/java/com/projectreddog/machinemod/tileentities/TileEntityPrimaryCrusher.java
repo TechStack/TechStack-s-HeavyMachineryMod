@@ -59,7 +59,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 			timeTillCoolDown = coolDownAmount;
 
 			// LogHelper.info("TE update entity called");
-			boundingBox = new AxisAlignedBB(this.pos.offsetUp(), this.pos.offsetUp().add(1, 1, 1));
+			boundingBox = new AxisAlignedBB(this.pos.up(), this.pos.up().add(1, 1, 1));
 			List list = worldObj.getEntitiesWithinAABB(EntityItem.class, boundingBox);
 			processEntitiesInList(list);
 			for (int i = 0; i < this.getSizeInventory(); i++) {
@@ -76,13 +76,13 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 							dropDust(i, new ItemStack(Blocks.cobblestone, 1));
 							return;
 						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.ANDESITE.getMetadata()) {
-							dropDust(i, new ItemStack(Blocks.stone, 1, BlockStone.EnumType.ANDESITE.getMetaFromState()));
+							dropDust(i, new ItemStack(Blocks.stone, 1, BlockStone.EnumType.ANDESITE.getMetadata()));
 							return;
 						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.DIORITE.getMetadata()) {
-							dropDust(i, new ItemStack(Blocks.stone, 1, BlockStone.EnumType.DIORITE.getMetaFromState()));
+							dropDust(i, new ItemStack(Blocks.stone, 1, BlockStone.EnumType.DIORITE.getMetadata()));
 							return;
 						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.GRANITE.getMetadata()) {
-							dropDust(i, new ItemStack(Blocks.stone, 1, BlockStone.EnumType.GRANITE.getMetaFromState()));
+							dropDust(i, new ItemStack(Blocks.stone, 1, BlockStone.EnumType.GRANITE.getMetadata()));
 							return;
 						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.COAL.getMetadata()) {
 							dropDust(i, new ItemStack(Items.coal, BlastedStoneCoalMultiplier));
@@ -94,7 +94,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 							dropDust(i, new ItemStack(Items.emerald, BlastedStoneGemMultiplier));
 							return;
 						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.LAPIS.getMetadata()) {
-							dropDust(i, new ItemStack(Items.dye, BlastedStoneLapisMultiplier, EnumDyeColor.BLUE.getDyeColorDamage()));
+							dropDust(i, new ItemStack(Items.dye, BlastedStoneLapisMultiplier, EnumDyeColor.BLUE.getDyeDamage()));
 							return;
 						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.REDSTONE.getMetadata()) {
 							dropDust(i, new ItemStack(Items.redstone, BlastedStoneRedstoneMultiplier));
@@ -106,7 +106,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.gold_ore)) {
 						dropDust(i, new ItemStack(ModItems.golddust, VanillaOreMultiplier));
 						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.stone) && item.getMetadata() == BlockStone.EnumType.STONE.getMetaFromState()) {
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.stone) && item.getMetadata() == BlockStone.EnumType.STONE.getMetadata()) {
 						dropDust(i, new ItemStack(Blocks.cobblestone, 1));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.stone)) {
@@ -122,13 +122,13 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 						dropDust(i, new ItemStack(Items.emerald, 1));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.lapis_ore)) {
-						dropDust(i, new ItemStack(Items.dye, 7, EnumDyeColor.BLUE.getDyeColorDamage()));
+						dropDust(i, new ItemStack(Items.dye, 7, EnumDyeColor.BLUE.getDyeDamage()));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.redstone_ore)) {
 						dropDust(i, new ItemStack(Items.redstone, 5));
 						return;
 					} else if (item.getItem() == Items.bone) {
-						dropDust(i, new ItemStack(Items.dye, 5, EnumDyeColor.WHITE.getDyeColorDamage()));
+						dropDust(i, new ItemStack(Items.dye, 5, EnumDyeColor.WHITE.getDyeDamage()));
 						return;
 					} else {
 						dropDust(i, new ItemStack(item.getItem(), 1, item.getMetadata()));

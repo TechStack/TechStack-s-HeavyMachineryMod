@@ -66,9 +66,9 @@ public class EntityTractor extends EntityMachineModRideable {
 							if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlow) {
 								if (worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.grass) {
 									worldObj.setBlockState(bp, Blocks.farmland.getDefaultState());
-									if (worldObj.getBlockState(bp.offsetUp()).getBlock().getMaterial() == Material.plants || worldObj.getBlockState(bp.offsetUp()).getBlock().getMaterial().isReplaceable()) {
-										worldObj.getBlockState(bp.offsetUp()).getBlock().dropBlockAsItem(worldObj, bp.offsetUp(), worldObj.getBlockState(bp.offsetUp()), 0);
-										worldObj.setBlockToAir(bp.offsetUp());
+									if (worldObj.getBlockState(bp.up()).getBlock().getMaterial() == Material.plants || worldObj.getBlockState(bp.up()).getBlock().getMaterial().isReplaceable()) {
+										worldObj.getBlockState(bp.up()).getBlock().dropBlockAsItem(worldObj, bp.up(), worldObj.getBlockState(bp.up()), 0);
+										worldObj.setBlockToAir(bp.up());
 
 									} else {
 										// LogHelper.info(worldObj.getBlockState(bp.offsetUp()).getBlock().getMaterial());
@@ -84,9 +84,9 @@ public class EntityTractor extends EntityMachineModRideable {
 										if (this.getStackInSlot(j).stackSize > 0) {
 
 											if (this.getStackInSlot(j).getItem() instanceof IPlantable) {
-												if (worldObj.getBlockState(bp).getBlock().canSustainPlant(worldObj, bp, EnumFacing.UP, (IPlantable) this.getStackInSlot(j).getItem()) && worldObj.isAirBlock(bp.offsetUp())) {
+												if (worldObj.getBlockState(bp).getBlock().canSustainPlant(worldObj, bp, EnumFacing.UP, (IPlantable) this.getStackInSlot(j).getItem()) && worldObj.isAirBlock(bp.up())) {
 
-													worldObj.setBlockState(bp.offsetUp(), ((IPlantable) this.getStackInSlot(j).getItem()).getPlant(worldObj, bp.offsetUp()));
+													worldObj.setBlockState(bp.up(), ((IPlantable) this.getStackInSlot(j).getItem()).getPlant(worldObj, bp.up()));
 													this.decrStackSize(j, 1);
 													j = 9;
 
@@ -117,7 +117,7 @@ public class EntityTractor extends EntityMachineModRideable {
 
 												// / NOT UPDATE PROOF ( CALLS
 												// non named function )
-												if (EnumDyeColor.func_176766_a(this.getStackInSlot(j).getItemDamage()) == EnumDyeColor.WHITE) {
+												if (EnumDyeColor.byDyeDamage(this.getStackInSlot(j).getItemDamage()) == EnumDyeColor.WHITE) {
 
 													EntityPlayer p;
 													if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer) {
@@ -125,7 +125,7 @@ public class EntityTractor extends EntityMachineModRideable {
 													} else {
 														p = net.minecraftforge.common.util.FakePlayerFactory.getMinecraft((net.minecraft.world.WorldServer) worldObj);
 													}
-													boolean didUse = ((ItemDye) this.getStackInSlot(j).getItem()).applyBonemeal(this.getStackInSlot(j), worldObj, bp.offsetUp(), p);
+													boolean didUse = ((ItemDye) this.getStackInSlot(j).getItem()).applyBonemeal(this.getStackInSlot(j), worldObj, bp.up(), p);
 
 													if (didUse) {
 														// used to clear out 0

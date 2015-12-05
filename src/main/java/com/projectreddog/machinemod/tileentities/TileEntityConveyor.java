@@ -43,19 +43,19 @@ public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListB
 				if (BlockMachineModConveyor.shouldLift(worldObj, this.pos)) {
 					EnumFacing checkDirection = (EnumFacing) worldObj.getBlockState(this.pos).getValue(BlockMachineModConveyor.FACING);
 					BlockPos bp = this.pos;// this.pos.offset(checkDirection);
-					BlockPos bp2 = this.pos.offsetUp().add(1, 1, 1);
+					BlockPos bp2 = this.pos.up().add(1, 1, 1);
 					BlockPos temp;
 					double xOffset = 0, zOffset = 0;
 					if (checkDirection == EnumFacing.EAST) {
-						bp = bp.offsetWest();
+						bp = bp.west();
 						// working
 					} else if (checkDirection == EnumFacing.WEST) {
-						bp2 = bp2.offsetEast();
+						bp2 = bp2.east();
 					} else if (checkDirection == EnumFacing.NORTH) {
-						bp2 = bp2.offsetSouth();
+						bp2 = bp2.south();
 						// not working :(
 					} else if (checkDirection == EnumFacing.SOUTH) {
-						bp = bp.offsetNorth();
+						bp = bp.north();
 						// works naturally
 					}
 
@@ -63,7 +63,7 @@ public class TileEntityConveyor extends TileEntity implements IUpdatePlayerListB
 
 					// LogHelper.info("Block at" + this.pos + "pos1" + bp + "POS2" + bp2 + "EF" + checkDirection);
 				} else {
-					boundingBox = new AxisAlignedBB(this.pos.offsetUp(), this.pos.offsetUp().add(1, 1, 1));
+					boundingBox = new AxisAlignedBB(this.pos.up(), this.pos.up().add(1, 1, 1));
 				}
 				List list = worldObj.getEntitiesWithinAABB(EntityItem.class, boundingBox);
 				processEntitiesInList(list);

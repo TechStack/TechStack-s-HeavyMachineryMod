@@ -36,10 +36,10 @@ public class ItemCornSeed extends ItemFood implements IPlantable {
 	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (side != EnumFacing.UP) {
 			return false;
-		} else if (!playerIn.func_175151_a(pos.offset(side), side, stack)) {
+		} else if (!playerIn.canPlayerEdit(pos.offset(side), side, stack)) {
 			return false;
-		} else if (worldIn.getBlockState(pos).getBlock().canSustainPlant(worldIn, pos, EnumFacing.UP, this) && worldIn.isAirBlock(pos.offsetUp())) {
-			worldIn.setBlockState(pos.offsetUp(), ModBlocks.corn.getDefaultState());
+		} else if (worldIn.getBlockState(pos).getBlock().canSustainPlant(worldIn, pos, EnumFacing.UP, this) && worldIn.isAirBlock(pos.up())) {
+			worldIn.setBlockState(pos.up(), ModBlocks.corn.getDefaultState());
 			--stack.stackSize;
 			return true;
 		} else {
