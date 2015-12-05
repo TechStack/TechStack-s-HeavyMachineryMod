@@ -34,11 +34,11 @@ public class Recipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.dozerblade), "  i", "  i", "  i", 'i', "ingotIron"));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tracks), "sis", "i i", "sis", 'i', "ingotIron", 's', Blocks.slime_block));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tracks), "sis", "i i", "sis", 'i', "ingotIron", 's', Items.slime_ball));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.wheel), " s ", "sis", " s ", 'i', "ingotIron", 's', Blocks.slime_block));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.wheel), " s ", "sis", " s ", 'i', "ingotIron", 's', Items.slime_ball));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.wheel), " s ", "sis", " s ", 'i', "ingotIron", 's', Blocks.slime_block));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.wheel), " s ", "sis", " s ", 'i', "ingotIron", 's', Items.slime_ball));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.loaderbucket), " i ", " hi", "iii", 'i', "ingotIron", 'h', Blocks.hopper));
 
@@ -60,13 +60,13 @@ public class Recipes {
 		// ItemStack(ModItems.combine), " cc", "het", " ww", 'c' ,Blocks.chest
 		// ,'' ));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.hose), "s s", "s s", "s s", 's', Items.slime_ball));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.hose), " s ", " s ", " s ", 's', Items.slime_ball));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefuelpump), "ggh", "ich", "ii ", 'g', Blocks.glass, 'h', ModItems.hose, 'i', "ingotIron", 'c', Items.cauldron));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefuelpump), "ggh", "ic ", "ii ", 'g', Blocks.glass, 'h', ModItems.hose, 'i', "ingotIron", 'c', Items.cauldron));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinedistiller), "hh ", "bcb", "fff", 'h', ModItems.hose, 'c', Items.cauldron, 'b', Items.brewing_stand, 'f', Blocks.furnace));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinedistiller), "h  ", "bcb", "fff", 'h', ModItems.hose, 'c', Items.cauldron, 'b', Items.brewing_stand, 'f', Blocks.furnace));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefermenter), "www", "wcw", "hh ", 'h', ModItems.hose, 'c', Blocks.chest, 'w', "plankWood"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefermenter), "www", "wcw", "h  ", 'h', ModItems.hose, 'c', Blocks.chest, 'w', "plankWood"));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lidwithspout), "s  ", "sii", "   ", 's', Items.slime_ball, 'i', "ingotIron"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.fuelcan, 1, ModItems.fuelcan.getMaxDamage()), "   ", " l ", " b ", 'l', ModItems.lidwithspout, 'b', Items.bucket));
