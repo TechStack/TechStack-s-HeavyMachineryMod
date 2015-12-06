@@ -2,6 +2,8 @@ package com.projectreddog.machinemod.entity;
 
 import java.util.List;
 
+import com.projectreddog.machinemod.init.ModItems;
+
 import net.minecraft.block.IGrowable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -10,8 +12,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
-
-import com.projectreddog.machinemod.init.ModItems;
 
 public class EntityCombine extends EntityMachineModRideable {
 
@@ -29,6 +29,7 @@ public class EntityCombine extends EntityMachineModRideable {
 		this.maxAngle = 0;
 		this.minAngle = 0;
 		this.droppedItem = ModItems.combine;
+		this.shouldSendClientInvetoryUpdates = true;
 
 	}
 
@@ -39,62 +40,63 @@ public class EntityCombine extends EntityMachineModRideable {
 			// bucket Down
 			// break blocks first
 			int angle;
-			for (int j = 0; j < 2; j++) {
-				for (int i = -2; i < 3; i++) {
-					if (i == 0) {
-						angle = 0;
-					} else {
-						angle = 90;
-					}
-					BlockPos bp;
-					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + j, posZ + calcTwoOffsetZ(3.5, angle, i));
-					if (worldObj.getBlockState(bp).getBlock() instanceof IGrowable) {
-
-						IGrowable iGrowable = (IGrowable) worldObj.getBlockState(bp).getBlock();
-
-						if (!iGrowable.canGrow(worldObj, bp, worldObj.getBlockState(bp), worldObj.isRemote)) {
-
-							worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-							worldObj.setBlockToAir(bp);
+			if (this.isPlayerPushingSprintButton) {
+				for (int j = 0; j < 2; j++) {
+					for (int i = -2; i < 3; i++) {
+						if (i == 0) {
+							angle = 0;
+						} else {
+							angle = 90;
 						}
-					}
+						BlockPos bp;
+						bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + j, posZ + calcTwoOffsetZ(3.5, angle, i));
+						if (worldObj.getBlockState(bp).getBlock() instanceof IGrowable) {
 
+							IGrowable iGrowable = (IGrowable) worldObj.getBlockState(bp).getBlock();
+
+							if (!iGrowable.canGrow(worldObj, bp, worldObj.getBlockState(bp), worldObj.isRemote)) {
+
+								worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
+								worldObj.setBlockToAir(bp);
+							}
+						}
+
+					}
+				}
+
+				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(3.5, 90, -1) + posX - .5d, posY, calcTwoOffsetZ(3.5, 90, -1) + posZ - .5d, calcTwoOffsetX(3.5, 90, 1) + posX + .5d, posY + 1, calcTwoOffsetZ(3.5, 90, 1) + posZ + .5d);
+
+				List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
+				collidedEntitiesInList(list);
+			}
+			if (this.isPlayerPushingJumpButton) {
+				// bucket up
+				// Drop blocks
+				// TODO needs something to pace it a bit more now it drops
+				// everything way to fast.
+				for (int i = 0; i < this.getSizeInventory(); i++) {
+					ItemStack item = this.getStackInSlot(i);
+
+					if (item != null && item.stackSize > 0) {
+						;
+
+						EntityItem entityItem = new EntityItem(worldObj, posX + calcOffsetX(3.5), posY + 4, posZ + calcOffsetZ(3.5), item);
+
+						if (item.hasTagCompound()) {
+							entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+						}
+
+						float factor = 0.05F;
+						// entityItem.motionX = rand.nextGaussian() * factor;
+						entityItem.motionY = 0;
+						// entityItem.motionZ = rand.nextGaussian() * factor;
+						entityItem.forceSpawn = true;
+						worldObj.spawnEntityInWorld(entityItem);
+						// item.stackSize = 0;
+						this.setInventorySlotContents(i, null);
+					}
 				}
 			}
-
-			AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(3.5, 90, -1) + posX - .5d, posY, calcTwoOffsetZ(3.5, 90, -1) + posZ - .5d, calcTwoOffsetX(3.5, 90, 1) + posX + .5d, posY + 1, calcTwoOffsetZ(3.5, 90, 1) + posZ + .5d);
-
-			List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
-			collidedEntitiesInList(list);
-		}
-		if (this.Attribute1 == this.getMinAngle()) {
-			// bucket up
-			// Drop blocks
-			// TODO needs something to pace it a bit more now it drops
-			// everything way to fast.
-			for (int i = 0; i < this.getSizeInventory(); i++) {
-				ItemStack item = this.getStackInSlot(i);
-
-				if (item != null && item.stackSize > 0) {
-					;
-
-					EntityItem entityItem = new EntityItem(worldObj, posX + calcOffsetX(3.5), posY + 4, posZ + calcOffsetZ(3.5), item);
-
-					if (item.hasTagCompound()) {
-						entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
-					}
-
-					float factor = 0.05F;
-					// entityItem.motionX = rand.nextGaussian() * factor;
-					entityItem.motionY = 0;
-					// entityItem.motionZ = rand.nextGaussian() * factor;
-					entityItem.forceSpawn = true;
-					// LogHelper.info(worldObj.spawnEntityInWorld(entityItem));
-					// item.stackSize = 0;
-					this.setInventorySlotContents(i, null);
-				}
-			}
-
 		}
 
 	}
