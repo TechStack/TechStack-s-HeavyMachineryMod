@@ -43,6 +43,8 @@ item.machinemod:boomarmsegment.name=Boom Arm Segment
 item.machinemod:handdrill.name=Hand Drill
 item.machinemod:hose.name=Hose
 item.machinemod:lidwithspout.name=Lid with Spout
+item.machinemod:lawnmower.name=Riding Lawn Mower
+item.machinemod:mowerdeck.name=Mower Deck
 
 
 # Block Localizations
@@ -63,6 +65,7 @@ tile.machinemod:moonshine.name=Moonshine AKA Fire water
 tile.machinemod:machinefuelpump.name=Fuel Pump
 tile.machinemod:machinedistiller.name=Distiller
 tile.machinemod:machinefermenter.name=Fermenter
+tile.machinemod:machinemowedgrass.name=Mowed Grass
 tile.machinemod:machineblastedstone.STONE.name=Blasted Stone
 tile.machinemod:machineblastedstone.GRANITE.name=Blasted Granite
 tile.machinemod:machineblastedstone.DIORITE.name=Blasted Diorite

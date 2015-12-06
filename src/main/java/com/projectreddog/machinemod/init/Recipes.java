@@ -99,6 +99,10 @@ public class Recipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinescreen, 1), "d d", "pbp", "iii", 'b', Blocks.iron_bars, 'd', Items.diamond, 'p', Blocks.piston, 'i', Items.iron_ingot));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.mowerdeck, 1), "   ", "iii", "sss", 'i', "ingotIron", 's', Items.shears));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lawnmower, 1), "   ", " e ", "wmw", 'e', ModItems.engine, 'w', ModItems.wheel, 'm', ModItems.mowerdeck));
+
 		// D D
 		// PBP
 		// III

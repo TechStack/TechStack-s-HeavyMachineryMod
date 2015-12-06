@@ -1,0 +1,88 @@
+---- Minecraft Crash Report ----
+// Don't be sad. I'll do better next time, I promise!
+
+Time: 12/6/15 2:14 AM
+Description: Ticking entity
+
+java.lang.IllegalArgumentException: Cannot set property PropertyDirection{name=facing, clazz=class net.minecraft.util.EnumFacing, values=[north, south, west, east]} to WEST on block machinemod:machinemowedgrass, it is not an allowed value
+	at net.minecraft.block.state.BlockState$StateImplementation.withProperty(BlockState.java:193)
+	at com.projectreddog.machinemod.entity.EntityLawnmower.onUpdate(EntityLawnmower.java:55)
+	at net.minecraft.world.World.updateEntityWithOptionalForce(World.java:2031)
+	at net.minecraft.world.WorldServer.updateEntityWithOptionalForce(WorldServer.java:758)
+	at net.minecraft.world.World.updateEntity(World.java:1997)
+	at net.minecraft.world.World.updateEntities(World.java:1823)
+	at net.minecraft.world.WorldServer.updateEntities(WorldServer.java:587)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:775)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:669)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:171)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:540)
+	at java.lang.Thread.run(Thread.java:744)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at net.minecraft.block.state.BlockState$StateImplementation.withProperty(BlockState.java:193)
+	at com.projectreddog.machinemod.entity.EntityLawnmower.onUpdate(EntityLawnmower.java:55)
+	at net.minecraft.world.World.updateEntityWithOptionalForce(World.java:2031)
+	at net.minecraft.world.WorldServer.updateEntityWithOptionalForce(WorldServer.java:758)
+	at net.minecraft.world.World.updateEntity(World.java:1997)
+
+-- Entity being ticked --
+Details:
+	Entity Type: machinemod.lawnmower (com.projectreddog.machinemod.entity.EntityLawnmower)
+	Entity ID: 188
+	Entity Name: entity.machinemod.lawnmower.name
+	Entity's Exact location: 5208.14, 79.00, 505.16
+	Entity's Block location: 5208.00,79.00,505.00 - World: (5208,79,505), Chunk: (at 8,4,9 in 325,31; contains blocks 5200,0,496 to 5215,255,511), Region: (10,0; contains chunks 320,0 to 351,31, blocks 5120,0,0 to 5631,255,511)
+	Entity's Momentum: -0.05, 0.00, 0.01
+	Entity's Rider: EntityPlayerMP['Player62'/181, l='TEST', x=5208.85, y=79.75, z=505.12]
+	Entity's Vehicle: ~~ERROR~~ NullPointerException: null
+Stacktrace:
+	at net.minecraft.world.World.updateEntities(World.java:1823)
+	at net.minecraft.world.WorldServer.updateEntities(WorldServer.java:587)
+
+-- Affected level --
+Details:
+	Level name: TEST
+	All players: 1 total; [EntityPlayerMP['Player62'/181, l='TEST', x=5208.85, y=79.75, z=505.12]]
+	Chunk stats: ServerChunkCache: 1265 Drop: 0
+	Level seed: -6957791299962633565
+	Level generator: ID 00 - default, ver 1. Features enabled: true
+	Level generator options: 
+	Level spawn location: 119.00,64.00,234.00 - World: (119,64,234), Chunk: (at 7,4,10 in 7,14; contains blocks 112,0,224 to 127,255,239), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 107049 game time, 53214 day time
+	Level dimension: 0
+	Level storage version: 0x04ABD - Anvil
+	Level weather: Rain time: 37845 (now: false), thunder time: 86970 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: true
+Stacktrace:
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:775)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:669)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:171)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:540)
+	at java.lang.Thread.run(Thread.java:744)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8
+	Operating System: Windows 8 (amd64) version 6.2
+	Java Version: 1.7.0_45, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 1144686680 bytes (1091 MB) / 1644167168 bytes (1568 MB) up to 7616856064 bytes (7264 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 68, allocated: 12, tallocated: 94
+	FML: MCP v9.10 FML v8.0.99.99 Minecraft Forge 11.14.4.1577 4 mods loaded, 4 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.05} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{8.0.99.99} [Forge Mod Loader] (forgeSrc-1.8-11.14.4.1577.jar) 
+	UCHIJAAAA	Forge{11.14.4.1577} [Minecraft Forge] (forgeSrc-1.8-11.14.4.1577.jar) 
+	UCHIJAAAA	machinemod{${version}} [TechStack's Heavy Machinery Mod] (bin) 
+	Loaded coremods (and transformers): 
+	GL info: ~~ERROR~~ RuntimeException: No OpenGL context found in the current thread.
+	Profiler Position: N/A (disabled)
+	Player Count: 1 / 8; [EntityPlayerMP['Player62'/181, l='TEST', x=5208.85, y=79.75, z=505.12]]
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'fml,forge'

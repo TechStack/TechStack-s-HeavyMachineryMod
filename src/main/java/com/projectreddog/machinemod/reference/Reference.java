@@ -12,6 +12,8 @@ public class Reference {
 	// textures for Entities
 	public static final String MODEL_BULLDOZER_TEXTURE_LOCATION = "models/bulldozer.png";
 	public static final String MODEL_TRACTOR_TEXTURE_LOCATION = "models/modeltractor.png";
+	public static final String MODEL_LAWNMOWER_TEXTURE_LOCATION = "models/modellawnmower.png";
+
 	public static final String MODEL_FUEL_PUMP_TEXTURE_LOCATION = "models/fuelpump.png";
 	public static final String MODEL_DISTILLER_TEXTURE_LOCATION = "models/distiller.png";
 	public static final String MODEL_FERMENTER_TEXTURE_LOCATION = "models/fermenter.png";
@@ -47,6 +49,7 @@ public class Reference {
 	public static final int MAX_TREE_WIDTH = 4;
 	public static final String MODBLOCK_MACHINE_ASSEMBLY_TABLE = "machineassemblytable";
 	public static final String MODBLOCK_MACHINE_ASPHALT = "machineasphalt";
+	public static final String MODBLOCK_MACHINE_MOWED_GRASS = "machinemowedgrass";
 
 	public static final String MODBLOCK_MACHINE_DRILLED_STONE = "machinedrilledstone";
 	public static final String MODBLOCK_MACHINE_DRILLED_ANDESITE = "machinedrilledandesite";

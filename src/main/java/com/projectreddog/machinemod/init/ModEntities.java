@@ -1,8 +1,5 @@
 package com.projectreddog.machinemod.init;
 
-import net.minecraftforge.fml.common.registry.EntityRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-
 import com.projectreddog.machinemod.entity.EntityBulldozer;
 import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.entity.EntityCrane;
@@ -10,11 +7,15 @@ import com.projectreddog.machinemod.entity.EntityDrillingRig;
 //import com.projectreddog.machinemod.entity.EntityDrillingRig;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityExcavator;
+import com.projectreddog.machinemod.entity.EntityLawnmower;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityPaver;
 import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.entity.EntityWideBedTruck;
 import com.projectreddog.machinemod.reference.Reference;
+
+import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
 public class ModEntities {
@@ -33,6 +34,7 @@ public class ModEntities {
 		EntityRegistry.registerModEntity(EntityExcavator.class, "excavator", 9, mod, 80, 1, false);
 
 		EntityRegistry.registerModEntity(EntityPaver.class, "paver", 12, mod, 80, 1, false);
+		EntityRegistry.registerModEntity(EntityLawnmower.class, "lawnmower", 13, mod, 80, 1, false);
 
 	}
 }

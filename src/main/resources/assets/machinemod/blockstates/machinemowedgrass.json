@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "machinemod:machinemowedgrass" },
+        "facing=south": { "model": "machinemod:machinemowedgrass", "y": 180 },
+        "facing=west":  { "model": "machinemod:machinemowedgrass", "y": 270 },
+        "facing=east":  { "model": "machinemod:machinemowedgrass", "y": 90 }
+    }
+}
