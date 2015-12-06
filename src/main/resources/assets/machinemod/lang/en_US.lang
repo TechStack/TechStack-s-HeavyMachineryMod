@@ -43,6 +43,8 @@ item.machinemod:boomarmsegment.name=Boom Arm Segment
 item.machinemod:handdrill.name=Hand Drill
 item.machinemod:hose.name=Hose
 item.machinemod:lidwithspout.name=Lid with Spout
+item.machinemod:lawnmower.name=Riding Lawn Mower
+item.machinemod:mowerdeck.name=Mower Deck
 
 
 # Block Localizations
