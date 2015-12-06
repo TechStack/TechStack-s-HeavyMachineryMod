@@ -30,10 +30,11 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 
 	public BlockMachineMowedGrass() {
 		super();
+
 		// 1.8
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_MOWED_GRASS);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
-		this.setHardness(15f);// not sure on the hardness
+		this.setHardness(.25f);// not sure on the hardness
 		this.setStepSound(soundTypeGrass);
 		this.setTickRandomly(true);
 
