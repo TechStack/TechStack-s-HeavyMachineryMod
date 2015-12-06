@@ -47,6 +47,7 @@ public class Reference {
 	public static final int MAX_TREE_WIDTH = 4;
 	public static final String MODBLOCK_MACHINE_ASSEMBLY_TABLE = "machineassemblytable";
 	public static final String MODBLOCK_MACHINE_ASPHALT = "machineasphalt";
+	public static final String MODBLOCK_MACHINE_MOWED_GRASS = "machinemowedgrass";
 
 	public static final String MODBLOCK_MACHINE_DRILLED_STONE = "machinedrilledstone";
 	public static final String MODBLOCK_MACHINE_DRILLED_ANDESITE = "machinedrilledandesite";

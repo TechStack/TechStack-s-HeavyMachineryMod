@@ -7,6 +7,12 @@ build/
 /.classpath
 /build
 /.gradle
-
+/saves
+/logs
+/screenshots
+/config
+usernamecache
 # Ignore Gradle GUI config
 gradle-app.setting
+usernamecache.json
+options.txt

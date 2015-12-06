@@ -1,0 +1,14 @@
+{
+    "parent": "block/grass",
+    "textures": {
+        "top": "machinemod:blocks/machinemowedgrass",
+        "particle": "blocks/dirt",
+        "bottom": "blocks/dirt",
+        "side": "blocks/grass_side",
+        "front": "blocks/grass_side",
+        "back": "blocks/grass_side",
+        "overlay": "blocks/grass_side_overlay"        
+        
+                
+    }
+}
