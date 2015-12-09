@@ -22,6 +22,9 @@ public class Reference {
 	public static final String MODEL_DRILLINGRIG_TEXTURE_LOCATION = "models/drillingrig.png";
 	public static final String MODEL_DUMPTRUCK_TEXTURE_LOCATION = "models/dumptruck.png";
 	public static final String MODEL_LOADER_TEXTURE_LOCATION = "models/modelloader.png";
+
+	public static final String MODEL_GRADER_TEXTURE_LOCATION = "models/graderprototype.png";
+
 	public static final String MODEL_PAVER_TEXTURE_LOCATION = "models/paver.png";
 
 	public static final String MODEL_CRANE_TEXTURE_LOCATION = "models/crane.png";
@@ -44,6 +47,7 @@ public class Reference {
 	public static final int GUI_SCREEN = 8;
 	public static final int GUI_CENTRIFUGE = 9;
 	public static final int GUI_PAVER = 10;
+	public static final int GUI_GRADER = 11;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;

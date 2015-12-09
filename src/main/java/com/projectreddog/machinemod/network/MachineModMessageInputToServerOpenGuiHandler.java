@@ -1,20 +1,21 @@
 package com.projectreddog.machinemod.network;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-
 import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
+import com.projectreddog.machinemod.entity.EntityGrader;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.entity.EntityPaver;
 import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.entity.EntityWideBedTruck;
 import com.projectreddog.machinemod.reference.Reference;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHandler<MachineModMessageInputToServerOpenGui, IMessage> {
 
@@ -52,6 +53,8 @@ public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHan
 							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_COMBINE, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityPaver) {
 							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_PAVER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+						} else if (entity instanceof EntityGrader) {
+							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_GRADER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						}
 
 					}

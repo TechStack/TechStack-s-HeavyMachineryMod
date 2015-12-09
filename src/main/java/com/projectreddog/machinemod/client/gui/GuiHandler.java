@@ -1,18 +1,12 @@
 package com.projectreddog.machinemod.client.gui;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.IGuiHandler;
-
 import com.projectreddog.machinemod.container.ContainerCanner;
 import com.projectreddog.machinemod.container.ContainerCentrifuge;
 import com.projectreddog.machinemod.container.ContainerCombine;
 import com.projectreddog.machinemod.container.ContainerDistiller;
 import com.projectreddog.machinemod.container.ContainerDumpTruck;
 import com.projectreddog.machinemod.container.ContainerFermenter;
+import com.projectreddog.machinemod.container.ContainerGrader;
 import com.projectreddog.machinemod.container.ContainerLoader;
 import com.projectreddog.machinemod.container.ContainerPaver;
 import com.projectreddog.machinemod.container.ContainerScreen;
@@ -20,6 +14,7 @@ import com.projectreddog.machinemod.container.ContainerTractor;
 import com.projectreddog.machinemod.container.ContainerWideBedTruck;
 import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
+import com.projectreddog.machinemod.entity.EntityGrader;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityPaver;
 import com.projectreddog.machinemod.entity.EntityTractor;
@@ -30,6 +25,13 @@ import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 import com.projectreddog.machinemod.tileentities.TileEntityScreen;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler {
 	// returns an instance of the Container you made earlier
@@ -141,6 +143,15 @@ public class GuiHandler implements IGuiHandler {
 					return new ContainerCentrifuge(player.inventory, (TileEntityCentrifuge) entity);
 				}
 			}
+		} else if (id == Reference.GUI_GRADER) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityGrader) {
+
+					return new ContainerGrader(player.inventory, (EntityGrader) entity);
+				}
+			}
 		}
 
 		return null;
@@ -244,6 +255,14 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null) {
 				if (entity instanceof TileEntityCentrifuge) {
 					return new GuiCentrifuge(player.inventory, (TileEntityCentrifuge) entity);
+				}
+			}
+		} else if (id == Reference.GUI_GRADER) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityGrader) {
+					return new GuiGrader(player.inventory, (EntityGrader) entity);
 				}
 			}
 		}

@@ -7,6 +7,7 @@ import com.projectreddog.machinemod.entity.EntityDrillingRig;
 //import com.projectreddog.machinemod.entity.EntityDrillingRig;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityExcavator;
+import com.projectreddog.machinemod.entity.EntityGrader;
 import com.projectreddog.machinemod.entity.EntityLawnmower;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityPaver;
@@ -35,6 +36,7 @@ public class ModEntities {
 
 		EntityRegistry.registerModEntity(EntityPaver.class, "paver", 12, mod, 80, 1, false);
 		EntityRegistry.registerModEntity(EntityLawnmower.class, "lawnmower", 13, mod, 80, 1, false);
+		EntityRegistry.registerModEntity(EntityGrader.class, "grader", 14, mod, 80, 1, false);
 
 	}
 }
