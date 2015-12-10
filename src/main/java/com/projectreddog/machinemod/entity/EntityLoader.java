@@ -2,6 +2,9 @@ package com.projectreddog.machinemod.entity;
 
 import java.util.List;
 
+import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.init.ModItems;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
@@ -10,9 +13,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
-
-import com.projectreddog.machinemod.init.ModBlocks;
-import com.projectreddog.machinemod.init.ModItems;
 
 public class EntityLoader extends EntityMachineModRideable {
 
@@ -96,6 +96,7 @@ public class EntityLoader extends EntityMachineModRideable {
 						entityItem.forceSpawn = true;
 						worldObj.spawnEntityInWorld(entityItem);
 						// item.stackSize = 0;
+
 						this.setInventorySlotContents(i, null);
 					}
 				}

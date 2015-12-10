@@ -49,9 +49,11 @@ public class RenderGrader extends Render {
 
 	@Override
 	public void doRender(Entity entity, double x, double y, double z, float yaw, float pitch) {
+		EntityGrader eL = ((EntityGrader) entity);
 
 		GL11.glPushMatrix();
-		GL11.glTranslatef((float) x, (float) y, (float) z);
+		GL11.glTranslatef((float) x + (float) eL.calcOffsetX(2.0), (float) y, (float) z + (float) eL.calcOffsetZ(2.0));
+
 		GL11.glRotatef(180.0F - yaw, 0.0F, 1.0F, 0.0F);
 		float f2 = pitch;
 		float f3 = pitch;
@@ -76,7 +78,6 @@ public class RenderGrader extends Render {
 		GlStateManager.translate(-1.4f, -0.25F, -.85F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glScalef(.5f, .5f, .5f);
-		EntityGrader eL = ((EntityGrader) entity);
 
 		boolean even = true;
 		int count = 0;

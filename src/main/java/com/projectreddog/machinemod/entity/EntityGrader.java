@@ -8,10 +8,11 @@ import com.projectreddog.machinemod.init.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 public class EntityGrader extends EntityMachineModRideable {
@@ -39,16 +40,8 @@ public class EntityGrader extends EntityMachineModRideable {
 		super.onUpdate();
 		if (!worldObj.isRemote) {
 
-			int bucketOffsetY = 0;
-
-			if (this.Attribute1 > 7) {
-				bucketOffsetY = -1;
-			} else if (this.Attribute1 < -7) {
-				bucketOffsetY = 1;
-
-			}
-			if (this.Attribute1 > -20) {
-				// bucket Down
+			if (this.isPlayerPushingSprintButton) {
+				// blade Down
 				// break blocks first
 				int angle;
 				for (int i = -1; i < 2; i++) {
@@ -58,7 +51,7 @@ public class EntityGrader extends EntityMachineModRideable {
 						angle = 90;
 					}
 					BlockPos bp;
-					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + bucketOffsetY, posZ + calcTwoOffsetZ(3.5, angle, i));
+					bp = new BlockPos(posX + calcTwoOffsetX(5.5, angle, i), posY, posZ + calcTwoOffsetZ(5.5, angle, i));
 					if (worldObj.getBlockState(bp).getBlock() == Blocks.snow_layer || worldObj.getBlockState(bp).getBlock() == Blocks.snow || worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.sand || worldObj.getBlockState(bp).getBlock() == Blocks.gravel || worldObj.getBlockState(bp).getBlock() == Blocks.grass
 							|| worldObj.getBlockState(bp).getBlock() == Blocks.clay || worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2 || worldObj.getBlockState(bp).getBlock() == Blocks.soul_sand || worldObj.getBlockState(bp).getBlock() == Blocks.tallgrass) {
 						worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
@@ -67,41 +60,97 @@ public class EntityGrader extends EntityMachineModRideable {
 
 				}
 
-				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(3.5, 90, -1) + posX - .5d, posY + bucketOffsetY, calcTwoOffsetZ(3.5, 90, -1) + posZ - .5d, calcTwoOffsetX(3.5, 90, 1) + posX + .5d, posY + 1, calcTwoOffsetZ(3.5, 90, 1) + posZ + .5d);
+				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(3.5, 90, -1) + posX - .5d, posY, calcTwoOffsetZ(3.5, 90, -1) + posZ - .5d, calcTwoOffsetX(3.5, 90, 1) + posX + .5d, posY + 1, calcTwoOffsetZ(3.5, 90, 1) + posZ + .5d);
 
 				List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
 				collidedEntitiesInList(list);
+
+				for (int i = -2; i < 3; i++) {
+					if (i == 0) {
+						angle = 0;
+					} else {
+						angle = 90;
+					}
+					BlockPos bp;
+					bp = new BlockPos(posX + calcTwoOffsetX(2, angle, i), posY, posZ + calcTwoOffsetZ(2, angle, i));
+					if (worldObj.getBlockState(bp).getBlock() == Blocks.snow_layer || worldObj.getBlockState(bp).getBlock() == Blocks.snow || worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.sand || worldObj.getBlockState(bp).getBlock() == Blocks.gravel || worldObj.getBlockState(bp).getBlock() == Blocks.grass
+							|| worldObj.getBlockState(bp).getBlock() == Blocks.clay || worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2 || worldObj.getBlockState(bp).getBlock() == Blocks.soul_sand || worldObj.getBlockState(bp).getBlock() == Blocks.tallgrass) {
+						worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
+						worldObj.setBlockToAir(bp);
+					}
+
+				}
+
+				bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(3.5, 90, -1) + posX - .5d, posY, calcTwoOffsetZ(3.5, 90, -1) + posZ - .5d, calcTwoOffsetX(3.5, 90, 1) + posX + .5d, posY + 1, calcTwoOffsetZ(3.5, 90, 1) + posZ + .5d);
+
+				list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
+				collidedEntitiesInList(list);
+
 			}
-			if (this.Attribute1 == this.getMinAngle()) {
-				// bucket up
+			if (this.isPlayerPushingSprintButton) {
+
+				// Blade Down
 				// Drop blocks
 				// TODO needs something to pace it a bit more now it drops
 				// everything way to fast.
 				for (int i = 0; i < this.getSizeInventory(); i++) {
 					ItemStack item = this.getStackInSlot(i);
-
+					int angle;
 					if (item != null && item.stackSize > 0) {
-						;
+						if (item.getItem() instanceof ItemBlock) {
+							ItemBlock ib = (ItemBlock) item.getItem();
+							if (ib.block == Blocks.dirt) {
 
-						EntityItem entityItem = new EntityItem(worldObj, posX + calcOffsetX(3.5), posY + 4, posZ + calcOffsetZ(3.5), item);
+								// its dirt
 
-						if (item.hasTagCompound()) {
-							entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+								for (int j = -2; j < 3; j++) {
+									if (j == 0) {
+										angle = 0;
+									} else {
+										angle = 90;
+									}
+									BlockPos bp;
+									BlockPos bp2;
+
+									bp = new BlockPos(posX + calcTwoOffsetX(5.5, angle, j), posY - 1, posZ + calcTwoOffsetZ(5.5, angle, j));
+
+									if (worldObj.getBlockState(bp).getBlock().isAir(worldObj, bp) || worldObj.getBlockState(bp).getBlock() == Blocks.water || worldObj.getBlockState(bp).getBlock() == Blocks.flowing_water) {
+										bp = GetLowestBlockPos(bp);
+										if (worldObj.setBlockState(bp, ib.getBlock().getDefaultState())) {
+											this.decrStackSize(i, 1);
+										}
+										return;
+
+									}
+									bp2 = new BlockPos(posX + calcTwoOffsetX(2, angle, j), posY - 1, posZ + calcTwoOffsetZ(2, angle, j));
+									if (worldObj.getBlockState(bp2).getBlock().isAir(worldObj, bp2) || worldObj.getBlockState(bp2).getBlock() == Blocks.water || worldObj.getBlockState(bp2).getBlock() == Blocks.flowing_water) {
+										bp2 = GetLowestBlockPos(bp2);
+										if (worldObj.setBlockState(bp2, ib.getBlock().getDefaultState())) {
+											this.decrStackSize(i, 1);
+										}
+										return;
+									}
+								}
+							}
 						}
-
-						float factor = 0.05F;
-						// entityItem.motionX = rand.nextGaussian() * factor;
-						entityItem.motionY = 0;
-						// entityItem.motionZ = rand.nextGaussian() * factor;
-						entityItem.forceSpawn = true;
-						worldObj.spawnEntityInWorld(entityItem);
-						// item.stackSize = 0;
-						this.setInventorySlotContents(i, null);
 					}
+
 				}
-
 			}
+		}
 
+	}
+
+	public BlockPos GetLowestBlockPos(BlockPos bp) {
+		BlockPos previous = bp;
+		if (bp.getY() == 1) {
+			return previous;
+		} else {
+			if (worldObj.getBlockState(bp.offset(EnumFacing.DOWN)).getBlock().isAir(worldObj, bp.offset(EnumFacing.DOWN)) || worldObj.getBlockState(bp.offset(EnumFacing.DOWN)).getBlock() == Blocks.water || worldObj.getBlockState(bp.offset(EnumFacing.DOWN)).getBlock() == Blocks.flowing_water) {
+				return GetLowestBlockPos(bp.offset(EnumFacing.DOWN));
+			} else {
+				return previous;
+			}
 		}
 
 	}
