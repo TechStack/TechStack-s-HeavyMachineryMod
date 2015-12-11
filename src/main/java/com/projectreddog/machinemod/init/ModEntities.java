@@ -24,19 +24,19 @@ public class ModEntities {
 	// public static final EntityBulldozer entityBulldozer= new
 	// EntityBulldozer(new World);
 	public static void init(Object mod) {
-		EntityRegistry.registerModEntity(EntityDrillingRig.class, "drillingrig", 1, mod, 80, 1, false);
-		EntityRegistry.registerModEntity(EntityBulldozer.class, "bulldozer", 2, mod, 80, 1, false);
-		EntityRegistry.registerModEntity(EntityDumpTruck.class, "dumptruck", 3, mod, 80, 1, false);
-		EntityRegistry.registerModEntity(EntityLoader.class, "loader", 4, mod, 80, 1, false);
-		EntityRegistry.registerModEntity(EntityTractor.class, "tractor", 5, mod, 80, 1, false);
-		EntityRegistry.registerModEntity(EntityCombine.class, "combine", 6, mod, 80, 1, false);
-		EntityRegistry.registerModEntity(EntityWideBedTruck.class, "widebedtruck", 7, mod, 80, 1, false);
-		EntityRegistry.registerModEntity(EntityCrane.class, "crane", 8, mod, 80, 1, false);
-		EntityRegistry.registerModEntity(EntityExcavator.class, "excavator", 9, mod, 80, 1, false);
+		EntityRegistry.registerModEntity(EntityDrillingRig.class, "drillingrig", 1, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityBulldozer.class, "bulldozer", 2, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityDumpTruck.class, "dumptruck", 3, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityLoader.class, "loader", 4, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityTractor.class, "tractor", 5, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityCombine.class, "combine", 6, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityWideBedTruck.class, "widebedtruck", 7, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityCrane.class, "crane", 8, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityExcavator.class, "excavator", 9, mod, 224, 1, false);
 
-		EntityRegistry.registerModEntity(EntityPaver.class, "paver", 12, mod, 80, 1, false);
-		EntityRegistry.registerModEntity(EntityLawnmower.class, "lawnmower", 13, mod, 80, 1, false);
-		EntityRegistry.registerModEntity(EntityGrader.class, "grader", 14, mod, 80, 1, false);
+		EntityRegistry.registerModEntity(EntityPaver.class, "paver", 12, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityLawnmower.class, "lawnmower", 13, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityGrader.class, "grader", 14, mod, 224, 1, false);
 
 	}
 }
