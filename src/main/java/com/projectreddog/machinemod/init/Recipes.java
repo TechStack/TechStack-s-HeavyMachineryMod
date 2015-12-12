@@ -103,6 +103,10 @@ public class Recipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lawnmower, 1), "   ", " e ", "wmw", 'e', ModItems.engine, 'w', ModItems.wheel, 'm', ModItems.mowerdeck));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.graderblade, 1), " i ", " i ", "i  ", 'i', Items.iron_ingot));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.grader, 1), "  g", " et", "wbw", 'g', Blocks.glass, 'e', ModItems.engine, 't', ModItems.transmission, 'w', ModItems.wheel, 'b', ModItems.graderblade));
+
 		// D D
 		// PBP
 		// III

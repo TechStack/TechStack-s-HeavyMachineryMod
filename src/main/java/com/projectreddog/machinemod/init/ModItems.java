@@ -8,6 +8,7 @@ import com.projectreddog.machinemod.item.ItemDrillHead;
 import com.projectreddog.machinemod.item.ItemDrillPipe;
 import com.projectreddog.machinemod.item.ItemFuelCan;
 import com.projectreddog.machinemod.item.ItemGoldDust;
+import com.projectreddog.machinemod.item.ItemGraderBlade;
 import com.projectreddog.machinemod.item.ItemHandDrill;
 import com.projectreddog.machinemod.item.ItemHose;
 import com.projectreddog.machinemod.item.ItemIronDust;
@@ -115,6 +116,8 @@ public class ModItems {
 	public static final ItemMachineMod havesterhead = new ItemHavesterHead();
 	public static final ItemMachineMod fuelcan = new ItemFuelCan();
 
+	public static final ItemMachineMod graderblade = new ItemGraderBlade();
+
 	public static void init() {
 		GameRegistry.registerItem(bulldozer, "bulldozer");
 		GameRegistry.registerItem(tractor, "tractor");
@@ -175,6 +178,7 @@ public class ModItems {
 		GameRegistry.registerItem(engine, "engine");
 		GameRegistry.registerItem(havesterhead, "havesterhead");
 		GameRegistry.registerItem(fuelcan, "fuelcan");
+		GameRegistry.registerItem(graderblade, "graderblade");
 
 	}
 
@@ -231,6 +235,7 @@ public class ModItems {
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(havesterhead, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "havesterhead", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(fuelcan, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "fuelcan", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(graderblade, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "graderblade", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tractor, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tractor", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(widebedtruck, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "widebedtruck", "inventory"));
