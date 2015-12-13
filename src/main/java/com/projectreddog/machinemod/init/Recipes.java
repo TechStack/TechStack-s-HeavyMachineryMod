@@ -107,6 +107,20 @@ public class Recipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.grader, 1), "  g", " et", "wbw", 'g', Blocks.glass, 'e', ModItems.engine, 't', ModItems.transmission, 'w', ModItems.wheel, 'b', ModItems.graderblade));
 
+		// adding bagger related recipies
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tracksegment, 1), "   ", " i ", "ttt", 'i', Blocks.iron_block, 't', ModItems.tracks));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.cutterbucket, 1), "e e", "i i", "iii", 'e', Blocks.emerald_block, 'i', Items.iron_ingot));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.rigging, 1), " b ", "bbb", "   ", 'b', ModItems.boomarmsegment));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.bucketwheel, 1), "bbb", "bib", "bbb", 'b', ModItems.cutterbucket, 'i', Blocks.iron_block));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.operatorsbooth, 1), "gbb", "g i", "iii", 'g', Blocks.glass, 'b', Blocks.iron_bars, 'i', Items.iron_ingot));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.powerplant, 1), "   ", "ttt", "eee", 't', ModItems.turbo, 'e', ModItems.turboengine));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.processingplant, 1), "csc", "sps", "csc", 'c', ModBlocks.machineconveyor, 's', ModBlocks.machinescreen, 'p', ModBlocks.machineprimarycrhuser));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.baggerstorge, 1), "iii", "ici", "iii", 'i', Items.iron_ingot, 'c', Blocks.chest));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.baggerbody, 1), "cpc", "isi", "clc", 'c', ModBlocks.machineconveyor, 'p', ModBlocks.machineprimarycrhuser, 'i', Blocks.iron_block, 's', Blocks.chest, 'l', Items.lava_bucket));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.bagger, 1), "br ", "obe", " tt", 'b', ModItems.bucketwheel, 'r', ModItems.rigging, 'o', ModItems.operatorsbooth, 'b', ModItems.baggerbody, 'e', ModItems.powerplant, 't', ModItems.tracksegment));
+
+		;
+
 		// D D
 		// PBP
 		// III

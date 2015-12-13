@@ -1,9 +1,13 @@
 package com.projectreddog.machinemod.init;
 
 import com.projectreddog.machinemod.item.ItemANFO;
+import com.projectreddog.machinemod.item.ItemBaggerBody;
+import com.projectreddog.machinemod.item.ItemBaggerStorage;
 import com.projectreddog.machinemod.item.ItemBoomArmSegment;
+import com.projectreddog.machinemod.item.ItemBucketWheel;
 import com.projectreddog.machinemod.item.ItemConeCrusher;
 import com.projectreddog.machinemod.item.ItemCornSeed;
+import com.projectreddog.machinemod.item.ItemCutterBucket;
 import com.projectreddog.machinemod.item.ItemDrillHead;
 import com.projectreddog.machinemod.item.ItemDrillPipe;
 import com.projectreddog.machinemod.item.ItemFuelCan;
@@ -15,7 +19,12 @@ import com.projectreddog.machinemod.item.ItemIronDust;
 import com.projectreddog.machinemod.item.ItemLidWithSpout;
 import com.projectreddog.machinemod.item.ItemMachineMod;
 import com.projectreddog.machinemod.item.ItemMowerDeck;
+import com.projectreddog.machinemod.item.ItemOperatorsBooth;
+import com.projectreddog.machinemod.item.ItemPowerPlant;
+import com.projectreddog.machinemod.item.ItemProcessingPlant;
 import com.projectreddog.machinemod.item.ItemRawAsphalt;
+import com.projectreddog.machinemod.item.ItemRigging;
+import com.projectreddog.machinemod.item.ItemTrackSegment;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentSprayer;
@@ -67,6 +76,17 @@ public class ModItems {
 	public static final ItemMachineMod anfo = new ItemANFO();
 	public static final ItemMachineMod paver = new ItemPaver();
 	public static final ItemMachineMod bagger = new ItemBagger();
+
+	public static final ItemMachineMod tracksegment = new ItemTrackSegment();
+
+	public static final ItemMachineMod cutterbucket = new ItemCutterBucket();
+	public static final ItemMachineMod rigging = new ItemRigging();
+	public static final ItemMachineMod bucketwheel = new ItemBucketWheel();
+	public static final ItemMachineMod operatorsbooth = new ItemOperatorsBooth();
+	public static final ItemMachineMod powerplant = new ItemPowerPlant();
+	public static final ItemMachineMod processingplant = new ItemProcessingPlant();
+	public static final ItemMachineMod baggerstorge = new ItemBaggerStorage();
+	public static final ItemMachineMod baggerbody = new ItemBaggerBody();
 
 	public static final ItemMachineMod conecrusher = new ItemConeCrusher();
 	public static final ItemMachineMod lidwithspout = new ItemLidWithSpout();
@@ -126,6 +146,16 @@ public class ModItems {
 		GameRegistry.registerItem(lawnmower, "lawnmower");
 		GameRegistry.registerItem(paver, "paver");
 		GameRegistry.registerItem(bagger, "bagger");
+		GameRegistry.registerItem(tracksegment, "tracksegment");
+
+		GameRegistry.registerItem(cutterbucket, "cutterbucket");
+		GameRegistry.registerItem(rigging, "rigging");
+		GameRegistry.registerItem(bucketwheel, "bucketwheel");
+		GameRegistry.registerItem(operatorsbooth, "operatorsbooth");
+		GameRegistry.registerItem(powerplant, "powerplant");
+		GameRegistry.registerItem(processingplant, "processingplant");
+		GameRegistry.registerItem(baggerstorge, "baggerstorge");
+		GameRegistry.registerItem(baggerbody, "baggerbody");
 
 		GameRegistry.registerItem(conecrusher, "conecrusher");
 
@@ -191,6 +221,16 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(drillingrig, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "drillingrig", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(paver, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "paver", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bagger, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bagger", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tracksegment, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tracksegment", "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(cutterbucket, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "cutterbucket", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(rigging, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "rigging", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bucketwheel, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bucketwheel", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(operatorsbooth, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "operatorsbooth", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(powerplant, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "powerplant", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(processingplant, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "processingplant", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(baggerstorge, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "baggerstorge", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(baggerbody, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "baggerbody", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(dumptruck, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "dumptruck", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(rawasphalt, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "rawasphalt", "inventory"));
