@@ -1,5 +1,6 @@
 package com.projectreddog.machinemod.proxy;
 
+import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.entity.EntityBulldozer;
 import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.entity.EntityCrane;
@@ -16,6 +17,7 @@ import com.projectreddog.machinemod.handler.events.RenderOverlayHandler;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.render.machines.RenderBagger;
 import com.projectreddog.machinemod.render.machines.RenderBulldozer;
 import com.projectreddog.machinemod.render.machines.RenderCombine;
 import com.projectreddog.machinemod.render.machines.RenderCrane;
@@ -65,6 +67,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityCrane.class, new RenderCrane(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityExcavator.class, new RenderExcavator(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityPaver.class, new RenderPaver(Minecraft.getMinecraft().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBagger.class, new RenderBagger(Minecraft.getMinecraft().getRenderManager()));
 
 		Item ItemblockBlastedStone = GameRegistry.findItem(Reference.MOD_ID, Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 

@@ -1,5 +1,6 @@
 package com.projectreddog.machinemod.init;
 
+import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.entity.EntityBulldozer;
 import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.entity.EntityCrane;
@@ -37,6 +38,8 @@ public class ModEntities {
 		EntityRegistry.registerModEntity(EntityPaver.class, "paver", 12, mod, 224, 1, false);
 		EntityRegistry.registerModEntity(EntityLawnmower.class, "lawnmower", 13, mod, 224, 1, false);
 		EntityRegistry.registerModEntity(EntityGrader.class, "grader", 14, mod, 224, 1, false);
+
+		EntityRegistry.registerModEntity(EntityBagger.class, "bagger", 15, mod, 224, 1, false);
 
 	}
 }

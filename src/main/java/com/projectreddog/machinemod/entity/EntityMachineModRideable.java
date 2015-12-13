@@ -3,6 +3,13 @@ package com.projectreddog.machinemod.entity;
 import java.util.List;
 import java.util.Random;
 
+import com.projectreddog.machinemod.init.ModItems;
+import com.projectreddog.machinemod.init.ModNetwork;
+import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClient;
+import com.projectreddog.machinemod.network.MachineModMessageEntityToClient;
+import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServer;
+import com.projectreddog.machinemod.reference.Reference;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -26,13 +33,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.projectreddog.machinemod.init.ModItems;
-import com.projectreddog.machinemod.init.ModNetwork;
-import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClient;
-import com.projectreddog.machinemod.network.MachineModMessageEntityToClient;
-import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServer;
-import com.projectreddog.machinemod.reference.Reference;
 
 public class EntityMachineModRideable extends Entity implements IInventory {
 
@@ -62,6 +62,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public int sendInterval = 0;
 	public double maxSpeed = 0.2d;
 	public float Attribute1;// multi-purpose variable use defined in extended
+	public float Attribute2;// multi-purpose variable use defined in extended
 
 	public AxisAlignedBB BoundingBox;
 	public int ticksSinceLastParticle;
@@ -347,7 +348,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 		// if (tickssincelastbroadcast > 20 || lastPosX != posX || lastPosY != posY || lastPosZ != posZ || lastAttribute1 != Attribute1 || lastYaw != yaw || lastCurrentFuelLevel != currentFuelLevel) {
 		// something changed (or its been 1 second) so send it to clients in need
-		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityToClient(this.getEntityId(), this.posX, this.posY, this.posZ, this.yaw, this.Attribute1, this.currentFuelLevel)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80)); // sendInterval = 0;
+		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityToClient(this.getEntityId(), this.posX, this.posY, this.posZ, this.yaw, this.Attribute1, this.Attribute2, this.currentFuelLevel)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80)); // sendInterval = 0;
 		// tickssincelastbroadcast = 0;
 		// }
 		// tickssincelastbroadcast = tickssincelastbroadcast + 1;
@@ -432,7 +433,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		// LogHelper.info("Client: isinvis:" +
 		// this.isInvisibleToPlayer(Minecraft.getMinecraft().thePlayer) +
 		// " DIMID:" + worldObj.provider.getDimensionId() + " X:" + posX +
-		// "         Y:" + posY + "       Z:" + posZ);
+		// " Y:" + posY + " Z:" + posZ);
 		//
 		//
 		// if(YawTickCount>0){
