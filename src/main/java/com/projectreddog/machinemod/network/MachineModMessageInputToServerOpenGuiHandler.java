@@ -1,6 +1,7 @@
 package com.projectreddog.machinemod.network;
 
 import com.projectreddog.machinemod.MachineMod;
+import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityGrader;
@@ -55,6 +56,8 @@ public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHan
 							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_PAVER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityGrader) {
 							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_GRADER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+						} else if (entity instanceof EntityBagger) {
+							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_BAGGER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						}
 
 					}

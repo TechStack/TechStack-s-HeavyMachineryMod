@@ -33,6 +33,7 @@ import net.minecraft.util.Vec3i;
 
 public class RenderBagger extends Render {
 
+	float wheelRadius = 10f;
 	protected ModelBase modelBagger;
 
 	private RenderItem itemRenderer;
@@ -86,6 +87,11 @@ public class RenderBagger extends Render {
 
 		boolean even = true;
 		int count = 0;
+		// GlStateManager.translate(-.0f, 1.0F, 0F);
+		GL11.glRotatef(90f, 0, 0, 1);
+		GlStateManager.translate(0f, -1.5F, 0F);
+
+		wheelRadius = 8.f;
 		for (int i = 0; i < eL.getSizeInventory(); i++) {
 			ItemStack is = eL.getStackInSlot(i);
 			if (is != null) {
@@ -94,17 +100,16 @@ public class RenderBagger extends Render {
 				// customitem.setEntityItemStack(is);
 				IBakedModel ibakedmodel = itemRenderer.getItemModelMesher().getItemModel(is);
 
-				if (count > 4) {
+				if (count > 16) {
 					count = 0;
-					GlStateManager.translate(-3.5f, 0.0F, 0F);
-					GlStateManager.translate(0, 0.0F, .5F);
+					GlStateManager.translate(0f, 1F, 0F);
 
 				}
 				// GlStateManager.translate(.7F, 0.0F, 0F);
 				count += 1;
 
-				GL11.glRotatef(45, 1, 1, 0);
-
+				GL11.glRotatef(22.5f, 0, 1, 0);
+				GlStateManager.translate(wheelRadius, 0.0F, 0F);
 				GlStateManager.enableRescaleNormal();
 
 				if (ibakedmodel.isBuiltInRenderer()) {
@@ -128,7 +133,9 @@ public class RenderBagger extends Render {
 					this.RenderHelper_a(worldrenderer, ibakedmodel.getGeneralQuads(), -1, is);
 					tessellator.draw();
 				}
-				GL11.glRotatef(-45, 1, 1, 0);
+				GlStateManager.translate(wheelRadius * -1, 0.0F, 0F);
+
+				// GL11.glRotatef(-45, 1, 1, 0);
 				even = !even;
 			}
 		}
