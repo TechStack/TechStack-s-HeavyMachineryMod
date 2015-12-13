@@ -31,15 +31,20 @@ public class ModelBagger extends ModelTransportable {
 		// this.renderGroupObject("Cube.002");
 		this.renderGroupObject("Cube.001");
 		this.renderGroupObject("Cube");
-		GL11.glTranslatef(0f, -7.5f, -1f);
-		this.renderGroupObject("ARM_Cube.003");
-		GL11.glTranslatef(0f, 1.7f, -7f);
+		GL11.glTranslatef(0f, -3.955f, -5.f);
 		this.renderGroupObject("Cab_Cube.002");
+		GL11.glTranslatef(0f, -3.4f, 4f);
 
-		GL11.glTranslatef(0f, -1.7f, -6f);
 		if (entity != null) {
 
-			GL11.glRotatef(((EntityBagger) entity).Attribute2, 1, 0, 0);
+			GL11.glRotatef(((EntityBagger) entity).Attribute1, 1, 0, 0);
+		}
+		this.renderGroupObject("ARM_Cube.003");
+
+		GL11.glTranslatef(0f, -0.25f, -12.75f);
+		if (entity != null) {
+
+			GL11.glRotatef(((EntityBagger) entity).Attribute2 * -1, 1, 0, 0);
 		}
 
 		// GL11.glTranslatef(0f, 1.2f, -1.2f);

@@ -178,13 +178,17 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 					int amountInCan = (player.getHeldItem().getMaxDamage() - player.getHeldItem().getItemDamage());
 					int roomInEntityTank = this.maxFuelLevel - this.currentFuelLevel;
 					if (amountInCan > roomInEntityTank) {
-
-						player.getHeldItem().setItemDamage(player.getHeldItem().getMaxDamage() - (amountInCan - roomInEntityTank));
+						if (!player.capabilities.isCreativeMode) {
+							player.getHeldItem().setItemDamage(player.getHeldItem().getMaxDamage() - (amountInCan - roomInEntityTank));
+						}
 						// will fill machine completely !
 						this.currentFuelLevel = this.maxFuelLevel;
 					} else {
 						// can will be empty becuase entity can hold 100% of the fuel from the can :O
-						player.getHeldItem().setItemDamage(player.getHeldItem().getMaxDamage());
+						if (!player.capabilities.isCreativeMode) {
+
+							player.getHeldItem().setItemDamage(player.getHeldItem().getMaxDamage());
+						}
 						this.currentFuelLevel = this.currentFuelLevel + amountInCan;
 					}
 				}

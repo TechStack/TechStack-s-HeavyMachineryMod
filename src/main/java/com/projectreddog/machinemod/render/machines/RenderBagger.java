@@ -50,7 +50,7 @@ public class RenderBagger extends Render {
 
 	@Override
 	public boolean shouldRender(Entity entity, ICamera camera, double camX, double camY, double camZ) {
-		return super.shouldRender(entity, camera, camX, camY, camZ) || (entity.riddenByEntity != null);
+		return true; // super.shouldRender(entity, camera, camX, camY, camZ) || (entity.riddenByEntity != null);
 	}
 
 	@Override
