@@ -12,22 +12,25 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
-public class EntityPaver extends EntityMachineModRideable {
+public class EntityRoadRoller extends EntityMachineModRideable {
 
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 
-	public EntityPaver(World world) {
+	public EntityRoadRoller(World world) {
 		super(world);
 
-		setSize(5.5f, 4f);
-		inventory = new ItemStack[9];
+		setSize(5.5f, 5f);
+		// inventory = new ItemStack[9];
 
-		this.mountedOffsetY = 0.75D;
-		this.mountedOffsetX = .75D;
-		this.mountedOffsetZ = .75D;
+		this.mountedOffsetY = .6D;
+		// this.mountedOffsetX = -0.3D;
+		// this.mountedOffsetZ = -.3D;
+		//
+		this.mountedOffsetX = 1.0D;
+		this.mountedOffsetZ = 1.0D;
 		this.maxAngle = 15;
 		this.minAngle = -90;
-		this.droppedItem = ModItems.paver;
+		this.droppedItem = ModItems.roadroller;
 		// this.shouldSendClientInvetoryUpdates = true;
 
 	}
@@ -38,30 +41,23 @@ public class EntityPaver extends EntityMachineModRideable {
 		if (!worldObj.isRemote) {
 			if (this.isPlayerPushingSprintButton) {
 				// player trying
-				for (int j = 0; j < this.getSizeInventory(); j++) {
 
-					if (this.getStackInSlot(j) != null && this.getStackInSlot(j).getItem() == ModItems.rawasphalt && this.getStackInSlot(j).stackSize > 0) {
-						int angle;
-						for (int i = -2; i < 3; i++) {
-							if (i == 0) {
-								angle = 0;
-							} else {
-								angle = 90;
-							}
-							BlockPos bp;
-							if (this.getStackInSlot(j) != null && this.getStackInSlot(j).getItem() == ModItems.rawasphalt && this.getStackInSlot(j).stackSize > 0) {
-								bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY - 1, posZ + calcTwoOffsetZ(3.5, angle, i));
-								if (worldObj.isAirBlock(bp)) {
-									worldObj.setBlockState(bp, ModBlocks.machineasphalt.getDefaultState());
-
-									this.decrStackSize(j, 1);
-								}
-							}
-						}
-						return;
+				int angle;
+				for (int i = -2; i < 3; i++) {
+					if (i == 0) {
+						angle = 0;
+					} else {
+						angle = 90;
+					}
+					BlockPos bp;
+					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY - 1, posZ + calcTwoOffsetZ(3.5, angle, i));
+					if (worldObj.getBlockState(bp).getBlock() == ModBlocks.machineasphalt) {
+						worldObj.setBlockState(bp, ModBlocks.machinecompressedasphalt.getDefaultState());
 
 					}
 				}
+				return;
+
 			}
 		}
 	}

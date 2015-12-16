@@ -27,6 +27,7 @@ public class Reference {
 	public static final String MODEL_GRADER_TEXTURE_LOCATION = "models/graderprototype.png";
 
 	public static final String MODEL_PAVER_TEXTURE_LOCATION = "models/paver.png";
+	public static final String MODEL_ROADROLLER_TEXTURE_LOCATION = "models/steamroller.png";
 
 	public static final String MODEL_CRANE_TEXTURE_LOCATION = "models/crane.png";
 	public static final String MODEL_EXCAVATOR_TEXTURE_LOCATION = "models/excavator.png";
@@ -55,6 +56,8 @@ public class Reference {
 	public static final int MAX_TREE_WIDTH = 4;
 	public static final String MODBLOCK_MACHINE_ASSEMBLY_TABLE = "machineassemblytable";
 	public static final String MODBLOCK_MACHINE_ASPHALT = "machineasphalt";
+	public static final String MODBLOCK_MACHINE_COMPRESSED_ASPHALT = "machinecompressedasphalt";
+
 	public static final String MODBLOCK_MACHINE_MOWED_GRASS = "machinemowedgrass";
 
 	public static final String MODBLOCK_MACHINE_DRILLED_STONE = "machinedrilledstone";

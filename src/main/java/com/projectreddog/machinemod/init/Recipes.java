@@ -119,6 +119,11 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.baggerbody, 1), "cpc", "isi", "clc", 'c', ModBlocks.machineconveyor, 'p', ModBlocks.machineprimarycrhuser, 'i', Blocks.iron_block, 's', Blocks.chest, 'l', Items.lava_bucket));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.bagger, 1), "wr ", "obe", " tt", 'w', ModItems.bucketwheel, 'r', ModItems.rigging, 'o', ModItems.operatorsbooth, 'b', ModItems.baggerbody, 'e', ModItems.powerplant, 't', ModItems.tracksegment));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.rollerwheel, 1), " i ", "ibi", " i ", 'i', Items.iron_ingot, 'b', Blocks.iron_block));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.roadroller, 1), "   ", " e ", "wtw", 'e', ModItems.engine, 'w', ModItems.rollerwheel, 't', ModItems.transmission));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.paverscreed, 1), "   ", "  h", "iii", 'h', Blocks.hopper, 'i', Items.iron_ingot));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.paver, 1), "  c", " et", "sww", 'c', Blocks.chest, 'e', ModItems.engine, 't', ModItems.transmission, 's', ModItems.paverscreed, 'w', ModItems.wheel));
+
 		;
 
 		// D D

@@ -57,6 +57,9 @@ tile.machinemod:machinedrilleddiorite.name=Diorite Stone
 tile.machinemod:machinedrilledgranite.name=Granite Stone
 
 
+tile.machinemod:machineasphalt.name=Asphalt
+tile.machinemod:machinecompressedasphalt.name=Compressed Asphalt
+
 tile.machinemod:machineblastedstone.name=Blasted Stone
 tile.machinemod:machineexplosivepackeddrilledstone.name=Explosive Packed Drilled Stone
 tile.machinemod:machineprimarycrhuser.name=Primary Crusher

@@ -37,7 +37,9 @@ import com.projectreddog.machinemod.item.components.ItemFlatBedTrailer;
 import com.projectreddog.machinemod.item.components.ItemHavesterHead;
 import com.projectreddog.machinemod.item.components.ItemIronGear;
 import com.projectreddog.machinemod.item.components.ItemLoaderBucket;
+import com.projectreddog.machinemod.item.components.ItemPaverScreed;
 import com.projectreddog.machinemod.item.components.ItemPiston;
+import com.projectreddog.machinemod.item.components.ItemRollerWheel;
 import com.projectreddog.machinemod.item.components.ItemStoneGear;
 import com.projectreddog.machinemod.item.components.ItemTracks;
 import com.projectreddog.machinemod.item.components.ItemTransmission;
@@ -57,6 +59,7 @@ import com.projectreddog.machinemod.item.machines.ItemGrader;
 import com.projectreddog.machinemod.item.machines.ItemLawnmower;
 import com.projectreddog.machinemod.item.machines.ItemLoader;
 import com.projectreddog.machinemod.item.machines.ItemPaver;
+import com.projectreddog.machinemod.item.machines.ItemRoadRoller;
 import com.projectreddog.machinemod.item.machines.ItemTractor;
 import com.projectreddog.machinemod.item.machines.ItemWideBedTruck;
 import com.projectreddog.machinemod.reference.Reference;
@@ -75,6 +78,10 @@ public class ModItems {
 	public static final ItemMachineMod lawnmower = new ItemLawnmower();
 	public static final ItemMachineMod anfo = new ItemANFO();
 	public static final ItemMachineMod paver = new ItemPaver();
+	public static final ItemMachineMod roadroller = new ItemRoadRoller();
+	public static final ItemMachineMod paverscreed = new ItemPaverScreed();
+	public static final ItemMachineMod rollerwheel = new ItemRollerWheel();
+
 	public static final ItemMachineMod bagger = new ItemBagger();
 
 	public static final ItemMachineMod tracksegment = new ItemTrackSegment();
@@ -145,6 +152,10 @@ public class ModItems {
 		GameRegistry.registerItem(tractor, "tractor");
 		GameRegistry.registerItem(lawnmower, "lawnmower");
 		GameRegistry.registerItem(paver, "paver");
+		GameRegistry.registerItem(roadroller, "roadroller");
+		GameRegistry.registerItem(paverscreed, "paverscreed");
+		GameRegistry.registerItem(rollerwheel, "rollerwheel");
+
 		GameRegistry.registerItem(bagger, "bagger");
 		GameRegistry.registerItem(tracksegment, "tracksegment");
 
@@ -220,8 +231,11 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bulldozer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bulldozer", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(drillingrig, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "drillingrig", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(paver, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "paver", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(roadroller, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "roadroller", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bagger, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bagger", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tracksegment, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tracksegment", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(paverscreed, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "paverscreed", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(rollerwheel, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "rollerwheel", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(cutterbucket, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "cutterbucket", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(rigging, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "rigging", "inventory"));

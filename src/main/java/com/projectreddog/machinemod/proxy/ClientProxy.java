@@ -11,6 +11,7 @@ import com.projectreddog.machinemod.entity.EntityGrader;
 import com.projectreddog.machinemod.entity.EntityLawnmower;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityPaver;
+import com.projectreddog.machinemod.entity.EntityRoadRoller;
 import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.entity.EntityWideBedTruck;
 import com.projectreddog.machinemod.handler.events.RenderOverlayHandler;
@@ -28,6 +29,7 @@ import com.projectreddog.machinemod.render.machines.RenderGrader;
 import com.projectreddog.machinemod.render.machines.RenderLawnmower;
 import com.projectreddog.machinemod.render.machines.RenderLoader;
 import com.projectreddog.machinemod.render.machines.RenderPaver;
+import com.projectreddog.machinemod.render.machines.RenderRoadRoller;
 import com.projectreddog.machinemod.render.machines.RenderTractor;
 import com.projectreddog.machinemod.render.machines.RenderWideBedTruck;
 import com.projectreddog.machinemod.render.tileentity.TileEntityCentrifugeRenderer;
@@ -68,6 +70,8 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityExcavator.class, new RenderExcavator(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityPaver.class, new RenderPaver(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBagger.class, new RenderBagger(Minecraft.getMinecraft().getRenderManager()));
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityRoadRoller.class, new RenderRoadRoller(Minecraft.getMinecraft().getRenderManager()));
 
 		Item ItemblockBlastedStone = GameRegistry.findItem(Reference.MOD_ID, Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 

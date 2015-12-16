@@ -1,5 +1,8 @@
 package com.projectreddog.machinemod.block;
 
+import com.projectreddog.machinemod.entity.EntityMachineModRideable;
+import com.projectreddog.machinemod.reference.Reference;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -7,15 +10,12 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
-import com.projectreddog.machinemod.entity.EntityMachineModRideable;
-import com.projectreddog.machinemod.reference.Reference;
+public class BlockMachineCompressedAsphalt extends BlockMachineMod {
 
-public class BlockMachineAsphaltSlab extends BlockMachineMod {
-
-	public BlockMachineAsphaltSlab() {
+	public BlockMachineCompressedAsphalt() {
 		super();
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_ASPHALT);
+		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_COMPRESSED_ASPHALT);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setHardness(15f);// not sure on the hardness
 		this.setStepSound(soundTypeStone);

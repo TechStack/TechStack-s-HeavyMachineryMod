@@ -12,6 +12,7 @@ import com.projectreddog.machinemod.entity.EntityGrader;
 import com.projectreddog.machinemod.entity.EntityLawnmower;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityPaver;
+import com.projectreddog.machinemod.entity.EntityRoadRoller;
 import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.entity.EntityWideBedTruck;
 import com.projectreddog.machinemod.reference.Reference;
@@ -40,6 +41,7 @@ public class ModEntities {
 		EntityRegistry.registerModEntity(EntityGrader.class, "grader", 14, mod, 224, 1, false);
 
 		EntityRegistry.registerModEntity(EntityBagger.class, "bagger", 15, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityRoadRoller.class, "roadroller", 16, mod, 224, 1, false);
 
 	}
 }
