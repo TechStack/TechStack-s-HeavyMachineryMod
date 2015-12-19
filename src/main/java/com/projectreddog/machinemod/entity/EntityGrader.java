@@ -114,7 +114,8 @@ public class EntityGrader extends EntityMachineModRideable {
 
 									bp = new BlockPos(posX + calcTwoOffsetX(5.5, angle, j), posY - 1, posZ + calcTwoOffsetZ(5.5, angle, j));
 
-									if (worldObj.getBlockState(bp).getBlock().isAir(worldObj, bp) || worldObj.getBlockState(bp).getBlock() == Blocks.water || worldObj.getBlockState(bp).getBlock() == Blocks.flowing_water) {
+									if (worldObj.getBlockState(bp).getBlock().isAir(worldObj, bp) || worldObj.getBlockState(bp).getBlock() == Blocks.water || worldObj.getBlockState(bp).getBlock() == Blocks.flowing_water || worldObj.getBlockState(bp).getBlock() == Blocks.tallgrass || worldObj.getBlockState(bp).getBlock() == Blocks.vine || worldObj.getBlockState(bp).getBlock() == Blocks.reeds
+											|| worldObj.getBlockState(bp).getBlock() == Blocks.red_flower || worldObj.getBlockState(bp).getBlock() == Blocks.yellow_flower || worldObj.getBlockState(bp).getBlock() == Blocks.waterlily || worldObj.getBlockState(bp).getBlock() == Blocks.brown_mushroom || worldObj.getBlockState(bp).getBlock() == Blocks.red_mushroom) {
 										bp = GetLowestBlockPos(bp);
 										if (worldObj.setBlockState(bp, ib.getBlock().getDefaultState())) {
 											this.decrStackSize(i, 1);
@@ -123,7 +124,8 @@ public class EntityGrader extends EntityMachineModRideable {
 
 									}
 									bp2 = new BlockPos(posX + calcTwoOffsetX(2, angle, j), posY - 1, posZ + calcTwoOffsetZ(2, angle, j));
-									if (worldObj.getBlockState(bp2).getBlock().isAir(worldObj, bp2) || worldObj.getBlockState(bp2).getBlock() == Blocks.water || worldObj.getBlockState(bp2).getBlock() == Blocks.flowing_water) {
+									if (worldObj.getBlockState(bp2).getBlock().isAir(worldObj, bp2) || worldObj.getBlockState(bp2).getBlock() == Blocks.water || worldObj.getBlockState(bp2).getBlock() == Blocks.flowing_water || worldObj.getBlockState(bp).getBlock() == Blocks.tallgrass || worldObj.getBlockState(bp).getBlock() == Blocks.vine || worldObj.getBlockState(bp).getBlock() == Blocks.reeds
+											|| worldObj.getBlockState(bp).getBlock() == Blocks.red_flower || worldObj.getBlockState(bp).getBlock() == Blocks.yellow_flower || worldObj.getBlockState(bp).getBlock() == Blocks.waterlily || worldObj.getBlockState(bp).getBlock() == Blocks.brown_mushroom || worldObj.getBlockState(bp).getBlock() == Blocks.red_mushroom) {
 										bp2 = GetLowestBlockPos(bp2);
 										if (worldObj.setBlockState(bp2, ib.getBlock().getDefaultState())) {
 											this.decrStackSize(i, 1);
