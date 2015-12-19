@@ -11,11 +11,11 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
-public class ModelBagger extends ModelTransportable {
+public class ModelOilRig extends ModelTransportable {
 	// fields
 	private IModelCustom myModel;
 
-	public ModelBagger() {
+	public ModelOilRig() {
 
 		// LogHelper.info("LOADING dump truck MODEL!");
 		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/bagger.obj"));
@@ -37,14 +37,14 @@ public class ModelBagger extends ModelTransportable {
 
 		if (entity != null) {
 
-			GL11.glRotatef(((EntityBagger) entity).Attribute1, 1, 0, 0);
+			//GL11.glRotatef(((EntityOilRig) entity).Attribute1, 1, 0, 0);
 		}
 		this.renderGroupObject("ARM_Cube.003");
 
 		GL11.glTranslatef(0f, -0.25f, -12.75f);
 		if (entity != null) {
 
-			GL11.glRotatef(((EntityBagger) entity).Attribute2 * -1, 1, 0, 0);
+			//GL11.glRotatef(((EntityOilRig) entity).Attribute2 * -1, 1, 0, 0);
 		}
 
 		// GL11.glTranslatef(0f, 1.2f, -1.2f);
@@ -76,6 +76,6 @@ public class ModelBagger extends ModelTransportable {
 
 	public ResourceLocation getTexture() {
 
-		return new ResourceLocation("machinemod", Reference.MODEL_BAGGER_TEXTURE_LOCATION);
+		return new ResourceLocation("machinemod", Reference.MODEL_OIL_RIG_TEXTURE_LOCATION);
 	}
 }
