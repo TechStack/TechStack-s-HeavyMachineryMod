@@ -62,6 +62,7 @@ import com.projectreddog.machinemod.item.machines.ItemLoader;
 import com.projectreddog.machinemod.item.machines.ItemOilRig;
 import com.projectreddog.machinemod.item.machines.ItemPaver;
 import com.projectreddog.machinemod.item.machines.ItemRoadRoller;
+import com.projectreddog.machinemod.item.machines.ItemSub;
 import com.projectreddog.machinemod.item.machines.ItemTractor;
 import com.projectreddog.machinemod.item.machines.ItemWideBedTruck;
 import com.projectreddog.machinemod.reference.Reference;
@@ -84,6 +85,7 @@ public class ModItems {
 	public static final ItemMachineMod paverscreed = new ItemPaverScreed();
 	public static final ItemMachineMod rollerwheel = new ItemRollerWheel();
 	public static final ItemMachineMod oilrig = new ItemOilRig();
+	public static final ItemMachineMod sub = new ItemSub();
 
 	public static final ItemMachineMod bagger = new ItemBagger();
 
@@ -160,6 +162,7 @@ public class ModItems {
 		GameRegistry.registerItem(paverscreed, "paverscreed");
 		GameRegistry.registerItem(rollerwheel, "rollerwheel");
 		GameRegistry.registerItem(oilrig, "oilrig");
+		GameRegistry.registerItem(sub, "sub");
 
 		GameRegistry.registerItem(bagger, "bagger");
 		GameRegistry.registerItem(tracksegment, "tracksegment");
@@ -243,6 +246,7 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(paverscreed, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "paverscreed", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(rollerwheel, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "rollerwheel", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(oilrig, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "oilrig", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(sub, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "sub", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(cutterbucket, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "cutterbucket", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(rigging, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "rigging", "inventory"));

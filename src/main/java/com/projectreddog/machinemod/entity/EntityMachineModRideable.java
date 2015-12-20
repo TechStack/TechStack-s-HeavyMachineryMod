@@ -80,6 +80,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public int currentFuelLevel = 0;
 	public int maxFuelLevel = 1000;
 
+	public boolean willSink = true;
+
 	public int runTimeTillNextFuelUsage = 20;
 	public int maxRunTimeTillNextFuelUsage = 20;
 
@@ -269,9 +271,22 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 				|| worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial().isReplaceable()) {
 			// in air block so fall i'll actually park the entity inside the
 			// block below just a little bit.
-			this.motionY -= 0.03999999910593033D;
 
-		} else {
+			if (willSink) {
+				this.motionY -= 0.03999999910593033D;
+			} else {
+				if (worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.water) {
+					// do nothing
+					this.motionY = this.motionY * .85D;
+
+				} else {
+					this.motionY -= 0.03999999910593033D;
+				}
+			}
+
+		} else
+
+		{
 
 			this.motionY = 0;
 			this.posY = (int) this.posY + 1;
@@ -279,7 +294,9 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 		// end New for gravity
 
-		if (riddenByEntity != null && currentFuelLevel > 0) {
+		if (riddenByEntity != null && currentFuelLevel > 0)
+
+		{
 
 			if (isPlayerAccelerating) {
 				this.velocity += accelerationAmount;
@@ -295,12 +312,16 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			}
 
 		}
-		if (isPlayerPushingJumpButton && currentFuelLevel > 0) {
+		if (isPlayerPushingJumpButton && currentFuelLevel > 0)
+
+		{
 			Attribute1 -= 1;
 			if (Attribute1 < getMinAngle()) {
 				Attribute1 = getMinAngle();
 			}
-		} else if (isPlayerPushingSprintButton && currentFuelLevel > 0) {
+		} else if (isPlayerPushingSprintButton && currentFuelLevel > 0)
+
+		{
 			Attribute1 += 1;
 			if (Attribute1 > getMaxAngle()) {
 				Attribute1 = getMaxAngle();
@@ -309,20 +330,32 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		// end take user input
 
 		// Clamp values to max / min values as needed
-		if (this.velocity > this.getMaxVelocity()) {
+		if (this.velocity > this.getMaxVelocity())
+
+		{
 			this.velocity = this.getMaxVelocity();
-		} else if (this.velocity < this.getMaxVelocity() * -1) {
+		} else if (this.velocity < this.getMaxVelocity() * -1)
+
+		{
 			this.velocity = this.getMaxVelocity() * -1;
 		}
-		if (this.velocity < 0.0001d && this.velocity > 0.0d) {
+		if (this.velocity < 0.0001d && this.velocity > 0.0d)
+
+		{
 			this.velocity = 0d;
 
-		} else if (this.velocity > -0.0001d && this.velocity < 0.0d) {
+		} else if (this.velocity > -0.0001d && this.velocity < 0.0d)
+
+		{
 			this.velocity = 0d;
 		}
-		if (this.yaw > 360) {
+		if (this.yaw > 360)
+
+		{
 			this.yaw = this.yaw - 360;
-		} else if (this.yaw < 0) {
+		} else if (this.yaw < 0)
+
+		{
 			this.yaw = 360 - this.yaw;
 		}
 		// END Clamp values to max / min values as needed
@@ -335,6 +368,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		motionX = speedX;
 		motionZ = speedZ;
 		this.velocity *= .90;// apply friction
+
 		setRotation(this.yaw, this.rotationPitch);
 
 		// motionY= speedY;

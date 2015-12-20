@@ -14,6 +14,7 @@ import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityOilRig;
 import com.projectreddog.machinemod.entity.EntityPaver;
 import com.projectreddog.machinemod.entity.EntityRoadRoller;
+import com.projectreddog.machinemod.entity.EntitySub;
 import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.entity.EntityWideBedTruck;
 import com.projectreddog.machinemod.reference.Reference;
@@ -24,26 +25,30 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
 public class ModEntities {
 
+	public static int entityID = 0;
+
 	// public static final EntityBulldozer entityBulldozer= new
 	// EntityBulldozer(new World);
 	public static void init(Object mod) {
-		EntityRegistry.registerModEntity(EntityDrillingRig.class, "drillingrig", 1, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityBulldozer.class, "bulldozer", 2, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityDumpTruck.class, "dumptruck", 3, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityLoader.class, "loader", 4, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityTractor.class, "tractor", 5, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityCombine.class, "combine", 6, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityWideBedTruck.class, "widebedtruck", 7, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityCrane.class, "crane", 8, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityExcavator.class, "excavator", 9, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityDrillingRig.class, "drillingrig", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityBulldozer.class, "bulldozer", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityDumpTruck.class, "dumptruck", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityLoader.class, "loader", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityTractor.class, "tractor", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityCombine.class, "combine", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityWideBedTruck.class, "widebedtruck", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityCrane.class, "crane", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityExcavator.class, "excavator", ++entityID, mod, 224, 1, false);
 
-		EntityRegistry.registerModEntity(EntityPaver.class, "paver", 12, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityLawnmower.class, "lawnmower", 13, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityGrader.class, "grader", 14, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityPaver.class, "paver", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityLawnmower.class, "lawnmower", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityGrader.class, "grader", ++entityID, mod, 224, 1, false);
 
-		EntityRegistry.registerModEntity(EntityBagger.class, "bagger", 15, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityRoadRoller.class, "roadroller", 16, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityOilRig.class, "oilrig", 17, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityBagger.class, "bagger", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityRoadRoller.class, "roadroller", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityOilRig.class, "oilrig", ++entityID, mod, 224, 1, false);
+
+		EntityRegistry.registerModEntity(EntitySub.class, "sub", ++entityID, mod, 224, 1, false);
 
 	}
 }
