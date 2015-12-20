@@ -13,6 +13,7 @@ public class Reference {
 	public static final String MODEL_BULLDOZER_TEXTURE_LOCATION = "models/bulldozer.png";
 	public static final String MODEL_TRACTOR_TEXTURE_LOCATION = "models/modeltractor.png";
 	public static final String MODEL_LAWNMOWER_TEXTURE_LOCATION = "models/modellawnmower.png";
+	public static final String MODEL_SUB_TEXTURE_LOCATION = "models/sub.png";
 
 	public static final String MODEL_FUEL_PUMP_TEXTURE_LOCATION = "models/fuelpump.png";
 	public static final String MODEL_DISTILLER_TEXTURE_LOCATION = "models/distiller.png";
@@ -24,7 +25,7 @@ public class Reference {
 	public static final String MODEL_LOADER_TEXTURE_LOCATION = "models/modelloader.png";
 	public static final String MODEL_BAGGER_TEXTURE_LOCATION = "models/bagger.png";
 	public static final String MODEL_OIL_RIG_TEXTURE_LOCATION = "models/bagger.png";
-	
+
 	public static final String MODEL_GRADER_TEXTURE_LOCATION = "models/graderprototype.png";
 
 	public static final String MODEL_PAVER_TEXTURE_LOCATION = "models/paver.png";

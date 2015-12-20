@@ -18,16 +18,18 @@ public class EntitySub extends EntityMachineModRideable {
 
 	public EntitySub(World world) {
 		super(world);
-		setSize(1.5F, 2F);
+		setSize(2.5F, 4F);
 		inventory = new ItemStack[9];
-		this.mountedOffsetY = 0.55D;
-		this.mountedOffsetX = -0.65d;
-		this.mountedOffsetZ = -0.65d;
+		this.mountedOffsetY = 0.35D;
+		this.mountedOffsetX = 2d;
+		this.mountedOffsetZ = 2d;
 		this.maxAngle = 0;
 		this.minAngle = -60;
 		this.droppedItem = ModItems.sub;
 		this.shouldSendClientInvetoryUpdates = false;
 		this.willSink = false;
+		this.maxSpeed = .4d;
+		this.isWaterOnly = true;
 
 	}
 
@@ -41,11 +43,11 @@ public class EntitySub extends EntityMachineModRideable {
 		if (!worldObj.isRemote) {
 
 			if (isPlayerPushingSprintButton) {
-				this.motionY -= 0.03999999910593033D;
+				this.motionY -= 0.04D;
 			}
 			if (isPlayerPushingJumpButton) {
 				if (worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.water) {
-					this.motionY += 0.03999999910593033D;
+					this.motionY += 0.04D;
 				}
 			}
 
@@ -53,6 +55,7 @@ public class EntitySub extends EntityMachineModRideable {
 				EntityPlayer entityPlayer = (EntityPlayer) this.riddenByEntity;
 				entityPlayer.setAir(300);
 				entityPlayer.addPotionEffect(new PotionEffect(Potion.nightVision.id, 600, 0, true, false));
+				entityPlayer.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 600, 0, true, false));
 
 			}
 

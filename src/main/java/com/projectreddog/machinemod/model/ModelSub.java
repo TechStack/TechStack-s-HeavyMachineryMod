@@ -20,7 +20,7 @@ public class ModelSub extends ModelTransportable {
 
 	public ModelSub() {
 
-		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/lawnmower.obj"));
+		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/sub.obj"));
 		// casinoTexture = new ResourceLocation("modid",
 		// "textures/casinoTexture.png");
 
@@ -51,7 +51,7 @@ public class ModelSub extends ModelTransportable {
 
 	public ResourceLocation getTexture() {
 
-		return new ResourceLocation("machinemod", Reference.MODEL_LAWNMOWER_TEXTURE_LOCATION);
+		return new ResourceLocation("machinemod", Reference.MODEL_SUB_TEXTURE_LOCATION);
 	}
 
 }

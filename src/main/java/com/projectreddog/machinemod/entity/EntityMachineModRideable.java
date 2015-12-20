@@ -81,7 +81,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public int maxFuelLevel = 1000;
 
 	public boolean willSink = true;
-
+	public boolean isWaterOnly = false;
 	public int runTimeTillNextFuelUsage = 20;
 	public int maxRunTimeTillNextFuelUsage = 20;
 
@@ -239,6 +239,16 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		// need to reset vars because player is no longer riding in the machine
 		// should cause it to stop & not star when the re-enter if they leave
 		// while the machine is moving
+
+		if (isWaterOnly && (!(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.water))) {
+			isPlayerAccelerating = false;
+			isPlayerBreaking = false;
+			isPlayerTurningRight = false;
+			isPlayerTurningLeft = false;
+			isPlayerPushingSprintButton = false;
+			isPlayerPushingJumpButton = false;
+		}
+
 		if (this.riddenByEntity == null) {
 			isPlayerAccelerating = false;
 			isPlayerBreaking = false;
