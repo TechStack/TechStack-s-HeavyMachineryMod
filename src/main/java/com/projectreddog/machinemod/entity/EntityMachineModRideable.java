@@ -244,6 +244,14 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			isPlayerTurningLeft = false;
 			isPlayerPushingSprintButton = false;
 			isPlayerPushingJumpButton = false;
+		} else {
+			if (this.riddenByEntity instanceof EntityPlayer) {
+				EntityPlayer entityPlayer = (EntityPlayer) this.riddenByEntity;
+				if (entityPlayer.capabilities.isCreativeMode) {
+					currentFuelLevel = maxFuelLevel;
+				}
+			}
+
 		}
 
 		lastPosX = posX;

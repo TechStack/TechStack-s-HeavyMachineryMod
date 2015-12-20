@@ -29,6 +29,7 @@ import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentSprayer;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentTrencher;
+import com.projectreddog.machinemod.item.ItemWrench;
 import com.projectreddog.machinemod.item.components.ItemCamshaft;
 import com.projectreddog.machinemod.item.components.ItemDozerBlade;
 import com.projectreddog.machinemod.item.components.ItemDumperBed;
@@ -148,6 +149,7 @@ public class ModItems {
 	public static final ItemMachineMod fuelcan = new ItemFuelCan();
 
 	public static final ItemMachineMod graderblade = new ItemGraderBlade();
+	public static final ItemMachineMod wrench = new ItemWrench();
 
 	public static void init() {
 		GameRegistry.registerItem(bulldozer, "bulldozer");
@@ -158,7 +160,7 @@ public class ModItems {
 		GameRegistry.registerItem(paverscreed, "paverscreed");
 		GameRegistry.registerItem(rollerwheel, "rollerwheel");
 		GameRegistry.registerItem(oilrig, "oilrig");
-		
+
 		GameRegistry.registerItem(bagger, "bagger");
 		GameRegistry.registerItem(tracksegment, "tracksegment");
 
@@ -227,6 +229,7 @@ public class ModItems {
 		GameRegistry.registerItem(havesterhead, "havesterhead");
 		GameRegistry.registerItem(fuelcan, "fuelcan");
 		GameRegistry.registerItem(graderblade, "graderblade");
+		GameRegistry.registerItem(wrench, "wrench");
 
 	}
 
@@ -299,6 +302,7 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(havesterhead, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "havesterhead", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(fuelcan, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "fuelcan", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(graderblade, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "graderblade", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(wrench, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "wrench", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tractor, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tractor", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(widebedtruck, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "widebedtruck", "inventory"));
