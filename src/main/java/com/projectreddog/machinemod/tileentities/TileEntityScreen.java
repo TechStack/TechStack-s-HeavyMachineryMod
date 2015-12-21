@@ -351,7 +351,7 @@ public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox
 
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 }
