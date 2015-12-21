@@ -68,7 +68,7 @@ public class ContainerScreen extends Container {
 			}
 			// places it into the tileEntity is possible since its in the player
 			// inventory
-			else if (!this.mergeItemStack(stackInSlot, 0, 5, false)) {
+			else if (!this.mergeItemStack(stackInSlot, 4, 5, false)) {
 				return null;
 			}
 
@@ -85,5 +85,15 @@ public class ContainerScreen extends Container {
 		}
 		return stack;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

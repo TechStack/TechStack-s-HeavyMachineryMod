@@ -68,17 +68,17 @@ public class RenderOilRig extends Render {
 		}
 
 		float f4 = 0.75F;
-		GL11.glScalef(f4, f4, f4);
-		GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
+	//	GL11.glScalef(f4, f4, f4);
+	//	GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
 		this.bindEntityTexture(entity);
-		GL11.glScalef(-1.0F, -1.0F, 1.0F);
+		//GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelOilRig.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
 		// GlStateManager.translate(-1.4f, -0.25F, -.85F);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		GL11.glScalef(.5f, .5f, .5f);
-		EntityOilRig eL = ((EntityOilRig) entity);
-
+//		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+//		GL11.glScalef(.5f, .5f, .5f);
+//		EntityOilRig eL = ((EntityOilRig) entity);
+//
 
 		
 	}
