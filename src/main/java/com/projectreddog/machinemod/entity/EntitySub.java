@@ -9,6 +9,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 
 public class EntitySub extends EntityMachineModRideable {
@@ -30,6 +31,7 @@ public class EntitySub extends EntityMachineModRideable {
 		this.willSink = false;
 		this.maxSpeed = .4d;
 		this.isWaterOnly = true;
+		this.nextParticleAtTick = 5;
 
 	}
 
@@ -42,16 +44,16 @@ public class EntitySub extends EntityMachineModRideable {
 		super.onUpdate();
 		if (!worldObj.isRemote) {
 
-			if (isPlayerPushingSprintButton) {
+			if (this.currentFuelLevel > 0 && isPlayerPushingSprintButton) {
 				this.motionY -= 0.04D;
 			}
-			if (isPlayerPushingJumpButton) {
+			if (this.currentFuelLevel > 0 && isPlayerPushingJumpButton) {
 				if (worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.water) {
 					this.motionY += 0.04D;
 				}
 			}
 
-			if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer) {
+			if (this.currentFuelLevel > 0 && this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer) {
 				EntityPlayer entityPlayer = (EntityPlayer) this.riddenByEntity;
 				entityPlayer.setAir(300);
 				entityPlayer.addPotionEffect(new PotionEffect(Potion.nightVision.id, 600, 0, true, false));
@@ -59,6 +61,23 @@ public class EntitySub extends EntityMachineModRideable {
 
 			}
 
+		}
+	}
+
+	public double particleBackOffset = -.6d;
+	public double particleSideOffset = 2.3d;
+	public double particleTopOffset = 3.9d;
+	public double particleBottmOffset = -.3d;
+
+	@Override
+	public void doParticleEffects() {
+		if (this.currentFuelLevel > 0 && this.riddenByEntity != null && (this.isPlayerAccelerating || this.isPlayerBreaking || this.isPlayerPushingJumpButton || this.isPlayerPushingSprintButton || this.isPlayerTurningLeft || this.isPlayerTurningRight)) {
+			for (int i = 0; i < 3; i++) {
+				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset), this.posY + particleTopOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset), 0, 0, 0, 0);
+				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset * -1), this.posY + particleTopOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset * -1), 0, 0, 0, 0);
+				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset), this.posY - particleBottmOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset), 0, 0, 0, 0);
+				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset * -1), this.posY - particleBottmOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset * -1), 0, 0, 0, 0);
+			}
 		}
 	}
 }
