@@ -107,6 +107,13 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		}
 	}
 
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean isInRangeToRenderDist(double distance) {
+		// testing with always TRUE is in range to render dist to see if it fixes invs entities
+		return true;
+	}
+
 	public double getMaxVelocity() {
 		// created as method so extending class can easily override to allow for
 		// different speeds per machine
@@ -485,7 +492,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		}
 
 		setPosition(posX + motionX, posY + motionY, posZ + motionZ);
-
+		this.addedToChunk = false;
 		// LogHelper.info("Client: isinvis:" +
 		// this.isInvisibleToPlayer(Minecraft.getMinecraft().thePlayer) +
 		// " DIMID:" + worldObj.provider.getDimensionId() + " X:" + posX +

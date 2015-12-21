@@ -47,9 +47,16 @@ public class MachineModMessageEntityToClientHandler implements IMessageHandler<M
 							((EntityMachineModRideable) entity).Attribute2 = message.Attribute2;
 							((EntityMachineModRideable) entity).currentFuelLevel = message.currentFuelLevel;
 
-							// LogHelper.info("RECIEVED ENTITY PACKET FROM SERVER"
-							// );
+							// LogHelper.info("RECIEVED ENTITY PACKET FROM SERVER" + ((EntityMachineModRideable) entity).TargetposX);
+
+							// LogHelper.info("message" + message.posX + "target" + ((EntityMachineModRideable) entity).TargetposX + "actual" + ((EntityMachineModRideable) entity).posX);
+							// LogHelper.info("SHOULD RENDER" + ((EntityMachineModRideable) entity).shouldRenderInPass(0));
+							// LogHelper.info("CHUNK Added?" + ((EntityMachineModRideable) entity).addedToChunk);
+
 						}
+					} else {
+						// LogHelper.info("RECIEVED NULL ENTITY PACKET FROM SERVER" + message.entityid);
+
 					}
 				}
 			}
