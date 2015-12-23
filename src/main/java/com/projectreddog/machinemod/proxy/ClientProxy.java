@@ -12,7 +12,6 @@ import com.projectreddog.machinemod.entity.EntityLawnmower;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityOilRig;
 import com.projectreddog.machinemod.entity.EntityPaver;
-import com.projectreddog.machinemod.entity.EntityPumpJack;
 import com.projectreddog.machinemod.entity.EntityRoadRoller;
 import com.projectreddog.machinemod.entity.EntitySub;
 import com.projectreddog.machinemod.entity.EntityTractor;
@@ -33,7 +32,6 @@ import com.projectreddog.machinemod.render.machines.RenderLawnmower;
 import com.projectreddog.machinemod.render.machines.RenderLoader;
 import com.projectreddog.machinemod.render.machines.RenderOilRig;
 import com.projectreddog.machinemod.render.machines.RenderPaver;
-import com.projectreddog.machinemod.render.machines.RenderPumpJack;
 import com.projectreddog.machinemod.render.machines.RenderRoadRoller;
 import com.projectreddog.machinemod.render.machines.RenderSub;
 import com.projectreddog.machinemod.render.machines.RenderTractor;
@@ -81,7 +79,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityOilRig.class, new RenderOilRig(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySub.class, new RenderSub(Minecraft.getMinecraft().getRenderManager()));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityPumpJack.class, new RenderPumpJack(Minecraft.getMinecraft().getRenderManager()));
+		// RenderingRegistry.registerEntityRenderingHandler(EntityPumpJack.class, new RenderPumpJack(Minecraft.getMinecraft().getRenderManager()));
 
 		Item ItemblockBlastedStone = GameRegistry.findItem(Reference.MOD_ID, Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 

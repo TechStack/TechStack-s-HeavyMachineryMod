@@ -36,32 +36,36 @@ public class ModelPumpJack extends ModelTransportable {
 
 		}
 
-		primaryRotation = 100;
-		if (primaryRotation > 90 && primaryRotation < 180) {
-			secondaryRotation = ((180 - (90 - (primaryRotation - 90))) - 180);
-		} else {
-			// secondaryRotation = 22.5f - ((primaryRotation - 180) * .25f);
-		}
+		// primaryRotation = 100;
 
-		if (primaryRotation <= 90) {
-			tertiaryRotation = (primaryRotation * .75f) * -1;
-			// tertiaryRotation = -40f;
+		if (primaryRotation < 90) {
+			secondaryRotation = ((90 - primaryRotation + 90) / 2) - 90;
 		}
+		// if (primaryRotation > 90 && primaryRotation < 180) {
+		// secondaryRotation = ((180 - (90 - (primaryRotation - 90))) - 180);
+		// } else {
+		// // secondaryRotation = 22.5f - ((primaryRotation - 180) * .25f);
+		// }
+		//
+		// if (primaryRotation <= 90) {
+		// tertiaryRotation = (primaryRotation * .75f) * -1;
+		// // tertiaryRotation = -40f;
+		// }
 
 		// tertiaryRotation = secondaryRotation * -1 * 2;
 		// green = 2.5
 		// yellow = 1
-		primaryRotation = 0;
+		// primaryRotation = 0;
 		this.renderGroupObject("Stand_Cube");
 		GL11.glTranslatef(0f, 2f, -2.86f);
 		GL11.glRotatef(primaryRotation * -1, 1, 0, 0);
 		this.renderGroupObject("CounterWeight_Cylinder.001");
 		GL11.glTranslatef(0f, -1f, 0f);
-		// GL11.glRotatef(secondaryRotation * -1, 1, 0, 0);
+		GL11.glRotatef(secondaryRotation * -1, 1, 0, 0);
 		this.renderGroupObject("VertArm_Cube.002");
 		// GL11.glRotatef(secondaryRotation * 1, 1, 0, 0);
 
-		// GL11.glTranslatef(0f, 1f, 0f);
+		GL11.glTranslatef(0f, 1f, 0f);
 		GL11.glRotatef(primaryRotation, 1, 0, 0);
 		// GL11.glTranslatef(0f, -1.5f, 3f);
 
