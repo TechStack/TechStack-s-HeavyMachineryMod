@@ -1,6 +1,7 @@
 package com.projectreddog.machinemod.init;
 
 import com.projectreddog.machinemod.item.ItemANFO;
+import com.projectreddog.machinemod.item.ItemAirTank;
 import com.projectreddog.machinemod.item.ItemBaggerBody;
 import com.projectreddog.machinemod.item.ItemBaggerStorage;
 import com.projectreddog.machinemod.item.ItemBoomArmSegment;
@@ -17,18 +18,26 @@ import com.projectreddog.machinemod.item.ItemHandDrill;
 import com.projectreddog.machinemod.item.ItemHose;
 import com.projectreddog.machinemod.item.ItemIronDust;
 import com.projectreddog.machinemod.item.ItemLidWithSpout;
+import com.projectreddog.machinemod.item.ItemLight;
+import com.projectreddog.machinemod.item.ItemLightModule;
 import com.projectreddog.machinemod.item.ItemMachineMod;
 import com.projectreddog.machinemod.item.ItemMowerDeck;
 import com.projectreddog.machinemod.item.ItemOperatorsBooth;
+import com.projectreddog.machinemod.item.ItemOperatorsBubble;
+import com.projectreddog.machinemod.item.ItemPowerCell;
 import com.projectreddog.machinemod.item.ItemPowerPlant;
 import com.projectreddog.machinemod.item.ItemProcessingPlant;
+import com.projectreddog.machinemod.item.ItemProp;
+import com.projectreddog.machinemod.item.ItemPropCage;
 import com.projectreddog.machinemod.item.ItemRawAsphalt;
 import com.projectreddog.machinemod.item.ItemRigging;
+import com.projectreddog.machinemod.item.ItemSubBody;
 import com.projectreddog.machinemod.item.ItemTrackSegment;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentSprayer;
 import com.projectreddog.machinemod.item.ItemTractorAttachmentTrencher;
+import com.projectreddog.machinemod.item.ItemTurboProp;
 import com.projectreddog.machinemod.item.ItemWrench;
 import com.projectreddog.machinemod.item.components.ItemCamshaft;
 import com.projectreddog.machinemod.item.components.ItemDozerBlade;
@@ -86,6 +95,16 @@ public class ModItems {
 	public static final ItemMachineMod rollerwheel = new ItemRollerWheel();
 	public static final ItemMachineMod oilrig = new ItemOilRig();
 	public static final ItemMachineMod sub = new ItemSub();
+
+	public static final ItemMachineMod prop = new ItemProp();
+	public static final ItemMachineMod propcage = new ItemPropCage();
+	public static final ItemMachineMod turboprop = new ItemTurboProp();
+	public static final ItemMachineMod operatorsbubble = new ItemOperatorsBubble();
+	public static final ItemMachineMod subbody = new ItemSubBody();
+	public static final ItemMachineMod airtank = new ItemAirTank();
+	public static final ItemMachineMod powercell = new ItemPowerCell();
+	public static final ItemMachineMod light = new ItemLight();
+	public static final ItemMachineMod lightmodule = new ItemLightModule();
 
 	public static final ItemMachineMod bagger = new ItemBagger();
 
@@ -163,6 +182,16 @@ public class ModItems {
 		GameRegistry.registerItem(rollerwheel, "rollerwheel");
 		GameRegistry.registerItem(oilrig, "oilrig");
 		GameRegistry.registerItem(sub, "sub");
+
+		GameRegistry.registerItem(prop, "prop");
+		GameRegistry.registerItem(propcage, "propcage");
+		GameRegistry.registerItem(turboprop, "turboprop");
+		GameRegistry.registerItem(operatorsbubble, "operatorsbubble");
+		GameRegistry.registerItem(subbody, "subbody");
+		GameRegistry.registerItem(airtank, "airtank");
+		GameRegistry.registerItem(powercell, "powercell");
+		GameRegistry.registerItem(light, "light");
+		GameRegistry.registerItem(lightmodule, "lightmodule");
 
 		GameRegistry.registerItem(bagger, "bagger");
 		GameRegistry.registerItem(tracksegment, "tracksegment");
@@ -247,6 +276,16 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(rollerwheel, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "rollerwheel", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(oilrig, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "oilrig", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(sub, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "sub", "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(prop, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "prop", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(propcage, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "propcage", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(turboprop, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "turboprop", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(operatorsbubble, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "operatorsbubble", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(subbody, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "subbody", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(airtank, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "airtank", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(powercell, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "powercell", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(light, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "light", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(lightmodule, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "lightmodule", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(cutterbucket, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "cutterbucket", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(rigging, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "rigging", "inventory"));

@@ -124,7 +124,16 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.paverscreed, 1), "   ", "  h", "iii", 'h', Blocks.hopper, 'i', Items.iron_ingot));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.paver, 1), "  c", " et", "sww", 'c', Blocks.chest, 'e', ModItems.engine, 't', ModItems.transmission, 's', ModItems.paverscreed, 'w', ModItems.wheel));
 
-		;
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.prop, 1), " g ", "gig", " g ", 'i', Items.iron_ingot, 'g', Items.gold_ingot));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.propcage, 1), "ibi", "b b", "ibi", 'i', Items.iron_ingot, 'b', Blocks.iron_bars));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.turboprop, 1), " c ", "cpc", " c ", 'c', ModItems.propcage, 'p', ModItems.prop));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.operatorsbubble, 1), "bib", "igi", "bib", 'i', Items.iron_ingot, 'b', Blocks.iron_bars, 'g', Blocks.glass));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.subbody, 1), "gig", "ibi", "gig", 'i', Items.iron_ingot, 'g', Items.gold_ingot, 'b', Items.boat));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.airtank, 1), " i ", "ibi", "iii", 'i', Items.iron_ingot, 'b', Items.glass_bottle));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.powercell, 1), "tct", "rrr", "rrr", 't', Blocks.redstone_torch, 'c', Items.comparator, 'r', Blocks.redstone_block));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.light, 1), " r ", "rtr", " r ", 'r', Blocks.redstone_lamp, 't', Blocks.redstone_torch));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lightmodule, 1), " l ", "lrl", " l ", 'r', ModItems.powercell, 'l', ModItems.light));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sub, 1), "tlt", "ose", "tat", 't', ModItems.turboprop, 'l', ModItems.lightmodule, 'o', ModItems.operatorsbubble, 's', ModItems.subbody, 'e', ModItems.engine, 'a', ModItems.airtank));
 
 		// D D
 		// PBP
