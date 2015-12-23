@@ -9,7 +9,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class MachineModWorldGen implements IWorldGenerator {
@@ -24,7 +23,7 @@ public class MachineModWorldGen implements IWorldGenerator {
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		switch (world.provider.getDimensionId()) {
 		case 0: // Overworld
-			this.runGenerator(this.gen_machineMod_CrudeOilStone, world, random, chunkX, chunkZ, 20, 5, 30);
+			this.runGenerator(this.gen_machineMod_CrudeOilStone, world, random, chunkX, chunkZ, 15, 5, 30);
 
 			break;
 		case -1: // Nether
@@ -44,9 +43,9 @@ public class MachineModWorldGen implements IWorldGenerator {
 			int x = chunk_X * 16 + rand.nextInt(16);
 			int y = minHeight + rand.nextInt(heightDiff);
 			int z = chunk_Z * 16 + rand.nextInt(16);
-			if (BiomeDictionary.isBiomeOfType(world.getBiomeGenForCoords(new BlockPos(x, y, z)), BiomeDictionary.Type.OCEAN)) {
-				generator.generate(world, rand, new BlockPos(x, y, z));
-			}
+			// if (BiomeDictionary.isBiomeOfType(world.getBiomeGenForCoords(new BlockPos(x, y, z)), BiomeDictionary.Type.OCEAN)) {
+			generator.generate(world, rand, new BlockPos(x, y, z));
+			// }
 		}
 	}
 

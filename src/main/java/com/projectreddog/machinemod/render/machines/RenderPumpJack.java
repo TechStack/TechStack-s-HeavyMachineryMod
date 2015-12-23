@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
-import com.projectreddog.machinemod.model.ModelOilRig;
+import com.projectreddog.machinemod.model.ModelPumpJack;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.Minecraft;
@@ -23,20 +23,20 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3i;
 
-public class RenderOilRig extends Render {
+public class RenderPumpJack extends Render {
 
 	float wheelRadius = 10f;
-	protected ModelBase modelOilRig;
+	protected ModelBase modelPumpJack;
 
 	private RenderItem itemRenderer;
 
-	public RenderOilRig(RenderManager renderManager) {
+	public RenderPumpJack(RenderManager renderManager) {
 
 		super(renderManager);
 
 		// LogHelper.info("in RenderLoader constructor");
 		shadowSize = 1F;
-		this.modelOilRig = new ModelOilRig();
+		this.modelPumpJack = new ModelPumpJack();
 		itemRenderer = Minecraft.getMinecraft().getRenderItem();
 
 	}
@@ -70,7 +70,7 @@ public class RenderOilRig extends Render {
 		// GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
 		this.bindEntityTexture(entity);
 		// GL11.glScalef(-1.0F, -1.0F, 1.0F);
-		this.modelOilRig.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+		this.modelPumpJack.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
 		// GlStateManager.translate(-1.4f, -0.25F, -.85F);
 		// GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -115,7 +115,7 @@ public class RenderOilRig extends Render {
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		return new ResourceLocation("machinemod", Reference.MODEL_OIL_RIG_TEXTURE_LOCATION);
+		return new ResourceLocation("machinemod", Reference.MODEL_PUMP_JACK_TEXTURE_LOCATION);
 	}
 
 }
