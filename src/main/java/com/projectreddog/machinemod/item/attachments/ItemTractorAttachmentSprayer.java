@@ -1,4 +1,4 @@
-package com.projectreddog.machinemod.item;
+package com.projectreddog.machinemod.item.attachments;
 
 public class ItemTractorAttachmentSprayer extends ItemTractorAttachment {
 	public ItemTractorAttachmentSprayer() {

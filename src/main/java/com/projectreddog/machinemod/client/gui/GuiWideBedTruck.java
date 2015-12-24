@@ -7,12 +7,12 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.container.ContainerWideBedTruck;
-import com.projectreddog.machinemod.entity.EntityWideBedTruck;
+import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.reference.Reference;
 
 public class GuiWideBedTruck extends GuiContainer {
 
-	public GuiWideBedTruck(InventoryPlayer inventoryPlayer, EntityWideBedTruck wideBedTruck) {
+	public GuiWideBedTruck(InventoryPlayer inventoryPlayer, EntitySemiTractor wideBedTruck) {
 		// the container is instanciated and passed to the superclass for
 		// handling
 

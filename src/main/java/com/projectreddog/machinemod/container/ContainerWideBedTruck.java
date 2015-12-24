@@ -6,13 +6,13 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import com.projectreddog.machinemod.entity.EntityWideBedTruck;
+import com.projectreddog.machinemod.entity.EntitySemiTractor;
 
 public class ContainerWideBedTruck extends Container {
 
-	protected EntityWideBedTruck widebedtruck;
+	protected EntitySemiTractor widebedtruck;
 
-	public ContainerWideBedTruck(InventoryPlayer inventoryPlayer, EntityWideBedTruck widebedtruck) {
+	public ContainerWideBedTruck(InventoryPlayer inventoryPlayer, EntitySemiTractor widebedtruck) {
 		this.widebedtruck = widebedtruck;
 
 		for (int i = 0; i < 1; i++) {

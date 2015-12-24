@@ -9,7 +9,7 @@ import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.entity.EntityPaver;
 import com.projectreddog.machinemod.entity.EntityTractor;
-import com.projectreddog.machinemod.entity.EntityWideBedTruck;
+import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.Entity;
@@ -48,7 +48,7 @@ public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHan
 							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_LOADER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityTractor) {
 							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_TRACTOR, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
-						} else if (entity instanceof EntityWideBedTruck) {
+						} else if (entity instanceof EntitySemiTractor) {
 							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_WIDEBEDTRUCK, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityCombine) {
 							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_COMBINE, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);

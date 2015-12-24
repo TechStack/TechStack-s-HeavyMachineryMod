@@ -1,23 +1,24 @@
 package com.projectreddog.machinemod.tileentities;
 
-import com.projectreddog.machinemod.iface.IFuelContainer;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.utility.LogHelper;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.BlockPos;
 
-public class TileEntityWellHead extends TileEntity implements IUpdatePlayerListBox, IFuelContainer {
+public class TileEntityWellHead extends TileEntity implements IUpdatePlayerListBox {
 
-	public final int maxFuelStorage = 1000; // store up to 1k
-	private static int[] sideSlots = new int[] { 0 };
+	public final int maxOilStorage = 100000; // store up to 100k
 
-	public int fuelStorage = 0;
-	// public final int coolDownReset = 1200;
-	// public int cooldown = coolDownReset;
-	public int remainBurnTime = 0;
+	public int oilStorage = 1000;
+	public BlockPos currentOilDeposit;
+	public int blocksFound = 0;
+	public final int coolDownReset = 2400;
+	public int cooldown = coolDownReset;
 
 	public TileEntityWellHead() {
 
@@ -26,120 +27,102 @@ public class TileEntityWellHead extends TileEntity implements IUpdatePlayerListB
 	@Override
 	public void update() {
 		if (!worldObj.isRemote) {
-			// LogHelper.info("TE update entity called");
 
-			if (remainBurnTime > 0) {
-				remainBurnTime--;
+			cooldown = cooldown - 1;
+			// LogHelper.info("TE FERMENTER CD" + cooldown);
+			if (cooldown <= 0) {
+				cooldown = coolDownReset;
+				// LogHelper.info("TE update entity called");
+				findOilDepoist();
 
-				transferFuel();
-			} else {
-
-				// consume more fuel
-				// only if it has mash to process
-				if (fuelStorage > 0) {
-					// use the furnace's default burn times
-
+				if (currentOilDeposit != null) {
+					pumpOil();
 				}
+			}
+
+			transferOil();
+		}
+	}
+
+	public void transferOil() {
+		// find nearby oil tanker trucks and pump oil to them!
+	}
+
+	public void findOilDepoist() {
+		if (currentOilDeposit == null) {
+			// Reference.crudeOilStoneGenMinlevel
+			// Reference.wellHeadMaxRange
+			BlockPos currentPos;
+			for (int x = this.getPos().getX() - Reference.wellHeadMaxRange; x <= this.getPos().getX() + Reference.wellHeadMaxRange; x++) {
+				for (int z = this.getPos().getZ() - Reference.wellHeadMaxRange; z <= this.getPos().getZ() + Reference.wellHeadMaxRange; z++) {
+					for (int y = Reference.crudeOilStoneGenMinlevel; y <= Reference.crudeOilStoneGenMaxlevel; y++) {
+						currentPos = new BlockPos(x, y, z);
+						if (this.worldObj.getBlockState(currentPos).getBlock() == ModBlocks.machinecrudeoilstone) {
+							currentOilDeposit = currentPos;
+							return;
+						}
+					}
+				}
+			}
+		} else {
+			// has deposit Do nothing for now Later we must check if
+			// it has been fully depleted
+			if (this.worldObj.getBlockState(currentOilDeposit).getBlock() == ModBlocks.machinecrudeoilstone) {
+				return;
+			} else {
+				currentOilDeposit = null;
 			}
 		}
 	}
 
-	public boolean canAcceptFluid() {
-		if (fuelStorage < maxFuelStorage) {
-			return true;
-		} else {
-			return false;
+	public void pumpOil() {
+		worldObj.setBlockState(currentOilDeposit, Blocks.air.getDefaultState());
+		oilStorage = oilStorage + 1000;
+		if (oilStorage > maxOilStorage) {
+			oilStorage = maxOilStorage;
 		}
+		blocksFound = blocksFound + 1;
+		LogHelper.info("Oil Pumped blocks found so far:" + blocksFound);
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		fuelStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE");
-		remainBurnTime = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "BURN_TIME");
-		// inventory
+		int x;
+		int y;
+		int z;
+		oilStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "OIL_STORAGE");
+		cooldown = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN");
+
+		if (compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_NULL") == 0) {
+			x = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_X");
+			y = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_Y");
+			z = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_Z");
+			currentOilDeposit = new BlockPos(x, y, z);
+		} else {
+			currentOilDeposit = null;
+		}
 
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE", fuelStorage);
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "BURN_TIME", remainBurnTime);
-		// inventory
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "OIL_STORAGE", oilStorage);
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN", cooldown);
 
-	}
-
-	public int addFluid(int amount) {
-		int returnAmount;
-		if (canAcceptFluid()) {
-			if (fuelStorage + amount > maxFuelStorage) {
-				// fill to brim return amount left over
-				returnAmount = (fuelStorage + amount - maxFuelStorage);
-
-				fuelStorage = maxFuelStorage;
-			} else {
-				// not going to return any this container can hold all of the fuel
-				fuelStorage = fuelStorage + amount;
-				returnAmount = 0;
-			}
-		} else {
-			returnAmount = amount;
+		if (currentOilDeposit != null) {
+			compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_NULL", 0);
+			compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_X", currentOilDeposit.getX());
+			compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_Y", currentOilDeposit.getY());
+			compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_Z", currentOilDeposit.getZ());
 		}
-		return returnAmount;
-	}
-
-	public boolean transferFuel() {
-		if (this.fuelStorage > 0) {
-
-			if (worldObj.getBlockState(this.pos.offset(this.outputDirection())).getBlock() == ModBlocks.machinefuelpump) {
-				// its a distiller so we can transfer fuel!
-				TileEntityFuelPump tEC = (TileEntityFuelPump) worldObj.getTileEntity(this.pos.offset(this.outputDirection()));
-				if (tEC.canAcceptFluid()) {
-					tEC.addFluid(1);
-					this.fuelStorage = this.fuelStorage - 1;
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-
-	public int getField(int id) {
-		switch (id) {
-		case 0:
-			return this.fuelStorage;
-		case 1:
-			return this.remainBurnTime;
-		default:
-			break;
-		}
-		return 0;
-
-	}
-
-	public void setField(int id, int value) {
-		switch (id) {
-		case 0:
-			this.fuelStorage = value;
-			break;
-		case 1:
-			this.remainBurnTime = value;
-			break;
-		default:
-			break;
-		}
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_NULL", 1);
 
 	}
 
 	public int getFieldCount() {
 		return 2;
-	}
-
-	@Override
-	public EnumFacing outputDirection() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

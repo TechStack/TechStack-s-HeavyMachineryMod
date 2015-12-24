@@ -20,7 +20,7 @@ import com.projectreddog.machinemod.entity.EntityGrader;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityPaver;
 import com.projectreddog.machinemod.entity.EntityTractor;
-import com.projectreddog.machinemod.entity.EntityWideBedTruck;
+import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
@@ -89,9 +89,9 @@ public class GuiHandler implements IGuiHandler {
 
 			Entity entity = world.getEntityByID(x);
 			if (entity != null) {
-				if (entity instanceof EntityWideBedTruck) {
+				if (entity instanceof EntitySemiTractor) {
 
-					return new ContainerWideBedTruck(player.inventory, (EntityWideBedTruck) entity);
+					return new ContainerWideBedTruck(player.inventory, (EntitySemiTractor) entity);
 				}
 			}
 		} else if (id == Reference.GUI_COMBINE) {
@@ -216,8 +216,8 @@ public class GuiHandler implements IGuiHandler {
 
 			Entity entity = world.getEntityByID(x);
 			if (entity != null) {
-				if (entity instanceof EntityWideBedTruck) {
-					return new GuiWideBedTruck(player.inventory, (EntityWideBedTruck) entity);
+				if (entity instanceof EntitySemiTractor) {
+					return new GuiWideBedTruck(player.inventory, (EntitySemiTractor) entity);
 				}
 			}
 		} else if (id == Reference.GUI_COMBINE) {

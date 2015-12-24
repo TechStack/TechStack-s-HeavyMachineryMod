@@ -9,11 +9,11 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.entity.EntityTractor;
-import com.projectreddog.machinemod.item.ItemTractorAttachment;
-import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
-import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
-import com.projectreddog.machinemod.item.ItemTractorAttachmentSprayer;
-import com.projectreddog.machinemod.item.ItemTractorAttachmentTrencher;
+import com.projectreddog.machinemod.item.attachments.ItemTractorAttachment;
+import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlanter;
+import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlow;
+import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentSprayer;
+import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentTrencher;
 import com.projectreddog.machinemod.model.ModelTractor;
 import com.projectreddog.machinemod.reference.Reference;
 

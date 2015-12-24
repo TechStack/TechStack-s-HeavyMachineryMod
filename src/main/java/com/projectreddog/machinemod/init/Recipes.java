@@ -54,7 +54,7 @@ public class Recipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.bulldozer), "   ", " et", "dkk", 'k', ModItems.tracks, 'e', ModItems.engine, 't', ModItems.transmission, 'd', ModItems.dozerblade));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.widebedtruck), "   ", "etf", "ww ", 'e', ModItems.turboengine, 't', ModItems.transmission, 'f', ModItems.flatbedtrailer, 'w', ModItems.wheel));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.semitractor), "   ", "etf", "ww ", 'e', ModItems.turboengine, 't', ModItems.transmission, 'f', ModItems.flatbedtrailer, 'w', ModItems.wheel));
 
 		// GameRegistry.addRecipe(new ShapedOreRecipe(new
 		// ItemStack(ModItems.combine), " cc", "het", " ww", 'c' ,Blocks.chest

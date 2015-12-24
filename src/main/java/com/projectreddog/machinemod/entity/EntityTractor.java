@@ -13,11 +13,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 
 import com.projectreddog.machinemod.init.ModItems;
-import com.projectreddog.machinemod.item.ItemTractorAttachment;
-import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
-import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
-import com.projectreddog.machinemod.item.ItemTractorAttachmentSprayer;
-import com.projectreddog.machinemod.item.ItemTractorAttachmentTrencher;
+import com.projectreddog.machinemod.item.attachments.ItemTractorAttachment;
+import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlanter;
+import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlow;
+import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentSprayer;
+import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentTrencher;
 
 public class EntityTractor extends EntityMachineModRideable {
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);

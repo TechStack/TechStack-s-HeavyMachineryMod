@@ -33,17 +33,16 @@ import com.projectreddog.machinemod.item.ItemRawAsphalt;
 import com.projectreddog.machinemod.item.ItemRigging;
 import com.projectreddog.machinemod.item.ItemSubBody;
 import com.projectreddog.machinemod.item.ItemTrackSegment;
-import com.projectreddog.machinemod.item.ItemTractorAttachmentPlanter;
-import com.projectreddog.machinemod.item.ItemTractorAttachmentPlow;
-import com.projectreddog.machinemod.item.ItemTractorAttachmentSprayer;
-import com.projectreddog.machinemod.item.ItemTractorAttachmentTrencher;
 import com.projectreddog.machinemod.item.ItemTurboProp;
 import com.projectreddog.machinemod.item.ItemWrench;
+import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlanter;
+import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlow;
+import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentSprayer;
+import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentTrencher;
 import com.projectreddog.machinemod.item.components.ItemCamshaft;
 import com.projectreddog.machinemod.item.components.ItemDozerBlade;
 import com.projectreddog.machinemod.item.components.ItemDumperBed;
 import com.projectreddog.machinemod.item.components.ItemEngine;
-import com.projectreddog.machinemod.item.components.ItemFlatBedTrailer;
 import com.projectreddog.machinemod.item.components.ItemHavesterHead;
 import com.projectreddog.machinemod.item.components.ItemIronGear;
 import com.projectreddog.machinemod.item.components.ItemLoaderBucket;
@@ -71,9 +70,10 @@ import com.projectreddog.machinemod.item.machines.ItemLoader;
 import com.projectreddog.machinemod.item.machines.ItemOilRig;
 import com.projectreddog.machinemod.item.machines.ItemPaver;
 import com.projectreddog.machinemod.item.machines.ItemRoadRoller;
+import com.projectreddog.machinemod.item.machines.ItemSemiTractor;
 import com.projectreddog.machinemod.item.machines.ItemSub;
 import com.projectreddog.machinemod.item.machines.ItemTractor;
-import com.projectreddog.machinemod.item.machines.ItemWideBedTruck;
+import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.Minecraft;
@@ -148,7 +148,7 @@ public class ModItems {
 	public static final ItemMachineMod plow = new ItemTractorAttachmentPlow();
 	public static final ItemMachineMod planter = new ItemTractorAttachmentPlanter();
 	public static final ItemMachineMod sprayer = new ItemTractorAttachmentSprayer();
-	public static final ItemMachineMod widebedtruck = new ItemWideBedTruck();
+	public static final ItemMachineMod semitractor = new ItemSemiTractor();
 	public static final ItemMachineMod woodengear = new ItemWoodenGear();
 	public static final ItemMachineMod stonegear = new ItemStoneGear();
 	public static final ItemMachineMod irongear = new ItemIronGear();
@@ -159,7 +159,7 @@ public class ModItems {
 	public static final ItemMachineMod piston = new ItemPiston();
 	public static final ItemMachineMod turbo = new ItemTurbo();
 	public static final ItemMachineMod turboengine = new ItemTurboEngine();
-	public static final ItemMachineMod flatbedtrailer = new ItemFlatBedTrailer();
+	public static final ItemMachineMod flatbedtrailer = new ItemSemiTrailerFlatBed();
 	public static final ItemMachineMod dozerblade = new ItemDozerBlade();
 	public static final ItemMachineMod tracks = new ItemTracks();
 	public static final ItemMachineMod wheel = new ItemWheel();
@@ -236,7 +236,7 @@ public class ModItems {
 		GameRegistry.registerItem(plow, "plow");
 		GameRegistry.registerItem(planter, "planter");
 		GameRegistry.registerItem(sprayer, "sprayer");
-		GameRegistry.registerItem(widebedtruck, "widebedtruck");
+		GameRegistry.registerItem(semitractor, "semitractor");
 		GameRegistry.registerItem(woodengear, "woodengear");
 		OreDictionary.registerOre("gearWood", woodengear);
 		GameRegistry.registerItem(stonegear, "stonegear");
@@ -348,7 +348,7 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(wrench, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "wrench", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tractor, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tractor", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(widebedtruck, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "widebedtruck", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(semitractor, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "widebedtruck", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(lawnmower, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "lawnmower", "inventory"));
 
 	}

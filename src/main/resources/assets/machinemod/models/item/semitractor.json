@@ -1,7 +1,7 @@
 {
       "parent": "machinemod:item/machinemod_item",
       "textures": {
-        "layer0": "machinemod:items/widebedtruck"
+        "layer0": "machinemod:items/semitractor"
         }
  
 }

@@ -1,23 +1,22 @@
 package com.projectreddog.machinemod.model;
 
+import com.projectreddog.machinemod.model.advanced.AdvancedModelLoader;
+import com.projectreddog.machinemod.model.advanced.IModelCustom;
+import com.projectreddog.machinemod.reference.Reference;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
-import com.projectreddog.machinemod.model.advanced.AdvancedModelLoader;
-import com.projectreddog.machinemod.model.advanced.IModelCustom;
-import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.utility.LogHelper;
-
-public class ModelWideBedTruck extends ModelBase {
+public class ModelSemiTractor extends ModelBase {
 	// fields
 	private IModelCustom myModel;
 
-	public ModelWideBedTruck() {
+	public ModelSemiTractor() {
 
 		// LogHelper.info("LOADING dump truck MODEL!");
-		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/widebedtruck.obj"));
+		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/semitractor.obj"));
 		// casinoTexture = new ResourceLocation("modid",
 		// "textures/casinoTexture.png");
 
@@ -25,7 +24,17 @@ public class ModelWideBedTruck extends ModelBase {
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
-		myModel.renderAll();
+		// myModel.renderAll();
+
+		// this.renderGroupObject("SemiTrailer_Cube.006");
+
+		// this.renderGroupObject("AnimalTrailer_Cube.003");
+
+		this.renderGroupObject("TankerTailer_Cube.002");
+
+		// this.renderGroupObject("FlatBedTrailer_Cube.001");
+
+		this.renderGroupObject("SemiTractor_Cube");
 
 	}
 
@@ -46,7 +55,7 @@ public class ModelWideBedTruck extends ModelBase {
 
 	protected ResourceLocation getTexture() {
 
-		return new ResourceLocation("machinemod", Reference.MODEL_TRACTOR_TEXTURE_LOCATION);
+		return new ResourceLocation("machinemod", Reference.MODEL_SEMI_TEXTURE_LOCATION);
 	}
 
 }

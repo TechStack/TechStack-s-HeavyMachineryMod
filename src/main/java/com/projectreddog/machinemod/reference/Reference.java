@@ -14,6 +14,7 @@ public class Reference {
 	public static final String MODEL_TRACTOR_TEXTURE_LOCATION = "models/modeltractor.png";
 	public static final String MODEL_LAWNMOWER_TEXTURE_LOCATION = "models/modellawnmower.png";
 	public static final String MODEL_SUB_TEXTURE_LOCATION = "models/sub.png";
+	public static final String MODEL_SEMI_TEXTURE_LOCATION = "models/semi.png";
 
 	public static final String MODEL_FUEL_PUMP_TEXTURE_LOCATION = "models/fuelpump.png";
 	public static final String MODEL_DISTILLER_TEXTURE_LOCATION = "models/distiller.png";
@@ -96,4 +97,8 @@ public class Reference {
 
 	// config file settings
 	public static boolean enableBulldozer = true;
+	public static int crudeOilStoneGenMinlevel = 5;
+	public static int crudeOilStoneGenMaxlevel = 30;
+	public static int wellHeadMaxRange = 15;
+
 }

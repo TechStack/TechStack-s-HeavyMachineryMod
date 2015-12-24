@@ -2,23 +2,23 @@ package com.projectreddog.machinemod.entity;
 
 import java.util.List;
 
+import com.projectreddog.machinemod.init.ModItems;
+import com.projectreddog.machinemod.item.ItemTransportable;
+import com.projectreddog.machinemod.reference.Reference;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-import com.projectreddog.machinemod.init.ModItems;
-import com.projectreddog.machinemod.item.ItemTransportable;
-import com.projectreddog.machinemod.reference.Reference;
-
-public class EntityWideBedTruck extends EntityMachineModRideable {
+public class EntitySemiTractor extends EntityMachineModRideable {
 
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 	private int carriedMachinesFuelStorage;
 	private float bedRampBackOffset = -5f;
 
-	public EntityWideBedTruck(World world) {
+	public EntitySemiTractor(World world) {
 		super(world);
 
 		setSize(3, 2);
@@ -28,7 +28,7 @@ public class EntityWideBedTruck extends EntityMachineModRideable {
 		this.mountedOffsetZ = 0.0D;
 		this.maxAngle = 10;
 		this.minAngle = 0;
-		this.droppedItem = ModItems.widebedtruck;
+		this.droppedItem = ModItems.semitractor;
 		this.shouldSendClientInvetoryUpdates = true;
 		this.maxSpeed = 0.4d;
 	}

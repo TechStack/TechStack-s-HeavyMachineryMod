@@ -1,4 +1,4 @@
-package com.projectreddog.machinemod.item.components;
+package com.projectreddog.machinemod.item.trailer;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -12,9 +12,9 @@ import com.projectreddog.machinemod.entity.EntityBulldozer;
 import com.projectreddog.machinemod.item.ItemMachineMod;
 import com.projectreddog.machinemod.utility.LogHelper;
 
-public class ItemFlatBedTrailer extends ItemMachineMod {
+public class ItemSemiTrailerFlatBed extends ItemMachineMod {
 
-	public ItemFlatBedTrailer() {
+	public ItemSemiTrailerFlatBed() {
 		super();
 		this.setUnlocalizedName("flatbedtrailer");
 		this.maxStackSize = 64;

@@ -3,6 +3,7 @@ package com.projectreddog.machinemod.world;
 import java.util.Random;
 
 import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
@@ -23,7 +24,7 @@ public class MachineModWorldGen implements IWorldGenerator {
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		switch (world.provider.getDimensionId()) {
 		case 0: // Overworld
-			this.runGenerator(this.gen_machineMod_CrudeOilStone, world, random, chunkX, chunkZ, 15, 5, 30);
+			this.runGenerator(this.gen_machineMod_CrudeOilStone, world, random, chunkX, chunkZ, 15, Reference.crudeOilStoneGenMinlevel, Reference.crudeOilStoneGenMaxlevel);
 
 			break;
 		case -1: // Nether
