@@ -41,11 +41,13 @@ import com.projectreddog.machinemod.render.tileentity.TileEntityDistillerRendere
 import com.projectreddog.machinemod.render.tileentity.TileEntityFermenterRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityFuelPumpRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityPrimaryCrusherRenderer;
+import com.projectreddog.machinemod.render.tileentity.TileEntityWellHeadRenderer;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
+import com.projectreddog.machinemod.tileentities.TileEntityWellHead;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelBakery;
@@ -97,6 +99,8 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFuelPump.class, new TileEntityFuelPumpRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDistiller.class, new TileEntityDistillerRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFermenter.class, new TileEntityFermenterRenderer());
+
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWellHead.class, new TileEntityWellHeadRenderer());
 
 		// regsiter event for overlay
 		MinecraftForge.EVENT_BUS.register(new RenderOverlayHandler());

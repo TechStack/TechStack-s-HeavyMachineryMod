@@ -19,6 +19,8 @@ public class Reference {
 	public static final String MODEL_DISTILLER_TEXTURE_LOCATION = "models/distiller.png";
 	public static final String MODEL_FERMENTER_TEXTURE_LOCATION = "models/fermenter.png";
 
+	public static final String MODEL_WELL_HEAD_TEXTURE_LOCATION = "models/wellhead.png";
+
 	public static final String MODEL_COMBINE_TEXTURE_LOCATION = "models/combine.png";
 	public static final String MODEL_DRILLINGRIG_TEXTURE_LOCATION = "models/drillingrig.png";
 	public static final String MODEL_DUMPTRUCK_TEXTURE_LOCATION = "models/dumptruck.png";
@@ -79,6 +81,7 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_PRIMARY_CRUSHER = "machineprimarycrhuser";
 	public static final String MODBLOCK_MACHINE_CENTRIFUGE = "machinecentrifuge";
 	public static final String MODBLOCK_MACHINE_DISTILLER = "machinedistiller";
+	public static final String MODBLOCK_MACHINE_WELL_HEAD = "machinewellhead";
 
 	public static final String MODBLOCK_MACHINE_FERMENTER = "machinefermenter";
 	public static final String MODBLOCK_MACHINE_FUEL_PUMP = "machinefuelpump";

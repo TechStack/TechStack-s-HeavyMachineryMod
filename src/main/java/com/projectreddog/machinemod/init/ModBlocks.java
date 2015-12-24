@@ -22,6 +22,7 @@ import com.projectreddog.machinemod.block.BlockMachineModFractionalDistillation;
 import com.projectreddog.machinemod.block.BlockMachineModFuelPump;
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.block.BlockMachineModScreen;
+import com.projectreddog.machinemod.block.BlockMachineModWellHead;
 import com.projectreddog.machinemod.block.BlockMachineMowedGrass;
 import com.projectreddog.machinemod.item.ItemBlockBlastedStone;
 import com.projectreddog.machinemod.reference.Reference;
@@ -33,6 +34,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillatio
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 import com.projectreddog.machinemod.tileentities.TileEntityScreen;
+import com.projectreddog.machinemod.tileentities.TileEntityWellHead;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -62,6 +64,8 @@ public class ModBlocks {
 	public static final Block machinedistiller = new BlockMachineModDistiller();
 	public static final Block machinefermenter = new BlockMachineModFermenter();
 	public static final Block machinefuelpump = new BlockMachineModFuelPump();
+
+	public static final Block machinewellhead = new BlockMachineModWellHead();
 
 	public static final Block machineprimarycrhuser = new BlockMachineModPrimaryCrusher();
 	public static final Block machinecentrifuge = new BlockMachineModCentrifuge();
@@ -107,6 +111,8 @@ public class ModBlocks {
 		GameRegistry.registerBlock(machinedistiller, Reference.MODBLOCK_MACHINE_DISTILLER);
 		GameRegistry.registerBlock(machinefermenter, Reference.MODBLOCK_MACHINE_FERMENTER);
 
+		GameRegistry.registerBlock(machinewellhead, Reference.MODBLOCK_MACHINE_WELL_HEAD);
+
 		// next section for tile entities regsistration.
 		GameRegistry.registerTileEntity(TileEntityPrimaryCrusher.class, Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
 		GameRegistry.registerTileEntity(TileEntityCentrifuge.class, Reference.MODBLOCK_MACHINE_CENTRIFUGE);
@@ -118,6 +124,8 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileEntityFuelPump.class, Reference.MODBLOCK_MACHINE_FUEL_PUMP);
 		GameRegistry.registerTileEntity(TileEntityDistiller.class, Reference.MODBLOCK_MACHINE_DISTILLER);
 		GameRegistry.registerTileEntity(TileEntityFermenter.class, Reference.MODBLOCK_MACHINE_FERMENTER);
+
+		GameRegistry.registerTileEntity(TileEntityWellHead.class, Reference.MODBLOCK_MACHINE_WELL_HEAD);
 		// /Register Fluids
 		// fluidBioFuel.setDensity(10);
 		// FluidRegistry.registerFluid(fluidBioFuel);
@@ -156,6 +164,8 @@ public class ModBlocks {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinefuelpump), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FUEL_PUMP, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinedistiller), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_DISTILLER, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinefermenter), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FERMENTER, "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinewellhead), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_WELL_HEAD, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(biofuel), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FLUID_BIOFUEL, "inventory"));
 
