@@ -1,16 +1,15 @@
 package com.projectreddog.machinemod.item.machines;
 
+import com.projectreddog.machinemod.entity.EntityMachineModRideable;
+import com.projectreddog.machinemod.entity.EntityPaver;
+import com.projectreddog.machinemod.model.ModelPaver;
+import com.projectreddog.machinemod.model.ModelTransportable;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-
-import com.projectreddog.machinemod.entity.EntityMachineModRideable;
-import com.projectreddog.machinemod.entity.EntityPaver;
-import com.projectreddog.machinemod.item.ItemTransportable;
-import com.projectreddog.machinemod.model.ModelPaver;
-import com.projectreddog.machinemod.model.ModelTransportable;
 
 public class ItemPaver extends ItemTransportable {
 

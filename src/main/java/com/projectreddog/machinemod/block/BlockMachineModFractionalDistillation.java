@@ -29,7 +29,7 @@ public class BlockMachineModFractionalDistillation extends BlockContainer {
 		super(material);
 
 		// can override later ;)
-		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_TAB);
+		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 
 		// 1.8

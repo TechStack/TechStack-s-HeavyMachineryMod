@@ -1,7 +1,6 @@
 package com.projectreddog.machinemod.item.machines;
 
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
-import com.projectreddog.machinemod.item.ItemMachineMod;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -9,7 +8,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
-public class ItemSemiTractor extends ItemMachineMod {
+public class ItemSemiTractor extends ItemMachineModMachine {
 
 	public ItemSemiTractor() {
 		super();

@@ -3,7 +3,7 @@ package com.projectreddog.machinemod.render.machines;
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
-import com.projectreddog.machinemod.item.ItemTransportable;
+import com.projectreddog.machinemod.item.machines.ItemTransportable;
 import com.projectreddog.machinemod.model.ModelSemiTractor;
 import com.projectreddog.machinemod.model.ModelTransportable;
 import com.projectreddog.machinemod.reference.Reference;

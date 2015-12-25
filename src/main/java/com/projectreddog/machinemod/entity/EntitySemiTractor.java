@@ -3,7 +3,7 @@ package com.projectreddog.machinemod.entity;
 import java.util.List;
 
 import com.projectreddog.machinemod.init.ModItems;
-import com.projectreddog.machinemod.item.ItemTransportable;
+import com.projectreddog.machinemod.item.machines.ItemTransportable;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.Entity;

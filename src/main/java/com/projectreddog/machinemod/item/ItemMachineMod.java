@@ -16,7 +16,7 @@ public class ItemMachineMod extends Item {
 	public ItemMachineMod() {
 		super();
 		// can override later ;)
-		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_TAB);
+		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_ITEMS_TAB);
 
 	}
 

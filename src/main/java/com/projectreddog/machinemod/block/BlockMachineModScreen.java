@@ -1,5 +1,10 @@
 package com.projectreddog.machinemod.block;
 
+import com.projectreddog.machinemod.MachineMod;
+import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
+import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.tileentities.TileEntityScreen;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -10,18 +15,13 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
-import com.projectreddog.machinemod.MachineMod;
-import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
-import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.tileentities.TileEntityScreen;
-
 public class BlockMachineModScreen extends BlockContainer {
 
 	protected BlockMachineModScreen(Material material) {
 		super(material);
 
 		// can override later ;)
-		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_TAB);
+		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 
 		// 1.8
 		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_SCREEN);

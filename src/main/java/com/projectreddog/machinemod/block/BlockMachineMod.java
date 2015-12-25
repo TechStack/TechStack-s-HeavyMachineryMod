@@ -1,14 +1,10 @@
 package com.projectreddog.machinemod.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.world.Explosion;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 
 public class BlockMachineMod extends Block {
 
@@ -16,7 +12,7 @@ public class BlockMachineMod extends Block {
 		super(material);
 
 		// can override later ;)
-		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_TAB);
+		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 	}
 
 	public BlockMachineMod() {

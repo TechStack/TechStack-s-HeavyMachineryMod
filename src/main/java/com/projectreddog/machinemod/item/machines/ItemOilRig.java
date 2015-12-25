@@ -2,7 +2,6 @@ package com.projectreddog.machinemod.item.machines;
 
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.entity.EntityOilRig;
-import com.projectreddog.machinemod.item.ItemMachineMod;
 import com.projectreddog.machinemod.model.ModelTransportable;
 
 import net.minecraft.block.BlockLiquid;
@@ -10,18 +9,14 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.StatList;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary;
 
-public class ItemOilRig extends ItemMachineMod {
+public class ItemOilRig extends ItemMachineModMachine {
 
 	public ModelTransportable mt;
 
@@ -32,69 +27,56 @@ public class ItemOilRig extends ItemMachineMod {
 
 	}
 
-	
-	
-	  /**
-     * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
-     */
-    public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn)
-    {
-        boolean flag = true;
-        MovingObjectPosition movingobjectposition = this.getMovingObjectPositionFromPlayer(worldIn, playerIn, flag);
+	/**
+	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
+	 */
+	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
+		boolean flag = true;
+		MovingObjectPosition movingobjectposition = this.getMovingObjectPositionFromPlayer(worldIn, playerIn, flag);
 
-        if (movingobjectposition == null)
-        {
-            return itemStackIn;
-        }
-        else
-        {
+		if (movingobjectposition == null) {
+			return itemStackIn;
+		} else {
 
-            if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
-            {
-                BlockPos blockpos = movingobjectposition.getBlockPos();
+			if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
+				BlockPos blockpos = movingobjectposition.getBlockPos();
 
-                if (!worldIn.isBlockModifiable(playerIn, blockpos))
-                {
-                    return itemStackIn;
-                }
+				if (!worldIn.isBlockModifiable(playerIn, blockpos)) {
+					return itemStackIn;
+				}
 
-                if (flag)
-                {
-                    if (!playerIn.canPlayerEdit(blockpos.offset(movingobjectposition.sideHit), movingobjectposition.sideHit, itemStackIn))
-                    {
-                        return itemStackIn;
-                    }
+				if (flag) {
+					if (!playerIn.canPlayerEdit(blockpos.offset(movingobjectposition.sideHit), movingobjectposition.sideHit, itemStackIn)) {
+						return itemStackIn;
+					}
 
-                    IBlockState iblockstate = worldIn.getBlockState(blockpos);
-                    Material material = iblockstate.getBlock().getMaterial();
+					IBlockState iblockstate = worldIn.getBlockState(blockpos);
+					Material material = iblockstate.getBlock().getMaterial();
 
-                    if (material == Material.water && ((Integer)iblockstate.getValue(BlockLiquid.LEVEL)).intValue() == 0)
-                    {
-                    	if (SpawnOilRig(itemStackIn,playerIn,worldIn,blockpos)){
-                    		return null;
-                    	}else{
-                    		return itemStackIn;
-                    	}
-                    }
+					if (material == Material.water && ((Integer) iblockstate.getValue(BlockLiquid.LEVEL)).intValue() == 0) {
+						if (SpawnOilRig(itemStackIn, playerIn, worldIn, blockpos)) {
+							return null;
+						} else {
+							return itemStackIn;
+						}
+					}
 
-               
-                }
-               
-            }
+				}
 
-            return itemStackIn;
-        }
-    }
-    
-    
-    public boolean SpawnOilRig(ItemStack stack, EntityPlayer player,World world , BlockPos pos){
-    	boolean result = false;
+			}
+
+			return itemStackIn;
+		}
+	}
+
+	public boolean SpawnOilRig(ItemStack stack, EntityPlayer player, World world, BlockPos pos) {
+		boolean result = false;
 
 		if (!world.isRemote)// / only run on server
 		{
 
-			if (BiomeDictionary.isBiomeOfType(world.getBiomeGenForCoords(pos), BiomeDictionary.Type.OCEAN) && pos.getY()> 60 && world.isAirBlock(pos.up())  && world.getBlockState(pos).getBlock()==Blocks.water){
-				
+			if (BiomeDictionary.isBiomeOfType(world.getBiomeGenForCoords(pos), BiomeDictionary.Type.OCEAN) && pos.getY() > 60 && world.isAirBlock(pos.up()) && world.getBlockState(pos).getBlock() == Blocks.water) {
+
 				// LogHelper.info("Item used on loader!");
 				int x = pos.getX();
 				int y = pos.getY();
@@ -110,14 +92,13 @@ public class ItemOilRig extends ItemMachineMod {
 				if (result && !player.capabilities.isCreativeMode) {
 					stack.stackSize--;
 				}
-			}
-			else{
+			} else {
 				player.addChatComponentMessage(new ChatComponentText("You can only place an oil rig on an ocean's surface!"));
 
 			}
 		}
 		return result;
-    }
+	}
 
 	public EntityMachineModRideable getEntityToSpawn(World world) {
 		return new EntityOilRig(world);

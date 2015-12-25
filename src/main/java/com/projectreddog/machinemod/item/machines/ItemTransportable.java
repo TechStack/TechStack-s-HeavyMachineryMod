@@ -1,11 +1,11 @@
-package com.projectreddog.machinemod.item;
-
-import net.minecraft.world.World;
+package com.projectreddog.machinemod.item.machines;
 
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.model.ModelTransportable;
 
-public abstract class ItemTransportable extends ItemMachineMod {
+import net.minecraft.world.World;
+
+public abstract class ItemTransportable extends ItemMachineModMachine {
 
 	public abstract ModelTransportable getModel();
 

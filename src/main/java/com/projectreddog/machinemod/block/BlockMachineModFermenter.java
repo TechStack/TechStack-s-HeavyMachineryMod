@@ -1,5 +1,10 @@
 package com.projectreddog.machinemod.block;
 
+import com.projectreddog.machinemod.MachineMod;
+import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
+import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -18,11 +23,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.projectreddog.machinemod.MachineMod;
-import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
-import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
-
 public class BlockMachineModFermenter extends BlockContainer {
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
@@ -31,7 +31,7 @@ public class BlockMachineModFermenter extends BlockContainer {
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.5F, 1.0F);
 
 		// can override later ;)
-		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_TAB);
+		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 
 		// 1.8

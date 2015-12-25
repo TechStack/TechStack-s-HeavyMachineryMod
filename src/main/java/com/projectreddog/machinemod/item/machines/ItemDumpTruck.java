@@ -1,18 +1,14 @@
 package com.projectreddog.machinemod.item.machines;
 
+import com.projectreddog.machinemod.entity.EntityDumpTruck;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
-import com.projectreddog.machinemod.entity.EntityDumpTruck;
-import com.projectreddog.machinemod.item.ItemMachineMod;
-import com.projectreddog.machinemod.model.ModelBulldozer;
-import com.projectreddog.machinemod.model.ModelDumpTruck;
-import com.projectreddog.machinemod.model.ModelTransportable;
-
-public class ItemDumpTruck extends ItemMachineMod {
+public class ItemDumpTruck extends ItemMachineModMachine {
 
 	// public ModelTransportable mt ;
 
