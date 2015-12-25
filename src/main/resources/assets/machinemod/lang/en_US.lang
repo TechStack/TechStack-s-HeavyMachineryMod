@@ -47,6 +47,41 @@ item.machinemod:lawnmower.name=Riding Lawn Mower
 item.machinemod:mowerdeck.name=Mower Deck
 
 
+item.machinemod:paverscreed.name=Paver Screed
+item.machinemod:rollerwheel.name=Roller Wheel
+item.machinemod:tracksegment.name=Track Segment
+item.machinemod:cutterbucket.name=Cutter Bucket
+item.machinemod:rigging.name=Rigging
+item.machinemod:bucketwheel.name=Bucket Wheel
+item.machinemod:operatorsbooth.name=Operators Booth
+item.machinemod:powerplant.name=Power Plant
+item.machinemod:processingplant.name=Processing Plant
+item.machinemod:baggerstorage.name=Bagger Storage
+item.machinemod:baggerbody.name=Bagger Body
+item.machinemod:graderblade.name=Grader Blade
+item.machinemod:wrench.name=Wrench
+item.machinemod:prop.name=Prop
+item.machinemod:airtank.name=Air Tank
+item.machinemod:light.name=Light
+item.machinemod:lightmodule.name=Light Module
+item.machinemod:propcage.name=Prop Cage
+item.machinemod:subbody.name=Sub body
+item.machinemod:powercell.name=Power Cell
+item.machinemod:operatorsbubble.name=Operators Bubble
+item.machinemod:turboprop.name=Turbo Prop
+
+
+item.machinemod:paver.name=Paver
+item.machinemod:roadroller.name=Road Roller
+item.machinemod:bagger.name=Bagger
+item.machinemod:grader.name=Grader
+item.machinemod:crane.name=Crane
+item.machinemod:oilrig.name=Oil Rig
+item.machinemod:sub.name=Sub
+item.machinemod:semitractor.name=Semi-Tractor
+
+
+
 # Block Localizations
 tile.machinemod:machineassemblytable.name=Machine Assembly Table
 tile.machinemod:machinescreen.name=Screen
@@ -83,6 +118,11 @@ tile.machinemod:machineblastedstone.EMERALD.name=Blasted Emerald
 
 tile.machinemod:machineblastedstone2.name=Blasted Stone for Mods - (WIP)
 tile.machinemod:machineconveyor.name=Conveyor
+
+
+tile.machinemod:machinecrudeoilstone.name=Crude Oil Stone
+tile.machinemod:machinefractionaldistillation.name=Fractional Distillation Tower
+tile.machinemod:machinewellhead.name=Well Head
 
 
 

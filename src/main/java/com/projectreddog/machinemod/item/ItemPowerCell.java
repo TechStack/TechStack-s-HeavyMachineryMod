@@ -4,7 +4,7 @@ public class ItemPowerCell extends ItemMachineMod {
 
 	public ItemPowerCell() {
 		super();
-		this.setUnlocalizedName("powecell");
+		this.setUnlocalizedName("powercell");
 		this.maxStackSize = 64;
 
 	}
