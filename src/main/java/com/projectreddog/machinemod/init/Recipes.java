@@ -115,7 +115,7 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.operatorsbooth, 1), "gbb", "g i", "iii", 'g', Blocks.glass, 'b', Blocks.iron_bars, 'i', Items.iron_ingot));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.powerplant, 1), "   ", "ttt", "eee", 't', ModItems.turbo, 'e', ModItems.turboengine));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.processingplant, 1), "csc", "sps", "csc", 'c', ModBlocks.machineconveyor, 's', ModBlocks.machinescreen, 'p', ModBlocks.machineprimarycrhuser));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.baggerstorge, 1), "iii", "ici", "ici", 'i', Items.iron_ingot, 'c', Blocks.chest));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.baggerstorage, 1), "iii", "ici", "ici", 'i', Items.iron_ingot, 'c', Blocks.chest));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.baggerbody, 1), "cpc", "isi", "clc", 'c', ModBlocks.machineconveyor, 'p', ModBlocks.machineprimarycrhuser, 'i', Blocks.iron_block, 's', Blocks.chest, 'l', Items.lava_bucket));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.bagger, 1), "wr ", "obe", " tt", 'w', ModItems.bucketwheel, 'r', ModItems.rigging, 'o', ModItems.operatorsbooth, 'b', ModItems.baggerbody, 'e', ModItems.powerplant, 't', ModItems.tracksegment));
 

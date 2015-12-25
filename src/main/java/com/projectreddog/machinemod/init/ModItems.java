@@ -116,7 +116,7 @@ public class ModItems {
 	public static final ItemMachineMod operatorsbooth = new ItemOperatorsBooth();
 	public static final ItemMachineMod powerplant = new ItemPowerPlant();
 	public static final ItemMachineMod processingplant = new ItemProcessingPlant();
-	public static final ItemMachineMod baggerstorge = new ItemBaggerStorage();
+	public static final ItemMachineMod baggerstorage = new ItemBaggerStorage();
 	public static final ItemMachineMod baggerbody = new ItemBaggerBody();
 
 	public static final ItemMachineMod conecrusher = new ItemConeCrusher();
@@ -202,7 +202,7 @@ public class ModItems {
 		GameRegistry.registerItem(operatorsbooth, "operatorsbooth");
 		GameRegistry.registerItem(powerplant, "powerplant");
 		GameRegistry.registerItem(processingplant, "processingplant");
-		GameRegistry.registerItem(baggerstorge, "baggerstorge");
+		GameRegistry.registerItem(baggerstorage, "baggerstorage");
 		GameRegistry.registerItem(baggerbody, "baggerbody");
 
 		GameRegistry.registerItem(conecrusher, "conecrusher");
@@ -293,7 +293,7 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(operatorsbooth, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "operatorsbooth", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(powerplant, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "powerplant", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(processingplant, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "processingplant", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(baggerstorge, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "baggerstorge", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(baggerstorage, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "baggerstorage", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(baggerbody, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "baggerbody", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(dumptruck, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "dumptruck", "inventory"));
