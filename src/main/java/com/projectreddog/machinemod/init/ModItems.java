@@ -348,7 +348,7 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(wrench, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "wrench", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tractor, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tractor", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(semitractor, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "widebedtruck", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(semitractor, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "semitractor", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(lawnmower, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "lawnmower", "inventory"));
 
 	}

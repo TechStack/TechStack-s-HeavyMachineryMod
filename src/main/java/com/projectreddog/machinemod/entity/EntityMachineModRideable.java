@@ -207,6 +207,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 					if (getItemToBeDropped() != null) {
 						this.dropItem(getItemToBeDropped(), 1);
 						this.setDead();
+						this.addedToChunk = true;
 					}
 
 				} else {
@@ -492,7 +493,10 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		}
 
 		setPosition(posX + motionX, posY + motionY, posZ + motionZ);
-		this.addedToChunk = false;
+		if (!this.isDead) {
+			// only do for entities not dead so we dont keep them around on the client side.
+			this.addedToChunk = false;
+		}
 		// LogHelper.info("Client: isinvis:" +
 		// this.isInvisibleToPlayer(Minecraft.getMinecraft().thePlayer) +
 		// " DIMID:" + worldObj.provider.getDimensionId() + " X:" + posX +
