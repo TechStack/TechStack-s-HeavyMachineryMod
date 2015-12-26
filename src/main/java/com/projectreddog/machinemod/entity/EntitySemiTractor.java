@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.item.machines.ItemTransportable;
+import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.Entity;
@@ -54,20 +55,26 @@ public class EntitySemiTractor extends EntityMachineModRideable {
 
 			List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
 			collidedEntitiesInList(list);
-			if (this.Attribute1 > 9) {
 
-				if (getStackInSlot(0) != null && getStackInSlot(0).getItem() instanceof ItemTransportable) {
+			if (getStackInSlot(0) != null) {
+				if (getStackInSlot(0).getItem() instanceof ItemSemiTrailerFlatBed) {
 
-					EntityMachineModRideable eMMR = ((ItemTransportable) getStackInSlot(0).getItem()).getEntityToSpawn(worldObj);
+					if (this.Attribute1 > 9) {
 
-					eMMR.setPosition(calcTwoOffsetX(bedRampBackOffset + -3, 90, -1) + posX - .5d, posY, calcTwoOffsetZ(bedRampBackOffset + -3, 90, -1) + posZ - .5d);
-					eMMR.prevPosX = calcTwoOffsetX(bedRampBackOffset + -1, 90, -1) + posX - .5d;
-					eMMR.prevPosY = posY + 1.0d;
-					eMMR.prevPosZ = calcTwoOffsetZ(bedRampBackOffset + -1, 90, -1) + posZ - .5d;
-					eMMR.currentFuelLevel = carriedMachinesFuelStorage;
-					worldObj.spawnEntityInWorld(eMMR);
-					carriedMachinesFuelStorage = 0;
-					decrStackSize(0, 1);
+						if (getStackInSlot(1) != null && getStackInSlot(1).getItem() instanceof ItemTransportable) {
+
+							EntityMachineModRideable eMMR = ((ItemTransportable) getStackInSlot(1).getItem()).getEntityToSpawn(worldObj);
+
+							eMMR.setPosition(calcTwoOffsetX(bedRampBackOffset + -3, 90, -1) + posX - .5d, posY, calcTwoOffsetZ(bedRampBackOffset + -3, 90, -1) + posZ - .5d);
+							eMMR.prevPosX = calcTwoOffsetX(bedRampBackOffset + -1, 90, -1) + posX - .5d;
+							eMMR.prevPosY = posY + 1.0d;
+							eMMR.prevPosZ = calcTwoOffsetZ(bedRampBackOffset + -1, 90, -1) + posZ - .5d;
+							eMMR.currentFuelLevel = carriedMachinesFuelStorage;
+							worldObj.spawnEntityInWorld(eMMR);
+							carriedMachinesFuelStorage = 0;
+							decrStackSize(0, 1);
+						}
+					}
 				}
 			}
 		}
@@ -78,20 +85,24 @@ public class EntitySemiTractor extends EntityMachineModRideable {
 	}
 
 	private void collidedEntitiesInList(List par1List) {
-		if (getStackInSlot(0) == null) {
-			for (int i = 0; i < par1List.size(); ++i) {
-				Entity entity = (Entity) par1List.get(i);
-				if (entity != null) {
-					if (entity instanceof EntityMachineModRideable && ((EntityMachineModRideable) entity).droppedItem instanceof ItemTransportable) {
-						ItemStack is = new ItemStack(((EntityMachineModRideable) entity).getItemToBeDropped());
-						if (!entity.isDead) {
-							if (is.stackSize > 0) {
-								ItemStack is1 = addToinventory(is);
-								carriedMachinesFuelStorage = ((EntityMachineModRideable) entity).currentFuelLevel;
-								entity.setDead();
-								return; // only add 1 item
-								// TODO way to store the contents of the machine's FUel level
+		if (getStackInSlot(0) != null) {
+			if (getStackInSlot(0).getItem() instanceof ItemSemiTrailerFlatBed) {
+				if (getStackInSlot(1) == null) {
+					for (int i = 0; i < par1List.size(); ++i) {
+						Entity entity = (Entity) par1List.get(i);
+						if (entity != null) {
+							if (entity instanceof EntityMachineModRideable && ((EntityMachineModRideable) entity).droppedItem instanceof ItemTransportable) {
+								ItemStack is = new ItemStack(((EntityMachineModRideable) entity).getItemToBeDropped());
+								if (!entity.isDead) {
+									if (is.stackSize > 0) {
+										ItemStack is1 = addToinventory(is);
+										carriedMachinesFuelStorage = ((EntityMachineModRideable) entity).currentFuelLevel;
+										entity.setDead();
+										return; // only add 1 item
+										// TODO way to store the contents of the machine's FUel level
 
+									}
+								}
 							}
 						}
 					}

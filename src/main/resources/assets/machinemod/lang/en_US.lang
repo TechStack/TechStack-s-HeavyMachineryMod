@@ -79,7 +79,9 @@ item.machinemod:crane.name=Crane
 item.machinemod:oilrig.name=Oil Rig
 item.machinemod:sub.name=Sub
 item.machinemod:semitractor.name=Semi-Tractor
-
+item.machinemod:livestocktrailer.name=Livestock Trailer
+item.machinemod:tankertrailer.name=Tanker Trailer
+item.machinemod:cargotrailer.name=Cargo Trailer
 
 
 # Block Localizations

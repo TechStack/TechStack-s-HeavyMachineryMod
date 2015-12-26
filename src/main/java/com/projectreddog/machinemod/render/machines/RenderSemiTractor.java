@@ -4,6 +4,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.item.machines.ItemTransportable;
+import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
 import com.projectreddog.machinemod.model.ModelSemiTractor;
 import com.projectreddog.machinemod.model.ModelTransportable;
 import com.projectreddog.machinemod.reference.Reference;
@@ -69,14 +70,21 @@ public class RenderSemiTractor extends Render {
 		GL11.glRotatef(180, 0, 1, 0);
 		boolean even = true;
 		int count = 0;
+
+		boolean hasWidebed = false;
 		for (int i = 0; i < eDT.getSizeInventory(); i++) {
 			ItemStack is = eDT.getStackInSlot(i);
 			if (is != null) {
-				if (is.getItem() instanceof ItemTransportable) {
-					ItemTransportable it = (ItemTransportable) is.getItem();
-					modelCarriedEntity = (it).getModel();
-					this.bindTexture(((ItemTransportable) is.getItem()).getModel().getTexture());
-					((ItemTransportable) is.getItem()).getModel().render(null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+				if (is.getItem() instanceof ItemSemiTrailerFlatBed) {
+					hasWidebed = true;
+				}
+				if (hasWidebed) {
+					if (is.getItem() instanceof ItemTransportable) {
+						ItemTransportable it = (ItemTransportable) is.getItem();
+						modelCarriedEntity = (it).getModel();
+						this.bindTexture(((ItemTransportable) is.getItem()).getModel().getTexture());
+						((ItemTransportable) is.getItem()).getModel().render(null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+					}
 				}
 			}
 		}

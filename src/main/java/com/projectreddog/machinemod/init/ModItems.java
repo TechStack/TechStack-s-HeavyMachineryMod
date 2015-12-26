@@ -73,7 +73,10 @@ import com.projectreddog.machinemod.item.machines.ItemRoadRoller;
 import com.projectreddog.machinemod.item.machines.ItemSemiTractor;
 import com.projectreddog.machinemod.item.machines.ItemSub;
 import com.projectreddog.machinemod.item.machines.ItemTractor;
+import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerCargo;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
+import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerLivestock;
+import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerTanker;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.Minecraft;
@@ -160,6 +163,11 @@ public class ModItems {
 	public static final ItemMachineMod turbo = new ItemTurbo();
 	public static final ItemMachineMod turboengine = new ItemTurboEngine();
 	public static final ItemMachineMod flatbedtrailer = new ItemSemiTrailerFlatBed();
+
+	public static final ItemMachineMod livestocktrailer = new ItemSemiTrailerLivestock();
+	public static final ItemMachineMod tankertrailer = new ItemSemiTrailerTanker();
+	public static final ItemMachineMod cargotrailer = new ItemSemiTrailerCargo();
+
 	public static final ItemMachineMod dozerblade = new ItemDozerBlade();
 	public static final ItemMachineMod tracks = new ItemTracks();
 	public static final ItemMachineMod wheel = new ItemWheel();
@@ -252,6 +260,11 @@ public class ModItems {
 		GameRegistry.registerItem(turbo, "turbo");
 		GameRegistry.registerItem(turboengine, "turboengine");
 		GameRegistry.registerItem(flatbedtrailer, "flatbedtrailer");
+
+		GameRegistry.registerItem(livestocktrailer, "livestocktrailer");
+		GameRegistry.registerItem(tankertrailer, "tankertrailer");
+		GameRegistry.registerItem(cargotrailer, "cargotrailer");
+
 		GameRegistry.registerItem(dozerblade, "dozerblade");
 		GameRegistry.registerItem(tracks, "tracks");
 		GameRegistry.registerItem(wheel, "wheel");
@@ -335,6 +348,11 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(turbo, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "turbo", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(turboengine, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "turboengine", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(flatbedtrailer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "flatbedtrailer", "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(livestocktrailer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "livestocktrailer", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tankertrailer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tankertrailer", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(cargotrailer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "cargotrailer", "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(dozerblade, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "dozerblade", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tracks, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tracks", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(wheel, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "wheel", "inventory"));

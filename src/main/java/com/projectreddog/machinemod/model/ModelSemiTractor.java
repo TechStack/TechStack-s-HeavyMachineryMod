@@ -1,5 +1,10 @@
 package com.projectreddog.machinemod.model;
 
+import com.projectreddog.machinemod.entity.EntitySemiTractor;
+import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerCargo;
+import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
+import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerLivestock;
+import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerTanker;
 import com.projectreddog.machinemod.model.advanced.AdvancedModelLoader;
 import com.projectreddog.machinemod.model.advanced.IModelCustom;
 import com.projectreddog.machinemod.reference.Reference;
@@ -7,6 +12,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class ModelSemiTractor extends ModelBase {
@@ -25,16 +31,29 @@ public class ModelSemiTractor extends ModelBase {
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		// myModel.renderAll();
+		this.renderGroupObject("SemiTractor_Cube");
 
-		// this.renderGroupObject("SemiTrailer_Cube.006");
+		EntitySemiTractor eDT = ((EntitySemiTractor) entity);
+		ItemStack is = eDT.getStackInSlot(0);
+		if (is != null) {
 
-		// this.renderGroupObject("AnimalTrailer_Cube.003");
+			if (is.getItem() instanceof ItemSemiTrailerCargo) {
+				this.renderGroupObject("SemiTrailer_Cube.006");
+			} else if (is.getItem() instanceof ItemSemiTrailerLivestock) {
+				this.renderGroupObject("AnimalTrailer_Cube.003");
+			} else if (is.getItem() instanceof ItemSemiTrailerTanker) {
+				this.renderGroupObject("TankerTailer_Cube.002");
+			} else if (is.getItem() instanceof ItemSemiTrailerFlatBed) {
+				this.renderGroupObject("FlatBedTrailer_Cube.001");
+			}
+		}
+		//
 
-		this.renderGroupObject("TankerTailer_Cube.002");
+		//
+
+		// this.renderGroupObject("TankerTailer_Cube.002");
 
 		// this.renderGroupObject("FlatBedTrailer_Cube.001");
-
-		this.renderGroupObject("SemiTractor_Cube");
 
 	}
 
