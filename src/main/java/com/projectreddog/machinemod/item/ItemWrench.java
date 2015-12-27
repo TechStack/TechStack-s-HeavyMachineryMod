@@ -26,16 +26,16 @@ public class ItemWrench extends ItemMachineMod {
 			EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineModConveyor.FACING);
 			switch (ef) {
 			case NORTH:
-				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.EAST));
+				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.EAST), 0);
 				break;
 			case EAST:
-				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.SOUTH));
+				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.SOUTH), 0);
 				break;
 			case SOUTH:
-				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.WEST));
+				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.WEST), 0);
 				break;
 			case WEST:
-				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.NORTH));
+				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.NORTH), 0);
 				break;
 
 			default:

@@ -180,6 +180,9 @@ public class ModItems {
 	public static final ItemMachineMod graderblade = new ItemGraderBlade();
 	public static final ItemMachineMod wrench = new ItemWrench();
 
+	/// buckets
+	// public static final ItemBucket oilbucket = new ItemOilBucket(ModBlocks.oilFluidBlock);
+
 	public static void init() {
 		GameRegistry.registerItem(bulldozer, "bulldozer");
 		GameRegistry.registerItem(tractor, "tractor");
@@ -276,6 +279,10 @@ public class ModItems {
 		GameRegistry.registerItem(graderblade, "graderblade");
 		GameRegistry.registerItem(wrench, "wrench");
 
+		// buckets
+		// GameRegistry.registerItem(oilbucket, "oilbucket");
+		// FluidContainerRegistry.registerFluidContainer(ModBlocks.fluidOil, new ItemStack(oilbucket), new ItemStack(Items.bucket));
+		// EventHandler.buckets.put(ModBlocks.oilFluidBlock, ModItems.oilbucket);
 	}
 
 	public static void initItemRender() {

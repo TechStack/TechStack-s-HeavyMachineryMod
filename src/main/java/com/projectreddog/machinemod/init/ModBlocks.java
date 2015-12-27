@@ -24,6 +24,7 @@ import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.block.BlockMachineModScreen;
 import com.projectreddog.machinemod.block.BlockMachineModWellHead;
 import com.projectreddog.machinemod.block.BlockMachineMowedGrass;
+import com.projectreddog.machinemod.block.BlockOilFluid;
 import com.projectreddog.machinemod.item.ItemBlockBlastedStone;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
@@ -37,10 +38,13 @@ import com.projectreddog.machinemod.tileentities.TileEntityScreen;
 import com.projectreddog.machinemod.tileentities.TileEntityWellHead;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
@@ -74,9 +78,13 @@ public class ModBlocks {
 	public static final Block machinefractionaldistillation = new BlockMachineModFractionalDistillation();
 
 	public static Fluid fluidBioFuel = new Fluid("BioFuel");
+
+	public static Fluid fluidOil = new Fluid("oil", new ResourceLocation("machinemod", Reference.FLUID_OIL_STILL_TEXTURE_LOCATION), new ResourceLocation("machinemod", Reference.FLUID_OIL_FLOWING_TEXTURE_LOCATION));
+
 	public static final Block machinescreen = new BlockMachineModScreen();
 	public static final Block machinemowedgrass = new BlockMachineMowedGrass();
 	public static BlockBioFuel biofuel;
+	public static Block oilFluidBlock;
 
 	public static void init() {
 		GameRegistry.registerBlock(machineassemblytable, Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
@@ -127,6 +135,12 @@ public class ModBlocks {
 
 		GameRegistry.registerTileEntity(TileEntityWellHead.class, Reference.MODBLOCK_MACHINE_WELL_HEAD);
 		// /Register Fluids
+		FluidRegistry.registerFluid(fluidOil);
+		fluidOil.setViscosity(6600);
+
+		oilFluidBlock = new BlockOilFluid(fluidOil, Material.water);
+		GameRegistry.registerBlock(oilFluidBlock, Reference.MODBLOCK_MACHINE_FLUID_OIL);
+
 		// fluidBioFuel.setDensity(10);
 		// FluidRegistry.registerFluid(fluidBioFuel);
 		// biofuel = new BlockBioFuel(fluidBioFuel, Material.water) ;

@@ -16,6 +16,9 @@ public class Reference {
 	public static final String MODEL_SUB_TEXTURE_LOCATION = "models/sub.png";
 	public static final String MODEL_SEMI_TEXTURE_LOCATION = "models/semi.png";
 
+	public static final String FLUID_OIL_STILL_TEXTURE_LOCATION = "textures/blocks/oil_still.png";
+	public static final String FLUID_OIL_FLOWING_TEXTURE_LOCATION = "textures/blocks/oil_flowing.png";
+
 	public static final String MODEL_FUEL_PUMP_TEXTURE_LOCATION = "models/fuelpump.png";
 	public static final String MODEL_DISTILLER_TEXTURE_LOCATION = "models/distiller.png";
 	public static final String MODEL_FERMENTER_TEXTURE_LOCATION = "models/fermenter.png";
@@ -91,6 +94,8 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_SCREEN = "machinescreen";
 
 	public static final String MODBLOCK_MACHINE_FLUID_BIOFUEL = "biofuel";
+
+	public static final String MODBLOCK_MACHINE_FLUID_OIL = "machineoil";
 
 	public static final String MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE = "machineexplosivepackeddrilledstone";
 	public static final String MACHINE_MOD_NBT_PREFIX = "MACHINE_MOD_";
