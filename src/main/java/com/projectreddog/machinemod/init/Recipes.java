@@ -54,7 +54,7 @@ public class Recipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.bulldozer), "   ", " et", "dkk", 'k', ModItems.tracks, 'e', ModItems.engine, 't', ModItems.transmission, 'd', ModItems.dozerblade));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.semitractor), "   ", "etf", "ww ", 'e', ModItems.turboengine, 't', ModItems.transmission, 'f', ModItems.flatbedtrailer, 'w', ModItems.wheel));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.semitractor), "o  ", "et ", "ww ", 'o', ModItems.operatorsbooth, 'e', ModItems.turboengine, 't', ModItems.transmission, 'w', ModItems.wheel));
 
 		// GameRegistry.addRecipe(new ShapedOreRecipe(new
 		// ItemStack(ModItems.combine), " cc", "het", " ww", 'c' ,Blocks.chest
@@ -134,6 +134,9 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.light, 1), " r ", "rtr", " r ", 'r', Blocks.redstone_lamp, 't', Blocks.redstone_torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lightmodule, 1), " l ", "lrl", " l ", 'r', ModItems.powercell, 'l', ModItems.light));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sub, 1), "tlt", "ose", "tat", 't', ModItems.turboprop, 'l', ModItems.lightmodule, 'o', ModItems.operatorsbubble, 's', ModItems.subbody, 'e', ModItems.engine, 'a', ModItems.airtank));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.liquidtanksegment, 1), "iii", "i i", "iii", 'i', Items.iron_ingot));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tankertrailer, 1), "   ", "sss", " ww", 's', ModItems.liquidtanksegment, 'w', ModItems.wheel));
 
 		// D D
 		// PBP

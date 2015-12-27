@@ -2,37 +2,26 @@ package com.projectreddog.machinemod.tileentities;
 
 import java.util.List;
 
-import net.minecraft.block.BlockStone;
+import com.projectreddog.machinemod.entity.EntitySemiTractor;
+import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.reference.Reference;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.EnumDyeColor;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.IChatComponent;
+import net.minecraftforge.fluids.FluidEvent;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTankInfo;
+import net.minecraftforge.fluids.IFluidTank;
 
-import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
-import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
-import com.projectreddog.machinemod.iface.IFuelContainer;
-import com.projectreddog.machinemod.init.ModBlocks;
-import com.projectreddog.machinemod.init.ModItems;
-import com.projectreddog.machinemod.reference.Reference;
+public class TileEntityFractionalDistillation extends TileEntity implements IUpdatePlayerListBox, IFluidTank {
 
-public class TileEntityFractionalDistillation extends TileEntity implements IUpdatePlayerListBox, ISidedInventory, IFuelContainer {
-	protected ItemStack[] inventory;
-	private static int[] bottomSlots = new int[] {};
-	private static int[] topSlots = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 };
-	public final int maxFuelStorage = 5000; // store up to 10k (can fill all 9 cans & have room for one more
-	public int fuelStorage = 0;
+	public final int maxOilStorage = 10000; // store up to 100k
+
 	public AxisAlignedBB boundingBox;
 	public int coolDownAmount = 5;
 	public int timeTillCoolDown = 0;
@@ -43,9 +32,9 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 	public final int BlastedStoneGemMultiplier = 2;
 	public final int BlastedStoneLapisMultiplier = 12;
 	public final int BlastedStoneRedstoneMultiplier = 8;
+	protected FluidStack fluid = new FluidStack(ModBlocks.fluidOil, 0);
 
 	public TileEntityFractionalDistillation() {
-		inventory = new ItemStack[54];
 
 	}
 
@@ -62,125 +51,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 			boundingBox = new AxisAlignedBB(this.pos.up(), this.pos.up().add(1, 1, 1));
 			List list = worldObj.getEntitiesWithinAABB(EntityItem.class, boundingBox);
 			processEntitiesInList(list);
-			for (int i = 0; i < this.getSizeInventory(); i++) {
-				ItemStack item = this.getStackInSlot(i);
-				if (item != null) {
-					if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedstone)) {
-						if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.IRON.getMetadata()) {
-							dropDust(i, new ItemStack(ModItems.irondust, BlastedStoneOreMultiplier));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.GOLD.getMetadata()) {
-							dropDust(i, new ItemStack(ModItems.golddust, BlastedStoneOreMultiplier));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.STONE.getMetadata()) {
-							dropDust(i, new ItemStack(Blocks.cobblestone, 1));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.ANDESITE.getMetadata()) {
-							dropDust(i, new ItemStack(Blocks.stone, 1, BlockStone.EnumType.ANDESITE.getMetadata()));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.DIORITE.getMetadata()) {
-							dropDust(i, new ItemStack(Blocks.stone, 1, BlockStone.EnumType.DIORITE.getMetadata()));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.GRANITE.getMetadata()) {
-							dropDust(i, new ItemStack(Blocks.stone, 1, BlockStone.EnumType.GRANITE.getMetadata()));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.COAL.getMetadata()) {
-							dropDust(i, new ItemStack(Items.coal, BlastedStoneCoalMultiplier));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.DIAMOND.getMetadata()) {
-							dropDust(i, new ItemStack(Items.diamond, BlastedStoneGemMultiplier));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.EMERALD.getMetadata()) {
-							dropDust(i, new ItemStack(Items.emerald, BlastedStoneGemMultiplier));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.LAPIS.getMetadata()) {
-							dropDust(i, new ItemStack(Items.dye, BlastedStoneLapisMultiplier, EnumDyeColor.BLUE.getDyeDamage()));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.REDSTONE.getMetadata()) {
-							dropDust(i, new ItemStack(Items.redstone, BlastedStoneRedstoneMultiplier));
-							return;
-						}
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.iron_ore)) {
-						dropDust(i, new ItemStack(ModItems.irondust, VanillaOreMultiplier));
-						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.gold_ore)) {
-						dropDust(i, new ItemStack(ModItems.golddust, VanillaOreMultiplier));
-						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.stone) && item.getMetadata() == BlockStone.EnumType.STONE.getMetadata()) {
-						dropDust(i, new ItemStack(Blocks.cobblestone, 1));
-						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.stone)) {
-						dropDust(i, new ItemStack(item.getItem(), 1, item.getItemDamage()));
-						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.coal_ore)) {
-						dropDust(i, new ItemStack(Items.coal, 1));
-						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.diamond_ore)) {
-						dropDust(i, new ItemStack(Items.diamond, 1));
-						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.emerald_ore)) {
-						dropDust(i, new ItemStack(Items.emerald, 1));
-						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.lapis_ore)) {
-						dropDust(i, new ItemStack(Items.dye, 7, EnumDyeColor.BLUE.getDyeDamage()));
-						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.redstone_ore)) {
-						dropDust(i, new ItemStack(Items.redstone, 5));
-						return;
-					} else if (item.getItem() == Items.bone) {
-						dropDust(i, new ItemStack(Items.dye, 5, EnumDyeColor.WHITE.getDyeDamage()));
-						return;
-					} else {
-						dropDust(i, new ItemStack(item.getItem(), 1, item.getMetadata()));
-						return;
-					}
-				}
-			}
-		}
-	}
 
-	/*
-	 * Drops an item on the ground after reducing the
-	 */
-	private void dropDust(int slot, ItemStack is) {
-		if (fuelStorage > 0) {
-			decrStackSize(slot, 1);
-			fuelStorage = fuelStorage - 1;
-			// TODO position entity based on enum facing :D
-			double ejectOffsetX = 0d;
-			double ejectOffsetZ = 0d;
-			EnumFacing ef = (EnumFacing) worldObj.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
-			switch (ef) {
-			case NORTH:
-				// no rotate?
-				ejectOffsetX = .5d;
-				ejectOffsetZ = -.2d;
-				break;
-			case SOUTH:
-				// rotate to south
-				ejectOffsetX = .5d;
-				ejectOffsetZ = 1.2d;
-				break;
-			case EAST:
-				ejectOffsetX = 1.2d;
-				ejectOffsetZ = .5d;
-				break;
-			case WEST:
-				ejectOffsetX = -.2d;
-				ejectOffsetZ = .5d;
-				break;
-			default:
-				// should never happen because we are constrained to the horizontal plane so just break with 0 (default) offsets
-				break;
-
-			}
-			EntityItem entityItem = new EntityItem(worldObj, this.pos.getX() + ejectOffsetX, this.pos.getY(), this.pos.getZ() + ejectOffsetZ, is);
-
-			entityItem.forceSpawn = true;
-			entityItem.motionX = 0;
-			entityItem.motionY = 0;
-			entityItem.motionZ = 0;
-			worldObj.spawnEntityInWorld(entityItem);
 		}
 	}
 
@@ -188,18 +59,12 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 		for (int i = 0; i < par1List.size(); ++i) {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
-				if (entity instanceof EntityItem) {
+				if (entity instanceof EntitySemiTractor) {
 					ItemStack is = ((EntityItem) entity).getEntityItem();
 					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
 					if (!entity.isDead) {
 						if (is.stackSize > 0) {
-							ItemStack is1 = addToinventory(is);
 
-							if (is1 != null && is1.stackSize != 0) {
-								((EntityItem) entity).setEntityItemStack(is1);
-							} else {
-								entity.setDead();
-							}
 						}
 					}
 				}
@@ -208,63 +73,18 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 		}
 	}
 
-	protected ItemStack addToinventory(ItemStack is) {
-		int i = getSizeInventory();
-
-		for (int j = 0; j < i && is != null && is.stackSize > 0; ++j) {
-			if (is != null) {
-
-				if (getStackInSlot(j) != null) {
-					if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getItemDamage() == is.getItemDamage()) {
-						// same item remove from is put into slot any amt not to
-						// excede stack max
-						if (getStackInSlot(j).stackSize < getStackInSlot(j).getMaxStackSize()) {
-							// we have room to add to this stack
-							if (is.stackSize <= getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize) {
-								// /all of the stack will fit in this slot do
-								// so.
-
-								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).stackSize + is.stackSize, is.getItemDamage()));
-								is = null;
-							} else {
-								// we have more
-								int countRemain = is.stackSize - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize);
-								setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getItemDamage()));
-								is.stackSize = countRemain;
-							}
-
-						}
-					}
-				} else {
-					// nothign in slot so set contents
-					setInventorySlotContents(j, new ItemStack(is.getItem(), is.stackSize, is.getItemDamage()));
-					is = null;
-				}
-
-			}
-
-		}
-
-		return is;
-
-	}
-
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 
 		super.readFromNBT(compound);
 
 		timeTillCoolDown = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN");
-		fuelStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL");
 
-		// inventory
-		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
-		for (int i = 0; i < tagList.tagCount(); i++) {
-			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
-			byte slot = tag.getByte("Slot");
-			if (slot >= 0 && slot < inventory.length) {
-				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
-			}
+		if (!compound.hasKey("Empty")) {
+			FluidStack fluid = FluidStack.loadFluidStackFromNBT(compound);
+			setFluid(fluid);
+		} else {
+			setFluid(null);
 		}
 	}
 
@@ -273,192 +93,110 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 		super.writeToNBT(compound);
 
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN", timeTillCoolDown);
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL", fuelStorage);
-
-		// inventory
-		NBTTagList itemList = new NBTTagList();
-		for (int i = 0; i < inventory.length; i++) {
-			ItemStack stack = inventory[i];
-			if (stack != null) {
-				NBTTagCompound tag = new NBTTagCompound();
-				tag.setByte("Slot", (byte) i);
-				stack.writeToNBT(tag);
-				itemList.appendTag(tag);
-			}
+		if (fluid != null) {
+			fluid.writeToNBT(compound);
+		} else {
+			compound.setString("Empty", "");
 		}
-		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
-
 	}
 
 	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+	public FluidStack getFluid() {
+		return fluid;
 	}
 
 	@Override
-	public boolean hasCustomName() {
-		// TODO Auto-generated method stub
-		return false;
+	public int getFluidAmount() {
+
+		if (fluid == null) {
+			return 0;
+		}
+		return fluid.amount;
 	}
 
 	@Override
-	public IChatComponent getDisplayName() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getCapacity() {
+
+		return this.maxOilStorage;
 	}
 
 	@Override
-	public int getSizeInventory() {
-		return inventory.length;
+	public FluidTankInfo getInfo() {
+		return new FluidTankInfo(this);
+	}
+
+	public void setFluid(FluidStack fluid) {
+		this.fluid = fluid;
 	}
 
 	@Override
-	public ItemStack getStackInSlot(int slot) {
-		return inventory[slot];
+	public int fill(FluidStack resource, boolean doFill) {
+		if (resource == null) {
+			return 0;
+		}
+
+		if (!doFill) {
+			if (fluid == null) {
+				return Math.min(maxOilStorage, resource.amount);
+			}
+
+			if (!fluid.isFluidEqual(resource)) {
+				return 0;
+			}
+
+			return Math.min(maxOilStorage - fluid.amount, resource.amount);
+		}
+
+		if (fluid == null) {
+			fluid = new FluidStack(resource, Math.min(maxOilStorage, resource.amount));
+
+			if (this != null) {
+				FluidEvent.fireEvent(new FluidEvent.FluidFillingEvent(fluid, this.getWorld(), this.getPos(), this, fluid.amount));
+			}
+			return fluid.amount;
+		}
+
+		if (!fluid.isFluidEqual(resource)) {
+			return 0;
+		}
+		int filled = maxOilStorage - fluid.amount;
+
+		if (resource.amount < filled) {
+			fluid.amount += resource.amount;
+			filled = resource.amount;
+		} else {
+			fluid.amount = maxOilStorage;
+		}
+
+		if (this != null) {
+			FluidEvent.fireEvent(new FluidEvent.FluidFillingEvent(fluid, this.getWorld(), this.getPos(), this, filled));
+		}
+		return filled;
 	}
 
 	@Override
-	public ItemStack decrStackSize(int slot, int amt) {
-		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			if (stack.stackSize <= amt) {
-				setInventorySlotContents(slot, null);
-			} else {
-				stack = stack.splitStack(amt);
-				if (stack.stackSize == 0) {
-					setInventorySlotContents(slot, null);
-				}
+	public FluidStack drain(int maxDrain, boolean doDrain) {
+		if (fluid == null) {
+			return null;
+		}
 
+		int drained = maxDrain;
+		if (fluid.amount < drained) {
+			drained = fluid.amount;
+		}
+
+		FluidStack stack = new FluidStack(fluid, drained);
+		if (doDrain) {
+			fluid.amount -= drained;
+			if (fluid.amount <= 0) {
+				fluid = null;
+			}
+
+			if (this != null) {
+				FluidEvent.fireEvent(new FluidEvent.FluidDrainingEvent(fluid, this.getWorld(), this.getPos(), this, drained));
 			}
 		}
 		return stack;
-	}
-
-	@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
-		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			setInventorySlotContents(slot, null);
-		}
-		return stack;
-	}
-
-	@Override
-	public void setInventorySlotContents(int slot, ItemStack stack) {
-		inventory[slot] = stack;
-		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
-			stack.stackSize = getInventoryStackLimit();
-		}
-
-	}
-
-	@Override
-	public int getInventoryStackLimit() {
-		return 64;
-	}
-
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer playerIn) {
-		return playerIn.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
-	}
-
-	@Override
-	public void openInventory(EntityPlayer playerIn) {
-
-	}
-
-	@Override
-	public void closeInventory(EntityPlayer playerIn) {
-
-	}
-
-	@Override
-	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		return true;
-	}
-
-	@Override
-	public int getField(int id) {
-		return 0;
-	}
-
-	@Override
-	public void setField(int id, int value) {
-
-	}
-
-	@Override
-	public int getFieldCount() {
-		return 0;
-	}
-
-	@Override
-	public void clear() {
-		for (int i = 0; i < inventory.length; ++i) {
-			inventory[i] = null;
-		}
-	}
-
-	@Override
-	public int[] getSlotsForFace(EnumFacing side) {
-		if (side == EnumFacing.DOWN) {
-			return bottomSlots;
-		} else if (side == EnumFacing.UP) {
-			return topSlots;
-		}
-		int[] topSlots2 = new int[] { 0 };
-		return topSlots2;
-
-	}
-
-	@Override
-	public boolean canInsertItem(int slot, ItemStack itemStackIn, EnumFacing direction) {
-		if (slot < 54 && direction == EnumFacing.UP) {
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public boolean canExtractItem(int slot, ItemStack stack, EnumFacing direction) {
-		if (slot < 54 && direction == EnumFacing.DOWN) {
-			return true;
-		}
-		return false;
-	}
-
-	public int addFluid(int amount) {
-		int returnAmount;
-		if (canAcceptFluid()) {
-			if (fuelStorage + amount > maxFuelStorage) {
-				// fill to brim return amount left over
-				returnAmount = (fuelStorage + amount - maxFuelStorage);
-
-				fuelStorage = maxFuelStorage;
-			} else {
-				// not going to return any this container can hold all of the fuel
-				fuelStorage = fuelStorage + amount;
-				returnAmount = 0;
-			}
-		} else {
-			returnAmount = amount;
-		}
-		return returnAmount;
-	}
-
-	public boolean canAcceptFluid() {
-		if (fuelStorage < maxFuelStorage) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	@Override
-	public EnumFacing outputDirection() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

@@ -1,13 +1,19 @@
 package com.projectreddog.machinemod.tileentities;
 
+import java.util.List;
+
+import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerTanker;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.LogHelper;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
@@ -21,9 +27,10 @@ public class TileEntityWellHead extends TileEntity implements IUpdatePlayerListB
 	// public int capacity = 0;
 	public BlockPos currentOilDeposit;
 	public int blocksFound = 0;
-	public final int coolDownReset = 2400;
+	public final int coolDownReset = 240;
 	public int cooldown = coolDownReset;
 	protected FluidStack fluid = new FluidStack(ModBlocks.fluidOil, 0);
+	public int transferOilAmount = 10;
 
 	public TileEntityWellHead() {
 
@@ -43,14 +50,47 @@ public class TileEntityWellHead extends TileEntity implements IUpdatePlayerListB
 				if (currentOilDeposit != null) {
 					pumpOil();
 				}
-			}
 
+			}
 			transferOil();
+
 		}
 	}
 
 	public void transferOil() {
 		// find nearby oil tanker trucks and pump oil to them!
+		AxisAlignedBB pumpboundingBox = new AxisAlignedBB(this.pos.north(3).west(3).down(1), this.pos.south(3).east(3).up(1));
+
+		// List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, pumpboundingBox);
+		List list = this.worldObj.getEntitiesWithinAABB(EntitySemiTractor.class, pumpboundingBox);
+
+		collidedEntitiesInList(list);
+	}
+
+	private void collidedEntitiesInList(List par1List) {
+
+		for (int i = 0; i < par1List.size(); ++i) {
+			Entity entity = (Entity) par1List.get(i);
+			if (entity != null) {
+				if (entity instanceof EntitySemiTractor) {
+					EntitySemiTractor semi = (EntitySemiTractor) entity;
+					if (semi.getStackInSlot(0) != null) {
+						if (semi.getStackInSlot(0).getItem() instanceof ItemSemiTrailerTanker) {
+
+							if (!semi.isDead) {
+
+								if (getFluidAmount() >= transferOilAmount) {
+									FluidStack moveStack = new FluidStack(fluid, transferOilAmount);
+
+									drain(semi.fill(moveStack, true), true);
+								}
+
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 	public void findOilDepoist() {
@@ -82,10 +122,12 @@ public class TileEntityWellHead extends TileEntity implements IUpdatePlayerListB
 
 	public void pumpOil() {
 		worldObj.setBlockState(currentOilDeposit, Blocks.air.getDefaultState());
-		fill(new FluidStack(fluid, 1000), true);
+		fill(new FluidStack(ModBlocks.fluidOil, 1000), true);
 
 		blocksFound = blocksFound + 1;
 		LogHelper.info("Oil Pumped blocks found so far:" + blocksFound);
+
+		LogHelper.info("Oil amount : " + fluid.amount);
 	}
 
 	@Override

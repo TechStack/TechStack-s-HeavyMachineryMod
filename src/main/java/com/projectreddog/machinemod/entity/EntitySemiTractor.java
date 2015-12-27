@@ -2,22 +2,32 @@ package com.projectreddog.machinemod.entity;
 
 import java.util.List;
 
+import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.item.machines.ItemTransportable;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
+import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerTanker;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.FluidEvent;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTankInfo;
+import net.minecraftforge.fluids.IFluidTank;
 
-public class EntitySemiTractor extends EntityMachineModRideable {
+public class EntitySemiTractor extends EntityMachineModRideable implements IFluidTank {
 
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 	private int carriedMachinesFuelStorage;
 	private float bedRampBackOffset = -5f;
+
+	public final int maxOilStorage = 100000; // store up to 100k
+	protected FluidStack fluid = new FluidStack(ModBlocks.fluidOil, 0);
 
 	public EntitySemiTractor(World world) {
 		super(world);
@@ -72,11 +82,12 @@ public class EntitySemiTractor extends EntityMachineModRideable {
 							eMMR.currentFuelLevel = carriedMachinesFuelStorage;
 							worldObj.spawnEntityInWorld(eMMR);
 							carriedMachinesFuelStorage = 0;
-							decrStackSize(0, 1);
+							decrStackSize(1, 1);
 						}
 					}
 				}
 			}
+			LogHelper.info(fluid.amount);
 		}
 	}
 
@@ -109,5 +120,128 @@ public class EntitySemiTractor extends EntityMachineModRideable {
 				}
 			}
 		}
+	}
+
+	public boolean isFluidTanker() {
+
+		if (getStackInSlot(0) != null) {
+			if (getStackInSlot(0).getItem() instanceof ItemSemiTrailerTanker) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/////
+
+	@Override
+	public FluidStack getFluid() {
+		return fluid;
+	}
+
+	@Override
+	public int getFluidAmount() {
+
+		if (fluid == null) {
+			return 0;
+		}
+		return fluid.amount;
+	}
+
+	@Override
+	public int getCapacity() {
+
+		return this.maxOilStorage;
+	}
+
+	@Override
+	public FluidTankInfo getInfo() {
+		return new FluidTankInfo(this);
+	}
+
+	public void setFluid(FluidStack fluid) {
+		this.fluid = fluid;
+	}
+
+	@Override
+	public int fill(FluidStack resource, boolean doFill) {
+
+		if (!isFluidTanker()) {
+			return 0;
+
+		}
+		if (resource == null) {
+			return 0;
+		}
+
+		if (!doFill) {
+			if (fluid == null) {
+				return Math.min(maxOilStorage, resource.amount);
+			}
+
+			if (!fluid.isFluidEqual(resource)) {
+				return 0;
+			}
+
+			return Math.min(maxOilStorage - fluid.amount, resource.amount);
+		}
+
+		if (fluid == null) {
+			fluid = new FluidStack(resource, Math.min(maxOilStorage, resource.amount));
+
+			if (this != null) {
+				FluidEvent.fireEvent(new FluidEvent.FluidFillingEvent(fluid, worldObj, this.getPosition(), this, fluid.amount));
+			}
+			return fluid.amount;
+		}
+
+		if (!fluid.isFluidEqual(resource)) {
+			return 0;
+		}
+		int filled = maxOilStorage - fluid.amount;
+
+		if (resource.amount < filled) {
+			fluid.amount += resource.amount;
+			filled = resource.amount;
+		} else {
+			fluid.amount = maxOilStorage;
+		}
+
+		if (this != null) {
+			FluidEvent.fireEvent(new FluidEvent.FluidFillingEvent(fluid, worldObj, this.getPosition(), this, filled));
+		}
+		return filled;
+	}
+
+	@Override
+	public FluidStack drain(int maxDrain, boolean doDrain) {
+
+		if (!isFluidTanker()) {
+			return null;
+
+		}
+
+		if (fluid == null) {
+			return null;
+		}
+
+		int drained = maxDrain;
+		if (fluid.amount < drained) {
+			drained = fluid.amount;
+		}
+
+		FluidStack stack = new FluidStack(fluid, drained);
+		if (doDrain) {
+			fluid.amount -= drained;
+			if (fluid.amount <= 0) {
+				fluid = null;
+			}
+
+			if (this != null) {
+				FluidEvent.fireEvent(new FluidEvent.FluidDrainingEvent(fluid, worldObj, this.getPosition(), this, drained));
+			}
+		}
+		return stack;
 	}
 }

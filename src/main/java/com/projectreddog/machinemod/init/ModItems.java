@@ -45,6 +45,7 @@ import com.projectreddog.machinemod.item.components.ItemDumperBed;
 import com.projectreddog.machinemod.item.components.ItemEngine;
 import com.projectreddog.machinemod.item.components.ItemHavesterHead;
 import com.projectreddog.machinemod.item.components.ItemIronGear;
+import com.projectreddog.machinemod.item.components.ItemLiquidTankSegment;
 import com.projectreddog.machinemod.item.components.ItemLoaderBucket;
 import com.projectreddog.machinemod.item.components.ItemPaverScreed;
 import com.projectreddog.machinemod.item.components.ItemPiston;
@@ -98,6 +99,7 @@ public class ModItems {
 	public static final ItemMachineMod rollerwheel = new ItemRollerWheel();
 	public static final ItemMachineMod oilrig = new ItemOilRig();
 	public static final ItemMachineMod sub = new ItemSub();
+	public static final ItemMachineMod liquidtanksegment = new ItemLiquidTankSegment();
 
 	public static final ItemMachineMod prop = new ItemProp();
 	public static final ItemMachineMod propcage = new ItemPropCage();
@@ -193,6 +195,7 @@ public class ModItems {
 		GameRegistry.registerItem(rollerwheel, "rollerwheel");
 		GameRegistry.registerItem(oilrig, "oilrig");
 		GameRegistry.registerItem(sub, "sub");
+		GameRegistry.registerItem(liquidtanksegment, "liquidtanksegment");
 
 		GameRegistry.registerItem(prop, "prop");
 		GameRegistry.registerItem(propcage, "propcage");
@@ -296,6 +299,7 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(rollerwheel, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "rollerwheel", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(oilrig, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "oilrig", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(sub, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "sub", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(liquidtanksegment, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "liquidtanksegment", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(prop, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "prop", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(propcage, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "propcage", "inventory"));
