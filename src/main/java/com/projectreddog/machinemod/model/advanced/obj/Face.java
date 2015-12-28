@@ -30,7 +30,6 @@ public class Face {
 		// set normal function?
 		// 1.8 (faceNormal.x, faceNormal.y, faceNormal.z);
 
-		worldrenderer.putNormal(faceNormal.x, faceNormal.y, faceNormal.z);
 		//
 		float averageU = 0F;
 		float averageV = 0F;
@@ -69,7 +68,10 @@ public class Face {
 				// 1.8 worldrenderer.addVertex(vertices[i].x, vertices[i].y, vertices[i].z);
 				worldrenderer.func_181662_b(vertices[i].x, vertices[i].y, vertices[i].z);
 			}
+
 		}
+		worldrenderer.putNormal(faceNormal.x, faceNormal.y, faceNormal.z);
+
 	}
 
 	public Vertex calculateFaceNormal() {
