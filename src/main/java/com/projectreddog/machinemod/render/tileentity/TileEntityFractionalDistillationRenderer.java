@@ -2,8 +2,8 @@ package com.projectreddog.machinemod.render.tileentity;
 
 import org.lwjgl.opengl.GL11;
 
-import com.projectreddog.machinemod.block.BlockMachineModFractionalDistillation;
-import com.projectreddog.machinemod.model.tileentity.ModelDistiller;
+import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
+import com.projectreddog.machinemod.model.tileentity.ModelFractionalDistillation;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.renderer.Tessellator;
@@ -12,9 +12,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 
-public class TileEntityDistillerRenderer extends TileEntitySpecialRenderer {
+public class TileEntityFractionalDistillationRenderer extends TileEntitySpecialRenderer {
 
-	private ModelDistiller teModel = new ModelDistiller();
+	private ModelFractionalDistillation teModel = new ModelFractionalDistillation();
 	private static ResourceLocation resourceLocation;
 
 	@Override
@@ -39,7 +39,7 @@ public class TileEntityDistillerRenderer extends TileEntitySpecialRenderer {
 		this.bindTexture(getResourceLocation());
 		GL11.glScalef(-.5F, -.5F, .5F);
 
-		EnumFacing ef = (EnumFacing) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModFractionalDistillation.FACING);
+		EnumFacing ef = (EnumFacing) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
 		switch (ef) {
 		case NORTH:
 			// no rotate?

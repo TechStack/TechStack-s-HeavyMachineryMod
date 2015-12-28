@@ -207,13 +207,24 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 					if (getItemToBeDropped() != null) {
 						this.dropItem(getItemToBeDropped(), 1);
 						this.setDead();
-						this.addedToChunk = true;
+						// this.addedToChunk = true;
 					}
 
 				} else {
 					player.mountEntity(this);
 				}
 			}
+		} else if (worldObj.isRemote && riddenByEntity == null) {
+			if (player.isSneaking()) {
+				// if (getItemToBeDropped() != null) {
+
+				this.setDead();
+				this.addedToChunk = true;
+				this.worldObj.removeEntity(this);
+
+				// }
+			}
+
 		}
 		return true;
 	}

@@ -21,6 +21,7 @@ public class Reference {
 
 	public static final String MODEL_FUEL_PUMP_TEXTURE_LOCATION = "models/fuelpump.png";
 	public static final String MODEL_DISTILLER_TEXTURE_LOCATION = "models/distiller.png";
+	public static final String MODEL_FRACTIONAL_DISTILATION_TEXTURE_LOCATION = "models/fractionaldistilation.png";
 	public static final String MODEL_FERMENTER_TEXTURE_LOCATION = "models/fermenter.png";
 
 	public static final String MODEL_WELL_HEAD_TEXTURE_LOCATION = "models/wellhead.png";

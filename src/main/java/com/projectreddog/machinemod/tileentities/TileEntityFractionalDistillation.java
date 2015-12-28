@@ -4,11 +4,10 @@ import java.util.List;
 
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerTanker;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
@@ -33,6 +32,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 	public final int BlastedStoneLapisMultiplier = 12;
 	public final int BlastedStoneRedstoneMultiplier = 8;
 	protected FluidStack fluid = new FluidStack(ModBlocks.fluidOil, 0);
+	public int transferOilAmount = 10;
 
 	public TileEntityFractionalDistillation() {
 
@@ -41,18 +41,32 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 	@Override
 	public void update() {
 		if (!worldObj.isRemote) {
-			if (timeTillCoolDown > 0) {
-				timeTillCoolDown--;
-				return;
+
+			if (amIBottom()) {
+
+				if (timeTillCoolDown > 0) {
+					timeTillCoolDown--;
+					return;
+				}
+				timeTillCoolDown = coolDownAmount;
+
+				// LogHelper.info("TE update entity called");
+				boundingBox = new AxisAlignedBB(this.pos.north(3).west(3).down(1), this.pos.south(3).east(3).up(1));
+				List list = worldObj.getEntitiesWithinAABB(EntitySemiTractor.class, boundingBox);
+				processEntitiesInList(list);
+
 			}
-			timeTillCoolDown = coolDownAmount;
-
-			// LogHelper.info("TE update entity called");
-			boundingBox = new AxisAlignedBB(this.pos.up(), this.pos.up().add(1, 1, 1));
-			List list = worldObj.getEntitiesWithinAABB(EntityItem.class, boundingBox);
-			processEntitiesInList(list);
-
+		} else {
+			// is not do nothing !
 		}
+
+	}
+
+	public boolean amIBottom() {
+		if (this.worldObj.getBlockState(pos.down()).getBlock() == ModBlocks.machinefractionaldistillation) {
+			return false;
+		}
+		return true;
 	}
 
 	private void processEntitiesInList(List par1List) {
@@ -60,11 +74,21 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
 				if (entity instanceof EntitySemiTractor) {
-					ItemStack is = ((EntityItem) entity).getEntityItem();
-					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
-					if (!entity.isDead) {
-						if (is.stackSize > 0) {
+					EntitySemiTractor est = (EntitySemiTractor) entity;
 
+					if (est.getStackInSlot(0) != null) {
+						if (est.getStackInSlot(0).getItem() instanceof ItemSemiTrailerTanker) {
+
+							if (!est.isDead) {
+
+								if (est.getFluidAmount() >= transferOilAmount) {
+									if (est.getFluid().getFluid() == fluid.getFluid()) {
+										FluidStack moveStack = new FluidStack(fluid, transferOilAmount);
+
+										fill(est.drain(transferOilAmount, true), true);
+									}
+								}
+							}
 						}
 					}
 				}

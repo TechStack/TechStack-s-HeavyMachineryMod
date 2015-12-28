@@ -45,6 +45,7 @@ item.machinemod:hose.name=Hose
 item.machinemod:lidwithspout.name=Lid with Spout
 item.machinemod:lawnmower.name=Riding Lawn Mower
 item.machinemod:mowerdeck.name=Mower Deck
+item.machinemod:liquidtanksegment.name=Liquid tank segment
 
 
 item.machinemod:paverscreed.name=Paver Screed

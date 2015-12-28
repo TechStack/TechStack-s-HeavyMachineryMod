@@ -87,7 +87,9 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 					}
 				}
 			}
-			LogHelper.info(fluid.amount);
+			if (fluid != null) {
+				LogHelper.info(fluid.amount);
+			}
 		}
 	}
 

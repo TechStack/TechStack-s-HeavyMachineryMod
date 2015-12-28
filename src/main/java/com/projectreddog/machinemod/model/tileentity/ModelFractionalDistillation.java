@@ -16,13 +16,13 @@ import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
-public class ModelDistiller extends ModelBase {
+public class ModelFractionalDistillation extends ModelBase {
 	// fields
 	private IModelCustom myModel;
 
-	public ModelDistiller() {
+	public ModelFractionalDistillation() {
 
-		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/distiller.obj"));
+		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/fractionaldistilation.obj"));
 		// casinoTexture = new ResourceLocation("modid",
 		// "textures/casinoTexture.png");
 

@@ -61,6 +61,6 @@ public class ModelGrader extends ModelTransportable {
 
 	public ResourceLocation getTexture() {
 
-		return new ResourceLocation("machinemod", Reference.MODEL_LOADER_TEXTURE_LOCATION);
+		return new ResourceLocation("machinemod", Reference.MODEL_GRADER_TEXTURE_LOCATION);
 	}
 }
