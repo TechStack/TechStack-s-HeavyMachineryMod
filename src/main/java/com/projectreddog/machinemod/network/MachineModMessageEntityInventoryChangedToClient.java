@@ -1,12 +1,11 @@
 package com.projectreddog.machinemod.network;
 
+import java.io.IOException;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.ByteBufOutputStream;
 import io.netty.handler.codec.EncoderException;
-
-import java.io.IOException;
-
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompressedStreamTools;
@@ -54,7 +53,9 @@ public class MachineModMessageEntityInventoryChangedToClient implements IMessage
 			} else {
 				buf.readerIndex(i);
 				try {
-					itemstack.setTagCompound(CompressedStreamTools.func_152456_a(new ByteBufInputStream(buf), NBTSizeTracker.INFINITE));
+					// 1.8 itemstack.setTagCompound(CompressedStreamTools.func_152456_a(new ByteBufInputStream(buf), NBTSizeTracker.INFINITE));
+
+					itemstack.setTagCompound(CompressedStreamTools.read(new ByteBufInputStream(buf), NBTSizeTracker.INFINITE));
 				} catch (IOException e) {
 					// will toss error when it passes end of stream
 					// e.printStackTrace();
@@ -62,7 +63,10 @@ public class MachineModMessageEntityInventoryChangedToClient implements IMessage
 			}
 
 			try {
-				itemstack.setTagCompound(CompressedStreamTools.func_152456_a(new ByteBufInputStream(buf), NBTSizeTracker.INFINITE));
+				// 1.8 itemstack.setTagCompound(CompressedStreamTools.func_152456_a(new ByteBufInputStream(buf), NBTSizeTracker.INFINITE));
+
+				itemstack.setTagCompound(CompressedStreamTools.read(new ByteBufInputStream(buf), NBTSizeTracker.INFINITE));
+
 			} catch (IOException e) {
 				// will toss error when it passes end of stream
 				// e.printStackTrace();

@@ -28,7 +28,9 @@ public class Face {
 		// worldrenderer.set
 		// tessellator.setNormal(faceNormal.x, faceNormal.y, faceNormal.z);
 		// set normal function?
-		worldrenderer.setNormal(faceNormal.x, faceNormal.y, faceNormal.z);
+		// 1.8 (faceNormal.x, faceNormal.y, faceNormal.z);
+
+		worldrenderer.putNormal(faceNormal.x, faceNormal.y, faceNormal.z);
 		//
 		float averageU = 0F;
 		float averageV = 0F;
@@ -58,9 +60,14 @@ public class Face {
 					offsetV = -offsetV;
 				}
 
-				worldrenderer.addVertexWithUV(vertices[i].x, vertices[i].y, vertices[i].z, textureCoordinates[i].u + offsetU, textureCoordinates[i].v + offsetV);
+				// 1.8 worldrenderer.addVertexWithUV(vertices[i].x, vertices[i].y, vertices[i].z, textureCoordinates[i].u + offsetU, textureCoordinates[i].v + offsetV);
+
+				worldrenderer.func_181662_b(vertices[i].x, vertices[i].y, vertices[i].z);
+				worldrenderer.func_181673_a(textureCoordinates[i].u + offsetU, textureCoordinates[i].v + offsetV);
+
 			} else {
-				worldrenderer.addVertex(vertices[i].x, vertices[i].y, vertices[i].z);
+				// 1.8 worldrenderer.addVertex(vertices[i].x, vertices[i].y, vertices[i].z);
+				worldrenderer.func_181662_b(vertices[i].x, vertices[i].y, vertices[i].z);
 			}
 		}
 	}

@@ -1,23 +1,23 @@
 package com.projectreddog.machinemod.tileentities;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.IChatComponent;
-
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.iface.IFuelContainer;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
 
-public class TileEntityFermenter extends TileEntity implements IUpdatePlayerListBox, ISidedInventory, IFuelContainer {
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ITickable;
+
+public class TileEntityFermenter extends TileEntity implements ITickable, ISidedInventory, IFuelContainer {
 	protected ItemStack[] inventory;
 	private static int[] sideSlots = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
 	public AxisAlignedBB boundingBox;
@@ -199,11 +199,11 @@ public class TileEntityFermenter extends TileEntity implements IUpdatePlayerList
 
 	}
 
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	// @Override
+	// public String getName() {
+	// // TODO Auto-generated method stub
+	// return null;
+	// }
 
 	@Override
 	public boolean hasCustomName() {
@@ -367,5 +367,11 @@ public class TileEntityFermenter extends TileEntity implements IUpdatePlayerList
 		// return null;
 		// }
 		return ef;
+	}
+
+	@Override
+	public String getCommandSenderName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

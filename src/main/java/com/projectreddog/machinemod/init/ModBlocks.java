@@ -77,7 +77,7 @@ public class ModBlocks {
 	public static final Block machineconveyor = new BlockMachineModConveyor();
 	public static final Block machinefractionaldistillation = new BlockMachineModFractionalDistillation();
 
-	public static Fluid fluidBioFuel = new Fluid("BioFuel");
+	// public static Fluid fluidBioFuel = new Fluid("BioFuel");
 
 	public static Fluid fluidOil = new Fluid("oil", new ResourceLocation("machinemod", Reference.FLUID_OIL_STILL_TEXTURE_LOCATION), new ResourceLocation("machinemod", Reference.FLUID_OIL_FLOWING_TEXTURE_LOCATION));
 

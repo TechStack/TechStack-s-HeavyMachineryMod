@@ -10,15 +10,15 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ITickable;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
 
-public class TileEntityFractionalDistillation extends TileEntity implements IUpdatePlayerListBox, IFluidTank {
+public class TileEntityFractionalDistillation extends TileEntity implements ITickable, IFluidTank {
 
 	public final int maxOilStorage = 10000; // store up to 100k
 

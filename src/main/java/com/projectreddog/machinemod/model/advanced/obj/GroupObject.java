@@ -2,8 +2,11 @@ package com.projectreddog.machinemod.model.advanced.obj;
 
 import java.util.ArrayList;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -30,7 +33,9 @@ public class GroupObject {
 		if (faces.size() > 0) {
 			Tessellator tessellator = Tessellator.getInstance();
 			WorldRenderer worldRenderer = tessellator.getWorldRenderer();
-			worldRenderer.startDrawing(glDrawingMode);
+			// 1.8 worldRenderer.startDrawing(glDrawingMode);
+			worldRenderer.func_181668_a(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
+
 			render(tessellator);
 			tessellator.draw();
 		}
