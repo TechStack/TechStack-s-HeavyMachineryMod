@@ -3,6 +3,7 @@ package com.projectreddog.machinemod.tileentities;
 import java.util.List;
 
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
+import com.projectreddog.machinemod.iface.ILiquidConnection;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerTanker;
 import com.projectreddog.machinemod.reference.Reference;
@@ -17,7 +18,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
 
-public class TileEntityFractionalDistillation extends TileEntity implements IUpdatePlayerListBox, IFluidTank {
+public class TileEntityFractionalDistillation extends TileEntity implements IUpdatePlayerListBox, IFluidTank , ILiquidConnection{
 
 	public final int maxOilStorage = 10000; // store up to 100k
 
