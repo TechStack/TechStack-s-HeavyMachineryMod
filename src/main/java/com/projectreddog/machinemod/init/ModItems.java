@@ -186,15 +186,87 @@ public class ModItems {
 	// public static final ItemBucket oilbucket = new ItemOilBucket(ModBlocks.oilFluidBlock);
 
 	public static void init() {
-		GameRegistry.registerItem(bulldozer, "bulldozer");
-		GameRegistry.registerItem(tractor, "tractor");
-		GameRegistry.registerItem(lawnmower, "lawnmower");
-		GameRegistry.registerItem(paver, "paver");
-		GameRegistry.registerItem(roadroller, "roadroller");
+
+		// machines
+
+		if (Reference.enableBagger) {
+			GameRegistry.registerItem(bagger, "bagger");
+
+		}
+		if (Reference.enableBulldozer) {
+			GameRegistry.registerItem(bulldozer, "bulldozer");
+		}
+
+		if (Reference.enableCombine) {
+			GameRegistry.registerItem(combine, "combine");
+
+		}
+		if (Reference.enableCrane) {
+			GameRegistry.registerItem(crane, "crane");
+
+		}
+		if (Reference.enableDrillingRig) {
+			GameRegistry.registerItem(drillingrig, "drillingrig");
+
+		}
+
+		if (Reference.enableDumptruck) {
+			GameRegistry.registerItem(dumptruck, "dumptruck");
+
+		}
+
+		if (Reference.enableExcavator) {
+			GameRegistry.registerItem(excavator, "excavator");
+
+		}
+
+		if (Reference.enableGrader) {
+			GameRegistry.registerItem(grader, "grader");
+
+		}
+
+		if (Reference.enableLawnmower) {
+			GameRegistry.registerItem(lawnmower, "lawnmower");
+
+		}
+		if (Reference.enableLoader) {
+			GameRegistry.registerItem(loader, "loader");
+
+		}
+
+		if (Reference.enableOilRig) {
+			GameRegistry.registerItem(oilrig, "oilrig");
+
+		}
+
+		if (Reference.enablePaver) {
+			GameRegistry.registerItem(paver, "paver");
+
+		}
+
+		if (Reference.enablePumpJack) {
+			// pump jack future use
+		}
+		if (Reference.enableRoadRoller) {
+			GameRegistry.registerItem(roadroller, "roadroller");
+
+		}
+		if (Reference.enableSemiTractor) {
+			GameRegistry.registerItem(semitractor, "semitractor");
+
+		}
+		if (Reference.enableSub) {
+			GameRegistry.registerItem(sub, "sub");
+
+		}
+		if (Reference.enableTractor) {
+			GameRegistry.registerItem(tractor, "tractor");
+
+		}
+
 		GameRegistry.registerItem(paverscreed, "paverscreed");
 		GameRegistry.registerItem(rollerwheel, "rollerwheel");
-		GameRegistry.registerItem(oilrig, "oilrig");
-		GameRegistry.registerItem(sub, "sub");
+
 		GameRegistry.registerItem(liquidtanksegment, "liquidtanksegment");
 
 		GameRegistry.registerItem(prop, "prop");
@@ -207,7 +279,6 @@ public class ModItems {
 		GameRegistry.registerItem(light, "light");
 		GameRegistry.registerItem(lightmodule, "lightmodule");
 
-		GameRegistry.registerItem(bagger, "bagger");
 		GameRegistry.registerItem(tracksegment, "tracksegment");
 
 		GameRegistry.registerItem(cutterbucket, "cutterbucket");
@@ -230,14 +301,7 @@ public class ModItems {
 		GameRegistry.registerItem(lidwithspout, "lidwithspout");
 		GameRegistry.registerItem(handdrill, "handdrill");
 		GameRegistry.registerItem(anfo, "anfo");
-		GameRegistry.registerItem(drillingrig, "drillingrig");
-		GameRegistry.registerItem(dumptruck, "dumptruck");
-		GameRegistry.registerItem(loader, "loader");
-		GameRegistry.registerItem(grader, "grader");
 
-		GameRegistry.registerItem(combine, "combine");
-		GameRegistry.registerItem(crane, "crane");
-		GameRegistry.registerItem(excavator, "excavator");
 		GameRegistry.registerItem(cornseed, "cornseed");
 		GameRegistry.registerItem(trencher, "trencher");
 		GameRegistry.registerItem(irondust, "irondust");
@@ -250,7 +314,6 @@ public class ModItems {
 		GameRegistry.registerItem(plow, "plow");
 		GameRegistry.registerItem(planter, "planter");
 		GameRegistry.registerItem(sprayer, "sprayer");
-		GameRegistry.registerItem(semitractor, "semitractor");
 		GameRegistry.registerItem(woodengear, "woodengear");
 		OreDictionary.registerOre("gearWood", woodengear);
 		GameRegistry.registerItem(stonegear, "stonegear");
@@ -289,16 +352,88 @@ public class ModItems {
 	}
 
 	public static void initItemRender() {
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bulldozer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bulldozer", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(drillingrig, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "drillingrig", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(paver, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "paver", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(roadroller, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "roadroller", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bagger, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bagger", "inventory"));
+
+		/// machine
+		if (Reference.enableBagger) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bagger, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bagger", "inventory"));
+
+		}
+		if (Reference.enableBulldozer) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bulldozer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bulldozer", "inventory"));
+
+		}
+
+		if (Reference.enableCombine) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(combine, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "combine", "inventory"));
+
+		}
+		if (Reference.enableCrane) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(crane, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "crane", "inventory"));
+
+		}
+		if (Reference.enableDrillingRig) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(drillingrig, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "drillingrig", "inventory"));
+
+		}
+
+		if (Reference.enableDumptruck) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(dumptruck, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "dumptruck", "inventory"));
+
+		}
+
+		if (Reference.enableExcavator) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(excavator, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "excavator", "inventory"));
+
+		}
+
+		if (Reference.enableGrader) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(grader, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "grader", "inventory"));
+
+		}
+
+		if (Reference.enableLawnmower) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(lawnmower, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "lawnmower", "inventory"));
+
+		}
+		if (Reference.enableLoader) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(loader, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "loader", "inventory"));
+
+		}
+
+		if (Reference.enableOilRig) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(oilrig, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "oilrig", "inventory"));
+
+		}
+
+		if (Reference.enablePaver) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(paver, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "paver", "inventory"));
+
+		}
+
+		if (Reference.enablePumpJack) {
+			// pump jack future use
+
+		}
+		if (Reference.enableRoadRoller) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(roadroller, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "roadroller", "inventory"));
+
+		}
+		if (Reference.enableSemiTractor) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(semitractor, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "semitractor", "inventory"));
+
+		}
+		if (Reference.enableSub) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(sub, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "sub", "inventory"));
+
+		}
+		if (Reference.enableTractor) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tractor, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tractor", "inventory"));
+
+		}
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tracksegment, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tracksegment", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(paverscreed, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "paverscreed", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(rollerwheel, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "rollerwheel", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(oilrig, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "oilrig", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(sub, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "sub", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(liquidtanksegment, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "liquidtanksegment", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(prop, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "prop", "inventory"));
@@ -320,12 +455,9 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(baggerstorage, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "baggerstorage", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(baggerbody, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "baggerbody", "inventory"));
 
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(dumptruck, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "dumptruck", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(rawasphalt, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "rawasphalt", "inventory"));
 
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(loader, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "loader", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(drillhead, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "drillhead", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(grader, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "grader", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(drillpipe, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "drillpipe", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(plow, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "plow", "inventory"));
@@ -341,9 +473,6 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(irongear, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "irongear", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(transmission, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "transmission", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(turbofan, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "turbofan", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(combine, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "combine", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(crane, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "crane", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(excavator, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "excavator", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(trencher, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "trencher", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(conecrusher, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "conecrusher", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(hose, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "hose", "inventory"));
@@ -375,10 +504,6 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(fuelcan, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "fuelcan", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(graderblade, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "graderblade", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(wrench, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "wrench", "inventory"));
-
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tractor, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tractor", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(semitractor, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "semitractor", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(lawnmower, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "lawnmower", "inventory"));
 
 	}
 }

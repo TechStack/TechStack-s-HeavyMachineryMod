@@ -1,6 +1,7 @@
 package com.projectreddog.machinemod.item;
 
 import com.projectreddog.machinemod.block.BlockMachineModConveyor;
+import com.projectreddog.machinemod.block.BlockMachineModFractionalDistillation;
 import com.projectreddog.machinemod.init.ModBlocks;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,16 +27,35 @@ public class ItemWrench extends ItemMachineMod {
 			EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineModConveyor.FACING);
 			switch (ef) {
 			case NORTH:
-				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.EAST), 0);
+				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.EAST), 3);
 				break;
 			case EAST:
-				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.SOUTH), 0);
+				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.SOUTH), 3);
 				break;
 			case SOUTH:
-				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.WEST), 0);
+				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.WEST), 3);
 				break;
 			case WEST:
-				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.NORTH), 0);
+				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.NORTH), 3);
+				break;
+
+			default:
+				break;
+			}
+		} else if (world.getBlockState(pos).getBlock() == ModBlocks.machinefractionaldistillation) {
+			EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineModFractionalDistillation.FACING);
+			switch (ef) {
+			case NORTH:
+				world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.EAST), 3);
+				break;
+			case EAST:
+				world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.SOUTH), 3);
+				break;
+			case SOUTH:
+				world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.WEST), 3);
+				break;
+			case WEST:
+				world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.NORTH), 3);
 				break;
 
 			default:

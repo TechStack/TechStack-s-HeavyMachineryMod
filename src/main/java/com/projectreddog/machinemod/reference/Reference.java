@@ -4,9 +4,9 @@ import com.mojang.authlib.GameProfile;
 
 public class Reference {
 	// common constants for our mod
-	// example: public static final string MOD_ID ="Blah";	
-	
-	public static final GameProfile gameProfile = new GameProfile(null,"[TECHSTACKS HEAVY MACHINERY MOD]");
+	// example: public static final string MOD_ID ="Blah";
+
+	public static final GameProfile gameProfile = new GameProfile(null, "[TECHSTACKS HEAVY MACHINERY MOD]");
 	public static final String MOD_ID = "machinemod";
 	public static final String MOD_NAME = "MachineMod";
 	// public static final String VERSION = "${version}";
@@ -107,6 +107,24 @@ public class Reference {
 
 	// config file settings
 	public static boolean enableBulldozer = true;
+	public static boolean enableBagger = true;
+
+	public static boolean enableCombine = true;
+	public static boolean enableCrane = true;
+	public static boolean enableDrillingRig = true;
+	public static boolean enableDumptruck = true;
+	public static boolean enableExcavator = true;
+	public static boolean enableGrader = true;
+	public static boolean enableLawnmower = true;
+	public static boolean enableLoader = true;
+	public static boolean enableOilRig = true;
+	public static boolean enablePaver = true;
+	public static boolean enablePumpJack = true;
+	public static boolean enableRoadRoller = true;
+	public static boolean enableSemiTractor = true;
+	public static boolean enableSub = true;
+	public static boolean enableTractor = true;
+
 	public static int crudeOilStoneGenMinlevel = 5;
 	public static int crudeOilStoneGenMaxlevel = 30;
 	public static int wellHeadMaxRange = 15;

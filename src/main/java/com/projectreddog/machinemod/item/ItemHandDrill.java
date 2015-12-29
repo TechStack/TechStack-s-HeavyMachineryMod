@@ -1,5 +1,8 @@
 package com.projectreddog.machinemod.item;
 
+import com.projectreddog.machinemod.block.BlockMachineDrilledStone;
+import com.projectreddog.machinemod.init.ModBlocks;
+
 import net.minecraft.block.BlockStone;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -7,9 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-
-import com.projectreddog.machinemod.block.BlockMachineDrilledStone;
-import com.projectreddog.machinemod.init.ModBlocks;
 
 public class ItemHandDrill extends ItemMachineMod {
 
@@ -30,7 +30,7 @@ public class ItemHandDrill extends ItemMachineMod {
 			EnumFacing ef = player.getHorizontalFacing();
 			// EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineDrilledStone.FACING);
 
-			world.setBlockState(pos, ModBlocks.machinedrilledstone.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()));
+			world.setBlockState(pos, ModBlocks.machinedrilledstone.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()), 3);
 			player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);
 
 		} else if (world.getBlockState(pos).getBlock() == Blocks.stone && world.getBlockState(pos).getValue(BlockStone.VARIANT) == BlockStone.EnumType.ANDESITE) {
@@ -38,7 +38,7 @@ public class ItemHandDrill extends ItemMachineMod {
 			EnumFacing ef = player.getHorizontalFacing();
 			// EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineDrilledStone.FACING);
 
-			world.setBlockState(pos, ModBlocks.machinedrilledandesite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()));
+			world.setBlockState(pos, ModBlocks.machinedrilledandesite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()), 3);
 			player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);
 
 		} else if (world.getBlockState(pos).getBlock() == Blocks.stone && world.getBlockState(pos).getValue(BlockStone.VARIANT) == BlockStone.EnumType.DIORITE) {
@@ -46,7 +46,7 @@ public class ItemHandDrill extends ItemMachineMod {
 			EnumFacing ef = player.getHorizontalFacing();
 			// EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineDrilledStone.FACING);
 
-			world.setBlockState(pos, ModBlocks.machinedrilleddiorite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()));
+			world.setBlockState(pos, ModBlocks.machinedrilleddiorite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()), 3);
 			player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);
 
 		} else if (world.getBlockState(pos).getBlock() == Blocks.stone && world.getBlockState(pos).getValue(BlockStone.VARIANT) == BlockStone.EnumType.GRANITE) {
@@ -54,7 +54,7 @@ public class ItemHandDrill extends ItemMachineMod {
 			EnumFacing ef = player.getHorizontalFacing();
 			// EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineDrilledStone.FACING);
 
-			world.setBlockState(pos, ModBlocks.machinedrilledgranite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()));
+			world.setBlockState(pos, ModBlocks.machinedrilledgranite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()), 3);
 			player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);
 
 		}
@@ -64,19 +64,19 @@ public class ItemHandDrill extends ItemMachineMod {
 
 			for (int i = 0; i < 8; i++) {
 				if (world.getBlockState(pos.offset(ef, i)).getBlock() == Blocks.stone && world.getBlockState(pos.offset(ef, i)).getValue(BlockStone.VARIANT) == BlockStone.EnumType.STONE) {
-					world.setBlockState(pos.offset(ef, i), ModBlocks.machinedrilledstone.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()));
+					world.setBlockState(pos.offset(ef, i), ModBlocks.machinedrilledstone.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()), 3);
 					i = 8;
 					player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);
 				} else if (world.getBlockState(pos.offset(ef, i)).getBlock() == Blocks.stone && world.getBlockState(pos.offset(ef, i)).getValue(BlockStone.VARIANT) == BlockStone.EnumType.ANDESITE) {
-					world.setBlockState(pos.offset(ef, i), ModBlocks.machinedrilledandesite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()));
+					world.setBlockState(pos.offset(ef, i), ModBlocks.machinedrilledandesite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()), 3);
 					i = 8;
 					player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);
 				} else if (world.getBlockState(pos.offset(ef, i)).getBlock() == Blocks.stone && world.getBlockState(pos.offset(ef, i)).getValue(BlockStone.VARIANT) == BlockStone.EnumType.DIORITE) {
-					world.setBlockState(pos.offset(ef, i), ModBlocks.machinedrilleddiorite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()));
+					world.setBlockState(pos.offset(ef, i), ModBlocks.machinedrilleddiorite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()), 3);
 					i = 8;
 					player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);
 				} else if (world.getBlockState(pos.offset(ef, i)).getBlock() == Blocks.stone && world.getBlockState(pos.offset(ef, i)).getValue(BlockStone.VARIANT) == BlockStone.EnumType.GRANITE) {
-					world.setBlockState(pos.offset(ef, i), ModBlocks.machinedrilledgranite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()));
+					world.setBlockState(pos.offset(ef, i), ModBlocks.machinedrilledgranite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()), 3);
 					i = 8;
 					player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);
 				}
