@@ -3,6 +3,7 @@ package com.projectreddog.machinemod.entity;
 import java.util.List;
 
 import com.projectreddog.machinemod.init.ModItems;
+import com.projectreddog.machinemod.utility.BlockUtil;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -112,8 +113,10 @@ public class EntityBagger extends EntityMachineModRideable {
 
 						if (!(worldObj.getBlockState(bp).getBlock().isAir(worldObj, bp)) && !(worldObj.getBlockState(bp).getBlock() == Blocks.bedrock) && !(worldObj.getBlockState(bp).getBlock().getMaterial() == Material.water) && !(worldObj.getBlockState(bp).getBlock().getMaterial() == Material.lava) && !(worldObj.getBlockState(bp).getBlock() == Blocks.obsidian)) {
 
-							worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-							worldObj.setBlockToAir(bp);
+//							worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
+//							worldObj.setBlockToAir(bp);
+							BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
+							
 						}
 
 						AxisAlignedBB bucketboundingBox = new AxisAlignedBB(bp.getX(), bp.getY(), bp.getZ(), bp.getX() + 1, bp.getY() + 1, bp.getZ() + 1);

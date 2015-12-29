@@ -3,6 +3,7 @@ package com.projectreddog.machinemod.entity;
 import java.util.List;
 
 import com.projectreddog.machinemod.init.ModItems;
+import com.projectreddog.machinemod.utility.BlockUtil;
 
 import net.minecraft.block.IGrowable;
 import net.minecraft.entity.Entity;
@@ -56,8 +57,8 @@ public class EntityCombine extends EntityMachineModRideable {
 
 							if (!iGrowable.canGrow(worldObj, bp, worldObj.getBlockState(bp), worldObj.isRemote)) {
 
-								worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-								worldObj.setBlockToAir(bp);
+								BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
+
 							}
 						}
 

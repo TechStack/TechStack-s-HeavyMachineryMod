@@ -6,6 +6,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 import com.projectreddog.machinemod.init.ModItems;
+import com.projectreddog.machinemod.utility.BlockUtil;
 
 public class EntityCrane extends EntityMachineModRideable {
 
@@ -45,9 +46,8 @@ public class EntityCrane extends EntityMachineModRideable {
 						BlockPos bp;
 						bp = new BlockPos(posX + calcTwoOffsetX(10 + j, angle, i), posY + k + 26 - ((int) this.Attribute1), posZ + calcTwoOffsetZ(10 + j, angle, i));
 						if (worldObj.getBlockState(bp).getBlock().getBlockHardness(worldObj, bp) < 100) {
-							// TODO : need to BreakEvent
-							worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-							worldObj.setBlockToAir(bp);
+							BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
+
 						}
 					}
 				}

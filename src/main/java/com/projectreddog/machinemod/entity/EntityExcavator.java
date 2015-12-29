@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageEntityCurrentTargetPosToClient;
+import com.projectreddog.machinemod.utility.BlockUtil;
 
 public class EntityExcavator extends EntityMachineModRideable {
 
@@ -137,9 +138,8 @@ public class EntityExcavator extends EntityMachineModRideable {
 						BlockPos bp;
 						bp = new BlockPos(currPosX, currPosY, currPosZ);
 
-						// TODO : need to BreakEvent
-						worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-						worldObj.setBlockToAir(bp);
+						BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
+
 					}
 				}
 			} else {

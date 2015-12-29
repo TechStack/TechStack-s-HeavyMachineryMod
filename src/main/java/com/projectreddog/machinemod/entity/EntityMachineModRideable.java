@@ -9,6 +9,7 @@ import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChan
 import com.projectreddog.machinemod.network.MachineModMessageEntityToClient;
 import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServer;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.utility.BlockUtil;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -703,8 +704,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			if (widthDepth < Reference.MAX_TREE_WIDTH) {
 				if (worldObj.getBlockState(bp).getBlock() == Blocks.log || worldObj.getBlockState(bp).getBlock() == Blocks.log2 || worldObj.getBlockState(bp).getBlock() == Blocks.leaves || worldObj.getBlockState(bp).getBlock() == Blocks.leaves2) {
 					previousBlock = worldObj.getBlockState(bp).getBlock();
-					worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-					worldObj.setBlockToAir(bp);
+					BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
+
 					toppleTree(bp.offset(EnumFacing.DOWN), depth + 1, widthDepth, previousBlock);
 					toppleTree(bp.offset(EnumFacing.UP), depth + 1, widthDepth, previousBlock);
 					toppleTree(bp.offset(EnumFacing.SOUTH), depth + 1, widthDepth + 1, previousBlock);

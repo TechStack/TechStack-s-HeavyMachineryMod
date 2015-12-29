@@ -18,6 +18,7 @@ import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlante
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlow;
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentSprayer;
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentTrencher;
+import com.projectreddog.machinemod.utility.BlockUtil;
 
 public class EntityTractor extends EntityMachineModRideable {
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
@@ -67,8 +68,8 @@ public class EntityTractor extends EntityMachineModRideable {
 								if (worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.grass) {
 									worldObj.setBlockState(bp, Blocks.farmland.getDefaultState());
 									if (worldObj.getBlockState(bp.up()).getBlock().getMaterial() == Material.plants || worldObj.getBlockState(bp.up()).getBlock().getMaterial().isReplaceable()) {
-										worldObj.getBlockState(bp.up()).getBlock().dropBlockAsItem(worldObj, bp.up(), worldObj.getBlockState(bp.up()), 0);
-										worldObj.setBlockToAir(bp.up());
+										BlockUtil.BreakBlock(worldObj, bp.up(), this.riddenByEntity);
+
 
 									} else {
 										// LogHelper.info(worldObj.getBlockState(bp.offsetUp()).getBlock().getMaterial());
@@ -147,8 +148,8 @@ public class EntityTractor extends EntityMachineModRideable {
 								// Fertilize checks & actions
 								if (i == 0) {
 									if (worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.grass || worldObj.getBlockState(bp).getBlock() == Blocks.farmland) {
-										worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-										worldObj.setBlockToAir(bp);
+										BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
+
 
 									}
 								}
