@@ -1,0 +1,7 @@
+seems that 1.8.8 uses quads for all world render objects that have normals ?
+Converting a Tri to quad by supplying the same vertex for one of the points causes odd behavoir when rendering ...
+	possilby issue with the way i'm rendering.
+
+ibakedmodel is used to render blocks in the entites in 1.8 ... maybe use the OBJLOADER /OBJMODEL and convert to this?
+needs research.
+

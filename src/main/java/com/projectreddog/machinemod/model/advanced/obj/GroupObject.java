@@ -34,7 +34,7 @@ public class GroupObject {
 			Tessellator tessellator = Tessellator.getInstance();
 			WorldRenderer worldRenderer = tessellator.getWorldRenderer();
 			// 1.8 worldRenderer.startDrawing(glDrawingMode);
-			worldRenderer.func_181668_a(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
+			worldRenderer.func_181668_a(GL11.GL_QUADS, DefaultVertexFormats.field_181710_j);
 
 			render(tessellator);
 			tessellator.draw();
