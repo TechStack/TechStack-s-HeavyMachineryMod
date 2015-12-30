@@ -20,3 +20,12 @@ options.txt
 crash-reports/crash-2015-12-12_23.03.13-client.txt
 crash-reports/crash-2015-12-13_13.17.01-client.txt
 crash-reports/crash-2015-12-19_01.54.54-client.txt
+banned-ips.json
+whitelist.json
+servers.dat
+server.properties
+ops.json
+eula.txt
+banned-players.json
+crash-reports/crash-2015-12-29_08.16.20-server.txt
+crash-reports/crash-2015-12-29_07.32.22-client.txt
