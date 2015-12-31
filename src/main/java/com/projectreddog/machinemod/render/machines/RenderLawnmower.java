@@ -29,7 +29,7 @@ public class RenderLawnmower extends Render {
 		GL11.glPushMatrix();
 		GL11.glTranslated(x, y, z);
 		GL11.glRotatef(180.0F - yaw, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(90.0F, 0.0F, 0.0F, 1.0F);
+		// GL11.glRotatef(90.0F, 0.0F, 0.0F, 1.0F);
 		float f2 = pitch;
 		float f3 = pitch;
 
@@ -38,13 +38,13 @@ public class RenderLawnmower extends Render {
 		}
 
 		if (f2 > 0.0F) {
-			// GL11.glRotatef(MathHelper.sin(f2) * f2 * f3 / 10.0F *
+			// GL11.glRotatef(MathHelper.sinfddf(f2) * f2 * f3 / 10.0F *
 			// (float)((EntityBulldozer) entity).getForwardDirection(), 1.0F,
 			// 0.0F, 0.0F);
 		}
 
-		float f4 = 0.5F;
-		GL11.glScalef(f4, f4, f4);
+		// float f4 = 0.5F;
+		// GL11.glScalef(f4, f4, f4);
 		// GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
 		this.bindEntityTexture(entity);
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);

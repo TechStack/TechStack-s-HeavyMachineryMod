@@ -24,6 +24,7 @@ import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Vec3i;
 import net.minecraftforge.client.model.Attributes;
 import net.minecraftforge.client.model.IFlexibleBakedModel;
 import net.minecraftforge.client.model.IModel;
@@ -54,7 +55,7 @@ public class ModelLawnmower extends ModelTransportable {
 			IModel texturedModel = ((OBJModel) myModel.retexture(ImmutableMap.of("#lawnmower", "machinemod:model/lawnmower")));
 
 			ibakedmodel = texturedModel.bake(myModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, textureGetter);
-
+			allQuads = ibakedmodel.getGeneralQuads();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -68,15 +69,22 @@ public class ModelLawnmower extends ModelTransportable {
 
 	}
 
+	Tessellator tessellator;
+	WorldRenderer worldrenderer;
+	BakedQuad bakedquad;
+
+	List allQuads;
+	Vec3i vec3i;
+
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		// myModel.renderAll();
 		// will now call rendering for each individual object
 		// this.renderGroupObject("Tractor_Cube.001");
 
-		Tessellator tessellator = Tessellator.getInstance();
-		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-		worldrenderer.func_181668_a(GL11.GL_QUADS, ibakedmodel.getFormat());
+		tessellator = Tessellator.getInstance();
+		worldrenderer = tessellator.getWorldRenderer();
+		worldrenderer.begin(GL11.GL_QUADS, ibakedmodel.getFormat());
 		// 1.8 worldrenderer.startDrawingQuads();
 		// 1.8 worldrenderer.setVertexFormat(DefaultVertexFormats.ITEM);
 		// worldrenderer.func_181668_a(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
@@ -84,13 +92,13 @@ public class ModelLawnmower extends ModelTransportable {
 
 		// this.RenderHelper_a(worldrenderer, ibakedmodel.getGeneralQuads(), -1, is);
 
-		BakedQuad bakedquad;
-
-		List allQuads = ibakedmodel.getGeneralQuads();
-
 		for (Iterator iterator = allQuads.iterator(); iterator.hasNext();) {
+
 			bakedquad = (BakedQuad) iterator.next();
 			worldrenderer.addVertexData(bakedquad.getVertexData());
+
+			// vec3i = bakedquad.getFace().getDirectionVec();
+			// worldrenderer.putNormal((float) vec3i.getX(), (float) vec3i.getY(), (float) vec3i.getZ());
 		}
 
 		tessellator.draw();

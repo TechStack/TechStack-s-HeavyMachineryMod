@@ -110,7 +110,7 @@ public class RenderLoader extends Render {
 					WorldRenderer worldrenderer = tessellator.getWorldRenderer();
 					// 1.8 worldrenderer.startDrawingQuads();
 					// 1.8 worldrenderer.setVertexFormat(DefaultVertexFormats.ITEM);
-					worldrenderer.func_181668_a(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
+					worldrenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
 
 					this.renderManager.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 					EnumFacing[] aenumfacing = EnumFacing.values();

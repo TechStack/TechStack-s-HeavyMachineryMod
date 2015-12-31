@@ -34,6 +34,7 @@ public class Face {
 		// int j1 = (this.vertexCount - 4) * i1 + this.vertexFormat.getNormalOffset() / 4;
 		//
 		// LogHelper.info(worldrenderer.getVertexFormat());
+		worldrenderer.normal(faceNormal.x, faceNormal.y, faceNormal.z);
 
 		//
 		float averageU = 0F;
@@ -52,8 +53,8 @@ public class Face {
 		float offsetU, offsetV;
 		int i = 0;
 
-		worldrenderer.func_181662_b(vertices[0].x, vertices[0].y, vertices[0].z);
-		worldrenderer.func_181675_d();
+		// worldrenderer.pos(vertices[0].x, vertices[0].y, vertices[0].z);
+		// worldrenderer.endVertex();
 		for (i = 0; i < vertices.length; ++i) {
 
 			if ((textureCoordinates != null) && (textureCoordinates.length > 0)) {
@@ -69,19 +70,18 @@ public class Face {
 
 				// 1.8 worldrenderer.addVertexWithUV(vertices[i].x, vertices[i].y, vertices[i].z, textureCoordinates[i].u + offsetU, textureCoordinates[i].v + offsetV);
 
-				worldrenderer.func_181662_b(vertices[i].x, vertices[i].y, vertices[i].z);
-				// worldrenderer.func_181673_a(textureCoordinates[i].u + offsetU, textureCoordinates[i].v + offsetV);
+				worldrenderer.pos(vertices[i].x, vertices[i].y, vertices[i].z);
+				worldrenderer.tex(textureCoordinates[i].u + offsetU, textureCoordinates[i].v + offsetV);
 
-				worldrenderer.func_181675_d();
+				// worldrenderer.endVertex();
 			} else {
 				// 1.8 worldrenderer.addVertex(vertices[i].x, vertices[i].y, vertices[i].z);
 
-				worldrenderer.func_181662_b(vertices[i].x, vertices[i].y, vertices[i].z);
-				worldrenderer.func_181675_d();
+				worldrenderer.pos(vertices[i].x, vertices[i].y, vertices[i].z);
+				worldrenderer.endVertex();
 			}
 
 		}
-		worldrenderer.putNormal(faceNormal.x, faceNormal.y, faceNormal.z);
 
 	}
 

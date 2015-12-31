@@ -219,7 +219,7 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 	}
 
 	@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
+	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
 		if (stack != null) {
 			setInventorySlotContents(slot, null);
@@ -308,7 +308,7 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 	}
 
 	@Override
-	public String getCommandSenderName() {
+	public String getName() {
 		// TODO Auto-generated method stub
 		return null;
 	}

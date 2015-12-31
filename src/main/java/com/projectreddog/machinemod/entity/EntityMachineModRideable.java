@@ -836,7 +836,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	}
 
 	@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
+	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
 		if (stack != null) {
 			setInventorySlotContents(slot, null);
@@ -865,4 +865,5 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			inventory[i] = null;
 		}
 	}
+
 }

@@ -245,7 +245,7 @@ public class TileEntityFermenter extends TileEntity implements ITickable, ISided
 	}
 
 	@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
+	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
 		if (stack != null) {
 			setInventorySlotContents(slot, null);
@@ -370,8 +370,9 @@ public class TileEntityFermenter extends TileEntity implements ITickable, ISided
 	}
 
 	@Override
-	public String getCommandSenderName() {
+	public String getName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }
