@@ -87,6 +87,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public int runTimeTillNextFuelUsage = 20;
 	public int maxRunTimeTillNextFuelUsage = 20;
 	public int clientTicksSinceLastServerPulse = 0;
+	public double turnRate = 1.5d;
 
 	public EntityMachineModRideable(World world) {
 		super(world);
@@ -337,10 +338,10 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 				this.velocity -= accelerationAmount;
 			}
 			if (isPlayerTurningRight) {
-				yaw += 1.5d;
+				yaw += turnRate;
 			}
 			if (isPlayerTurningLeft) {
-				yaw -= 1.5d;
+				yaw -= turnRate;
 			}
 
 		}
