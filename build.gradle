@@ -25,7 +25,7 @@ group= "com.projectreddog.machinemod" // http://maven.apache.org/guides/mini/gui
 archivesBaseName = "MachineMod"
 
 minecraft {
-    version = "1.8.9-11.15.0.1663"
+    version = "1.8.9-11.15.0.1669"
     runDir = "run"
         // the mappings can be changed at any time, and must be in the following format.
         // snapshot_YYYYMMDD   snapshot are built nightly.

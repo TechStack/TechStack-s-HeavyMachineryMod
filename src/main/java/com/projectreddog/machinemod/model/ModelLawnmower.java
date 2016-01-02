@@ -7,7 +7,6 @@
 package com.projectreddog.machinemod.model;
 
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 
 import org.lwjgl.opengl.GL11;
@@ -22,6 +21,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.vertex.VertexFormat;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3i;
@@ -30,6 +30,7 @@ import net.minecraftforge.client.model.IFlexibleBakedModel;
 import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.model.obj.OBJModel;
+import net.minecraftforge.client.model.pipeline.LightUtil;
 
 public class ModelLawnmower extends ModelTransportable {
 	// fields
@@ -37,11 +38,20 @@ public class ModelLawnmower extends ModelTransportable {
 	private OBJModel myModel;
 	IFlexibleBakedModel ibakedmodel;
 
+	Tessellator tessellator;
+	WorldRenderer worldrenderer;
+	VertexFormat vFmt;
+
+	List<BakedQuad> allQuads;
+	Vec3i vec3i;
+	public static final ResourceLocation MODEL_TEXTURE = new ResourceLocation("machinemod", Reference.MODEL_LAWNMOWER_TEXTURE_LOCATION);
+
 	public ModelLawnmower() {
 
 		// myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/lawnmower.obj"));
 		try {
-			myModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/lawnmower.obj"));
+			myModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/cube.obj"));
+			// myModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/lawnmower.obj"));
 			Function<ResourceLocation, TextureAtlasSprite> textureGetter;
 			textureGetter = new Function<ResourceLocation, TextureAtlasSprite>() {
 				public TextureAtlasSprite apply(ResourceLocation location) {
@@ -56,12 +66,14 @@ public class ModelLawnmower extends ModelTransportable {
 
 			ibakedmodel = texturedModel.bake(myModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, textureGetter);
 			allQuads = ibakedmodel.getGeneralQuads();
+			vFmt = ibakedmodel.getFormat();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// casinoTexture = new ResourceLocation("modid",
-
+		tessellator = Tessellator.getInstance();
+		worldrenderer = tessellator.getWorldRenderer();
 	}
 
 	public void renderGroupObject(String groupName) {
@@ -69,22 +81,16 @@ public class ModelLawnmower extends ModelTransportable {
 
 	}
 
-	Tessellator tessellator;
-	WorldRenderer worldrenderer;
-	BakedQuad bakedquad;
-
-	List allQuads;
-	Vec3i vec3i;
-
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		super.render(entity, f, f1, f2, f3, f4, f5);
+		// super.render(entity, f, f1, f2, f3, f4, f5);
 		// myModel.renderAll();
 		// will now call rendering for each individual object
 		// this.renderGroupObject("Tractor_Cube.001");
 
-		tessellator = Tessellator.getInstance();
-		worldrenderer = tessellator.getWorldRenderer();
-		worldrenderer.begin(GL11.GL_QUADS, ibakedmodel.getFormat());
+		int i = 0;
+		// long start = System.currentTimeMillis();
+
+		worldrenderer.begin(GL11.GL_QUADS, vFmt);
 		// 1.8 worldrenderer.startDrawingQuads();
 		// 1.8 worldrenderer.setVertexFormat(DefaultVertexFormats.ITEM);
 		// worldrenderer.func_181668_a(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
@@ -92,16 +98,23 @@ public class ModelLawnmower extends ModelTransportable {
 
 		// this.RenderHelper_a(worldrenderer, ibakedmodel.getGeneralQuads(), -1, is);
 
-		for (Iterator iterator = allQuads.iterator(); iterator.hasNext();) {
+		// for (Iterator iterator = allQuads.iterator(); iterator.hasNext();) {
+		//
+		// bakedquad = (BakedQuad) iterator.next();
+		// worldrenderer.addVertexData(bakedquad.getVertexData());
+		//
+		// // vec3i = bakedquad.getFace().getDirectionVec();
+		// // worldrenderer.putNormal((float) vec3i.getX(), (float) vec3i.getY(), (float) vec3i.getZ());
+		// }
+		for (BakedQuad bakedQuad : allQuads) {
+			i++;
+			LightUtil.renderQuadColor(worldrenderer, bakedQuad, -1);
 
-			bakedquad = (BakedQuad) iterator.next();
-			worldrenderer.addVertexData(bakedquad.getVertexData());
-
-			// vec3i = bakedquad.getFace().getDirectionVec();
-			// worldrenderer.putNormal((float) vec3i.getX(), (float) vec3i.getY(), (float) vec3i.getZ());
 		}
-
 		tessellator.draw();
+		// long end = System.currentTimeMillis();
+
+		// LogHelper.info("Debug :" + (long) (end - start));
 
 	}
 
@@ -117,7 +130,7 @@ public class ModelLawnmower extends ModelTransportable {
 
 	public ResourceLocation getTexture() {
 
-		return new ResourceLocation("machinemod", Reference.MODEL_LAWNMOWER_TEXTURE_LOCATION);
+		return MODEL_TEXTURE;
 	}
 
 }

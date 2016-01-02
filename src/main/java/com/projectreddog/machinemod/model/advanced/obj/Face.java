@@ -34,7 +34,7 @@ public class Face {
 		// int j1 = (this.vertexCount - 4) * i1 + this.vertexFormat.getNormalOffset() / 4;
 		//
 		// LogHelper.info(worldrenderer.getVertexFormat());
-		worldrenderer.normal(faceNormal.x, faceNormal.y, faceNormal.z);
+		// worldrenderer.normal(faceNormal.x, faceNormal.y, faceNormal.z);
 
 		//
 		float averageU = 0F;
@@ -70,15 +70,14 @@ public class Face {
 
 				// 1.8 worldrenderer.addVertexWithUV(vertices[i].x, vertices[i].y, vertices[i].z, textureCoordinates[i].u + offsetU, textureCoordinates[i].v + offsetV);
 
-				worldrenderer.pos(vertices[i].x, vertices[i].y, vertices[i].z);
-				worldrenderer.tex(textureCoordinates[i].u + offsetU, textureCoordinates[i].v + offsetV);
+				worldrenderer.pos(vertices[i].x, vertices[i].y, vertices[i].z).tex(textureCoordinates[i].u + offsetU, textureCoordinates[i].v + offsetV).endVertex();
 
 				// worldrenderer.endVertex();
 			} else {
 				// 1.8 worldrenderer.addVertex(vertices[i].x, vertices[i].y, vertices[i].z);
 
-				worldrenderer.pos(vertices[i].x, vertices[i].y, vertices[i].z);
-				worldrenderer.endVertex();
+				worldrenderer.pos(vertices[i].x, vertices[i].y, vertices[i].z).endVertex();
+				// worldrenderer.endVertex();
 			}
 
 		}
