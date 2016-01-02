@@ -3,6 +3,7 @@ package com.projectreddog.machinemod.entity;
 import java.util.List;
 import java.util.Random;
 
+import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClient;
@@ -90,7 +91,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public EntityMachineModRideable(World world) {
 		super(world);
 		setSize(1.5F, 0.6F); // should be overridden in Extened version.
-		this.stepHeight = 1;
+		this.stepHeight = 1F;
 		inventory = new ItemStack[0];
 
 	}
@@ -404,6 +405,10 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 		// motionY= speedY;
 		// setPosition( posX+speedX,posY+motionY, posZ+speedZ);
+		if (this.worldObj.getBlockState(new BlockPos(this.posX, this.posY - 1, this.posZ)).getBlock() == ModBlocks.machinecompressedasphalt) {
+			this.onGround = true;
+		}
+
 		moveEntity(motionX, motionY, motionZ);
 		//
 		// if (lastPosX != posX || lastPosY != posY || lastPosZ != posZ ||

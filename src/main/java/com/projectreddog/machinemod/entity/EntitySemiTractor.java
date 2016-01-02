@@ -41,7 +41,8 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 		this.minAngle = 0;
 		this.droppedItem = ModItems.semitractor;
 		this.shouldSendClientInvetoryUpdates = true;
-		this.maxSpeed = 0.4d;
+		this.maxSpeed = 0.8d;
+		this.accelerationAmount = .08d;
 	}
 
 	protected void readEntityFromNBT(NBTTagCompound compound) {
