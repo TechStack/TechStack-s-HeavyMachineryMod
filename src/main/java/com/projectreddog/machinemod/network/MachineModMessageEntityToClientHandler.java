@@ -46,7 +46,7 @@ public class MachineModMessageEntityToClientHandler implements IMessageHandler<M
 							((EntityMachineModRideable) entity).Attribute1 = message.Attribute1;
 							((EntityMachineModRideable) entity).Attribute2 = message.Attribute2;
 							((EntityMachineModRideable) entity).currentFuelLevel = message.currentFuelLevel;
-
+							((EntityMachineModRideable) entity).clientTicksSinceLastServerPulse = 0;
 							// LogHelper.info("RECIEVED ENTITY PACKET FROM SERVER" + ((EntityMachineModRideable) entity).TargetposX);
 
 							// LogHelper.info("message" + message.posX + "target" + ((EntityMachineModRideable) entity).TargetposX + "actual" + ((EntityMachineModRideable) entity).posX);

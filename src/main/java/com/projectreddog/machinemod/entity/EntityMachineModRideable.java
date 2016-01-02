@@ -85,6 +85,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public boolean isWaterOnly = false;
 	public int runTimeTillNextFuelUsage = 20;
 	public int maxRunTimeTillNextFuelUsage = 20;
+	public int clientTicksSinceLastServerPulse = 0;
 
 	public EntityMachineModRideable(World world) {
 		super(world);
@@ -470,7 +471,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	}
 
 	public void updateClient() {
-
+		clientTicksSinceLastServerPulse++;
 		if (ticksSinceLastParticle > nextParticleAtTick) {
 			doParticleEffects();
 			ticksSinceLastParticle = 0;
@@ -529,7 +530,11 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		} else {
 			isFristTick = false;
 		}
-
+		if (clientTicksSinceLastServerPulse > Reference.clientRemoveInactiveEntityTimer) {
+			this.setDead();
+			this.addedToChunk = true;
+			this.worldObj.removeEntity(this);
+		}
 	}
 
 	@Override
