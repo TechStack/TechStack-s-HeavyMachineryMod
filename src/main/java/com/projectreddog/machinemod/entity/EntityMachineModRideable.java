@@ -223,8 +223,9 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 				// if (getItemToBeDropped() != null) {
 
 				this.setDead();
-				this.addedToChunk = true;
-				this.worldObj.removeEntity(this);
+				// this.worldObj.removeEntity(this);
+				// this.worldObj.getChunkFromChunkCoords(this.chunkCoordX, this.chunkCoordZ).removeEntity(this);
+				// this.addedToChunk = true;
 
 				// }
 			}
@@ -538,8 +539,10 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		}
 		if (clientTicksSinceLastServerPulse > Reference.clientRemoveInactiveEntityTimer) {
 			this.setDead();
-			this.addedToChunk = true;
-			this.worldObj.removeEntity(this);
+			// this.worldObj.removeEntity(this);
+			// this.worldObj.getChunkFromChunkCoords(this.chunkCoordX, this.chunkCoordZ).removeEntity(this);
+			// this.addedToChunk = true;
+
 		}
 	}
 
