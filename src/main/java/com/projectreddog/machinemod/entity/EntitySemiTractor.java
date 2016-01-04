@@ -8,7 +8,6 @@ import com.projectreddog.machinemod.item.machines.ItemTransportable;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerTanker;
 import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
@@ -41,7 +40,9 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 		this.minAngle = 0;
 		this.droppedItem = ModItems.semitractor;
 		this.shouldSendClientInvetoryUpdates = true;
-		this.maxSpeed = 0.4d;
+		this.maxSpeed = 0.8d;
+		this.accelerationAmount = .08d;
+		this.turnRate = 3d;
 	}
 
 	protected void readEntityFromNBT(NBTTagCompound compound) {
@@ -88,7 +89,7 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 				}
 			}
 			if (fluid != null) {
-				LogHelper.info(fluid.amount);
+				// LogHelper.info(fluid.amount);
 			}
 		}
 	}

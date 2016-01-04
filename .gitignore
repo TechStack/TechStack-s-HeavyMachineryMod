@@ -12,6 +12,7 @@ build/
 /screenshots
 /config
 /run
+crash-reports/crash-*.txt
 usernamecache
 # Ignore Gradle GUI config
 gradle-app.setting

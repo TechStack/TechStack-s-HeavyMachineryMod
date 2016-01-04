@@ -108,6 +108,7 @@ public class Reference {
 	public static final String MACHINE_MOD_NBT_PREFIX = "MACHINE_MOD_";
 
 	// config file settings
+	public static int clientRemoveInactiveEntityTimer = 100;
 	public static boolean enableBulldozer = true;
 	public static boolean enableBagger = true;
 
