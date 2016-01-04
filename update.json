@@ -1,0 +1,11 @@
+"homepage": "http://minecraft.curseforge.com/projects/techstacks-heavy-machinery-mod/files",
+  "promos": {
+    "1.8-latest": "1.8-1.1-Pre-ALPHA2-Build-182",
+    "1.8-recommended": "1.8-1.1-Pre-ALPHA2-Build-177"
+  },
+
+  },
+  "1.8": {
+    "1.8-1.1-Pre-ALPHA2-Build-182": "Sounds & Events for block breaks \n Add configs to disable entity Items for machines, attempted fix for wrench where it did not update other clients\nAdded a idle machine Timeout to configs and working in game\nbulldozer break framland\nSemiTrucks Trubo Engine Engaged! \nSemi Truck steering linkage upgrade \n Cool new Update .json feature in forge"
+    "1.8-1.1-Pre-ALPHA2-Build-177": "Changelog: 1st Alpha-2 release."
+  }
