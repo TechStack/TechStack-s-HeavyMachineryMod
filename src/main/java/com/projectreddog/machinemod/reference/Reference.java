@@ -29,6 +29,7 @@ public class Reference {
 	public static final String MODEL_FERMENTER_TEXTURE_LOCATION = "models/fermenter.png";
 
 	public static final String MODEL_WELL_HEAD_TEXTURE_LOCATION = "models/wellhead.png";
+	public static final String MODEL_PIPE_TEXTURE_LOCATION = "models/pipe.png";
 
 	public static final String MODEL_COMBINE_TEXTURE_LOCATION = "models/combine.png";
 	public static final String MODEL_DRILLINGRIG_TEXTURE_LOCATION = "models/drillingrig.png";
@@ -78,7 +79,7 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_MOWED_GRASS = "machinemowedgrass";
 
 	public static final String MODBLOCK_MACHINE_DRILLED_STONE = "machinedrilledstone";
-	public static final String MODBLOCK_MACHINE_LIQUID_PIPE= "machineliquidpipe";
+	public static final String MODBLOCK_MACHINE_LIQUID_PIPE = "machineliquidpipe";
 
 	public static final String MODBLOCK_MACHINE_DRILLED_ANDESITE = "machinedrilledandesite";
 

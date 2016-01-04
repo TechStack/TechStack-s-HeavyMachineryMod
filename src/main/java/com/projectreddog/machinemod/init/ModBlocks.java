@@ -34,6 +34,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
+import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 import com.projectreddog.machinemod.tileentities.TileEntityScreen;
 import com.projectreddog.machinemod.tileentities.TileEntityWellHead;
@@ -113,7 +114,7 @@ public class ModBlocks {
 
 		GameRegistry.registerBlock(machineconveyor, Reference.MODBLOCK_MACHINE_CONVEYOR);
 		GameRegistry.registerBlock(machinefractionaldistillation, Reference.MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION);
-		GameRegistry.registerBlock(machineliquidPipe,Reference.MODBLOCK_MACHINE_LIQUID_PIPE);
+		GameRegistry.registerBlock(machineliquidPipe, Reference.MODBLOCK_MACHINE_LIQUID_PIPE);
 		GameRegistry.registerBlock(machinescreen, Reference.MODBLOCK_MACHINE_SCREEN);
 		GameRegistry.registerBlock(machinemowedgrass, Reference.MODBLOCK_MACHINE_MOWED_GRASS);
 
@@ -136,6 +137,9 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileEntityFermenter.class, Reference.MODBLOCK_MACHINE_FERMENTER);
 
 		GameRegistry.registerTileEntity(TileEntityWellHead.class, Reference.MODBLOCK_MACHINE_WELL_HEAD);
+
+		GameRegistry.registerTileEntity(TileEntityLiquidPipe.class, Reference.MODBLOCK_MACHINE_LIQUID_PIPE);
+
 		// /Register Fluids
 		FluidRegistry.registerFluid(fluidOil);
 		fluidOil.setViscosity(6600);
@@ -163,7 +167,6 @@ public class ModBlocks {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinefractionaldistillation), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineliquidPipe), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_LIQUID_PIPE, "inventory"));
 
-		
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinedrilledandesite), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_DRILLED_ANDESITE, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinedrilleddiorite), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_DRILLED_DIORITE, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinedrilledgranite), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_DRILLED_GRANITE, "inventory"));
