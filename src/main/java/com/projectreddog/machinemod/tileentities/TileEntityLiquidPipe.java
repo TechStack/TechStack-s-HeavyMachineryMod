@@ -1,7 +1,5 @@
 package com.projectreddog.machinemod.tileentities;
 
-import com.projectreddog.machinemod.iface.ILiquidConnection;
-import com.projectreddog.machinemod.iface.ILiquidPipe;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageLiquidPipeToClient;
@@ -14,9 +12,10 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
+import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
-public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerListBox, ILiquidPipe {
+public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerListBox, IFluidTank {
 
 	private boolean connectedNorth = false;
 	private boolean connectedSouth = false;
@@ -38,8 +37,8 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 
 	public boolean transferFluid(TileEntity te) {
 		// pump in first
-		if (te instanceof ILiquidConnection) {
-			ILiquidConnection lc = (ILiquidConnection) te;
+		if (te instanceof IFluidTank) {
+			IFluidTank lc = (IFluidTank) te;
 			if (lc.getFluidAmount() > getFluidAmount()) {
 				if (lc.getFluid() != null) {
 					if (this.getFluid() != null) {
@@ -180,7 +179,7 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 		connectedDown = false;
 		connectedUp = false;
 		for (EnumFacing e : EnumFacing.VALUES) {
-			if (this.worldObj.getTileEntity(this.pos.offset(e)) instanceof ILiquidConnection) {
+			if (this.worldObj.getTileEntity(this.pos.offset(e)) instanceof IFluidTank) {
 				// LogHelper.info("Connection point found to the : " + e.toString());
 				switch (e) {
 				case NORTH:
