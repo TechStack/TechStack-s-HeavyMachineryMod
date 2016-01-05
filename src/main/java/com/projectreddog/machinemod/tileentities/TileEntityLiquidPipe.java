@@ -6,7 +6,6 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageLiquidPipeToClient;
 import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
@@ -47,7 +46,7 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 							FluidStack drained = lc.drain(1, true);
 							this.fill(drained, true);
 							// break the for e: Enum loop
-							LogHelper.info(this.getFluidAmount());
+							// LogHelper.info(this.getFluidAmount());
 							// return true;
 						}
 					} else {
@@ -56,7 +55,7 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 						FluidStack drained = lc.drain(1, true);
 						this.fill(drained, true);
 						// break the for e: Enum loop
-						LogHelper.info("SAME" + this.getFluidAmount());
+						// LogHelper.info("SAME" + this.getFluidAmount());
 						// return true;
 					}
 				}
@@ -69,7 +68,7 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 							FluidStack drained = this.drain(1, true);
 							lc.fill(drained, true);
 							// break the for e: Enum loop
-							LogHelper.info(this.getFluidAmount());
+							// LogHelper.info(this.getFluidAmount());
 							// return true;
 						}
 					} else {
@@ -78,7 +77,7 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 						FluidStack drained = this.drain(1, true);
 						lc.fill(drained, true);
 						// break the for e: Enum loop
-						LogHelper.info("SAME" + this.getFluidAmount());
+						// LogHelper.info("SAME" + this.getFluidAmount());
 						// return true;
 					}
 				}
@@ -179,7 +178,7 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 		connectedUp = false;
 		for (EnumFacing e : EnumFacing.VALUES) {
 			if (this.worldObj.getTileEntity(this.pos.offset(e)) instanceof ILiquidConnection) {
-				LogHelper.info("Connection point found to the : " + e.toString());
+				// LogHelper.info("Connection point found to the : " + e.toString());
 				switch (e) {
 				case NORTH:
 					connectedNorth = true;
