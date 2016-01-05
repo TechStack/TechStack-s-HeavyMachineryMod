@@ -33,12 +33,12 @@ public class TileEntityLiquidPipeRenderer extends TileEntitySpecialRenderer {
 		// GL11.glEnable(GL11.GL_DEPTH_TEST);
 
 		// GL11.glEnableClientState(GL11.GL_LIGHTING);
-
-		if (tileentity instanceof TileEntityLiquidPipe) {
-			TileEntityLiquidPipe te = (TileEntityLiquidPipe) tileentity;
-			GlStateManager.color(((float) te.getFluidAmount() / te.getCapacity()), 0F, 0.0F, 1.0F);
+		if (Reference.enableDebugPipeCode) {
+			if (tileentity instanceof TileEntityLiquidPipe) {
+				TileEntityLiquidPipe te = (TileEntityLiquidPipe) tileentity;
+				GlStateManager.color(((float) te.getFluidAmount() / te.getCapacity()), 0F, 0.0F, 1.0F);
+			}
 		}
-
 		this.bindTexture(getResourceLocation());
 		// GL11.glScalef(-.5F, -.5F, .5F);
 

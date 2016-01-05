@@ -98,17 +98,18 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 			updateConnections();
 		}
 
-		if (!this.worldObj.isRemote) {
-			int tempFluidID;
-			if (this.getFluid() != null) {
-				tempFluidID = this.getFluid().getFluidID();
-			} else {
-				tempFluidID = -1;
+		if (Reference.enableDebugPipeCode) {
+			if (!this.worldObj.isRemote) {
+				int tempFluidID;
+				if (this.getFluid() != null) {
+					tempFluidID = this.getFluid().getFluidID();
+				} else {
+					tempFluidID = -1;
+				}
+
+				ModNetwork.simpleNetworkWrapper.sendToAllAround(new MachineModMessageLiquidPipeToClient(this.pos.getX(), this.pos.getY(), this.pos.getZ(), this.getFluidAmount(), tempFluidID), new TargetPoint(this.worldObj.provider.getDimensionId(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 48));
 			}
-
-			ModNetwork.simpleNetworkWrapper.sendToAllAround(new MachineModMessageLiquidPipeToClient(this.pos.getX(), this.pos.getY(), this.pos.getZ(), this.getFluidAmount(), tempFluidID), new TargetPoint(this.worldObj.provider.getDimensionId(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 48));
 		}
-
 		ticksSinceLastConnectionUpdate++;
 		if (getFluidAmount() < getCapacity()) {
 			// has room for fluid
