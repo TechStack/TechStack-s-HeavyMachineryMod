@@ -7,6 +7,7 @@ import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageLiquidPipeToClient;
 import com.projectreddog.machinemod.reference.Reference;
 
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -29,6 +30,7 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 	private final int connectionUpdateTimer = Reference.updateConnectionTimer;
 	private int ticksSinceLastConnectionUpdate = 0;
 	private TileEntity te;
+	private int cooldown;
 
 	public TileEntityLiquidPipe() {
 
@@ -325,5 +327,35 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 			}
 		}
 		return stack;
+	}
+
+	@Override
+	public void readFromNBT(NBTTagCompound compound) {
+		super.readFromNBT(compound);
+		int x;
+		int y;
+		int z;
+
+		cooldown = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN");
+
+		if (!compound.hasKey("Empty")) {
+			FluidStack fluid = FluidStack.loadFluidStackFromNBT(compound);
+			setFluid(fluid);
+		} else {
+			setFluid(null);
+		}
+
+	}
+
+	@Override
+	public void writeToNBT(NBTTagCompound compound) {
+		super.writeToNBT(compound);
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN", cooldown);
+
+		if (fluid != null) {
+			fluid.writeToNBT(compound);
+		} else {
+			compound.setString("Empty", "");
+		}
 	}
 }

@@ -18,7 +18,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
 
-public class TileEntityFractionalDistillation extends TileEntity implements IUpdatePlayerListBox, IFluidTank , ILiquidConnection{
+public class TileEntityFractionalDistillation extends TileEntity implements IUpdatePlayerListBox, IFluidTank, ILiquidConnection {
 
 	public final int maxOilStorage = 10000; // store up to 100k
 
@@ -83,10 +83,12 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 							if (!est.isDead) {
 
 								if (est.getFluidAmount() >= transferOilAmount) {
-									if (est.getFluid().getFluid() == fluid.getFluid()) {
-										FluidStack moveStack = new FluidStack(fluid, transferOilAmount);
+									if (est.getFluid() != null) {
+										if (est.getFluid().getFluid() == fluid.getFluid()) {
+											FluidStack moveStack = new FluidStack(fluid, transferOilAmount);
 
-										fill(est.drain(transferOilAmount, true), true);
+											fill(est.drain(transferOilAmount, true), true);
+										}
 									}
 								}
 							}
