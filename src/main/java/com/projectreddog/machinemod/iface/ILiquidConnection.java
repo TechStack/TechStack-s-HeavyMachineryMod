@@ -1,6 +1,7 @@
 package com.projectreddog.machinemod.iface;
 
-public interface ILiquidConnection {
+import net.minecraftforge.fluids.IFluidTank;
 
-	
+public interface ILiquidConnection extends IFluidTank {
+
 }

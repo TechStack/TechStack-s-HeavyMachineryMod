@@ -110,6 +110,8 @@ public class Reference {
 
 	// config file settings
 	public static int clientRemoveInactiveEntityTimer = 100;
+	public static int updateConnectionTimer = 100;
+
 	public static boolean enableBulldozer = true;
 	public static boolean enableBagger = true;
 

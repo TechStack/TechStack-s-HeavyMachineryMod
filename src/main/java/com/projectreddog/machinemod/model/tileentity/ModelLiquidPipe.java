@@ -17,11 +17,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
-public class ModelPipe extends ModelBase {
+public class ModelLiquidPipe extends ModelBase {
 	// fields
 	private IModelCustom myModel;
 
-	public ModelPipe() {
+	public ModelLiquidPipe() {
 
 		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/pipe.obj"));
 		// casinoTexture = new ResourceLocation("modid",
@@ -42,22 +42,22 @@ public class ModelPipe extends ModelBase {
 			this.renderGroupObject("Center_Cube");
 			TileEntityLiquidPipe tELP = (TileEntityLiquidPipe) entity;
 			if (tELP.isConnectedNorth()) {
-				this.renderGroupObject("North_Cube.001");
+				this.renderGroupObject("North_Cube.006");
 			}
 			if (tELP.isConnectedSouth()) {
-				this.renderGroupObject("South_Cube.002");
+				this.renderGroupObject("South_Cube.006");
 			}
 			if (tELP.isConnectedEast()) {
-				this.renderGroupObject("East_Cube.005");
+				this.renderGroupObject("East_Cube.006");
 			}
 			if (tELP.isConnectedWest()) {
 				this.renderGroupObject("West_Cube.006");
 			}
 			if (tELP.isConnectedUp()) {
-				this.renderGroupObject("Up_Cube.003");
+				this.renderGroupObject("Up_Cube.006");
 			}
 			if (tELP.isConnectedDown()) {
-				this.renderGroupObject("Down_Cube.004");
+				this.renderGroupObject("Down_Cube.006");
 			}
 
 		}
