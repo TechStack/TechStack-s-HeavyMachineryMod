@@ -24,7 +24,7 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 	private boolean connectedWest = false;
 	private boolean connectedDown = false;
 	private boolean connectedUp = false;
-	private final int maxLiquidStorage = 1000;
+	private final int maxLiquidStorage = 100;
 	private boolean firstTick = true;
 	protected FluidStack fluid = new FluidStack(ModBlocks.fluidOil, 0);
 	private final int connectionUpdateTimer = Reference.updateConnectionTimer;
@@ -39,7 +39,7 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 		// pump in first
 		if (te instanceof ILiquidConnection) {
 			ILiquidConnection lc = (ILiquidConnection) te;
-			if (lc.getFluidAmount() >= getFluidAmount()) {
+			if (lc.getFluidAmount() > getFluidAmount()) {
 				if (lc.getFluid() != null) {
 					if (this.getFluid() != null) {
 						if (lc.getFluid().getFluid() == this.getFluid().getFluid()) {
@@ -48,8 +48,38 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 							this.fill(drained, true);
 							// break the for e: Enum loop
 							LogHelper.info(this.getFluidAmount());
-							return true;
+							// return true;
 						}
+					} else {
+						// i have no fluid so accept
+
+						FluidStack drained = lc.drain(1, true);
+						this.fill(drained, true);
+						// break the for e: Enum loop
+						LogHelper.info("SAME" + this.getFluidAmount());
+						// return true;
+					}
+				}
+			} else if (lc.getFluidAmount() != getFluidAmount()) {
+				// the lc has less fluid so pump to it
+				if (this.getFluid() != null) {
+					if (lc.getFluid() != null) {
+						if (lc.getFluid().getFluid() == this.getFluid().getFluid()) {
+							// same fluid try to drain
+							FluidStack drained = this.drain(1, true);
+							lc.fill(drained, true);
+							// break the for e: Enum loop
+							LogHelper.info(this.getFluidAmount());
+							// return true;
+						}
+					} else {
+						// the LC has no fluid so accept
+
+						FluidStack drained = this.drain(1, true);
+						lc.fill(drained, true);
+						// break the for e: Enum loop
+						LogHelper.info("SAME" + this.getFluidAmount());
+						// return true;
 					}
 				}
 			}
