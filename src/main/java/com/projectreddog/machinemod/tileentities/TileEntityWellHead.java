@@ -82,7 +82,7 @@ public class TileEntityWellHead extends TileEntity implements IUpdatePlayerListB
 								if (getFluidAmount() >= transferOilAmount) {
 									FluidStack moveStack = new FluidStack(fluid, transferOilAmount);
 
-									drain(semi.fill(moveStack, true), true);
+									fill(drain(semi.fill(moveStack, true), true), true);
 								}
 
 							}

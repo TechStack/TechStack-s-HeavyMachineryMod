@@ -29,6 +29,7 @@ public class Reference {
 	public static final String MODEL_FERMENTER_TEXTURE_LOCATION = "models/fermenter.png";
 
 	public static final String MODEL_WELL_HEAD_TEXTURE_LOCATION = "models/wellhead.png";
+	public static final String MODEL_PIPE_TEXTURE_LOCATION = "models/pipe.png";
 
 	public static final String MODEL_COMBINE_TEXTURE_LOCATION = "models/combine.png";
 	public static final String MODEL_DRILLINGRIG_TEXTURE_LOCATION = "models/drillingrig.png";
@@ -78,6 +79,8 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_MOWED_GRASS = "machinemowedgrass";
 
 	public static final String MODBLOCK_MACHINE_DRILLED_STONE = "machinedrilledstone";
+	public static final String MODBLOCK_MACHINE_LIQUID_PIPE = "machineliquidpipe";
+
 	public static final String MODBLOCK_MACHINE_DRILLED_ANDESITE = "machinedrilledandesite";
 
 	public static final String MODBLOCK_MACHINE_DRILLED_DIORITE = "machinedrilleddiorite";
@@ -107,6 +110,9 @@ public class Reference {
 
 	// config file settings
 	public static int clientRemoveInactiveEntityTimer = 100;
+	public static int updateConnectionTimer = 100;
+	public static boolean enableDebugPipeCode = false;
+
 	public static boolean enableBulldozer = true;
 	public static boolean enableBagger = true;
 
