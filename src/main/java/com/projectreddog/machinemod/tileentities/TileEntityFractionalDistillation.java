@@ -84,10 +84,12 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 
 								if (est.getFluidAmount() >= transferOilAmount) {
 									if (est.getFluid() != null) {
-										if (est.getFluid().getFluid() == fluid.getFluid()) {
-											FluidStack moveStack = new FluidStack(fluid, transferOilAmount);
+										if (fluid != null) {
+											if (est.getFluid().getFluid() == fluid.getFluid()) {
+												FluidStack moveStack = new FluidStack(fluid, transferOilAmount);
 
-											fill(est.drain(transferOilAmount, true), true);
+												fill(est.drain(transferOilAmount, true), true);
+											}
 										}
 									}
 								}
