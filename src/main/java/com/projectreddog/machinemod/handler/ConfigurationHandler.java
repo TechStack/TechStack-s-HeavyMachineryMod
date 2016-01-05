@@ -26,6 +26,8 @@ public class ConfigurationHandler {
 
 	private static void loadConfiguration() {
 		Reference.clientRemoveInactiveEntityTimer = configuration.get(Configuration.CATEGORY_GENERAL, "clientRemoveInactiveEntityTimer", 100, "Number of ticks that the client will wait without a message from the server before it will remove the client side entity (should help with desync) ").getInt();
+		Reference.updateConnectionTimer = configuration.get(Configuration.CATEGORY_GENERAL, "updateConnectionTimer", 100, "Number of ticks before the Pipes will try to update connections to ensure they are still legit ").getInt();
+		Reference.enableDebugPipeCode = configuration.get(Configuration.CATEGORY_GENERAL, "enableDebugPipeCode", Reference.enableDebugPipeCode, "If true Pipes will render color coded based on fulid in the pipes at the cost of addtional network packets, if false networking & color coded rendering is disabled").getBoolean();
 		Reference.enableBagger = configuration.get(Configuration.CATEGORY_GENERAL, "enableBagger", true, "If true Bagger is Enabled, if false Bagger is disabled").getBoolean();
 		Reference.enableBulldozer = configuration.get(Configuration.CATEGORY_GENERAL, "enableBulldozer", true, "If true Bulldozer is Enabled, if false BullDozer is disabled").getBoolean();
 		Reference.enableCombine = configuration.get(Configuration.CATEGORY_GENERAL, "enableCombine", true, "If true Combine is Enabled, if false Combine is disabled").getBoolean();

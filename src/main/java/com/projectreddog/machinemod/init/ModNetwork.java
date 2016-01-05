@@ -2,14 +2,6 @@ package com.projectreddog.machinemod.init;
 
 import java.util.List;
 
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.relauncher.Side;
-
 import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.client.gui.GuiHandler;
 import com.projectreddog.machinemod.network.MachineModMessageEntityCurrentTargetPosToClient;
@@ -22,11 +14,21 @@ import com.projectreddog.machinemod.network.MachineModMessageInputToServer;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServerHandler;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServerOpenGui;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServerOpenGuiHandler;
+import com.projectreddog.machinemod.network.MachineModMessageLiquidPipeToClient;
+import com.projectreddog.machinemod.network.MachineModMessageLiquidPipeToClientHandler;
 import com.projectreddog.machinemod.network.MachineModMessageMouseInputToServer;
 import com.projectreddog.machinemod.network.MachineModMessageMouseInputToServerHandler;
 import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServer;
 import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServerHandler;
 import com.projectreddog.machinemod.reference.Reference;
+
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class ModNetwork {
 
@@ -51,6 +53,10 @@ public class ModNetwork {
 		simpleNetworkWrapper.registerMessage(MachineModMessageMouseInputToServerHandler.class, MachineModMessageMouseInputToServer.class, 5, Side.SERVER);// message to server
 
 		simpleNetworkWrapper.registerMessage(MachineModMessageEntityCurrentTargetPosToClientHandler.class, MachineModMessageEntityCurrentTargetPosToClient.class, 6, Side.CLIENT);// message to server
+
+		simpleNetworkWrapper.registerMessage(MachineModMessageLiquidPipeToClientHandler.class, MachineModMessageLiquidPipeToClient.class, 7, Side.CLIENT);// message
+		// to
+		// client
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(MachineMod.instance, new GuiHandler());
 	}
