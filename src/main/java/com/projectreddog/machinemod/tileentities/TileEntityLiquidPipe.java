@@ -3,6 +3,8 @@ package com.projectreddog.machinemod.tileentities;
 import com.projectreddog.machinemod.iface.ILiquidConnection;
 import com.projectreddog.machinemod.iface.ILiquidPipe;
 import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.init.ModNetwork;
+import com.projectreddog.machinemod.network.MachineModMessageLiquidPipeToClient;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.LogHelper;
 
@@ -12,6 +14,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
 public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerListBox, ILiquidPipe {
 
@@ -63,6 +66,18 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 		if (ticksSinceLastConnectionUpdate > connectionUpdateTimer) {
 			updateConnections();
 		}
+
+		if (!this.worldObj.isRemote) {
+			int tempFluidID;
+			if (this.getFluid() != null) {
+				tempFluidID = this.getFluid().getFluidID();
+			} else {
+				tempFluidID = -1;
+			}
+
+			ModNetwork.simpleNetworkWrapper.sendToAllAround(new MachineModMessageLiquidPipeToClient(this.pos.getX(), this.pos.getY(), this.pos.getZ(), this.getFluidAmount(), tempFluidID), new TargetPoint(this.worldObj.provider.getDimensionId(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 48));
+		}
+
 		ticksSinceLastConnectionUpdate++;
 		if (getFluidAmount() < getCapacity()) {
 			// has room for fluid

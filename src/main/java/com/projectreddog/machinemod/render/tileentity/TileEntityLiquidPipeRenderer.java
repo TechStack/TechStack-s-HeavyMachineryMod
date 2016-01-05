@@ -4,7 +4,9 @@ import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.model.tileentity.ModelLiquidPipe;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
 
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -32,10 +34,10 @@ public class TileEntityLiquidPipeRenderer extends TileEntitySpecialRenderer {
 
 		// GL11.glEnableClientState(GL11.GL_LIGHTING);
 
-		// if (tileentity instanceof TileEntityLiquidPipe) {
-		// TileEntityLiquidPipe te = (TileEntityLiquidPipe) tileentity;
-		// GlStateManager.color(((float) te.getFluidAmount() / te.getCapacity()), 1.0F, 1.0F, 1.0F);
-		// }
+		if (tileentity instanceof TileEntityLiquidPipe) {
+			TileEntityLiquidPipe te = (TileEntityLiquidPipe) tileentity;
+			GlStateManager.color(((float) te.getFluidAmount() / te.getCapacity()), 0F, 0.0F, 1.0F);
+		}
 
 		this.bindTexture(getResourceLocation());
 		// GL11.glScalef(-.5F, -.5F, .5F);
