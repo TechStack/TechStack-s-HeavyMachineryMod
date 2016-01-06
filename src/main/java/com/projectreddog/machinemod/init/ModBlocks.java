@@ -80,7 +80,7 @@ public class ModBlocks {
 	public static final Block machinefractionaldistillation = new BlockMachineModFractionalDistillation();
 	public static final Block machineliquidPipe = new BlockMachineModLiquidPipe();
 
-	public static Fluid fluidBioFuel = new Fluid("BioFuel");
+	// public static Fluid fluidBioFuel = new Fluid("BioFuel");
 
 	public static Fluid fluidOil = new Fluid("oil", new ResourceLocation("machinemod", Reference.FLUID_OIL_STILL_TEXTURE_LOCATION), new ResourceLocation("machinemod", Reference.FLUID_OIL_FLOWING_TEXTURE_LOCATION));
 	public static Fluid fluidDiesel = new Fluid("diesel", new ResourceLocation("machinemod", Reference.FLUID_OIL_STILL_TEXTURE_LOCATION), new ResourceLocation("machinemod", Reference.FLUID_OIL_FLOWING_TEXTURE_LOCATION));
@@ -93,7 +93,6 @@ public class ModBlocks {
 	public static BlockBioFuel biofuel;
 	public static Block oilFluidBlock;
 
-	
 	public static void init() {
 		GameRegistry.registerBlock(machineassemblytable, Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		GameRegistry.registerBlock(machineasphalt, Reference.MODBLOCK_MACHINE_ASPHALT);
@@ -147,31 +146,28 @@ public class ModBlocks {
 
 		// /Register Fluids
 		FluidRegistry.registerFluid(fluidOil);
-		
 
 		FluidRegistry.registerFluid(fluidDiesel);
 		FluidRegistry.registerFluid(fluidBitumen);
 		FluidRegistry.registerFluid(fluidNaphtha);
 		FluidRegistry.registerFluid(fluidJetFuel);
-		
-		
+
 		fluidOil.setViscosity(6600);
 
 		fluidDiesel.setViscosity(3000);
 		fluidBitumen.setViscosity(5000);
 		fluidNaphtha.setViscosity(2000);
 		fluidJetFuel.setViscosity(2500);
-		
-		
+
 		oilFluidBlock = new BlockOilFluid(fluidOil, Material.water);
-		
-//		public static Fluid fluidDiesel = new Fluid("diesel", new ResourceLocation("machinemod", Reference.FLUID_OIL_STILL_TEXTURE_LOCATION), new ResourceLocation("machinemod", Reference.FLUID_OIL_FLOWING_TEXTURE_LOCATION));
-//		public static Fluid fluidBitumen = new Fluid("bitumen", new ResourceLocation("machinemod", Reference.FLUID_OIL_STILL_TEXTURE_LOCATION), new ResourceLocation("machinemod", Reference.FLUID_OIL_FLOWING_TEXTURE_LOCATION));
-//		public static Fluid fluidNaphtha = new Fluid("naphtha", new ResourceLocation("machinemod", Reference.FLUID_OIL_STILL_TEXTURE_LOCATION), new ResourceLocation("machinemod", Reference.FLUID_OIL_FLOWING_TEXTURE_LOCATION));
-//		public static Fluid fluidJetFuel = new Fluid("jetfuel", new ResourceLocation("machinemod", Reference.FLUID_OIL_STILL_TEXTURE_LOCATION), new ResourceLocation("machinemod", Reference.FLUID_OIL_FLOWING_TEXTURE_LOCATION));
-//
-//		
-		
+
+		// public static Fluid fluidDiesel = new Fluid("diesel", new ResourceLocation("machinemod", Reference.FLUID_OIL_STILL_TEXTURE_LOCATION), new ResourceLocation("machinemod", Reference.FLUID_OIL_FLOWING_TEXTURE_LOCATION));
+		// public static Fluid fluidBitumen = new Fluid("bitumen", new ResourceLocation("machinemod", Reference.FLUID_OIL_STILL_TEXTURE_LOCATION), new ResourceLocation("machinemod", Reference.FLUID_OIL_FLOWING_TEXTURE_LOCATION));
+		// public static Fluid fluidNaphtha = new Fluid("naphtha", new ResourceLocation("machinemod", Reference.FLUID_OIL_STILL_TEXTURE_LOCATION), new ResourceLocation("machinemod", Reference.FLUID_OIL_FLOWING_TEXTURE_LOCATION));
+		// public static Fluid fluidJetFuel = new Fluid("jetfuel", new ResourceLocation("machinemod", Reference.FLUID_OIL_STILL_TEXTURE_LOCATION), new ResourceLocation("machinemod", Reference.FLUID_OIL_FLOWING_TEXTURE_LOCATION));
+		//
+		//
+
 		GameRegistry.registerBlock(oilFluidBlock, Reference.MODBLOCK_MACHINE_FLUID_OIL);
 
 		// fluidBioFuel.setDensity(10);

@@ -1,21 +1,20 @@
 package com.projectreddog.machinemod.tileentities;
 
-import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageLiquidPipeToClient;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ITickable;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
-public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerListBox, IFluidTank {
+public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFluidTank {
 
 	private boolean connectedNorth = false;
 	private boolean connectedSouth = false;
@@ -25,7 +24,7 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 	private boolean connectedUp = false;
 	private final int maxLiquidStorage = 100;
 	private boolean firstTick = true;
-	protected FluidStack fluid ;//= new FluidStack(ModBlocks.fluidOil, 0);
+	protected FluidStack fluid;// = new FluidStack(ModBlocks.fluidOil, 0);
 	private final int connectionUpdateTimer = Reference.updateConnectionTimer;
 	private int ticksSinceLastConnectionUpdate = 0;
 	private TileEntity te;
@@ -101,7 +100,7 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 			if (!this.worldObj.isRemote) {
 				int tempFluidID;
 				if (this.getFluid() != null) {
-					tempFluidID = this.getFluid().getFluidID();
+					tempFluidID = this.getFluid().getFluid().getID();
 				} else {
 					tempFluidID = -1;
 				}

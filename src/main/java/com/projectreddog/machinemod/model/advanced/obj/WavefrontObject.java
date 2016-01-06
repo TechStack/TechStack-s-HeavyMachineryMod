@@ -8,22 +8,22 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
-import net.minecraft.client.resources.IResource;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.model.advanced.IModelCustom;
 import com.projectreddog.machinemod.model.advanced.ModelFormatException;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.resources.IResource;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
 /**
- * Wavefront Object importer Based heavily off of the specifications found at
- * http://en.wikipedia.org/wiki/Wavefront_.obj_file
+ * Wavefront Object importer Based heavily off of the specifications found at http://en.wikipedia.org/wiki/Wavefront_.obj_file
  */
 public class WavefrontObject implements IModelCustom {
 	private static Pattern vertexPattern = Pattern.compile("(v( (\\-){0,1}\\d+\\.\\d+){3,4} *\\n)|(v( (\\-){0,1}\\d+\\.\\d+){3,4} *$)");
@@ -140,9 +140,9 @@ public class WavefrontObject implements IModelCustom {
 		Tessellator tessellator = Tessellator.getInstance();
 		WorldRenderer worldRenderer = tessellator.getWorldRenderer();
 		if (currentGroupObject != null) {
-			worldRenderer.startDrawing(currentGroupObject.glDrawingMode);
+			worldRenderer.begin(currentGroupObject.glDrawingMode, DefaultVertexFormats.POSITION_TEX_NORMAL);
 		} else {
-			worldRenderer.startDrawing(GL11.GL_TRIANGLES);
+			worldRenderer.begin(GL11.GL_TRIANGLES, DefaultVertexFormats.POSITION_TEX_NORMAL);
 		}
 		tessellateAll(tessellator);
 
@@ -431,8 +431,7 @@ public class WavefrontObject implements IModelCustom {
 	}
 
 	/***
-	 * Verifies that the given line from the model file is a valid texture
-	 * coordinate
+	 * Verifies that the given line from the model file is a valid texture coordinate
 	 * 
 	 * @param line
 	 *            the line being validated
@@ -448,14 +447,11 @@ public class WavefrontObject implements IModelCustom {
 	}
 
 	/***
-	 * Verifies that the given line from the model file is a valid face that is
-	 * described by vertices, texture coordinates, and vertex normals
+	 * Verifies that the given line from the model file is a valid face that is described by vertices, texture coordinates, and vertex normals
 	 * 
 	 * @param line
 	 *            the line being validated
-	 * @return true if the line is a valid face that matches the format
-	 *         "f v1/vt1/vn1 ..." (with a minimum of 3 points in the face, and a
-	 *         maximum of 4), false otherwise
+	 * @return true if the line is a valid face that matches the format "f v1/vt1/vn1 ..." (with a minimum of 3 points in the face, and a maximum of 4), false otherwise
 	 */
 	private static boolean isValidFace_V_VT_VN_Line(String line) {
 		if (face_V_VT_VN_Matcher != null) {
@@ -467,14 +463,11 @@ public class WavefrontObject implements IModelCustom {
 	}
 
 	/***
-	 * Verifies that the given line from the model file is a valid face that is
-	 * described by vertices and texture coordinates
+	 * Verifies that the given line from the model file is a valid face that is described by vertices and texture coordinates
 	 * 
 	 * @param line
 	 *            the line being validated
-	 * @return true if the line is a valid face that matches the format
-	 *         "f v1/vt1 ..." (with a minimum of 3 points in the face, and a
-	 *         maximum of 4), false otherwise
+	 * @return true if the line is a valid face that matches the format "f v1/vt1 ..." (with a minimum of 3 points in the face, and a maximum of 4), false otherwise
 	 */
 	private static boolean isValidFace_V_VT_Line(String line) {
 		if (face_V_VT_Matcher != null) {
@@ -486,14 +479,11 @@ public class WavefrontObject implements IModelCustom {
 	}
 
 	/***
-	 * Verifies that the given line from the model file is a valid face that is
-	 * described by vertices and vertex normals
+	 * Verifies that the given line from the model file is a valid face that is described by vertices and vertex normals
 	 * 
 	 * @param line
 	 *            the line being validated
-	 * @return true if the line is a valid face that matches the format
-	 *         "f v1//vn1 ..." (with a minimum of 3 points in the face, and a
-	 *         maximum of 4), false otherwise
+	 * @return true if the line is a valid face that matches the format "f v1//vn1 ..." (with a minimum of 3 points in the face, and a maximum of 4), false otherwise
 	 */
 	private static boolean isValidFace_V_VN_Line(String line) {
 		if (face_V_VN_Matcher != null) {
@@ -505,14 +495,11 @@ public class WavefrontObject implements IModelCustom {
 	}
 
 	/***
-	 * Verifies that the given line from the model file is a valid face that is
-	 * described by only vertices
+	 * Verifies that the given line from the model file is a valid face that is described by only vertices
 	 * 
 	 * @param line
 	 *            the line being validated
-	 * @return true if the line is a valid face that matches the format
-	 *         "f v1 ..." (with a minimum of 3 points in the face, and a maximum
-	 *         of 4), false otherwise
+	 * @return true if the line is a valid face that matches the format "f v1 ..." (with a minimum of 3 points in the face, and a maximum of 4), false otherwise
 	 */
 	private static boolean isValidFace_V_Line(String line) {
 		if (face_V_Matcher != null) {
@@ -524,21 +511,18 @@ public class WavefrontObject implements IModelCustom {
 	}
 
 	/***
-	 * Verifies that the given line from the model file is a valid face of any
-	 * of the possible face formats
+	 * Verifies that the given line from the model file is a valid face of any of the possible face formats
 	 * 
 	 * @param line
 	 *            the line being validated
-	 * @return true if the line is a valid face that matches any of the valid
-	 *         face formats, false otherwise
+	 * @return true if the line is a valid face that matches any of the valid face formats, false otherwise
 	 */
 	private static boolean isValidFaceLine(String line) {
 		return isValidFace_V_VT_VN_Line(line) || isValidFace_V_VT_Line(line) || isValidFace_V_VN_Line(line) || isValidFace_V_Line(line);
 	}
 
 	/***
-	 * Verifies that the given line from the model file is a valid group (or
-	 * object)
+	 * Verifies that the given line from the model file is a valid group (or object)
 	 * 
 	 * @param line
 	 *            the line being validated

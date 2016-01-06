@@ -12,13 +12,13 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ITickable;
 
-public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox, ISidedInventory {
+public class TileEntityScreen extends TileEntity implements ITickable, ISidedInventory {
 	protected ItemStack[] inventory;
 	private static int[] topSlots = new int[] { 4 };
 
@@ -228,7 +228,7 @@ public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox
 	}
 
 	@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
+	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
 		if (stack != null) {
 			setInventorySlotContents(slot, null);
@@ -335,7 +335,7 @@ public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox
 	@Override
 	public int[] getSlotsForFace(EnumFacing side) {
 		// TODO Auto-generated method stub
-		if (side == EnumFacing.UP){
+		if (side == EnumFacing.UP) {
 			return topSlots;
 		}
 		return null;
@@ -344,14 +344,14 @@ public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox
 	@Override
 	public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
 		if (index == 4 && direction == EnumFacing.UP) {
-		return true;
+			return true;
 		}
 		return false;
 	}
 
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-		
+
 		return false;
 	}
 }

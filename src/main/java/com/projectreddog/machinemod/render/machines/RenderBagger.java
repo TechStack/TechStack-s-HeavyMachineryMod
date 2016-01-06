@@ -119,8 +119,7 @@ public class RenderBagger extends Render {
 				} else {
 					Tessellator tessellator = Tessellator.getInstance();
 					WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-					worldrenderer.startDrawingQuads();
-					worldrenderer.setVertexFormat(DefaultVertexFormats.ITEM);
+					worldrenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
 					this.renderManager.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 					EnumFacing[] aenumfacing = EnumFacing.values();
 					int j = aenumfacing.length;

@@ -3,6 +3,12 @@ package com.projectreddog.machinemod.render.machines;
 import java.util.Iterator;
 import java.util.List;
 
+import org.lwjgl.opengl.GL11;
+
+import com.projectreddog.machinemod.entity.EntityLoader;
+import com.projectreddog.machinemod.model.ModelLoader;
+import com.projectreddog.machinemod.reference.Reference;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.EntityRenderer;
@@ -23,12 +29,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3i;
-
-import org.lwjgl.opengl.GL11;
-
-import com.projectreddog.machinemod.entity.EntityLoader;
-import com.projectreddog.machinemod.model.ModelLoader;
-import com.projectreddog.machinemod.reference.Reference;
 
 public class RenderLoader extends Render {
 
@@ -108,8 +108,7 @@ public class RenderLoader extends Render {
 				} else {
 					Tessellator tessellator = Tessellator.getInstance();
 					WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-					worldrenderer.startDrawingQuads();
-					worldrenderer.setVertexFormat(DefaultVertexFormats.ITEM);
+					worldrenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
 					this.renderManager.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 					EnumFacing[] aenumfacing = EnumFacing.values();
 					int j = aenumfacing.length;
