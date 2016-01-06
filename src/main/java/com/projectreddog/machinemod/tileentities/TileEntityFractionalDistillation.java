@@ -6,6 +6,7 @@ import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerTanker;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
@@ -31,17 +32,27 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 	public final int BlastedStoneGemMultiplier = 2;
 	public final int BlastedStoneLapisMultiplier = 12;
 	public final int BlastedStoneRedstoneMultiplier = 8;
-	protected FluidStack fluid = new FluidStack(ModBlocks.fluidOil, 0);
+	protected FluidStack fluid ;//= new FluidStack(ModBlocks.fluidOil, 0);
 	public int transferOilAmount = 10;
-
+	public boolean firstTick = true;
 	public TileEntityFractionalDistillation() {
-
 	}
-
+	public int getStackOrder(){
+		if (this.worldObj.getBlockState(this.pos.down()).getBlock()== ModBlocks.machinefractionaldistillation  ){
+			if (this.worldObj.getTileEntity(this.pos.down()) instanceof TileEntityFractionalDistillation){
+				TileEntityFractionalDistillation te =(TileEntityFractionalDistillation) this.worldObj.getTileEntity(this.pos.down());
+				return te.getStackOrder()+1;
+			}
+		}				
+		return 1;
+	}
 	@Override
 	public void update() {
 		if (!worldObj.isRemote) {
-
+			if (firstTick){
+				LogHelper.info("Stack order:" + getStackOrder());
+				firstTick= !firstTick;
+			}
 			if (amIBottom()) {
 
 				if (timeTillCoolDown > 0) {
@@ -85,6 +96,13 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 									if (est.getFluid() != null) {
 										if (fluid != null) {
 											if (est.getFluid().getFluid() == fluid.getFluid()) {
+												FluidStack moveStack = new FluidStack(fluid, transferOilAmount);
+
+												fill(est.drain(transferOilAmount, true), true);
+											}
+										}else {
+											// no fluid in this block so we can pull the fluid from the tanker
+											if (est.getFluid().getFluid() == ModBlocks.fluidOil){
 												FluidStack moveStack = new FluidStack(fluid, transferOilAmount);
 
 												fill(est.drain(transferOilAmount, true), true);

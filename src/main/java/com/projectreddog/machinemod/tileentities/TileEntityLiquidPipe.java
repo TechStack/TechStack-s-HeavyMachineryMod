@@ -25,7 +25,7 @@ public class TileEntityLiquidPipe extends TileEntity implements IUpdatePlayerLis
 	private boolean connectedUp = false;
 	private final int maxLiquidStorage = 100;
 	private boolean firstTick = true;
-	protected FluidStack fluid = new FluidStack(ModBlocks.fluidOil, 0);
+	protected FluidStack fluid ;//= new FluidStack(ModBlocks.fluidOil, 0);
 	private final int connectionUpdateTimer = Reference.updateConnectionTimer;
 	private int ticksSinceLastConnectionUpdate = 0;
 	private TileEntity te;
