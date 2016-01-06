@@ -55,6 +55,21 @@ public class Face {
 
 		// worldrenderer.pos(vertices[0].x, vertices[0].y, vertices[0].z);
 		// worldrenderer.endVertex();
+
+		// FOR quad drawing only
+		// if ((textureCoordinates != null) && (textureCoordinates.length > 0)) {
+		// offsetU = textureOffset;
+		// offsetV = textureOffset;
+		//
+		// if (textureCoordinates[i].u > averageU) {
+		// offsetU = -offsetU;
+		// }
+		// if (textureCoordinates[i].v > averageV) {
+		// offsetV = -offsetV;
+		// }
+		//
+		// worldrenderer.pos(vertices[i].x, vertices[i].y, vertices[i].z).tex(textureCoordinates[i].u + offsetU, textureCoordinates[i].v + offsetV).normal(faceNormal.x, faceNormal.y, faceNormal.z).endVertex();
+		// }
 		for (i = 0; i < vertices.length; ++i) {
 
 			if ((textureCoordinates != null) && (textureCoordinates.length > 0)) {
@@ -70,13 +85,13 @@ public class Face {
 
 				// 1.8 worldrenderer.addVertexWithUV(vertices[i].x, vertices[i].y, vertices[i].z, textureCoordinates[i].u + offsetU, textureCoordinates[i].v + offsetV);
 
-				worldrenderer.pos(vertices[i].x, vertices[i].y, vertices[i].z).tex(textureCoordinates[i].u + offsetU, textureCoordinates[i].v + offsetV).endVertex();
+				worldrenderer.pos(vertices[i].x, vertices[i].y, vertices[i].z).tex(textureCoordinates[i].u + offsetU, textureCoordinates[i].v + offsetV).normal(faceNormal.x, faceNormal.y, faceNormal.z).endVertex();
 
 				// worldrenderer.endVertex();
 			} else {
 				// 1.8 worldrenderer.addVertex(vertices[i].x, vertices[i].y, vertices[i].z);
 
-				worldrenderer.pos(vertices[i].x, vertices[i].y, vertices[i].z).endVertex();
+				worldrenderer.pos(vertices[i].x, vertices[i].y, vertices[i].z).normal(faceNormal.x, faceNormal.y, faceNormal.z).endVertex();
 				// worldrenderer.endVertex();
 			}
 

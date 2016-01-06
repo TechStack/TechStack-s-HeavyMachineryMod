@@ -146,11 +146,11 @@ public class WavefrontObject implements IModelCustom {
 			// 1.8.8 version public void func_181668_a(int p_181668_1_, VertexFormat p_181668_2_)
 
 			// worldRenderer.func_181668_a(currentGroupObject.glDrawingMode, DefaultVertexFormats.field_181703_c);
-			worldRenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_NORMAL);
+			worldRenderer.begin(GL11.GL_TRIANGLES, DefaultVertexFormats.POSITION_TEX_NORMAL);
 		} else {
 			// 1.8 worldRenderer.startDrawing(GL11.GL_TRIANGLES);
 			// worldRenderer.func_181668_a(currentGroupObject.glDrawingMode, DefaultVertexFormats.field_181703_c);
-			worldRenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_NORMAL);
+			worldRenderer.begin(GL11.GL_TRIANGLES, DefaultVertexFormats.POSITION_TEX_NORMAL);
 
 		}
 		tessellateAll(tessellator);
