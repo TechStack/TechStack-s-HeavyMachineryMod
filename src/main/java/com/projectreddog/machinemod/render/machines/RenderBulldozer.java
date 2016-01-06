@@ -1,16 +1,16 @@
 package com.projectreddog.machinemod.render.machines;
 
+import org.lwjgl.opengl.GL11;
+
+import com.projectreddog.machinemod.model.ModelBulldozer;
+import com.projectreddog.machinemod.reference.Reference;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-
-import org.lwjgl.opengl.GL11;
-
-import com.projectreddog.machinemod.model.ModelBulldozer;
-import com.projectreddog.machinemod.reference.Reference;
 
 public class RenderBulldozer extends Render {
 
@@ -26,7 +26,7 @@ public class RenderBulldozer extends Render {
 
 	@Override
 	public void doRender(Entity entity, double x, double y, double z, float yaw, float pitch) {
-
+		long start = System.currentTimeMillis();
 		GL11.glPushMatrix();
 		GL11.glTranslated(x, y, z);
 		GL11.glRotatef(180.0F - yaw, 0.0F, 1.0F, 0.0F);
@@ -53,6 +53,9 @@ public class RenderBulldozer extends Render {
 		this.modelBulldozer.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
 		GL11.glPopMatrix();
+
+		long end = System.currentTimeMillis();
+		// LogHelper.info("face was drawn in " + (end - start) + "ms");
 	}
 
 	@Override

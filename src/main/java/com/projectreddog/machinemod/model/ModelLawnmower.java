@@ -50,8 +50,8 @@ public class ModelLawnmower extends ModelTransportable {
 
 		// myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/lawnmower.obj"));
 		try {
-			myModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/cube.obj"));
-			// myModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/lawnmower.obj"));
+			// myModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/cube.obj"));
+			myModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/lawnmower.obj"));
 			Function<ResourceLocation, TextureAtlasSprite> textureGetter;
 			textureGetter = new Function<ResourceLocation, TextureAtlasSprite>() {
 				public TextureAtlasSprite apply(ResourceLocation location) {

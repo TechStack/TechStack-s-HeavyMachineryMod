@@ -6,16 +6,16 @@
 
 package com.projectreddog.machinemod.model;
 
-import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.model.advanced.AdvancedModelLoader;
 import com.projectreddog.machinemod.model.advanced.IModelCustom;
 import com.projectreddog.machinemod.reference.Reference;
+
+import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.ResourceLocation;
 
 public class ModelBulldozer extends ModelTransportable {
 	// fields
@@ -40,7 +40,6 @@ public class ModelBulldozer extends ModelTransportable {
 
 		}
 		this.renderGroupObject("Bucket_Cube.002");
-
 	}
 
 	public void renderGroupObject(String groupName) {

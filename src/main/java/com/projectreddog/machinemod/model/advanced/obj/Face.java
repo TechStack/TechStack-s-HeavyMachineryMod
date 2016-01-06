@@ -22,7 +22,6 @@ public class Face {
 		if (faceNormal == null) {
 			faceNormal = this.calculateFaceNormal();
 		}
-
 		// 1.8 Specific removed setting normals from tessellator
 		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
 		// worldrenderer.set

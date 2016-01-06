@@ -27,7 +27,7 @@ public class RenderLawnmower extends Render {
 		GL11.glPushMatrix();
 		GL11.glTranslated(x, y, z);
 		GL11.glRotatef(180.0F - yaw, 0.0F, 1.0F, 0.0F);
-		// GL11.glRotatef(90.0F, 0.0F, 0.0F, 1.0F);
+		GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
 		// float f2 = pitch;
 		// float f3 = pitch;
 		//
