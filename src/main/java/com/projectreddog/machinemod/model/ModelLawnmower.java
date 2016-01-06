@@ -6,21 +6,31 @@
 
 package com.projectreddog.machinemod.model;
 
-import com.projectreddog.machinemod.model.advanced.AdvancedModelLoader;
-import com.projectreddog.machinemod.model.advanced.IModelCustom;
+import java.io.IOException;
+
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.Attributes;
+import net.minecraftforge.client.model.obj.OBJLoader;
+import net.minecraftforge.client.model.obj.OBJModel;
 
 public class ModelLawnmower extends ModelTransportable {
 	// fields
-	private IModelCustom myModel;
+	private OBJModel myModel;
 
 	public ModelLawnmower() {
 
-		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/lawnmower.obj"));
+		try {
+			myModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/lawnmower.obj"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		IBakedModel ibm = myModel.bake(myModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, );
+		
 		// casinoTexture = new ResourceLocation("modid",
 		// "textures/casinoTexture.png");
 
