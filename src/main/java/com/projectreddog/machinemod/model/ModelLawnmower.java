@@ -8,28 +8,53 @@ package com.projectreddog.machinemod.model;
 
 import java.io.IOException;
 
+import org.lwjgl.opengl.GL11;
+
+import com.google.common.base.Function;
+import com.google.common.collect.ImmutableMap;
 import com.projectreddog.machinemod.reference.Reference;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.Attributes;
+import net.minecraftforge.client.model.IFlexibleBakedModel;
+import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.model.obj.OBJModel;
+import net.minecraftforge.client.model.pipeline.LightUtil;
 
 public class ModelLawnmower extends ModelTransportable {
 	// fields
-	private OBJModel myModel;
-
+	private OBJModel myOBJModel;
+	private IFlexibleBakedModel myBakedModel;
 	public ModelLawnmower() {
 
 		try {
-			myModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/lawnmower.obj"));
+			myOBJModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/lawnmower.obj"));
+			  Function<ResourceLocation, TextureAtlasSprite> textureGetter = new Function<ResourceLocation, TextureAtlasSprite>()
+		        {
+		            public TextureAtlasSprite apply(ResourceLocation location)
+		            {
+		                return Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(location.toString());
+		            }
+		        };
+		        
+				IModel texturedModel = ((OBJModel) myOBJModel.retexture(ImmutableMap.of("#lawnmower", "machinemod:model/modellawnmower")));
+
+		        myBakedModel=   texturedModel.bake(myOBJModel.getDefaultState(),  Attributes.DEFAULT_BAKED_FORMAT, textureGetter) ;
+		        // can use a list strings as a OBJModel.OBJState Turning those group objects on or off accordngly
+		        
+		        
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		IBakedModel ibm = myModel.bake(myModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, );
 		
 		// casinoTexture = new ResourceLocation("modid",
 		// "textures/casinoTexture.png");
@@ -37,13 +62,22 @@ public class ModelLawnmower extends ModelTransportable {
 	}
 
 	public void renderGroupObject(String groupName) {
-		myModel.renderPart(groupName);
-
+		//myOBJModel.renderPart(groupName);
 	}
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
-		myModel.renderAll();
+		//myOBJModel.renderAll();
+		Tessellator  tessellator = Tessellator.getInstance();
+
+		WorldRenderer 	worldrenderer = tessellator.getWorldRenderer();
+		worldrenderer.begin(GL11.GL_QUADS, myBakedModel.getFormat());
+		for (BakedQuad bakedQuad : myBakedModel.getGeneralQuads()){
+			LightUtil.renderQuadColor(worldrenderer, bakedQuad, -1);
+		}
+		
+		tessellator.draw();
+		//worldrenderer.finishDrawing();
 		// will now call rendering for each individual object
 		// this.renderGroupObject("Tractor_Cube.001");
 
