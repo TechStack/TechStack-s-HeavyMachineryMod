@@ -44,7 +44,7 @@ public class ModelLawnmower extends ModelTransportable {
 				}
 			};
 
-			IModel texturedModel = ((OBJModel) myOBJModel.retexture(ImmutableMap.of("#lawnmower", "machinemod:model/modellawnmower")));
+			IModel texturedModel = ((OBJModel) myOBJModel.retexture(ImmutableMap.of("#lawnmower", "machinemod:lawnmower")));
 			// IModel texturedModel = (OBJModel) myOBJModel;// .retexture(ImmutableMap.of("#lawnmower", "machinemod:model/modellawnmower")));
 
 			myBakedModel = texturedModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, textureGetter);

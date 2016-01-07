@@ -46,7 +46,7 @@ public class RenderLawnmower extends Render {
 		float f4 = 0.5F;
 		// GL11.glScalef(f4, f4, f4);
 		// GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
-		this.bindEntityTexture(entity);
+		// this.bindEntityTexture(entity);
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelLawnmower.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
