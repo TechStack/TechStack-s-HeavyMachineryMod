@@ -37,14 +37,14 @@ public class ModelLawnmower extends ModelTransportable {
 	public ModelLawnmower() {
 
 		try {
-			myOBJModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/lawnmower.obj"));
+			myOBJModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/bulldozer.obj"));
 			Function<ResourceLocation, TextureAtlasSprite> textureGetter = new Function<ResourceLocation, TextureAtlasSprite>() {
 				public TextureAtlasSprite apply(ResourceLocation location) {
 					return Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(location.toString());
 				}
 			};
 
-			IModel texturedModel = ((OBJModel) myOBJModel.retexture(ImmutableMap.of("#lawnmower", "machinemod:lawnmower")));
+			IModel texturedModel = ((OBJModel) myOBJModel.retexture(ImmutableMap.of("#lawnmower", "machinemod:models/lawnmower"))).process(ImmutableMap.of("flip-v", "true"));
 			// IModel texturedModel = (OBJModel) myOBJModel;// .retexture(ImmutableMap.of("#lawnmower", "machinemod:model/modellawnmower")));
 
 			myBakedModel = texturedModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, textureGetter);
