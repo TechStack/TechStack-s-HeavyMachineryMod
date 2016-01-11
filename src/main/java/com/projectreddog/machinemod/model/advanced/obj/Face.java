@@ -65,6 +65,7 @@ public class Face {
 	}
 
 	public Vertex calculateFaceNormal() {
+
 		// 1.8 cast doubles and removed vector helper
 		Vec3 v1 = new Vec3((double) vertices[1].x - vertices[0].x, (double) vertices[1].y - vertices[0].y, (double) vertices[1].z - vertices[0].z);
 		Vec3 v2 = new Vec3((double) vertices[2].x - vertices[0].x, (double) vertices[2].y - vertices[0].y, (double) vertices[2].z - vertices[0].z);

@@ -3,7 +3,6 @@ package com.projectreddog.machinemod.render.machines;
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.model.ModelLawnmower;
-import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.Render;
@@ -50,6 +49,7 @@ public class RenderLawnmower extends Render {
 		this.bindEntityTexture(entity);
 
 		// Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
+		// this.renderManager.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelLawnmower.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
@@ -63,7 +63,8 @@ public class RenderLawnmower extends Render {
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
 
-		return new ResourceLocation("machinemod", Reference.MODEL_BULLDOZER_TEXTURE_LOCATION);
+		return ((ModelLawnmower) modelLawnmower).myOBJModel.getMatLib().getMaterial("Material").getTexture().getTextureLocation();
+		// return new ResourceLocation("machinemod", Reference.MODEL_TESTCUBE_TEXTURE_LOCATION);
 	}
 
 }

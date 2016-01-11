@@ -20,34 +20,34 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.Attributes;
 import net.minecraftforge.client.model.IFlexibleBakedModel;
 import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.model.obj.OBJModel;
-import net.minecraftforge.client.model.pipeline.LightUtil;
 
 public class ModelLawnmower extends ModelTransportable {
 	// fields
-	private OBJModel myOBJModel;
+	public OBJModel myOBJModel;
 	private IFlexibleBakedModel myBakedModel;
 
 	public ModelLawnmower() {
 
 		try {
-			myOBJModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/bulldozer.obj"));
+			myOBJModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/testcube.obj"));
 			Function<ResourceLocation, TextureAtlasSprite> textureGetter = new Function<ResourceLocation, TextureAtlasSprite>() {
 				public TextureAtlasSprite apply(ResourceLocation location) {
 					return Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(location.toString());
 				}
 			};
 
-			IModel texturedModel = ((OBJModel) myOBJModel.retexture(ImmutableMap.of("#lawnmower", "machinemod:models/lawnmower"))).process(ImmutableMap.of("flip-v", "true"));
-			// IModel texturedModel = (OBJModel) myOBJModel;// .retexture(ImmutableMap.of("#lawnmower", "machinemod:model/modellawnmower")));
+			// IModel texturedModel = ((OBJModel) myOBJModel.retexture(ImmutableMap.of("#lawnmower", "machinemod:models/lawnmower"))).process(ImmutableMap.of("flip-v", "true"));
+			IModel texturedModel = (OBJModel) myOBJModel.process(ImmutableMap.of("flip-v", "true"));// .retexture(ImmutableMap.of("#lawnmower", "machinemod:model/modellawnmower")));
 
-			myBakedModel = texturedModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, textureGetter);
+			// myBakedModel = texturedModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, textureGetter);
+			myBakedModel = texturedModel.bake(myOBJModel.getDefaultState(), DefaultVertexFormats.POSITION_TEX_NORMAL, textureGetter);
 			// can use a list strings as a OBJModel.OBJState Turning those group objects on or off accordngly
 
 		} catch (IOException e) {
@@ -70,8 +70,14 @@ public class ModelLawnmower extends ModelTransportable {
 
 		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
 		worldrenderer.begin(GL11.GL_QUADS, myBakedModel.getFormat());
+		// for (BakedQuad bakedQuad : myBakedModel.getGeneralQuads()) {
+		// LightUtil.renderQuadColor(worldrenderer, bakedQuad, -1);
+		//
+		// }
+
 		for (BakedQuad bakedQuad : myBakedModel.getGeneralQuads()) {
-			LightUtil.renderQuadColor(worldrenderer, bakedQuad, -1);
+			worldrenderer.addVertexData(bakedQuad.getVertexData());
+
 		}
 
 		tessellator.draw();
@@ -93,7 +99,7 @@ public class ModelLawnmower extends ModelTransportable {
 
 	public ResourceLocation getTexture() {
 
-		return new ResourceLocation("machinemod", Reference.MODEL_LAWNMOWER_TEXTURE_LOCATION);
+		return new ResourceLocation("machinemod", Reference.MODEL_TESTCUBE_TEXTURE_LOCATION);
 	}
 
 }
