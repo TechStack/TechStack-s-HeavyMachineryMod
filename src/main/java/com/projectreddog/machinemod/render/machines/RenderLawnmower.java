@@ -3,6 +3,7 @@ package com.projectreddog.machinemod.render.machines;
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.model.ModelLawnmower;
+import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.Render;
@@ -63,8 +64,8 @@ public class RenderLawnmower extends Render {
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
 
-		return ((ModelLawnmower) modelLawnmower).myOBJModel.getMatLib().getMaterial("Material").getTexture().getTextureLocation();
-		// return new ResourceLocation("machinemod", Reference.MODEL_TESTCUBE_TEXTURE_LOCATION);
+		// return ((ModelLawnmower) modelLawnmower).myOBJModel.getMatLib().getMaterial("Material").getTexture().getTextureLocation();
+		return new ResourceLocation("machinemod", Reference.MODEL_LAWNMOWER_TEXTURE_LOCATION);
 	}
 
 }
