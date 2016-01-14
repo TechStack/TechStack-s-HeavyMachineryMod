@@ -1,6 +1,10 @@
 package com.projectreddog.machinemod.reference;
 
+import com.google.common.base.Function;
 import com.mojang.authlib.GameProfile;
+
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.util.ResourceLocation;
 
 public class Reference {
 	// common constants for our mod
@@ -138,4 +142,27 @@ public class Reference {
 	public static int crudeOilStoneGenMaxlevel = 30;
 	public static int wellHeadMaxRange = 15;
 
+	public static Function<ResourceLocation, TextureAtlasSprite> textureGetter = new Function<ResourceLocation, TextureAtlasSprite>() {
+		public TextureAtlasSprite apply(ResourceLocation location) {
+			return DummyAtlasTexture.instance;
+		}
+	};
+
+	private static class DummyAtlasTexture extends TextureAtlasSprite {
+		public static DummyAtlasTexture instance = new DummyAtlasTexture();
+
+		protected DummyAtlasTexture() {
+			super("dummy");
+		}
+
+		@Override
+		public float getInterpolatedU(double u) {
+			return (float) u / -16;
+		}
+
+		@Override
+		public float getInterpolatedV(double v) {
+			return (float) v / 16;
+		}
+	}
 }

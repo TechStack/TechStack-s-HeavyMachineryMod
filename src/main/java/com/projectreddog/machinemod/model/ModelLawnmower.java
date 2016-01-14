@@ -10,14 +10,12 @@ import java.io.IOException;
 
 import org.lwjgl.opengl.GL11;
 
-import com.google.common.base.Function;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.Attributes;
@@ -35,11 +33,6 @@ public class ModelLawnmower extends ModelTransportable {
 
 		try {
 			myOBJModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/lawnmower.obj"));
-			Function<ResourceLocation, TextureAtlasSprite> textureGetter = new Function<ResourceLocation, TextureAtlasSprite>() {
-				public TextureAtlasSprite apply(ResourceLocation location) {
-					return DummyAtlasTexture.instance;
-				}
-			};
 
 			// IModel texturedModel = ((OBJModel) myOBJModel.retexture(ImmutableMap.of("#lawnmower", "machinemod:models/lawnmower"))).process(ImmutableMap.of("flip-v", "true"));
 			IModel texturedModel = myOBJModel;// .process(ImmutableMap.of("flip-v", "true"));// .retexture(ImmutableMap.of("#lawnmower", "machinemod:model/modellawnmower")));
@@ -47,7 +40,7 @@ public class ModelLawnmower extends ModelTransportable {
 			// myBakedModel = texturedModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, textureGetter);
 			// myBakedModel = texturedModel.bake(myOBJModel.getDefaultState(), DefaultVertexFormats.POSITION_TEX_NORMAL, textureGetter);
 
-			myBakedModel = texturedModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, textureGetter);
+			myBakedModel = texturedModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetter);
 			// can use a list strings as a OBJModel.OBJState Turning those group objects on or off accordngly
 
 		} catch (IOException e) {
@@ -100,23 +93,5 @@ public class ModelLawnmower extends ModelTransportable {
 	public ResourceLocation getTexture() {
 
 		return new ResourceLocation("machinemod", Reference.MODEL_LAWNMOWER_TEXTURE_LOCATION);
-	}
-
-	private static class DummyAtlasTexture extends TextureAtlasSprite {
-		public static DummyAtlasTexture instance = new DummyAtlasTexture();
-
-		protected DummyAtlasTexture() {
-			super("dummy");
-		}
-
-		@Override
-		public float getInterpolatedU(double u) {
-			return (float) u / -16;
-		}
-
-		@Override
-		public float getInterpolatedV(double v) {
-			return (float) v / 16;
-		}
 	}
 }
