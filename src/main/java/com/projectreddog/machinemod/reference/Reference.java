@@ -142,17 +142,46 @@ public class Reference {
 	public static int crudeOilStoneGenMaxlevel = 30;
 	public static int wellHeadMaxRange = 15;
 
-	public static Function<ResourceLocation, TextureAtlasSprite> textureGetter = new Function<ResourceLocation, TextureAtlasSprite>() {
+	public static Function<ResourceLocation, TextureAtlasSprite> textureGetternormal = new Function<ResourceLocation, TextureAtlasSprite>() {
 		public TextureAtlasSprite apply(ResourceLocation location) {
-			return DummyAtlasTexture.instance;
+			return DummyAtlasTextureNormal.instance;
+		}
+	};
+	public static Function<ResourceLocation, TextureAtlasSprite> textureGetterFlipV = new Function<ResourceLocation, TextureAtlasSprite>() {
+		public TextureAtlasSprite apply(ResourceLocation location) {
+			return DummyAtlasTextureFlipV.instance;
 		}
 	};
 
-	private static class DummyAtlasTexture extends TextureAtlasSprite {
-		public static DummyAtlasTexture instance = new DummyAtlasTexture();
+	public static Function<ResourceLocation, TextureAtlasSprite> textureGetterFlipU = new Function<ResourceLocation, TextureAtlasSprite>() {
+		public TextureAtlasSprite apply(ResourceLocation location) {
+			return DummyAtlasTextureFlipU.instance;
+		}
+	};
 
-		protected DummyAtlasTexture() {
+	private static class DummyAtlasTextureNormal extends TextureAtlasSprite {
+		public static DummyAtlasTextureNormal instance = new DummyAtlasTextureNormal();
+
+		protected DummyAtlasTextureNormal() {
 			super("dummy");
+		}
+
+		@Override
+		public float getInterpolatedU(double u) {
+			return (float) u / 16;
+		}
+
+		@Override
+		public float getInterpolatedV(double v) {
+			return (float) v / 16;
+		}
+	}
+
+	private static class DummyAtlasTextureFlipU extends TextureAtlasSprite {
+		public static DummyAtlasTextureFlipU instance = new DummyAtlasTextureFlipU();
+
+		protected DummyAtlasTextureFlipU() {
+			super("dummyFlipU");
 		}
 
 		@Override
@@ -163,6 +192,24 @@ public class Reference {
 		@Override
 		public float getInterpolatedV(double v) {
 			return (float) v / 16;
+		}
+	}
+
+	private static class DummyAtlasTextureFlipV extends TextureAtlasSprite {
+		public static DummyAtlasTextureFlipV instance = new DummyAtlasTextureFlipV();
+
+		protected DummyAtlasTextureFlipV() {
+			super("dummyFlipV");
+		}
+
+		@Override
+		public float getInterpolatedU(double u) {
+			return (float) u / 16;
+		}
+
+		@Override
+		public float getInterpolatedV(double v) {
+			return (float) v / -16;
 		}
 	}
 }

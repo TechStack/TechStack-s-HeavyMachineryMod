@@ -8,26 +8,21 @@ package com.projectreddog.machinemod.model;
 
 import java.io.IOException;
 
-import org.lwjgl.opengl.GL11;
-
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.utility.MachineModRenderHelper;
 
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
-import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.Attributes;
 import net.minecraftforge.client.model.IFlexibleBakedModel;
-import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.model.obj.OBJModel;
 
 public class ModelLawnmower extends ModelTransportable {
 	// fields
 	public OBJModel myOBJModel;
-	private IFlexibleBakedModel myBakedModel;
+	private IFlexibleBakedModel fullModel;
 
 	public ModelLawnmower() {
 
@@ -35,21 +30,17 @@ public class ModelLawnmower extends ModelTransportable {
 			myOBJModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/lawnmower.obj"));
 
 			// IModel texturedModel = ((OBJModel) myOBJModel.retexture(ImmutableMap.of("#lawnmower", "machinemod:models/lawnmower"))).process(ImmutableMap.of("flip-v", "true"));
-			IModel texturedModel = myOBJModel;// .process(ImmutableMap.of("flip-v", "true"));// .retexture(ImmutableMap.of("#lawnmower", "machinemod:model/modellawnmower")));
+			// IModel texturedModel = myOBJModel;// .process(ImmutableMap.of("flip-v", "true"));// .retexture(ImmutableMap.of("#lawnmower", "machinemod:model/modellawnmower")));
 
 			// myBakedModel = texturedModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, textureGetter);
 			// myBakedModel = texturedModel.bake(myOBJModel.getDefaultState(), DefaultVertexFormats.POSITION_TEX_NORMAL, textureGetter);
 
-			myBakedModel = texturedModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetter);
+			fullModel = myOBJModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipU);
 			// can use a list strings as a OBJModel.OBJState Turning those group objects on or off accordngly
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		// casinoTexture = new ResourceLocation("modid",
-		// "textures/casinoTexture.png");
-
 	}
 
 	public void renderGroupObject(String groupName) {
@@ -58,26 +49,7 @@ public class ModelLawnmower extends ModelTransportable {
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
-		// myOBJModel.renderAll();
-		Tessellator tessellator = Tessellator.getInstance();
-
-		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-		worldrenderer.begin(GL11.GL_QUADS, myBakedModel.getFormat());
-		// for (BakedQuad bakedQuad : myBakedModel.getGeneralQuads()) {
-		// LightUtil.renderQuadColor(worldrenderer, bakedQuad, -1);
-		//
-		// }
-
-		for (BakedQuad bakedQuad : myBakedModel.getGeneralQuads()) {
-			worldrenderer.addVertexData(bakedQuad.getVertexData());
-
-		}
-
-		tessellator.draw();
-		// worldrenderer.finishDrawing();
-		// will now call rendering for each individual object
-		// this.renderGroupObject("Tractor_Cube.001");
-
+		MachineModRenderHelper.renderBakedModel(fullModel);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
