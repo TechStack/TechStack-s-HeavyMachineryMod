@@ -18,42 +18,17 @@ import net.minecraftforge.client.model.obj.OBJModel;
 
 public class ModelLoader extends ModelTransportable {
 	// fields
-	public OBJModel myOBJModel;
-	// private IFlexibleBakedModel fullModel;
-	// private IFlexibleBakedModel modelBody;
-	// private IFlexibleBakedModel modelArm2;
-	// private IFlexibleBakedModel modelBucket;
-	private String nameBody = "LoaderBody_Cube";
-	private String nameArm = "Arm2_Cube.002";
-	private String nameBucket = "Bucket_Cube.003";
-
+	public OBJModel objModel;
 	private HashMap<String, IFlexibleBakedModel> modelParts;
+	private String groupNameBody = "LoaderBody_Cube";
+	private String groupNameArm = "Arm2_Cube.002";
+	private String groupNameBucket = "Bucket_Cube.003";
 
 	public ModelLoader() {
 		boolean first = true;
 		try {
-			myOBJModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/loader.obj"));
-			// fullModel = myOBJModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetter);
-			// modelBody =
-			// for (String key : myOBJModel.getMatLib().getGroups().keySet()) {1
-			// String k = key;
-			// if (!key.equals(null)) {
-			// if (!first) {
-			// if (!modelParts.containsKey(key)) {
-			// modelParts.put(k, myOBJModel.bake(new OBJModel.OBJState(ImmutableList.of(k), false), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipV));
-			// }
-			// } else {
-			// modelParts.put(k, myOBJModel.bake(new OBJModel.OBJState(ImmutableList.of(k), false), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipV));
-			// first = false;
-			// }
-			// }
-			// }
-
-			modelParts = MachineModModelHelper.getModelsForGroups(myOBJModel);
-			// modelParts.put(nameBody, myOBJModel.bake(new OBJModel.OBJState(ImmutableList.of(nameBody), false), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipV));
-			// modelParts.put(nameArm, myOBJModel.bake(new OBJModel.OBJState(ImmutableList.of(nameArm), false), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipV));
-			// modelParts.put(nameBucket, myOBJModel.bake(new OBJModel.OBJState(ImmutableList.of(nameBucket), false), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipV));
-
+			objModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/loader.obj"));
+			modelParts = MachineModModelHelper.getModelsForGroups(objModel);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -61,16 +36,12 @@ public class ModelLoader extends ModelTransportable {
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
-		// myModel.renderAll();
-
-		this.renderGroupObject(nameBody);
-		// GL11.glTranslatef(0f, -1.5f, -0.5f);
+		this.renderGroupObject(groupNameBody);
 		GL11.glTranslatef(0f, -2.25f, -1.05f);
 		if (entity != null) {
-
 			GL11.glRotatef(((EntityLoader) entity).Attribute1, 1, 0, 0);
 		}
-		this.renderGroupObject(nameArm);
+		this.renderGroupObject(groupNameArm);
 		// GL11.glTranslatef(0f, 1.2f, -1.2f);
 		GL11.glTranslatef(0f, 1.8f, -1.9f);
 		if (entity != null) {
@@ -78,15 +49,11 @@ public class ModelLoader extends ModelTransportable {
 				GL11.glRotatef((((EntityLoader) entity).Attribute1 + 30) * -2f, 1, 0, 0);
 			}
 		}
-		this.renderGroupObject(nameBucket);
-
+		this.renderGroupObject(groupNameBucket);
 	}
 
 	public void renderGroupObject(String groupName) {
-		// myModel.renderPart(groupName);
-
 		MachineModModelHelper.renderBakedModel(modelParts.get(groupName));
-
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -100,7 +67,6 @@ public class ModelLoader extends ModelTransportable {
 	}
 
 	public ResourceLocation getTexture() {
-
 		return new ResourceLocation("machinemod", Reference.MODEL_LOADER_TEXTURE_LOCATION);
 	}
 }

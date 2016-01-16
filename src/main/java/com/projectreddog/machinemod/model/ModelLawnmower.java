@@ -21,27 +21,13 @@ import net.minecraftforge.client.model.obj.OBJModel;
 
 public class ModelLawnmower extends ModelTransportable {
 	// fields
-	public OBJModel myOBJModel;
-	private IFlexibleBakedModel fullModel;
+	public OBJModel objModel;
 	private HashMap<String, IFlexibleBakedModel> modelParts;
 
 	public ModelLawnmower() {
-
 		try {
-			myOBJModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/lawnmower.obj"));
-
-			// IModel texturedModel = ((OBJModel) myOBJModel.retexture(ImmutableMap.of("#lawnmower", "machinemod:models/lawnmower"))).process(ImmutableMap.of("flip-v", "true"));
-			// IModel texturedModel = myOBJModel;// .process(ImmutableMap.of("flip-v", "true"));// .retexture(ImmutableMap.of("#lawnmower", "machinemod:model/modellawnmower")));
-
-			// myBakedModel = texturedModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, textureGetter);
-			// myBakedModel = texturedModel.bake(myOBJModel.getDefaultState(), DefaultVertexFormats.POSITION_TEX_NORMAL, textureGetter);
-
-			// fullModel = myOBJModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipV);
-
-			modelParts = MachineModModelHelper.getModelsForGroups(myOBJModel);
-
-			// can use a list strings as a OBJModel.OBJState Turning those group objects on or off accordngly
-
+			objModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/lawnmower.obj"));
+			modelParts = MachineModModelHelper.getModelsForGroups(objModel);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -67,7 +53,6 @@ public class ModelLawnmower extends ModelTransportable {
 	}
 
 	public ResourceLocation getTexture() {
-
 		return new ResourceLocation("machinemod", Reference.MODEL_LAWNMOWER_TEXTURE_LOCATION);
 	}
 }
