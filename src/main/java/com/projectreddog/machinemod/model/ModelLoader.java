@@ -25,7 +25,6 @@ public class ModelLoader extends ModelTransportable {
 	private String groupNameBucket = "Bucket_Cube.003";
 
 	public ModelLoader() {
-		boolean first = true;
 		try {
 			objModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/loader.obj"));
 			modelParts = MachineModModelHelper.getModelsForGroups(objModel);

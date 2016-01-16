@@ -6,31 +6,40 @@
 
 package com.projectreddog.machinemod.model.tileentity;
 
-import com.projectreddog.machinemod.model.advanced.AdvancedModelLoader;
-import com.projectreddog.machinemod.model.advanced.IModelCustom;
+import java.io.IOException;
+import java.util.HashMap;
+
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
+import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.IFlexibleBakedModel;
+import net.minecraftforge.client.model.obj.OBJLoader;
+import net.minecraftforge.client.model.obj.OBJModel;
 
 public class ModelLiquidPipe extends ModelBase {
 	// fields
-	private IModelCustom myModel;
+
+	public OBJModel objModel;
+	private HashMap<String, IFlexibleBakedModel> modelParts;
 
 	public ModelLiquidPipe() {
 
-		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/pipe.obj"));
-		// casinoTexture = new ResourceLocation("modid",
-		// "textures/casinoTexture.png");
-
+		try {
+			objModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/pipe.obj"));
+			modelParts = MachineModModelHelper.getModelsForGroups(objModel);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void renderGroupObject(String groupName) {
-		myModel.renderPart(groupName);
+		MachineModModelHelper.renderBakedModel(modelParts.get(groupName));
 
 	}
 

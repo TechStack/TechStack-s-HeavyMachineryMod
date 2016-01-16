@@ -1,27 +1,33 @@
 package com.projectreddog.machinemod.model;
 
+import java.io.IOException;
+import java.util.HashMap;
+
 import org.lwjgl.opengl.GL11;
 
-import com.projectreddog.machinemod.entity.EntityBagger;
-import com.projectreddog.machinemod.model.advanced.AdvancedModelLoader;
-import com.projectreddog.machinemod.model.advanced.IModelCustom;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.IFlexibleBakedModel;
+import net.minecraftforge.client.model.obj.OBJLoader;
+import net.minecraftforge.client.model.obj.OBJModel;
 
 public class ModelOilRig extends ModelTransportable {
 	// fields
-	private IModelCustom myModel;
+
+	public OBJModel objModel;
+	private HashMap<String, IFlexibleBakedModel> modelParts;
 
 	public ModelOilRig() {
-
-		// LogHelper.info("LOADING dump truck MODEL!");
-		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/oilrig.obj"));
-		// casinoTexture = new ResourceLocation("modid",
-		// "textures/casinoTexture.png");
-
+		try {
+			objModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/oilrig.obj"));
+			modelParts = MachineModModelHelper.getModelsForGroups(objModel);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
@@ -37,14 +43,14 @@ public class ModelOilRig extends ModelTransportable {
 
 		if (entity != null) {
 
-			//GL11.glRotatef(((EntityOilRig) entity).Attribute1, 1, 0, 0);
+			// GL11.glRotatef(((EntityOilRig) entity).Attribute1, 1, 0, 0);
 		}
 		this.renderGroupObject("ARM_Cube.003");
 
 		GL11.glTranslatef(0f, -0.25f, -12.75f);
 		if (entity != null) {
 
-			//GL11.glRotatef(((EntityOilRig) entity).Attribute2 * -1, 1, 0, 0);
+			// GL11.glRotatef(((EntityOilRig) entity).Attribute2 * -1, 1, 0, 0);
 		}
 
 		// GL11.glTranslatef(0f, 1.2f, -1.2f);
@@ -60,7 +66,7 @@ public class ModelOilRig extends ModelTransportable {
 	}
 
 	public void renderGroupObject(String groupName) {
-		myModel.renderPart(groupName);
+		MachineModModelHelper.renderBakedModel(modelParts.get(groupName));
 
 	}
 

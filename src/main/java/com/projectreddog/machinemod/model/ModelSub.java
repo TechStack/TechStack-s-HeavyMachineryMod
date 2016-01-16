@@ -6,34 +6,41 @@
 
 package com.projectreddog.machinemod.model;
 
-import com.projectreddog.machinemod.model.advanced.AdvancedModelLoader;
-import com.projectreddog.machinemod.model.advanced.IModelCustom;
+import java.io.IOException;
+import java.util.HashMap;
+
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.IFlexibleBakedModel;
+import net.minecraftforge.client.model.obj.OBJLoader;
+import net.minecraftforge.client.model.obj.OBJModel;
 
 public class ModelSub extends ModelTransportable {
 	// fields
-	private IModelCustom myModel;
+	public OBJModel objModel;
+	private HashMap<String, IFlexibleBakedModel> modelParts;
 
 	public ModelSub() {
-
-		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/sub.obj"));
-		// casinoTexture = new ResourceLocation("modid",
-		// "textures/casinoTexture.png");
-
+		try {
+			objModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/sub.obj"));
+			modelParts = MachineModModelHelper.getModelsForGroups(objModel);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void renderGroupObject(String groupName) {
-		myModel.renderPart(groupName);
+		MachineModModelHelper.renderBakedModel(modelParts.get(groupName));
 
 	}
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
-		myModel.renderAll();
+		renderGroupObject(MachineModModelHelper.ALL_PARTS);
 		// will now call rendering for each individual object
 		// this.renderGroupObject("Tractor_Cube.001");
 
