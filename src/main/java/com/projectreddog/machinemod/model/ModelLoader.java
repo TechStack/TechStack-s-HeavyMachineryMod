@@ -5,15 +5,13 @@ import java.util.HashMap;
 
 import org.lwjgl.opengl.GL11;
 
-import com.google.common.collect.ImmutableList;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.utility.MachineModRenderHelper;
+import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.Attributes;
 import net.minecraftforge.client.model.IFlexibleBakedModel;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.model.obj.OBJModel;
@@ -32,15 +30,29 @@ public class ModelLoader extends ModelTransportable {
 	private HashMap<String, IFlexibleBakedModel> modelParts;
 
 	public ModelLoader() {
-
+		boolean first = true;
 		try {
 			myOBJModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/loader.obj"));
 			// fullModel = myOBJModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetter);
 			// modelBody =
+			// for (String key : myOBJModel.getMatLib().getGroups().keySet()) {1
+			// String k = key;
+			// if (!key.equals(null)) {
+			// if (!first) {
+			// if (!modelParts.containsKey(key)) {
+			// modelParts.put(k, myOBJModel.bake(new OBJModel.OBJState(ImmutableList.of(k), false), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipV));
+			// }
+			// } else {
+			// modelParts.put(k, myOBJModel.bake(new OBJModel.OBJState(ImmutableList.of(k), false), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipV));
+			// first = false;
+			// }
+			// }
+			// }
 
-			modelParts.put(nameBody, myOBJModel.bake(new OBJModel.OBJState(ImmutableList.of(nameBody), false), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipV));
-			modelParts.put(nameArm, myOBJModel.bake(new OBJModel.OBJState(ImmutableList.of(nameArm), false), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipV));
-			modelParts.put(nameBucket, myOBJModel.bake(new OBJModel.OBJState(ImmutableList.of(nameBucket), false), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipV));
+			modelParts = MachineModModelHelper.getModelsForGroups(myOBJModel);
+			// modelParts.put(nameBody, myOBJModel.bake(new OBJModel.OBJState(ImmutableList.of(nameBody), false), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipV));
+			// modelParts.put(nameArm, myOBJModel.bake(new OBJModel.OBJState(ImmutableList.of(nameArm), false), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipV));
+			// modelParts.put(nameBucket, myOBJModel.bake(new OBJModel.OBJState(ImmutableList.of(nameBucket), false), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipV));
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -73,7 +85,7 @@ public class ModelLoader extends ModelTransportable {
 	public void renderGroupObject(String groupName) {
 		// myModel.renderPart(groupName);
 
-		MachineModRenderHelper.renderBakedModel(modelParts.get(groupName));
+		MachineModModelHelper.renderBakedModel(modelParts.get(groupName));
 
 	}
 

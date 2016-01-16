@@ -7,14 +7,14 @@
 package com.projectreddog.machinemod.model;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.utility.MachineModRenderHelper;
+import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.Attributes;
 import net.minecraftforge.client.model.IFlexibleBakedModel;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.model.obj.OBJModel;
@@ -23,6 +23,7 @@ public class ModelLawnmower extends ModelTransportable {
 	// fields
 	public OBJModel myOBJModel;
 	private IFlexibleBakedModel fullModel;
+	private HashMap<String, IFlexibleBakedModel> modelParts;
 
 	public ModelLawnmower() {
 
@@ -35,7 +36,10 @@ public class ModelLawnmower extends ModelTransportable {
 			// myBakedModel = texturedModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, textureGetter);
 			// myBakedModel = texturedModel.bake(myOBJModel.getDefaultState(), DefaultVertexFormats.POSITION_TEX_NORMAL, textureGetter);
 
-			fullModel = myOBJModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipV);
+			// fullModel = myOBJModel.bake(myOBJModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, Reference.textureGetterFlipV);
+
+			modelParts = MachineModModelHelper.getModelsForGroups(myOBJModel);
+
 			// can use a list strings as a OBJModel.OBJState Turning those group objects on or off accordngly
 
 		} catch (IOException e) {
@@ -44,12 +48,12 @@ public class ModelLawnmower extends ModelTransportable {
 	}
 
 	public void renderGroupObject(String groupName) {
-		// myOBJModel.renderPart(groupName);
+		MachineModModelHelper.renderBakedModel(modelParts.get(groupName));
 	}
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
-		MachineModRenderHelper.renderBakedModel(fullModel);
+		renderGroupObject(MachineModModelHelper.ALL_PARTS);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
