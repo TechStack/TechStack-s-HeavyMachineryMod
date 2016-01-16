@@ -3,7 +3,6 @@ package com.projectreddog.machinemod.model;
 import java.io.IOException;
 import java.util.HashMap;
 
-import com.projectreddog.machinemod.model.advanced.IModelCustom;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
@@ -16,7 +15,6 @@ import net.minecraftforge.client.model.obj.OBJModel;
 
 public class ModelPaver extends ModelTransportable {
 	// fields
-	private IModelCustom myModel;
 	public OBJModel objModel;
 	private HashMap<String, IFlexibleBakedModel> modelParts;
 
