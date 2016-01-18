@@ -1,5 +1,6 @@
 # Blender v2.73 (sub 0) OBJ File: 'fractionaldistilation.blend'
 # www.blender.org
+mtllib fractionaldistilation.mtl
 o Sphere
 v -0.195090 -2.998239 -0.000000
 v -0.382684 -2.941333 -0.000000
@@ -679,6 +680,7 @@ vt 0.747951 0.450680
 vt 0.747951 0.549320
 vt 0.710202 0.640453
 vt 0.549320 0.747951
+usemtl Material
 s off
 f 6/1 14/2 15/3
 f 5/4 4/5 12/6
