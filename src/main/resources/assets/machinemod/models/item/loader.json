@@ -1,5 +1,5 @@
 {
-      "parent": "machinemod:item/machinemod_item",
+      "parent": "machinemod/loader",
       "textures": {
         "layer0": "machinemod:items/loader"
         }

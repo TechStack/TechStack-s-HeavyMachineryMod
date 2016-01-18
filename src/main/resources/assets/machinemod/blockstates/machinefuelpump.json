@@ -1,8 +1,15 @@
 {
-    "variants": {
-        "facing=east": { "model": "machinemod:machinefuelpump" },
-        "facing=west": { "model": "machinemod:machinefuelpump" },
-        "facing=north": { "model": "machinemod:machinefuelpump" },
-        "facing=south": { "model": "machinemod:machinefuelpump" }
-    }
+  "forge_marker": 1,
+  "defaults": {
+    "custom": { "flip-v": true },
+    "model": "machinemod:fuelpump.obj"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+        "facing=north": {"model": "machinemod:fuelpump.obj","x":180, "y":180},
+        "facing=south": {"model": "machinemod:fuelpump.obj","x":180 },
+        "facing=west":  {"model": "machinemod:fuelpump.obj","x":180,"y": 90 },
+        "facing=east":  {"model": "machinemod:fuelpump.obj","x":180,"y": 270 }
+        }
 }
