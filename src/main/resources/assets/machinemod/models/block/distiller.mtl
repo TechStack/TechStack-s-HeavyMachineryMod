@@ -9,7 +9,7 @@ Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd distiller.png
+map_Kd machinemod:blocks/distiller
 
 newmtl Material.001
 Ns 96.078431
@@ -19,4 +19,4 @@ Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd distiller.png
+map_Kd machinemod:blocks/distiller
