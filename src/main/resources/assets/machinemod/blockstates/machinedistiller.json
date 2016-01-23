@@ -6,7 +6,7 @@
   },
   "variants": {
     "normal": [{}],
-    "inventory": [{}],
+    "inventory": [{"x":180}],
         "facing=north": {"model": "machinemod:distiller.obj","x":180, "y":180},
         "facing=south": {"model": "machinemod:distiller.obj","x":180 },
         "facing=west":  {"model": "machinemod:distiller.obj","x":180,"y": 90 },

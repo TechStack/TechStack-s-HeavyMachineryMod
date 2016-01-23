@@ -6,6 +6,6 @@
   },
   "variants": {
     "normal": [{"x":180}],
-    "inventory": [{}]
+    "inventory": [{"x":180}]
         }
 }
