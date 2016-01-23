@@ -1,9 +1,15 @@
 {
-    "variants": {
-        "facing=east": { "model": "machinemod:machineprimarycrhuser" },
-        "facing=west": { "model": "machinemod:machineprimarycrhuser" },
-        "facing=north": { "model": "machinemod:machineprimarycrhuser" },
-        "facing=south": { "model": "machinemod:machineprimarycrhuser" }
-                
-    }
+  "forge_marker": 1,
+  "defaults": {
+    "custom": { "flip-v": true },
+    "model": "machinemod:primarycrusher.obj"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+        "facing=north": {"model": "machinemod:primarycrusher.obj","x":180, "y":180},
+        "facing=south": {"model": "machinemod:primarycrusher.obj","x":180 },
+        "facing=west":  {"model": "machinemod:primarycrusher.obj","x":180,"y": 90 },
+        "facing=east":  {"model": "machinemod:primarycrusher.obj","x":180,"y": 270 }
+        }
 }

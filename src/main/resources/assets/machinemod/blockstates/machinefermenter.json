@@ -1,9 +1,15 @@
 {
-    "variants": {
-        "facing=west": { "model": "machinemod:machinefermenter" },
-        "facing=east": { "model": "machinemod:machinefermenter" },
-        "facing=south": { "model": "machinemod:machinefermenter" },
-        "facing=north": { "model": "machinemod:machinefermenter" }
-
-    }
+  "forge_marker": 1,
+  "defaults": {
+    "custom": { "flip-v": true },
+    "model": "machinemod:fermenter.obj"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+        "facing=north": {"model": "machinemod:fermenter.obj","x":180, "y":180},
+        "facing=south": {"model": "machinemod:fermenter.obj","x":180 },
+        "facing=west":  {"model": "machinemod:fermenter.obj","x":180,"y": 90 },
+        "facing=east":  {"model": "machinemod:fermenter.obj","x":180,"y": 270 }
+        }
 }
