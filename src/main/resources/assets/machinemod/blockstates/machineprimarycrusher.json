@@ -5,6 +5,7 @@
     "model": "machinemod:primarycrusher.obj"
   },
   "variants": {
+  "thirdperson": [{"x":180}],
     "normal": [{}],
     "inventory": [{"x":180}],
         "facing=north": {"model": "machinemod:primarycrusher.obj","x":180, "y":180},
@@ -12,4 +13,6 @@
         "facing=west":  {"model": "machinemod:primarycrusher.obj","x":180,"y": 90 },
         "facing=east":  {"model": "machinemod:primarycrusher.obj","x":180,"y": 270 }
         }
+   
+            
 }
