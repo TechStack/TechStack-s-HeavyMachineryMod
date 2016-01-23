@@ -1,6 +1,6 @@
 # Blender v2.73 (sub 0) OBJ File: 'conecrusher.blend'
 # www.blender.org
-mtllib primarycrusher.mtl
+mtllib conecrusher.mtl
 o Cylinder
 v 0.500000 0.995898 1.000000
 v 0.500000 0.003877 0.925754
