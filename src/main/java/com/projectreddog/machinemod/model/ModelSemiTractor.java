@@ -1,31 +1,38 @@
 package com.projectreddog.machinemod.model;
 
+import java.io.IOException;
+import java.util.HashMap;
+
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerCargo;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerLivestock;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerTanker;
-import com.projectreddog.machinemod.model.advanced.AdvancedModelLoader;
-import com.projectreddog.machinemod.model.advanced.IModelCustom;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.IFlexibleBakedModel;
+import net.minecraftforge.client.model.obj.OBJLoader;
+import net.minecraftforge.client.model.obj.OBJModel;
 
 public class ModelSemiTractor extends ModelBase {
 	// fields
-	private IModelCustom myModel;
+
+	public OBJModel objModel;
+	private HashMap<String, IFlexibleBakedModel> modelParts;
 
 	public ModelSemiTractor() {
-
-		// LogHelper.info("LOADING dump truck MODEL!");
-		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/semitractor.obj"));
-		// casinoTexture = new ResourceLocation("modid",
-		// "textures/casinoTexture.png");
-
+		try {
+			objModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/semitractor.obj"));
+			modelParts = MachineModModelHelper.getModelsForGroups(objModel);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
@@ -58,7 +65,7 @@ public class ModelSemiTractor extends ModelBase {
 	}
 
 	public void renderGroupObject(String groupName) {
-		myModel.renderPart(groupName);
+		MachineModModelHelper.renderBakedModel(modelParts.get(groupName));
 
 	}
 

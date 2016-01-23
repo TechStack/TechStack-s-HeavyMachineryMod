@@ -6,36 +6,44 @@
 
 package com.projectreddog.machinemod.model.tileentity;
 
-import com.projectreddog.machinemod.model.advanced.AdvancedModelLoader;
-import com.projectreddog.machinemod.model.advanced.IModelCustom;
+import java.io.IOException;
+import java.util.HashMap;
+
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.IFlexibleBakedModel;
+import net.minecraftforge.client.model.obj.OBJLoader;
+import net.minecraftforge.client.model.obj.OBJModel;
 
 public class ModelWellHead extends ModelBase {
 	// fields
-	private IModelCustom myModel;
+	public OBJModel objModel;
+	private HashMap<String, IFlexibleBakedModel> modelParts;
 
 	public ModelWellHead() {
 
-		myModel = AdvancedModelLoader.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/wellhead.obj"));
-		// casinoTexture = new ResourceLocation("modid",
-		// "textures/casinoTexture.png");
-
+		try {
+			objModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/wellhead.obj"));
+			modelParts = MachineModModelHelper.getModelsForGroups(objModel);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void renderGroupObject(String groupName) {
-		myModel.renderPart(groupName);
+		MachineModModelHelper.renderBakedModel(modelParts.get(groupName));
 
 	}
 
 	public void render(TileEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		// super.render(null, f, f1, f2, f3, f4, f5);
-		myModel.renderAll();
+		renderGroupObject(MachineModModelHelper.ALL_PARTS);
 
 	}
 

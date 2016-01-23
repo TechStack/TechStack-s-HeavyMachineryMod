@@ -1,5 +1,6 @@
 # Blender v2.73 (sub 0) OBJ File: 'graderPrototype.blend'
 # www.blender.org
+mtllib graderprototype.mtl
 o Cube
 v 2.552657 -0.028722 -0.034509
 v 2.552657 -0.028722 -0.138627
@@ -436,6 +437,7 @@ vt 0.794033 0.558487
 vt 0.749269 0.666556
 vt 0.666556 0.749269
 vt 0.200241 0.292644
+usemtl Material
 s off
 f 1/1 3/2 9/3
 f 2/4 173/5 174/6

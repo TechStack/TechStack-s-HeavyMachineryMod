@@ -10,15 +10,15 @@ import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ITickable;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
 
-public class TileEntityFractionalDistillation extends TileEntity implements IUpdatePlayerListBox, IFluidTank {
+public class TileEntityFractionalDistillation extends TileEntity implements ITickable, IFluidTank {
 
 	public final int maxOilStorage = 10000; // store up to 100k
 
@@ -32,26 +32,29 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 	public final int BlastedStoneGemMultiplier = 2;
 	public final int BlastedStoneLapisMultiplier = 12;
 	public final int BlastedStoneRedstoneMultiplier = 8;
-	protected FluidStack fluid ;//= new FluidStack(ModBlocks.fluidOil, 0);
+	protected FluidStack fluid;// = new FluidStack(ModBlocks.fluidOil, 0);
 	public int transferOilAmount = 10;
 	public boolean firstTick = true;
+
 	public TileEntityFractionalDistillation() {
 	}
-	public int getStackOrder(){
-		if (this.worldObj.getBlockState(this.pos.down()).getBlock()== ModBlocks.machinefractionaldistillation  ){
-			if (this.worldObj.getTileEntity(this.pos.down()) instanceof TileEntityFractionalDistillation){
-				TileEntityFractionalDistillation te =(TileEntityFractionalDistillation) this.worldObj.getTileEntity(this.pos.down());
-				return te.getStackOrder()+1;
+
+	public int getStackOrder() {
+		if (this.worldObj.getBlockState(this.pos.down()).getBlock() == ModBlocks.machinefractionaldistillation) {
+			if (this.worldObj.getTileEntity(this.pos.down()) instanceof TileEntityFractionalDistillation) {
+				TileEntityFractionalDistillation te = (TileEntityFractionalDistillation) this.worldObj.getTileEntity(this.pos.down());
+				return te.getStackOrder() + 1;
 			}
-		}				
+		}
 		return 1;
 	}
+
 	@Override
 	public void update() {
 		if (!worldObj.isRemote) {
-			if (firstTick){
+			if (firstTick) {
 				LogHelper.info("Stack order:" + getStackOrder());
-				firstTick= !firstTick;
+				firstTick = !firstTick;
 			}
 			if (amIBottom()) {
 
@@ -100,9 +103,9 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 
 												fill(est.drain(transferOilAmount, true), true);
 											}
-										}else {
+										} else {
 											// no fluid in this block so we can pull the fluid from the tanker
-											if (est.getFluid().getFluid() == ModBlocks.fluidOil){
+											if (est.getFluid().getFluid() == ModBlocks.fluidOil) {
 												FluidStack moveStack = new FluidStack(fluid, transferOilAmount);
 
 												fill(est.drain(transferOilAmount, true), true);

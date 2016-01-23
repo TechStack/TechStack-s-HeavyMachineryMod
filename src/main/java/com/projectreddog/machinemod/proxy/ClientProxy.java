@@ -37,25 +37,14 @@ import com.projectreddog.machinemod.render.machines.RenderSemiTractor;
 import com.projectreddog.machinemod.render.machines.RenderSub;
 import com.projectreddog.machinemod.render.machines.RenderTractor;
 import com.projectreddog.machinemod.render.tileentity.TileEntityCentrifugeRenderer;
-import com.projectreddog.machinemod.render.tileentity.TileEntityDistillerRenderer;
-import com.projectreddog.machinemod.render.tileentity.TileEntityFermenterRenderer;
-import com.projectreddog.machinemod.render.tileentity.TileEntityFractionalDistillationRenderer;
-import com.projectreddog.machinemod.render.tileentity.TileEntityFuelPumpRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityLiquidPipeRenderer;
-import com.projectreddog.machinemod.render.tileentity.TileEntityPrimaryCrusherRenderer;
-import com.projectreddog.machinemod.render.tileentity.TileEntityWellHeadRenderer;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
-import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
-import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
-import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
-import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
-import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
-import com.projectreddog.machinemod.tileentities.TileEntityWellHead;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -65,6 +54,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerRenderers() {
 
+		OBJLoader.instance.addDomain(Reference.MOD_ID);
 		// LogHelper.info("in register Renderers");
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityBulldozer.class, new RenderBulldozer(Minecraft.getMinecraft().getRenderManager()));
@@ -97,16 +87,16 @@ public class ClientProxy extends CommonProxy {
 		ModItems.initItemRender();
 
 		// Register TESR (tile Entity Special renderes
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPrimaryCrusher.class, new TileEntityPrimaryCrusherRenderer());
+		// ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPrimaryCrusher.class, new TileEntityPrimaryCrusherRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCentrifuge.class, new TileEntityCentrifugeRenderer());
 
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFuelPump.class, new TileEntityFuelPumpRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDistiller.class, new TileEntityDistillerRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFermenter.class, new TileEntityFermenterRenderer());
+		// ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFuelPump.class, new TileEntityFuelPumpRenderer());
+		// ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDistiller.class, new TileEntityDistillerRenderer());
+		// ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFermenter.class, new TileEntityFermenterRenderer());
 
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWellHead.class, new TileEntityWellHeadRenderer());
+		// ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWellHead.class, new TileEntityWellHeadRenderer());
 
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFractionalDistillation.class, new TileEntityFractionalDistillationRenderer());
+		// ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFractionalDistillation.class, new TileEntityFractionalDistillationRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLiquidPipe.class, new TileEntityLiquidPipeRenderer());
 
 		// regsiter event for overlay

@@ -515,7 +515,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		setPosition(posX + motionX, posY + motionY, posZ + motionZ);
 		if (!this.isDead) {
 			// only do for entities not dead so we dont keep them around on the client side.
-			this.addedToChunk = false;
+			// this.addedToChunk = false;
+			// 1.8.9 cant do this anymore causing major Rendering FPS issues.
 		}
 		// LogHelper.info("Client: isinvis:" +
 		// this.isInvisibleToPlayer(Minecraft.getMinecraft().thePlayer) +
@@ -551,7 +552,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	// override the set position and rotation function to avoid MC from setting
 	// the postion of the entity so i can handle it
 	// in my network handler ... avoids jitter
-	public void func_180426_a(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_, boolean bool) {
+	public void setPositionAndRotation2(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_, boolean bool) {
 
 	}
 
@@ -861,7 +862,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	}
 
 	@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
+	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
 		if (stack != null) {
 			setInventorySlotContents(slot, null);
