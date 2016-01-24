@@ -717,7 +717,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public void toppleTree(BlockPos bp, int depth, int widthDepth, Block previousBlock) {
 		if (depth < Reference.MAX_TREE_DEPTH) {
 			if (widthDepth < Reference.MAX_TREE_WIDTH) {
-				if (worldObj.getBlockState(bp).getBlock() == Blocks.log || worldObj.getBlockState(bp).getBlock() == Blocks.log2 || worldObj.getBlockState(bp).getBlock() == Blocks.leaves || worldObj.getBlockState(bp).getBlock() == Blocks.leaves2) {
+				if (worldObj.getBlockState(bp).getBlock() == Blocks.log || worldObj.getBlockState(bp).getBlock() == Blocks.log2 || worldObj.getBlockState(bp).getBlock() == Blocks.leaves || worldObj.getBlockState(bp).getBlock() == Blocks.leaves2 || worldObj.getBlockState(bp).getBlock().isWood(worldObj, bp) || worldObj.getBlockState(bp).getBlock().isLeaves(worldObj, bp)) {
+
 					previousBlock = worldObj.getBlockState(bp).getBlock();
 					BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
 
