@@ -338,7 +338,9 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 		if (side == EnumFacing.UP) {
 			return topSlots;
 		}
-		return null;
+
+		int[] i = new int[] {};
+		return i;
 	}
 
 	@Override
