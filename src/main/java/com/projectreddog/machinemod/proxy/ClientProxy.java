@@ -2,6 +2,7 @@ package com.projectreddog.machinemod.proxy;
 
 import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.entity.EntityBulldozer;
+import com.projectreddog.machinemod.entity.EntityChopper;
 import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.entity.EntityCrane;
 import com.projectreddog.machinemod.entity.EntityDrillingRig;
@@ -22,6 +23,7 @@ import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.render.machines.RenderBagger;
 import com.projectreddog.machinemod.render.machines.RenderBulldozer;
+import com.projectreddog.machinemod.render.machines.RenderChopper;
 import com.projectreddog.machinemod.render.machines.RenderCombine;
 import com.projectreddog.machinemod.render.machines.RenderCrane;
 import com.projectreddog.machinemod.render.machines.RenderDrillingRig;
@@ -74,6 +76,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityRoadRoller.class, new RenderRoadRoller(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityOilRig.class, new RenderOilRig(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySub.class, new RenderSub(Minecraft.getMinecraft().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityChopper.class, new RenderChopper(Minecraft.getMinecraft().getRenderManager()));
 
 		// RenderingRegistry.registerEntityRenderingHandler(EntityPumpJack.class, new RenderPumpJack(Minecraft.getMinecraft().getRenderManager()));
 

@@ -20,6 +20,8 @@ public class Reference {
 	public static final String MODEL_TESTCUBE_TEXTURE_LOCATION = "models/uv.png";
 
 	public static final String MODEL_SUB_TEXTURE_LOCATION = "models/sub.png";
+	public static final String MODEL_CHOPPER_TEXTURE_LOCATION = "models/chopper.png";
+
 	public static final String MODEL_SEMI_TEXTURE_LOCATION = "models/semi.png";
 
 	public static final String FLUID_OIL_STILL_TEXTURE_LOCATION = "textures/blocks/oil_still.png";

@@ -84,6 +84,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 	public boolean willSink = true;
 	public boolean isWaterOnly = false;
+	public boolean canFly = false;
 	public int runTimeTillNextFuelUsage = 20;
 	public int maxRunTimeTillNextFuelUsage = 20;
 	public int clientTicksSinceLastServerPulse = 0;
@@ -309,7 +310,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			if (willSink) {
 				this.motionY -= 0.03999999910593033D;
 			} else {
-				if (worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.water) {
+				if (worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.water || canFly) {
 					// do nothing
 					this.motionY = this.motionY * .85D;
 
