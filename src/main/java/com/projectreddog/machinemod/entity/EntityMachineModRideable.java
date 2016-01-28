@@ -766,7 +766,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 					}
 				} else {
 					// nothign in slot so set contents
-					setInventorySlotContents(j, new ItemStack(is.getItem(), is.stackSize, is.getItemDamage()));
+					setInventorySlotContents(j, is.copy());
 					is = null;
 				}
 

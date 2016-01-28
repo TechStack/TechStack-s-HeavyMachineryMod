@@ -131,7 +131,13 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 						dropDust(i, new ItemStack(Items.dye, 5, EnumDyeColor.WHITE.getDyeDamage()));
 						return;
 					} else {
-						dropDust(i, new ItemStack(item.getItem(), 1, item.getMetadata()));
+
+						ItemStack tmpstack = item;
+						if (tmpstack.stackSize > 1) {
+							tmpstack.stackSize = 1;
+						}
+
+						dropDust(i, tmpstack);
 						return;
 					}
 				}
@@ -237,7 +243,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 					}
 				} else {
 					// nothign in slot so set contents
-					setInventorySlotContents(j, new ItemStack(is.getItem(), is.stackSize, is.getItemDamage()));
+					setInventorySlotContents(j, is.copy());
 					is = null;
 				}
 

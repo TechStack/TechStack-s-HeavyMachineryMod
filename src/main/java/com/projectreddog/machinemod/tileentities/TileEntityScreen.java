@@ -78,7 +78,11 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 						z = this.pos.getZ() + .5d;
 					}
 
-					EntityItem ei = new EntityItem(worldObj, x, y, z, new ItemStack(getStackInSlot(4).getItem(), 1, getStackInSlot(4).getItem().getMetadata(getStackInSlot(4))));
+					ItemStack tmpstack = getStackInSlot(4).copy();
+					if (tmpstack.stackSize > 1) {
+						tmpstack.stackSize = 1;
+					}
+					EntityItem ei = new EntityItem(worldObj, x, y, z, tmpstack);
 					ei.motionX = 0;
 					ei.motionY = 0;
 					ei.motionZ = 0;
@@ -109,11 +113,15 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 					x = this.pos.getX() - .5d;
 					z = this.pos.getZ() + .5d;
 				}
-
-				EntityItem ei = new EntityItem(worldObj, x, y, z, new ItemStack(getStackInSlot(4).getItem(), 1, getStackInSlot(4).getItem().getMetadata(getStackInSlot(4))));
+				ItemStack tmpstack = getStackInSlot(4).copy();
+				if (tmpstack.stackSize > 1) {
+					tmpstack.stackSize = 1;
+				}
+				EntityItem ei = new EntityItem(worldObj, x, y, z, tmpstack);
 				ei.motionX = 0;
 				ei.motionY = 0;
 				ei.motionZ = 0;
+
 				if (worldObj.spawnEntityInWorld(ei)) {
 					decrStackSize(4, 1);
 					return;
@@ -175,7 +183,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 				}
 			} else {
 				// nothing in slot so set contents
-				setInventorySlotContents(j, new ItemStack(is.getItem(), is.stackSize, is.getItemDamage()));
+				setInventorySlotContents(j, is.copy());
 				is = null;
 			}
 
