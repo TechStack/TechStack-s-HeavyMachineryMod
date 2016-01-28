@@ -60,6 +60,7 @@ import com.projectreddog.machinemod.item.components.ItemWheel;
 import com.projectreddog.machinemod.item.components.ItemWoodenGear;
 import com.projectreddog.machinemod.item.machines.ItemBagger;
 import com.projectreddog.machinemod.item.machines.ItemBulldozer;
+import com.projectreddog.machinemod.item.machines.ItemChopper;
 import com.projectreddog.machinemod.item.machines.ItemCombine;
 import com.projectreddog.machinemod.item.machines.ItemCrane;
 import com.projectreddog.machinemod.item.machines.ItemDrillingRig;
@@ -99,6 +100,8 @@ public class ModItems {
 	public static final ItemMachineMod rollerwheel = new ItemRollerWheel();
 	public static final ItemMachineMod oilrig = new ItemOilRig();
 	public static final ItemMachineMod sub = new ItemSub();
+	public static final ItemMachineMod chopper = new ItemChopper();
+
 	public static final ItemMachineMod liquidtanksegment = new ItemLiquidTankSegment();
 
 	public static final ItemMachineMod prop = new ItemProp();
@@ -257,6 +260,11 @@ public class ModItems {
 		}
 		if (Reference.enableSub) {
 			GameRegistry.registerItem(sub, "sub");
+
+		}
+
+		if (Reference.enableChopper) {
+			GameRegistry.registerItem(chopper, "chopper");
 
 		}
 		if (Reference.enableTractor) {
@@ -424,6 +432,10 @@ public class ModItems {
 		}
 		if (Reference.enableSub) {
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(sub, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "sub", "inventory"));
+
+		}
+		if (Reference.enableChopper) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(chopper, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "chopper", "inventory"));
 
 		}
 		if (Reference.enableTractor) {

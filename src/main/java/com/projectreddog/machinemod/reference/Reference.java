@@ -134,6 +134,8 @@ public class Reference {
 	public static boolean enableRoadRoller = true;
 	public static boolean enableSemiTractor = true;
 	public static boolean enableSub = true;
+	public static boolean enableChopper = true;
+
 	public static boolean enableTractor = true;
 
 	public static int crudeOilStoneGenMinlevel = 5;

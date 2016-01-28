@@ -48,6 +48,7 @@ public class ModelChopper extends ModelTransportable {
 		// will now call rendering for each individual object
 		// this.renderGroupObject("Tractor_Cube.001");
 		// renderGroupObject("Cylinder");
+		GL11.glTranslatef(f, f1, f2);
 		renderGroupObject("Body_Cube");
 
 		if (entity instanceof EntityChopper) {

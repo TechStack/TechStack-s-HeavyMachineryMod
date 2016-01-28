@@ -30,6 +30,7 @@ public class ConfigurationHandler {
 		Reference.enableDebugPipeCode = configuration.get(Configuration.CATEGORY_GENERAL, "enableDebugPipeCode", Reference.enableDebugPipeCode, "If true Pipes will render color coded based on fulid in the pipes at the cost of addtional network packets, if false networking & color coded rendering is disabled").getBoolean();
 		Reference.enableBagger = configuration.get(Configuration.CATEGORY_GENERAL, "enableBagger", true, "If true Bagger is Enabled, if false Bagger is disabled").getBoolean();
 		Reference.enableBulldozer = configuration.get(Configuration.CATEGORY_GENERAL, "enableBulldozer", true, "If true Bulldozer is Enabled, if false BullDozer is disabled").getBoolean();
+		Reference.enableChopper = configuration.get(Configuration.CATEGORY_GENERAL, "enableChopper", true, "If true Chopper is Enabled, if false Chopper is disabled").getBoolean();
 		Reference.enableCombine = configuration.get(Configuration.CATEGORY_GENERAL, "enableCombine", true, "If true Combine is Enabled, if false Combine is disabled").getBoolean();
 		Reference.enableCrane = configuration.get(Configuration.CATEGORY_GENERAL, "enableCrane", true, "If true Crane is Enabled, if false Crane is disabled").getBoolean();
 		Reference.enableDrillingRig = configuration.get(Configuration.CATEGORY_GENERAL, "enableDrillingRig", true, "If true DrillingRig is Enabled, if false DrillingRig is disabled").getBoolean();
@@ -44,6 +45,7 @@ public class ConfigurationHandler {
 		Reference.enableRoadRoller = configuration.get(Configuration.CATEGORY_GENERAL, "enableRoadRoller", true, "If true RoadRoller is Enabled, if false RoadRoller is disabled").getBoolean();
 		Reference.enableSemiTractor = configuration.get(Configuration.CATEGORY_GENERAL, "enableSemiTractor", true, "If true SemiTractor is Enabled, if false SemiTractor is disabled").getBoolean();
 		Reference.enableSub = configuration.get(Configuration.CATEGORY_GENERAL, "enableSub", true, "If true Sub is Enabled, if false Sub is disabled").getBoolean();
+		Reference.enableChopper = configuration.get(Configuration.CATEGORY_GENERAL, "enableSub", true, "If true Sub is Enabled, if false Sub is disabled").getBoolean();
 		Reference.enableTractor = configuration.get(Configuration.CATEGORY_GENERAL, "enableTractor", true, "If true Tractor is Enabled, if false Tractor is disabled").getBoolean();
 
 		// save the config if it did not exits
