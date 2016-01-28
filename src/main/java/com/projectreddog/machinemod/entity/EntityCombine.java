@@ -41,6 +41,9 @@ public class EntityCombine extends EntityMachineModRideable {
 			// bucket Down
 			// break blocks first
 			int angle;
+			if (this.riddenByEntity != null) {
+				this.Attribute2++;
+			}
 			if (this.isPlayerPushingSprintButton) {
 				for (int j = 0; j < 2; j++) {
 					for (int i = -2; i < 3; i++) {

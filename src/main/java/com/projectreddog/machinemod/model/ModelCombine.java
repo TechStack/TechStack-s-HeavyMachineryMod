@@ -3,6 +3,9 @@ package com.projectreddog.machinemod.model;
 import java.io.IOException;
 import java.util.HashMap;
 
+import org.lwjgl.opengl.GL11;
+
+import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
@@ -32,7 +35,17 @@ public class ModelCombine extends ModelBase {
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
-		renderGroupObject(MachineModModelHelper.ALL_PARTS);
+		// renderGroupObject(MachineModModelHelper.ALL_PARTS);
+
+		renderGroupObject("Body_Cube");
+		GL11.glTranslatef(0f, -.6f, -2f);
+
+		if (entity instanceof EntityCombine) {
+			EntityCombine ec = (EntityCombine) entity;
+			GL11.glRotatef(ec.Attribute2, 1, 0, 0);
+		}
+
+		renderGroupObject("Cylinder");
 
 	}
 
