@@ -16,7 +16,7 @@ public class EntityChopper extends EntityMachineModRideable {
 
 	public EntityChopper(World world) {
 		super(world);
-		setSize(2.5F, 4F);
+		setSize(2.5F, 2.5F);
 		inventory = new ItemStack[9];
 		this.mountedOffsetY = 0.1D;
 		this.mountedOffsetX = 1d;
@@ -47,6 +47,7 @@ public class EntityChopper extends EntityMachineModRideable {
 				this.Attribute2++;
 				currentFuelLevel--;
 			}
+
 			if ((this.currentFuelLevel > 0 && isPlayerPushingSprintButton) || this.riddenByEntity == null || this.currentFuelLevel == 0) {
 				this.motionY -= 0.04D;
 				if (this.riddenByEntity == null && !this.isCollidedVertically && this.currentFuelLevel > 0) {

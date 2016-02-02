@@ -17,6 +17,7 @@ import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.IFlexibleBakedModel;
 import net.minecraftforge.client.model.obj.OBJLoader;
@@ -49,6 +50,24 @@ public class ModelChopper extends ModelTransportable {
 		// this.renderGroupObject("Tractor_Cube.001");
 		// renderGroupObject("Cylinder");
 		GL11.glTranslatef(f, f1, f2);
+
+		if (entity instanceof EntityChopper) {
+			EntityChopper ec = (EntityChopper) entity;
+			double dx = ec.motionX;
+			double dz = ec.motionZ;
+			float speed = MathHelper.sqrt_double(dx * dx + dz * dz);
+			if (ec.isPlayerAccelerating) {
+				GL11.glRotatef(10f, 1, 0, 0);
+			}
+
+			if (ec.isPlayerBreaking) {
+				GL11.glRotatef(-10f, 1, 0, 0);
+			}
+
+			// if (speed > .1f) {
+			// GL11.glRotatef(90f, 0, 0, 1);
+			// }
+		}
 		renderGroupObject("Body_Cube");
 
 		if (entity instanceof EntityChopper) {
