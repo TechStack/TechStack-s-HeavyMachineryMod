@@ -28,7 +28,7 @@ public class TileEntityLiquidPipeRenderer extends TileEntitySpecialRenderer {
 		GL11.glPushMatrix();
 
 		// GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-		GL11.glTranslated(x + .5d, y - .5d, z + .5d);
+		GL11.glTranslated(x + .5d, y + .5d, z + .5d);
 
 		// GL11.glEnable(GL11.GL_DEPTH_TEST);
 

@@ -16,8 +16,12 @@ public class Reference {
 	// textures for Entities
 	public static final String MODEL_BULLDOZER_TEXTURE_LOCATION = "models/bulldozer.png";
 	public static final String MODEL_TRACTOR_TEXTURE_LOCATION = "models/modeltractor.png";
-	public static final String MODEL_LAWNMOWER_TEXTURE_LOCATION = "models/modellawnmower.png";
+	public static final String MODEL_LAWNMOWER_TEXTURE_LOCATION = "models/lawnmower.png";
+	public static final String MODEL_TESTCUBE_TEXTURE_LOCATION = "models/uv.png";
+
 	public static final String MODEL_SUB_TEXTURE_LOCATION = "models/sub.png";
+	public static final String MODEL_CHOPPER_TEXTURE_LOCATION = "models/chopper.png";
+
 	public static final String MODEL_SEMI_TEXTURE_LOCATION = "models/semi.png";
 
 	public static final String FLUID_OIL_STILL_TEXTURE_LOCATION = "textures/blocks/oil_still.png";
@@ -90,7 +94,7 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_BLASTED_STONE = "machineblastedstone";
 	public static final String MODBLOCK_MACHINE_CORN = "corn";
 	public static final String MODBLOCK_MACHINE_BLASTED_STONE2 = "machineblastedstone2";
-	public static final String MODBLOCK_MACHINE_PRIMARY_CRUSHER = "machineprimarycrhuser";
+	public static final String MODBLOCK_MACHINE_PRIMARY_CRUSHER = "machineprimarycrusher";
 	public static final String MODBLOCK_MACHINE_CENTRIFUGE = "machinecentrifuge";
 	public static final String MODBLOCK_MACHINE_DISTILLER = "machinedistiller";
 	public static final String MODBLOCK_MACHINE_WELL_HEAD = "machinewellhead";
@@ -130,6 +134,8 @@ public class Reference {
 	public static boolean enableRoadRoller = true;
 	public static boolean enableSemiTractor = true;
 	public static boolean enableSub = true;
+	public static boolean enableChopper = true;
+
 	public static boolean enableTractor = true;
 
 	public static int crudeOilStoneGenMinlevel = 5;

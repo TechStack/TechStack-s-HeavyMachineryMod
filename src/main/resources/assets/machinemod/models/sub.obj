@@ -1,5 +1,6 @@
 # Blender v2.73 (sub 0) OBJ File: 'sub.blend'
 # www.blender.org
+mtllib sub.mtl
 o Cube
 v 2.257520 -2.276156 -1.572334
 v 2.183651 -2.277088 2.209955
@@ -765,6 +766,7 @@ vt 0.583968 0.583968
 vt 0.616467 0.523167
 vt 0.609710 0.545443
 vt 0.523167 0.616467
+usemtl Material
 s off
 f 6/1 12/2 11/3
 f 17/4 16/5 11/3

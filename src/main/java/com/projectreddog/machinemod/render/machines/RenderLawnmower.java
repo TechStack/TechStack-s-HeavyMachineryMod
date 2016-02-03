@@ -25,6 +25,7 @@ public class RenderLawnmower extends Render {
 
 	@Override
 	public void doRender(Entity entity, double x, double y, double z, float yaw, float pitch) {
+		boolean flag = false;
 
 		GL11.glPushMatrix();
 		GL11.glTranslated(x, y, z);
@@ -45,19 +46,25 @@ public class RenderLawnmower extends Render {
 
 		float f4 = 0.5F;
 		// GL11.glScalef(f4, f4, f4);
-		// GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
+
 		this.bindEntityTexture(entity);
+
+		// Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
+		// this.renderManager.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
+
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelLawnmower.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
 		// ((ModelTractor) this.modelTractor).renderGroupObject("Plow_Cube");
 
 		GL11.glPopMatrix();
+
 	}
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
 
+		// return ((ModelLawnmower) modelLawnmower).myOBJModel.getMatLib().getMaterial("Material").getTexture().getTextureLocation();
 		return new ResourceLocation("machinemod", Reference.MODEL_LAWNMOWER_TEXTURE_LOCATION);
 	}
 

@@ -1,9 +1,0 @@
-{
-    "variants": {
-        "facing=east": { "model": "machinemod:machineprimarycrhuser" },
-        "facing=west": { "model": "machinemod:machineprimarycrhuser" },
-        "facing=north": { "model": "machinemod:machineprimarycrhuser" },
-        "facing=south": { "model": "machinemod:machineprimarycrhuser" }
-                
-    }
-}

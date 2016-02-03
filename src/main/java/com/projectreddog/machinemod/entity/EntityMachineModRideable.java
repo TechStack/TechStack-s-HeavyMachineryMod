@@ -84,6 +84,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 	public boolean willSink = true;
 	public boolean isWaterOnly = false;
+	public boolean canFly = false;
 	public int runTimeTillNextFuelUsage = 20;
 	public int maxRunTimeTillNextFuelUsage = 20;
 	public int clientTicksSinceLastServerPulse = 0;
@@ -309,7 +310,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			if (willSink) {
 				this.motionY -= 0.03999999910593033D;
 			} else {
-				if (worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.water) {
+				if (worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.water || canFly) {
 					// do nothing
 					this.motionY = this.motionY * .85D;
 
@@ -515,7 +516,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		setPosition(posX + motionX, posY + motionY, posZ + motionZ);
 		if (!this.isDead) {
 			// only do for entities not dead so we dont keep them around on the client side.
-			this.addedToChunk = false;
+			// this.addedToChunk = false;
+			// 1.8.9 cant do this anymore causing major Rendering FPS issues.
 		}
 		// LogHelper.info("Client: isinvis:" +
 		// this.isInvisibleToPlayer(Minecraft.getMinecraft().thePlayer) +
@@ -551,7 +553,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	// override the set position and rotation function to avoid MC from setting
 	// the postion of the entity so i can handle it
 	// in my network handler ... avoids jitter
-	public void func_180426_a(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_, boolean bool) {
+	public void setPositionAndRotation2(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_, boolean bool) {
 
 	}
 
@@ -716,7 +718,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public void toppleTree(BlockPos bp, int depth, int widthDepth, Block previousBlock) {
 		if (depth < Reference.MAX_TREE_DEPTH) {
 			if (widthDepth < Reference.MAX_TREE_WIDTH) {
-				if (worldObj.getBlockState(bp).getBlock() == Blocks.log || worldObj.getBlockState(bp).getBlock() == Blocks.log2 || worldObj.getBlockState(bp).getBlock() == Blocks.leaves || worldObj.getBlockState(bp).getBlock() == Blocks.leaves2) {
+				if (worldObj.getBlockState(bp).getBlock() == Blocks.log || worldObj.getBlockState(bp).getBlock() == Blocks.log2 || worldObj.getBlockState(bp).getBlock() == Blocks.leaves || worldObj.getBlockState(bp).getBlock() == Blocks.leaves2 || worldObj.getBlockState(bp).getBlock().isWood(worldObj, bp) || worldObj.getBlockState(bp).getBlock().isLeaves(worldObj, bp)) {
+
 					previousBlock = worldObj.getBlockState(bp).getBlock();
 					BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
 
@@ -763,7 +766,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 					}
 				} else {
 					// nothign in slot so set contents
-					setInventorySlotContents(j, new ItemStack(is.getItem(), is.stackSize, is.getItemDamage()));
+					setInventorySlotContents(j, is.copy());
 					is = null;
 				}
 
@@ -861,7 +864,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	}
 
 	@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
+	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
 		if (stack != null) {
 			setInventorySlotContents(slot, null);

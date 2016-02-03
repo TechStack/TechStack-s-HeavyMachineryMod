@@ -1,13 +1,10 @@
 {
-  "parent": "builtin/generated",
-       "textures": {
-    "layer0": "machinemod:items/fermenter"
-    },
+  "parent": "machinemod/machinfermenter",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],
             "translation": [ 0, 1.5, -2.75 ],
-            "scale": [ 0.375, 0.375, 0.375 ]
+            "scale": [ 0.10, 0.10, 0.10 ]
         }
     }
 }

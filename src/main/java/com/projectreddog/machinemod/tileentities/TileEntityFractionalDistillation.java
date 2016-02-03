@@ -16,15 +16,22 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.AxisAlignedBB;
+<<<<<<< HEAD
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
+=======
+>>>>>>> origin/master
 import net.minecraft.util.ITickable;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
 
+<<<<<<< HEAD
 public class TileEntityFractionalDistillation extends TileEntity implements ITickable, IFluidTank,ISidedInventory {
+=======
+public class TileEntityFractionalDistillation extends TileEntity implements ITickable, IFluidTank {
+>>>>>>> origin/master
 
 	public final int maxOilStorage = 10000; // store up to 100k
 	public final int inventorySize = 1;
@@ -44,7 +51,10 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	protected FluidStack fluid;// = new FluidStack(ModBlocks.fluidOil, 0);
 	public int transferOilAmount = 10;
 	public boolean firstTick = true;
+<<<<<<< HEAD
 	public int remainBurnTime = 0;
+=======
+>>>>>>> origin/master
 
 	public TileEntityFractionalDistillation() {
 	}

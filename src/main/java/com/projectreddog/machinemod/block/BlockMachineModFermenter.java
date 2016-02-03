@@ -149,7 +149,7 @@ public class BlockMachineModFermenter extends BlockContainer {
 	@Override
 	public int getRenderType() {
 		// 3 for normal block 2 for TESR 1 liquid -1 nothing ( like air)
-		return 2;
+		return 3;
 	}
 
 	@Override

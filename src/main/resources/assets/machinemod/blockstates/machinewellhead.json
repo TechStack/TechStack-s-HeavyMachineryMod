@@ -1,6 +1,11 @@
 {
-    "variants": {
-        "normal": { "model": "machinemod:machinewellhead" }
-                
-    }
+  "forge_marker": 1,
+  "defaults": {
+    "custom": { "flip-v": true },
+    "model": "machinemod:wellhead.obj"
+  },
+  "variants": {
+    "normal": [{"x":180}],
+    "inventory": [{"x":180}]
+        }
 }

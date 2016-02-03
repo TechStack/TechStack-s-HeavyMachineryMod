@@ -12,13 +12,13 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ITickable;
 
-public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox, ISidedInventory {
+public class TileEntityScreen extends TileEntity implements ITickable, ISidedInventory {
 	protected ItemStack[] inventory;
 	private static int[] topSlots = new int[] { 4 };
 
@@ -78,7 +78,11 @@ public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox
 						z = this.pos.getZ() + .5d;
 					}
 
-					EntityItem ei = new EntityItem(worldObj, x, y, z, new ItemStack(getStackInSlot(4).getItem(), 1, getStackInSlot(4).getItem().getMetadata(getStackInSlot(4))));
+					ItemStack tmpstack = getStackInSlot(4).copy();
+					if (tmpstack.stackSize > 1) {
+						tmpstack.stackSize = 1;
+					}
+					EntityItem ei = new EntityItem(worldObj, x, y, z, tmpstack);
 					ei.motionX = 0;
 					ei.motionY = 0;
 					ei.motionZ = 0;
@@ -109,11 +113,15 @@ public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox
 					x = this.pos.getX() - .5d;
 					z = this.pos.getZ() + .5d;
 				}
-
-				EntityItem ei = new EntityItem(worldObj, x, y, z, new ItemStack(getStackInSlot(4).getItem(), 1, getStackInSlot(4).getItem().getMetadata(getStackInSlot(4))));
+				ItemStack tmpstack = getStackInSlot(4).copy();
+				if (tmpstack.stackSize > 1) {
+					tmpstack.stackSize = 1;
+				}
+				EntityItem ei = new EntityItem(worldObj, x, y, z, tmpstack);
 				ei.motionX = 0;
 				ei.motionY = 0;
 				ei.motionZ = 0;
+
 				if (worldObj.spawnEntityInWorld(ei)) {
 					decrStackSize(4, 1);
 					return;
@@ -175,7 +183,7 @@ public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox
 				}
 			} else {
 				// nothing in slot so set contents
-				setInventorySlotContents(j, new ItemStack(is.getItem(), is.stackSize, is.getItemDamage()));
+				setInventorySlotContents(j, is.copy());
 				is = null;
 			}
 
@@ -228,7 +236,7 @@ public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox
 	}
 
 	@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
+	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
 		if (stack != null) {
 			setInventorySlotContents(slot, null);
@@ -335,23 +343,25 @@ public class TileEntityScreen extends TileEntity implements IUpdatePlayerListBox
 	@Override
 	public int[] getSlotsForFace(EnumFacing side) {
 		// TODO Auto-generated method stub
-		if (side == EnumFacing.UP){
+		if (side == EnumFacing.UP) {
 			return topSlots;
 		}
-		return null;
+
+		int[] i = new int[] {};
+		return i;
 	}
 
 	@Override
 	public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
 		if (index == 4 && direction == EnumFacing.UP) {
-		return true;
+			return true;
 		}
 		return false;
 	}
 
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-		
+
 		return false;
 	}
 }

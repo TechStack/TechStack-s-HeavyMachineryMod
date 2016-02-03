@@ -2,6 +2,13 @@ package com.projectreddog.machinemod.tileentities;
 
 import java.util.List;
 
+import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
+import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
+import com.projectreddog.machinemod.iface.IFuelContainer;
+import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.init.ModItems;
+import com.projectreddog.machinemod.reference.Reference;
+
 import net.minecraft.block.BlockStone;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -14,20 +21,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ITickable;
 
-import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
-import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
-import com.projectreddog.machinemod.iface.IFuelContainer;
-import com.projectreddog.machinemod.init.ModBlocks;
-import com.projectreddog.machinemod.init.ModItems;
-import com.projectreddog.machinemod.reference.Reference;
-
-public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlayerListBox, ISidedInventory, IFuelContainer {
+public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, ISidedInventory, IFuelContainer {
 	protected ItemStack[] inventory;
 	private static int[] bottomSlots = new int[] {};
 	private static int[] topSlots = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 };
@@ -131,7 +131,13 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 						dropDust(i, new ItemStack(Items.dye, 5, EnumDyeColor.WHITE.getDyeDamage()));
 						return;
 					} else {
-						dropDust(i, new ItemStack(item.getItem(), 1, item.getMetadata()));
+
+						ItemStack tmpstack = item;
+						if (tmpstack.stackSize > 1) {
+							tmpstack.stackSize = 1;
+						}
+
+						dropDust(i, tmpstack);
 						return;
 					}
 				}
@@ -237,7 +243,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 					}
 				} else {
 					// nothign in slot so set contents
-					setInventorySlotContents(j, new ItemStack(is.getItem(), is.stackSize, is.getItemDamage()));
+					setInventorySlotContents(j, is.copy());
 					is = null;
 				}
 
@@ -336,7 +342,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements IUpdatePlaye
 	}
 
 	@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
+	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
 		if (stack != null) {
 			setInventorySlotContents(slot, null);
