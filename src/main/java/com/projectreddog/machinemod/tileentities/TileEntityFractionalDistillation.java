@@ -9,18 +9,27 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ITickable;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
 
-public class TileEntityFractionalDistillation extends TileEntity implements IUpdatePlayerListBox, IFluidTank {
+public class TileEntityFractionalDistillation extends TileEntity implements ITickable, IFluidTank,ISidedInventory {
 
 	public final int maxOilStorage = 10000; // store up to 100k
+	public final int inventorySize = 1;
+	protected ItemStack[] inventory;
+	private static int[] sideSlots = new int[] { 0 };
 
 	public AxisAlignedBB boundingBox;
 	public int coolDownAmount = 5;
@@ -32,26 +41,30 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 	public final int BlastedStoneGemMultiplier = 2;
 	public final int BlastedStoneLapisMultiplier = 12;
 	public final int BlastedStoneRedstoneMultiplier = 8;
-	protected FluidStack fluid ;//= new FluidStack(ModBlocks.fluidOil, 0);
+	protected FluidStack fluid;// = new FluidStack(ModBlocks.fluidOil, 0);
 	public int transferOilAmount = 10;
 	public boolean firstTick = true;
+	public int remainBurnTime = 0;
+
 	public TileEntityFractionalDistillation() {
 	}
-	public int getStackOrder(){
-		if (this.worldObj.getBlockState(this.pos.down()).getBlock()== ModBlocks.machinefractionaldistillation  ){
-			if (this.worldObj.getTileEntity(this.pos.down()) instanceof TileEntityFractionalDistillation){
-				TileEntityFractionalDistillation te =(TileEntityFractionalDistillation) this.worldObj.getTileEntity(this.pos.down());
-				return te.getStackOrder()+1;
+
+	public int getStackOrder() {
+		if (this.worldObj.getBlockState(this.pos.down()).getBlock() == ModBlocks.machinefractionaldistillation) {
+			if (this.worldObj.getTileEntity(this.pos.down()) instanceof TileEntityFractionalDistillation) {
+				TileEntityFractionalDistillation te = (TileEntityFractionalDistillation) this.worldObj.getTileEntity(this.pos.down());
+				return te.getStackOrder() + 1;
 			}
-		}				
+		}
 		return 1;
 	}
+
 	@Override
 	public void update() {
 		if (!worldObj.isRemote) {
-			if (firstTick){
+			if (firstTick) {
 				LogHelper.info("Stack order:" + getStackOrder());
-				firstTick= !firstTick;
+				firstTick = !firstTick;
 			}
 			if (amIBottom()) {
 
@@ -65,7 +78,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 				boundingBox = new AxisAlignedBB(this.pos.north(3).west(3).down(1), this.pos.south(3).east(3).up(1));
 				List list = worldObj.getEntitiesWithinAABB(EntitySemiTractor.class, boundingBox);
 				processEntitiesInList(list);
-
+				tryDistill();
 			}
 		} else {
 			// is not do nothing !
@@ -73,6 +86,33 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 
 	}
 
+	public void  tryDistill(){
+		if (this.amIBottom()){
+			if (this.getFluidAmount() > 0 && this.getFluid().isFluidEqual( new FluidStack(ModBlocks.fluidOil,0))){
+				// WE have oil.
+				if (remainBurnTime > 0) {
+					remainBurnTime--;
+
+					distill();
+				} else {
+
+					// consume more fuel
+					// only if it has mash to process
+						// use the furnace's default burn times
+						remainBurnTime = TileEntityFurnace.getItemBurnTime(this.getStackInSlot(0));
+						if (remainBurnTime > 0) {
+							// found fuel reduce item stack (AKA consume /brun the item)
+							decrStackSize(0, 1);
+						}
+
+				}				
+			}
+		}
+	}
+	public void distill(){
+		//TODO: need to add logic for distilling where the bottom TE's fuild level is drecreased and the TE's above are filled with the respective
+		// fluid for the Height they are at in the stack.
+	}
 	public boolean amIBottom() {
 		if (this.worldObj.getBlockState(pos.down()).getBlock() == ModBlocks.machinefractionaldistillation) {
 			return false;
@@ -100,9 +140,9 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 
 												fill(est.drain(transferOilAmount, true), true);
 											}
-										}else {
+										} else {
 											// no fluid in this block so we can pull the fluid from the tanker
-											if (est.getFluid().getFluid() == ModBlocks.fluidOil){
+											if (est.getFluid().getFluid() == ModBlocks.fluidOil) {
 												FluidStack moveStack = new FluidStack(fluid, transferOilAmount);
 
 												fill(est.drain(transferOilAmount, true), true);
@@ -244,5 +284,155 @@ public class TileEntityFractionalDistillation extends TileEntity implements IUpd
 		}
 		return stack;
 	}
+
+	@Override
+	public int getSizeInventory() {
+		return inventory.length;
+	}
+
+	@Override
+	public ItemStack getStackInSlot(int slot) {
+		return inventory[slot];
+	}
+
+	@Override
+	public ItemStack decrStackSize(int slot, int amt) {
+		ItemStack stack = getStackInSlot(slot);
+		if (stack != null) {
+			if (stack.stackSize <= amt) {
+				setInventorySlotContents(slot, null);
+			} else {
+				stack = stack.splitStack(amt);
+				if (stack.stackSize == 0) {
+					setInventorySlotContents(slot, null);
+				}
+
+			}
+		}
+		return stack;
+	}
+
+	@Override
+	public ItemStack removeStackFromSlot(int slot) {
+		ItemStack stack = getStackInSlot(slot);
+		if (stack != null) {
+			setInventorySlotContents(slot, null);
+		}
+		return stack;
+	}
+
+	@Override
+	public void setInventorySlotContents(int slot, ItemStack stack) {
+		inventory[slot] = stack;
+		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
+			stack.stackSize = getInventoryStackLimit();
+		}
+
+	}
+
+	@Override
+	public int getInventoryStackLimit() {
+		return 64;
+	}
+
+	@Override
+	public void openInventory(EntityPlayer playerIn) {
+
+	}
+
+	@Override
+	public void closeInventory(EntityPlayer playerIn) {
+
+	}
+
+	@Override
+	public boolean isItemValidForSlot(int index, ItemStack stack) {
+		return true;
+	}
+
+	@Override
+	public void clear() {
+		for (int i = 0; i < inventory.length; ++i) {
+			inventory[i] = null;
+		}
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean hasCustomName() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public IChatComponent getDisplayName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int[] getSlotsForFace(EnumFacing side) {
+		if (side == EnumFacing.NORTH || side == EnumFacing.SOUTH || side == EnumFacing.EAST || side == EnumFacing.WEST) {
+			return sideSlots;
+		}
+		int[] topSlots2 = new int[] { 0 };
+		return topSlots2;
+
+	}
+
+	@Override
+	public boolean canInsertItem(int slot, ItemStack itemStackIn, EnumFacing direction) {
+		if (slot < inventorySize && (direction == EnumFacing.NORTH || direction == EnumFacing.SOUTH || direction == EnumFacing.EAST || direction == EnumFacing.WEST)) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean canExtractItem(int slot, ItemStack stack, EnumFacing direction) {
+		if (slot < inventorySize && (direction == EnumFacing.NORTH || direction == EnumFacing.SOUTH || direction == EnumFacing.EAST || direction == EnumFacing.WEST)) {
+			return true;
+		}
+		return false;
+	}
+
+
+	public int getField(int id) {
+		switch (id) {
+		case 0:
+			return this.remainBurnTime;
+		default:
+			break;
+		}
+		return 0;
+
+	}
+
+	public void setField(int id, int value) {
+		switch (id) {
+		case 0:
+			this.remainBurnTime = value;
+			break;
+			
+		default:
+			break;
+		}
+
+	}
+
+	public int getFieldCount() {
+		return 1;
+	}
+
+	@Override
+	public boolean isUseableByPlayer(EntityPlayer playerIn) {
+		return playerIn.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
+	}
+
 
 }
