@@ -16,22 +16,15 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.AxisAlignedBB;
-<<<<<<< HEAD
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
-=======
->>>>>>> origin/master
 import net.minecraft.util.ITickable;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
 
-<<<<<<< HEAD
-public class TileEntityFractionalDistillation extends TileEntity implements ITickable, IFluidTank,ISidedInventory {
-=======
-public class TileEntityFractionalDistillation extends TileEntity implements ITickable, IFluidTank {
->>>>>>> origin/master
+public class TileEntityFractionalDistillation extends TileEntity implements ITickable, IFluidTank, ISidedInventory {
 
 	public final int maxOilStorage = 10000; // store up to 100k
 	public final int inventorySize = 1;
@@ -51,10 +44,8 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	protected FluidStack fluid;// = new FluidStack(ModBlocks.fluidOil, 0);
 	public int transferOilAmount = 10;
 	public boolean firstTick = true;
-<<<<<<< HEAD
+
 	public int remainBurnTime = 0;
-=======
->>>>>>> origin/master
 
 	public TileEntityFractionalDistillation() {
 	}
@@ -96,9 +87,9 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 
 	}
 
-	public void  tryDistill(){
-		if (this.amIBottom()){
-			if (this.getFluidAmount() > 0 && this.getFluid().isFluidEqual( new FluidStack(ModBlocks.fluidOil,0))){
+	public void tryDistill() {
+		if (this.amIBottom()) {
+			if (this.getFluidAmount() > 0 && this.getFluid().isFluidEqual(new FluidStack(ModBlocks.fluidOil, 0))) {
 				// WE have oil.
 				if (remainBurnTime > 0) {
 					remainBurnTime--;
@@ -108,21 +99,23 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 
 					// consume more fuel
 					// only if it has mash to process
-						// use the furnace's default burn times
-						remainBurnTime = TileEntityFurnace.getItemBurnTime(this.getStackInSlot(0));
-						if (remainBurnTime > 0) {
-							// found fuel reduce item stack (AKA consume /brun the item)
-							decrStackSize(0, 1);
-						}
+					// use the furnace's default burn times
+					remainBurnTime = TileEntityFurnace.getItemBurnTime(this.getStackInSlot(0));
+					if (remainBurnTime > 0) {
+						// found fuel reduce item stack (AKA consume /brun the item)
+						decrStackSize(0, 1);
+					}
 
-				}				
+				}
 			}
 		}
 	}
-	public void distill(){
-		//TODO: need to add logic for distilling where the bottom TE's fuild level is drecreased and the TE's above are filled with the respective
+
+	public void distill() {
+		// TODO: need to add logic for distilling where the bottom TE's fuild level is drecreased and the TE's above are filled with the respective
 		// fluid for the Height they are at in the stack.
 	}
+
 	public boolean amIBottom() {
 		if (this.worldObj.getBlockState(pos.down()).getBlock() == ModBlocks.machinefractionaldistillation) {
 			return false;
@@ -411,7 +404,6 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 		return false;
 	}
 
-
 	public int getField(int id) {
 		switch (id) {
 		case 0:
@@ -428,7 +420,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 		case 0:
 			this.remainBurnTime = value;
 			break;
-			
+
 		default:
 			break;
 		}
@@ -443,6 +435,5 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	public boolean isUseableByPlayer(EntityPlayer playerIn) {
 		return playerIn.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
 	}
-
 
 }
