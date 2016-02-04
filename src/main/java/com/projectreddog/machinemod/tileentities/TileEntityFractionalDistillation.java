@@ -19,6 +19,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.util.ITickable;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
@@ -48,6 +49,8 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	public int remainBurnTime = 0;
 
 	public TileEntityFractionalDistillation() {
+		inventory = new ItemStack[inventorySize];
+
 	}
 
 	public int getStackOrder() {
@@ -92,7 +95,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 			if (this.getFluidAmount() > 0 && this.getFluid().isFluidEqual(new FluidStack(ModBlocks.fluidOil, 0))) {
 				// WE have oil.
 				if (remainBurnTime > 0) {
-					remainBurnTime--;
+					// we have fuel
 
 					distill();
 				} else {
@@ -112,8 +115,68 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	}
 
 	public void distill() {
-		// TODO: need to add logic for distilling where the bottom TE's fuild level is drecreased and the TE's above are filled with the respective
+		// TODO: need to add logic for distilling where the bottom TE's fluid level is decreased and the TE's above are filled with the respective
 		// fluid for the Height they are at in the stack.
+
+		// variable that tells us if it can distill. based on TE's above fluids matching what they should or
+		// and not being too full.
+		boolean canDistill = true;
+		for (int i = 1; i <= 4; i++) {
+
+			if (worldObj.getTileEntity(this.pos.up(i)) instanceof TileEntityFractionalDistillation) {
+				// there is a TE of this type i blocks above
+				TileEntityFractionalDistillation tefd = (TileEntityFractionalDistillation) worldObj.getTileEntity(this.pos.up(i));
+				if (tefd.getFluid() == null || tefd.getFluid().isFluidEqual(new FluidStack(getfluidForHeight(i + 1), 0))) {
+					// its the fluid it should be or it is a null fluid.
+					if (getfluidForHeight(i + 1) != null) {
+						if (tefd.fill(new FluidStack(getfluidForHeight(i + 1), 1), false) > 0) {
+
+						} else {
+							canDistill = false;
+						}
+					}
+				} else {
+					canDistill = false;
+				}
+
+			}
+
+		}
+		if (canDistill) {
+
+			// do same loop as above but this time increase fluid amts by +1
+
+			for (int i = 1; i <= 4; i++) {
+
+				if (worldObj.getTileEntity(this.pos.up(i)) instanceof TileEntityFractionalDistillation) {
+					// there is a TE of this type i blocks above
+					TileEntityFractionalDistillation tefd = (TileEntityFractionalDistillation) worldObj.getTileEntity(this.pos.up(i));
+
+					tefd.fill(new FluidStack(getfluidForHeight(i + 1), 1), true);
+				}
+
+			}
+
+			this.drain(1, true);
+			remainBurnTime--;
+
+		}
+	}
+
+	public Fluid getfluidForHeight(int height) {
+		if (height == 1) {
+			return ModBlocks.fluidOil;
+		} else if (height == 2) {
+			return ModBlocks.fluidBitumen;
+		} else if (height == 3) {
+			return ModBlocks.fluidDiesel;
+		} else if (height == 4) {
+			return ModBlocks.fluidJetFuel;
+		} else if (height == 5) {
+			return ModBlocks.fluidNaphtha;
+		} else {
+			return null;
+		}
 	}
 
 	public boolean amIBottom() {
@@ -146,7 +209,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 										} else {
 											// no fluid in this block so we can pull the fluid from the tanker
 											if (est.getFluid().getFluid() == ModBlocks.fluidOil) {
-												FluidStack moveStack = new FluidStack(fluid, transferOilAmount);
+												FluidStack moveStack = new FluidStack(ModBlocks.fluidOil, transferOilAmount);
 
 												fill(est.drain(transferOilAmount, true), true);
 											}
