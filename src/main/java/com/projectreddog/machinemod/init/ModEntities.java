@@ -19,6 +19,7 @@ import com.projectreddog.machinemod.entity.EntityRoadRoller;
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.entity.EntitySub;
 import com.projectreddog.machinemod.entity.EntityTractor;
+import com.projectreddog.machinemod.entity.EntityTrain;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -53,6 +54,7 @@ public class ModEntities {
 		EntityRegistry.registerModEntity(EntitySub.class, "sub", ++entityID, mod, 224, 1, false);
 		EntityRegistry.registerModEntity(EntityChopper.class, "chopper", ++entityID, mod, 224, 1, false);
 		EntityRegistry.registerModEntity(EntityAdvancedMinecart.class, "advancedminecrat", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityTrain.class, "train", ++entityID, mod, 224, 1, false);
 
 		// EntityRegistry.registerModEntity(EntityPumpJack.class, "pumpjack", ++entityID, mod, 224, 1, false);
 

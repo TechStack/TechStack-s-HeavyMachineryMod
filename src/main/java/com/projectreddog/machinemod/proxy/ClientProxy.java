@@ -18,6 +18,7 @@ import com.projectreddog.machinemod.entity.EntityRoadRoller;
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.entity.EntitySub;
 import com.projectreddog.machinemod.entity.EntityTractor;
+import com.projectreddog.machinemod.entity.EntityTrain;
 import com.projectreddog.machinemod.handler.events.RenderOverlayHandler;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
@@ -39,6 +40,7 @@ import com.projectreddog.machinemod.render.machines.RenderRoadRoller;
 import com.projectreddog.machinemod.render.machines.RenderSemiTractor;
 import com.projectreddog.machinemod.render.machines.RenderSub;
 import com.projectreddog.machinemod.render.machines.RenderTractor;
+import com.projectreddog.machinemod.render.machines.RenderTrain;
 import com.projectreddog.machinemod.render.tileentity.TileEntityCentrifugeRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityLiquidPipeRenderer;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
@@ -80,6 +82,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntitySub.class, new RenderSub(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityChopper.class, new RenderChopper(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityAdvancedMinecart.class, new RenderMinecart(Minecraft.getMinecraft().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityTrain.class, new RenderTrain(Minecraft.getMinecraft().getRenderManager()));
 
 		// RenderingRegistry.registerEntityRenderingHandler(EntityPumpJack.class, new RenderPumpJack(Minecraft.getMinecraft().getRenderManager()));
 
