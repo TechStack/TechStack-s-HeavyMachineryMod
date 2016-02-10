@@ -1,5 +1,6 @@
 package com.projectreddog.machinemod.init;
 
+import com.projectreddog.machinemod.entity.EntityAdvancedMinecart;
 import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.entity.EntityBulldozer;
 import com.projectreddog.machinemod.entity.EntityChopper;
@@ -51,6 +52,7 @@ public class ModEntities {
 
 		EntityRegistry.registerModEntity(EntitySub.class, "sub", ++entityID, mod, 224, 1, false);
 		EntityRegistry.registerModEntity(EntityChopper.class, "chopper", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(EntityAdvancedMinecart.class, "advancedminecrat", ++entityID, mod, 224, 1, false);
 
 		// EntityRegistry.registerModEntity(EntityPumpJack.class, "pumpjack", ++entityID, mod, 224, 1, false);
 

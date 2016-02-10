@@ -1,5 +1,6 @@
 package com.projectreddog.machinemod.proxy;
 
+import com.projectreddog.machinemod.entity.EntityAdvancedMinecart;
 import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.entity.EntityBulldozer;
 import com.projectreddog.machinemod.entity.EntityChopper;
@@ -44,6 +45,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.RenderMinecart;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.obj.OBJLoader;
@@ -77,6 +79,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityOilRig.class, new RenderOilRig(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySub.class, new RenderSub(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityChopper.class, new RenderChopper(Minecraft.getMinecraft().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityAdvancedMinecart.class, new RenderMinecart(Minecraft.getMinecraft().getRenderManager()));
 
 		// RenderingRegistry.registerEntityRenderingHandler(EntityPumpJack.class, new RenderPumpJack(Minecraft.getMinecraft().getRenderManager()));
 
