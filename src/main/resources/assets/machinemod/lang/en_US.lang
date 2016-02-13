@@ -72,6 +72,13 @@ item.machinemod:operatorsbubble.name=Operators Bubble
 item.machinemod:turboprop.name=Turbo Prop
 
 
+
+item.machinemod:carbondust.name=Carbon Dust
+item.machinemod:steeldust.name=Steel Dust
+item.machinemod:steelingot.name=Steel Ingot
+item.machinemod:aluminumingot.name=Aluminum Ingot
+
+
 item.machinemod:paver.name=Paver
 item.machinemod:roadroller.name=Road Roller
 item.machinemod:bagger.name=Bagger

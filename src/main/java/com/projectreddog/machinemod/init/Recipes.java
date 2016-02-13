@@ -8,6 +8,7 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class Recipes {
 
@@ -47,6 +48,8 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.dumperbed), "ici", "ici", " i ", 'i', "ingotIron", 'c', Blocks.chest));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.engine), "ppp", " c ", "ppp", 'p', ModItems.piston, 'c', ModItems.camshaft));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.steeldust), ModItems.carbondust, ModItems.irondust));
 
 		if (Reference.enableDumptruck) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.dumptruck), "  b", "et ", "w w", 'b', ModItems.dumperbed, 'e', ModItems.engine, 't', ModItems.transmission, 'w', ModItems.wheel));
@@ -175,7 +178,9 @@ public class Recipes {
 	}
 
 	public static void SmeltingRecipes() {
-		GameRegistry.addSmelting(ModItems.irondust, new ItemStack(Items.iron_ingot), 0);
-		GameRegistry.addSmelting(ModItems.golddust, new ItemStack(Items.gold_ingot), 0);
+		GameRegistry.addSmelting(ModItems.irondust, new ItemStack(Items.iron_ingot), 1);
+		GameRegistry.addSmelting(ModItems.golddust, new ItemStack(Items.gold_ingot), 2);
+		GameRegistry.addSmelting(ModItems.steeldust, new ItemStack(ModItems.steelingot), 5);
+		// GameRegistry.addSmelting(ModItems.golddust, new ItemStack(ModItems.aluminumingot), 0);
 	}
 }

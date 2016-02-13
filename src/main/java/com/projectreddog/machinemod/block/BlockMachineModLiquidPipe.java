@@ -5,6 +5,7 @@ import java.util.Random;
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
+import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -12,6 +13,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 public class BlockMachineModLiquidPipe extends BlockContainer {
@@ -106,4 +108,18 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 		return 2;
 	}
 
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+		TileEntity te = worldIn.getTileEntity(pos);
+		if (te instanceof TileEntityLiquidPipe) {
+			TileEntityLiquidPipe telp = (TileEntityLiquidPipe) te;
+			if (telp.getFluid() != null) {
+				LogHelper.info("Fluid:" + telp.getFluid().getLocalizedName() + " amount:" + telp.getFluidAmount());
+			} else {
+				LogHelper.info("Fluid Null!");
+
+			}
+		}
+		return true;
+	};
 }

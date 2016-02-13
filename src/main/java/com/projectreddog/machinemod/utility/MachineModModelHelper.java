@@ -15,6 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.Attributes;
 import net.minecraftforge.client.model.IFlexibleBakedModel;
 import net.minecraftforge.client.model.obj.OBJModel;
+import net.minecraftforge.client.model.pipeline.LightUtil;
 
 public class MachineModModelHelper {
 	public static void renderBakedModel(IFlexibleBakedModel bakedModel) {
@@ -22,15 +23,15 @@ public class MachineModModelHelper {
 
 		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
 		worldrenderer.begin(GL11.GL_QUADS, bakedModel.getFormat());
-		for (BakedQuad bakedQuad : bakedModel.getGeneralQuads()) {
-			worldrenderer.addVertexData(bakedQuad.getVertexData());
-
-		}
-		// alt version if ever needed
 		// for (BakedQuad bakedQuad : bakedModel.getGeneralQuads()) {
-		// LightUtil.renderQuadColor(worldrenderer, bakedQuad, -1);
+		// worldrenderer.addVertexData(bakedQuad.getVertexData());
 		//
 		// }
+		// alt version if ever needed
+		for (BakedQuad bakedQuad : bakedModel.getGeneralQuads()) {
+			LightUtil.renderQuadColor(worldrenderer, bakedQuad, -1);
+
+		}
 
 		tessellator.draw();
 	}

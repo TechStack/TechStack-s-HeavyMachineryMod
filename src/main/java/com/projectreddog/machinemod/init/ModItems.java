@@ -2,10 +2,12 @@ package com.projectreddog.machinemod.init;
 
 import com.projectreddog.machinemod.item.ItemANFO;
 import com.projectreddog.machinemod.item.ItemAirTank;
+import com.projectreddog.machinemod.item.ItemAluminumIngot;
 import com.projectreddog.machinemod.item.ItemBaggerBody;
 import com.projectreddog.machinemod.item.ItemBaggerStorage;
 import com.projectreddog.machinemod.item.ItemBoomArmSegment;
 import com.projectreddog.machinemod.item.ItemBucketWheel;
+import com.projectreddog.machinemod.item.ItemCarbonDust;
 import com.projectreddog.machinemod.item.ItemConeCrusher;
 import com.projectreddog.machinemod.item.ItemCornSeed;
 import com.projectreddog.machinemod.item.ItemCutterBucket;
@@ -31,6 +33,8 @@ import com.projectreddog.machinemod.item.ItemProp;
 import com.projectreddog.machinemod.item.ItemPropCage;
 import com.projectreddog.machinemod.item.ItemRawAsphalt;
 import com.projectreddog.machinemod.item.ItemRigging;
+import com.projectreddog.machinemod.item.ItemSteelDust;
+import com.projectreddog.machinemod.item.ItemSteelIngot;
 import com.projectreddog.machinemod.item.ItemSubBody;
 import com.projectreddog.machinemod.item.ItemTrackSegment;
 import com.projectreddog.machinemod.item.ItemTurboProp;
@@ -101,6 +105,11 @@ public class ModItems {
 	public static final ItemMachineMod oilrig = new ItemOilRig();
 	public static final ItemMachineMod sub = new ItemSub();
 	public static final ItemMachineMod chopper = new ItemChopper();
+
+	public static final ItemMachineMod carbondust = new ItemCarbonDust();
+	public static final ItemMachineMod steeldust = new ItemSteelDust();
+	public static final ItemMachineMod steelingot = new ItemSteelIngot();
+	public static final ItemMachineMod aluminumingot = new ItemAluminumIngot();
 
 	public static final ItemMachineMod liquidtanksegment = new ItemLiquidTankSegment();
 
@@ -267,6 +276,7 @@ public class ModItems {
 			GameRegistry.registerItem(chopper, "chopper");
 
 		}
+
 		if (Reference.enableTractor) {
 			GameRegistry.registerItem(tractor, "tractor");
 
@@ -352,6 +362,13 @@ public class ModItems {
 		GameRegistry.registerItem(fuelcan, "fuelcan");
 		GameRegistry.registerItem(graderblade, "graderblade");
 		GameRegistry.registerItem(wrench, "wrench");
+
+		GameRegistry.registerItem(carbondust, "carbondust");
+
+		GameRegistry.registerItem(steeldust, "steeldust");
+
+		GameRegistry.registerItem(steelingot, "steelingot");
+		GameRegistry.registerItem(aluminumingot, "aluminumingot");
 
 		// buckets
 		// GameRegistry.registerItem(oilbucket, "oilbucket");
@@ -442,6 +459,11 @@ public class ModItems {
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tractor, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tractor", "inventory"));
 
 		}
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(carbondust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "carbondust", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(steeldust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "steeldust", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(steelingot, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "steelingot", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(aluminumingot, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "aluminumingot", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tracksegment, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tracksegment", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(paverscreed, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "paverscreed", "inventory"));
