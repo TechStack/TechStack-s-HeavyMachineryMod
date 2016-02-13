@@ -14,7 +14,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 
-//test
 public class TileEntityFractionalDistillationRenderer extends TileEntitySpecialRenderer {
 
 	private ModelFractionalDistillation teModel = new ModelFractionalDistillation();
