@@ -25,6 +25,7 @@ import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.block.BlockMachineModScreen;
 import com.projectreddog.machinemod.block.BlockMachineModWellHead;
 import com.projectreddog.machinemod.block.BlockMachineMowedGrass;
+import com.projectreddog.machinemod.block.BlockMachineSteelBlock;
 import com.projectreddog.machinemod.block.BlockOilFluid;
 import com.projectreddog.machinemod.item.ItemBlockBlastedStone;
 import com.projectreddog.machinemod.reference.Reference;
@@ -53,6 +54,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ModBlocks {
 	public static final BlockMachineMod machineassemblytable = new BlockMachineAssemblyTable();
 	public static final BlockMachineMod machineasphalt = new BlockMachineAsphalt();
+	public static final BlockMachineMod machinesteelblock = new BlockMachineSteelBlock();
 
 	public static final BlockMachineMod machinecompressedasphalt = new BlockMachineCompressedAsphalt();
 	public static final BlockMachineMod machinecrudeoilstone = new BlockMachineCrudeOilStone();
@@ -95,6 +97,8 @@ public class ModBlocks {
 
 	public static void init() {
 		GameRegistry.registerBlock(machineassemblytable, Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
+		GameRegistry.registerBlock(machinesteelblock, Reference.MODBLOCK_MACHINE_STEEL_BLOCK);
+
 		GameRegistry.registerBlock(machineasphalt, Reference.MODBLOCK_MACHINE_ASPHALT);
 
 		GameRegistry.registerBlock(machinecompressedasphalt, Reference.MODBLOCK_MACHINE_COMPRESSED_ASPHALT);
