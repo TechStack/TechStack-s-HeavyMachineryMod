@@ -323,9 +323,7 @@ public class ModItems {
 		GameRegistry.registerItem(cornseed, "cornseed");
 		GameRegistry.registerItem(trencher, "trencher");
 		GameRegistry.registerItem(irondust, "irondust");
-		OreDictionary.registerOre("dustIron", irondust);
 		GameRegistry.registerItem(golddust, "golddust");
-		OreDictionary.registerOre("dustGold", golddust);
 
 		GameRegistry.registerItem(drillhead, "drillhead");
 		GameRegistry.registerItem(drillpipe, "drillpipe");
@@ -333,11 +331,8 @@ public class ModItems {
 		GameRegistry.registerItem(planter, "planter");
 		GameRegistry.registerItem(sprayer, "sprayer");
 		GameRegistry.registerItem(woodengear, "woodengear");
-		OreDictionary.registerOre("gearWood", woodengear);
 		GameRegistry.registerItem(stonegear, "stonegear");
-		OreDictionary.registerOre("gearStone", stonegear);
 		GameRegistry.registerItem(irongear, "irongear");
-		OreDictionary.registerOre("gearIron", irongear);
 
 		GameRegistry.registerItem(transmission, "transmission");
 		GameRegistry.registerItem(turbofan, "turbofan");
@@ -369,6 +364,16 @@ public class ModItems {
 
 		GameRegistry.registerItem(steelingot, "steelingot");
 		GameRegistry.registerItem(aluminumingot, "aluminumingot");
+
+		/// register ore dict
+		OreDictionary.registerOre("gearWood", woodengear);
+		OreDictionary.registerOre("gearStone", stonegear);
+		OreDictionary.registerOre("gearIron", irongear);
+		OreDictionary.registerOre("dustIron", irondust);
+		OreDictionary.registerOre("dustGold", golddust);
+		OreDictionary.registerOre("dustSteel", steeldust);
+		OreDictionary.registerOre("ingotSteel", steelingot);
+		OreDictionary.registerOre("ingotAluminum", aluminumingot);
 
 		// buckets
 		// GameRegistry.registerItem(oilbucket, "oilbucket");
