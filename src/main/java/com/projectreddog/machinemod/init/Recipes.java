@@ -51,6 +51,8 @@ public class Recipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machineliquidPipe), "ss ", "   ", "ss ", 's', "ingotSteel"));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.steelblock), "sss", "sss", "sss", 's', "ingotSteel"));
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefractionaldistillation), "ibi", "lbl", "isi", 's', Blocks.brewing_stand, 'i', Blocks.iron_block, 'l', ModBlocks.machineliquidPipe, 'b', Blocks.iron_bars));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.steeldust), ModItems.carbondust, ModItems.irondust));
