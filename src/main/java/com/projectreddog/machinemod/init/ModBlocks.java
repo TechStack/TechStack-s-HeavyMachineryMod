@@ -49,6 +49,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
 public class ModBlocks {
@@ -181,6 +182,9 @@ public class ModBlocks {
 		// GameRegistry.registerBlock(biofuel,
 		// Reference.MODBLOCK_MACHINE_FLUID_BIOFUEL);
 		// fluidBioFuel.setUnlocalizedName(biofuel.getUnlocalizedName());
+
+		/// ore Dict Blocks
+		OreDictionary.registerOre("blockSteel", steelblock);
 	}
 
 	public static void initBlockRender() {
