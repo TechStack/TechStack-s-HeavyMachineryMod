@@ -130,7 +130,31 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 					} else if (item.getItem() == Items.bone) {
 						dropDust(i, new ItemStack(Items.dye, 5, EnumDyeColor.WHITE.getDyeDamage()));
 						return;
-					} else {
+					}
+
+					//
+
+					else if (item.getItem() == Items.coal) {
+						dropDust(i, new ItemStack(ModItems.carbondust, 1));
+						return;
+					} else if (item.getItem() == Items.iron_ingot) {
+						dropDust(i, new ItemStack(ModItems.irondust, 1));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.gravel)) {
+						dropDust(i, new ItemStack(Blocks.sand, 1));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.sandstone)) {
+						dropDust(i, new ItemStack(Blocks.sand, 4));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.wool)) {
+						dropDust(i, new ItemStack(Items.string, 4));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.cobblestone)) {
+						dropDust(i, new ItemStack(Blocks.gravel, 1));
+						return;
+					}
+
+					else {
 
 						ItemStack tmpstack = item;
 						if (tmpstack.stackSize > 1) {
