@@ -19,9 +19,10 @@
                 "scale": 1.0
               },
                 "gui": {
-                    "translation": [-.3,0,0],
+                    "translation": [-.3,-.3,0],
                 
-                    "rotation": [ {"y": 90} ]
+                    "rotation": [ {"y": 90},{"x": 180} ],
+                    "scale": 0.35
                 }
             }
         }]
