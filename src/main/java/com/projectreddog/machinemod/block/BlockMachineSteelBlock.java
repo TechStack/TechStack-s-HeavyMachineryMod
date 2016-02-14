@@ -10,7 +10,7 @@ public class BlockMachineSteelBlock extends BlockMachineMod {
 	public BlockMachineSteelBlock() {
 		super();
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_STEEL_BLOCK);
+		this.setUnlocalizedName(Reference.MODBLOCK_STEEL_BLOCK);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setHardness(15f);// not sure on the hardness
 		this.setStepSound(soundTypeMetal);

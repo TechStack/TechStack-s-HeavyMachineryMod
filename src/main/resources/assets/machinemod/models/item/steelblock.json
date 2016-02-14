@@ -1,5 +1,5 @@
 {
-    "parent": "machinemod:block/machinesteelblock",
+    "parent": "machinemod:block/steelblock",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],
