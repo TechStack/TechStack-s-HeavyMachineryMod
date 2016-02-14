@@ -49,7 +49,7 @@ public class Recipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.engine), "ppp", " c ", "ppp", 'p', ModItems.piston, 'c', ModItems.camshaft));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machineliquidPipe), "ss ", "   ", "ss ", 's', ModItems.steelingot));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machineliquidPipe), "ss ", "   ", "ss ", 's', "ingotSteel"));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefractionaldistillation), "ibi", "lbl", "isi", 's', Blocks.brewing_stand, 'i', Blocks.iron_block, 'l', ModBlocks.machineliquidPipe, 'b', Blocks.iron_bars));
 
