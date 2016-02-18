@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -19,7 +20,7 @@ public class ContainerFractionalDistiller extends Container {
 	public ContainerFractionalDistiller(InventoryPlayer inventoryPlayer, TileEntityFractionalDistillation fractionaldistiller) {
 		this.fractionaldistiller = fractionaldistiller;
 
-		addSlotToContainer(new Slot(fractionaldistiller, 0, 80, 108));
+		addSlotToContainer(new SlotFurnaceFuel(fractionaldistiller, 0, 80, 108));
 		addSlotToContainer(new Slot(fractionaldistiller, 1, 125, 90));
 		addSlotToContainer(new Slot(fractionaldistiller, 2, 125, 66));
 		addSlotToContainer(new Slot(fractionaldistiller, 3, 125, 48));

@@ -1,15 +1,16 @@
 package com.projectreddog.machinemod.container;
 
+import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 
 public class ContainerDistiller extends Container {
 
@@ -22,7 +23,7 @@ public class ContainerDistiller extends Container {
 
 		for (int i = 0; i < 1; i++) {
 			for (int j = 0; j < 1; j++) {
-				addSlotToContainer(new Slot(distiller, j + i * 9, 8 + j * 18, 18 + i * 18));
+				addSlotToContainer(new SlotFurnaceFuel(distiller, j + i * 9, 8 + j * 18, 18 + i * 18));
 			}
 		}
 
