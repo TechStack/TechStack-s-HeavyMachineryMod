@@ -19,11 +19,19 @@ public class ContainerFractionalDistiller extends Container {
 	public ContainerFractionalDistiller(InventoryPlayer inventoryPlayer, TileEntityFractionalDistillation fractionaldistiller) {
 		this.fractionaldistiller = fractionaldistiller;
 
-		for (int i = 0; i < 1; i++) {
-			for (int j = 0; j < 1; j++) {
-				addSlotToContainer(new Slot(fractionaldistiller, j + i * 9, 8 + j * 18, 18 + i * 18));
-			}
-		}
+		addSlotToContainer(new Slot(fractionaldistiller, 0, 80, 108));
+		addSlotToContainer(new Slot(fractionaldistiller, 1, 125, 90));
+		addSlotToContainer(new Slot(fractionaldistiller, 2, 125, 66));
+		addSlotToContainer(new Slot(fractionaldistiller, 3, 125, 48));
+		addSlotToContainer(new Slot(fractionaldistiller, 4, 125, 30));
+		addSlotToContainer(new Slot(fractionaldistiller, 5, 125, 12));
+		//
+		// for (int i = 0; i < 1; i++) {
+		// for (int j = 0; j < 1; j++) {
+
+		// addSlotToContainer(new Slot(fractionaldistiller, j + i * 9, 8 + j * 18, 18 + i * 18));
+		// }
+		// }
 
 		// commonly used vanilla code that adds the player's inventory
 		bindPlayerInventory(inventoryPlayer);
@@ -57,14 +65,14 @@ public class ContainerFractionalDistiller extends Container {
 			stack = stackInSlot.copy();
 
 			// merges the item into player inventory since its in the Entity
-			if (slot < 1) {
-				if (!this.mergeItemStack(stackInSlot, 9, this.inventorySlots.size(), true)) {
+			if (slot < 7) {
+				if (!this.mergeItemStack(stackInSlot, 6, this.inventorySlots.size(), true)) {
 					return null;
 				}
 			}
 			// places it into the tileEntity is possible since its in the player
 			// inventory
-			else if (!this.mergeItemStack(stackInSlot, 0, 1, false)) {
+			else if (!this.mergeItemStack(stackInSlot, 0, 6, false)) {
 				return null;
 			}
 

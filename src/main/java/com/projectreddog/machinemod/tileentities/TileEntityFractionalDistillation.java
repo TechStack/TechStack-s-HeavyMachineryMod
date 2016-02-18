@@ -28,7 +28,7 @@ import net.minecraftforge.fluids.IFluidTank;
 public class TileEntityFractionalDistillation extends TileEntity implements ITickable, IFluidTank, ISidedInventory {
 
 	public final int maxOilStorage = 10000; // store up to 100k
-	public final int inventorySize = 1;
+	public final int inventorySize = 6;
 	protected ItemStack[] inventory;
 	private static int[] sideSlots = new int[] { 0 };
 
