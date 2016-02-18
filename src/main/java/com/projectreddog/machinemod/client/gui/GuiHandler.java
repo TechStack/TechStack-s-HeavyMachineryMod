@@ -7,6 +7,7 @@ import com.projectreddog.machinemod.container.ContainerCombine;
 import com.projectreddog.machinemod.container.ContainerDistiller;
 import com.projectreddog.machinemod.container.ContainerDumpTruck;
 import com.projectreddog.machinemod.container.ContainerFermenter;
+import com.projectreddog.machinemod.container.ContainerFractionalDistiller;
 import com.projectreddog.machinemod.container.ContainerGrader;
 import com.projectreddog.machinemod.container.ContainerLoader;
 import com.projectreddog.machinemod.container.ContainerPaver;
@@ -19,12 +20,13 @@ import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityGrader;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityPaver;
-import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
+import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
+import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 import com.projectreddog.machinemod.tileentities.TileEntityScreen;
 
@@ -123,6 +125,15 @@ public class GuiHandler implements IGuiHandler {
 				if (entity instanceof TileEntityDistiller) {
 
 					return new ContainerDistiller(player.inventory, (TileEntityDistiller) entity);
+				}
+			}
+		} else if (id == Reference.GUI_FRACTIONALDISTILLATION) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityFractionalDistillation) {
+
+					return new ContainerFractionalDistiller(player.inventory, (TileEntityFractionalDistillation) entity);
 				}
 			}
 		}
@@ -248,9 +259,15 @@ public class GuiHandler implements IGuiHandler {
 					return new GuiDistiller(player.inventory, (TileEntityDistiller) entity);
 				}
 			}
-		}
+		} else if (id == Reference.GUI_FRACTIONALDISTILLATION) {
 
-		else if (id == Reference.GUI_FERMENTER) {
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityFractionalDistillation) {
+					return new GuiFractionalDistiller(player.inventory, (TileEntityFractionalDistillation) entity);
+				}
+			}
+		} else if (id == Reference.GUI_FERMENTER) {
 
 			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
 			if (entity != null) {

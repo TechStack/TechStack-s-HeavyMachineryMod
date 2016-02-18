@@ -1,9 +1,9 @@
 package com.projectreddog.machinemod.block;
 
+import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
-import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -160,16 +160,12 @@ public class BlockMachineModFractionalDistillation extends BlockContainer {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
-		if (te instanceof TileEntityFractionalDistillation) {
-			TileEntityFractionalDistillation tefd = (TileEntityFractionalDistillation) te;
-			if (tefd.getFluid() != null) {
-				LogHelper.info("Fluid:" + tefd.getFluid().getLocalizedName() + " amount:" + tefd.getFluidAmount());
-			} else {
-				LogHelper.info("Fluid Null!");
-
-			}
+		if (te != null && !playerIn.isSneaking()) {
+			playerIn.openGui(MachineMod.instance, Reference.GUI_FRACTIONALDISTILLATION, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			return true;
+		} else {
+			return false;
 		}
-		return true;
-	};
+	}
 
 }
