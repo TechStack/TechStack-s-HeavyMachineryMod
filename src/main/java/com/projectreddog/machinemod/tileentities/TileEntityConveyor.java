@@ -8,6 +8,7 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
@@ -70,6 +71,10 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 
 				list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, boundingBox);
 				processEntitiesInList(list);
+
+				list = worldObj.getEntitiesWithinAABB(EntityXPOrb.class, boundingBox);
+				processEntitiesInList(list);
+
 			}
 		}
 
