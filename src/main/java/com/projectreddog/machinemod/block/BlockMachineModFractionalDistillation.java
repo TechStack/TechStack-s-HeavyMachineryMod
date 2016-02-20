@@ -162,7 +162,7 @@ public class BlockMachineModFractionalDistillation extends BlockContainer {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te != null && !playerIn.isSneaking()) {
 			if (te instanceof TileEntityFractionalDistillation){
-				if (((TileEntityFractionalDistillation) te).getStackOrder()==1){
+				if (((TileEntityFractionalDistillation) te).amIBottom()){
 					playerIn.openGui(MachineMod.instance, Reference.GUI_FRACTIONALDISTILLATION, worldIn, pos.getX(), pos.getY(), pos.getZ());
 				}
 			}

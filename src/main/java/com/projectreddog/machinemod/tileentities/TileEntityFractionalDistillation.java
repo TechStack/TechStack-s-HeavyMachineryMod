@@ -63,6 +63,17 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 		return 1;
 	}
 
+	
+	public boolean hasSlot(int slotIndex) {
+		int offset = slotIndex-1;
+		if (this.worldObj.getBlockState(this.pos.up(offset)).getBlock() == ModBlocks.machinefractionaldistillation){
+			return true;
+		}
+		return false;
+		
+	}
+	
+	
 	@Override
 	public void update() {
 		if (!worldObj.isRemote) {
