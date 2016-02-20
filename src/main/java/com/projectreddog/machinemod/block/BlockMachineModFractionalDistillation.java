@@ -161,7 +161,12 @@ public class BlockMachineModFractionalDistillation extends BlockContainer {
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te != null && !playerIn.isSneaking()) {
-			playerIn.openGui(MachineMod.instance, Reference.GUI_FRACTIONALDISTILLATION, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			if (te instanceof TileEntityFractionalDistillation){
+				if (((TileEntityFractionalDistillation) te).getStackOrder()==1){
+					playerIn.openGui(MachineMod.instance, Reference.GUI_FRACTIONALDISTILLATION, worldIn, pos.getX(), pos.getY(), pos.getZ());
+				}
+			}
+			
 			return true;
 		} else {
 			return false;

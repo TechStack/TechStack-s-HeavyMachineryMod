@@ -1,6 +1,6 @@
 package com.projectreddog.machinemod.container;
 
-import com.projectreddog.machinemod.inventory.SlotBucket;
+import com.projectreddog.machinemod.inventory.SlotFractionalDistllerBucket;
 import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,11 +22,11 @@ public class ContainerFractionalDistiller extends Container {
 		this.fractionaldistiller = fractionaldistiller;
 
 		addSlotToContainer(new SlotFurnaceFuel(fractionaldistiller, 0, 80, 108));
-		addSlotToContainer(new SlotBucket(fractionaldistiller, 1, 125, 90));
-		addSlotToContainer(new SlotBucket(fractionaldistiller, 2, 125, 66));
-		addSlotToContainer(new SlotBucket(fractionaldistiller, 3, 125, 48));
-		addSlotToContainer(new SlotBucket(fractionaldistiller, 4, 125, 30));
-		addSlotToContainer(new SlotBucket(fractionaldistiller, 5, 125, 12));
+		addSlotToContainer(new SlotFractionalDistllerBucket(fractionaldistiller, 1, 125, 90));
+		addSlotToContainer(new SlotFractionalDistllerBucket(fractionaldistiller, 2, 125, 66));
+		addSlotToContainer(new SlotFractionalDistllerBucket(fractionaldistiller, 3, 125, 48));
+		addSlotToContainer(new SlotFractionalDistllerBucket(fractionaldistiller, 4, 125, 30));
+		addSlotToContainer(new SlotFractionalDistllerBucket(fractionaldistiller, 5, 125, 12));
 		//
 		// for (int i = 0; i < 1; i++) {
 		// for (int j = 0; j < 1; j++) {

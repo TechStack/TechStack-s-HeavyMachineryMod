@@ -6,9 +6,9 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
 
-public class SlotBucket extends Slot {
+public class SlotFractionalDistllerBucket extends Slot {
 
-	public SlotBucket(IInventory inventoryIn, int slotIndex, int xPosition, int yPosition) {
+	public SlotFractionalDistllerBucket(IInventory inventoryIn, int slotIndex, int xPosition, int yPosition) {
 	      super(inventoryIn, slotIndex, xPosition, yPosition);
 	    }
 
@@ -17,7 +17,11 @@ public class SlotBucket extends Slot {
 	     */
 	    public boolean isItemValid(ItemStack stack)
 	    {
+	    	if (	    	this.getSlotIndex() >1){
 	        return  isBucket(stack);
+	    	}
+	    	// TODO: add a check to see if the slot index =1 and its an oil bucket
+			return false;
 	    }
 
 	    public int getItemStackLimit(ItemStack stack)
