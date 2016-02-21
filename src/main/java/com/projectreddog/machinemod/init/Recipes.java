@@ -180,6 +180,8 @@ public class Recipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefractionaldistillation, 1), "sbs", "lbl", "sts", 's', "blockSteel", 'b', Blocks.iron_bars, 't', Blocks.brewing_stand));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinewellhead, 1), "   ", "lll", " l ", 'l', ModBlocks.machineliquidPipe));
+
 		// D D
 		// PBP
 		// III
