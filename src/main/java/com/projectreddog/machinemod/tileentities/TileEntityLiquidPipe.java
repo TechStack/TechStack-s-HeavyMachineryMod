@@ -34,11 +34,16 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 
 	}
 
+	public float getPercentFull(IFluidTank tank) {
+		return (((float) tank.getFluidAmount() / tank.getCapacity()));
+	}
+
 	public boolean transferFluid(TileEntity te) {
 		// pump in first
 		if (te instanceof IFluidTank) {
 			IFluidTank lc = (IFluidTank) te;
-			if (lc.getFluidAmount() > getFluidAmount()) {
+			if ((getPercentFull(lc) > getPercentFull(this)) && (this.worldObj.isBlockPowered(this.pos) || lc instanceof TileEntityLiquidPipe)) {
+				// target is fuller than source so Pull!
 				if (lc.getFluid() != null) {
 					if (this.getFluid() != null) {
 						if (lc.getFluid().getFluid() == this.getFluid().getFluid()) {
@@ -59,7 +64,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 						// return true;
 					}
 				}
-			} else if (lc.getFluidAmount() != getFluidAmount()) {
+			} else if (getPercentFull(lc) != getPercentFull(this)) {
 				// the lc has less fluid so pump to it
 				if (this.getFluid() != null) {
 					if (lc.getFluid() != null) {
