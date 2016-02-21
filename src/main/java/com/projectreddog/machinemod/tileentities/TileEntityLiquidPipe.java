@@ -109,7 +109,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 			}
 		}
 		ticksSinceLastConnectionUpdate++;
-		if (getFluidAmount() < getCapacity()) {
+		if (getFluidAmount() <= getCapacity()) {
 			// has room for fluid
 			if (connectedNorth) {
 				// check the TE to the north to see if it has more fluid

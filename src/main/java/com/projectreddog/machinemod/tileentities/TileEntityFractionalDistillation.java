@@ -27,7 +27,7 @@ import net.minecraftforge.fluids.IFluidTank;
 
 public class TileEntityFractionalDistillation extends TileEntity implements ITickable, IFluidTank, ISidedInventory {
 
-	public final int maxOilStorage = 10000; // store up to 100k
+	public final int maxOilStorage = 1000; // store up to 100k
 	public final int inventorySize = 6;
 	protected ItemStack[] inventory;
 	private static int[] sideSlots = new int[] { 0 };
@@ -89,9 +89,9 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 				timeTillCoolDown = coolDownAmount;
 
 				// LogHelper.info("TE update entity called");
-				boundingBox = new AxisAlignedBB(this.pos.north(3).west(3).down(1), this.pos.south(3).east(3).up(1));
-				List list = worldObj.getEntitiesWithinAABB(EntitySemiTractor.class, boundingBox);
-				processEntitiesInList(list);
+				// boundingBox = new AxisAlignedBB(this.pos.north(3).west(3).down(1), this.pos.south(3).east(3).up(1));
+				// List list = worldObj.getEntitiesWithinAABB(EntitySemiTractor.class, boundingBox);
+				// processEntitiesInList(list);
 				tryDistill();
 			}
 		} else {
