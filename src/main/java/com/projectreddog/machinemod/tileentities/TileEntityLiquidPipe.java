@@ -48,8 +48,12 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 					if (this.getFluid() != null) {
 						if (lc.getFluid().getFluid() == this.getFluid().getFluid()) {
 							// same fluid try to drain
-							FluidStack drained = lc.drain(1, true);
-							this.fill(drained, true);
+							FluidStack drained = lc.drain(1, false);
+							if (drained.amount > 0 && this.fill(drained, false) > 0) {
+								drained = lc.drain(1, true);
+								this.fill(drained, true);
+							}
+
 							// break the for e: Enum loop
 							// LogHelper.info(this.getFluidAmount());
 							// return true;
@@ -64,14 +68,19 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 						// return true;
 					}
 				}
-			} else if (getPercentFull(lc) != getPercentFull(this)) {
+			} else if (getPercentFull(lc) != getPercentFull(this) && (((!(this.worldObj.isBlockPowered(this.pos))) || lc instanceof TileEntityLiquidPipe))) {
 				// the lc has less fluid so pump to it
 				if (this.getFluid() != null) {
 					if (lc.getFluid() != null) {
 						if (lc.getFluid().getFluid() == this.getFluid().getFluid()) {
 							// same fluid try to drain
-							FluidStack drained = this.drain(1, true);
-							lc.fill(drained, true);
+
+							FluidStack drained = this.drain(1, false);
+
+							if (drained.amount > 0 && lc.fill(drained, false) > 0) {
+								drained = this.drain(1, true);
+								lc.fill(drained, true);
+							}
 							// break the for e: Enum loop
 							// LogHelper.info(this.getFluidAmount());
 							// return true;

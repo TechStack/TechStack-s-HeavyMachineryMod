@@ -38,7 +38,7 @@ public class GuiFractionalDistiller extends GuiContainer {
 		// 8, ySize - 96 + 2, 4210752);
 		// fontRendererObj.drawString("Fermented Mash: " + distiller.fuelStorage + "Burn Time:" + distiller.remainBurnTime, 5, 5, 4210752);
 		// fractionaldistiller.getfluidForHeight(5).getName()
-		int xCord = 10;
+		int xCord = 8;
 		int yStart = 20;
 		int yOffest = 19;
 		fontRendererObj.drawString("Type       Mb", xCord, yStart - 15, 4210752);
@@ -46,7 +46,7 @@ public class GuiFractionalDistiller extends GuiContainer {
 		fontRendererObj.drawString("Jet Fuel:  " + fractionaldistiller.fluidLevelAbove[3], xCord, yStart + yOffest * 1, 4210752);
 		fontRendererObj.drawString("Diesel:     " + fractionaldistiller.fluidLevelAbove[2], xCord, yStart + yOffest * 2, 4210752);
 		fontRendererObj.drawString("Bitumen:   " + fractionaldistiller.fluidLevelAbove[1], xCord, yStart + yOffest * 3, 4210752);
-		fontRendererObj.drawString("Crude Oil: " + fractionaldistiller.fluidLevelAbove[0], xCord, yStart + yOffest * 4, 4210752);
+		fontRendererObj.drawString("Oil:         " + fractionaldistiller.fluidLevelAbove[0], xCord, yStart + yOffest * 4, 4210752);
 
 	}
 
