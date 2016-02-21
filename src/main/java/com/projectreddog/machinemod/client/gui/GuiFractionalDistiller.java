@@ -37,6 +37,15 @@ public class GuiFractionalDistiller extends GuiContainer {
 		// fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"),
 		// 8, ySize - 96 + 2, 4210752);
 		// fontRendererObj.drawString("Fermented Mash: " + distiller.fuelStorage + "Burn Time:" + distiller.remainBurnTime, 5, 5, 4210752);
+		// fractionaldistiller.getfluidForHeight(5).getName()
+		int Xcord = 35;
+		fontRendererObj.drawString("Naphtha:" + fractionaldistiller.fluidLevelAbove[4], Xcord, 15, 4210752);
+		fontRendererObj.drawString("Level" + fractionaldistiller.fluidLevelAbove[3], Xcord, 35, 4210752);
+
+		// fontRendererObj.drawString("Level" + fractionaldistiller.fluidLevelAbove[2], 5, 25, 4210752);
+
+		// fontRendererObj.drawString("Level" + fractionaldistiller.fluidLevelAbove[1], 5, 35, 4210752);
+		// fontRendererObj.drawString("Level" + fractionaldistiller.getFluidAmount(), 5, 45, 4210752);
 
 	}
 
@@ -49,6 +58,7 @@ public class GuiFractionalDistiller extends GuiContainer {
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+
 	}
 
 }

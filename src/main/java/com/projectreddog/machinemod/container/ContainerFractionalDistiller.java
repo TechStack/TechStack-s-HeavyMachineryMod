@@ -6,6 +6,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillatio
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.ItemStack;
@@ -17,25 +18,55 @@ public class ContainerFractionalDistiller extends Container {
 	protected TileEntityFractionalDistillation fractionaldistiller;
 	private int lastFuelStorage;
 	private int lastRemainBurnTime;
+	private boolean isSlot1Active = true;
+	private boolean isSlot2Active = false;
+	private boolean isSlot3Active = false;
+	private boolean isSlot4Active = false;
+	private boolean isSlot5Active = false;
+	private int lastValue[];
+
+	public boolean isSlot1Active() {
+		return isSlot1Active;
+	}
+
+	public boolean isSlot2Active() {
+		return isSlot2Active;
+	}
+
+	public boolean isSlot3Active() {
+		return isSlot3Active;
+	}
+
+	public boolean isSlot4Active() {
+		return isSlot4Active;
+	}
+
+	public boolean isSlot5Active() {
+		return isSlot5Active;
+	}
 
 	public ContainerFractionalDistiller(InventoryPlayer inventoryPlayer, TileEntityFractionalDistillation fractionaldistiller) {
 		this.fractionaldistiller = fractionaldistiller;
-
+		lastValue = new int[this.fractionaldistiller.getFieldCount()];
 		addSlotToContainer(new SlotFurnaceFuel(fractionaldistiller, 0, 80, 108));
-			addSlotToContainer(new SlotFractionalDistllerBucket(fractionaldistiller, 1, 126, 90));
-		if (fractionaldistiller.hasSlot(2)){
+		addSlotToContainer(new SlotFractionalDistllerBucket(fractionaldistiller, 1, 126, 90));
+		if (fractionaldistiller.hasSlot(2)) {
 			addSlotToContainer(new SlotFractionalDistllerBucket(fractionaldistiller, 2, 126, 66));
+			isSlot3Active = true;
 		}
-		if (fractionaldistiller.hasSlot(3)){
+		if (fractionaldistiller.hasSlot(3)) {
 			addSlotToContainer(new SlotFractionalDistllerBucket(fractionaldistiller, 3, 126, 48));
+			isSlot3Active = true;
 		}
-		if (fractionaldistiller.hasSlot(4)){
+		if (fractionaldistiller.hasSlot(4)) {
 			addSlotToContainer(new SlotFractionalDistllerBucket(fractionaldistiller, 4, 126, 30));
+			isSlot4Active = true;
 		}
-		if (fractionaldistiller.hasSlot(5)){
+		if (fractionaldistiller.hasSlot(5)) {
 			addSlotToContainer(new SlotFractionalDistllerBucket(fractionaldistiller, 5, 126, 12));
+			isSlot5Active = true;
 		}
-		
+
 		//
 		// for (int i = 0; i < 1; i++) {
 		// for (int j = 0; j < 1; j++) {
@@ -105,27 +136,24 @@ public class ContainerFractionalDistiller extends Container {
 	 * Looks for changes made in the container, sends them to every listener.
 	 */
 	public void detectAndSendChanges() {
-		// super.detectAndSendChanges();
-		//
-		// for (int i = 0; i < this.crafters.size(); ++i) {
-		// ICrafting icrafting = (ICrafting) this.crafters.get(i);
-		//
-		// if (this.lastFuelStorage != this.fractionaldistiller.getField(0)) {
-		// icrafting.sendProgressBarUpdate(this, 0, this.fractionaldistiller.getField(0));
-		// }
-		// if (this.lastRemainBurnTime != this.fractionaldistiller.getField(1)) {
-		// icrafting.sendProgressBarUpdate(this, 1, this.fractionaldistiller.getField(1));
-		// }
-		//
-		// }
-		//
-		// this.lastFuelStorage = this.fractionaldistiller.getField(0);
-		// this.lastRemainBurnTime = this.fractionaldistiller.getField(1);
+		super.detectAndSendChanges();
+
+		for (int j = 0; j < this.fractionaldistiller.getFieldCount(); j++) {
+			for (int i = 0; i < this.crafters.size(); ++i) {
+				ICrafting icrafting = (ICrafting) this.crafters.get(i);
+
+				if (lastValue[j] != this.fractionaldistiller.getField(j)) {
+					icrafting.sendProgressBarUpdate(this, j, this.fractionaldistiller.getField(j));
+				}
+			}
+			lastValue[j] = this.fractionaldistiller.getField(j);
+
+		}
 
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(int id, int data) {
-		// this.distiller.setField(id, data);
+		this.fractionaldistiller.setField(id, data);
 	}
 }

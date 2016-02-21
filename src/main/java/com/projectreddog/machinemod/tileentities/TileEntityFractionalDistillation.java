@@ -47,10 +47,11 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	public boolean firstTick = true;
 
 	public int remainBurnTime = 0;
+	public int fluidLevelAbove[];
 
 	public TileEntityFractionalDistillation() {
 		inventory = new ItemStack[inventorySize];
-
+		fluidLevelAbove = new int[5];
 	}
 
 	public int getStackOrder() {
@@ -63,17 +64,15 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 		return 1;
 	}
 
-	
 	public boolean hasSlot(int slotIndex) {
-		int offset = slotIndex-1;
-		if (this.worldObj.getBlockState(this.pos.up(offset)).getBlock() == ModBlocks.machinefractionaldistillation){
+		int offset = slotIndex - 1;
+		if (this.worldObj.getBlockState(this.pos.up(offset)).getBlock() == ModBlocks.machinefractionaldistillation) {
 			return true;
 		}
 		return false;
-		
+
 	}
-	
-	
+
 	@Override
 	public void update() {
 		if (!worldObj.isRemote) {
@@ -482,6 +481,19 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 		switch (id) {
 		case 0:
 			return this.remainBurnTime;
+		case 1:
+			return this.getFluidAmount();
+
+		case 2:
+
+		case 3:
+		case 4:
+		case 5:
+			TileEntity te = this.worldObj.getTileEntity(this.pos.up(id - 1));
+			if (te instanceof TileEntityFractionalDistillation) {
+				return ((TileEntityFractionalDistillation) te).getFluidAmount();
+			}
+
 		default:
 			break;
 		}
@@ -494,7 +506,13 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 		case 0:
 			this.remainBurnTime = value;
 			break;
-
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+			fluidLevelAbove[id - 1] = value;
+			break;
 		default:
 			break;
 		}
@@ -502,7 +520,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	}
 
 	public int getFieldCount() {
-		return 1;
+		return 6;
 	}
 
 	@Override
