@@ -176,6 +176,10 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.liquidtanksegment, 1), "iii", "i i", "iii", 'i', Items.iron_ingot));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tankertrailer, 1), "   ", "sss", " ww", 's', ModItems.liquidtanksegment, 'w', ModItems.wheel));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machineliquidPipe, 1), "ss ", "   ", "ss ", 's', "ingotSteel"));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefractionaldistillation, 1), "sbs", "lbl", "sts", 's', "blockSteel", 'b', Blocks.iron_bars, 't', Blocks.brewing_stand));
+
 		// D D
 		// PBP
 		// III
