@@ -88,8 +88,12 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 					} else {
 						// the LC has no fluid so accept
 
-						FluidStack drained = this.drain(1, true);
-						lc.fill(drained, true);
+						FluidStack drained = this.drain(1, false);
+
+						if (drained.amount > 0 && lc.fill(drained, false) > 0) {
+							drained = this.drain(1, true);
+							lc.fill(drained, true);
+						}
 						// break the for e: Enum loop
 						// LogHelper.info("SAME" + this.getFluidAmount());
 						// return true;

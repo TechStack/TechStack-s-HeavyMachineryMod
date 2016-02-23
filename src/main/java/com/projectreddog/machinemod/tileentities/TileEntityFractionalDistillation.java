@@ -55,6 +55,9 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	}
 
 	public int getStackOrder() {
+		if (this.pos == null || this.worldObj == null || this.worldObj.getBlockState(this.pos.down()).getBlock() == null) {
+			return 1;
+		}
 		if (this.worldObj.getBlockState(this.pos.down()).getBlock() == ModBlocks.machinefractionaldistillation) {
 			if (this.worldObj.getTileEntity(this.pos.down()) instanceof TileEntityFractionalDistillation) {
 				TileEntityFractionalDistillation te = (TileEntityFractionalDistillation) this.worldObj.getTileEntity(this.pos.down());
@@ -296,7 +299,9 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 		if (resource == null) {
 			return 0;
 		}
-
+		if (!(resource.isFluidEqual(new FluidStack(getfluidForHeight(getStackOrder()), 1)))) {
+			return 0;
+		}
 		if (!doFill) {
 			if (fluid == null) {
 				return Math.min(maxOilStorage, resource.amount);
