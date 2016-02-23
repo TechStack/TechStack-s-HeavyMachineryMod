@@ -11,6 +11,7 @@ import com.projectreddog.machinemod.block.BlockMachineDrilledGranite;
 import com.projectreddog.machinemod.block.BlockMachineDrilledStone;
 import com.projectreddog.machinemod.block.BlockMachineExplosivePackedDrilledStone;
 import com.projectreddog.machinemod.block.BlockMachineMod;
+import com.projectreddog.machinemod.block.BlockMachineModAsphaltMixer;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone2;
 import com.projectreddog.machinemod.block.BlockMachineModCentrifuge;
@@ -29,6 +30,7 @@ import com.projectreddog.machinemod.block.BlockMachineSteelBlock;
 import com.projectreddog.machinemod.block.BlockOilFluid;
 import com.projectreddog.machinemod.item.ItemBlockBlastedStone;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.tileentities.TileEntityAsphaltMixer;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 import com.projectreddog.machinemod.tileentities.TileEntityConveyor;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
@@ -83,6 +85,8 @@ public class ModBlocks {
 	public static final Block machinefractionaldistillation = new BlockMachineModFractionalDistillation();
 	public static final Block machineliquidPipe = new BlockMachineModLiquidPipe();
 
+	public static final Block machineasphaltmixer = new BlockMachineModAsphaltMixer();
+
 	// public static Fluid fluidBioFuel = new Fluid("BioFuel");
 
 	public static Fluid fluidOil = new Fluid("oil", new ResourceLocation("machinemod", Reference.FLUID_OIL_STILL_TEXTURE_LOCATION), new ResourceLocation("machinemod", Reference.FLUID_OIL_FLOWING_TEXTURE_LOCATION));
@@ -123,6 +127,8 @@ public class ModBlocks {
 
 		GameRegistry.registerBlock(machineconveyor, Reference.MODBLOCK_MACHINE_CONVEYOR);
 		GameRegistry.registerBlock(machinefractionaldistillation, Reference.MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION);
+		GameRegistry.registerBlock(machineasphaltmixer, Reference.MODBLOCK_MACHINE_ASPHALT_MIXER);
+
 		GameRegistry.registerBlock(machineliquidPipe, Reference.MODBLOCK_MACHINE_LIQUID_PIPE);
 		GameRegistry.registerBlock(machinescreen, Reference.MODBLOCK_MACHINE_SCREEN);
 		GameRegistry.registerBlock(machinemowedgrass, Reference.MODBLOCK_MACHINE_MOWED_GRASS);
@@ -140,6 +146,7 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileEntityConveyor.class, Reference.MODBLOCK_MACHINE_CONVEYOR);
 		GameRegistry.registerTileEntity(TileEntityScreen.class, Reference.MODBLOCK_MACHINE_SCREEN);
 		GameRegistry.registerTileEntity(TileEntityFractionalDistillation.class, Reference.MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION);
+		GameRegistry.registerTileEntity(TileEntityAsphaltMixer.class, Reference.MODBLOCK_MACHINE_ASPHALT_MIXER);
 
 		GameRegistry.registerTileEntity(TileEntityFuelPump.class, Reference.MODBLOCK_MACHINE_FUEL_PUMP);
 		GameRegistry.registerTileEntity(TileEntityDistiller.class, Reference.MODBLOCK_MACHINE_DISTILLER);
@@ -198,6 +205,9 @@ public class ModBlocks {
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinedrilledstone), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_DRILLED_STONE, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinefractionaldistillation), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION, "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineasphaltmixer), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_ASPHALT_MIXER, "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineliquidPipe), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_LIQUID_PIPE, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinedrilledandesite), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_DRILLED_ANDESITE, "inventory"));
