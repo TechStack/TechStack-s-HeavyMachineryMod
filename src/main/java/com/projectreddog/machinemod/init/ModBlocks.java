@@ -24,6 +24,7 @@ import com.projectreddog.machinemod.block.BlockMachineModFuelPump;
 import com.projectreddog.machinemod.block.BlockMachineModLiquidPipe;
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.block.BlockMachineModScreen;
+import com.projectreddog.machinemod.block.BlockMachineModTowerCrane;
 import com.projectreddog.machinemod.block.BlockMachineModWellHead;
 import com.projectreddog.machinemod.block.BlockMachineMowedGrass;
 import com.projectreddog.machinemod.block.BlockMachineSteelBlock;
@@ -86,6 +87,7 @@ public class ModBlocks {
 	public static final Block machineliquidPipe = new BlockMachineModLiquidPipe();
 
 	public static final Block machineasphaltmixer = new BlockMachineModAsphaltMixer();
+	public static final Block towerCrane = new BlockMachineModTowerCrane();
 
 	// public static Fluid fluidBioFuel = new Fluid("BioFuel");
 
@@ -128,6 +130,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(machineconveyor, Reference.MODBLOCK_MACHINE_CONVEYOR);
 		GameRegistry.registerBlock(machinefractionaldistillation, Reference.MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION);
 		GameRegistry.registerBlock(machineasphaltmixer, Reference.MODBLOCK_MACHINE_ASPHALT_MIXER);
+		GameRegistry.registerBlock(towerCrane, Reference.MODBLOCK_MACHINE_TOWER_CRANE);
 
 		GameRegistry.registerBlock(machineliquidPipe, Reference.MODBLOCK_MACHINE_LIQUID_PIPE);
 		GameRegistry.registerBlock(machinescreen, Reference.MODBLOCK_MACHINE_SCREEN);
@@ -207,6 +210,7 @@ public class ModBlocks {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinefractionaldistillation), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineasphaltmixer), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_ASPHALT_MIXER, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(towerCrane), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_TOWER_CRANE, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineliquidPipe), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_LIQUID_PIPE, "inventory"));
 
