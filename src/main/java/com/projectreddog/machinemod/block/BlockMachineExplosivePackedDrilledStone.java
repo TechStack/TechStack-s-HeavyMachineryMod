@@ -2,15 +2,16 @@ package com.projectreddog.machinemod.block;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
+import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.world.ModExplosion;
+
+import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
-import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.world.ModExplosion;
 
 public class BlockMachineExplosivePackedDrilledStone extends BlockMachineModManyTexture {
 	public BlockMachineExplosivePackedDrilledStone() {
@@ -19,7 +20,7 @@ public class BlockMachineExplosivePackedDrilledStone extends BlockMachineModMany
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
-		this.setSoundType(SoundType.Stone);
+		this.setSoundType(SoundType.STONE);
 		this.setHardness(1.5f);
 
 	}
@@ -27,9 +28,10 @@ public class BlockMachineExplosivePackedDrilledStone extends BlockMachineModMany
 	@Override
 	// public void onNeighborBlockChange(World worldIn, BlockPos pos,
 	// IBlockState state, Block neighborBlock) {}
-	public void onNeighborBlockChange(World world, BlockPos bp, IBlockState bs, Block neighborBlock) {
+	public void onNeighborChange(IBlockAccess world, BlockPos bp, BlockPos neighbor) {
+		// public void onNeighborBlockChange(World world, BlockPos bp, IBlockState bs, Block neighborBlock) {
 
-		world.scheduleUpdate(bp, this, this.tickRate(world));
+		((World) world).scheduleUpdate(bp, this, this.tickRate((World) world));
 
 	}
 

@@ -7,7 +7,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class BlockMachineModFalling extends BlockMachineMod {
@@ -40,9 +40,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 	}
 
 	/**
-	 * Lets the block know when one of its neighbor changes. Doesn't know which
-	 * neighbor changed (coordinates passed are their own) Args: x, y, z,
-	 * neighbor Block
+	 * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are their own) Args: x, y, z, neighbor Block
 	 */
 
 	public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock) {
@@ -128,7 +126,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 		bp = new BlockPos(x, y - 1, z);
 		Block block = world.getBlockState(bp).getBlock();
 
-		if (block == Blocks.air || block == Blocks.fire)// test fall down this x
+		if (block == Blocks.AIR || block == Blocks.FIRE)// test fall down this x
 														// z
 		{
 
@@ -143,7 +141,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 					bp = new BlockPos(x + i, y, z + j);
 					block = world.getBlockState(bp).getBlock();
 
-					if (block == Blocks.air || block == Blocks.fire)// test fall
+					if (block == Blocks.AIR || block == Blocks.FIRE)// test fall
 																	// down this
 																	// x+1 z
 					{
@@ -151,7 +149,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 						bp = new BlockPos(x + i, y - 1, z + j);
 						block2 = world.getBlockState(bp).getBlock();
 
-						if (block2 == Blocks.air || block2 == Blocks.fire) {
+						if (block2 == Blocks.AIR || block2 == Blocks.FIRE) {
 
 							// this.motionX =i*1f;
 							// this.motionZ =j*1f;

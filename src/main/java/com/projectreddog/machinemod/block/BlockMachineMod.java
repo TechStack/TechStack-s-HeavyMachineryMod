@@ -17,7 +17,7 @@ public class BlockMachineMod extends Block {
 
 	public BlockMachineMod() {
 		// Generic constructor (set to rock by default)
-		this(Material.rock);
+		this(Material.ROCK);
 	}
 
 	@Override

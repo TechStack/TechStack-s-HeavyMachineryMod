@@ -68,7 +68,7 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 	}
 
 	protected BlockStateContainer createBlockState() {
-		return new BlockState(this, new IProperty[] { FACING });
+		return new BlockStateContainer(this, new IProperty[] { FACING });
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -106,11 +106,11 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 
 		if (worldIn.getLightFromNeighbors(pos.up()) < 4 && worldIn.getBlockState(pos.up()).getBlock().getLightOpacity(worldIn, pos.up()) > 2) {
-			worldIn.setBlockState(pos, Blocks.dirt.getDefaultState());
+			worldIn.setBlockState(pos, Blocks.DIRT.getDefaultState());
 		} else {
 			intRandom = worldIn.rand.nextInt(100);
 			if (intRandom >= 97) {
-				worldIn.setBlockState(pos, Blocks.grass.getDefaultState());
+				worldIn.setBlockState(pos, Blocks.GRASS.getDefaultState());
 			}
 		}
 
@@ -123,7 +123,7 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 	 *            the level of the Fortune enchantment on the player's tool
 	 */
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return Blocks.dirt.getItemDropped(Blocks.dirt.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT), rand, fortune);
+		return Blocks.DIRT.getItemDropped(Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT), rand, fortune);
 	}
 
 	@SideOnly(Side.CLIENT)

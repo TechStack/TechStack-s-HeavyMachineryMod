@@ -1,19 +1,20 @@
 package com.projectreddog.machinemod.block;
 
+import com.projectreddog.machinemod.reference.Reference;
+
+import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.IBlockState
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.projectreddog.machinemod.reference.Reference;
 
 public class BlockMachineDrilledStone extends BlockMachineModManyTexture {
 	public static final PropertyDirection FACING = PropertyDirection.create("facing");
@@ -25,7 +26,7 @@ public class BlockMachineDrilledStone extends BlockMachineModManyTexture {
 		// this.setBlockName(Reference.MODBLOCK_MACHINE_DRILLED_STONE);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_DRILLED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
-		this.setSoundType(SoundType.Stone);
+		this.setSoundType(SoundType.STONE);
 		this.setHardness(1.5f);
 
 	}
@@ -79,7 +80,7 @@ public class BlockMachineDrilledStone extends BlockMachineModManyTexture {
 	}
 
 	protected BlockStateContainer createBlockState() {
-		return new BlockState(this, new IProperty[] { FACING });
+		return new BlockStateContainer(this, new IProperty[] { FACING });
 	}
 
 	@SideOnly(Side.CLIENT)

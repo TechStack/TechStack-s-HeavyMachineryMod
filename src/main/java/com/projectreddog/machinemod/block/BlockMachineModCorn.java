@@ -2,25 +2,26 @@ package com.projectreddog.machinemod.block;
 
 import java.util.Random;
 
+import com.projectreddog.machinemod.init.ModItems;
+import com.projectreddog.machinemod.reference.Reference;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
-import net.minecraft.block.state.IBlockState
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.projectreddog.machinemod.init.ModItems;
-import com.projectreddog.machinemod.reference.Reference;
 
 public class BlockMachineModCorn extends BlockBush implements IGrowable {
 	public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 6);
@@ -35,7 +36,7 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
 		this.setCreativeTab((CreativeTabs) null);
 		this.setHardness(0.0F);
-		this.setStepSound(soundTypeGrass);
+		this.setSoundType(SoundType.GROUND);// was grass
 		this.disableStats();
 
 	}
@@ -44,7 +45,7 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 	 * is the block grass, dirt or farmland
 	 */
 	protected boolean canPlaceBlockOn(Block ground) {
-		return ground == Blocks.farmland;
+		return ground == Blocks.FARMLAND;
 	}
 
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
@@ -184,7 +185,7 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 	}
 
 	protected BlockStateContainer createBlockState() {
-		return new BlockState(this, new IProperty[] { AGE });
+		return new BlockStateContainer(this, new IProperty[] { AGE });
 	}
 
 	@Override

@@ -9,11 +9,13 @@ import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockMachineModLiquidPipe extends BlockContainer {
@@ -26,14 +28,14 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 		// this.setBlockName(Reference.MODBLOCK_MACHINE_DRILLED_STONE);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_DRILLED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
-		this.setSoundType(SoundType.Stone);
+		this.setSoundType(SoundType.STONE);
 		this.setHardness(1.5f);
 
 	}
 
 	public BlockMachineModLiquidPipe() {
 		// Generic constructor (set to rock by default)
-		this(Material.rock);
+		this(Material.ROCK);
 	}
 
 	@Override
@@ -44,13 +46,13 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 	}
 
 	@Override
-	public int getRenderType() {
+	public EnumBlockRenderType getRenderType(IBlockState state) {
 		// 3 for normal block 2 for TESR 1 liquid -1 nothing ( like air)
 		return 2;
 	}
 
 	@Override
-	public boolean isOpaqueCube() {
+	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 

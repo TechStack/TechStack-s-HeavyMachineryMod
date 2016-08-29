@@ -1,13 +1,13 @@
 package com.projectreddog.machinemod.block;
 
+import com.projectreddog.machinemod.reference.Reference;
+
+import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.IBlockState
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
-
-import com.projectreddog.machinemod.reference.Reference;
 
 public class BlockMachineModBlastedStone2 extends BlockMachineModBlastedStoneBase {
 	public static final PropertyEnum PROPERTYORE = PropertyEnum.create("ore", EnumModOres.class);
@@ -18,7 +18,7 @@ public class BlockMachineModBlastedStone2 extends BlockMachineModBlastedStoneBas
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLASTED_STONE2);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
-		this.setSoundType(SoundType.Stone);
+		this.setSoundType(SoundType.STONE);
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class BlockMachineModBlastedStone2 extends BlockMachineModBlastedStoneBas
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockState(this, new IProperty[] { PROPERTYORE });
+		return new BlockStateContainer(this, new IProperty[] { PROPERTYORE });
 	}
 
 	public static enum EnumModOres implements IStringSerializable {
