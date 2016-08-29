@@ -13,9 +13,9 @@ import net.minecraft.block.BlockStone;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
@@ -96,7 +96,7 @@ public class ModExplosion extends Explosion {
 					this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0, d1, d2, d3, d4, d5);
 				}
 
-				if (block.getMaterial() != Material.air) {
+				if (block.getMaterial() != Material.AIR) {
 
 					// TS DO NOT DROP BLOCKS !
 					// if (block.canDropFromExplosion(this))
@@ -142,19 +142,19 @@ public class ModExplosion extends Explosion {
 					}
 				}
 				// not stone
-				else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.gold_ore) {
+				else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.GOLD_ORE) {
 					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.GOLD));
-				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.iron_ore) {
+				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.IRON_ORE) {
 					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.IRON));
-				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.coal_ore) {
+				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.COAL_ORE) {
 					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.COAL));
-				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.lapis_ore) {
+				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.LAPIS_ORE) {
 					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.LAPIS));
-				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.diamond_ore) {
+				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.DIAMOND_ORE) {
 					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.DIAMOND));
-				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.redstone_ore) {
+				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.REDSTONE_ORE) {
 					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.REDSTONE));
-				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.emerald_ore) {
+				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.EMERALD_ORE) {
 					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.EMERALD));
 				} else if (this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2) {
 				} else {

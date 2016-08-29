@@ -1,22 +1,20 @@
 package com.projectreddog.machinemod.client.handler;
 
-import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MovingObjectPosition;
-import net.minecraft.util.Vec3;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.InputEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
 import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServer;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServerOpenGui;
 import com.projectreddog.machinemod.network.MachineModMessageMouseInputToServer;
+
+import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class InputEventHandler {
 
@@ -143,8 +141,7 @@ public class InputEventHandler {
 
 	@SideOnly(Side.CLIENT)
 	/**
-	 * Performs a ray trace for the distance specified *
-	 *  Args: distance
+	 * Performs a ray trace for the distance specified * Args: distance
 	 */
 	public MovingObjectPosition rayTrace(double par1) {
 		Vec3 var4 = Minecraft.getMinecraft().thePlayer.getPositionEyes(1);
