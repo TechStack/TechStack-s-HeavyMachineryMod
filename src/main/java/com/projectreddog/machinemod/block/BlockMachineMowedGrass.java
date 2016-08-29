@@ -7,15 +7,14 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -68,7 +67,7 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 		return ((EnumFacing) state.getValue(FACING)).getIndex();
 	}
 
-	protected BlockState createBlockState() {
+	protected BlockStateContainer createBlockState() {
 		return new BlockState(this, new IProperty[] { FACING });
 	}
 

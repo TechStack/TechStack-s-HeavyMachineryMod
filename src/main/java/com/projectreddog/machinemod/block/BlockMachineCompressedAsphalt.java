@@ -3,11 +3,12 @@ package com.projectreddog.machinemod.block;
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.reference.Reference;
 
+import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockMachineCompressedAsphalt extends BlockMachineMod {
@@ -18,7 +19,7 @@ public class BlockMachineCompressedAsphalt extends BlockMachineMod {
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_COMPRESSED_ASPHALT);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setHardness(15f);// not sure on the hardness
-		this.setStepSound(soundTypeStone);
+		this.setSoundType(SoundType.STONE);
 	}
 
 	public AxisAlignedBB getCollisionBoundingBox(World worldIn, BlockPos pos, IBlockState state) {

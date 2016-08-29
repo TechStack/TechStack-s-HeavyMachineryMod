@@ -3,7 +3,7 @@ package com.projectreddog.machinemod.block;
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.IBlockState
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.IStringSerializable;
 
@@ -18,7 +18,7 @@ public class BlockMachineModBlastedStone extends BlockMachineModBlastedStoneBase
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
-		this.setStepSound(soundTypeStone);
+		this.setSoundType(SoundType.Stone);
 		this.setHardness(1.5f);
 
 	}
@@ -46,7 +46,7 @@ public class BlockMachineModBlastedStone extends BlockMachineModBlastedStoneBase
 	}
 
 	@Override
-	protected BlockState createBlockState() {
+	protected BlockStateContainer createBlockState() {
 		return new BlockState(this, new IProperty[] { PROPERTYORE });
 	}
 

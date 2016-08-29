@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.block;
 
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
 public class BlockMachineSteelBlock extends BlockMachineMod {

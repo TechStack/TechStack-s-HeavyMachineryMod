@@ -10,7 +10,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.IBlockState
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.IInventory;
@@ -18,7 +18,7 @@ import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -38,7 +38,7 @@ public class BlockMachineModCentrifuge extends BlockContainer {
 		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_CENTRIFUGE);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
-		this.setStepSound(soundTypeStone);
+		this.setSoundType(SoundType.Stone);
 		this.setHardness(1.5f);
 
 	}
@@ -128,7 +128,7 @@ public class BlockMachineModCentrifuge extends BlockContainer {
 		return ((EnumFacing) state.getValue(FACING)).getIndex();
 	}
 
-	protected BlockState createBlockState() {
+	protected BlockStateContainer createBlockState() {
 		return new BlockState(this, new IProperty[] { FACING });
 	}
 

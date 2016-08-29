@@ -12,7 +12,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
@@ -26,7 +26,7 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 		// this.setBlockName(Reference.MODBLOCK_MACHINE_DRILLED_STONE);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_DRILLED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
-		this.setStepSound(soundTypeStone);
+		this.setSoundType(SoundType.Stone);
 		this.setHardness(1.5f);
 
 	}
