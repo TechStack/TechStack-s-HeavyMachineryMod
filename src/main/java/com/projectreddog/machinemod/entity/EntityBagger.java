@@ -65,7 +65,7 @@ public class EntityBagger extends EntityMachineModRideable {
 	public void onUpdate() {
 		super.onUpdate();
 		if (!worldObj.isRemote) {
-			if (this.riddenByEntity != null && currentFuelLevel > 0) {
+			if (this.getControllingPassenger() != null && currentFuelLevel > 0) {
 				this.Attribute2++;
 				currentFuelLevel--;
 			}
@@ -113,10 +113,10 @@ public class EntityBagger extends EntityMachineModRideable {
 
 						if (!(worldObj.getBlockState(bp).getBlock().isAir(worldObj, bp)) && !(worldObj.getBlockState(bp).getBlock() == Blocks.bedrock) && !(worldObj.getBlockState(bp).getBlock().getMaterial() == Material.water) && !(worldObj.getBlockState(bp).getBlock().getMaterial() == Material.lava) && !(worldObj.getBlockState(bp).getBlock() == Blocks.obsidian)) {
 
-//							worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-//							worldObj.setBlockToAir(bp);
-							BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
-							
+							// worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
+							// worldObj.setBlockToAir(bp);
+							BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
+
 						}
 
 						AxisAlignedBB bucketboundingBox = new AxisAlignedBB(bp.getX(), bp.getY(), bp.getZ(), bp.getX() + 1, bp.getY() + 1, bp.getZ() + 1);

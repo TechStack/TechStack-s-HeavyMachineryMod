@@ -41,7 +41,7 @@ public class EntityCombine extends EntityMachineModRideable {
 			// bucket Down
 			// break blocks first
 			int angle;
-			if (this.riddenByEntity != null) {
+			if (this.getControllingPassenger() != null) {
 				this.Attribute2++;
 			}
 			if (this.isPlayerPushingSprintButton) {
@@ -60,7 +60,7 @@ public class EntityCombine extends EntityMachineModRideable {
 
 							if (!iGrowable.canGrow(worldObj, bp, worldObj.getBlockState(bp), worldObj.isRemote)) {
 
-								BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
+								BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
 
 							}
 						}

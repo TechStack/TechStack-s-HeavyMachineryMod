@@ -3,6 +3,8 @@ package com.projectreddog.machinemod.entity;
 import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Nullable;
+
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.init.ModNetwork;
@@ -26,11 +28,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
@@ -182,18 +184,18 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	@Override
 	public boolean interactFirst(EntityPlayer player) // should be proper class
 	{
-		if (!worldObj.isRemote && riddenByEntity == null) {
+		if (!worldObj.isRemote && getControllingPassenger() == null) {
 			// server side and no rider
-			if (player.getHeldItem() != null && player.getHeldItem().getItem() == ModItems.fuelcan && player.getHeldItem().getItemDamage() < player.getHeldItem().getMaxDamage()) {
+			if (player.getHeldItem(EnumHand.MAIN_HAND) != null && player.getHeldItem(EnumHand.MAIN_HAND).getItem() == ModItems.fuelcan && player.getHeldItem(EnumHand.MAIN_HAND).getItemDamage() < player.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage()) {
 				// player holding a fuel can & it has fuel in it so put fuel into the machine !
 				if (this.currentFuelLevel < maxFuelLevel) {
 					// can hold more fuel.
 					// calc remaining fuel in can see if it is = or > than the remaining fuel storage of this machine
-					int amountInCan = (player.getHeldItem().getMaxDamage() - player.getHeldItem().getItemDamage());
+					int amountInCan = (player.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage() - player.getHeldItem(EnumHand.MAIN_HAND).getItemDamage());
 					int roomInEntityTank = this.maxFuelLevel - this.currentFuelLevel;
 					if (amountInCan > roomInEntityTank) {
 						if (!player.capabilities.isCreativeMode) {
-							player.getHeldItem().setItemDamage(player.getHeldItem().getMaxDamage() - (amountInCan - roomInEntityTank));
+							player.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(player.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage() - (amountInCan - roomInEntityTank));
 						}
 						// will fill machine completely !
 						this.currentFuelLevel = this.maxFuelLevel;
@@ -201,7 +203,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 						// can will be empty becuase entity can hold 100% of the fuel from the can :O
 						if (!player.capabilities.isCreativeMode) {
 
-							player.getHeldItem().setItemDamage(player.getHeldItem().getMaxDamage());
+							player.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(player.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage());
 						}
 						this.currentFuelLevel = this.currentFuelLevel + amountInCan;
 					}
@@ -216,10 +218,12 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 					}
 
 				} else {
-					player.mountEntity(this);
+
+					// player.mountEntity(this);
+					player.startRiding(this);
 				}
 			}
-		} else if (worldObj.isRemote && riddenByEntity == null) {
+		} else if (worldObj.isRemote && this.getControllingPassenger() == null) {
 			if (player.isSneaking()) {
 				// if (getItemToBeDropped() != null) {
 
@@ -274,7 +278,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			isPlayerPushingJumpButton = false;
 		}
 
-		if (this.riddenByEntity == null) {
+		if (this.getControllingPassenger() == null) {
 			isPlayerAccelerating = false;
 			isPlayerBreaking = false;
 			isPlayerTurningRight = false;
@@ -282,8 +286,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			isPlayerPushingSprintButton = false;
 			isPlayerPushingJumpButton = false;
 		} else {
-			if (this.riddenByEntity instanceof EntityPlayer) {
-				EntityPlayer entityPlayer = (EntityPlayer) this.riddenByEntity;
+			if (this.getControllingPassenger() instanceof EntityPlayer) {
+				EntityPlayer entityPlayer = (EntityPlayer) this.getControllingPassenger();
 				if (entityPlayer.capabilities.isCreativeMode) {
 					currentFuelLevel = maxFuelLevel;
 				}
@@ -302,7 +306,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		}
 
 		if (worldObj.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))) || worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.water || worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.lava
-				|| worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() == Blocks.snow_layer || worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.plants
+				|| worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() == Blocks.SNOW_layer || worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.plants
 				|| worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial().isReplaceable()) {
 			// in air block so fall i'll actually park the entity inside the
 			// block below just a little bit.
@@ -329,7 +333,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 		// end New for gravity
 
-		if (riddenByEntity != null && currentFuelLevel > 0)
+		if (getControllingPassenger() != null && currentFuelLevel > 0)
 
 		{
 
@@ -452,8 +456,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			if (entity != null) {
 				if (entity instanceof EntityLivingBase) {
 					if (!entity.isDead) {
-						if (entity != this.riddenByEntity) {
-							if (this.riddenByEntity != null) {
+						if (entity != this.getControllingPassenger()) {
+							if (this.getControllingPassenger() != null) {
 								// its alive & its not the rider & has a driver (prevents player exiting the machine from getting damaged)
 
 								EntityLivingBase eLB = (EntityLivingBase) entity;
@@ -584,10 +588,10 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	}
 
 	public void updateRiderPosition() {
-		if (this.riddenByEntity != null) {
+		if (this.getControllingPassenger() != null) {
 			double d0 = Math.cos((double) this.rotationYaw * Math.PI / 180.0D) * this.velocity;
 			double d1 = Math.sin((double) this.rotationYaw * Math.PI / 180.0D) * this.velocity;
-			this.riddenByEntity.setPosition(this.posX + d0 + this.getMountedXOffset(), this.posY + this.getMountedYOffset() + this.riddenByEntity.getYOffset(), this.posZ + d1 + this.getMountedZOffset());
+			this.getControllingPassenger().setPosition(this.posX + d0 + this.getMountedXOffset(), this.posY + this.getMountedYOffset() + this.getControllingPassenger().getYOffset(), this.posZ + d1 + this.getMountedZOffset());
 			// this.riddenByEntity.setRotationYawHead(this.yaw);
 		}
 	}
@@ -721,7 +725,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 				if (worldObj.getBlockState(bp).getBlock() == Blocks.log || worldObj.getBlockState(bp).getBlock() == Blocks.log2 || worldObj.getBlockState(bp).getBlock() == Blocks.leaves || worldObj.getBlockState(bp).getBlock() == Blocks.leaves2 || worldObj.getBlockState(bp).getBlock().isWood(worldObj, bp) || worldObj.getBlockState(bp).getBlock().isLeaves(worldObj, bp)) {
 
 					previousBlock = worldObj.getBlockState(bp).getBlock();
-					BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
+					BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
 
 					toppleTree(bp.offset(EnumFacing.DOWN), depth + 1, widthDepth, previousBlock);
 					toppleTree(bp.offset(EnumFacing.UP), depth + 1, widthDepth, previousBlock);
@@ -893,4 +897,15 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			inventory[i] = null;
 		}
 	}
+
+	/**
+	 * For vehicles, the first passenger is generally considered the controller and "drives" the vehicle. For example, Pigs, Horses, and Boats are generally "steered" by the controlling passenger.
+	 */
+	@Override
+	@Nullable
+	public Entity getControllingPassenger() {
+		List<Entity> list = this.getPassengers();
+		return list.isEmpty() ? null : (Entity) list.get(0);
+	}
+
 }

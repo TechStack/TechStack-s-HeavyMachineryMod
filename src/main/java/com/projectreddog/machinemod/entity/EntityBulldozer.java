@@ -6,10 +6,10 @@ import com.projectreddog.machinemod.utility.BlockUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityBulldozer extends EntityMachineModRideable {
@@ -31,7 +31,7 @@ public class EntityBulldozer extends EntityMachineModRideable {
 	}
 
 	public void doParticleEffects() {
-		if (this.currentFuelLevel > 0 && this.riddenByEntity != null) {
+		if (this.currentFuelLevel > 0 && this.getControllingPassenger() != null) {
 			worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX + calcTwoOffsetX(2.1, -90, .7), this.posY + 3.5, this.posZ + calcTwoOffsetZ(2.1, -90, .7), 0, 0, 0, 0);
 		}
 	}
@@ -62,9 +62,9 @@ public class EntityBulldozer extends EntityMachineModRideable {
 					}
 					BlockPos bp;
 					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + j + bucketOffsetY, posZ + calcTwoOffsetZ(3.5, angle, i));
-					if (worldObj.getBlockState(bp).getBlock() == Blocks.snow_layer || worldObj.getBlockState(bp).getBlock() == Blocks.snow || worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.sand || worldObj.getBlockState(bp).getBlock() == Blocks.gravel || worldObj.getBlockState(bp).getBlock() == Blocks.grass
-							|| worldObj.getBlockState(bp).getBlock() == Blocks.clay || worldObj.getBlockState(bp).getBlock() == Blocks.netherrack || worldObj.getBlockState(bp).getBlock() == Blocks.mycelium || worldObj.getBlockState(bp).getBlock() == Blocks.soul_sand || worldObj.getBlockState(bp).getBlock() == Blocks.tallgrass || worldObj.getBlockState(bp).getBlock() == Blocks.farmland) {
-						BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
+					if (worldObj.getBlockState(bp).getBlock() == Blocks.SNOW_layer || worldObj.getBlockState(bp).getBlock() == Blocks.SNOW || worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.sand || worldObj.getBlockState(bp).getBlock() == Blocks.gravel || worldObj.getBlockState(bp).getBlock() == Blocks.GRASS
+							|| worldObj.getBlockState(bp).getBlock() == Blocks.CLAY || worldObj.getBlockState(bp).getBlock() == Blocks.netherrack || worldObj.getBlockState(bp).getBlock() == Blocks.mycelium || worldObj.getBlockState(bp).getBlock() == Blocks.soul_sand || worldObj.getBlockState(bp).getBlock() == Blocks.tallgrass || worldObj.getBlockState(bp).getBlock() == Blocks.farmland) {
+						BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
 
 					}
 					toppleTree(bp, 0, 0, worldObj.getBlockState(bp).getBlock());
@@ -81,11 +81,11 @@ public class EntityBulldozer extends EntityMachineModRideable {
 		double bladeOffsetX = (bladeOffset * MathHelper.cos((float) ((yaw + 90) * Math.PI / 180.0D)));
 		double bladeOffsetZ = (bladeOffset * MathHelper.sin((float) ((yaw + 90) * Math.PI / 180.0D)));
 
-		if (this.riddenByEntity != null && this.isPlayerPushingSprintButton) {
+		if (this.getControllingPassenger() != null && this.isPlayerPushingSprintButton) {
 			yOffset = -1;
 		}
 
-		if (this.riddenByEntity != null && this.isPlayerPushingJumpButton) {
+		if (this.getControllingPassenger() != null && this.isPlayerPushingJumpButton) {
 			yOffset = +1;
 		}
 

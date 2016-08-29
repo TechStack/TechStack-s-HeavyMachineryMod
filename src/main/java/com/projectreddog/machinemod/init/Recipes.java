@@ -23,7 +23,7 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.irongear), " i ", "isi", " i ", 'i', "ingotIron", 's', "gearStone"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.transmission), "   ", "iii", "   ", 'i', "gearIron"));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.turbofan), " b ", "bib", " b ", 'b', Blocks.iron_bars, 'i', "ingotIron"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.turbofan), " b ", "bib", " b ", 'b', Blocks.IRON_BARS, 'i', "ingotIron"));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.camshaft), "   ", " i ", "i i", 'i', "ingotIron"));
 
@@ -43,9 +43,9 @@ public class Recipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.wheel), " s ", "sis", " s ", 'i', "ingotIron", 's', "slimeball"));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.loaderbucket), " i ", " hi", "iii", 'i', "ingotIron", 'h', Blocks.hopper));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.loaderbucket), " i ", " hi", "iii", 'i', "ingotIron", 'h', Blocks.HOPPER));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.dumperbed), "ici", "ici", " i ", 'i', "ingotIron", 'c', Blocks.chest));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.dumperbed), "ici", "ici", " i ", 'i', "ingotIron", 'c', Blocks.CHEST));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.engine), "ppp", " c ", "ppp", 'p', ModItems.piston, 'c', ModItems.camshaft));
 
@@ -53,7 +53,7 @@ public class Recipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.steelblock), "sss", "sss", "sss", 's', "ingotSteel"));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefractionaldistillation), "ibi", "lbl", "isi", 's', Blocks.brewing_stand, 'i', Blocks.iron_block, 'l', ModBlocks.machineliquidPipe, 'b', Blocks.iron_bars));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefractionaldistillation), "ibi", "lbl", "isi", 's', Blocks.brewing_stand, 'i', Blocks.IRON_BLOCK, 'l', ModBlocks.machineliquidPipe, 'b', Blocks.iron_bars));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.steeldust), ModItems.carbondust, ModItems.irondust));
 

@@ -1,15 +1,15 @@
 package com.projectreddog.machinemod.entity;
 
+import com.projectreddog.machinemod.init.ModItems;
+import com.projectreddog.machinemod.init.ModNetwork;
+import com.projectreddog.machinemod.network.MachineModMessageEntityCurrentTargetPosToClient;
+import com.projectreddog.machinemod.utility.BlockUtil;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
-
-import com.projectreddog.machinemod.init.ModItems;
-import com.projectreddog.machinemod.init.ModNetwork;
-import com.projectreddog.machinemod.network.MachineModMessageEntityCurrentTargetPosToClient;
-import com.projectreddog.machinemod.utility.BlockUtil;
 
 public class EntityExcavator extends EntityMachineModRideable {
 
@@ -138,7 +138,7 @@ public class EntityExcavator extends EntityMachineModRideable {
 						BlockPos bp;
 						bp = new BlockPos(currPosX, currPosY, currPosZ);
 
-						BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
+						BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
 
 					}
 				}

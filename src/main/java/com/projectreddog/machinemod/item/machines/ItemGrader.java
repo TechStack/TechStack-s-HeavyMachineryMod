@@ -7,8 +7,10 @@ import com.projectreddog.machinemod.model.ModelTransportable;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ItemGrader extends ItemTransportable {
@@ -23,7 +25,7 @@ public class ItemGrader extends ItemTransportable {
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float xOff, float yOff, float zOff) {
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
 		boolean result = false;
 
 		if (!world.isRemote)// / only run on server
@@ -44,7 +46,11 @@ public class ItemGrader extends ItemTransportable {
 				stack.stackSize--;
 			}
 		}
-		return result;
+		if (result) {
+			return EnumActionResult.PASS;
+		} else {
+			return EnumActionResult.FAIL;
+		}
 	}
 
 	public EntityMachineModRideable getEntityToSpawn(World world) {

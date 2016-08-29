@@ -46,7 +46,7 @@ public class EntityLawnmower extends EntityMachineModRideable {
 			// (3 wide)
 			if (this.isPlayerPushingSprintButton) {
 				bp = new BlockPos(posX, posY - 1, posZ);
-				if (worldObj.getBlockState(bp).getBlock() == Blocks.grass) {
+				if (worldObj.getBlockState(bp).getBlock() == Blocks.GRASS) {
 
 					// withProperty(FACING, placer.getHorizontalFacing().getOpposite()
 					if (this.yaw < 45 || this.yaw > 315) {

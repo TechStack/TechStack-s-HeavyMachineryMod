@@ -1,5 +1,11 @@
 package com.projectreddog.machinemod.handler.events;
 
+import org.lwjgl.opengl.GL11;
+
+import com.projectreddog.machinemod.entity.EntityDrillingRig;
+import com.projectreddog.machinemod.entity.EntityMachineModRideable;
+import com.projectreddog.machinemod.reference.Reference;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -7,12 +13,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import org.lwjgl.opengl.GL11;
-
-import com.projectreddog.machinemod.entity.EntityDrillingRig;
-import com.projectreddog.machinemod.entity.EntityMachineModRideable;
-import com.projectreddog.machinemod.reference.Reference;
 
 public class RenderOverlayHandler extends Gui {
 	private final FontRenderer fontRenderer;
@@ -31,8 +31,8 @@ public class RenderOverlayHandler extends Gui {
 		// }
 		// LogHelper.info(event.type);
 		if (Minecraft.getMinecraft().thePlayer.isRiding()) {
-			if (Minecraft.getMinecraft().thePlayer.ridingEntity instanceof EntityMachineModRideable) {
-				EntityMachineModRideable emr = (EntityMachineModRideable) Minecraft.getMinecraft().thePlayer.ridingEntity;
+			if (Minecraft.getMinecraft().thePlayer.getRidingEntity() instanceof EntityMachineModRideable) {
+				EntityMachineModRideable emr = (EntityMachineModRideable) Minecraft.getMinecraft().thePlayer.getRidingEntity();
 
 				int xPos = 2;
 				int yPos = 2;
@@ -49,9 +49,9 @@ public class RenderOverlayHandler extends Gui {
 				this.drawTexturedModalRect(xPos + 10, yPos + yOffest, 0, 0, 6, 3);
 				// this.fontRenderer.drawString("Fuel:" + emr.currentFuelLevel, 0, 0, 14737632);
 
-				if (Minecraft.getMinecraft().thePlayer.ridingEntity instanceof EntityDrillingRig) {
+				if (Minecraft.getMinecraft().thePlayer.getRidingEntity() instanceof EntityDrillingRig) {
 
-					EntityDrillingRig edr = (EntityDrillingRig) Minecraft.getMinecraft().thePlayer.ridingEntity;
+					EntityDrillingRig edr = (EntityDrillingRig) Minecraft.getMinecraft().thePlayer.getRidingEntity();
 					int depth = (int) (((edr.Attribute1) - 90) / 5);
 					if (depth < 0) {
 						depth = 0;

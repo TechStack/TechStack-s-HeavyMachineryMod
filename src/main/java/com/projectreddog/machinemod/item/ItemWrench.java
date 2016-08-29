@@ -6,8 +6,10 @@ import com.projectreddog.machinemod.init.ModBlocks;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ItemWrench extends ItemMachineMod {
@@ -20,7 +22,7 @@ public class ItemWrench extends ItemMachineMod {
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float xOff, float yOff, float zOff) {
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
 		boolean result = false;
 
 		if (world.getBlockState(pos).getBlock() == ModBlocks.machineconveyor) {
@@ -127,6 +129,10 @@ public class ItemWrench extends ItemMachineMod {
 		//
 		// }
 
-		return result;
+		if (result) {
+			return EnumActionResult.PASS;
+		} else {
+			return EnumActionResult.FAIL;
+		}
 	}
 }

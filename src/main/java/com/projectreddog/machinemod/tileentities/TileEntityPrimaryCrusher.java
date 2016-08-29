@@ -142,7 +142,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.sandstone)) {
 						dropDust(i, new ItemStack(Blocks.sand, 4));
 						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.wool)) {
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.WOOL)) {
 						dropDust(i, new ItemStack(Items.string, 41));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.cobblestone)) {

@@ -47,7 +47,7 @@ public class BlockMachineModPrimaryCrusher extends BlockContainer {
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te != null && !playerIn.isSneaking()) {
-			ItemStack playerItem = playerIn.getHeldItem();
+			ItemStack playerItem = playerIn.getHeldItem(EnumHand.MAIN_HAND);
 
 			if (playerItem != null) {
 				if (playerItem.getItem() == ModItems.fuelcan && playerItem.getItemDamage() < playerItem.getMaxDamage()) {
@@ -59,16 +59,16 @@ public class BlockMachineModPrimaryCrusher extends BlockContainer {
 						if (tEPC.fuelStorage < tEPC.maxFuelStorage) {
 							// can hold more fuel.
 							// calc remaining fuel in can see if it is = or > than the remaining fuel storage of this machine
-							int amountInCan = (playerIn.getHeldItem().getMaxDamage() - playerIn.getHeldItem().getItemDamage());
+							int amountInCan = (playerIn.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage() - playerIn.getHeldItem(EnumHand.MAIN_HAND).getItemDamage());
 							int roomInEntityTank = tEPC.maxFuelStorage - tEPC.fuelStorage;
 							if (amountInCan > roomInEntityTank) {
 
-								playerIn.getHeldItem().setItemDamage(playerIn.getHeldItem().getMaxDamage() - (amountInCan - roomInEntityTank));
+								playerIn.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(playerIn.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage() - (amountInCan - roomInEntityTank));
 								// will fill machine completely !
 								tEPC.fuelStorage = tEPC.maxFuelStorage;
 							} else {
 								// can will be empty becuase entity can hold 100% of the fuel from the can :O
-								playerIn.getHeldItem().setItemDamage(playerIn.getHeldItem().getMaxDamage());
+								playerIn.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(playerIn.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage());
 								tEPC.fuelStorage = tEPC.fuelStorage + amountInCan;
 							}
 						}

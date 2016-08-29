@@ -22,14 +22,14 @@ public class BlockBioFuel extends BlockFluidClassic {
 
 	@Override
 	public boolean canDisplace(IBlockAccess world, BlockPos bp) {
-		if (world.getBlockState(bp).getBlock().getMaterial().isLiquid())
+		if (world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)).isLiquid())
 			return false;
 		return super.canDisplace(world, bp);
 	}
 
 	@Override
 	public boolean displaceIfPossible(World world, BlockPos bp) {
-		if (world.getBlockState(bp).getBlock().getMaterial().isLiquid())
+		if (world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)).isLiquid())
 			return false;
 		return super.displaceIfPossible(world, bp);
 	}
