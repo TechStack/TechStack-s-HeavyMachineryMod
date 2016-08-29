@@ -6,6 +6,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityScreen;
 
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.inventory.IInventory;
@@ -28,14 +29,14 @@ public class BlockMachineModScreen extends BlockContainer {
 		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_SCREEN);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
-		this.setStepSound(soundTypeMetal);
+		this.setSoundType(SoundType.METAL);
 		this.setHardness(1.5f);
 
 	}
 
 	public BlockMachineModScreen() {
 		// Generic constructor (set to rock by default)
-		this(Material.rock);
+		this(Material.ROCK);
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
 
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
@@ -37,7 +38,7 @@ public class BlockMachineModFractionalDistillation extends BlockContainer {
 		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
-		this.setStepSound(soundTypeAnvil);
+		this.setSoundType(SoundType.ANVIL);
 		this.setHardness(15f);
 
 	}
@@ -87,7 +88,7 @@ public class BlockMachineModFractionalDistillation extends BlockContainer {
 	}
 
 	protected BlockStateContainer createBlockState() {
-		return new BlockState(this, new IProperty[] { FACING });
+		return new BlockStateContainer(this, new IProperty[] { FACING });
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -124,7 +125,7 @@ public class BlockMachineModFractionalDistillation extends BlockContainer {
 
 	public BlockMachineModFractionalDistillation() {
 		// Generic constructor (set to rock by default)
-		this(Material.rock);
+		this(Material.ROCK);
 	}
 
 	@Override

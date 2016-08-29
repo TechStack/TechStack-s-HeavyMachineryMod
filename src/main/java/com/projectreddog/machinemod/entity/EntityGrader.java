@@ -54,7 +54,7 @@ public class EntityGrader extends EntityMachineModRideable {
 					BlockPos bp;
 					bp = new BlockPos(posX + calcTwoOffsetX(5.5, angle, i), posY, posZ + calcTwoOffsetZ(5.5, angle, i));
 					if (worldObj.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || worldObj.getBlockState(bp).getBlock() == Blocks.SNOW || worldObj.getBlockState(bp).getBlock() == Blocks.DIRT || worldObj.getBlockState(bp).getBlock() == Blocks.SAND || worldObj.getBlockState(bp).getBlock() == Blocks.GRAVEL || worldObj.getBlockState(bp).getBlock() == Blocks.GRASS
-							|| worldObj.getBlockState(bp).getBlock() == Blocks.CLAY || worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2 || worldObj.getBlockState(bp).getBlock() == Blocks.soul_sand || worldObj.getBlockState(bp).getBlock() == Blocks.tallgrass) {
+							|| worldObj.getBlockState(bp).getBlock() == Blocks.CLAY || worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2 || worldObj.getBlockState(bp).getBlock() == Blocks.soul_sand || worldObj.getBlockState(bp).getBlock() == Blocks.TALLGRASS) {
 						BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
 
 					}
@@ -75,7 +75,7 @@ public class EntityGrader extends EntityMachineModRideable {
 					BlockPos bp;
 					bp = new BlockPos(posX + calcTwoOffsetX(2, angle, i), posY, posZ + calcTwoOffsetZ(2, angle, i));
 					if (worldObj.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || worldObj.getBlockState(bp).getBlock() == Blocks.SNOW || worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.sand || worldObj.getBlockState(bp).getBlock() == Blocks.gravel || worldObj.getBlockState(bp).getBlock() == Blocks.GRASS
-							|| worldObj.getBlockState(bp).getBlock() == Blocks.CLAY || worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2 || worldObj.getBlockState(bp).getBlock() == Blocks.soul_sand || worldObj.getBlockState(bp).getBlock() == Blocks.tallgrass) {
+							|| worldObj.getBlockState(bp).getBlock() == Blocks.CLAY || worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2 || worldObj.getBlockState(bp).getBlock() == Blocks.soul_sand || worldObj.getBlockState(bp).getBlock() == Blocks.TALLGRASS) {
 						BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
 
 					}
@@ -115,7 +115,7 @@ public class EntityGrader extends EntityMachineModRideable {
 
 									bp = new BlockPos(posX + calcTwoOffsetX(5.5, angle, j), posY - 1, posZ + calcTwoOffsetZ(5.5, angle, j));
 
-									if (worldObj.getBlockState(bp).getBlock().isAir(worldObj, bp) || worldObj.getBlockState(bp).getBlock() == Blocks.WATER || worldObj.getBlockState(bp).getBlock() == Blocks.flowing_water || worldObj.getBlockState(bp).getBlock() == Blocks.tallgrass || worldObj.getBlockState(bp).getBlock() == Blocks.VINE || worldObj.getBlockState(bp).getBlock() == Blocks.reeds
+									if (worldObj.getBlockState(bp).getBlock().isAir(worldObj, bp) || worldObj.getBlockState(bp).getBlock() == Blocks.WATER || worldObj.getBlockState(bp).getBlock() == Blocks.flowing_water || worldObj.getBlockState(bp).getBlock() == Blocks.TALLGRASS || worldObj.getBlockState(bp).getBlock() == Blocks.VINE || worldObj.getBlockState(bp).getBlock() == Blocks.reeds
 											|| worldObj.getBlockState(bp).getBlock() == Blocks.red_flower || worldObj.getBlockState(bp).getBlock() == Blocks.YELLOW_FLOWER || worldObj.getBlockState(bp).getBlock() == Blocks.WATERLILY || worldObj.getBlockState(bp).getBlock() == Blocks.brown_mushroom || worldObj.getBlockState(bp).getBlock() == Blocks.red_mushroom) {
 										bp = GetLowestBlockPos(bp);
 										if (worldObj.setBlockState(bp, ib.getBlock().getDefaultState())) {
@@ -125,7 +125,7 @@ public class EntityGrader extends EntityMachineModRideable {
 
 									}
 									bp2 = new BlockPos(posX + calcTwoOffsetX(2, angle, j), posY - 1, posZ + calcTwoOffsetZ(2, angle, j));
-									if (worldObj.getBlockState(bp2).getBlock().isAir(worldObj, bp2) || worldObj.getBlockState(bp2).getBlock() == Blocks.WATER || worldObj.getBlockState(bp2).getBlock() == Blocks.flowing_water || worldObj.getBlockState(bp).getBlock() == Blocks.tallgrass || worldObj.getBlockState(bp).getBlock() == Blocks.VINE || worldObj.getBlockState(bp).getBlock() == Blocks.reeds
+									if (worldObj.getBlockState(bp2).getBlock().isAir(worldObj, bp2) || worldObj.getBlockState(bp2).getBlock() == Blocks.WATER || worldObj.getBlockState(bp2).getBlock() == Blocks.flowing_water || worldObj.getBlockState(bp).getBlock() == Blocks.TALLGRASS || worldObj.getBlockState(bp).getBlock() == Blocks.VINE || worldObj.getBlockState(bp).getBlock() == Blocks.reeds
 											|| worldObj.getBlockState(bp).getBlock() == Blocks.red_flower || worldObj.getBlockState(bp).getBlock() == Blocks.YELLOW_FLOWER || worldObj.getBlockState(bp).getBlock() == Blocks.WATERLILY || worldObj.getBlockState(bp).getBlock() == Blocks.brown_mushroom || worldObj.getBlockState(bp).getBlock() == Blocks.red_mushroom) {
 										bp2 = GetLowestBlockPos(bp2);
 										if (worldObj.setBlockState(bp2, ib.getBlock().getDefaultState())) {

@@ -99,7 +99,7 @@ public class BlockMachineModFuelPump extends BlockContainer {
 	}
 
 	protected BlockStateContainer createBlockState() {
-		return new BlockState(this, new IProperty[] { FACING });
+		return new BlockStateContainer(this, new IProperty[] { FACING });
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -136,7 +136,7 @@ public class BlockMachineModFuelPump extends BlockContainer {
 
 	public BlockMachineModFuelPump() {
 		// Generic constructor (set to rock by default)
-		this(Material.rock);
+		this(Material.ROCK);
 	}
 
 	@Override

@@ -63,7 +63,7 @@ public class EntityBulldozer extends EntityMachineModRideable {
 					BlockPos bp;
 					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + j + bucketOffsetY, posZ + calcTwoOffsetZ(3.5, angle, i));
 					if (worldObj.getBlockState(bp).getBlock() == Blocks.SNOW_layer || worldObj.getBlockState(bp).getBlock() == Blocks.SNOW || worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.sand || worldObj.getBlockState(bp).getBlock() == Blocks.gravel || worldObj.getBlockState(bp).getBlock() == Blocks.GRASS
-							|| worldObj.getBlockState(bp).getBlock() == Blocks.CLAY || worldObj.getBlockState(bp).getBlock() == Blocks.netherrack || worldObj.getBlockState(bp).getBlock() == Blocks.mycelium || worldObj.getBlockState(bp).getBlock() == Blocks.soul_sand || worldObj.getBlockState(bp).getBlock() == Blocks.tallgrass || worldObj.getBlockState(bp).getBlock() == Blocks.farmland) {
+							|| worldObj.getBlockState(bp).getBlock() == Blocks.CLAY || worldObj.getBlockState(bp).getBlock() == Blocks.netherrack || worldObj.getBlockState(bp).getBlock() == Blocks.mycelium || worldObj.getBlockState(bp).getBlock() == Blocks.soul_sand || worldObj.getBlockState(bp).getBlock() == Blocks.TALLGRASS || worldObj.getBlockState(bp).getBlock() == Blocks.farmland) {
 						BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
 
 					}

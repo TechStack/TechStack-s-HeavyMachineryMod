@@ -5,6 +5,7 @@ import java.util.Random;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.block.BlockDirt;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
@@ -34,7 +35,7 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_MOWED_GRASS);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setHardness(.25f);// not sure on the hardness
-		this.setStepSound(soundTypeGrass);
+		this.setSoundType(SoundType.GROUND);
 		this.setTickRandomly(true);
 
 	}

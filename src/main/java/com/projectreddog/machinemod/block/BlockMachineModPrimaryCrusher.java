@@ -19,6 +19,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -126,7 +127,7 @@ public class BlockMachineModPrimaryCrusher extends BlockContainer {
 	}
 
 	protected BlockStateContainer createBlockState() {
-		return new BlockState(this, new IProperty[] { FACING });
+		return new BlockStateContainer(this, new IProperty[] { FACING });
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -163,7 +164,7 @@ public class BlockMachineModPrimaryCrusher extends BlockContainer {
 
 	public BlockMachineModPrimaryCrusher() {
 		// Generic constructor (set to rock by default)
-		this(Material.rock);
+		this(Material.ROCK);
 	}
 
 	@Override

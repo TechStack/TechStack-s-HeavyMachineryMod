@@ -58,7 +58,7 @@ public class EntityLawnmower extends EntityMachineModRideable {
 					} else {
 						worldObj.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, EnumFacing.EAST));
 					}
-					ItemStack is = new ItemStack(Blocks.tallgrass, 1, 1);
+					ItemStack is = new ItemStack(Blocks.TALLGRASS, 1, 1);
 					EntityItem entityItem = new EntityItem(worldObj, bp.getX(), bp.getY() + 1, bp.getZ(), is);
 
 					entityItem.forceSpawn = true;
