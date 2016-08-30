@@ -152,7 +152,9 @@ public class BlockMachineModFuelPump extends BlockContainer {
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		// 3 for normal block 2 for TESR 1 liquid -1 nothing ( like air)
-		return 3;
+		//return 3;
+		return EnumBlockRenderType.MODEL;
+
 	}
 
 	@Override

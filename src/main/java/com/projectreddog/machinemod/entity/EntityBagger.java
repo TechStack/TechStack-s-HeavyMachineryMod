@@ -111,7 +111,7 @@ public class EntityBagger extends EntityMachineModRideable {
 
 						bp = new BlockPos(posX + calcTwoOffsetX(10 + h + hOffsetDuetoYoffset, 0, 0), posY + bucketOffsetY + v + 3, posZ + calcTwoOffsetZ(10 + h + hOffsetDuetoYoffset, 0, 0));
 
-						if (!(worldObj.getBlockState(bp).getBlock().isAir(worldObj, bp)) && !(worldObj.getBlockState(bp).getBlock() == Blocks.bedrock) && !(worldObj.getBlockState(bp).getBlock().getMaterial() == Material.water) && !(worldObj.getBlockState(bp).getBlock().getMaterial() == Material.lava) && !(worldObj.getBlockState(bp).getBlock() == Blocks.obsidian)) {
+						if (!(worldObj.getBlockState(bp).getBlock().isAir(worldObj, bp)) && !(worldObj.getBlockState(bp).getBlock() == Blocks.BEDROCK) && !(worldObj.getBlockState(bp).getBlock().getMaterial() == Material.water) && !(worldObj.getBlockState(bp).getBlock().getMaterial() == Material.lava) && !(worldObj.getBlockState(bp).getBlock() == Blocks.obsidian)) {
 
 							// worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
 							// worldObj.setBlockToAir(bp);

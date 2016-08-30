@@ -8,6 +8,7 @@ import com.google.common.base.Function;
 import com.google.common.collect.ImmutableList;
 
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -21,7 +22,7 @@ public class MachineModModelHelper {
 	public static void renderBakedModel(IFlexibleBakedModel bakedModel) {
 		Tessellator tessellator = Tessellator.getInstance();
 
-		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+		VertexBuffer worldrenderer = tessellator.getBuffer();
 		worldrenderer.begin(GL11.GL_QUADS, bakedModel.getFormat());
 		// for (BakedQuad bakedQuad : bakedModel.getGeneralQuads()) {
 		// worldrenderer.addVertexData(bakedQuad.getVertexData());
@@ -108,9 +109,9 @@ public class MachineModModelHelper {
 		}
 	}
 
-	public static HashMap<String, IFlexibleBakedModel> getModelsForGroups(OBJModel objModel) {
+	public static HashMap<String, IBakedModel> getModelsForGroups(OBJModel objModel) {
 
-		HashMap<String, IFlexibleBakedModel> modelParts = new HashMap<String, IFlexibleBakedModel>();
+		HashMap<String, IBakedModel> modelParts = new HashMap<String, IFlexibleBakedModel>();
 
 		if (!objModel.getMatLib().getGroups().keySet().isEmpty()) {
 			for (String key : objModel.getMatLib().getGroups().keySet()) {

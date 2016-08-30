@@ -164,7 +164,7 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.propcage, 1), "ibi", "b b", "ibi", 'i', Items.iron_ingot, 'b', Blocks.iron_bars));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.turboprop, 1), " c ", "cpc", " c ", 'c', ModItems.propcage, 'p', ModItems.prop));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.operatorsbubble, 1), "bib", "igi", "bib", 'i', Items.iron_ingot, 'b', Blocks.iron_bars, 'g', Blocks.glass));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.subbody, 1), "gig", "ibi", "gig", 'i', Items.iron_ingot, 'g', Items.gold_ingot, 'b', Items.boat));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.subbody, 1), "gig", "ibi", "gig", 'i', Items.iron_ingot, 'g', Items.gold_ingot, 'b', Items.BOAT));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.airtank, 1), " i ", "ibi", "iii", 'i', Items.iron_ingot, 'b', Items.glass_bottle));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.powercell, 1), "tct", "rrr", "rrr", 't', Blocks.redstone_torch, 'c', Items.comparator, 'r', Blocks.redstone_block));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.light, 1), " r ", "rtr", " r ", 'r', Blocks.redstone_lamp, 't', Blocks.redstone_torch));

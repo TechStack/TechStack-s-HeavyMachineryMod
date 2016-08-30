@@ -204,7 +204,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 	}
 
 	@Override
-	public IChatComponent getDisplayName() {
+	public ITextComponent getDisplayName() {
 		return null;
 	}
 
