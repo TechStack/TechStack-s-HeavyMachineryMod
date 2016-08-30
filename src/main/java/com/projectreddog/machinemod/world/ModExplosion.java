@@ -96,7 +96,7 @@ public class ModExplosion extends Explosion {
 					this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0, d1, d2, d3, d4, d5);
 				}
 
-				if (block.getMaterial() != Material.AIR) {
+				if (block.getMaterial(this.worldObj.getBlockState(blockpos)) != Material.AIR) {
 
 					// TS DO NOT DROP BLOCKS !
 					// if (block.canDropFromExplosion(this))
@@ -129,7 +129,7 @@ public class ModExplosion extends Explosion {
 				// Determine block to turn this block into
 				BlockPos bp = new BlockPos(x, y, z);
 
-				if (this.worldObj.getBlockState(bp).getBlock() == Blocks.stone) {
+				if (this.worldObj.getBlockState(bp).getBlock() == Blocks.STONE) {
 					// its stone so get variant
 					if (this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT) == BlockStone.EnumType.STONE) {
 						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.STONE));
