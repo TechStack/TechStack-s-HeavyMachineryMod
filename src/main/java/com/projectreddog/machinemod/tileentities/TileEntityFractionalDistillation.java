@@ -254,7 +254,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound compound) {
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN", timeTillCoolDown);
@@ -263,6 +263,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 		} else {
 			compound.setString("Empty", "");
 		}
+		return compound;
 	}
 
 	@Override

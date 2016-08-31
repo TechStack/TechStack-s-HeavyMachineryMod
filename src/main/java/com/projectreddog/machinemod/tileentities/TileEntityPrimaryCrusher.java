@@ -293,7 +293,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound compound) {
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN", timeTillCoolDown);
@@ -311,6 +311,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 			}
 		}
 		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
+		return compound;
 
 	}
 

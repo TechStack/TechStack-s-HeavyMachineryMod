@@ -83,7 +83,7 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound compound) {
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE", fuelStorage);
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "BURN_TIME", remainBurnTime);
@@ -99,6 +99,7 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 			}
 		}
 		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
+		return compound;
 
 	}
 

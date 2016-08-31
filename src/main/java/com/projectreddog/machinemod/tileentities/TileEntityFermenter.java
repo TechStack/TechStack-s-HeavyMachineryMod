@@ -177,7 +177,7 @@ public class TileEntityFermenter extends TileEntity implements ITickable, ISided
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound compound) {
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 
 		// inventory
@@ -196,6 +196,7 @@ public class TileEntityFermenter extends TileEntity implements ITickable, ISided
 			}
 		}
 		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
+		return compound;
 
 	}
 

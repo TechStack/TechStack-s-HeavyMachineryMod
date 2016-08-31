@@ -50,7 +50,7 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 				ItemStack item = this.getStackInSlot(0);
 				if (item != null) {
 					if (item.getItem() != null) {
-						if (item.getItem() == Items.clay_ball) {
+						if (item.getItem() == Items.CLAY_BALL) {
 							if (fuelStorage > 0) {
 								fuelStorage = fuelStorage - 1;
 							}
@@ -64,7 +64,7 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 			ItemStack item = this.getStackInSlot(0);
 			if (item != null) {
 				if (item.getItem() != null) {
-					if (item.getItem() == Items.clay_ball) {
+					if (item.getItem() == Items.CLAY_BALL) {
 						if (fuelStorage > 0) {
 							// fuelStorage = fuelStorage - 1;
 
@@ -177,7 +177,7 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound compound) {
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN", timeTillCoolDown);
@@ -195,6 +195,7 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 			}
 		}
 		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
+		return compound;
 
 	}
 
