@@ -365,7 +365,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound compound) {
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN", cooldown);
 
@@ -374,5 +374,6 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 		} else {
 			compound.setString("Empty", "");
 		}
+		return compound;
 	}
 }
