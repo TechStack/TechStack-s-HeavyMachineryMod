@@ -6,7 +6,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillatio
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
+import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.ItemStack;
@@ -139,8 +139,8 @@ public class ContainerFractionalDistiller extends Container {
 		super.detectAndSendChanges();
 
 		for (int j = 0; j < this.fractionaldistiller.getFieldCount(); j++) {
-			for (int i = 0; i < this.crafters.size(); ++i) {
-				ICrafting icrafting = (ICrafting) this.crafters.get(i);
+			for (int i = 0; i < this.listeners.size(); ++i) {
+				IContainerListener icrafting = (IContainerListener) this.listeners.get(i);
 
 				if (lastValue[j] != this.fractionaldistiller.getField(j)) {
 					icrafting.sendProgressBarUpdate(this, j, this.fractionaldistiller.getField(j));

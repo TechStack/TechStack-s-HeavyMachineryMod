@@ -45,7 +45,7 @@ public class EntityCrane extends EntityMachineModRideable {
 						}
 						BlockPos bp;
 						bp = new BlockPos(posX + calcTwoOffsetX(10 + j, angle, i), posY + k + 26 - ((int) this.Attribute1), posZ + calcTwoOffsetZ(10 + j, angle, i));
-						if (worldObj.getBlockState(bp).getBlock().getBlockHardness(worldObj, bp) < 100) {
+						if (worldObj.getBlockState(bp).getBlock().getBlockHardness(worldObj.getBlockState(bp), worldObj, bp) < 100) {
 							BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
 
 						}

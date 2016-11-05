@@ -12,7 +12,8 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockStateContainer;import net.minecraft.block.state.IBlockState
+import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
@@ -47,7 +48,7 @@ public class BlockMachineModPrimaryCrusher extends BlockContainer {
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn,EnumHand hand,@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te != null && !playerIn.isSneaking()) {
 			ItemStack playerItem = playerIn.getHeldItem(EnumHand.MAIN_HAND);
@@ -179,7 +180,7 @@ public class BlockMachineModPrimaryCrusher extends BlockContainer {
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		// 3 for normal block 2 for TESR 1 liquid -1 nothing ( like air)
-		//return 3;
+		// return 3;
 		return EnumBlockRenderType.MODEL;
 
 	}

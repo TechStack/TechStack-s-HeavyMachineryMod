@@ -123,7 +123,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 					tempFluidID = -1;
 				}
 
-				ModNetwork.simpleNetworkWrapper.sendToAllAround(new MachineModMessageLiquidPipeToClient(this.pos.getX(), this.pos.getY(), this.pos.getZ(), this.getFluidAmount(), tempFluidID), new TargetPoint(this.worldObj.provider.getDimensionId(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 48));
+				ModNetwork.simpleNetworkWrapper.sendToAllAround(new MachineModMessageLiquidPipeToClient(this.pos.getX(), this.pos.getY(), this.pos.getZ(), this.getFluidAmount(), tempFluidID), new TargetPoint(this.worldObj.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 48));
 			}
 		}
 		ticksSinceLastConnectionUpdate++;

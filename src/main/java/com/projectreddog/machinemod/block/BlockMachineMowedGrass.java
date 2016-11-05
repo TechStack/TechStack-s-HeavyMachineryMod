@@ -14,6 +14,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ColorizerGrass;
@@ -106,7 +107,7 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 
-		if (worldIn.getLightFromNeighbors(pos.up()) < 4 && worldIn.getBlockState(pos.up()).getBlock().getLightOpacity(worldIn, pos.up()) > 2) {
+		if (worldIn.getLightFromNeighbors(pos.up()) < 4 && worldIn.getBlockState(pos.up()).getBlock().getLightOpacity(state, worldIn, pos.up()) > 2) {
 			worldIn.setBlockState(pos, Blocks.DIRT.getDefaultState());
 		} else {
 			intRandom = worldIn.rand.nextInt(100);
@@ -143,8 +144,8 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EnumWorldBlockLayer getBlockLayer() {
-		return EnumWorldBlockLayer.CUTOUT_MIPPED;
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 
 	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {

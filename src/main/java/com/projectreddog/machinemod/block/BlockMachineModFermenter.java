@@ -12,7 +12,8 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockStateContainer;import net.minecraft.block.state.IBlockState
+import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
@@ -32,7 +33,8 @@ public class BlockMachineModFermenter extends BlockContainer {
 
 	protected BlockMachineModFermenter(Material material) {
 		super(material);
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.5F, 1.0F);
+		// TODO Find bounds fix
+		// this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.5F, 1.0F);
 
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
@@ -48,7 +50,7 @@ public class BlockMachineModFermenter extends BlockContainer {
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn,EnumHand hand,@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te != null && !playerIn.isSneaking()) {
 			playerIn.openGui(MachineMod.instance, Reference.GUI_FERMENTER, worldIn, pos.getX(), pos.getY(), pos.getZ());
@@ -153,7 +155,7 @@ public class BlockMachineModFermenter extends BlockContainer {
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		// 3 for normal block 2 for TESR 1 liquid -1 nothing ( like air)
-		//return 3;
+		// return 3;
 		return EnumBlockRenderType.MODEL;
 
 	}

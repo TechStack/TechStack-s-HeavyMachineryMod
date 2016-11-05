@@ -53,7 +53,7 @@ public class Recipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.steelblock), "sss", "sss", "sss", 's', "ingotSteel"));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefractionaldistillation), "ibi", "lbl", "isi", 's', Blocks.brewing_stand, 'i', Blocks.IRON_BLOCK, 'l', ModBlocks.machineliquidPipe, 'b', Blocks.iron_bars));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefractionaldistillation), "ibi", "lbl", "isi", 's', Blocks.BREWING_STAND, 'i', Blocks.IRON_BLOCK, 'l', ModBlocks.machineliquidPipe, 'b', Blocks.IRON_BARS));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.steeldust), ModItems.carbondust, ModItems.irondust));
 
@@ -84,101 +84,101 @@ public class Recipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.hose), " s ", " s ", " s ", 's', "slimeball"));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefuelpump), "ggh", "ic ", "ii ", 'g', Blocks.glass, 'h', ModItems.hose, 'i', "ingotIron", 'c', Items.cauldron));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefuelpump), "ggh", "ic ", "ii ", 'g', Blocks.GLASS, 'h', ModItems.hose, 'i', "ingotIron", 'c', Items.CAULDRON));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinedistiller), "h  ", "bcb", "fff", 'h', ModItems.hose, 'c', Items.cauldron, 'b', Items.brewing_stand, 'f', Blocks.furnace));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinedistiller), "h  ", "bcb", "fff", 'h', ModItems.hose, 'c', Items.CAULDRON, 'b', Items.BREWING_STAND, 'f', Blocks.FURNACE));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefermenter), "www", "wcw", "h  ", 'h', ModItems.hose, 'c', Blocks.chest, 'w', "plankWood"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefermenter), "www", "wcw", "h  ", 'h', ModItems.hose, 'c', Blocks.CHEST, 'w', "plankWood"));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lidwithspout), "s  ", "sii", "   ", 's', "slimeball", 'i', "ingotIron"));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.fuelcan, 1, ModItems.fuelcan.getMaxDamage()), "   ", " l ", " b ", 'l', ModItems.lidwithspout, 'b', Items.bucket));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.fuelcan, 1, ModItems.fuelcan.getMaxDamage()), "   ", " l ", " b ", 'l', ModItems.lidwithspout, 'b', Items.BUCKET));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.boomarmsegment), "b  ", " b ", "  b", 'b', Blocks.iron_block));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.boomarmsegment), "b  ", " b ", "  b", 'b', Blocks.IRON_BLOCK));
 		if (Reference.enableExcavator) {
 
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.excavator), " bg", "bet", " rr", 'b', ModItems.boomarmsegment, 'e', ModItems.engine, 'g', Blocks.glass, 't', ModItems.transmission, 'r', ModItems.tracks));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.excavator), " bg", "bet", " rr", 'b', ModItems.boomarmsegment, 'e', ModItems.engine, 'g', Blocks.GLASS, 't', ModItems.transmission, 'r', ModItems.tracks));
 		}
 		if (Reference.enableDrillingRig) {
 
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.drillingrig), "pgg", "pet", "drr", 'p', ModItems.drillpipe, 'g', Blocks.glass, 'e', ModItems.engine, 't', ModItems.transmission, 'd', ModItems.drillhead, 'r', ModItems.tracks));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.drillingrig), "pgg", "pet", "drr", 'p', ModItems.drillpipe, 'g', Blocks.GLASS, 'e', ModItems.engine, 't', ModItems.transmission, 'd', ModItems.drillhead, 'r', ModItems.tracks));
 		}
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.trencher), "i  ", "i  ", " i ", 'i', "ingotIron"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.handdrill, 1, ModItems.handdrill.getMaxDamage()), "   ", "dpi", "  i", 'i', "ingotIron", 'd', ModItems.drillhead, 'p', ModItems.drillpipe));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sprayer), " c ", " h ", "w w", 'c', Blocks.chest, 'h', Blocks.hopper, 'w', ModItems.wheel));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sprayer), " c ", " h ", "w w", 'c', Blocks.CHEST, 'h', Blocks.HOPPER, 'w', ModItems.wheel));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.plow), "   ", "iii", "hhh", 'i', "ingotIron", 'h', Items.iron_hoe));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.plow), "   ", "iii", "hhh", 'i', "ingotIron", 'h', Items.IRON_HOE));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.planter), "ccc", "hhh", "ddd", 'c', Blocks.chest, 'h', Blocks.hopper, 'd', Blocks.dispenser));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.planter), "ccc", "hhh", "ddd", 'c', Blocks.CHEST, 'h', Blocks.HOPPER, 'd', Blocks.DISPENSER));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.havesterhead), " s ", "sis", " s ", 's', Items.shears, 'i', "gearIron"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.havesterhead), " s ", "sis", " s ", 's', Items.SHEARS, 'i', "gearIron"));
 		if (Reference.enableCombine) {
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.combine), " cc", "het", " ww", 'c', Blocks.chest, 'h', ModItems.havesterhead, 'e', ModItems.engine, 't', ModItems.transmission, 'w', ModItems.wheel));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.combine), " cc", "het", " ww", 'c', Blocks.CHEST, 'h', ModItems.havesterhead, 'e', ModItems.engine, 't', ModItems.transmission, 'w', ModItems.wheel));
 		}
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.conecrusher), "   ", " i ", " b ", 'i', "ingotIron", 'b', Blocks.iron_block));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.conecrusher), "   ", " i ", " b ", 'i', "ingotIron", 'b', Blocks.IRON_BLOCK));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machineconveyor, 4), "lll", "rir", "lll", 'l', Items.leather, 'r', Items.redstone, 'i', Items.iron_ingot));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machineconveyor, 4), "lll", "rir", "lll", 'l', Items.LEATHER, 'r', Items.REDSTONE, 'i', Items.IRON_INGOT));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machineprimarycrhuser), "o o", "o o", "scs", 'o', Blocks.obsidian, 's', Blocks.sticky_piston, 'c', ModItems.conecrusher));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machineprimarycrhuser), "o o", "o o", "scs", 'o', Blocks.OBSIDIAN, 's', Blocks.STICKY_PISTON, 'c', ModItems.conecrusher));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.anfo, 16), "bbb", "bfb", "bbb", 'b', new ItemStack(Items.dye, 1, EnumDyeColor.WHITE.getDyeDamage()), 'f', ModItems.fuelcan.setContainerItem(ModItems.fuelcan)));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.anfo, 16), "bbb", "bfb", "bbb", 'b', new ItemStack(Items.DYE, 1, EnumDyeColor.WHITE.getDyeDamage()), 'f', ModItems.fuelcan.setContainerItem(ModItems.fuelcan)));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinescreen, 1), "d d", "pbp", "iii", 'b', Blocks.iron_bars, 'd', Items.diamond, 'p', Blocks.piston, 'i', Items.iron_ingot));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinescreen, 1), "d d", "pbp", "iii", 'b', Blocks.IRON_BARS, 'd', Items.DIAMOND, 'p', Blocks.PISTON, 'i', Items.IRON_INGOT));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.mowerdeck, 1), "   ", "iii", "sss", 'i', "ingotIron", 's', Items.shears));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.mowerdeck, 1), "   ", "iii", "sss", 'i', "ingotIron", 's', Items.SHEARS));
 
 		if (Reference.enableLawnmower) {
 
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lawnmower, 1), "   ", " e ", "wmw", 'e', ModItems.engine, 'w', ModItems.wheel, 'm', ModItems.mowerdeck));
 		}
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.graderblade, 1), " i ", " i ", "i  ", 'i', Items.iron_ingot));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.graderblade, 1), " i ", " i ", "i  ", 'i', Items.IRON_INGOT));
 
 		if (Reference.enableGrader) {
 
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.grader, 1), "  g", " et", "wbw", 'g', Blocks.glass, 'e', ModItems.engine, 't', ModItems.transmission, 'w', ModItems.wheel, 'b', ModItems.graderblade));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.grader, 1), "  g", " et", "wbw", 'g', Blocks.GLASS, 'e', ModItems.engine, 't', ModItems.transmission, 'w', ModItems.wheel, 'b', ModItems.graderblade));
 		}
 		// adding bagger related recipies
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tracksegment, 1), "   ", " i ", "ttt", 'i', Blocks.iron_block, 't', ModItems.tracks));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.cutterbucket, 1), "e e", "i i", "iii", 'e', Blocks.emerald_block, 'i', Items.iron_ingot));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tracksegment, 1), "   ", " i ", "ttt", 'i', Blocks.IRON_BLOCK, 't', ModItems.tracks));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.cutterbucket, 1), "e e", "i i", "iii", 'e', Blocks.EMERALD_BLOCK, 'i', Items.IRON_INGOT));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.rigging, 1), " b ", "bbb", "   ", 'b', ModItems.boomarmsegment));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.bucketwheel, 1), "bbb", "bib", "bbb", 'b', ModItems.cutterbucket, 'i', Blocks.iron_block));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.operatorsbooth, 1), "gbb", "g i", "iii", 'g', Blocks.glass, 'b', Blocks.iron_bars, 'i', Items.iron_ingot));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.bucketwheel, 1), "bbb", "bib", "bbb", 'b', ModItems.cutterbucket, 'i', Blocks.IRON_BLOCK));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.operatorsbooth, 1), "gbb", "g i", "iii", 'g', Blocks.GLASS, 'b', Blocks.IRON_BARS, 'i', Items.IRON_INGOT));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.powerplant, 1), "   ", "ttt", "eee", 't', ModItems.turbo, 'e', ModItems.turboengine));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.processingplant, 1), "csc", "sps", "csc", 'c', ModBlocks.machineconveyor, 's', ModBlocks.machinescreen, 'p', ModBlocks.machineprimarycrhuser));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.baggerstorage, 1), "iii", "ici", "ici", 'i', Items.iron_ingot, 'c', Blocks.chest));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.baggerbody, 1), "cpc", "isi", "clc", 'c', ModBlocks.machineconveyor, 'p', ModBlocks.machineprimarycrhuser, 'i', Blocks.iron_block, 's', Blocks.chest, 'l', Items.lava_bucket));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.baggerstorage, 1), "iii", "ici", "ici", 'i', Items.IRON_INGOT, 'c', Blocks.CHEST));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.baggerbody, 1), "cpc", "isi", "clc", 'c', ModBlocks.machineconveyor, 'p', ModBlocks.machineprimarycrhuser, 'i', Blocks.IRON_BLOCK, 's', Blocks.CHEST, 'l', Items.LAVA_BUCKET));
 		if (Reference.enableBagger) {
 
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.bagger, 1), "wr ", "obe", " tt", 'w', ModItems.bucketwheel, 'r', ModItems.rigging, 'o', ModItems.operatorsbooth, 'b', ModItems.baggerbody, 'e', ModItems.powerplant, 't', ModItems.tracksegment));
 		}
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.rollerwheel, 1), " i ", "ibi", " i ", 'i', Items.iron_ingot, 'b', Blocks.iron_block));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.rollerwheel, 1), " i ", "ibi", " i ", 'i', Items.IRON_INGOT, 'b', Blocks.IRON_BLOCK));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.roadroller, 1), "   ", " e ", "wtw", 'e', ModItems.engine, 'w', ModItems.rollerwheel, 't', ModItems.transmission));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.paverscreed, 1), "   ", "  h", "iii", 'h', Blocks.hopper, 'i', Items.iron_ingot));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.paverscreed, 1), "   ", "  h", "iii", 'h', Blocks.HOPPER, 'i', Items.IRON_INGOT));
 		if (Reference.enablePaver) {
 
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.paver, 1), "  c", " et", "sww", 'c', Blocks.chest, 'e', ModItems.engine, 't', ModItems.transmission, 's', ModItems.paverscreed, 'w', ModItems.wheel));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.paver, 1), "  c", " et", "sww", 'c', Blocks.CHEST, 'e', ModItems.engine, 't', ModItems.transmission, 's', ModItems.paverscreed, 'w', ModItems.wheel));
 		}
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.prop, 1), " g ", "gig", " g ", 'i', Items.iron_ingot, 'g', Items.gold_ingot));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.propcage, 1), "ibi", "b b", "ibi", 'i', Items.iron_ingot, 'b', Blocks.iron_bars));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.prop, 1), " g ", "gig", " g ", 'i', Items.IRON_INGOT, 'g', Items.GOLD_INGOT));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.propcage, 1), "ibi", "b b", "ibi", 'i', Items.IRON_INGOT, 'b', Blocks.IRON_BARS));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.turboprop, 1), " c ", "cpc", " c ", 'c', ModItems.propcage, 'p', ModItems.prop));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.operatorsbubble, 1), "bib", "igi", "bib", 'i', Items.iron_ingot, 'b', Blocks.iron_bars, 'g', Blocks.glass));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.subbody, 1), "gig", "ibi", "gig", 'i', Items.iron_ingot, 'g', Items.gold_ingot, 'b', Items.BOAT));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.airtank, 1), " i ", "ibi", "iii", 'i', Items.iron_ingot, 'b', Items.glass_bottle));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.powercell, 1), "tct", "rrr", "rrr", 't', Blocks.redstone_torch, 'c', Items.comparator, 'r', Blocks.redstone_block));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.light, 1), " r ", "rtr", " r ", 'r', Blocks.redstone_lamp, 't', Blocks.redstone_torch));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.operatorsbubble, 1), "bib", "igi", "bib", 'i', Items.IRON_INGOT, 'b', Blocks.IRON_BARS, 'g', Blocks.GLASS));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.subbody, 1), "gig", "ibi", "gig", 'i', Items.IRON_INGOT, 'g', Items.GOLD_INGOT, 'b', Items.BOAT));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.airtank, 1), " i ", "ibi", "iii", 'i', Items.IRON_INGOT, 'b', Items.GLASS_BOTTLE));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.powercell, 1), "tct", "rrr", "rrr", 't', Blocks.REDSTONE_TORCH, 'c', Items.COMPARATOR, 'r', Blocks.REDSTONE_BLOCK));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.light, 1), " r ", "rtr", " r ", 'r', Blocks.REDSTONE_LAMP, 't', Blocks.REDSTONE_TORCH));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lightmodule, 1), " l ", "lrl", " l ", 'r', ModItems.powercell, 'l', ModItems.light));
 		if (Reference.enableSub) {
 
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.sub, 1), "tlt", "ose", "tat", 't', ModItems.turboprop, 'l', ModItems.lightmodule, 'o', ModItems.operatorsbubble, 's', ModItems.subbody, 'e', ModItems.engine, 'a', ModItems.airtank));
 		}
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.liquidtanksegment, 1), "iii", "i i", "iii", 'i', Items.iron_ingot));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.liquidtanksegment, 1), "iii", "i i", "iii", 'i', Items.IRON_INGOT));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tankertrailer, 1), "   ", "sss", " ww", 's', ModItems.liquidtanksegment, 'w', ModItems.wheel));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machineliquidPipe, 1), "ss ", "   ", "ss ", 's', "ingotSteel"));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefractionaldistillation, 1), "sbs", "lbl", "sts", 's', "blockSteel", 'b', Blocks.iron_bars, 't', Items.brewing_stand, 'l', ModBlocks.machineliquidPipe));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefractionaldistillation, 1), "sbs", "lbl", "sts", 's', "blockSteel", 'b', Blocks.IRON_BARS, 't', Items.BREWING_STAND, 'l', ModBlocks.machineliquidPipe));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinewellhead, 1), "   ", "lll", " l ", 'l', ModBlocks.machineliquidPipe));
 
@@ -190,8 +190,8 @@ public class Recipes {
 	}
 
 	public static void SmeltingRecipes() {
-		GameRegistry.addSmelting(ModItems.irondust, new ItemStack(Items.iron_ingot), 1);
-		GameRegistry.addSmelting(ModItems.golddust, new ItemStack(Items.gold_ingot), 2);
+		GameRegistry.addSmelting(ModItems.irondust, new ItemStack(Items.IRON_INGOT), 1);
+		GameRegistry.addSmelting(ModItems.golddust, new ItemStack(Items.GOLD_INGOT), 2);
 		GameRegistry.addSmelting(ModItems.steeldust, new ItemStack(ModItems.steelingot), 5);
 		// GameRegistry.addSmelting(ModItems.golddust, new ItemStack(ModItems.aluminumingot), 0);
 	}

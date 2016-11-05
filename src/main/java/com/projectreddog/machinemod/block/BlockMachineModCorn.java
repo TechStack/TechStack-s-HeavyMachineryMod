@@ -33,7 +33,8 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 		this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
 		this.setTickRandomly(true);
 		float f = 0.5F;
-		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
+		// TODO Find bounds fix
+		// this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
 		this.setCreativeTab((CreativeTabs) null);
 		this.setHardness(0.0F);
 		this.setSoundType(SoundType.GROUND);// was grass
@@ -83,7 +84,7 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 				float f1 = 0.0F;
 				IBlockState iblockstate = worldIn.getBlockState(blockpos1.add(i, 0, j));
 
-				if (iblockstate.getBlock().canSustainPlant(worldIn, blockpos1.add(i, 0, j), net.minecraft.util.EnumFacing.UP, (net.minecraftforge.common.IPlantable) p_180672_0_)) {
+				if (iblockstate.getBlock().canSustainPlant(iblockstate, worldIn, blockpos1.add(i, 0, j), net.minecraft.util.EnumFacing.UP, (net.minecraftforge.common.IPlantable) p_180672_0_)) {
 					f1 = 1.0F;
 
 					if (iblockstate.getBlock().isFertile(worldIn, blockpos1.add(i, 0, j))) {

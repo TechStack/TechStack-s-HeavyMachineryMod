@@ -1,23 +1,19 @@
 package com.projectreddog.machinemod.render.machines;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.model.ModelCombine;
 import com.projectreddog.machinemod.reference.Reference;
 
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.ResourceLocation;
+
 public class RenderCombine extends Render {
 
 	protected ModelBase modelCombine;
-
-	private RenderItem itemRenderer;
 
 	public RenderCombine(RenderManager renderManager) {
 
@@ -26,7 +22,6 @@ public class RenderCombine extends Render {
 		// LogHelper.info("in RenderLoader constructor");
 		shadowSize = 1F;
 		this.modelCombine = new ModelCombine();
-		itemRenderer = Minecraft.getMinecraft().getRenderItem();
 
 	}
 

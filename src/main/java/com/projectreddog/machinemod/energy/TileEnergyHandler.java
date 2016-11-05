@@ -5,8 +5,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
 /**
- * Reference implementation of {@link IEnergyHandler}. Use/extend this or
- * implement your own.
+ * Reference implementation of {@link IEnergyHandler}. Use/extend this or implement your own.
  *
  * @author King Lemming
  *
@@ -23,10 +22,10 @@ public class TileEnergyHandler extends TileEntity implements IEnergyHandler {
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound nbt) {
+	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
 
 		super.writeToNBT(nbt);
-		storage.writeToNBT(nbt);
+		return storage.writeToNBT(nbt);
 	}
 
 	/* IEnergyConnection */

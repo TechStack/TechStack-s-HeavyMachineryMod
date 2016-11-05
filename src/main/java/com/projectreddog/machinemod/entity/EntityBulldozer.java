@@ -62,8 +62,8 @@ public class EntityBulldozer extends EntityMachineModRideable {
 					}
 					BlockPos bp;
 					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + j + bucketOffsetY, posZ + calcTwoOffsetZ(3.5, angle, i));
-					if (worldObj.getBlockState(bp).getBlock() == Blocks.SNOW_layer || worldObj.getBlockState(bp).getBlock() == Blocks.SNOW || worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.sand || worldObj.getBlockState(bp).getBlock() == Blocks.gravel || worldObj.getBlockState(bp).getBlock() == Blocks.GRASS
-							|| worldObj.getBlockState(bp).getBlock() == Blocks.CLAY || worldObj.getBlockState(bp).getBlock() == Blocks.netherrack || worldObj.getBlockState(bp).getBlock() == Blocks.mycelium || worldObj.getBlockState(bp).getBlock() == Blocks.soul_sand || worldObj.getBlockState(bp).getBlock() == Blocks.TALLGRASS || worldObj.getBlockState(bp).getBlock() == Blocks.farmland) {
+					if (worldObj.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || worldObj.getBlockState(bp).getBlock() == Blocks.SNOW || worldObj.getBlockState(bp).getBlock() == Blocks.DIRT || worldObj.getBlockState(bp).getBlock() == Blocks.SAND || worldObj.getBlockState(bp).getBlock() == Blocks.GRAVEL || worldObj.getBlockState(bp).getBlock() == Blocks.GRASS
+							|| worldObj.getBlockState(bp).getBlock() == Blocks.CLAY || worldObj.getBlockState(bp).getBlock() == Blocks.NETHERRACK || worldObj.getBlockState(bp).getBlock() == Blocks.MYCELIUM || worldObj.getBlockState(bp).getBlock() == Blocks.SOUL_SAND || worldObj.getBlockState(bp).getBlock() == Blocks.TALLGRASS || worldObj.getBlockState(bp).getBlock() == Blocks.FARMLAND) {
 						BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
 
 					}
@@ -94,7 +94,7 @@ public class EntityBulldozer extends EntityMachineModRideable {
 		int z = (int) (this.posZ + bladeOffsetZ - .5d);
 		BlockPos bp = new BlockPos(x, y, z);
 		toppleTree(bp, 0, 0, worldObj.getBlockState(bp).getBlock());
-		if (worldObj.getBlockState(bp).getBlock().getMaterial() == Material.grass || worldObj.getBlockState(bp).getBlock().getMaterial() == Material.ground || worldObj.getBlockState(bp).getBlock().getMaterial() == Material.sand) {
+		if (worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.GRASS || worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.GROUND || worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.SAND) {
 
 			worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
 			worldObj.setBlockToAir(bp);
@@ -107,7 +107,7 @@ public class EntityBulldozer extends EntityMachineModRideable {
 		z = (int) (this.posZ + bladeOffsetZ + bladeOffsetZ2 - .5d);
 		bp = new BlockPos(x, y, z);
 		toppleTree(bp, 0, 0, worldObj.getBlockState(bp).getBlock());
-		if (worldObj.getBlockState(bp).getBlock().getMaterial() == Material.grass || worldObj.getBlockState(bp).getBlock().getMaterial() == Material.ground || worldObj.getBlockState(bp).getBlock().getMaterial() == Material.sand) {
+		if (worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.GRASS || worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.GROUND || worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.SAND) {
 			worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
 			worldObj.setBlockToAir(bp);
 		}
@@ -116,7 +116,7 @@ public class EntityBulldozer extends EntityMachineModRideable {
 		bp = new BlockPos(x, y, z);
 		toppleTree(bp, 0, 0, worldObj.getBlockState(bp).getBlock());
 
-		if (worldObj.getBlockState(bp).getBlock().getMaterial() == Material.grass || worldObj.getBlockState(bp).getBlock().getMaterial() == Material.ground || worldObj.getBlockState(bp).getBlock().getMaterial() == Material.sand) {
+		if (worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.GRASS || worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.GROUND || worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.SAND) {
 			worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
 			worldObj.setBlockToAir(bp);
 		}

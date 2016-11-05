@@ -132,7 +132,7 @@ public class EntityExcavator extends EntityMachineModRideable {
 					angleArm3 = Math.atan(o / a) / Math.PI * 180;
 					// LogHelper.info("Rotation vlaue ARM3:" + angleArm1 + ", " + angleArm2 + ", " + angleArm3 + ", ");
 
-					ModNetwork.sendPacketToAllAround((new MachineModMessageEntityCurrentTargetPosToClient(this.getEntityId(), this.currPosX, this.currPosY, this.currPosZ, this.angleArm1, this.angleArm2, this.angleArm3, this.mainBodyRotation)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
+					ModNetwork.sendPacketToAllAround((new MachineModMessageEntityCurrentTargetPosToClient(this.getEntityId(), this.currPosX, this.currPosY, this.currPosZ, this.angleArm1, this.angleArm2, this.angleArm3, this.mainBodyRotation)), new TargetPoint(worldObj.provider.getDimension(), posX, posY, posZ, 80));
 					if (this.isPlayerPushingSprintButton) {
 						// player wants to break the block
 						BlockPos bp;

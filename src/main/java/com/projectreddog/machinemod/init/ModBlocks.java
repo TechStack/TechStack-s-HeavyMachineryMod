@@ -45,7 +45,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityWellHead;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
@@ -171,7 +171,7 @@ public class ModBlocks {
 		fluidNaphtha.setViscosity(2000);
 		fluidJetFuel.setViscosity(2500);
 
-		oilFluidBlock = new BlockOilFluid(fluidOil, Material.water);
+		oilFluidBlock = new BlockOilFluid(fluidOil, Material.WATER);
 
 		// public static Fluid fluidDiesel = new Fluid("diesel", new ResourceLocation("machinemod", Reference.FLUID_OIL_STILL_TEXTURE_LOCATION), new ResourceLocation("machinemod", Reference.FLUID_OIL_FLOWING_TEXTURE_LOCATION));
 		// public static Fluid fluidBitumen = new Fluid("bitumen", new ResourceLocation("machinemod", Reference.FLUID_OIL_STILL_TEXTURE_LOCATION), new ResourceLocation("machinemod", Reference.FLUID_OIL_FLOWING_TEXTURE_LOCATION));

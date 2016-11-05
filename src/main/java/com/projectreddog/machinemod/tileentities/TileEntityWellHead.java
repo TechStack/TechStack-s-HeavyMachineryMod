@@ -158,7 +158,7 @@ public class TileEntityWellHead extends TileEntity implements ITickable, IFluidT
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound compound) {
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN", cooldown);
 
@@ -174,6 +174,7 @@ public class TileEntityWellHead extends TileEntity implements ITickable, IFluidT
 		} else {
 			compound.setString("Empty", "");
 		}
+		return compound;
 	}
 
 	public int getFieldCount() {

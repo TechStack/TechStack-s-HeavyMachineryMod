@@ -8,8 +8,8 @@ import com.projectreddog.machinemod.entity.EntityGrader;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.entity.EntityPaver;
-import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
+import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.Entity;
@@ -23,7 +23,7 @@ public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHan
 	@Override
 	public IMessage onMessage(final MachineModMessageInputToServerOpenGui message, final MessageContext ctx) {
 
-		ctx.getServerHandler().playerEntity.getServerForPlayer().addScheduledTask(new Runnable() {
+		ctx.getServerHandler().playerEntity.getServer().addScheduledTask(new Runnable() {
 			public void run() {
 				processMessage(message, ctx);
 			}
@@ -38,26 +38,26 @@ public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHan
 		if (entity != null) {
 
 			if (entity instanceof EntityMachineModRideable) {
-				if (((EntityMachineModRideable) entity).riddenByEntity == ctx.getServerHandler().playerEntity) {
+				if (((EntityMachineModRideable) entity).getLowestRidingEntity() == ctx.getServerHandler().playerEntity) {
 					// its ridden by this player (avoid some hacks)
 					if (message.isOpenGui) {
 
 						if (entity instanceof EntityDumpTruck) {
-							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_DUMP_TRUCK, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((EntityPlayer) entity.getLowestRidingEntity()).openGui(MachineMod.instance, Reference.GUI_DUMP_TRUCK, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityLoader) {
-							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_LOADER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((EntityPlayer) entity.getLowestRidingEntity()).openGui(MachineMod.instance, Reference.GUI_LOADER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityTractor) {
-							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_TRACTOR, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((EntityPlayer) entity.getLowestRidingEntity()).openGui(MachineMod.instance, Reference.GUI_TRACTOR, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntitySemiTractor) {
-							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_WIDEBEDTRUCK, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((EntityPlayer) entity.getLowestRidingEntity()).openGui(MachineMod.instance, Reference.GUI_WIDEBEDTRUCK, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityCombine) {
-							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_COMBINE, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((EntityPlayer) entity.getLowestRidingEntity()).openGui(MachineMod.instance, Reference.GUI_COMBINE, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityPaver) {
-							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_PAVER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((EntityPlayer) entity.getLowestRidingEntity()).openGui(MachineMod.instance, Reference.GUI_PAVER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityGrader) {
-							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_GRADER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((EntityPlayer) entity.getLowestRidingEntity()).openGui(MachineMod.instance, Reference.GUI_GRADER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityBagger) {
-							((EntityPlayer) entity.riddenByEntity).openGui(MachineMod.instance, Reference.GUI_BAGGER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((EntityPlayer) entity.getLowestRidingEntity()).openGui(MachineMod.instance, Reference.GUI_BAGGER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						}
 
 					}

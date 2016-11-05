@@ -86,7 +86,7 @@ import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerTanker;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemFood;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;

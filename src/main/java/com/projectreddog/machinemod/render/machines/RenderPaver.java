@@ -1,23 +1,19 @@
 package com.projectreddog.machinemod.render.machines;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.model.ModelPaver;
 import com.projectreddog.machinemod.reference.Reference;
 
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.ResourceLocation;
+
 public class RenderPaver extends Render {
 
 	protected ModelBase modelPaver;
-
-	private RenderItem itemRenderer;
 
 	public RenderPaver(RenderManager renderManager) {
 
@@ -26,7 +22,6 @@ public class RenderPaver extends Render {
 		// LogHelper.info("in RenderLoader constructor");
 		shadowSize = 1F;
 		this.modelPaver = new ModelPaver();
-		itemRenderer = Minecraft.getMinecraft().getRenderItem();
 
 	}
 

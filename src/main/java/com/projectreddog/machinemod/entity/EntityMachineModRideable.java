@@ -30,6 +30,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -182,7 +183,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	}
 
 	@Override
-	public boolean interactFirst(EntityPlayer player) // should be proper class
+	public boolean processInitialInteract(EntityPlayer player, @Nullable ItemStack stack, EnumHand hand) // should be proper class
 	{
 		if (!worldObj.isRemote && getControllingPassenger() == null) {
 			// server side and no rider
@@ -269,7 +270,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		// should cause it to stop & not star when the re-enter if they leave
 		// while the machine is moving
 
-		if (isWaterOnly && (!(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.water))) {
+		if (isWaterOnly && (!(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.WATER))) {
 			isPlayerAccelerating = false;
 			isPlayerBreaking = false;
 			isPlayerTurningRight = false;
@@ -305,16 +306,17 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			this.setDead();
 		}
 
-		if (worldObj.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))) || worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.water || worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.lava
-				|| worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() == Blocks.SNOW_layer || worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.plants
-				|| worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial().isReplaceable()) {
+		if (worldObj.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))) || worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.WATER
+				|| worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.LAVA || worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() == Blocks.SNOW_LAYER
+				|| worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.PLANTS
+				|| worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))).isReplaceable()) {
 			// in air block so fall i'll actually park the entity inside the
 			// block below just a little bit.
 
 			if (willSink) {
 				this.motionY -= 0.03999999910593033D;
 			} else {
-				if (worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.water || canFly) {
+				if (worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.WATER || canFly) {
 					// do nothing
 					this.motionY = this.motionY * .85D;
 
@@ -437,7 +439,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 		// if (tickssincelastbroadcast > 20 || lastPosX != posX || lastPosY != posY || lastPosZ != posZ || lastAttribute1 != Attribute1 || lastYaw != yaw || lastCurrentFuelLevel != currentFuelLevel) {
 		// something changed (or its been 1 second) so send it to clients in need
-		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityToClient(this.getEntityId(), this.posX, this.posY, this.posZ, this.yaw, this.Attribute1, this.Attribute2, this.currentFuelLevel)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 224)); // sendInterval = 0;
+		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityToClient(this.getEntityId(), this.posX, this.posY, this.posZ, this.yaw, this.Attribute1, this.Attribute2, this.currentFuelLevel)), new TargetPoint(worldObj.provider.getDimension(), posX, posY, posZ, 224)); // sendInterval = 0;
 		// tickssincelastbroadcast = 0;
 		// }
 		// tickssincelastbroadcast = tickssincelastbroadcast + 1;
@@ -722,7 +724,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public void toppleTree(BlockPos bp, int depth, int widthDepth, Block previousBlock) {
 		if (depth < Reference.MAX_TREE_DEPTH) {
 			if (widthDepth < Reference.MAX_TREE_WIDTH) {
-				if (worldObj.getBlockState(bp).getBlock() == Blocks.log || worldObj.getBlockState(bp).getBlock() == Blocks.log2 || worldObj.getBlockState(bp).getBlock() == Blocks.leaves || worldObj.getBlockState(bp).getBlock() == Blocks.leaves2 || worldObj.getBlockState(bp).getBlock().isWood(worldObj, bp) || worldObj.getBlockState(bp).getBlock().isLeaves(worldObj, bp)) {
+				if (worldObj.getBlockState(bp).getBlock() == Blocks.LOG || worldObj.getBlockState(bp).getBlock() == Blocks.LOG2 || worldObj.getBlockState(bp).getBlock() == Blocks.LEAVES || worldObj.getBlockState(bp).getBlock() == Blocks.LEAVES2 || worldObj.getBlockState(bp).getBlock().isWood(worldObj, bp)
+						|| worldObj.getBlockState(bp).getBlock().isLeaves(worldObj.getBlockState(bp), worldObj, bp)) {
 
 					previousBlock = worldObj.getBlockState(bp).getBlock();
 					BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
@@ -801,7 +804,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		if (!(this.worldObj.isRemote)) {
 			// send packet to notify client of contents of machine's inventory
 			if (this.shouldSendClientInvetoryUpdates) {
-				ModNetwork.sendPacketToAllAround((new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), slot, inventory[slot])), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
+				ModNetwork.sendPacketToAllAround((new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), slot, inventory[slot])), new TargetPoint(worldObj.provider.getDimension(), posX, posY, posZ, 80));
 			}
 		}
 

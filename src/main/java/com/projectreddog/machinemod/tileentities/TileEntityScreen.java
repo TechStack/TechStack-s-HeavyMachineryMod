@@ -320,7 +320,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound compound) {
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN", timeTillCoolDown);
@@ -337,6 +337,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 			}
 		}
 		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
+		return compound;
 
 	}
 

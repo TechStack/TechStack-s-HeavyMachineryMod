@@ -44,7 +44,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelBakery;
+import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
@@ -56,7 +56,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerRenderers() {
 
-		OBJLoader.instance.addDomain(Reference.MOD_ID);
+		OBJLoader.INSTANCE.addDomain(Reference.MOD_ID);
 		// LogHelper.info("in register Renderers");
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityBulldozer.class, new RenderBulldozer(Minecraft.getMinecraft().getRenderManager()));

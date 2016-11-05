@@ -48,7 +48,7 @@ public class EntitySub extends EntityMachineModRideable {
 				this.motionY -= 0.04D;
 			}
 			if (this.currentFuelLevel > 0 && isPlayerPushingJumpButton) {
-				if (worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.water) {
+				if (worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.WATER) {
 					this.motionY += 0.04D;
 				}
 			}

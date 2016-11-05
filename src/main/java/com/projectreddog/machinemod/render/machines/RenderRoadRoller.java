@@ -5,10 +5,8 @@ import org.lwjgl.opengl.GL11;
 import com.projectreddog.machinemod.model.ModelRoadRoller;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -17,8 +15,6 @@ public class RenderRoadRoller extends Render {
 
 	protected ModelBase modelRoadRoller;
 
-	private RenderItem itemRenderer;
-
 	public RenderRoadRoller(RenderManager renderManager) {
 
 		super(renderManager);
@@ -26,7 +22,6 @@ public class RenderRoadRoller extends Render {
 		// LogHelper.info("in RenderLoader constructor");
 		shadowSize = 1F;
 		this.modelRoadRoller = new ModelRoadRoller();
-		itemRenderer = Minecraft.getMinecraft().getRenderItem();
 
 	}
 

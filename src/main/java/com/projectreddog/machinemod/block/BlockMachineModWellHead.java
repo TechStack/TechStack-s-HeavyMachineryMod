@@ -28,7 +28,8 @@ public class BlockMachineModWellHead extends BlockContainer {
 
 	protected BlockMachineModWellHead(Material material) {
 		super(material);
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.5F, 1.0F);
+		// TODO Find bounds fix
+		// this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.5F, 1.0F);
 
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
@@ -58,7 +59,7 @@ public class BlockMachineModWellHead extends BlockContainer {
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn,EnumHand hand,@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te != null && !playerIn.isSneaking()) {
 			// playerIn.openGui(MachineMod.instance, Reference.GUI_DISTILLER, worldIn, pos.getX(), pos.getY(), pos.getZ());
@@ -98,7 +99,7 @@ public class BlockMachineModWellHead extends BlockContainer {
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		// 3 for normal block 2 for TESR 1 liquid -1 nothing ( like air)
-		//return 3;
+		// return 3;
 		return EnumBlockRenderType.MODEL;
 
 	}

@@ -65,9 +65,9 @@ public class EntityTractor extends EntityMachineModRideable {
 					if (this.getStackInSlot(0) != null) {
 						if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachment) {
 							if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlow) {
-								if (worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.GRASS) {
+								if (worldObj.getBlockState(bp).getBlock() == Blocks.DIRT || worldObj.getBlockState(bp).getBlock() == Blocks.GRASS) {
 									worldObj.setBlockState(bp, Blocks.FARMLAND.getDefaultState());
-									if (worldObj.getBlockState(bp.up()).getBlock().getMaterial() == Material.PLANTS || worldObj.getBlockState(bp.up()).getBlock().getMaterial().isReplaceable()) {
+									if (worldObj.getBlockState(bp.up()).getBlock().getMaterial(worldObj.getBlockState(bp.up())) == Material.PLANTS || worldObj.getBlockState(bp.up()).getBlock().getMaterial(worldObj.getBlockState(bp.up())).isReplaceable()) {
 										BlockUtil.BreakBlock(worldObj, bp.up(), this.getControllingPassenger());
 
 									} else {
@@ -84,7 +84,7 @@ public class EntityTractor extends EntityMachineModRideable {
 										if (this.getStackInSlot(j).stackSize > 0) {
 
 											if (this.getStackInSlot(j).getItem() instanceof IPlantable) {
-												if (worldObj.getBlockState(bp).getBlock().canSustainPlant(worldObj, bp, EnumFacing.UP, (IPlantable) this.getStackInSlot(j).getItem()) && worldObj.isAirBlock(bp.up())) {
+												if (worldObj.getBlockState(bp).getBlock().canSustainPlant(worldObj.getBlockState(bp), worldObj, bp, EnumFacing.UP, (IPlantable) this.getStackInSlot(j).getItem()) && worldObj.isAirBlock(bp.up())) {
 
 													worldObj.setBlockState(bp.up(), ((IPlantable) this.getStackInSlot(j).getItem()).getPlant(worldObj, bp.up()));
 													this.decrStackSize(j, 1);
@@ -146,7 +146,7 @@ public class EntityTractor extends EntityMachineModRideable {
 							} else if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentTrencher) {
 								// Fertilize checks & actions
 								if (i == 0) {
-									if (worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.GRASS || worldObj.getBlockState(bp).getBlock() == Blocks.farmland) {
+									if (worldObj.getBlockState(bp).getBlock() == Blocks.DIRT || worldObj.getBlockState(bp).getBlock() == Blocks.GRASS || worldObj.getBlockState(bp).getBlock() == Blocks.FARMLAND) {
 										BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
 
 									}
