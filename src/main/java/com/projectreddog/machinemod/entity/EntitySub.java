@@ -56,8 +56,8 @@ public class EntitySub extends EntityMachineModRideable {
 			if (this.currentFuelLevel > 0 && this.getControllingPassenger() != null && this.getControllingPassenger() instanceof EntityPlayer) {
 				EntityPlayer entityPlayer = (EntityPlayer) this.getControllingPassenger();
 				entityPlayer.setAir(300);
-				entityPlayer.addPotionEffect(new PotionEffect(Potion.nightVision.id, 600, 0, true, false));
-				entityPlayer.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 600, 0, true, false));
+				entityPlayer.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("night_vision"), 600, 0, true, false));
+				entityPlayer.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("water_breathing"), 600, 0, true, false));
 
 			}
 
