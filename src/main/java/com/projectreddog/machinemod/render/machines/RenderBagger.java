@@ -120,16 +120,16 @@ public class RenderBagger extends Render {
 					Tessellator tessellator = Tessellator.getInstance();
 					VertexBuffer worldrenderer = tessellator.getBuffer();
 					worldrenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
-					this.renderManager.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
+					this.renderManager.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
 					EnumFacing[] aenumfacing = EnumFacing.values();
 					int j = aenumfacing.length;
 
 					for (int k = 0; k < j; ++k) {
 						EnumFacing enumfacing = aenumfacing[k];
-						this.RenderHelper_a(worldrenderer, ibakedmodel.getFaceQuads(enumfacing), -1, is);
+						this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, enumfacing, 0), -1, is);
 					}
 
-					this.RenderHelper_a(worldrenderer, ibakedmodel.getGeneralQuads(), -1, is);
+					this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, null, 0), -1, is);
 					tessellator.draw();
 				}
 				GlStateManager.translate(wheelRadius * -1, 0.0F, 0F);
@@ -163,7 +163,8 @@ public class RenderBagger extends Render {
 			j = p_175032_3_;
 
 			if (flag && bakedquad.hasTintIndex()) {
-				j = p_175032_4_.getItem().getColorFromItemStack(p_175032_4_, bakedquad.getTintIndex());
+				// TODO Fix Color
+				// j = p_175032_4_.getItem().getColorFromItemStack(p_175032_4_, bakedquad.getTintIndex());
 
 				if (EntityRenderer.anaglyphEnable) {
 					j = TextureUtil.anaglyphColor(j);

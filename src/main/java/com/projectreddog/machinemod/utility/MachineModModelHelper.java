@@ -9,27 +9,30 @@ import com.google.common.collect.ImmutableList;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.renderer.vertex.VertexFormat;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.Attributes;
-import net.minecraftforge.client.model.IFlexibleBakedModel;
 import net.minecraftforge.client.model.obj.OBJModel;
 import net.minecraftforge.client.model.pipeline.LightUtil;
 
 public class MachineModModelHelper {
-	public static void renderBakedModel(IFlexibleBakedModel bakedModel) {
+	public static void renderBakedModel(IBakedModel bakedModel) {
 		Tessellator tessellator = Tessellator.getInstance();
 
 		VertexBuffer worldrenderer = tessellator.getBuffer();
-		worldrenderer.begin(GL11.GL_QUADS, bakedModel.getFormat());
+		//VertexFormat VF = new VertexFormat();
+		// TODO SORT OUT THE VERTEXFORMAT if this is not correct
+		worldrenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);// bakedModel.getFormat());
 		// for (BakedQuad bakedQuad : bakedModel.getGeneralQuads()) {
 		// worldrenderer.addVertexData(bakedQuad.getVertexData());
 		//
 		// }
 		// alt version if ever needed
-		for (BakedQuad bakedQuad : bakedModel.getGeneralQuads()) {
+		for (BakedQuad bakedQuad : bakedModel.getQuads(null, null, 0)) {
 			LightUtil.renderQuadColor(worldrenderer, bakedQuad, -1);
 
 		}
@@ -111,7 +114,7 @@ public class MachineModModelHelper {
 
 	public static HashMap<String, IBakedModel> getModelsForGroups(OBJModel objModel) {
 
-		HashMap<String, IBakedModel> modelParts = new HashMap<String, IFlexibleBakedModel>();
+		HashMap<String, IBakedModel> modelParts = new HashMap<String, IBakedModel>();
 
 		if (!objModel.getMatLib().getGroups().keySet().isEmpty()) {
 			for (String key : objModel.getMatLib().getGroups().keySet()) {

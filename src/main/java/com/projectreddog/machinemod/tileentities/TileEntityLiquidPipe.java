@@ -118,7 +118,10 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 			if (!this.worldObj.isRemote) {
 				int tempFluidID;
 				if (this.getFluid() != null) {
-					tempFluidID = this.getFluid().getFluid().getID();
+					// TODO FIX LIQUID PIPES
+					// Next line is TEMP
+					tempFluidID = 0;
+					// tempFluidID = this.getFluid().getFluid().getID();
 				} else {
 					tempFluidID = -1;
 				}

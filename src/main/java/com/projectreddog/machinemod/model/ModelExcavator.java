@@ -12,9 +12,9 @@ import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.IFlexibleBakedModel;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.model.obj.OBJModel;
 
@@ -22,14 +22,17 @@ public class ModelExcavator extends ModelTransportable {
 	// fields
 
 	public OBJModel objModel;
-	private HashMap<String, IFlexibleBakedModel> modelParts;
+	private HashMap<String, IBakedModel> modelParts;
 
 	public ModelExcavator() {
 
 		try {
-			objModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/excavator.obj"));
+			objModel = (OBJModel) OBJLoader.INSTANCE.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/excavator.obj"));
 			modelParts = MachineModModelHelper.getModelsForGroups(objModel);
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -52,7 +55,7 @@ public class ModelExcavator extends ModelTransportable {
 			// }
 			GL11.glRotatef(calcRot, 0.0F, 1.0F, 0.0F);
 			// GL11.glRotatef((float) ((EntityExcavator) entity).mainBodyRotation, 0, 1, 0f);
-			if (((EntityExcavator) entity).riddenByEntity != null && ((EntityExcavator) entity).riddenByEntity == Minecraft.getMinecraft().thePlayer) {
+			if (((EntityExcavator) entity).getLowestRidingEntity() != null && ((EntityExcavator) entity).getLowestRidingEntity() == Minecraft.getMinecraft().thePlayer) {
 				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 				GL11.glEnable(GL11.GL_BLEND);
 				GL11.glColor4d(1, 1, 1, .50d);

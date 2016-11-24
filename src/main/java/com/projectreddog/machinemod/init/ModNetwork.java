@@ -62,7 +62,7 @@ public class ModNetwork {
 	}
 
 	public static void sendPacketToAllAround(IMessage packet, TargetPoint tp) {
-		for (EntityPlayerMP player : (List<EntityPlayerMP>) FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().playerEntityList) {
+		for (EntityPlayerMP player : (List<EntityPlayerMP>) FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerList()) {
 			if (player.dimension == tp.dimension) {
 				double d4 = tp.x - player.posX;
 				double d6 = tp.z - player.posZ;
