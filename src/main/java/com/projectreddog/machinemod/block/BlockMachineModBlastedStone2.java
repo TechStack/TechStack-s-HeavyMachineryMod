@@ -49,7 +49,7 @@ public class BlockMachineModBlastedStone2 extends BlockMachineModBlastedStoneBas
 	}
 
 	public static enum EnumModOres implements IStringSerializable {
-		COPPER(0, "COPPER"), TIN(1, "TIN"), SILVER(2, "SILVER"), LEAD(3, "LEAD"), QUARTZ(4, "QUARTZ"), RUBY(5, "RUBY"), SAPPHIRE(6, "SAPPHIRE"), URANIUM(7, "URANIUM"), ALUMINUM(8, "ALUMINUM");
+		COPPER(0, "copper"), TIN(1, "tin"), SILVER(2, "silver"), LEAD(3, "lead"), QUARTZ(4, "quartz"), RUBY(5, "ruby"), SAPPHIRE(6, "sapphire"), URANIUM(7, "uranium"), ALUMINUM(8, "aluminum");
 
 		public int getMetadata() {
 			return this.meta;

@@ -51,7 +51,7 @@ public class BlockMachineModBlastedStone extends BlockMachineModBlastedStoneBase
 	}
 
 	public static enum EnumVanillaOres implements IStringSerializable {
-		STONE(0, "STONE"), GRANITE(1, "GRANITE"), DIORITE(2, "DIORITE"), ANDESITE(3, "ANDESITE"), GOLD(4, "GOLD"), IRON(5, "IRON"), COAL(6, "COAL"), LAPIS(7, "LAPIS"), DIAMOND(8, "DIAMOND"), REDSTONE(9, "REDSTONE"), EMERALD(10, "EMERALD");
+		STONE(0, "stone"), GRANITE(1, "granite"), DIORITE(2, "diorite"), ANDESITE(3, "andesite"), GOLD(4, "gold"), IRON(5, "iron"), COAL(6, "coal"), LAPIS(7, "lapis"), DIAMOND(8, "diamond"), REDSTONE(9, "redstone"), EMERALD(10, "emerald");
 
 		public int getMetadata() {
 			return this.meta;
