@@ -28,7 +28,7 @@ public class MachineModMessageMouseInputToServerHandler implements IMessageHandl
 		if (entity != null) {
 
 			if (entity instanceof EntityExcavator) {
-				if (((EntityExcavator) entity).getLowestRidingEntity() == ctx.getServerHandler().playerEntity) {
+				if (((EntityExcavator) entity).getControllingPassenger() == ctx.getServerHandler().playerEntity) {
 					// its ridden by this player (avoid some hacks)
 					((EntityExcavator) entity).targetBlockPos = new BlockPos(message.posX, message.posY, message.posZ);
 				}

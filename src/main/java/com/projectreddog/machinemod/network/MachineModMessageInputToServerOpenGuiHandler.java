@@ -38,26 +38,26 @@ public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHan
 		if (entity != null) {
 
 			if (entity instanceof EntityMachineModRideable) {
-				if (((EntityMachineModRideable) entity).getLowestRidingEntity() == ctx.getServerHandler().playerEntity) {
+				if (((EntityMachineModRideable) entity).getControllingPassenger() == ctx.getServerHandler().playerEntity) {
 					// its ridden by this player (avoid some hacks)
 					if (message.isOpenGui) {
 
 						if (entity instanceof EntityDumpTruck) {
-							((EntityPlayer) entity.getLowestRidingEntity()).openGui(MachineMod.instance, Reference.GUI_DUMP_TRUCK, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_DUMP_TRUCK, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityLoader) {
-							((EntityPlayer) entity.getLowestRidingEntity()).openGui(MachineMod.instance, Reference.GUI_LOADER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_LOADER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityTractor) {
-							((EntityPlayer) entity.getLowestRidingEntity()).openGui(MachineMod.instance, Reference.GUI_TRACTOR, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_TRACTOR, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntitySemiTractor) {
-							((EntityPlayer) entity.getLowestRidingEntity()).openGui(MachineMod.instance, Reference.GUI_WIDEBEDTRUCK, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_WIDEBEDTRUCK, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityCombine) {
-							((EntityPlayer) entity.getLowestRidingEntity()).openGui(MachineMod.instance, Reference.GUI_COMBINE, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_COMBINE, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityPaver) {
-							((EntityPlayer) entity.getLowestRidingEntity()).openGui(MachineMod.instance, Reference.GUI_PAVER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_PAVER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityGrader) {
-							((EntityPlayer) entity.getLowestRidingEntity()).openGui(MachineMod.instance, Reference.GUI_GRADER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_GRADER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityBagger) {
-							((EntityPlayer) entity.getLowestRidingEntity()).openGui(MachineMod.instance, Reference.GUI_BAGGER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_BAGGER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						}
 
 					}

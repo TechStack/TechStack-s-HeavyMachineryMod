@@ -25,9 +25,9 @@ public class InputEventHandler {
 	@SubscribeEvent
 	public void MouseInputEvent(InputEvent.MouseInputEvent event) {
 
-		if (Minecraft.getMinecraft().thePlayer.getControllingPassenger() != null) {
-			if (Minecraft.getMinecraft().thePlayer.getControllingPassenger() instanceof EntityExcavator) {
-				Entity e = Minecraft.getMinecraft().thePlayer.getControllingPassenger();
+		if (Minecraft.getMinecraft().thePlayer.getRidingEntity() != null) {
+			if (Minecraft.getMinecraft().thePlayer.getRidingEntity() instanceof EntityExcavator) {
+				Entity e = Minecraft.getMinecraft().thePlayer.getRidingEntity();
 				// playre riding a excavator so we should check which block they are looking at.
 				RayTraceResult currentMouseOver;
 				// LogHelper.info("MIE" + event);
@@ -63,10 +63,10 @@ public class InputEventHandler {
 		// LogHelper.info("Called KB Event");
 
 		boolean sendPacket = false;
-		if (Minecraft.getMinecraft().thePlayer.getControllingPassenger() instanceof EntityMachineModRideable) {
+		if (Minecraft.getMinecraft().thePlayer.getRidingEntity() instanceof EntityMachineModRideable) {
 
 			sendPacket = true;
-			EntityMachineModRideable e = (EntityMachineModRideable) Minecraft.getMinecraft().thePlayer.getControllingPassenger();
+			EntityMachineModRideable e = (EntityMachineModRideable) Minecraft.getMinecraft().thePlayer.getRidingEntity();
 
 			if (Minecraft.getMinecraft().gameSettings.keyBindForward.isKeyDown()) {
 				// player pressed forward & is in my entity send network message

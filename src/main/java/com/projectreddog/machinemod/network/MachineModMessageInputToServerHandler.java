@@ -27,7 +27,7 @@ public class MachineModMessageInputToServerHandler implements IMessageHandler<Ma
 		if (entity != null) {
 
 			if (entity instanceof EntityMachineModRideable) {
-				if (((EntityMachineModRideable) entity).getLowestRidingEntity() == ctx.getServerHandler().playerEntity) {
+				if (((EntityMachineModRideable) entity).getControllingPassenger() == ctx.getServerHandler().playerEntity) {
 					// its ridden by this player (avoid some hacks)
 					((EntityMachineModRideable) entity).isPlayerAccelerating = message.isPlayerAccelerating;
 					((EntityMachineModRideable) entity).isPlayerBreaking = message.isPlayerBreaking;
