@@ -75,7 +75,7 @@ public class ItemOilRig extends ItemMachineModMachine {
 		if (!world.isRemote)// / only run on server
 		{
 
-			if (BiomeDictionary.isBiomeOfType(world.getBiomeGenForCoords(pos), BiomeDictionary.Type.OCEAN) && pos.getY() > 60 && world.isAirBlock(pos.up()) && world.getBlockState(pos).getBlock() == Blocks.WATER) {
+			if (BiomeDictionary.isBiomeOfType(world.getBiome(pos), BiomeDictionary.Type.OCEAN) && pos.getY() > 60 && world.isAirBlock(pos.up()) && world.getBlockState(pos).getBlock() == Blocks.WATER) {
 
 				// LogHelper.info("Item used on loader!");
 				int x = pos.getX();
