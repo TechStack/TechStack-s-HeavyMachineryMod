@@ -22,7 +22,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 //adding comment to test build on jenkins new server test6
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, guiFactory = Reference.GUI_FACTORY_CLASS ,updateJSON="https://raw.githubusercontent.com/TechStack/TechStack-s-HeavyMachineryMod/master/update.json")
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, guiFactory = Reference.GUI_FACTORY_CLASS, updateJSON = "https://raw.githubusercontent.com/TechStack/TechStack-s-HeavyMachineryMod/master/update.json")
 public class MachineMod {
 
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
