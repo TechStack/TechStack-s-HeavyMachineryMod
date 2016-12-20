@@ -12,27 +12,48 @@ import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.renderer.vertex.VertexFormat;
+import net.minecraft.client.renderer.vertex.VertexFormatElement;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.Attributes;
 import net.minecraftforge.client.model.obj.OBJModel;
 import net.minecraftforge.client.model.pipeline.LightUtil;
 
 public class MachineModModelHelper {
+	public static final VertexFormat MYFORMAT = new VertexFormat();
+
+	public static void setupVertexFormat() {
+		// Attributes.DEFAULT_BAKED_FORMAT works no normal
+		MYFORMAT.addElement(new VertexFormatElement(0, VertexFormatElement.EnumType.FLOAT, VertexFormatElement.EnumUsage.POSITION, 3));
+		MYFORMAT.addElement(new VertexFormatElement(0, VertexFormatElement.EnumType.UBYTE, VertexFormatElement.EnumUsage.COLOR, 4));
+		MYFORMAT.addElement(new VertexFormatElement(0, VertexFormatElement.EnumType.FLOAT, VertexFormatElement.EnumUsage.UV, 2));
+		MYFORMAT.addElement(new VertexFormatElement(0, VertexFormatElement.EnumType.BYTE, VertexFormatElement.EnumUsage.NORMAL, 3));
+		MYFORMAT.addElement(new VertexFormatElement(0, VertexFormatElement.EnumType.BYTE, VertexFormatElement.EnumUsage.PADDING, 1));
+	}
+
 	public static void renderBakedModel(IBakedModel bakedModel) {
 		Tessellator tessellator = Tessellator.getInstance();
 
 		VertexBuffer worldrenderer = tessellator.getBuffer();
 		// VertexFormat VF = new VertexFormat();
 		// TODO SORT OUT THE VERTEXFORMAT if this is not correct
-		worldrenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);// bakedModel.getFormat());
-		// for (BakedQuad bakedQuad : bakedModel.getGeneralQuads()) {
+		// worldrenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);// bakedModel.getFormat());
+		// OPTION A
+		BakedQuad bakedQuad1 = (BakedQuad) bakedModel.getQuads(null, null, 0).get(0);
+
+		// DARK no normal :( due to baked quad not having it worldrenderer.begin(GL11.GL_QUADS, MYFORMAT);// bakedModel.getFormat());
+		worldrenderer.begin(GL11.GL_QUADS, bakedQuad1.getFormat());
+
+		// for (BakedQuad bakedQuad : bakedModel.getQuads(null, null, 0)) {
 		// worldrenderer.addVertexData(bakedQuad.getVertexData());
 		//
 		// }
 		// alt version if ever needed
+
 		for (BakedQuad bakedQuad : bakedModel.getQuads(null, null, 0)) {
-			LightUtil.renderQuadColor(worldrenderer, bakedQuad, -1);
+			int j = -1;
+			j = j | -16777216;
+			LightUtil.renderQuadColor(worldrenderer, bakedQuad, j);
 
 		}
 
