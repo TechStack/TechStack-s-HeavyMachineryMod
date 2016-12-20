@@ -15,7 +15,6 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.vertex.VertexFormat;
 import net.minecraft.client.renderer.vertex.VertexFormatElement;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.Attributes;
 import net.minecraftforge.client.model.obj.OBJModel;
 import net.minecraftforge.client.model.pipeline.LightUtil;
 
@@ -140,14 +139,14 @@ public class MachineModModelHelper {
 			for (String key : objModel.getMatLib().getGroups().keySet()) {
 				String k = key;
 				if (!modelParts.containsKey(key)) {
-					modelParts.put(k, objModel.bake(new OBJModel.OBJState(ImmutableList.of(k), false), Attributes.DEFAULT_BAKED_FORMAT, textureGetterFlipV));
+					modelParts.put(k, objModel.bake(new OBJModel.OBJState(ImmutableList.of(k), false), MYFORMAT, textureGetterFlipV));
 
 					// can use a list strings as a OBJModel.OBJState Turning those group objects on or off accordngly
 				}
 			}
 		}
 
-		modelParts.put(ALL_PARTS, objModel.bake(objModel.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, textureGetterFlipV));
+		modelParts.put(ALL_PARTS, objModel.bake(objModel.getDefaultState(), MYFORMAT, textureGetterFlipV));
 
 		return modelParts;
 	}
