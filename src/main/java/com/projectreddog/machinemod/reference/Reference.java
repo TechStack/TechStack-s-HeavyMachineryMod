@@ -78,6 +78,7 @@ public class Reference {
 	public static final String MODBLOCK_STEEL_BLOCK = "steelblock";
 
 	public static final String MODBLOCK_MACHINE_ASPHALT = "machineasphalt";
+	public static final String MODBLOCK_MACHINE_CRATE = "machinecrate";
 
 	public static final String MODBLOCK_MACHINE_CRUDE_OIL_STONE = "machinecrudeoilstone";
 	public static final String MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION = "machinefractionaldistillation";
