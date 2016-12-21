@@ -1,5 +1,6 @@
 package com.projectreddog.machinemod.block;
 
+import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityCrate;
 
@@ -22,11 +23,12 @@ public class BlockMachineCrate extends BlockContainer {
 
 	protected BlockMachineCrate(Material material) {
 		super(material);
-		// 1.8
+		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_CRATE);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setHardness(15f);// not sure on the hardness
 		this.setSoundType(SoundType.WOOD);
+
 	}
 
 	@Override
