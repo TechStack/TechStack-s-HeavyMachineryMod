@@ -10,7 +10,6 @@ import scala.Int;
 
 public class TileEntityCrate extends TileEntity implements ITickable, ISidedInventory {
 	protected ItemStack[] inventory;
-	private static int[] sideSlots = new int[] { 0 };
 
 	int inventorySize = 1;
 
@@ -128,17 +127,14 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 
 	@Override
 	public int[] getSlotsForFace(EnumFacing side) {
-		if (side == EnumFacing.NORTH || side == EnumFacing.SOUTH || side == EnumFacing.EAST || side == EnumFacing.WEST) {
-			return sideSlots;
-		}
-		int[] topSlots2 = new int[] { 0 };
-		return topSlots2;
+		int[] Slots = new int[] { 0 };
+		return Slots;
 
 	}
 
 	@Override
 	public boolean canInsertItem(int slot, ItemStack itemStackIn, EnumFacing direction) {
-		if (slot < inventorySize && (direction == EnumFacing.NORTH || direction == EnumFacing.SOUTH || direction == EnumFacing.EAST || direction == EnumFacing.WEST)) {
+		if (slot < inventorySize && (direction == EnumFacing.NORTH || direction == EnumFacing.SOUTH || direction == EnumFacing.EAST || direction == EnumFacing.WEST || direction == EnumFacing.UP)) {
 			return true;
 		}
 		return false;
@@ -146,7 +142,7 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 
 	@Override
 	public boolean canExtractItem(int slot, ItemStack stack, EnumFacing direction) {
-		if (slot < inventorySize && (direction == EnumFacing.NORTH || direction == EnumFacing.SOUTH || direction == EnumFacing.EAST || direction == EnumFacing.WEST)) {
+		if (slot < inventorySize && (direction == EnumFacing.DOWN)) {
 			return true;
 		}
 		return false;
