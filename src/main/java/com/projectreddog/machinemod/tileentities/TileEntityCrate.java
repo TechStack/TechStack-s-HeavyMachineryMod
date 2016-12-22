@@ -1,8 +1,16 @@
 package com.projectreddog.machinemod.tileentities;
 
+import com.projectreddog.machinemod.init.ModNetwork;
+import com.projectreddog.machinemod.network.MachineModMessageRequestTEAllInventoryToServer;
+import com.projectreddog.machinemod.network.MachineModMessageTEInventoryChangedToClient;
+import com.projectreddog.machinemod.reference.Reference;
+
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
@@ -10,8 +18,12 @@ import scala.Int;
 
 public class TileEntityCrate extends TileEntity implements ITickable, ISidedInventory {
 	protected ItemStack[] inventory;
+	boolean shouldRequestInvetoryUpdates = true;
+
+	boolean shouldSendInvetoryUpdates = true;
 
 	int inventorySize = 1;
+	public int rotAmt = 0;
 
 	public TileEntityCrate() {
 		inventory = new ItemStack[inventorySize];
@@ -60,6 +72,7 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
 			stack.stackSize = getInventoryStackLimit();
 		}
+		shouldSendInvetoryUpdates = true;
 
 	}
 
@@ -149,8 +162,77 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 	}
 
 	@Override
+	public void readFromNBT(NBTTagCompound compound) {
+
+		super.readFromNBT(compound);
+
+		// inventory
+
+		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
+		for (int i = 0; i < tagList.tagCount(); i++) {
+			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
+			byte slot = tag.getByte("Slot");
+			if (slot >= 0 && slot < inventory.length) {
+				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
+			}
+		}
+	}
+
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+		super.writeToNBT(compound);
+
+		// inventory
+
+		NBTTagList itemList = new NBTTagList();
+		for (int i = 0; i < inventory.length; i++) {
+			ItemStack stack = inventory[i];
+			if (stack != null) {
+				NBTTagCompound tag = new NBTTagCompound();
+				tag.setByte("Slot", (byte) i);
+				stack.writeToNBT(tag);
+				itemList.appendTag(tag);
+			}
+		}
+		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
+
+		return compound;
+
+	}
+
+	@Override
 	public void update() {
 		// TODO Auto-generated method stub
+
+		if (worldObj.isRemote) {
+			rotAmt = rotAmt + 1;
+			if (rotAmt > 360) {
+				rotAmt = 0;
+			}
+			// client side so request inventory
+			if (shouldRequestInvetoryUpdates) {
+				ModNetwork.simpleNetworkWrapper.sendToServer((new MachineModMessageRequestTEAllInventoryToServer(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ())));
+				shouldRequestInvetoryUpdates = false;
+			}
+
+		} else {
+			// server side send update if it has changed
+			if (shouldSendInvetoryUpdates) {
+				for (int i = 0; i < inventory.length; i++) {
+					ModNetwork.simpleNetworkWrapper.sendToAll(new MachineModMessageTEInventoryChangedToClient(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), i, inventory[i]));
+				}
+				shouldSendInvetoryUpdates = false;
+			}
+		}
+
+	}
+
+	public void sendAllInventoryToPlayer(EntityPlayerMP player) {
+		for (int i = 0; i < inventory.length; i++) {
+
+			ModNetwork.simpleNetworkWrapper.sendTo(new MachineModMessageTEInventoryChangedToClient(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), i, inventory[i]), player);
+
+		}
 
 	}
 }

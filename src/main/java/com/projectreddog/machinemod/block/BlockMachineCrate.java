@@ -11,6 +11,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -36,6 +37,19 @@ public class BlockMachineCrate extends BlockContainer {
 
 		// NEED TO return the TE here
 		return new TileEntityCrate();
+	}
+
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		// 3 for normal block 2 for TESR 1 liquid -1 nothing ( like air)
+		// return 2;
+		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+
 	}
 
 	@Override

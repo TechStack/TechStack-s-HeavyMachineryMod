@@ -39,8 +39,10 @@ import com.projectreddog.machinemod.render.machines.RenderSemiTractor;
 import com.projectreddog.machinemod.render.machines.RenderSub;
 import com.projectreddog.machinemod.render.machines.RenderTractor;
 import com.projectreddog.machinemod.render.tileentity.TileEntityCentrifugeRenderer;
+import com.projectreddog.machinemod.render.tileentity.TileEntityCrateRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityLiquidPipeRenderer;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
+import com.projectreddog.machinemod.tileentities.TileEntityCrate;
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
 import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
@@ -108,6 +110,7 @@ public class ClientProxy extends CommonProxy {
 
 		// ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFractionalDistillation.class, new TileEntityFractionalDistillationRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLiquidPipe.class, new TileEntityLiquidPipeRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCrate.class, new TileEntityCrateRenderer());
 
 		// regsiter event for overlay
 		MinecraftForge.EVENT_BUS.register(new RenderOverlayHandler());
