@@ -1,5 +1,7 @@
 package com.projectreddog.machinemod.network;
 
+import com.projectreddog.machinemod.tileentities.TileEntityCrate;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntity;
@@ -36,33 +38,14 @@ public class MachineModMessageTEInventoryChangedToClientHandler implements IMess
 					if (TileEntity != null) {
 
 						if (TileEntity instanceof IInventory) {
-							// // its ridden by this player (avoid some hacks)
-							// ((EntityMachineModRideable) entity).TargetposX =
-							// message.posX;
-							// ((EntityMachineModRideable) entity).TargetposY =
-							// message.posY;
-							// ((EntityMachineModRideable) entity).TargetposZ =
-							// message.posZ;
-							// ((EntityMachineModRideable) entity).rotationYaw =
-							// message.yaw;
-							// ((EntityMachineModRideable) entity).yaw =
-							// message.yaw;
-							// ((EntityMachineModRideable) entity).Attribute1 =
-							// message.Attribute1;
-							//
-							// //
-							// LogHelper.info("RECIEVED ENTITY PACKET FROM SERVER"
-							// // );
-							// if (entity instanceof EntityLoader) {
-							// EntityLoader eL = (EntityLoader) entity;
-							// eL.setInventorySlotContents(message.slot,
-							// message.is);
-							// }
-							// if (entity instanceof EntityDumpTruck) {
-							// EntityDumpTruck eDT = (EntityDumpTruck) entity;
+
 							IInventory ii = (IInventory) TileEntity;
 							ii.setInventorySlotContents(message.slot, message.is);
-							// }
+							// Handle Extra data
+							if (TileEntity instanceof TileEntityCrate) {
+								// cartes use extraint to store the AmtInReserve to send to the client.
+								((TileEntityCrate) TileEntity).AmtInReserve = message.extraInt;
+							}
 
 						}
 					}

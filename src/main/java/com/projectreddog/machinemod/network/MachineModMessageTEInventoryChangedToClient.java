@@ -21,12 +21,13 @@ public class MachineModMessageTEInventoryChangedToClient implements IMessage {
 
 	public int slot;
 	public ItemStack is;
+	public int extraInt;
 
 	public MachineModMessageTEInventoryChangedToClient() {
 		// LogHelper.info("in machineModMessageEntityToClientConstructor basic");
 	}
 
-	public MachineModMessageTEInventoryChangedToClient(int x, int y, int z, int slot, ItemStack is) {
+	public MachineModMessageTEInventoryChangedToClient(int x, int y, int z, int slot, ItemStack is, int extraInt) {
 		super();
 		// LogHelper.info("in machineModMessageEntityToClientConstructor with parms");
 		this.x = x;
@@ -34,6 +35,7 @@ public class MachineModMessageTEInventoryChangedToClient implements IMessage {
 		this.z = z;
 		this.slot = slot;
 		this.is = is;
+		this.extraInt = extraInt;
 	}
 
 	@Override
@@ -42,7 +44,10 @@ public class MachineModMessageTEInventoryChangedToClient implements IMessage {
 		this.x = buf.readInt();
 		this.y = buf.readInt();
 		this.z = buf.readInt();
+		this.extraInt = buf.readInt();
+
 		this.slot = buf.readInt();
+
 		ItemStack itemstack = null;
 		short short1 = buf.readShort();
 
@@ -83,6 +88,7 @@ public class MachineModMessageTEInventoryChangedToClient implements IMessage {
 		buf.writeInt(x);
 		buf.writeInt(y);
 		buf.writeInt(z);
+		buf.writeInt(extraInt);
 
 		buf.writeInt(this.slot);
 		if (this.is == null) {

@@ -72,7 +72,7 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 			int inventoryIndex = 0;
 			ItemStack is = te.getStackInSlot(inventoryIndex);
 			if (is != null) {
-				str = "" + is.stackSize;
+				str = "" + (is.stackSize + te.AmtInReserve);
 				// EntityItem customitem = new EntityItem(eDT.worldObj);
 				// customitem.hoverStart = 0f;
 				// customitem.setEntityItemStack(is);

@@ -339,7 +339,7 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 			// server side send update if it has changed
 			if (shouldSendInvetoryUpdates) {
 				for (int i = 0; i < inventory.length; i++) {
-					ModNetwork.simpleNetworkWrapper.sendToAll(new MachineModMessageTEInventoryChangedToClient(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), i, inventory[i]));
+					ModNetwork.simpleNetworkWrapper.sendToAll(new MachineModMessageTEInventoryChangedToClient(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), i, inventory[i], this.AmtInReserve));
 				}
 				shouldSendInvetoryUpdates = false;
 			}
@@ -350,7 +350,7 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 	public void sendAllInventoryToPlayer(EntityPlayerMP player) {
 		for (int i = 0; i < inventory.length; i++) {
 
-			ModNetwork.simpleNetworkWrapper.sendTo(new MachineModMessageTEInventoryChangedToClient(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), i, inventory[i]), player);
+			ModNetwork.simpleNetworkWrapper.sendTo(new MachineModMessageTEInventoryChangedToClient(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), i, inventory[i], this.AmtInReserve), player);
 
 		}
 
