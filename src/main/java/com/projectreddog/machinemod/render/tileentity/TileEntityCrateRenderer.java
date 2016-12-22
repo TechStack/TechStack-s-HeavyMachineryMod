@@ -65,20 +65,21 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 		// ((ModelTractor) this.modelTractor).renderGroupObject("Plow_Cube");
 		// GL11.glDisableClientState(GL11.GL_LIGHTING);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-
+		String str = "";
 		if (tileentity instanceof TileEntityCrate) {
 			TileEntityCrate te = (TileEntityCrate) tileentity;
 			int count = 0;
 			int inventoryIndex = 0;
 			ItemStack is = te.getStackInSlot(inventoryIndex);
 			if (is != null) {
+				str = "" + is.stackSize;
 				// EntityItem customitem = new EntityItem(eDT.worldObj);
 				// customitem.hoverStart = 0f;
 				// customitem.setEntityItemStack(is);
 				IBakedModel ibakedmodel = itemRenderer.getItemModelMesher().getItemModel(is);
 				GL11.glRotatef(te.rotAmt, 0, 1, 0);
 
-				GlStateManager.translate(-.25F, 0.25F, -.25F);
+				GlStateManager.translate(-.25F, 0.05F, -.25F);
 				GL11.glScalef(.5F, .5F, .5F);
 				//
 
@@ -107,6 +108,14 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 		}
 
 		GL11.glPopMatrix();
+		float f2 = this.renderManager.playerViewY;
+		float f1 = this.renderManager.playerViewX;
+		boolean flag1 = this.renderManager.options.thirdPersonView == 2;
+		// String str = "" + is.stackSize;
+
+		if (!str.equals("")) {
+			EntityRenderer.drawNameplate(this.renderManager.getFontRenderer(), str, (float) x + .5f, (float) y + .75f, (float) z + .5f, 0, f2, f1, flag1, false);
+		}
 
 	}
 

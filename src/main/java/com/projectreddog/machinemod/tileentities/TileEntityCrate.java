@@ -18,12 +18,18 @@ import scala.Int;
 
 public class TileEntityCrate extends TileEntity implements ITickable, ISidedInventory {
 	protected ItemStack[] inventory;
+	protected ItemStack DeepStorageType;
+
+	int inventorySize = 2;// slot 0 = Output (down) Slot 1 = input (up & sides)
 	boolean shouldRequestInvetoryUpdates = true;
 
 	boolean shouldSendInvetoryUpdates = true;
 
-	int inventorySize = 1;
 	public int rotAmt = 0;
+
+	public int AmtInReserve = 0;
+
+	public ItemStack HeldItem;
 
 	public TileEntityCrate() {
 		inventory = new ItemStack[inventorySize];
@@ -54,6 +60,7 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 
 			}
 		}
+		shouldSendInvetoryUpdates = true;
 		return stack;
 	}
 
@@ -63,11 +70,14 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 		if (stack != null) {
 			setInventorySlotContents(slot, null);
 		}
+		shouldSendInvetoryUpdates = true;
+
 		return stack;
 	}
 
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
+
 		inventory[slot] = stack;
 		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
 			stack.stackSize = getInventoryStackLimit();
@@ -140,15 +150,28 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 
 	@Override
 	public int[] getSlotsForFace(EnumFacing side) {
-		int[] Slots = new int[] { 0 };
+		// slot 0 = Output (down) Slot 1 = input (up & sides)
+		int[] Slots;
+		if (side == EnumFacing.DOWN) {
+			Slots = new int[] { 0 };
+		} else {
+			Slots = new int[] { 1 };
+		}
+
 		return Slots;
 
 	}
 
 	@Override
 	public boolean canInsertItem(int slot, ItemStack itemStackIn, EnumFacing direction) {
-		if (slot < inventorySize && (direction == EnumFacing.NORTH || direction == EnumFacing.SOUTH || direction == EnumFacing.EAST || direction == EnumFacing.WEST || direction == EnumFacing.UP)) {
-			return true;
+
+		// only slot 1 is input !
+		// need to check item too
+		if (itemStackIn.isItemEqual(HeldItem) || HeldItem == null) {
+			// same input item or held item is null so accept the item !
+			if (slot == 1 && (direction == EnumFacing.NORTH || direction == EnumFacing.SOUTH || direction == EnumFacing.EAST || direction == EnumFacing.WEST || direction == EnumFacing.UP)) {
+				return true;
+			}
 		}
 		return false;
 	}
@@ -216,6 +239,103 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 			}
 
 		} else {
+			// server side
+			// AmtInReserve
+			if (getStackInSlot(0) != null) {
+				if (getStackInSlot(0).stackSize == getStackInSlot(0).getMaxStackSize()) {
+					// output full fill if input is not full
+					if (getStackInSlot(1) != null) {// input
+						// have stack in input and output full move to reserve if same item
+						if (getStackInSlot(1).isItemEqual(getStackInSlot(0))) {
+							// same item move to reserve
+							AmtInReserve = AmtInReserve + getStackInSlot(1).stackSize;
+							// set empty slot contents of input slot !
+							setInventorySlotContents(1, null);
+						}
+					}
+				} else {
+					// output not full
+					if (getStackInSlot(1) != null) {
+						// something in output so take it please !
+						if (getStackInSlot(0).getMaxStackSize() - getStackInSlot(0).stackSize >= getStackInSlot(1).stackSize) {// we can take it all so do so
+							getStackInSlot(0).stackSize = getStackInSlot(0).stackSize + getStackInSlot(1).stackSize;
+							setInventorySlotContents(1, null);
+						} else {
+							// to much input so take what we can and reserve the rest
+							// find leftover by taking input Stack size - amt needed ( max size - curr size)
+							int LeftOverAmt = getStackInSlot(1).stackSize - (getStackInSlot(0).getMaxStackSize() - getStackInSlot(0).stackSize);
+							AmtInReserve = AmtInReserve + LeftOverAmt;
+							getStackInSlot(0).stackSize = getStackInSlot(0).getMaxStackSize();
+
+							setInventorySlotContents(1, null);
+						}
+					}
+				}
+			} else {
+				// nothing was in output stack check input
+				if (getStackInSlot(1) != null) {
+					// we have an item !! so lets store it in the held item for comparison purposes
+					HeldItem = getStackInSlot(1).copy();
+					// move to output stack
+					setInventorySlotContents(0, getStackInSlot(1).copy());
+					// clear input for more items to arrive
+					setInventorySlotContents(1, null);
+
+				}
+
+			}
+			// Need to refill output from reserve
+
+			if (getStackInSlot(0) != null) {
+				// has an item top it off if possible.
+				if (getStackInSlot(0).stackSize < getStackInSlot(0).getMaxStackSize()) {
+					// has room for more
+					int amtNeeded = getStackInSlot(0).getMaxStackSize() - getStackInSlot(0).stackSize;
+					if (amtNeeded <= AmtInReserve) {
+						// we have enough top it off all the way !
+						AmtInReserve = AmtInReserve - amtNeeded;
+						ItemStack TmpStack = getStackInSlot(0).copy();
+						TmpStack.stackSize = TmpStack.getMaxStackSize();
+
+						setInventorySlotContents(0, TmpStack);
+					} else {
+						// Do not have enough !!! Help !
+
+						ItemStack TmpStack = getStackInSlot(0).copy();
+						TmpStack.stackSize = TmpStack.stackSize + AmtInReserve;
+						AmtInReserve = 0;
+						setInventorySlotContents(0, TmpStack);
+					}
+				} // else already full no action needed
+			} else {
+				// no output stack !
+				// check reserve first !
+				if (AmtInReserve > 0) {
+					// has reserve need to check held item !
+					if (HeldItem != null) {
+
+						// has held item replenish the output stack then do normal checks
+						if (AmtInReserve > HeldItem.getMaxStackSize()) {
+
+							// can create full stack
+							ItemStack TmpStack = HeldItem.copy();
+							TmpStack.stackSize = TmpStack.getMaxStackSize();
+							AmtInReserve = AmtInReserve - TmpStack.getMaxStackSize();
+							setInventorySlotContents(0, TmpStack);
+						} else {
+							// need partial stack
+
+							ItemStack TmpStack = HeldItem.copy();
+							;
+							TmpStack.stackSize = TmpStack.stackSize + AmtInReserve;
+							AmtInReserve = 0;
+							setInventorySlotContents(0, TmpStack);
+						}
+					}
+				}
+
+			}
+
 			// server side send update if it has changed
 			if (shouldSendInvetoryUpdates) {
 				for (int i = 0; i < inventory.length; i++) {
