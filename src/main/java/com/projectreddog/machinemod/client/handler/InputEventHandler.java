@@ -58,6 +58,7 @@ public class InputEventHandler {
 		}
 	}
 
+	// test
 	@SubscribeEvent
 	public void handleKeyInputevent(InputEvent.KeyInputEvent event) {
 		// LogHelper.info("Called KB Event");
