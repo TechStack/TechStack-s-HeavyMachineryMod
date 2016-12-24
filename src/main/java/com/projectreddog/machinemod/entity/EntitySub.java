@@ -7,9 +7,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class EntitySub extends EntityMachineModRideable {
@@ -48,16 +48,16 @@ public class EntitySub extends EntityMachineModRideable {
 				this.motionY -= 0.04D;
 			}
 			if (this.currentFuelLevel > 0 && isPlayerPushingJumpButton) {
-				if (worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial() == Material.water) {
+				if (worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.WATER) {
 					this.motionY += 0.04D;
 				}
 			}
 
-			if (this.currentFuelLevel > 0 && this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer) {
-				EntityPlayer entityPlayer = (EntityPlayer) this.riddenByEntity;
+			if (this.currentFuelLevel > 0 && this.getControllingPassenger() != null && this.getControllingPassenger() instanceof EntityPlayer) {
+				EntityPlayer entityPlayer = (EntityPlayer) this.getControllingPassenger();
 				entityPlayer.setAir(300);
-				entityPlayer.addPotionEffect(new PotionEffect(Potion.nightVision.id, 600, 0, true, false));
-				entityPlayer.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 600, 0, true, false));
+				entityPlayer.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("night_vision"), 600, 0, true, false));
+				entityPlayer.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("water_breathing"), 600, 0, true, false));
 
 			}
 
@@ -71,7 +71,7 @@ public class EntitySub extends EntityMachineModRideable {
 
 	@Override
 	public void doParticleEffects() {
-		if (this.currentFuelLevel > 0 && this.riddenByEntity != null && (this.isPlayerAccelerating || this.isPlayerBreaking || this.isPlayerPushingJumpButton || this.isPlayerPushingSprintButton || this.isPlayerTurningLeft || this.isPlayerTurningRight)) {
+		if (this.currentFuelLevel > 0 && this.getControllingPassenger() != null && (this.isPlayerAccelerating || this.isPlayerBreaking || this.isPlayerPushingJumpButton || this.isPlayerPushingSprintButton || this.isPlayerTurningLeft || this.isPlayerTurningRight)) {
 			for (int i = 0; i < 3; i++) {
 				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset), this.posY + particleTopOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset), 0, 0, 0, 0);
 				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset * -1), this.posY + particleTopOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset * -1), 0, 0, 0, 0);

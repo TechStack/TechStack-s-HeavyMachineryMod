@@ -59,7 +59,7 @@ public class ConfigurationHandler {
 
 	@SubscribeEvent
 	public void onConfiguratoinChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event) {
-		if (event.modID.equalsIgnoreCase(Reference.MOD_ID)) {
+		if (event.getModID().equalsIgnoreCase(Reference.MOD_ID)) {
 			// resync configs
 			loadConfiguration();
 		}

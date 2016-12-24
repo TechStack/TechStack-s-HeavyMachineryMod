@@ -22,10 +22,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.IChatComponent;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.text.ITextComponent;
 
 public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, ISidedInventory, IFuelContainer {
 	protected ItemStack[] inventory;
@@ -73,80 +73,80 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 							dropDust(i, new ItemStack(ModItems.golddust, BlastedStoneOreMultiplier));
 							return;
 						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.STONE.getMetadata()) {
-							dropDust(i, new ItemStack(Blocks.cobblestone, 1));
+							dropDust(i, new ItemStack(Blocks.COBBLESTONE, 1));
 							return;
 						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.ANDESITE.getMetadata()) {
-							dropDust(i, new ItemStack(Blocks.stone, 1, BlockStone.EnumType.ANDESITE.getMetadata()));
+							dropDust(i, new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.ANDESITE.getMetadata()));
 							return;
 						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.DIORITE.getMetadata()) {
-							dropDust(i, new ItemStack(Blocks.stone, 1, BlockStone.EnumType.DIORITE.getMetadata()));
+							dropDust(i, new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.DIORITE.getMetadata()));
 							return;
 						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.GRANITE.getMetadata()) {
-							dropDust(i, new ItemStack(Blocks.stone, 1, BlockStone.EnumType.GRANITE.getMetadata()));
+							dropDust(i, new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.GRANITE.getMetadata()));
 							return;
 						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.COAL.getMetadata()) {
-							dropDust(i, new ItemStack(Items.coal, BlastedStoneCoalMultiplier));
+							dropDust(i, new ItemStack(Items.COAL, BlastedStoneCoalMultiplier));
 							return;
 						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.DIAMOND.getMetadata()) {
-							dropDust(i, new ItemStack(Items.diamond, BlastedStoneGemMultiplier));
+							dropDust(i, new ItemStack(Items.DIAMOND, BlastedStoneGemMultiplier));
 							return;
 						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.EMERALD.getMetadata()) {
-							dropDust(i, new ItemStack(Items.emerald, BlastedStoneGemMultiplier));
+							dropDust(i, new ItemStack(Items.EMERALD, BlastedStoneGemMultiplier));
 							return;
 						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.LAPIS.getMetadata()) {
-							dropDust(i, new ItemStack(Items.dye, BlastedStoneLapisMultiplier, EnumDyeColor.BLUE.getDyeDamage()));
+							dropDust(i, new ItemStack(Items.DYE, BlastedStoneLapisMultiplier, EnumDyeColor.BLUE.getDyeDamage()));
 							return;
 						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.REDSTONE.getMetadata()) {
-							dropDust(i, new ItemStack(Items.redstone, BlastedStoneRedstoneMultiplier));
+							dropDust(i, new ItemStack(Items.REDSTONE, BlastedStoneRedstoneMultiplier));
 							return;
 						}
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.iron_ore)) {
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.IRON_ORE)) {
 						dropDust(i, new ItemStack(ModItems.irondust, VanillaOreMultiplier));
 						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.gold_ore)) {
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.GOLD_ORE)) {
 						dropDust(i, new ItemStack(ModItems.golddust, VanillaOreMultiplier));
 						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.stone) && item.getMetadata() == BlockStone.EnumType.STONE.getMetadata()) {
-						dropDust(i, new ItemStack(Blocks.cobblestone, 1));
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.STONE) && item.getMetadata() == BlockStone.EnumType.STONE.getMetadata()) {
+						dropDust(i, new ItemStack(Blocks.COBBLESTONE, 1));
 						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.stone)) {
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.STONE)) {
 						dropDust(i, new ItemStack(item.getItem(), 1, item.getItemDamage()));
 						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.coal_ore)) {
-						dropDust(i, new ItemStack(Items.coal, 1));
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.COAL_ORE)) {
+						dropDust(i, new ItemStack(Items.COAL, 1));
 						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.diamond_ore)) {
-						dropDust(i, new ItemStack(Items.diamond, 1));
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.DIAMOND_ORE)) {
+						dropDust(i, new ItemStack(Items.DIAMOND, 1));
 						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.emerald_ore)) {
-						dropDust(i, new ItemStack(Items.emerald, 1));
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.EMERALD_ORE)) {
+						dropDust(i, new ItemStack(Items.EMERALD, 1));
 						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.lapis_ore)) {
-						dropDust(i, new ItemStack(Items.dye, 7, EnumDyeColor.BLUE.getDyeDamage()));
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.LAPIS_ORE)) {
+						dropDust(i, new ItemStack(Items.DYE, 7, EnumDyeColor.BLUE.getDyeDamage()));
 						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.redstone_ore)) {
-						dropDust(i, new ItemStack(Items.redstone, 5));
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_ORE)) {
+						dropDust(i, new ItemStack(Items.REDSTONE, 5));
 						return;
-					} else if (item.getItem() == Items.bone) {
-						dropDust(i, new ItemStack(Items.dye, 5, EnumDyeColor.WHITE.getDyeDamage()));
+					} else if (item.getItem() == Items.BONE) {
+						dropDust(i, new ItemStack(Items.DYE, 5, EnumDyeColor.WHITE.getDyeDamage()));
 						return;
-					} else if (item.getItem() == Items.coal) {
+					} else if (item.getItem() == Items.COAL) {
 						dropDust(i, new ItemStack(ModItems.carbondust, 1));
 						return;
-					} else if (item.getItem() == Items.iron_ingot) {
+					} else if (item.getItem() == Items.IRON_INGOT) {
 						dropDust(i, new ItemStack(ModItems.irondust, 1));
 						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.gravel)) {
-						dropDust(i, new ItemStack(Blocks.sand, 1));
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.GRAVEL)) {
+						dropDust(i, new ItemStack(Blocks.SAND, 1));
 						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.sandstone)) {
-						dropDust(i, new ItemStack(Blocks.sand, 4));
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.SANDSTONE)) {
+						dropDust(i, new ItemStack(Blocks.SAND, 4));
 						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.wool)) {
-						dropDust(i, new ItemStack(Items.string, 41));
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.WOOL)) {
+						dropDust(i, new ItemStack(Items.STRING, 41));
 						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.cobblestone)) {
-						dropDust(i, new ItemStack(Blocks.gravel, 1));
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.COBBLESTONE)) {
+						dropDust(i, new ItemStack(Blocks.GRAVEL, 1));
 						return;
 					} else {
 
@@ -293,7 +293,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound compound) {
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN", timeTillCoolDown);
@@ -311,6 +311,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 			}
 		}
 		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
+		return compound;
 
 	}
 
@@ -327,7 +328,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 	}
 
 	@Override
-	public IChatComponent getDisplayName() {
+	public ITextComponent getDisplayName() {
 		// TODO Auto-generated method stub
 		return null;
 	}

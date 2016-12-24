@@ -5,8 +5,9 @@ import java.util.Random;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -21,8 +22,10 @@ public class MachineModWorldGen implements IWorldGenerator {
 	}
 
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
-		switch (world.provider.getDimensionId()) {
+	// public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+		switch (world.provider.getDimension()) {// was get dim id
+
 		case 0: // Overworld
 			this.runGenerator(this.gen_machineMod_CrudeOilStone, world, random, chunkX, chunkZ, 15, Reference.crudeOilStoneGenMinlevel, Reference.crudeOilStoneGenMaxlevel);
 

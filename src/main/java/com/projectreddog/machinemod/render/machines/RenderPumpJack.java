@@ -1,34 +1,24 @@
 package com.projectreddog.machinemod.render.machines;
 
-import java.util.Iterator;
-import java.util.List;
-
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.model.ModelPumpJack;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.EntityRenderer;
-import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.culling.ICamera;
 import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Vec3i;
+import net.minecraft.util.math.Vec3i;
 
 public class RenderPumpJack extends Render {
 
 	float wheelRadius = 10f;
 	protected ModelBase modelPumpJack;
-
-	private RenderItem itemRenderer;
 
 	public RenderPumpJack(RenderManager renderManager) {
 
@@ -37,7 +27,6 @@ public class RenderPumpJack extends Render {
 		// LogHelper.info("in RenderLoader constructor");
 		shadowSize = 1F;
 		this.modelPumpJack = new ModelPumpJack();
-		itemRenderer = Minecraft.getMinecraft().getRenderItem();
 
 	}
 
@@ -81,36 +70,15 @@ public class RenderPumpJack extends Render {
 
 	}
 
-	private void RenderHelper_B(WorldRenderer p_175033_1_, BakedQuad p_175033_2_, int p_175033_3_) {
+	private void RenderHelper_B(VertexBuffer p_175033_1_, BakedQuad p_175033_2_, int p_175033_3_) {
 		p_175033_1_.addVertexData(p_175033_2_.getVertexData());
 		p_175033_1_.putColor4(p_175033_3_);
 		this.RenderHelper_C(p_175033_1_, p_175033_2_);
 	}
 
-	private void RenderHelper_C(WorldRenderer p_175038_1_, BakedQuad p_175038_2_) {
+	private void RenderHelper_C(VertexBuffer p_175038_1_, BakedQuad p_175038_2_) {
 		Vec3i vec3i = p_175038_2_.getFace().getDirectionVec();
 		p_175038_1_.putNormal((float) vec3i.getX(), (float) vec3i.getY(), (float) vec3i.getZ());
-	}
-
-	private void RenderHelper_a(WorldRenderer p_175032_1_, List p_175032_2_, int p_175032_3_, ItemStack p_175032_4_) {
-		boolean flag = p_175032_3_ == -1 && p_175032_4_ != null;
-		BakedQuad bakedquad;
-		int j;
-
-		for (Iterator iterator = p_175032_2_.iterator(); iterator.hasNext(); this.RenderHelper_B(p_175032_1_, bakedquad, j)) {
-			bakedquad = (BakedQuad) iterator.next();
-			j = p_175032_3_;
-
-			if (flag && bakedquad.hasTintIndex()) {
-				j = p_175032_4_.getItem().getColorFromItemStack(p_175032_4_, bakedquad.getTintIndex());
-
-				if (EntityRenderer.anaglyphEnable) {
-					j = TextureUtil.anaglyphColor(j);
-				}
-
-				j |= -16777216;
-			}
-		}
 	}
 
 	@Override

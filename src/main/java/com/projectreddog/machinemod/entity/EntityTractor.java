@@ -1,17 +1,5 @@
 package com.projectreddog.machinemod.entity;
 
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.EnumDyeColor;
-import net.minecraft.item.ItemDye;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.world.World;
-import net.minecraftforge.common.IPlantable;
-
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachment;
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlanter;
@@ -19,6 +7,18 @@ import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlow;
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentSprayer;
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentTrencher;
 import com.projectreddog.machinemod.utility.BlockUtil;
+
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.EnumDyeColor;
+import net.minecraft.item.ItemDye;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
 
 public class EntityTractor extends EntityMachineModRideable {
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
@@ -65,11 +65,10 @@ public class EntityTractor extends EntityMachineModRideable {
 					if (this.getStackInSlot(0) != null) {
 						if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachment) {
 							if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlow) {
-								if (worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.grass) {
-									worldObj.setBlockState(bp, Blocks.farmland.getDefaultState());
-									if (worldObj.getBlockState(bp.up()).getBlock().getMaterial() == Material.plants || worldObj.getBlockState(bp.up()).getBlock().getMaterial().isReplaceable()) {
-										BlockUtil.BreakBlock(worldObj, bp.up(), this.riddenByEntity);
-
+								if (worldObj.getBlockState(bp).getBlock() == Blocks.DIRT || worldObj.getBlockState(bp).getBlock() == Blocks.GRASS) {
+									worldObj.setBlockState(bp, Blocks.FARMLAND.getDefaultState());
+									if (worldObj.getBlockState(bp.up()).getBlock().getMaterial(worldObj.getBlockState(bp.up())) == Material.PLANTS || worldObj.getBlockState(bp.up()).getBlock().getMaterial(worldObj.getBlockState(bp.up())).isReplaceable()) {
+										BlockUtil.BreakBlock(worldObj, bp.up(), this.getControllingPassenger());
 
 									} else {
 										// LogHelper.info(worldObj.getBlockState(bp.offsetUp()).getBlock().getMaterial());
@@ -85,7 +84,7 @@ public class EntityTractor extends EntityMachineModRideable {
 										if (this.getStackInSlot(j).stackSize > 0) {
 
 											if (this.getStackInSlot(j).getItem() instanceof IPlantable) {
-												if (worldObj.getBlockState(bp).getBlock().canSustainPlant(worldObj, bp, EnumFacing.UP, (IPlantable) this.getStackInSlot(j).getItem()) && worldObj.isAirBlock(bp.up())) {
+												if (worldObj.getBlockState(bp).getBlock().canSustainPlant(worldObj.getBlockState(bp), worldObj, bp, EnumFacing.UP, (IPlantable) this.getStackInSlot(j).getItem()) && worldObj.isAirBlock(bp.up())) {
 
 													worldObj.setBlockState(bp.up(), ((IPlantable) this.getStackInSlot(j).getItem()).getPlant(worldObj, bp.up()));
 													this.decrStackSize(j, 1);
@@ -121,8 +120,8 @@ public class EntityTractor extends EntityMachineModRideable {
 												if (EnumDyeColor.byDyeDamage(this.getStackInSlot(j).getItemDamage()) == EnumDyeColor.WHITE) {
 
 													EntityPlayer p;
-													if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer) {
-														p = ((EntityPlayer) this.riddenByEntity);
+													if (this.getControllingPassenger() != null && this.getControllingPassenger() instanceof EntityPlayer) {
+														p = ((EntityPlayer) this.getControllingPassenger());
 													} else {
 														p = net.minecraftforge.common.util.FakePlayerFactory.getMinecraft((net.minecraft.world.WorldServer) worldObj);
 													}
@@ -147,9 +146,8 @@ public class EntityTractor extends EntityMachineModRideable {
 							} else if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentTrencher) {
 								// Fertilize checks & actions
 								if (i == 0) {
-									if (worldObj.getBlockState(bp).getBlock() == Blocks.dirt || worldObj.getBlockState(bp).getBlock() == Blocks.grass || worldObj.getBlockState(bp).getBlock() == Blocks.farmland) {
-										BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
-
+									if (worldObj.getBlockState(bp).getBlock() == Blocks.DIRT || worldObj.getBlockState(bp).getBlock() == Blocks.GRASS || worldObj.getBlockState(bp).getBlock() == Blocks.FARMLAND) {
+										BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
 
 									}
 								}

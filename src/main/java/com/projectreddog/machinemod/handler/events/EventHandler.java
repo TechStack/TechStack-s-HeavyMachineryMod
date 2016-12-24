@@ -17,17 +17,17 @@ public class EventHandler {
 
 	@SubscribeEvent
 	public void HarvestDropEvent(BlockEvent.HarvestDropsEvent event) {
-		if (event.state.getBlock() == Blocks.tallgrass) {
+		if (event.getState().getBlock() == Blocks.TALLGRASS) {
 			// event.world.getBiomeGenForCoords(event.pos).
-			if (BiomeDictionary.isBiomeOfType(event.world.getBiomeGenForCoords(event.pos), Type.PLAINS)) {
+			if (BiomeDictionary.isBiomeOfType(event.getWorld().getBiome(event.getPos()), Type.PLAINS)) {
 				Random r = new Random();
 				if (r.nextFloat() > .8) {
-					event.drops.add(new ItemStack(ModItems.cornseed));
+					event.getDrops().add(new ItemStack(ModItems.cornseed));
 				}
-			} else if (BiomeDictionary.isBiomeOfType(event.world.getBiomeGenForCoords(event.pos), Type.SAVANNA)) {
+			} else if (BiomeDictionary.isBiomeOfType(event.getWorld().getBiome(event.getPos()), Type.SAVANNA)) {
 				Random r = new Random();
 				if (r.nextFloat() > .97) {
-					event.drops.add(new ItemStack(ModItems.cornseed));
+					event.getDrops().add(new ItemStack(ModItems.cornseed));
 				}
 			}
 

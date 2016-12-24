@@ -20,6 +20,10 @@ import com.projectreddog.machinemod.network.MachineModMessageMouseInputToServer;
 import com.projectreddog.machinemod.network.MachineModMessageMouseInputToServerHandler;
 import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServer;
 import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServerHandler;
+import com.projectreddog.machinemod.network.MachineModMessageRequestTEAllInventoryToServer;
+import com.projectreddog.machinemod.network.MachineModMessageRequestTEAllInventoryToServerHandler;
+import com.projectreddog.machinemod.network.MachineModMessageTEInventoryChangedToClient;
+import com.projectreddog.machinemod.network.MachineModMessageTEInventoryChangedToClientHandler;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -55,6 +59,10 @@ public class ModNetwork {
 		simpleNetworkWrapper.registerMessage(MachineModMessageEntityCurrentTargetPosToClientHandler.class, MachineModMessageEntityCurrentTargetPosToClient.class, 6, Side.CLIENT);// message to server
 
 		simpleNetworkWrapper.registerMessage(MachineModMessageLiquidPipeToClientHandler.class, MachineModMessageLiquidPipeToClient.class, 7, Side.CLIENT);// message
+
+		simpleNetworkWrapper.registerMessage(MachineModMessageTEInventoryChangedToClientHandler.class, MachineModMessageTEInventoryChangedToClient.class, 8, Side.CLIENT);// message
+		simpleNetworkWrapper.registerMessage(MachineModMessageRequestTEAllInventoryToServerHandler.class, MachineModMessageRequestTEAllInventoryToServer.class, 6, Side.SERVER);// message // to
+
 		// to
 		// client
 
@@ -62,7 +70,7 @@ public class ModNetwork {
 	}
 
 	public static void sendPacketToAllAround(IMessage packet, TargetPoint tp) {
-		for (EntityPlayerMP player : (List<EntityPlayerMP>) FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().playerEntityList) {
+		for (EntityPlayerMP player : (List<EntityPlayerMP>) FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerList()) {
 			if (player.dimension == tp.dimension) {
 				double d4 = tp.x - player.posX;
 				double d6 = tp.z - player.posZ;

@@ -10,8 +10,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class EntityCombine extends EntityMachineModRideable {
@@ -41,7 +41,7 @@ public class EntityCombine extends EntityMachineModRideable {
 			// bucket Down
 			// break blocks first
 			int angle;
-			if (this.riddenByEntity != null) {
+			if (this.getControllingPassenger() != null) {
 				this.Attribute2++;
 			}
 			if (this.isPlayerPushingSprintButton) {
@@ -60,7 +60,7 @@ public class EntityCombine extends EntityMachineModRideable {
 
 							if (!iGrowable.canGrow(worldObj, bp, worldObj.getBlockState(bp), worldObj.isRemote)) {
 
-								BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
+								BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
 
 							}
 						}

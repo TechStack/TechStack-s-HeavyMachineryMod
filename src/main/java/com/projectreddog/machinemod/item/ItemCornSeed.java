@@ -1,18 +1,18 @@
 package com.projectreddog.machinemod.item;
 
+import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.reference.Reference;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
-
-import com.projectreddog.machinemod.init.ModBlocks;
-import com.projectreddog.machinemod.reference.Reference;
 
 public class ItemCornSeed extends ItemFood implements IPlantable {
 
@@ -38,7 +38,7 @@ public class ItemCornSeed extends ItemFood implements IPlantable {
 			return false;
 		} else if (!playerIn.canPlayerEdit(pos.offset(side), side, stack)) {
 			return false;
-		} else if (worldIn.getBlockState(pos).getBlock().canSustainPlant(worldIn, pos, EnumFacing.UP, this) && worldIn.isAirBlock(pos.up())) {
+		} else if (worldIn.getBlockState(pos).getBlock().canSustainPlant(worldIn.getBlockState(pos), worldIn, pos, EnumFacing.UP, this) && worldIn.isAirBlock(pos.up())) {
 			worldIn.setBlockState(pos.up(), ModBlocks.corn.getDefaultState());
 			--stack.stackSize;
 			return true;

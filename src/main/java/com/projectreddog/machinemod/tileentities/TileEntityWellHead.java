@@ -12,9 +12,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
@@ -121,7 +121,7 @@ public class TileEntityWellHead extends TileEntity implements ITickable, IFluidT
 	}
 
 	public void pumpOil() {
-		worldObj.setBlockState(currentOilDeposit, Blocks.air.getDefaultState());
+		worldObj.setBlockState(currentOilDeposit, Blocks.AIR.getDefaultState());
 		fill(new FluidStack(ModBlocks.fluidOil, 1000), true);
 
 		blocksFound = blocksFound + 1;
@@ -158,7 +158,7 @@ public class TileEntityWellHead extends TileEntity implements ITickable, IFluidT
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound compound) {
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN", cooldown);
 
@@ -174,6 +174,7 @@ public class TileEntityWellHead extends TileEntity implements ITickable, IFluidT
 		} else {
 			compound.setString("Empty", "");
 		}
+		return compound;
 	}
 
 	public int getFieldCount() {

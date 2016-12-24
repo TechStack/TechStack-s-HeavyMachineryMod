@@ -4,9 +4,9 @@ import com.projectreddog.machinemod.init.ModItems;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class EntityChopper extends EntityMachineModRideable {
@@ -43,14 +43,14 @@ public class EntityChopper extends EntityMachineModRideable {
 	public void onUpdate() {
 		super.onUpdate();
 		if (!worldObj.isRemote) {
-			if (this.riddenByEntity != null && currentFuelLevel > 0) {
+			if (this.getControllingPassenger() != null && currentFuelLevel > 0) {
 				this.Attribute2++;
 				currentFuelLevel--;
 			}
 
-			if ((this.currentFuelLevel > 0 && isPlayerPushingSprintButton) || this.riddenByEntity == null || this.currentFuelLevel == 0) {
+			if ((this.currentFuelLevel > 0 && isPlayerPushingSprintButton) || this.getControllingPassenger() == null || this.currentFuelLevel == 0) {
 				this.motionY -= 0.04D;
-				if (this.riddenByEntity == null && !this.isCollidedVertically && this.currentFuelLevel > 0) {
+				if (this.getControllingPassenger() == null && !this.isCollidedVertically && this.currentFuelLevel > 0) {
 					this.Attribute2++;
 				}
 
@@ -62,8 +62,8 @@ public class EntityChopper extends EntityMachineModRideable {
 				}
 			}
 
-			if (this.currentFuelLevel > 0 && this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer) {
-				EntityPlayer entityPlayer = (EntityPlayer) this.riddenByEntity;
+			if (this.currentFuelLevel > 0 && this.getControllingPassenger() != null && this.getControllingPassenger() instanceof EntityPlayer) {
+				EntityPlayer entityPlayer = (EntityPlayer) this.getControllingPassenger();
 				// entityPlayer.setAir(300);
 				// entityPlayer.addPotionEffect(new PotionEffect(Potion.nightVision.id, 600, 0, true, false));
 				// entityPlayer.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 600, 0, true, false));
@@ -88,7 +88,7 @@ public class EntityChopper extends EntityMachineModRideable {
 
 	@Override
 	public void doParticleEffects() {
-		if (this.currentFuelLevel > 0 && this.riddenByEntity != null && (this.isPlayerAccelerating || this.isPlayerBreaking || this.isPlayerPushingJumpButton || this.isPlayerPushingSprintButton || this.isPlayerTurningLeft || this.isPlayerTurningRight)) {
+		if (this.currentFuelLevel > 0 && this.getControllingPassenger() != null && (this.isPlayerAccelerating || this.isPlayerBreaking || this.isPlayerPushingJumpButton || this.isPlayerPushingSprintButton || this.isPlayerTurningLeft || this.isPlayerTurningRight)) {
 			for (int i = 0; i < 3; i++) {
 				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset), this.posY + particleTopOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset), 0, 0, 0, 0);
 				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset * -1), this.posY + particleTopOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset * -1), 0, 0, 0, 0);

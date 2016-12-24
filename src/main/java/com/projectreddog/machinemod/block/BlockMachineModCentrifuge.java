@@ -1,5 +1,7 @@
 package com.projectreddog.machinemod.block;
 
+import javax.annotation.Nullable;
+
 import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.init.ModItems;
@@ -7,10 +9,11 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.IInventory;
@@ -18,8 +21,10 @@ import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -38,16 +43,16 @@ public class BlockMachineModCentrifuge extends BlockContainer {
 		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_CENTRIFUGE);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
-		this.setStepSound(soundTypeStone);
+		this.setSoundType(SoundType.STONE);
 		this.setHardness(1.5f);
 
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn,EnumHand hand,@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te != null && !playerIn.isSneaking()) {
-			ItemStack playerItem = playerIn.getHeldItem();
+			ItemStack playerItem = playerIn.getHeldItem(EnumHand.MAIN_HAND);
 
 			if (playerItem != null && playerItem.getItem() == ModItems.fuelcan && playerItem.getItemDamage() < playerItem.getMaxDamage()) {
 
@@ -58,16 +63,16 @@ public class BlockMachineModCentrifuge extends BlockContainer {
 					if (tEPC.fuelStorage < tEPC.maxFuelStorage) {
 						// can hold more fuel.
 						// calc remaining fuel in can see if it is = or > than the remaining fuel storage of this machine
-						int amountInCan = (playerIn.getHeldItem().getMaxDamage() - playerIn.getHeldItem().getItemDamage());
+						int amountInCan = (playerIn.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage() - playerIn.getHeldItem(EnumHand.MAIN_HAND).getItemDamage());
 						int roomInEntityTank = tEPC.maxFuelStorage - tEPC.fuelStorage;
 						if (amountInCan > roomInEntityTank) {
 
-							playerIn.getHeldItem().setItemDamage(playerIn.getHeldItem().getMaxDamage() - (amountInCan - roomInEntityTank));
+							playerIn.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(playerIn.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage() - (amountInCan - roomInEntityTank));
 							// will fill machine completely !
 							tEPC.fuelStorage = tEPC.maxFuelStorage;
 						} else {
 							// can will be empty becuase entity can hold 100% of the fuel from the can :O
-							playerIn.getHeldItem().setItemDamage(playerIn.getHeldItem().getMaxDamage());
+							playerIn.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(playerIn.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage());
 							tEPC.fuelStorage = tEPC.fuelStorage + amountInCan;
 						}
 					}
@@ -128,8 +133,8 @@ public class BlockMachineModCentrifuge extends BlockContainer {
 		return ((EnumFacing) state.getValue(FACING)).getIndex();
 	}
 
-	protected BlockState createBlockState() {
-		return new BlockState(this, new IProperty[] { FACING });
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, new IProperty[] { FACING });
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -166,7 +171,7 @@ public class BlockMachineModCentrifuge extends BlockContainer {
 
 	public BlockMachineModCentrifuge() {
 		// Generic constructor (set to rock by default)
-		this(Material.rock);
+		this(Material.ROCK);
 	}
 
 	@Override
@@ -177,13 +182,15 @@ public class BlockMachineModCentrifuge extends BlockContainer {
 	}
 
 	@Override
-	public int getRenderType() {
+	public EnumBlockRenderType getRenderType(IBlockState state) {
 		// 3 for normal block 2 for TESR 1 liquid -1 nothing ( like air)
-		return 2;
+		// return 2;
+		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+
 	}
 
 	@Override
-	public boolean isOpaqueCube() {
+	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 

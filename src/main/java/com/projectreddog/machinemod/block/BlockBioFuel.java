@@ -1,21 +1,14 @@
 package com.projectreddog.machinemod.block;
 
-import java.util.Collection;
+import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
+import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.BlockState;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
-
-import com.google.common.collect.ImmutableMap;
-import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
-import com.projectreddog.machinemod.reference.Reference;
 
 public class BlockBioFuel extends BlockFluidClassic {
 
@@ -29,14 +22,14 @@ public class BlockBioFuel extends BlockFluidClassic {
 
 	@Override
 	public boolean canDisplace(IBlockAccess world, BlockPos bp) {
-		if (world.getBlockState(bp).getBlock().getMaterial().isLiquid())
+		if (world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)).isLiquid())
 			return false;
 		return super.canDisplace(world, bp);
 	}
 
 	@Override
 	public boolean displaceIfPossible(World world, BlockPos bp) {
-		if (world.getBlockState(bp).getBlock().getMaterial().isLiquid())
+		if (world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)).isLiquid())
 			return false;
 		return super.displaceIfPossible(world, bp);
 	}

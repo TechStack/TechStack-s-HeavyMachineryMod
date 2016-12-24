@@ -5,17 +5,18 @@ import java.util.Random;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.block.BlockDirt;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -35,7 +36,7 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_MOWED_GRASS);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setHardness(.25f);// not sure on the hardness
-		this.setStepSound(soundTypeGrass);
+		this.setSoundType(SoundType.GROUND);
 		this.setTickRandomly(true);
 
 	}
@@ -68,8 +69,8 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 		return ((EnumFacing) state.getValue(FACING)).getIndex();
 	}
 
-	protected BlockState createBlockState() {
-		return new BlockState(this, new IProperty[] { FACING });
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, new IProperty[] { FACING });
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -106,12 +107,12 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 
-		if (worldIn.getLightFromNeighbors(pos.up()) < 4 && worldIn.getBlockState(pos.up()).getBlock().getLightOpacity(worldIn, pos.up()) > 2) {
-			worldIn.setBlockState(pos, Blocks.dirt.getDefaultState());
+		if (worldIn.getLightFromNeighbors(pos.up()) < 4 && worldIn.getBlockState(pos.up()).getBlock().getLightOpacity(state, worldIn, pos.up()) > 2) {
+			worldIn.setBlockState(pos, Blocks.DIRT.getDefaultState());
 		} else {
 			intRandom = worldIn.rand.nextInt(100);
 			if (intRandom >= 97) {
-				worldIn.setBlockState(pos, Blocks.grass.getDefaultState());
+				worldIn.setBlockState(pos, Blocks.GRASS.getDefaultState());
 			}
 		}
 
@@ -124,7 +125,7 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 	 *            the level of the Fortune enchantment on the player's tool
 	 */
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return Blocks.dirt.getItemDropped(Blocks.dirt.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT), rand, fortune);
+		return Blocks.DIRT.getItemDropped(Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT), rand, fortune);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -143,8 +144,8 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EnumWorldBlockLayer getBlockLayer() {
-		return EnumWorldBlockLayer.CUTOUT_MIPPED;
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 
 	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {

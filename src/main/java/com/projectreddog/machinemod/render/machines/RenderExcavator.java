@@ -6,11 +6,9 @@ import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.model.ModelExcavator;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -19,8 +17,6 @@ public class RenderExcavator extends Render {
 
 	protected ModelBase modelExcavator;
 
-	private RenderItem itemRenderer;
-
 	public RenderExcavator(RenderManager renderManager) {
 
 		super(renderManager);
@@ -28,7 +24,6 @@ public class RenderExcavator extends Render {
 		// LogHelper.info("in RenderLoader constructor");
 		shadowSize = 1F;
 		this.modelExcavator = new ModelExcavator();
-		itemRenderer = Minecraft.getMinecraft().getRenderItem();
 
 	}
 

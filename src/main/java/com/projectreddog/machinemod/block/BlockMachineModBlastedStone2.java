@@ -1,13 +1,13 @@
 package com.projectreddog.machinemod.block;
 
+import com.projectreddog.machinemod.reference.Reference;
+
+import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
-
-import com.projectreddog.machinemod.reference.Reference;
 
 public class BlockMachineModBlastedStone2 extends BlockMachineModBlastedStoneBase {
 	public static final PropertyEnum PROPERTYORE = PropertyEnum.create("ore", EnumModOres.class);
@@ -18,7 +18,7 @@ public class BlockMachineModBlastedStone2 extends BlockMachineModBlastedStoneBas
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLASTED_STONE2);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
-		this.setStepSound(soundTypeStone);
+		this.setSoundType(SoundType.STONE);
 	}
 
 	@Override
@@ -44,12 +44,12 @@ public class BlockMachineModBlastedStone2 extends BlockMachineModBlastedStoneBas
 	}
 
 	@Override
-	protected BlockState createBlockState() {
-		return new BlockState(this, new IProperty[] { PROPERTYORE });
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, new IProperty[] { PROPERTYORE });
 	}
 
 	public static enum EnumModOres implements IStringSerializable {
-		COPPER(0, "COPPER"), TIN(1, "TIN"), SILVER(2, "SILVER"), LEAD(3, "LEAD"), QUARTZ(4, "QUARTZ"), RUBY(5, "RUBY"), SAPPHIRE(6, "SAPPHIRE"), URANIUM(7, "URANIUM"), ALUMINUM(8, "ALUMINUM");
+		COPPER(0, "copper"), TIN(1, "tin"), SILVER(2, "silver"), LEAD(3, "lead"), QUARTZ(4, "quartz"), RUBY(5, "ruby"), SAPPHIRE(6, "sapphire"), URANIUM(7, "uranium"), ALUMINUM(8, "aluminum");
 
 		public int getMetadata() {
 			return this.meta;

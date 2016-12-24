@@ -2,6 +2,8 @@ package com.projectreddog.machinemod.block;
 
 import java.util.Random;
 
+import javax.annotation.Nullable;
+
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
@@ -9,11 +11,15 @@ import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockMachineModLiquidPipe extends BlockContainer {
@@ -26,14 +32,14 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 		// this.setBlockName(Reference.MODBLOCK_MACHINE_DRILLED_STONE);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_DRILLED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
-		this.setStepSound(soundTypeStone);
+		this.setSoundType(SoundType.STONE);
 		this.setHardness(1.5f);
 
 	}
 
 	public BlockMachineModLiquidPipe() {
 		// Generic constructor (set to rock by default)
-		this(Material.rock);
+		this(Material.ROCK);
 	}
 
 	@Override
@@ -44,13 +50,15 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 	}
 
 	@Override
-	public int getRenderType() {
+	public EnumBlockRenderType getRenderType(IBlockState state) {
 		// 3 for normal block 2 for TESR 1 liquid -1 nothing ( like air)
-		return 2;
+		//return 2;
+		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+
 	}
 
 	@Override
-	public boolean isOpaqueCube() {
+	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 
@@ -109,7 +117,7 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn,EnumHand hand,@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te instanceof TileEntityLiquidPipe) {
 			TileEntityLiquidPipe telp = (TileEntityLiquidPipe) te;

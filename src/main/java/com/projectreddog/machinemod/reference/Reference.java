@@ -26,7 +26,6 @@ public class Reference {
 
 	public static final String FLUID_OIL_STILL_TEXTURE_LOCATION = "textures/blocks/oil_still.png";
 	public static final String FLUID_OIL_FLOWING_TEXTURE_LOCATION = "textures/blocks/oil_flowing.png";
-
 	public static final String MODEL_FUEL_PUMP_TEXTURE_LOCATION = "models/fuelpump.png";
 	public static final String MODEL_DISTILLER_TEXTURE_LOCATION = "models/distiller.png";
 	public static final String MODEL_FRACTIONAL_DISTILATION_TEXTURE_LOCATION = "models/fractionaldistilation.png";
@@ -34,6 +33,7 @@ public class Reference {
 
 	public static final String MODEL_WELL_HEAD_TEXTURE_LOCATION = "models/wellhead.png";
 	public static final String MODEL_PIPE_TEXTURE_LOCATION = "models/pipe.png";
+	public static final String MODEL_CRATE_TEXTURE_LOCATION = "models/crate.png";
 
 	public static final String MODEL_COMBINE_TEXTURE_LOCATION = "models/combine.png";
 	public static final String MODEL_DRILLINGRIG_TEXTURE_LOCATION = "models/drillingrig.png";
@@ -78,6 +78,7 @@ public class Reference {
 	public static final String MODBLOCK_STEEL_BLOCK = "steelblock";
 
 	public static final String MODBLOCK_MACHINE_ASPHALT = "machineasphalt";
+	public static final String MODBLOCK_MACHINE_CRATE = "machinecrate";
 
 	public static final String MODBLOCK_MACHINE_CRUDE_OIL_STONE = "machinecrudeoilstone";
 	public static final String MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION = "machinefractionaldistillation";

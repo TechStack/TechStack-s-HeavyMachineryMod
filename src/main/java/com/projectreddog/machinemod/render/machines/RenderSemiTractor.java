@@ -10,11 +10,9 @@ import com.projectreddog.machinemod.model.ModelSemiTractor;
 import com.projectreddog.machinemod.model.ModelTransportable;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
@@ -24,7 +22,6 @@ public class RenderSemiTractor extends Render {
 
 	protected ModelBase modelWideBedTruck;
 	protected ModelTransportable modelCarriedEntity;
-	private RenderItem itemRenderer;
 
 	public RenderSemiTractor(RenderManager renderManager) {
 
@@ -33,7 +30,6 @@ public class RenderSemiTractor extends Render {
 		// LogHelper.info("in RenderDumpTruck constructor");
 		shadowSize = 1F;
 		this.modelWideBedTruck = new ModelSemiTractor();
-		itemRenderer = Minecraft.getMinecraft().getRenderItem();
 
 	}
 

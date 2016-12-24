@@ -1,22 +1,22 @@
 package com.projectreddog.machinemod.client.handler;
 
-import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.Vec3;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.InputEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
 import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServer;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServerOpenGui;
 import com.projectreddog.machinemod.network.MachineModMessageMouseInputToServer;
+
+import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class InputEventHandler {
 
@@ -25,22 +25,22 @@ public class InputEventHandler {
 	@SubscribeEvent
 	public void MouseInputEvent(InputEvent.MouseInputEvent event) {
 
-		if (Minecraft.getMinecraft().thePlayer.ridingEntity != null) {
-			if (Minecraft.getMinecraft().thePlayer.ridingEntity instanceof EntityExcavator) {
-				Entity e = Minecraft.getMinecraft().thePlayer.ridingEntity;
+		if (Minecraft.getMinecraft().thePlayer.getRidingEntity() != null) {
+			if (Minecraft.getMinecraft().thePlayer.getRidingEntity() instanceof EntityExcavator) {
+				Entity e = Minecraft.getMinecraft().thePlayer.getRidingEntity();
 				// playre riding a excavator so we should check which block they are looking at.
-				MovingObjectPosition currentMouseOver;
+				RayTraceResult currentMouseOver;
 				// LogHelper.info("MIE" + event);
 				// currentMouseOver = Minecraft.getMinecraft().objectMouseOver;
 				currentMouseOver = rayTrace(7);
 				// look position
 				// Minecraft.getMinecraft().theWorld.rayTraceBlocks(Minecraft.getMinecraft().thePlayer.getPosition(),Minecraft.getMinecraft().thePlayer.getPosition().addv)
-				if (currentMouseOver != null && currentMouseOver.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
+				if (currentMouseOver != null && currentMouseOver.typeOfHit == RayTraceResult.Type.BLOCK) {
 
 					// return blockpos of this movingbojectposition
 					BlockPos currentBlockpos = currentMouseOver.getBlockPos();
 
-					if (Minecraft.getMinecraft().thePlayer.worldObj.getBlockState(currentBlockpos).getBlock().getMaterial() != Material.air) {
+					if (Minecraft.getMinecraft().thePlayer.worldObj.getBlockState(currentBlockpos).getBlock().getMaterial(Minecraft.getMinecraft().thePlayer.worldObj.getBlockState(currentBlockpos)) != Material.AIR) {
 						// this.effectRenderer.addBlockHitEffects(blockpos, this.objectMouseOver);
 						// this.thePlayer.swingItem();
 
@@ -63,10 +63,10 @@ public class InputEventHandler {
 		// LogHelper.info("Called KB Event");
 
 		boolean sendPacket = false;
-		if (Minecraft.getMinecraft().thePlayer.ridingEntity instanceof EntityMachineModRideable) {
+		if (Minecraft.getMinecraft().thePlayer.getRidingEntity() instanceof EntityMachineModRideable) {
 
 			sendPacket = true;
-			EntityMachineModRideable e = (EntityMachineModRideable) Minecraft.getMinecraft().thePlayer.ridingEntity;
+			EntityMachineModRideable e = (EntityMachineModRideable) Minecraft.getMinecraft().thePlayer.getRidingEntity();
 
 			if (Minecraft.getMinecraft().gameSettings.keyBindForward.isKeyDown()) {
 				// player pressed forward & is in my entity send network message
@@ -143,13 +143,12 @@ public class InputEventHandler {
 
 	@SideOnly(Side.CLIENT)
 	/**
-	 * Performs a ray trace for the distance specified *
-	 *  Args: distance
+	 * Performs a ray trace for the distance specified * Args: distance
 	 */
-	public MovingObjectPosition rayTrace(double par1) {
-		Vec3 var4 = Minecraft.getMinecraft().thePlayer.getPositionEyes(1);
-		Vec3 var5 = Minecraft.getMinecraft().thePlayer.getLook(1);
-		Vec3 var6 = var4.addVector(var5.xCoord * par1, var5.yCoord * par1, var5.zCoord * par1);
+	public RayTraceResult rayTrace(double par1) {
+		Vec3d var4 = Minecraft.getMinecraft().thePlayer.getPositionEyes(1);
+		Vec3d var5 = Minecraft.getMinecraft().thePlayer.getLook(1);
+		Vec3d var6 = var4.addVector(var5.xCoord * par1, var5.yCoord * par1, var5.zCoord * par1);
 		return Minecraft.getMinecraft().theWorld.rayTraceBlocks(var4, var6);
 	}
 

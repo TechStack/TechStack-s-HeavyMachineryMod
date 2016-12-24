@@ -1,15 +1,15 @@
 package com.projectreddog.machinemod.entity;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
-
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageEntityCurrentTargetPosToClient;
 import com.projectreddog.machinemod.utility.BlockUtil;
+
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
 public class EntityExcavator extends EntityMachineModRideable {
 
@@ -132,13 +132,13 @@ public class EntityExcavator extends EntityMachineModRideable {
 					angleArm3 = Math.atan(o / a) / Math.PI * 180;
 					// LogHelper.info("Rotation vlaue ARM3:" + angleArm1 + ", " + angleArm2 + ", " + angleArm3 + ", ");
 
-					ModNetwork.sendPacketToAllAround((new MachineModMessageEntityCurrentTargetPosToClient(this.getEntityId(), this.currPosX, this.currPosY, this.currPosZ, this.angleArm1, this.angleArm2, this.angleArm3, this.mainBodyRotation)), new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ, 80));
+					ModNetwork.sendPacketToAllAround((new MachineModMessageEntityCurrentTargetPosToClient(this.getEntityId(), this.currPosX, this.currPosY, this.currPosZ, this.angleArm1, this.angleArm2, this.angleArm3, this.mainBodyRotation)), new TargetPoint(worldObj.provider.getDimension(), posX, posY, posZ, 80));
 					if (this.isPlayerPushingSprintButton) {
 						// player wants to break the block
 						BlockPos bp;
 						bp = new BlockPos(currPosX, currPosY, currPosZ);
 
-						BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
+						BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
 
 					}
 				}

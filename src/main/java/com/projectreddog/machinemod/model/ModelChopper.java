@@ -16,10 +16,10 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.IFlexibleBakedModel;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.model.obj.OBJModel;
 
@@ -27,13 +27,16 @@ public class ModelChopper extends ModelTransportable {
 	// fields
 	public OBJModel objModel;
 	private int rotorMult = 33;
-	private HashMap<String, IFlexibleBakedModel> modelParts;
+	private HashMap<String, IBakedModel> modelParts;
 
 	public ModelChopper() {
 		try {
-			objModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/chopper.obj"));
+			objModel = (OBJModel) OBJLoader.INSTANCE.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/chopper.obj"));
 			modelParts = MachineModModelHelper.getModelsForGroups(objModel);
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

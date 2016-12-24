@@ -2,6 +2,8 @@ package com.projectreddog.machinemod.block;
 
 import com.projectreddog.machinemod.reference.Reference;
 
+import net.minecraft.block.SoundType;
+
 public class BlockMachineAssemblyTable extends BlockMachineMod {
 
 	public BlockMachineAssemblyTable() {
@@ -10,6 +12,6 @@ public class BlockMachineAssemblyTable extends BlockMachineMod {
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setHardness(15f);// not sure on the hardness
-		this.setStepSound(soundTypeMetal);
+		this.setSoundType(SoundType.METAL);
 	}
 }

@@ -1,12 +1,12 @@
 package com.projectreddog.machinemod.entity;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
-import net.minecraft.world.World;
-
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.utility.BlockUtil;
+
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class EntityCrane extends EntityMachineModRideable {
 
@@ -45,8 +45,8 @@ public class EntityCrane extends EntityMachineModRideable {
 						}
 						BlockPos bp;
 						bp = new BlockPos(posX + calcTwoOffsetX(10 + j, angle, i), posY + k + 26 - ((int) this.Attribute1), posZ + calcTwoOffsetZ(10 + j, angle, i));
-						if (worldObj.getBlockState(bp).getBlock().getBlockHardness(worldObj, bp) < 100) {
-							BlockUtil.BreakBlock(worldObj, bp, this.riddenByEntity);
+						if (worldObj.getBlockState(bp).getBlock().getBlockHardness(worldObj.getBlockState(bp), worldObj, bp) < 100) {
+							BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
 
 						}
 					}

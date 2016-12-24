@@ -14,10 +14,10 @@ import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.IFlexibleBakedModel;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.model.obj.OBJModel;
 
@@ -25,14 +25,17 @@ public class ModelPrimaryCrusher extends ModelBase {
 	// fields
 
 	public OBJModel objModel;
-	private HashMap<String, IFlexibleBakedModel> modelParts;
+	private HashMap<String, IBakedModel> modelParts;
 
 	public ModelPrimaryCrusher() {
 
 		try {
-			objModel = (OBJModel) OBJLoader.instance.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/primarycrusher.obj"));
+			objModel = (OBJModel) OBJLoader.INSTANCE.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/primarycrusher.obj"));
 			modelParts = MachineModModelHelper.getModelsForGroups(objModel);
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

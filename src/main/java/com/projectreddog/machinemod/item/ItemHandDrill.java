@@ -7,8 +7,10 @@ import net.minecraft.block.BlockStone;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ItemHandDrill extends ItemMachineMod {
@@ -23,39 +25,39 @@ public class ItemHandDrill extends ItemMachineMod {
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float xOff, float yOff, float zOff) {
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
 		boolean result = false;
-		if (world.getBlockState(pos).getBlock() == Blocks.stone && world.getBlockState(pos).getValue(BlockStone.VARIANT) == BlockStone.EnumType.STONE) {
+		if (world.getBlockState(pos).getBlock() == Blocks.STONE && world.getBlockState(pos).getValue(BlockStone.VARIANT) == BlockStone.EnumType.STONE) {
 			// facing constarined to a horizontal plane
 			EnumFacing ef = player.getHorizontalFacing();
 			// EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineDrilledStone.FACING);
 
 			world.setBlockState(pos, ModBlocks.machinedrilledstone.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()), 3);
-			player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);
+			player.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(player.getHeldItem(EnumHand.MAIN_HAND).getItemDamage() + 1);
 
-		} else if (world.getBlockState(pos).getBlock() == Blocks.stone && world.getBlockState(pos).getValue(BlockStone.VARIANT) == BlockStone.EnumType.ANDESITE) {
+		} else if (world.getBlockState(pos).getBlock() == Blocks.STONE && world.getBlockState(pos).getValue(BlockStone.VARIANT) == BlockStone.EnumType.ANDESITE) {
 			// facing constarined to a horizontal plane
 			EnumFacing ef = player.getHorizontalFacing();
 			// EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineDrilledStone.FACING);
 
 			world.setBlockState(pos, ModBlocks.machinedrilledandesite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()), 3);
-			player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);
+			player.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(player.getHeldItem(EnumHand.MAIN_HAND).getItemDamage() + 1);
 
-		} else if (world.getBlockState(pos).getBlock() == Blocks.stone && world.getBlockState(pos).getValue(BlockStone.VARIANT) == BlockStone.EnumType.DIORITE) {
+		} else if (world.getBlockState(pos).getBlock() == Blocks.STONE && world.getBlockState(pos).getValue(BlockStone.VARIANT) == BlockStone.EnumType.DIORITE) {
 			// facing constarined to a horizontal plane
 			EnumFacing ef = player.getHorizontalFacing();
 			// EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineDrilledStone.FACING);
 
 			world.setBlockState(pos, ModBlocks.machinedrilleddiorite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()), 3);
-			player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);
+			player.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(player.getHeldItem(EnumHand.MAIN_HAND).getItemDamage() + 1);
 
-		} else if (world.getBlockState(pos).getBlock() == Blocks.stone && world.getBlockState(pos).getValue(BlockStone.VARIANT) == BlockStone.EnumType.GRANITE) {
+		} else if (world.getBlockState(pos).getBlock() == Blocks.STONE && world.getBlockState(pos).getValue(BlockStone.VARIANT) == BlockStone.EnumType.GRANITE) {
 			// facing constarined to a horizontal plane
 			EnumFacing ef = player.getHorizontalFacing();
 			// EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineDrilledStone.FACING);
 
 			world.setBlockState(pos, ModBlocks.machinedrilledgranite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()), 3);
-			player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);
+			player.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(player.getHeldItem(EnumHand.MAIN_HAND).getItemDamage() + 1);
 
 		}
 
@@ -63,26 +65,30 @@ public class ItemHandDrill extends ItemMachineMod {
 			EnumFacing ef = player.getHorizontalFacing();
 
 			for (int i = 0; i < 8; i++) {
-				if (world.getBlockState(pos.offset(ef, i)).getBlock() == Blocks.stone && world.getBlockState(pos.offset(ef, i)).getValue(BlockStone.VARIANT) == BlockStone.EnumType.STONE) {
+				if (world.getBlockState(pos.offset(ef, i)).getBlock() == Blocks.STONE && world.getBlockState(pos.offset(ef, i)).getValue(BlockStone.VARIANT) == BlockStone.EnumType.STONE) {
 					world.setBlockState(pos.offset(ef, i), ModBlocks.machinedrilledstone.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()), 3);
 					i = 8;
-					player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);
-				} else if (world.getBlockState(pos.offset(ef, i)).getBlock() == Blocks.stone && world.getBlockState(pos.offset(ef, i)).getValue(BlockStone.VARIANT) == BlockStone.EnumType.ANDESITE) {
+					player.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(player.getHeldItem(EnumHand.MAIN_HAND).getItemDamage() + 1);
+				} else if (world.getBlockState(pos.offset(ef, i)).getBlock() == Blocks.STONE && world.getBlockState(pos.offset(ef, i)).getValue(BlockStone.VARIANT) == BlockStone.EnumType.ANDESITE) {
 					world.setBlockState(pos.offset(ef, i), ModBlocks.machinedrilledandesite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()), 3);
 					i = 8;
-					player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);
-				} else if (world.getBlockState(pos.offset(ef, i)).getBlock() == Blocks.stone && world.getBlockState(pos.offset(ef, i)).getValue(BlockStone.VARIANT) == BlockStone.EnumType.DIORITE) {
+					player.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(player.getHeldItem(EnumHand.MAIN_HAND).getItemDamage() + 1);
+				} else if (world.getBlockState(pos.offset(ef, i)).getBlock() == Blocks.STONE && world.getBlockState(pos.offset(ef, i)).getValue(BlockStone.VARIANT) == BlockStone.EnumType.DIORITE) {
 					world.setBlockState(pos.offset(ef, i), ModBlocks.machinedrilleddiorite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()), 3);
 					i = 8;
-					player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);
-				} else if (world.getBlockState(pos.offset(ef, i)).getBlock() == Blocks.stone && world.getBlockState(pos.offset(ef, i)).getValue(BlockStone.VARIANT) == BlockStone.EnumType.GRANITE) {
+					player.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(player.getHeldItem(EnumHand.MAIN_HAND).getItemDamage() + 1);
+				} else if (world.getBlockState(pos.offset(ef, i)).getBlock() == Blocks.STONE && world.getBlockState(pos.offset(ef, i)).getValue(BlockStone.VARIANT) == BlockStone.EnumType.GRANITE) {
 					world.setBlockState(pos.offset(ef, i), ModBlocks.machinedrilledgranite.getDefaultState().withProperty(BlockMachineDrilledStone.FACING, ef.getOpposite()), 3);
 					i = 8;
-					player.getHeldItem().setItemDamage(player.getHeldItem().getItemDamage() + 1);
+					player.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(player.getHeldItem(EnumHand.MAIN_HAND).getItemDamage() + 1);
 				}
 
 			}
 		}
-		return result;
+		if (result) {
+			return EnumActionResult.PASS;
+		} else {
+			return EnumActionResult.FAIL;
+		}
 	}
 }

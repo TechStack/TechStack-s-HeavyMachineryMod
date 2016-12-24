@@ -2,6 +2,7 @@ package com.projectreddog.machinemod.render.machines;
 
 import org.lwjgl.opengl.GL11;
 
+import com.projectreddog.machinemod.entity.EntityBulldozer;
 import com.projectreddog.machinemod.model.ModelBulldozer;
 import com.projectreddog.machinemod.reference.Reference;
 
@@ -11,8 +12,11 @@ import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 public class RenderBulldozer extends Render {
+
+	public static final Factory FACTORY = new Factory();
 
 	protected ModelBase modelBulldozer;
 
@@ -61,4 +65,12 @@ public class RenderBulldozer extends Render {
 		return new ResourceLocation("machinemod", Reference.MODEL_BULLDOZER_TEXTURE_LOCATION);
 	}
 
+	public static class Factory implements IRenderFactory<EntityBulldozer> {
+
+		@Override
+		public Render<? super EntityBulldozer> createRenderFor(RenderManager manager) {
+			return new RenderBulldozer(manager);
+		}
+
+	}
 }

@@ -10,9 +10,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary;
 
@@ -32,13 +32,13 @@ public class ItemOilRig extends ItemMachineModMachine {
 	 */
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
 		boolean flag = true;
-		MovingObjectPosition movingobjectposition = this.getMovingObjectPositionFromPlayer(worldIn, playerIn, flag);
+		RayTraceResult movingobjectposition = this.rayTrace(worldIn, playerIn, flag);
 
 		if (movingobjectposition == null) {
 			return itemStackIn;
 		} else {
 
-			if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
+			if (movingobjectposition.typeOfHit == RayTraceResult.Type.BLOCK) {
 				BlockPos blockpos = movingobjectposition.getBlockPos();
 
 				if (!worldIn.isBlockModifiable(playerIn, blockpos)) {
@@ -51,9 +51,9 @@ public class ItemOilRig extends ItemMachineModMachine {
 					}
 
 					IBlockState iblockstate = worldIn.getBlockState(blockpos);
-					Material material = iblockstate.getBlock().getMaterial();
+					Material material = iblockstate.getBlock().getMaterial(iblockstate);
 
-					if (material == Material.water && ((Integer) iblockstate.getValue(BlockLiquid.LEVEL)).intValue() == 0) {
+					if (material == Material.WATER && ((Integer) iblockstate.getValue(BlockLiquid.LEVEL)).intValue() == 0) {
 						if (SpawnOilRig(itemStackIn, playerIn, worldIn, blockpos)) {
 							return null;
 						} else {
@@ -75,7 +75,7 @@ public class ItemOilRig extends ItemMachineModMachine {
 		if (!world.isRemote)// / only run on server
 		{
 
-			if (BiomeDictionary.isBiomeOfType(world.getBiomeGenForCoords(pos), BiomeDictionary.Type.OCEAN) && pos.getY() > 60 && world.isAirBlock(pos.up()) && world.getBlockState(pos).getBlock() == Blocks.water) {
+			if (BiomeDictionary.isBiomeOfType(world.getBiome(pos), BiomeDictionary.Type.OCEAN) && pos.getY() > 60 && world.isAirBlock(pos.up()) && world.getBlockState(pos).getBlock() == Blocks.WATER) {
 
 				// LogHelper.info("Item used on loader!");
 				int x = pos.getX();
@@ -93,7 +93,7 @@ public class ItemOilRig extends ItemMachineModMachine {
 					stack.stackSize--;
 				}
 			} else {
-				player.addChatComponentMessage(new ChatComponentText("You can only place an oil rig on an ocean's surface!"));
+				player.addChatComponentMessage(new TextComponentTranslation("You can only place an oil rig on an ocean's surface!"));
 
 			}
 		}

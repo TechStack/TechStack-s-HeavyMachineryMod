@@ -1,15 +1,15 @@
 package com.projectreddog.machinemod.container;
 
+import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
+import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 
 public class ContainerCentrifuge extends Container {
 
@@ -89,8 +89,8 @@ public class ContainerCentrifuge extends Container {
 	public void detectAndSendChanges() {
 		super.detectAndSendChanges();
 
-		for (int i = 0; i < this.crafters.size(); ++i) {
-			ICrafting icrafting = (ICrafting) this.crafters.get(i);
+		for (int i = 0; i < this.listeners.size(); ++i) {
+			IContainerListener icrafting = (IContainerListener) this.listeners.get(i);
 
 			if (this.lastFuelStorage != this.centrifuge.getField(0)) {
 				icrafting.sendProgressBarUpdate(this, 0, this.centrifuge.getField(0));
