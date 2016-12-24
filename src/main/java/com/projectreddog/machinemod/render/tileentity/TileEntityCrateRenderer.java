@@ -23,6 +23,7 @@ import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -72,7 +73,7 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 			int inventoryIndex = 0;
 			ItemStack is = te.getStackInSlot(inventoryIndex);
 			if (is != null) {
-				str = "" + (is.stackSize + te.AmtInReserve);
+				str = FormatAmount(is.stackSize + te.AmtInReserve);
 				// EntityItem customitem = new EntityItem(eDT.worldObj);
 				// customitem.hoverStart = 0f;
 				// customitem.setEntityItemStack(is);
@@ -105,16 +106,32 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 				}
 
 			}
+			GL11.glPopMatrix();
+			float f2 = this.renderManager.playerViewY;
+			float f1 = this.renderManager.playerViewX;
+			boolean flag1 = this.renderManager.options.thirdPersonView == 2;
+			// String str = "" + is.stackSize;
+			Entity entity = this.rendererDispatcher.entity;
+			double d0 = te.getDistanceSq(entity.posX, entity.posY, entity.posZ);
+			// the 400 on the next line is the square of 20 *20 // save 1 math operation by pre calc
+			if (d0 <= (double) (400) && Minecraft.getMinecraft().thePlayer.isSneaking()) {
+				if (!str.equals("")) {
+					EntityRenderer.drawNameplate(this.renderManager.getFontRenderer(), str, (float) x + .5f, (float) y + .75f, (float) z + .5f, 0, f2, f1, flag1, false);
+				}
+			}
 		}
 
-		GL11.glPopMatrix();
-		float f2 = this.renderManager.playerViewY;
-		float f1 = this.renderManager.playerViewX;
-		boolean flag1 = this.renderManager.options.thirdPersonView == 2;
-		// String str = "" + is.stackSize;
+	}
 
-		if (!str.equals("")) {
-			EntityRenderer.drawNameplate(this.renderManager.getFontRenderer(), str, (float) x + .5f, (float) y + .75f, (float) z + .5f, 0, f2, f1, flag1, false);
+	public String FormatAmount(double amount) {
+		if (amount >= 1000000000) {
+			return "" + (Math.round((amount / 1000000000) * 10.0) / 10.0) + "B";
+		} else if (amount >= 1000000) {
+			return "" + (Math.round((amount / 1000000) * 10.0) / 10.0) + "M";
+		} else if (amount >= 1000) {
+			return "" + (Math.round((amount / 1000) * 10.0) / 10.0) + "K";
+		} else {
+			return "" + (amount) + "";
 		}
 
 	}

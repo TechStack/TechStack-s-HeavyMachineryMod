@@ -8,6 +8,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -190,6 +191,7 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 		super.readFromNBT(compound);
 
 		// inventory
+		AmtInReserve = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "AMTINRESERVE");
 
 		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
 		for (int i = 0; i < tagList.tagCount(); i++) {
@@ -206,6 +208,7 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 		super.writeToNBT(compound);
 
 		// inventory
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "AMTINRESERVE", AmtInReserve);
 
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < inventory.length; i++) {
@@ -223,24 +226,56 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 
 	}
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
+	/*
+	 * 
+	 */
+	public boolean AddStack(ItemStack stackToAdd) {
+		if (stackToAdd.isItemEqual(HeldItem) || HeldItem == null) {
+			processInputOutputSlots();
+			setInventorySlotContents(1, stackToAdd);
+			shouldSendInvetoryUpdates = true;
 
-		if (worldObj.isRemote) {
-			rotAmt = rotAmt + 1;
-			if (rotAmt > 360) {
-				rotAmt = 0;
-			}
-			// client side so request inventory
-			if (shouldRequestInvetoryUpdates) {
-				ModNetwork.simpleNetworkWrapper.sendToServer((new MachineModMessageRequestTEAllInventoryToServer(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ())));
-				shouldRequestInvetoryUpdates = false;
-			}
-
+			return true;
 		} else {
+			return false;
+		}
+	}
+
+	/*
+	 * amount is ignored for now will only return full stack !
+	 */
+	public boolean removeStack(int amount) {
+		processInputOutputSlots();
+		if (getStackInSlot(0) == null) {
+			processInputOutputSlots();
+			if (getStackInSlot(0) == null) {
+
+				return false;
+			}
+		}
+		InventoryHelper.spawnItemStack(this.worldObj, this.pos.getX(), this.pos.getY(), this.pos.getZ(), getStackInSlot(0));
+		setInventorySlotContents(0, null);
+		processInputOutputSlots();
+		shouldSendInvetoryUpdates = true;
+		return true;
+	}
+
+	public void DropItemsOnBreak() {
+		while (AmtInReserve > 0 || getStackInSlot(0) != null) {
+			// this will be ugly for full crates !
+			if (!removeStack(-1)) {
+				// we couldnt spawn everything break the loop
+				break;
+			}
+		}
+
+	}
+
+	public void processInputOutputSlots() {
+		if (!worldObj.isRemote) {
 			// server side
 			// AmtInReserve
+			// AmtInReserve = 999999900;
 			if (getStackInSlot(0) != null) {
 				if (getStackInSlot(0).stackSize == getStackInSlot(0).getMaxStackSize()) {
 					// output full fill if input is not full
@@ -315,7 +350,7 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 					if (HeldItem != null) {
 
 						// has held item replenish the output stack then do normal checks
-						if (AmtInReserve > HeldItem.getMaxStackSize()) {
+						if (AmtInReserve >= HeldItem.getMaxStackSize()) {
 
 							// can create full stack
 							ItemStack TmpStack = HeldItem.copy();
@@ -327,15 +362,33 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 
 							ItemStack TmpStack = HeldItem.copy();
 							;
-							TmpStack.stackSize = TmpStack.stackSize + AmtInReserve;
+							TmpStack.stackSize = AmtInReserve;
 							AmtInReserve = 0;
 							setInventorySlotContents(0, TmpStack);
 						}
 					}
 				}
+			}
+		}
+	}
 
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+
+		if (worldObj.isRemote) {
+			rotAmt = rotAmt + 1;
+			if (rotAmt > 360) {
+				rotAmt = 0;
+			}
+			// client side so request inventory
+			if (shouldRequestInvetoryUpdates) {
+				ModNetwork.simpleNetworkWrapper.sendToServer((new MachineModMessageRequestTEAllInventoryToServer(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ())));
+				shouldRequestInvetoryUpdates = false;
 			}
 
+		} else {
+			processInputOutputSlots();
 			// server side send update if it has changed
 			if (shouldSendInvetoryUpdates) {
 				for (int i = 0; i < inventory.length; i++) {

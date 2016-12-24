@@ -1,5 +1,7 @@
 package com.projectreddog.machinemod.block;
 
+import javax.annotation.Nullable;
+
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityCrate;
@@ -8,10 +10,12 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -53,11 +57,51 @@ public class BlockMachineCrate extends BlockContainer {
 	}
 
 	@Override
+	public void onBlockClicked(World worldIn, BlockPos pos, EntityPlayer playerIn) {
+		TileEntity te = worldIn.getTileEntity(pos);
+		if (!worldIn.isRemote) {
+			// server
+			if (te != null && !playerIn.isSneaking()) {
+				if (te instanceof TileEntityCrate) {
+
+					TileEntityCrate crate = (TileEntityCrate) te;
+					if (playerIn.getHeldItemMainhand() == null) {
+						crate.removeStack(-1);// -1 for full stack to be done later
+					}
+				}
+			}
+		}
+	}
+
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+		TileEntity te = worldIn.getTileEntity(pos);
+		if (!worldIn.isRemote) {
+			// server
+			if (te != null && !playerIn.isSneaking()) {
+				if (te instanceof TileEntityCrate) {
+					// its a crate
+					TileEntityCrate crate = (TileEntityCrate) te;
+					if (heldItem != null) {
+						boolean result = crate.AddStack(heldItem);
+						if (result) {
+							// success we added it so remove from players inventory
+							playerIn.setHeldItem(hand, null);
+						}
+					}
+					return true;
+				}
+			}
+		}
+		return true;
+	};
+
+	@Override
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 
-		if (tileentity instanceof IInventory) {
-			InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) tileentity);
+		if (tileentity instanceof TileEntityCrate) {
+			((TileEntityCrate) tileentity).DropItemsOnBreak();
 			worldIn.updateComparatorOutputLevel(pos, this);
 		}
 
