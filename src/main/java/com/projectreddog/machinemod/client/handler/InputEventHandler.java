@@ -197,7 +197,7 @@ public class InputEventHandler {
 				// +" Left: "+ e.isPlayerTurningLeft
 				// +" RIght:"+e.isPlayerTurningRight);
 
-				ModNetwork.simpleNetworkWrapper.sendToServer(new MachineModMessageInputToServer(e.getEntityId(), e.isPlayerAccelerating, e.isPlayerBreaking, e.isPlayerTurningRight, e.isPlayerTurningLeft, e.isPlayerPushingSprintButton, e.isPlayerPushingJumpButton));
+				ModNetwork.simpleNetworkWrapper.sendToServer(new MachineModMessageInputToServer(e.getEntityId(), e.isPlayerAccelerating, e.isPlayerBreaking, e.isPlayerTurningRight, e.isPlayerTurningLeft, e.isPlayerPushingSprintButton, e.isPlayerPushingJumpButton, e.isPlayerPushingSegment1Up, e.isPlayerPushingSegment1Down, e.isPlayerPushingSegment2Up, e.isPlayerPushingSegment2Down, e.isPlayerPushingSegment3Up, e.isPlayerPushingSegment3Down, e.isPlayerPushingTurretRight, e.isPlayerPushingTurretLeft));
 
 			}
 
