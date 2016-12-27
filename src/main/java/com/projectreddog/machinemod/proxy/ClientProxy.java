@@ -20,6 +20,7 @@ import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.handler.events.RenderOverlayHandler;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
+import com.projectreddog.machinemod.init.ModKeyBindings;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.render.machines.RenderBagger;
 import com.projectreddog.machinemod.render.machines.RenderBulldozer;
@@ -115,6 +116,11 @@ public class ClientProxy extends CommonProxy {
 		// regsiter event for overlay
 		MinecraftForge.EVENT_BUS.register(new RenderOverlayHandler());
 
+	}
+
+	@Override
+	public void RegisterKeybinds() {
+		ModKeyBindings.init();
 	}
 
 }

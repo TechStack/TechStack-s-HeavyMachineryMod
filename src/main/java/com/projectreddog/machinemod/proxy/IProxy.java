@@ -4,4 +4,6 @@ public interface IProxy {
 
 	void registerRenderers();
 
+	void RegisterKeybinds();
+
 }

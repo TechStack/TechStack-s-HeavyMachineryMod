@@ -53,6 +53,17 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public boolean isPlayerTurningLeft = false;
 	public boolean isPlayerPushingSprintButton = false;
 	public boolean isPlayerPushingJumpButton = false;
+	// additions in 1.10.x version
+	public boolean isPlayerPushingSegment1Up = false; // default numpad 7
+	public boolean isPlayerPushingSegment1Down = false; // default numpad 1
+	public boolean isPlayerPushingSegment2Up = false; // default numpad 8
+	public boolean isPlayerPushingSegment2Down = false;// default numpad 2
+	public boolean isPlayerPushingSegment3Up = false;// default numpad 9
+	public boolean isPlayerPushingSegment3Down = false;// default numpad 3
+
+	public boolean isPlayerPushingTurretRight = false;// default numpad 6
+	public boolean isPlayerPushingTurretLeft = false;// default numpad 7
+
 	public double TargetposX;
 	public double TargetposY;
 	public double TargetposZ;

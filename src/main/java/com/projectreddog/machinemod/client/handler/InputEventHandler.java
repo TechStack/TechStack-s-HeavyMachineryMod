@@ -2,6 +2,7 @@ package com.projectreddog.machinemod.client.handler;
 
 import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
+import com.projectreddog.machinemod.init.ModKeyBindings;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServer;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServerOpenGui;
@@ -118,6 +119,68 @@ public class InputEventHandler {
 			} else {
 				e.isPlayerTurningRight = false;
 
+			}
+
+			// Test segment(s) & turret inputs
+
+			if (ModKeyBindings.KeyBindSegment1Down.isKeyDown()) {
+				e.isPlayerPushingSegment1Down = true;
+				e.isPlayerPushingSegment1Up = false;
+
+			} else {
+				e.isPlayerPushingSegment1Down = false;
+			}
+			if (ModKeyBindings.KeyBindSegment1Up.isKeyDown()) {
+				e.isPlayerPushingSegment1Up = true;
+				e.isPlayerPushingSegment1Down = false;
+
+			} else {
+				e.isPlayerPushingSegment1Up = false;
+			}
+
+			if (ModKeyBindings.KeyBindSegment2Down.isKeyDown()) {
+				e.isPlayerPushingSegment2Down = true;
+				e.isPlayerPushingSegment2Up = false;
+
+			} else {
+				e.isPlayerPushingSegment2Down = false;
+			}
+			if (ModKeyBindings.KeyBindSegment2Up.isKeyDown()) {
+				e.isPlayerPushingSegment2Up = true;
+				e.isPlayerPushingSegment2Down = false;
+
+			} else {
+				e.isPlayerPushingSegment2Up = false;
+			}
+
+			if (ModKeyBindings.KeyBindSegment3Down.isKeyDown()) {
+				e.isPlayerPushingSegment3Down = true;
+				e.isPlayerPushingSegment3Up = false;
+
+			} else {
+				e.isPlayerPushingSegment3Down = false;
+			}
+			if (ModKeyBindings.KeyBindSegment3Up.isKeyDown()) {
+				e.isPlayerPushingSegment3Up = true;
+				e.isPlayerPushingSegment3Down = false;
+
+			} else {
+				e.isPlayerPushingSegment3Up = false;
+			}
+
+			if (ModKeyBindings.KeyBindTurretLeft.isKeyDown()) {
+				e.isPlayerPushingTurretLeft = true;
+				e.isPlayerPushingTurretRight = false;
+
+			} else {
+				e.isPlayerPushingTurretLeft = false;
+			}
+			if (ModKeyBindings.KeyBindTurretRight.isKeyDown()) {
+				e.isPlayerPushingTurretRight = true;
+				e.isPlayerPushingTurretLeft = false;
+
+			} else {
+				e.isPlayerPushingTurretRight = false;
 			}
 
 			if (Minecraft.getMinecraft().gameSettings.keyBindInventory.isPressed()) {
