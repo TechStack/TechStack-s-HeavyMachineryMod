@@ -42,7 +42,7 @@ public class ModelExcavator extends ModelTransportable {
 		// myModel.renderAll();
 
 		// render tracks before anything
-		this.renderGroupObject("tracks_Cube.003");
+		// this.renderGroupObject("tracks_Cube.003");
 
 		// rotate rest of machine to correct orentation (first)
 		if (entity != null) {
@@ -62,7 +62,7 @@ public class ModelExcavator extends ModelTransportable {
 
 			}
 		}
-		this.renderGroupObject("body_Cube");
+		this.renderGroupObject("MainCab_Cube.007");
 		GL11.glTranslatef(0f, EntityExcavator.armPiviotUp, EntityExcavator.armPiviotForward);
 		if (entity != null) {
 
@@ -74,12 +74,13 @@ public class ModelExcavator extends ModelTransportable {
 
 		}
 
-		this.renderGroupObject("Arm1_Cube.002");
+		this.renderGroupObject("BackArm_Cube.006");
 
 		GL11.glTranslatef(0f, EntityExcavator.AmrLength * -1, 0f);
 		GL11.glRotatef((float) ((EntityExcavator) entity).angleArm2 * -1, 1, 0, 0f);
 
-		this.renderGroupObject("Arm2_Cube.001");
+		this.renderGroupObject("ForeArm_Cube.005");
+		this.renderGroupObject("Bucket_Cube.004");
 
 		// this.renderGroupObject("Wrecking_ball_Sphere");
 
