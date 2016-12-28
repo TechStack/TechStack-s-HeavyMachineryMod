@@ -63,10 +63,10 @@ public class ModelExcavator extends ModelTransportable {
 			}
 		}
 		this.renderGroupObject("MainCab_Cube.007");
-		GL11.glTranslatef(0f, EntityExcavator.armPiviotUp, EntityExcavator.armPiviotForward);
+		GL11.glTranslatef(-.5f, EntityExcavator.armPiviotUp, EntityExcavator.armPiviotForward);
 		if (entity != null) {
 
-			GL11.glRotatef((float) ((((EntityExcavator) entity).angleArm1 * -1) + (((EntityExcavator) entity).angleArm3)), 1, 0, 0);
+			GL11.glRotatef((float) ((((EntityExcavator) entity).angleArm1 * -1)), 1, 0, 0);
 
 			// GL11.glRotatef((float) , 1, 0, 0);
 			// change to rotate
@@ -75,11 +75,15 @@ public class ModelExcavator extends ModelTransportable {
 		}
 
 		this.renderGroupObject("BackArm_Cube.006");
-
-		GL11.glTranslatef(0f, EntityExcavator.AmrLength * -1, 0f);
-		GL11.glRotatef((float) ((EntityExcavator) entity).angleArm2 * -1, 1, 0, 0f);
-
+		if (entity != null) {
+			GL11.glTranslatef(0f, 5.75f, 6.25f);
+			GL11.glRotatef((float) ((((EntityExcavator) entity).angleArm2 * -1)), 1, 0, 0);
+		}
 		this.renderGroupObject("ForeArm_Cube.005");
+		if (entity != null) {
+			GL11.glTranslatef(0f, -7.25f, 0f);
+			GL11.glRotatef((float) ((EntityExcavator) entity).angleArm3 * -1, 1, 0, 0f);
+		}
 		this.renderGroupObject("Bucket_Cube.004");
 
 		// this.renderGroupObject("Wrecking_ball_Sphere");

@@ -600,12 +600,26 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 	}
 
+	// Probably not needed any more Replaced by updatePassenger
 	public void updateRiderPosition() {
 		if (this.getControllingPassenger() != null) {
 			double d0 = Math.cos((double) this.rotationYaw * Math.PI / 180.0D) * this.velocity;
 			double d1 = Math.sin((double) this.rotationYaw * Math.PI / 180.0D) * this.velocity;
 			this.getControllingPassenger().setPosition(this.posX + d0 + this.getMountedXOffset(), this.posY + this.getMountedYOffset() + this.getControllingPassenger().getYOffset(), this.posZ + d1 + this.getMountedZOffset());
 			// this.riddenByEntity.setRotationYawHead(this.yaw);
+		}
+	}
+
+	@Override
+	public void updatePassenger(Entity passenger) {
+		if (this.isPassenger(passenger)) {
+
+			if (this.getControllingPassenger() != null) {
+				double d0 = Math.cos((double) this.rotationYaw * Math.PI / 180.0D) * this.velocity;
+				double d1 = Math.sin((double) this.rotationYaw * Math.PI / 180.0D) * this.velocity;
+				passenger.setPosition(this.posX + d0 + this.getMountedXOffset(), this.posY + this.getMountedYOffset() + passenger.getYOffset(), this.posZ + d1 + this.getMountedZOffset());
+				// this.riddenByEntity.setRotationYawHead(this.yaw);
+			}
 		}
 	}
 

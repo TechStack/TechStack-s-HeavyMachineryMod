@@ -61,7 +61,7 @@ public class ModNetwork {
 		simpleNetworkWrapper.registerMessage(MachineModMessageLiquidPipeToClientHandler.class, MachineModMessageLiquidPipeToClient.class, 7, Side.CLIENT);// message
 
 		simpleNetworkWrapper.registerMessage(MachineModMessageTEInventoryChangedToClientHandler.class, MachineModMessageTEInventoryChangedToClient.class, 8, Side.CLIENT);// message
-		simpleNetworkWrapper.registerMessage(MachineModMessageRequestTEAllInventoryToServerHandler.class, MachineModMessageRequestTEAllInventoryToServer.class, 6, Side.SERVER);// message // to
+		simpleNetworkWrapper.registerMessage(MachineModMessageRequestTEAllInventoryToServerHandler.class, MachineModMessageRequestTEAllInventoryToServer.class, 9, Side.SERVER);// message // to
 
 		// to
 		// client
