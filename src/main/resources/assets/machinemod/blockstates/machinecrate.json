@@ -1,5 +1,16 @@
 {
-    "variants": {
-        "normal": { "model": "machinemod:machinecrate" }
-    }
+
+
+  "forge_marker": 1,
+  "defaults": {
+    "custom": { "flip-v": true },
+    "model": "machinemod:crate.obj"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{"x":180}],
+         "normal": { "model": "machinemod:machinecrate" }
+        }
+        
+        
 }

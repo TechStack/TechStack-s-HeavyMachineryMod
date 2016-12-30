@@ -29,7 +29,8 @@ public class BlockMachineCrate extends BlockContainer {
 	protected BlockMachineCrate(Material material) {
 		super(material);
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_CRATE);
+		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_CRATE);
+
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setHardness(15f);// not sure on the hardness
 		this.setSoundType(SoundType.WOOD);
