@@ -4,6 +4,7 @@ import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
+import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityGrader;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
@@ -58,6 +59,8 @@ public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHan
 							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_GRADER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityBagger) {
 							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_BAGGER, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
+						} else if (entity instanceof EntityExcavator) {
+							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_EXCAVATOR, entity.worldObj, (int) entity.getEntityId(), (int) 0, (int) 0);
 						}
 
 					}
