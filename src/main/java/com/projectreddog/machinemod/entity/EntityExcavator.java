@@ -1,11 +1,16 @@
 package com.projectreddog.machinemod.entity;
 
+import java.util.List;
+
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageEntityCurrentTargetPosToClient;
 import com.projectreddog.machinemod.utility.BlockUtil;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -16,7 +21,7 @@ public class EntityExcavator extends EntityMachineModRideable {
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 	public static float AmrLength = 3.1f;
 	public static float armPiviotForward = 1.4f;
-	public static float armPiviotUp = -.8f;
+	public static float armPiviotUp = -0f;
 
 	public BlockPos targetBlockPos;
 	public double currPosX;
@@ -38,14 +43,16 @@ public class EntityExcavator extends EntityMachineModRideable {
 		inventory = new ItemStack[9];
 
 		this.mountedOffsetY = .5D;
-		this.mountedOffsetX = 0D;
-		this.mountedOffsetZ = 0D;
+		this.mountedOffsetX = -1.5D;
+		this.mountedOffsetZ = 2D;
 		this.maxAngle = 256;
 		this.minAngle = 0;
 		this.droppedItem = ModItems.excavator;
 		currPosX = this.posX;
 		currPosY = this.posY;
 		currPosZ = this.posZ;
+		this.shouldSendClientInvetoryUpdates = true;
+
 	}
 
 	@Override
@@ -57,110 +64,154 @@ public class EntityExcavator extends EntityMachineModRideable {
 			// break blocks first
 			if (currentFuelLevel > 0) {
 				// server move bucket towards target and send it's new pos to the client via network
-				if (targetBlockPos != null) {
-					// + .5d for center of block
-					//
-					if (currPosX > targetBlockPos.getX() + .5d) {
-						currPosX -= armSpeed;
-					} else if (currPosX < targetBlockPos.getX() + .5d) {
-						currPosX += armSpeed;
-					}
-					if (currPosY > targetBlockPos.getY() + .5d) {
-						currPosY -= armSpeed;
-					} else if (currPosY < targetBlockPos.getY() + .5d) {
-						currPosY += armSpeed;
-					}
-					if (currPosZ > targetBlockPos.getZ() + .5d) {
-						currPosZ -= armSpeed;
-					} else if (currPosZ < targetBlockPos.getZ() + .5d) {
-						currPosZ += armSpeed;
-					}
+				if (this.isPlayerPushingSegment1Down) {
+					this.angleArm1--;
+				}
 
-					if (currPosX - targetBlockPos.getX() < .5d + armSpeed && currPosX - targetBlockPos.getX() > 0) {
-						currPosX = targetBlockPos.getX() + .5d;
-					} else if (currPosX - targetBlockPos.getX() < -.5d + armSpeed && currPosX - targetBlockPos.getX() < 0) {
-						currPosX = targetBlockPos.getX() + .5d;
-					}
-					if (currPosY - targetBlockPos.getY() < .5d + armSpeed && currPosY - targetBlockPos.getY() > 0) {
-						currPosY = targetBlockPos.getY() + .5d;
-					} else if (currPosY - targetBlockPos.getY() + .5d + armSpeed < -.05d && currPosY - targetBlockPos.getY() < 0) {
-						currPosY = targetBlockPos.getY() + .5d;
-					}
-					if (currPosZ - targetBlockPos.getZ() < .5d + armSpeed && currPosZ - targetBlockPos.getZ() > 0) {
-						currPosZ = targetBlockPos.getZ() + .5d;
-					} else if (currPosZ - targetBlockPos.getZ() < -.5d + armSpeed && currPosZ - targetBlockPos.getZ() < 0) {
-						currPosZ = targetBlockPos.getZ() + .5d;
-					}
+				if (this.isPlayerPushingSegment1Up) {
+					this.angleArm1++;
+				}
 
-					double l = currPosX - this.posX;
-					double w = currPosZ - this.posZ;
-					double c = Math.sqrt(l * l + w * w);
-					double alpha1 = (Math.asin(l / c) * -1) / Math.PI * 180;
-					double alpha2 = (Math.acos(w / c)) / Math.PI * 180;
-					if (alpha2 > 90) {
-						this.mainBodyRotation = 180 - alpha1;
-					} else {
-						this.mainBodyRotation = alpha1;
-					}
-					if (this.mainBodyRotation > 360) {
-						this.mainBodyRotation = 360 - this.mainBodyRotation;
-					} else if (this.mainBodyRotation < 0) {
-						this.mainBodyRotation = 360 + this.mainBodyRotation;
-					}
+				if (this.angleArm1 < -10) {
+					angleArm1 = -10;
+				}
+				if (this.angleArm1 > 25) {
+					angleArm1 = 25;
+				}
 
-					l = currPosX - this.posX - calcOffsetX(EntityExcavator.armPiviotForward, (float) this.mainBodyRotation);
-					w = currPosZ - this.posZ - calcOffsetZ(EntityExcavator.armPiviotForward, (float) this.mainBodyRotation);
-					double h2 = currPosY - (this.posY - armPiviotUp);
-					c = Math.sqrt(l * l + w * w + h2 * h2);
+				if (this.isPlayerPushingSegment2Down) {
+					this.angleArm2--;
+				}
+				if (this.isPlayerPushingSegment2Up) {
+					this.angleArm2++;
+				}
 
-					// LogHelper.info("Rotation vlaue:" + this.mainBodyRotation + " " + currPosX + " " + currPosZ);
-					// adjust distance for the
-					double o = (c) / 2;
-					double h = EntityExcavator.AmrLength;
+				if (this.angleArm2 < 00) {
+					angleArm2 = 0;
+				}
+				if (this.angleArm2 > 90) {
+					angleArm2 = 90;
+				}
+				if (this.isPlayerPushingSegment3Down) {
+					this.angleArm3--;
+				}
+				if (this.isPlayerPushingSegment3Up) {
+					this.angleArm3++;
+				}
 
-					// soh cah toa
-					// 1 need to find arcsin of (o/h) /math.PI *180; (this is the angle of the first arm)
-					// 2 and take 180-90- result of above
-					// 3 this(#2) will be 50% of the angle needed for the 2nd arm.
+				if (this.angleArm3 < -90) {
+					angleArm3 = -90;
+				}
+				if (this.angleArm3 > 45) {
+					angleArm3 = 45;
+				}
 
-					angleArm1 = Math.asin(o / h) / Math.PI * 180;
-					angleArm2 = (180 - 90 - angleArm1) * 2;
+				if (this.isPlayerPushingTurretLeft) {
+					mainBodyRotation++;
+				}
+				if (this.isPlayerPushingTurretRight) {
+					mainBodyRotation--;
+				}
 
-					double a = c;
-					o = (currPosY - (this.posY - armPiviotUp)); // height up or down.
+				// BlockPos bp = new BlockPos(posX + calcTwoOffsetX(10, 0, 0), posY + +3, posZ + calcTwoOffsetZ(10, 0, 0));
 
-					angleArm3 = Math.atan(o / a) / Math.PI * 180;
-					// LogHelper.info("Rotation vlaue ARM3:" + angleArm1 + ", " + angleArm2 + ", " + angleArm3 + ", ");
+				ModNetwork.sendPacketToAllAround((new MachineModMessageEntityCurrentTargetPosToClient(this.getEntityId(), this.currPosX, this.currPosY, this.currPosZ, this.angleArm1, this.angleArm2, this.angleArm3, this.mainBodyRotation)), new TargetPoint(worldObj.provider.getDimension(), posX, posY, posZ, 80));
+				// if (this.isPlayerPushingSprintButton) {
+				// player wants to break the block
+				// bp = new BlockPos(currPosX, currPosY, currPosZ);
+				// public BlockPos calculateBlockPosGivenStartAngleDistance4(double startX, double startY, double startZ, float angleX1, float angleY1, float angleZ1, double distance1, float angleX2, float angleY2, float angleZ2, double distance2, float angleX3, float angleY3, float angleZ3, double distance3, float angleX4, float angleY4, float angleZ4, double distance4) {
+				// LogHelper.info(this.yaw);
+				// LogHelper.info(this.rotationYaw);
+				BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 9.5d, (360 - this.yaw), (float) (this.angleArm2 + 270 + this.angleArm1), 7.5d, (360 - this.yaw), (float) (this.angleArm3 + 90), -2.75d);
+				// BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 9.5d, (360 - this.yaw), (float) (this.angleArm2 + 270 + this.angleArm1), 7.5d, 0,0,0);
 
-					ModNetwork.sendPacketToAllAround((new MachineModMessageEntityCurrentTargetPosToClient(this.getEntityId(), this.currPosX, this.currPosY, this.currPosZ, this.angleArm1, this.angleArm2, this.angleArm3, this.mainBodyRotation)), new TargetPoint(worldObj.provider.getDimension(), posX, posY, posZ, 80));
-					if (this.isPlayerPushingSprintButton) {
-						// player wants to break the block
-						BlockPos bp;
-						bp = new BlockPos(currPosX, currPosY, currPosZ);
+				// BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 9.5d, (360 - this.yaw), (float) (this.angleArm2 + 265), 7.5d, 0, 0, 0);
 
-						BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
+				// BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -1d, (360 - this.yaw), (float) this.angleArm1 - 40, 10d, (360 - this.yaw), (float) this.angleArm2 - 90, 10d, 0, 0, 0);
 
+				if (this.angleArm3 < 42) {
+					BlockUtil.BreakBlock(worldObj, BP, this.getControllingPassenger());
+					AxisAlignedBB bucketboundingBox = new AxisAlignedBB(BP);
+					bucketboundingBox.expandXyz(1d);
+					List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
+					collidedEntitiesInList(list);
+				}
+				// LogHelper.info(BP);
+				// worldObj.setBlockState(BP, Blocks.DIRT.getDefaultState());
+
+				// }
+				if (this.angleArm3 > 42) {
+					// bucket up
+					// Drop blocks
+					// TODO needs something to pace it a bit more now it drops
+					// everything way to fast.
+					for (int i = 0; i < this.getSizeInventory(); i++) {
+						ItemStack item = this.getStackInSlot(i);
+
+						if (item != null && item.stackSize > 0) {
+							;
+
+							EntityItem entityItem = new EntityItem(worldObj, BP.getX(), BP.getY() - 1, BP.getZ(), item);
+
+							if (item.hasTagCompound()) {
+								entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+							}
+
+							float factor = 0.05F;
+							// entityItem.motionX = rand.nextGaussian() * factor;
+							entityItem.motionY = 0;
+							// entityItem.motionZ = rand.nextGaussian() * factor;
+							entityItem.forceSpawn = true;
+							worldObj.spawnEntityInWorld(entityItem);
+							// item.stackSize = 0;
+
+							this.setInventorySlotContents(i, null);
+						}
 					}
 				}
-			} else {
-				// null target probably because it was just placed so set the current pos close by
-
-				// TODO need to set this to an offset that will be the "Default " home pos for the arm
-				currPosX = this.posX;
-				currPosY = this.posY;
-				currPosZ = this.posZ;
-			}
-			// }
-		} else {
-			// move client bucket based on client smoothing logic???
-			if (targetBlockPos != null) {
-
-				// get arm 1 vert offset for all arm segments
-
 			}
 
 		}
 
+	}
+
+	private void collidedEntitiesInList(List par1List) {
+		for (int i = 0; i < par1List.size(); ++i) {
+			Entity entity = (Entity) par1List.get(i);
+			if (entity != null) {
+				if (entity instanceof EntityItem) {
+					ItemStack is = ((EntityItem) entity).getEntityItem().copy();
+					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
+					if (!entity.isDead) {
+						if (is.stackSize > 0) {
+							ItemStack is1 = addToinventory(is);
+
+							if (is1 != null && is1.stackSize != 0) {
+								((EntityItem) entity).setEntityItemStack(is1);
+							} else {
+								entity.setDead();
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@Override
+	public double getMountedXOffset() {
+		// should be overridden in extended class if not default;
+
+		return calcTwoOffsetX(this.mountedOffsetZ, 90, this.mountedOffsetX);
+		// return calcOffsetX(mountedOffsetX);
+	}
+
+	@Override
+	public double getMountedZOffset() {
+		// should be overridden in extended class if not default;
+
+		return calcTwoOffsetZ(this.mountedOffsetZ, 90, this.mountedOffsetX);
+		// return calcOffsetX(mountedOffsetX);
 	}
 
 	public AxisAlignedBB getBoundingBox() {

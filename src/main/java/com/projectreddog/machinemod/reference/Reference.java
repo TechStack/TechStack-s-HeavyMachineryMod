@@ -70,7 +70,9 @@ public class Reference {
 	public static final int GUI_PAVER = 10;
 	public static final int GUI_GRADER = 11;
 	public static final int GUI_BAGGER = 12;
+
 	public static final int GUI_FRACTIONALDISTILLATION = 13;
+	public static final int GUI_EXCAVATOR = 14;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;

@@ -131,7 +131,7 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 		} else if (amount >= 1000) {
 			return "" + (Math.round((amount / 1000) * 10.0) / 10.0) + "K";
 		} else {
-			return "" + (amount) + "";
+			return "" + ((int) amount) + "";
 		}
 
 	}

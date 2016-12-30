@@ -55,6 +55,8 @@ public class Recipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinefractionaldistillation), "ibi", "lbl", "isi", 's', Blocks.BREWING_STAND, 'i', Blocks.IRON_BLOCK, 'l', ModBlocks.machineliquidPipe, 'b', Blocks.IRON_BARS));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machinecrate), "wew", "pcp", "wew", 'w', "plankWood", 'e', Items.ENDER_EYE, 'p', Items.ENDER_PEARL, 'c', Blocks.CHEST));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.steeldust), ModItems.carbondust, ModItems.irondust));
 
 		if (Reference.enableDumptruck) {

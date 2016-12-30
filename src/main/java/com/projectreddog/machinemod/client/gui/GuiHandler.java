@@ -6,6 +6,7 @@ import com.projectreddog.machinemod.container.ContainerCentrifuge;
 import com.projectreddog.machinemod.container.ContainerCombine;
 import com.projectreddog.machinemod.container.ContainerDistiller;
 import com.projectreddog.machinemod.container.ContainerDumpTruck;
+import com.projectreddog.machinemod.container.ContainerExcavator;
 import com.projectreddog.machinemod.container.ContainerFermenter;
 import com.projectreddog.machinemod.container.ContainerFractionalDistiller;
 import com.projectreddog.machinemod.container.ContainerGrader;
@@ -17,6 +18,7 @@ import com.projectreddog.machinemod.container.ContainerWideBedTruck;
 import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
+import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityGrader;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityPaver;
@@ -174,6 +176,15 @@ public class GuiHandler implements IGuiHandler {
 					return new ContainerGrader(player.inventory, (EntityGrader) entity);
 				}
 			}
+		} else if (id == Reference.GUI_EXCAVATOR) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityExcavator) {
+
+					return new ContainerExcavator(player.inventory, (EntityExcavator) entity);
+				}
+			}
 		}
 
 		return null;
@@ -299,6 +310,14 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null) {
 				if (entity instanceof EntityGrader) {
 					return new GuiGrader(player.inventory, (EntityGrader) entity);
+				}
+			}
+		} else if (id == Reference.GUI_EXCAVATOR) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityExcavator) {
+					return new GuiExcavator(player.inventory, (EntityExcavator) entity);
 				}
 			}
 		}
