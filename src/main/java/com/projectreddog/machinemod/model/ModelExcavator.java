@@ -40,11 +40,14 @@ public class ModelExcavator extends ModelTransportable {
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		// myModel.renderAll();
+		// DEBUG CODE !
 
 		// render tracks before anything
-		// this.renderGroupObject("tracks_Cube.003");
+		GL11.glRotatef(entity.rotationYaw * -1, 0.0F, 1.0F, 0.0F);
 
+		this.renderGroupObject("Tracks_Cube.008");
 		// rotate rest of machine to correct orentation (first)
+
 		if (entity != null) {
 			// (180.0F - ((EntityMachineModRideable) entity).yaw + )
 			float calcRot = (float) (((EntityExcavator) entity).mainBodyRotation - 180 - ((EntityMachineModRideable) entity).yaw);
@@ -53,7 +56,8 @@ public class ModelExcavator extends ModelTransportable {
 			// } else if (calcRot < 0) {
 			// calcRot = 360 + calcRot;
 			// }
-			GL11.glRotatef(calcRot, 0.0F, 1.0F, 0.0F);
+			GL11.glTranslatef(0, 0, 1);
+			GL11.glRotatef(180, 0.0F, 1.0F, 0.0F);
 			// GL11.glRotatef((float) ((EntityExcavator) entity).mainBodyRotation, 0, 1, 0f);
 			if (((EntityExcavator) entity).getControllingPassenger() != null && ((EntityExcavator) entity).getControllingPassenger() == Minecraft.getMinecraft().thePlayer) {
 				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -62,6 +66,7 @@ public class ModelExcavator extends ModelTransportable {
 
 			}
 		}
+
 		this.renderGroupObject("MainCab_Cube.007");
 		GL11.glTranslatef(-.5f, EntityExcavator.armPiviotUp, EntityExcavator.armPiviotForward);
 		if (entity != null) {
@@ -73,6 +78,7 @@ public class ModelExcavator extends ModelTransportable {
 			// GL11.glTranslatef(0f, , 0f);
 
 		}
+		GL11.glTranslatef(0, 1, 0);
 
 		this.renderGroupObject("BackArm_Cube.006");
 		if (entity != null) {

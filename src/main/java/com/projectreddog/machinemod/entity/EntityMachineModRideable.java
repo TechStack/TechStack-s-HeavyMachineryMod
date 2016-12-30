@@ -710,6 +710,49 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 	}
 
+	public BlockPos calculateBlockPosGivenStartAngleDistance4(double startX, double startY, double startZ, float yaw1, float pitch1, double distance1, float yaw2, float pitch2, double distance2, float yaw3, float pitch3, double distance3, float yaw4, float pitch4, double distance4) {
+
+		// Campled angles in radians
+		float clampYaw1 = (float) (clampAngelto360(yaw1) * Math.PI / 180D);
+		float clampPitchZ1 = (float) (clampAngelto360(pitch1) * Math.PI / 180D);
+		float clampYaw2 = (float) (clampAngelto360(yaw2) * Math.PI / 180D);
+		float clampPitch2 = (float) (clampAngelto360(pitch2) * Math.PI / 180D);
+		float clampYaw3 = (float) (clampAngelto360(yaw3) * Math.PI / 180D);
+		float clampPitch3 = (float) (clampAngelto360(pitch3) * Math.PI / 180D);
+		float clampYaw4 = (float) (clampAngelto360(yaw4) * Math.PI / 180D);
+		float clampPitch4 = (float) (clampAngelto360(pitch4) * Math.PI / 180D);
+
+		// float clampYaw5 = (float) (clampAngelto360(yaw5) * Math.PI / 180D);
+		// float clampPitch5 = (float) (clampAngelto360(pitch5) * Math.PI / 180D);
+
+		//
+		startX = startX + distance1 * MathHelper.cos(clampPitchZ1) * MathHelper.sin(clampYaw1);
+		startY = startY + distance1 * MathHelper.sin(clampPitchZ1);
+		startZ = startZ + distance1 * MathHelper.cos(clampPitchZ1) * MathHelper.cos(clampYaw1);
+
+		// startX = startX + distance1 * MathHelper.sin(ClampY1); MathHelper.sin(ClampY1);
+		// startY = startY + distance1 * MathHelper.sin(ClampZ1);
+		// startZ = startZ + distance1 * MathHelper.cos(ClampY1);
+
+		startX = startX + distance2 * MathHelper.cos(clampPitch2) * MathHelper.sin(clampYaw2);
+		startY = startY + distance2 * MathHelper.sin(clampPitch2);
+		startZ = startZ + distance2 * MathHelper.cos(clampPitch2) * MathHelper.cos(clampYaw2);
+
+		startX = startX + distance3 * MathHelper.cos(clampPitch3) * MathHelper.sin(clampYaw3);
+		startY = startY + distance3 * MathHelper.sin(clampPitch3);
+		startZ = startZ + distance3 * MathHelper.cos(clampPitch3) * MathHelper.cos(clampYaw3);
+
+		startX = startX + distance4 * MathHelper.cos(clampPitch4) * MathHelper.sin(clampYaw4);
+		startY = startY + distance4 * MathHelper.sin(clampPitch4);
+		startZ = startZ + distance4 * MathHelper.cos(clampPitch4) * MathHelper.cos(clampYaw4);
+
+		// startX = startX + distance5 * MathHelper.cos(clampPitch5) * MathHelper.sin(clampYaw5);
+		// startY = startY + distance5 * MathHelper.sin(clampPitch5);
+		// startZ = startZ + distance5 * MathHelper.cos(clampPitch5) * MathHelper.cos(clampYaw5);
+
+		return new BlockPos(startX, startY, startZ);
+	}
+
 	public double calcTwoOffsetX(double distance, int secondOffsetAngle, double secondOffsetDistance) {
 
 		if (secondOffsetAngle == 0) {
