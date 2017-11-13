@@ -29,7 +29,6 @@ import com.projectreddog.machinemod.block.BlockMachineModWellHead;
 import com.projectreddog.machinemod.block.BlockMachineMowedGrass;
 import com.projectreddog.machinemod.block.BlockMachineSteelBlock;
 import com.projectreddog.machinemod.block.BlockOilFluid;
-import com.projectreddog.machinemod.item.ItemBlockBlastedStone;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityAsphaltMixer;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
@@ -52,6 +51,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -104,45 +104,45 @@ public class ModBlocks {
 	public static Block oilFluidBlock;
 
 	public static void init() {
-		GameRegistry.registerBlock(machineassemblytable, Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
-		GameRegistry.registerBlock(steelblock, Reference.MODBLOCK_STEEL_BLOCK);
+		ForgeRegistries.BLOCKS.register(machineassemblytable);// Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE
+		ForgeRegistries.BLOCKS.register(steelblock);// , Reference.MODBLOCK_STEEL_BLOCK);
 
-		GameRegistry.registerBlock(machineasphalt, Reference.MODBLOCK_MACHINE_ASPHALT);
+		ForgeRegistries.BLOCKS.register(machineasphalt);// , Reference.MODBLOCK_MACHINE_ASPHALT);
 
-		GameRegistry.registerBlock(machinecompressedasphalt, Reference.MODBLOCK_MACHINE_COMPRESSED_ASPHALT);
-		GameRegistry.registerBlock(machinecrudeoilstone, Reference.MODBLOCK_MACHINE_CRUDE_OIL_STONE);
+		ForgeRegistries.BLOCKS.register(machinecompressedasphalt);// , Reference.MODBLOCK_MACHINE_COMPRESSED_ASPHALT);
+		ForgeRegistries.BLOCKS.register(machinecrudeoilstone);// , Reference.MODBLOCK_MACHINE_CRUDE_OIL_STONE);
 
-		GameRegistry.registerBlock(machinecrate, Reference.MODBLOCK_MACHINE_CRATE);
+		ForgeRegistries.BLOCKS.register(machinecrate);// , Reference.MODBLOCK_MACHINE_CRATE);
 
-		GameRegistry.registerBlock(corn, Reference.MODBLOCK_MACHINE_CORN);
+		ForgeRegistries.BLOCKS.register(corn);// , Reference.MODBLOCK_MACHINE_CORN);
 
-		GameRegistry.registerBlock(machinedrilledstone, Reference.MODBLOCK_MACHINE_DRILLED_STONE);
-		GameRegistry.registerBlock(machinedrilledandesite, Reference.MODBLOCK_MACHINE_DRILLED_ANDESITE);
+		ForgeRegistries.BLOCKS.register(machinedrilledstone);// , Reference.MODBLOCK_MACHINE_DRILLED_STONE);
+		ForgeRegistries.BLOCKS.register(machinedrilledandesite);// , Reference.MODBLOCK_MACHINE_DRILLED_ANDESITE);
 
-		GameRegistry.registerBlock(machinedrilleddiorite, Reference.MODBLOCK_MACHINE_DRILLED_DIORITE);
+		ForgeRegistries.BLOCKS.register(machinedrilleddiorite);// , Reference.MODBLOCK_MACHINE_DRILLED_DIORITE);
 
-		GameRegistry.registerBlock(machinedrilledgranite, Reference.MODBLOCK_MACHINE_DRILLED_GRANITE);
+		ForgeRegistries.BLOCKS.register(machinedrilledgranite);// , Reference.MODBLOCK_MACHINE_DRILLED_GRANITE);
 
-		GameRegistry.registerBlock(machineexplosivepackeddrilledstone, Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE);
-		GameRegistry.registerBlock(machineblastedstone, ItemBlockBlastedStone.class, Reference.MODBLOCK_MACHINE_BLASTED_STONE);
-		GameRegistry.registerBlock(machineblastedstone2, Reference.MODBLOCK_MACHINE_BLASTED_STONE2);
+		ForgeRegistries.BLOCKS.register(machineexplosivepackeddrilledstone);// , Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE);
+		ForgeRegistries.BLOCKS.register(machineblastedstone);// , ItemBlockBlastedStone.class, Reference.MODBLOCK_MACHINE_BLASTED_STONE);
+		ForgeRegistries.BLOCKS.register(machineblastedstone2);// , Reference.MODBLOCK_MACHINE_BLASTED_STONE2);
 
-		GameRegistry.registerBlock(machineprimarycrhuser, Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
-		GameRegistry.registerBlock(machinecentrifuge, Reference.MODBLOCK_MACHINE_CENTRIFUGE);
+		ForgeRegistries.BLOCKS.register(machineprimarycrhuser);// , Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
+		ForgeRegistries.BLOCKS.register(machinecentrifuge);// , Reference.MODBLOCK_MACHINE_CENTRIFUGE);
 
-		GameRegistry.registerBlock(machineconveyor, Reference.MODBLOCK_MACHINE_CONVEYOR);
-		GameRegistry.registerBlock(machinefractionaldistillation, Reference.MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION);
-		GameRegistry.registerBlock(machineasphaltmixer, Reference.MODBLOCK_MACHINE_ASPHALT_MIXER);
+		ForgeRegistries.BLOCKS.register(machineconveyor);// , Reference.MODBLOCK_MACHINE_CONVEYOR);
+		ForgeRegistries.BLOCKS.register(machinefractionaldistillation);// , Reference.MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION);
+		ForgeRegistries.BLOCKS.register(machineasphaltmixer);// , Reference.MODBLOCK_MACHINE_ASPHALT_MIXER);
 
-		GameRegistry.registerBlock(machineliquidPipe, Reference.MODBLOCK_MACHINE_LIQUID_PIPE);
-		GameRegistry.registerBlock(machinescreen, Reference.MODBLOCK_MACHINE_SCREEN);
-		GameRegistry.registerBlock(machinemowedgrass, Reference.MODBLOCK_MACHINE_MOWED_GRASS);
+		ForgeRegistries.BLOCKS.register(machineliquidPipe);// , Reference.MODBLOCK_MACHINE_LIQUID_PIPE);
+		ForgeRegistries.BLOCKS.register(machinescreen);// , Reference.MODBLOCK_MACHINE_SCREEN);
+		ForgeRegistries.BLOCKS.register(machinemowedgrass);// , Reference.MODBLOCK_MACHINE_MOWED_GRASS);
 
-		GameRegistry.registerBlock(machinefuelpump, Reference.MODBLOCK_MACHINE_FUEL_PUMP);
-		GameRegistry.registerBlock(machinedistiller, Reference.MODBLOCK_MACHINE_DISTILLER);
-		GameRegistry.registerBlock(machinefermenter, Reference.MODBLOCK_MACHINE_FERMENTER);
+		ForgeRegistries.BLOCKS.register(machinefuelpump);// , Reference.MODBLOCK_MACHINE_FUEL_PUMP);
+		ForgeRegistries.BLOCKS.register(machinedistiller);// , Reference.MODBLOCK_MACHINE_DISTILLER);
+		ForgeRegistries.BLOCKS.register(machinefermenter);// , Reference.MODBLOCK_MACHINE_FERMENTER);
 
-		GameRegistry.registerBlock(machinewellhead, Reference.MODBLOCK_MACHINE_WELL_HEAD);
+		ForgeRegistries.BLOCKS.register(machinewellhead);// , Reference.MODBLOCK_MACHINE_WELL_HEAD);
 
 		// next section for tile entities regsistration.
 		GameRegistry.registerTileEntity(TileEntityPrimaryCrusher.class, Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
@@ -187,13 +187,13 @@ public class ModBlocks {
 		//
 		//
 
-		GameRegistry.registerBlock(oilFluidBlock, Reference.MODBLOCK_MACHINE_FLUID_OIL);
+		ForgeRegistries.BLOCKS.register(oilFluidBlock);// , Reference.MODBLOCK_MACHINE_FLUID_OIL);
 
 		// fluidBioFuel.setDensity(10);
 		// FluidRegistry.registerFluid(fluidBioFuel);
 		// biofuel = new BlockBioFuel(fluidBioFuel, Material.water) ;
 		//
-		// GameRegistry.registerBlock(biofuel,
+		// ForgeRegistries.BLOCKS.registerBlock(biofuel,
 		// Reference.MODBLOCK_MACHINE_FLUID_BIOFUEL);
 		// fluidBioFuel.setUnlocalizedName(biofuel.getUnlocalizedName());
 
@@ -242,30 +242,32 @@ public class ModBlocks {
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(biofuel), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FLUID_BIOFUEL, "inventory"));
 
-		Item itemBlockBlastedStone = GameRegistry.findItem(Reference.MOD_ID, Reference.MODBLOCK_MACHINE_BLASTED_STONE);
+		// TODO FIX THE block states for blasted stone!!
 
-		ModelResourceLocation itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "STONE", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.STONE.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "granite", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.GRANITE.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "diorite", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.DIORITE.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "andesite", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.ANDESITE.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "gold", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.GOLD.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "iron", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.IRON.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "coal", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.COAL.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "lapis", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.LAPIS.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "diamond", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.DIAMOND.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "redstone", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.REDSTONE.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "emerald", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.EMERALD.getMetadata(), itemModelResourceLocation);
+		// Item itemBlockBlastedStone = ForgeRegistries.BLOCKS.findItem(Reference.MOD_ID, Reference.MODBLOCK_MACHINE_BLASTED_STONE);
+
+		// ModelResourceLocation itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "STONE", "inventory");
+		// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.STONE.getMetadata(), itemModelResourceLocation);
+		// itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "granite", "inventory");
+		// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.GRANITE.getMetadata(), itemModelResourceLocation);
+		// itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "diorite", "inventory");
+		// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.DIORITE.getMetadata(), itemModelResourceLocation);
+		// itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "andesite", "inventory");
+		// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.ANDESITE.getMetadata(), itemModelResourceLocation);
+		// itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "gold", "inventory");
+		// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.GOLD.getMetadata(), itemModelResourceLocation);
+		// itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "iron", "inventory");
+		// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.IRON.getMetadata(), itemModelResourceLocation);
+		// itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "coal", "inventory");
+		// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.COAL.getMetadata(), itemModelResourceLocation);
+		// itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "lapis", "inventory");
+		// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.LAPIS.getMetadata(), itemModelResourceLocation);
+		// itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "diamond", "inventory");
+		// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.DIAMOND.getMetadata(), itemModelResourceLocation);
+		// itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "redstone", "inventory");
+		// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.REDSTONE.getMetadata(), itemModelResourceLocation);
+		// itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "emerald", "inventory");
+		// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.EMERALD.getMetadata(), itemModelResourceLocation);
 
 	}
 }
