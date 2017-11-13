@@ -15,8 +15,8 @@ public class MachineModMessageTEInventoryChangedToClientHandler implements IMess
 	@Override
 	public IMessage onMessage(final MachineModMessageTEInventoryChangedToClient message, MessageContext ctx) {
 		// LogHelper.info("on message MachineModMessageEntityInventoryChangedToClient");
-		if (Minecraft.getMinecraft().theWorld != null) {
-			if (Minecraft.getMinecraft().theWorld.isRemote) {
+		if (Minecraft.getMinecraft().world != null) {
+			if (Minecraft.getMinecraft().world.isRemote) {
 
 				Minecraft.getMinecraft().addScheduledTask(new Runnable() {
 					public void run() {
@@ -30,10 +30,10 @@ public class MachineModMessageTEInventoryChangedToClientHandler implements IMess
 
 	public void processMessage(MachineModMessageTEInventoryChangedToClient message) {
 		if (message != null) {
-			if (Minecraft.getMinecraft().theWorld != null) {
-				if (Minecraft.getMinecraft().thePlayer != null) {
+			if (Minecraft.getMinecraft().world != null) {
+				if (Minecraft.getMinecraft().player != null) {
 
-					TileEntity TileEntity = Minecraft.getMinecraft().theWorld.getTileEntity(new BlockPos(message.x, message.y, message.z));
+					TileEntity TileEntity = Minecraft.getMinecraft().world.getTileEntity(new BlockPos(message.x, message.y, message.z));
 
 					if (TileEntity != null) {
 

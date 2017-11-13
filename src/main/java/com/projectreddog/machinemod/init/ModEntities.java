@@ -20,6 +20,7 @@ import com.projectreddog.machinemod.entity.EntitySub;
 import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.reference.Reference;
 
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -31,26 +32,26 @@ public class ModEntities {
 	// public static final EntityBulldozer entityBulldozer= new
 	// EntityBulldozer(new World);
 	public static void init(Object mod) {
-		EntityRegistry.registerModEntity(EntityDrillingRig.class, "drillingrig", ++entityID, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityBulldozer.class, "bulldozer", ++entityID, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityDumpTruck.class, "dumptruck", ++entityID, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityLoader.class, "loader", ++entityID, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityTractor.class, "tractor", ++entityID, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityCombine.class, "combine", ++entityID, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntitySemiTractor.class, "widebedtruck", ++entityID, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityCrane.class, "crane", ++entityID, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityExcavator.class, "excavator", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "drillingrig"), EntityDrillingRig.class, "drillingrig", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "bulldozer"), EntityBulldozer.class, "bulldozer", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "dumptruck"), EntityDumpTruck.class, "dumptruck", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "loader"), EntityLoader.class, "loader", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "tractor"), EntityTractor.class, "tractor", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "combine"), EntityCombine.class, "combine", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "widebedtruck"), EntitySemiTractor.class, "widebedtruck", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "crane"), EntityCrane.class, "crane", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "excavator"), EntityExcavator.class, "excavator", ++entityID, mod, 224, 1, false);
 
-		EntityRegistry.registerModEntity(EntityPaver.class, "paver", ++entityID, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityLawnmower.class, "lawnmower", ++entityID, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityGrader.class, "grader", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "paver"), EntityPaver.class, "paver", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "lawnmower"), EntityLawnmower.class, "lawnmower", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "grader"), EntityGrader.class, "grader", ++entityID, mod, 224, 1, false);
 
-		EntityRegistry.registerModEntity(EntityBagger.class, "bagger", ++entityID, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityRoadRoller.class, "roadroller", ++entityID, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityOilRig.class, "oilrig", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "bagger"), EntityBagger.class, "bagger", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "roadroller"), EntityRoadRoller.class, "roadroller", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "oilrig"), EntityOilRig.class, "oilrig", ++entityID, mod, 224, 1, false);
 
-		EntityRegistry.registerModEntity(EntitySub.class, "sub", ++entityID, mod, 224, 1, false);
-		EntityRegistry.registerModEntity(EntityChopper.class, "chopper", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "sub"), EntitySub.class, "sub", ++entityID, mod, 224, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "chopper"), EntityChopper.class, "chopper", ++entityID, mod, 224, 1, false);
 
 		// EntityRegistry.registerModEntity(EntityPumpJack.class, "pumpjack", ++entityID, mod, 224, 1, false);
 

@@ -48,7 +48,7 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 
 	@Override
 	public void update() {
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			if (firstTick) {
 				firstTick = !firstTick;
 			}
@@ -212,11 +212,11 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	public ItemStack decrStackSize(int slot, int amt) {
 		ItemStack stack = getStackInSlot(slot);
 		if (stack != null) {
-			if (stack.stackSize <= amt) {
+			if (stack.getCount() <= amt) {
 				setInventorySlotContents(slot, null);
 			} else {
 				stack = stack.splitStack(amt);
-				if (stack.stackSize == 0) {
+				if (stack.getCount() == 0) {
 					setInventorySlotContents(slot, null);
 				}
 
@@ -237,8 +237,8 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inventory[slot] = stack;
-		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
-			stack.stackSize = getInventoryStackLimit();
+		if (stack != null && stack.getCount() > getInventoryStackLimit()) {
+			stack.setCount(getInventoryStackLimit());
 		}
 
 	}
@@ -326,7 +326,7 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 		case 3:
 		case 4:
 		case 5:
-			TileEntity te = this.worldObj.getTileEntity(this.pos.up(id - 1));
+			TileEntity te = this.world.getTileEntity(this.pos.up(id - 1));
 			if (te instanceof TileEntityAsphaltMixer) {
 				return ((TileEntityAsphaltMixer) te).getFluidAmount();
 			}
@@ -361,8 +361,18 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer playerIn) {
+	public boolean isUsableByPlayer(EntityPlayer playerIn) {
 		return playerIn.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
 	}
 
+	@Override
+	public boolean isEmpty() {
+		for (int i = 0; i < inventory.length; i++) {
+			if (!inventory[i].isEmpty()) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 }

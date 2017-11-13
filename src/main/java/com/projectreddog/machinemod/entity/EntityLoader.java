@@ -38,7 +38,7 @@ public class EntityLoader extends EntityMachineModRideable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 
 			int bucketOffsetY = 0;
 
@@ -60,10 +60,10 @@ public class EntityLoader extends EntityMachineModRideable {
 					}
 					BlockPos bp;
 					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + bucketOffsetY, posZ + calcTwoOffsetZ(3.5, angle, i));
-					if (worldObj.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || worldObj.getBlockState(bp).getBlock() == Blocks.SNOW || worldObj.getBlockState(bp).getBlock() == Blocks.DIRT || worldObj.getBlockState(bp).getBlock() == Blocks.SAND || worldObj.getBlockState(bp).getBlock() == Blocks.GRAVEL || worldObj.getBlockState(bp).getBlock() == Blocks.GRASS
-							|| worldObj.getBlockState(bp).getBlock() == Blocks.CLAY || worldObj.getBlockState(bp).getBlock() == Blocks.NETHERRACK || worldObj.getBlockState(bp).getBlock() == Blocks.MYCELIUM || worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2
-							|| worldObj.getBlockState(bp).getBlock() == Blocks.SOUL_SAND || worldObj.getBlockState(bp).getBlock() == Blocks.TALLGRASS) {
-						BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
+					if (world.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || world.getBlockState(bp).getBlock() == Blocks.SNOW || world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.SAND || world.getBlockState(bp).getBlock() == Blocks.GRAVEL || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.CLAY
+							|| world.getBlockState(bp).getBlock() == Blocks.NETHERRACK || world.getBlockState(bp).getBlock() == Blocks.MYCELIUM || world.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || world.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2 || world.getBlockState(bp).getBlock() == Blocks.SOUL_SAND
+							|| world.getBlockState(bp).getBlock() == Blocks.TALLGRASS) {
+						BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
 					}
 
@@ -71,7 +71,7 @@ public class EntityLoader extends EntityMachineModRideable {
 
 				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(3.5, 90, -1) + posX - .5d, posY + bucketOffsetY, calcTwoOffsetZ(3.5, 90, -1) + posZ - .5d, calcTwoOffsetX(3.5, 90, 1) + posX + .5d, posY + 1, calcTwoOffsetZ(3.5, 90, 1) + posZ + .5d);
 
-				List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
+				List list = this.world.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
 				collidedEntitiesInList(list);
 			}
 			if (this.Attribute1 == this.getMinAngle()) {
@@ -82,13 +82,13 @@ public class EntityLoader extends EntityMachineModRideable {
 				for (int i = 0; i < this.getSizeInventory(); i++) {
 					ItemStack item = this.getStackInSlot(i);
 
-					if (item != null && item.stackSize > 0) {
+					if (item != null && item.getCount() > 0) {
 						;
 
-						EntityItem entityItem = new EntityItem(worldObj, posX + calcOffsetX(3.5), posY + 4, posZ + calcOffsetZ(3.5), item);
+						EntityItem entityItem = new EntityItem(world, posX + calcOffsetX(3.5), posY + 4, posZ + calcOffsetZ(3.5), item);
 
 						if (item.hasTagCompound()) {
-							entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+							entityItem.getItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
 						}
 
 						float factor = 0.05F;
@@ -96,7 +96,7 @@ public class EntityLoader extends EntityMachineModRideable {
 						entityItem.motionY = 0;
 						// entityItem.motionZ = rand.nextGaussian() * factor;
 						entityItem.forceSpawn = true;
-						worldObj.spawnEntityInWorld(entityItem);
+						world.spawnEntity(entityItem);
 						// item.stackSize = 0;
 
 						this.setInventorySlotContents(i, null);
@@ -118,14 +118,14 @@ public class EntityLoader extends EntityMachineModRideable {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
 				if (entity instanceof EntityItem) {
-					ItemStack is = ((EntityItem) entity).getEntityItem().copy();
-					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
+					ItemStack is = ((EntityItem) entity).getItem().copy();
+					is.setItemDamage(((EntityItem) entity).getItem().getItemDamage());
 					if (!entity.isDead) {
-						if (is.stackSize > 0) {
+						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
 
-							if (is1 != null && is1.stackSize != 0) {
-								((EntityItem) entity).setEntityItemStack(is1);
+							if (is1 != null && is1.getCount() != 0) {
+								((EntityItem) entity).setItem(is1);
 							} else {
 								entity.setDead();
 							}

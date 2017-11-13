@@ -44,7 +44,7 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 	}
 
 	@Override
-	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f, int i) {
+	public void render(TileEntity tileentity, double x, double y, double z, float f, int i, float a) {
 
 		Tessellator tessellator = Tessellator.getInstance();
 
@@ -114,7 +114,7 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 			Entity entity = this.rendererDispatcher.entity;
 			double d0 = te.getDistanceSq(entity.posX, entity.posY, entity.posZ);
 			// the 400 on the next line is the square of 20 *20 // save 1 math operation by pre calc
-			if (d0 <= (double) (400) && Minecraft.getMinecraft().thePlayer.isSneaking()) {
+			if (d0 <= (double) (400) && Minecraft.getMinecraft().player.isSneaking()) {
 				if (!str.equals("")) {
 					EntityRenderer.drawNameplate(this.renderManager.getFontRenderer(), str, (float) x + .5f, (float) y + .75f, (float) z + .5f, 0, f2, f1, flag1, false);
 				}

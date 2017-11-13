@@ -17,6 +17,8 @@ public class BlockMachineCompressedAsphalt extends BlockMachineMod {
 		super();
 		// 1.8
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_COMPRESSED_ASPHALT);
+		this.setRegistryName(Reference.MODBLOCK_MACHINE_COMPRESSED_ASPHALT);
+
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setHardness(15f);// not sure on the hardness
 		this.setSoundType(SoundType.STONE);

@@ -61,7 +61,7 @@ public class EntityPumpJack extends EntityMachineModRideable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 
 			// TODO add oil rig logic
 
@@ -83,14 +83,14 @@ public class EntityPumpJack extends EntityMachineModRideable {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
 				if (entity instanceof EntityItem) {
-					ItemStack is = ((EntityItem) entity).getEntityItem().copy();
-					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
+					ItemStack is = ((EntityItem) entity).getItem().copy();
+					is.setItemDamage(((EntityItem) entity).getItem().getItemDamage());
 					if (!entity.isDead) {
-						if (is.stackSize > 0) {
+						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
 
-							if (is1 != null && is1.stackSize != 0) {
-								((EntityItem) entity).setEntityItemStack(is1);
+							if (is1 != null && is1.getCount() != 0) {
+								((EntityItem) entity).setItem(is1);
 							} else {
 								entity.setDead();
 							}

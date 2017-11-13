@@ -51,11 +51,11 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 	public ItemStack decrStackSize(int slot, int amt) {
 		ItemStack stack = getStackInSlot(slot);
 		if (stack != null) {
-			if (stack.stackSize <= amt) {
+			if (stack.getCount() <= amt) {
 				setInventorySlotContents(slot, null);
 			} else {
 				stack = stack.splitStack(amt);
-				if (stack.stackSize == 0) {
+				if (stack.getCount() == 0) {
 					setInventorySlotContents(slot, null);
 				}
 
@@ -80,8 +80,8 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 
 		inventory[slot] = stack;
-		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
-			stack.stackSize = getInventoryStackLimit();
+		if (stack != null && stack.getCount() > getInventoryStackLimit()) {
+			stack.setCount(getInventoryStackLimit());
 		}
 		shouldSendInvetoryUpdates = true;
 
@@ -93,7 +93,7 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
+	public boolean isUsableByPlayer(EntityPlayer player) {
 		return player.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
 
 	}
@@ -198,7 +198,7 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
 			byte slot = tag.getByte("Slot");
 			if (slot >= 0 && slot < inventory.length) {
-				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
+				inventory[slot] = new ItemStack(tag);
 			}
 		}
 	}
@@ -253,7 +253,7 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 				return false;
 			}
 		}
-		InventoryHelper.spawnItemStack(this.worldObj, this.pos.getX(), this.pos.getY(), this.pos.getZ(), getStackInSlot(0));
+		InventoryHelper.spawnItemStack(this.world, this.pos.getX(), this.pos.getY(), this.pos.getZ(), getStackInSlot(0));
 		setInventorySlotContents(0, null);
 		processInputOutputSlots();
 		shouldSendInvetoryUpdates = true;
@@ -272,18 +272,18 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 	}
 
 	public void processInputOutputSlots() {
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// server side
 			// AmtInReserve
 			// AmtInReserve = 999999900;
 			if (getStackInSlot(0) != null) {
-				if (getStackInSlot(0).stackSize == getStackInSlot(0).getMaxStackSize()) {
+				if (getStackInSlot(0).getCount() == getStackInSlot(0).getMaxStackSize()) {
 					// output full fill if input is not full
 					if (getStackInSlot(1) != null) {// input
 						// have stack in input and output full move to reserve if same item
 						if (getStackInSlot(1).isItemEqual(getStackInSlot(0))) {
 							// same item move to reserve
-							AmtInReserve = AmtInReserve + getStackInSlot(1).stackSize;
+							AmtInReserve = AmtInReserve + getStackInSlot(1).getCount();
 							// set empty slot contents of input slot !
 							setInventorySlotContents(1, null);
 						}
@@ -292,15 +292,15 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 					// output not full
 					if (getStackInSlot(1) != null) {
 						// something in output so take it please !
-						if (getStackInSlot(0).getMaxStackSize() - getStackInSlot(0).stackSize >= getStackInSlot(1).stackSize) {// we can take it all so do so
-							getStackInSlot(0).stackSize = getStackInSlot(0).stackSize + getStackInSlot(1).stackSize;
+						if (getStackInSlot(0).getMaxStackSize() - getStackInSlot(0).getCount() >= getStackInSlot(1).getCount()) {// we can take it all so do so
+							getStackInSlot(0).setCount(getStackInSlot(0).getCount() + getStackInSlot(1).getCount());
 							setInventorySlotContents(1, null);
 						} else {
 							// to much input so take what we can and reserve the rest
 							// find leftover by taking input Stack size - amt needed ( max size - curr size)
-							int LeftOverAmt = getStackInSlot(1).stackSize - (getStackInSlot(0).getMaxStackSize() - getStackInSlot(0).stackSize);
+							int LeftOverAmt = getStackInSlot(1).getCount() - (getStackInSlot(0).getMaxStackSize() - getStackInSlot(0).getCount());
 							AmtInReserve = AmtInReserve + LeftOverAmt;
-							getStackInSlot(0).stackSize = getStackInSlot(0).getMaxStackSize();
+							getStackInSlot(0).setCount(getStackInSlot(0).getMaxStackSize());
 
 							setInventorySlotContents(1, null);
 						}
@@ -323,21 +323,21 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 
 			if (getStackInSlot(0) != null) {
 				// has an item top it off if possible.
-				if (getStackInSlot(0).stackSize < getStackInSlot(0).getMaxStackSize()) {
+				if (getStackInSlot(0).getCount() < getStackInSlot(0).getMaxStackSize()) {
 					// has room for more
-					int amtNeeded = getStackInSlot(0).getMaxStackSize() - getStackInSlot(0).stackSize;
+					int amtNeeded = getStackInSlot(0).getMaxStackSize() - getStackInSlot(0).getCount();
 					if (amtNeeded <= AmtInReserve) {
 						// we have enough top it off all the way !
 						AmtInReserve = AmtInReserve - amtNeeded;
 						ItemStack TmpStack = getStackInSlot(0).copy();
-						TmpStack.stackSize = TmpStack.getMaxStackSize();
+						TmpStack.setCount(TmpStack.getMaxStackSize());
 
 						setInventorySlotContents(0, TmpStack);
 					} else {
 						// Do not have enough !!! Help !
 
 						ItemStack TmpStack = getStackInSlot(0).copy();
-						TmpStack.stackSize = TmpStack.stackSize + AmtInReserve;
+						TmpStack.setCount(TmpStack.getCount() + AmtInReserve);
 						AmtInReserve = 0;
 						setInventorySlotContents(0, TmpStack);
 					}
@@ -354,7 +354,7 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 
 							// can create full stack
 							ItemStack TmpStack = HeldItem.copy();
-							TmpStack.stackSize = TmpStack.getMaxStackSize();
+							TmpStack.setCount(TmpStack.getMaxStackSize());
 							AmtInReserve = AmtInReserve - TmpStack.getMaxStackSize();
 							setInventorySlotContents(0, TmpStack);
 						} else {
@@ -362,7 +362,7 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 
 							ItemStack TmpStack = HeldItem.copy();
 							;
-							TmpStack.stackSize = AmtInReserve;
+							TmpStack.setCount(AmtInReserve);
 							AmtInReserve = 0;
 							setInventorySlotContents(0, TmpStack);
 						}
@@ -376,7 +376,7 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 	public void update() {
 		// TODO Auto-generated method stub
 
-		if (worldObj.isRemote) {
+		if (world.isRemote) {
 			rotAmt = rotAmt + 1;
 			if (rotAmt > 360) {
 				rotAmt = 0;
@@ -407,5 +407,16 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 
 		}
 
+	}
+
+	@Override
+	public boolean isEmpty() {
+		for (int i = 0; i < inventory.length; i++) {
+			if (!inventory[i].isEmpty()) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 }

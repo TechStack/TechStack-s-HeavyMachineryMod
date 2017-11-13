@@ -44,7 +44,7 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 
 	@Override
 	public void update() {
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			if (timeTillCoolDown > 0) {
 				timeTillCoolDown--;
 				ItemStack item = this.getStackInSlot(0);
@@ -69,10 +69,10 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 							// fuelStorage = fuelStorage - 1;
 
 							if (this.getStackInSlot(1) != null) {
-								if (this.getStackInSlot(1).stackSize < this.getStackInSlot(1).getMaxStackSize()) {
+								if (this.getStackInSlot(1).getCount() < this.getStackInSlot(1).getMaxStackSize()) {
 									// TODO Create asphalt item
 									this.decrStackSize(0, 1);
-									this.getStackInSlot(1).stackSize++;
+									this.getStackInSlot(1).setCount(this.getStackInSlot(1).getCount() + 1);
 
 									return;
 								}
@@ -97,14 +97,14 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
 				if (entity instanceof EntityItem) {
-					ItemStack is = ((EntityItem) entity).getEntityItem();
-					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
+					ItemStack is = ((EntityItem) entity).getItem();
+					is.setItemDamage(((EntityItem) entity).getItem().getItemDamage());
 					if (!entity.isDead) {
-						if (is.stackSize > 0) {
+						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
 
-							if (is1 != null && is1.stackSize != 0) {
-								((EntityItem) entity).setEntityItemStack(is1);
+							if (is1 != null && is1.getCount() != 0) {
+								((EntityItem) entity).setItem(is1);
 							} else {
 								entity.setDead();
 							}
@@ -119,33 +119,33 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 	protected ItemStack addToinventory(ItemStack is) {
 		int i = getSizeInventory();
 
-		for (int j = 0; j < i && is != null && is.stackSize > 0; ++j) {
+		for (int j = 0; j < i && is != null && is.getCount() > 0; ++j) {
 			if (is != null) {
 
 				if (getStackInSlot(j) != null) {
 					if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getItemDamage() == is.getItemDamage()) {
 						// same item remove from is put into slot any amt not to
 						// excede stack max
-						if (getStackInSlot(j).stackSize < getStackInSlot(j).getMaxStackSize()) {
+						if (getStackInSlot(j).getCount() < getStackInSlot(j).getMaxStackSize()) {
 							// we have room to add to this stack
-							if (is.stackSize <= getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize) {
+							if (is.getCount() <= getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount()) {
 								// /all of the stack will fit in this slot do
 								// so.
 
-								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).stackSize + is.stackSize, is.getItemDamage()));
+								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).getCount() + is.getCount(), is.getItemDamage()));
 								is = null;
 							} else {
 								// we have more
-								int countRemain = is.stackSize - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize);
+								int countRemain = is.getCount() - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount());
 								setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getItemDamage()));
-								is.stackSize = countRemain;
+								is.setCount(countRemain);
 							}
 
 						}
 					}
 				} else {
 					// nothign in slot so set contents
-					setInventorySlotContents(j, new ItemStack(is.getItem(), is.stackSize, is.getItemDamage()));
+					setInventorySlotContents(j, new ItemStack(is.getItem(), is.getCount(), is.getItemDamage()));
 					is = null;
 				}
 
@@ -171,7 +171,7 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
 			byte slot = tag.getByte("Slot");
 			if (slot >= 0 && slot < inventory.length) {
-				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
+				inventory[slot] = new ItemStack(tag);
 			}
 		}
 	}
@@ -231,11 +231,11 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 	public ItemStack decrStackSize(int slot, int amt) {
 		ItemStack stack = getStackInSlot(slot);
 		if (stack != null) {
-			if (stack.stackSize <= amt) {
+			if (stack.getCount() <= amt) {
 				setInventorySlotContents(slot, null);
 			} else {
 				stack = stack.splitStack(amt);
-				if (stack.stackSize == 0) {
+				if (stack.getCount() == 0) {
 					setInventorySlotContents(slot, null);
 				}
 
@@ -256,8 +256,8 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inventory[slot] = stack;
-		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
-			stack.stackSize = getInventoryStackLimit();
+		if (stack != null && stack.getCount() > getInventoryStackLimit()) {
+			stack.setCount(getInventoryStackLimit());
 		}
 
 	}
@@ -268,7 +268,7 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer playerIn) {
+	public boolean isUsableByPlayer(EntityPlayer playerIn) {
 		return playerIn.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
 	}
 
@@ -383,6 +383,17 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 	public EnumFacing outputDirection() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		for (int i = 0; i < inventory.length; i++) {
+			if (!inventory[i].isEmpty()) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 }

@@ -13,16 +13,21 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ItemWrench extends ItemMachineMod {
+	public String registryName = "wrench";
 
 	public ItemWrench() {
 		super();
-		this.setUnlocalizedName("wrench");
+		this.setUnlocalizedName(registryName);
+		this.setRegistryName(registryName);
+
 		this.maxStackSize = 1;
 
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
+		// public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
+		ItemStack stack = player.getActiveItemStack();
 		boolean result = false;
 
 		if (world.getBlockState(pos).getBlock() == ModBlocks.machineconveyor) {

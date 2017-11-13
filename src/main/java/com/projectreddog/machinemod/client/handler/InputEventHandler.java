@@ -26,9 +26,9 @@ public class InputEventHandler {
 	@SubscribeEvent
 	public void MouseInputEvent(InputEvent.MouseInputEvent event) {
 
-		if (Minecraft.getMinecraft().thePlayer.getRidingEntity() != null) {
-			if (Minecraft.getMinecraft().thePlayer.getRidingEntity() instanceof EntityExcavator) {
-				Entity e = Minecraft.getMinecraft().thePlayer.getRidingEntity();
+		if (Minecraft.getMinecraft().player.getRidingEntity() != null) {
+			if (Minecraft.getMinecraft().player.getRidingEntity() instanceof EntityExcavator) {
+				Entity e = Minecraft.getMinecraft().player.getRidingEntity();
 				// playre riding a excavator so we should check which block they are looking at.
 				RayTraceResult currentMouseOver;
 				// LogHelper.info("MIE" + event);
@@ -41,7 +41,7 @@ public class InputEventHandler {
 					// return blockpos of this movingbojectposition
 					BlockPos currentBlockpos = currentMouseOver.getBlockPos();
 
-					if (Minecraft.getMinecraft().thePlayer.worldObj.getBlockState(currentBlockpos).getBlock().getMaterial(Minecraft.getMinecraft().thePlayer.worldObj.getBlockState(currentBlockpos)) != Material.AIR) {
+					if (Minecraft.getMinecraft().player.world.getBlockState(currentBlockpos).getBlock().getMaterial(Minecraft.getMinecraft().player.world.getBlockState(currentBlockpos)) != Material.AIR) {
 						// this.effectRenderer.addBlockHitEffects(blockpos, this.objectMouseOver);
 						// this.thePlayer.swingItem();
 
@@ -65,10 +65,10 @@ public class InputEventHandler {
 		// LogHelper.info("Called KB Event");
 
 		boolean sendPacket = false;
-		if (Minecraft.getMinecraft().thePlayer.getRidingEntity() instanceof EntityMachineModRideable) {
+		if (Minecraft.getMinecraft().player.getRidingEntity() instanceof EntityMachineModRideable) {
 
 			sendPacket = true;
-			EntityMachineModRideable e = (EntityMachineModRideable) Minecraft.getMinecraft().thePlayer.getRidingEntity();
+			EntityMachineModRideable e = (EntityMachineModRideable) Minecraft.getMinecraft().player.getRidingEntity();
 
 			if (Minecraft.getMinecraft().gameSettings.keyBindForward.isKeyDown()) {
 				// player pressed forward & is in my entity send network message
@@ -210,10 +210,10 @@ public class InputEventHandler {
 	 * Performs a ray trace for the distance specified * Args: distance
 	 */
 	public RayTraceResult rayTrace(double par1) {
-		Vec3d var4 = Minecraft.getMinecraft().thePlayer.getPositionEyes(1);
-		Vec3d var5 = Minecraft.getMinecraft().thePlayer.getLook(1);
-		Vec3d var6 = var4.addVector(var5.xCoord * par1, var5.yCoord * par1, var5.zCoord * par1);
-		return Minecraft.getMinecraft().theWorld.rayTraceBlocks(var4, var6);
+		Vec3d var4 = Minecraft.getMinecraft().player.getPositionEyes(1);
+		Vec3d var5 = Minecraft.getMinecraft().player.getLook(1);
+		Vec3d var6 = var4.addVector(var5.x * par1, var5.y * par1, var5.z * par1);
+		return Minecraft.getMinecraft().world.rayTraceBlocks(var4, var6);
 	}
 
 }

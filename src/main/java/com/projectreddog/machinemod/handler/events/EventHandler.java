@@ -19,12 +19,12 @@ public class EventHandler {
 	public void HarvestDropEvent(BlockEvent.HarvestDropsEvent event) {
 		if (event.getState().getBlock() == Blocks.TALLGRASS) {
 			// event.world.getBiomeGenForCoords(event.pos).
-			if (BiomeDictionary.isBiomeOfType(event.getWorld().getBiome(event.getPos()), Type.PLAINS)) {
+			if (BiomeDictionary.hasType(event.getWorld().getBiome(event.getPos()), Type.PLAINS)) {
 				Random r = new Random();
 				if (r.nextFloat() > .8) {
 					event.getDrops().add(new ItemStack(ModItems.cornseed));
 				}
-			} else if (BiomeDictionary.isBiomeOfType(event.getWorld().getBiome(event.getPos()), Type.SAVANNA)) {
+			} else if (BiomeDictionary.hasType(event.getWorld().getBiome(event.getPos()), Type.SAVANNA)) {
 				Random r = new Random();
 				if (r.nextFloat() > .97) {
 					event.getDrops().add(new ItemStack(ModItems.cornseed));

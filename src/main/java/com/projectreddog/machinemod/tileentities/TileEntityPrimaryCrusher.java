@@ -51,7 +51,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 
 	@Override
 	public void update() {
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			if (timeTillCoolDown > 0) {
 				timeTillCoolDown--;
 				return;
@@ -60,7 +60,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 
 			// LogHelper.info("TE update entity called");
 			boundingBox = new AxisAlignedBB(this.pos.up(), this.pos.up().add(1, 1, 1));
-			List list = worldObj.getEntitiesWithinAABB(EntityItem.class, boundingBox);
+			List list = world.getEntitiesWithinAABB(EntityItem.class, boundingBox);
 			processEntitiesInList(list);
 			for (int i = 0; i < this.getSizeInventory(); i++) {
 				ItemStack item = this.getStackInSlot(i);
@@ -151,8 +151,8 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 					} else {
 
 						ItemStack tmpstack = item.copy();
-						if (tmpstack.stackSize > 1) {
-							tmpstack.stackSize = 1;
+						if (tmpstack.getCount() > 1) {
+							tmpstack.setCount(1);
 						}
 
 						dropDust(i, tmpstack);
@@ -173,7 +173,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 			// TODO position entity based on enum facing :D
 			double ejectOffsetX = 0d;
 			double ejectOffsetZ = 0d;
-			EnumFacing ef = (EnumFacing) worldObj.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
+			EnumFacing ef = (EnumFacing) world.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
 			switch (ef) {
 			case NORTH:
 				// no rotate?
@@ -198,13 +198,13 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 				break;
 
 			}
-			EntityItem entityItem = new EntityItem(worldObj, this.pos.getX() + ejectOffsetX, this.pos.getY(), this.pos.getZ() + ejectOffsetZ, is);
+			EntityItem entityItem = new EntityItem(world, this.pos.getX() + ejectOffsetX, this.pos.getY(), this.pos.getZ() + ejectOffsetZ, is);
 
 			entityItem.forceSpawn = true;
 			entityItem.motionX = 0;
 			entityItem.motionY = 0;
 			entityItem.motionZ = 0;
-			worldObj.spawnEntityInWorld(entityItem);
+			world.spawnEntity(entityItem);
 		}
 	}
 
@@ -213,14 +213,14 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
 				if (entity instanceof EntityItem) {
-					ItemStack is = ((EntityItem) entity).getEntityItem();
-					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
+					ItemStack is = ((EntityItem) entity).getItem();
+					is.setItemDamage(((EntityItem) entity).getItem().getItemDamage());
 					if (!entity.isDead) {
-						if (is.stackSize > 0) {
+						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
 
-							if (is1 != null && is1.stackSize != 0) {
-								((EntityItem) entity).setEntityItemStack(is1);
+							if (is1 != null && is1.getCount() != 0) {
+								((EntityItem) entity).setItem(is1);
 							} else {
 								entity.setDead();
 							}
@@ -235,26 +235,26 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 	protected ItemStack addToinventory(ItemStack is) {
 		int i = getSizeInventory();
 
-		for (int j = 0; j < i && is != null && is.stackSize > 0; ++j) {
+		for (int j = 0; j < i && is != null && is.getCount() > 0; ++j) {
 			if (is != null) {
 
 				if (getStackInSlot(j) != null) {
 					if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getItemDamage() == is.getItemDamage()) {
 						// same item remove from is put into slot any amt not to
 						// excede stack max
-						if (getStackInSlot(j).stackSize < getStackInSlot(j).getMaxStackSize()) {
+						if (getStackInSlot(j).getCount() < getStackInSlot(j).getMaxStackSize()) {
 							// we have room to add to this stack
-							if (is.stackSize <= getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize) {
+							if (is.getCount() <= getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount()) {
 								// /all of the stack will fit in this slot do
 								// so.
 
-								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).stackSize + is.stackSize, is.getItemDamage()));
+								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).getCount() + is.getCount(), is.getItemDamage()));
 								is = null;
 							} else {
 								// we have more
-								int countRemain = is.stackSize - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize);
+								int countRemain = is.getCount() - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount());
 								setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getItemDamage()));
-								is.stackSize = countRemain;
+								is.setCount(countRemain);
 							}
 
 						}
@@ -287,7 +287,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
 			byte slot = tag.getByte("Slot");
 			if (slot >= 0 && slot < inventory.length) {
-				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
+				inventory[slot] = new ItemStack(tag);
 			}
 		}
 	}
@@ -347,11 +347,11 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 	public ItemStack decrStackSize(int slot, int amt) {
 		ItemStack stack = getStackInSlot(slot);
 		if (stack != null) {
-			if (stack.stackSize <= amt) {
+			if (stack.getCount() <= amt) {
 				setInventorySlotContents(slot, null);
 			} else {
 				stack = stack.splitStack(amt);
-				if (stack.stackSize == 0) {
+				if (stack.getCount() == 0) {
 					setInventorySlotContents(slot, null);
 				}
 
@@ -372,8 +372,8 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inventory[slot] = stack;
-		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
-			stack.stackSize = getInventoryStackLimit();
+		if (stack != null && stack.getCount() > getInventoryStackLimit()) {
+			stack.setCount(getInventoryStackLimit());
 		}
 
 	}
@@ -384,7 +384,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer playerIn) {
+	public boolean isUsableByPlayer(EntityPlayer playerIn) {
 		return playerIn.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
 	}
 
@@ -484,6 +484,17 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 	public EnumFacing outputDirection() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		for (int i = 0; i < inventory.length; i++) {
+			if (!inventory[i].isEmpty()) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 }

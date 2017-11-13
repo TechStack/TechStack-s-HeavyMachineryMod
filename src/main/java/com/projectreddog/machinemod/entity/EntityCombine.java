@@ -37,7 +37,7 @@ public class EntityCombine extends EntityMachineModRideable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// bucket Down
 			// break blocks first
 			int angle;
@@ -54,13 +54,13 @@ public class EntityCombine extends EntityMachineModRideable {
 						}
 						BlockPos bp;
 						bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + j, posZ + calcTwoOffsetZ(3.5, angle, i));
-						if (worldObj.getBlockState(bp).getBlock() instanceof IGrowable) {
+						if (world.getBlockState(bp).getBlock() instanceof IGrowable) {
 
-							IGrowable iGrowable = (IGrowable) worldObj.getBlockState(bp).getBlock();
+							IGrowable iGrowable = (IGrowable) world.getBlockState(bp).getBlock();
 
-							if (!iGrowable.canGrow(worldObj, bp, worldObj.getBlockState(bp), worldObj.isRemote)) {
+							if (!iGrowable.canGrow(world, bp, world.getBlockState(bp), world.isRemote)) {
 
-								BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
+								BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
 							}
 						}
@@ -70,7 +70,7 @@ public class EntityCombine extends EntityMachineModRideable {
 
 				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(3.5, 90, -1) + posX - .5d, posY, calcTwoOffsetZ(3.5, 90, -1) + posZ - .5d, calcTwoOffsetX(3.5, 90, 1) + posX + .5d, posY + 1, calcTwoOffsetZ(3.5, 90, 1) + posZ + .5d);
 
-				List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
+				List list = this.world.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
 				collidedEntitiesInList(list);
 			}
 			if (this.isPlayerPushingJumpButton) {
@@ -81,13 +81,13 @@ public class EntityCombine extends EntityMachineModRideable {
 				for (int i = 0; i < this.getSizeInventory(); i++) {
 					ItemStack item = this.getStackInSlot(i);
 
-					if (item != null && item.stackSize > 0) {
+					if (item != null && item.getCount() > 0) {
 						;
 
-						EntityItem entityItem = new EntityItem(worldObj, posX + calcOffsetX(3.5), posY + 4, posZ + calcOffsetZ(3.5), item);
+						EntityItem entityItem = new EntityItem(world, posX + calcOffsetX(3.5), posY + 4, posZ + calcOffsetZ(3.5), item);
 
 						if (item.hasTagCompound()) {
-							entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+							entityItem.getItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
 						}
 
 						float factor = 0.05F;
@@ -95,7 +95,7 @@ public class EntityCombine extends EntityMachineModRideable {
 						entityItem.motionY = 0;
 						// entityItem.motionZ = rand.nextGaussian() * factor;
 						entityItem.forceSpawn = true;
-						worldObj.spawnEntityInWorld(entityItem);
+						world.spawnEntity(entityItem);
 						// item.stackSize = 0;
 						this.setInventorySlotContents(i, null);
 					}
@@ -114,14 +114,14 @@ public class EntityCombine extends EntityMachineModRideable {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
 				if (entity instanceof EntityItem) {
-					ItemStack is = ((EntityItem) entity).getEntityItem().copy();
-					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
+					ItemStack is = ((EntityItem) entity).getItem().copy();
+					is.setItemDamage(((EntityItem) entity).getItem().getItemDamage());
 					if (!entity.isDead) {
-						if (is.stackSize > 0) {
+						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
 
-							if (is1 != null && is1.stackSize != 0) {
-								((EntityItem) entity).setEntityItemStack(is1);
+							if (is1 != null && is1.getCount() != 0) {
+								((EntityItem) entity).setItem(is1);
 							} else {
 								entity.setDead();
 							}

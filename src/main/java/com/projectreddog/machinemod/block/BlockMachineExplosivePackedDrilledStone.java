@@ -18,6 +18,8 @@ public class BlockMachineExplosivePackedDrilledStone extends BlockMachineModMany
 		super();
 		// 1.8
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE);
+		this.setRegistryName(Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE);
+
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
 		this.setSoundType(SoundType.STONE);
@@ -28,7 +30,9 @@ public class BlockMachineExplosivePackedDrilledStone extends BlockMachineModMany
 	@Override
 	// public void onNeighborBlockChange(World worldIn, BlockPos pos,
 	// IBlockState state, Block neighborBlock) {}
-	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn)
+	// public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
+
+	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
 
 	{
 		// public void onNeighborChange(IBlockAccess world, BlockPos bp, BlockPos neighbor) {

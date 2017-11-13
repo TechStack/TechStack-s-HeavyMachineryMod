@@ -88,7 +88,9 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemFood;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.oredict.OreDictionary;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
@@ -123,6 +125,7 @@ public class ModItems {
 	public static final ItemMachineMod light = new ItemLight();
 	public static final ItemMachineMod lightmodule = new ItemLightModule();
 
+	@ObjectHolder("bagger")
 	public static final ItemMachineMod bagger = new ItemBagger();
 
 	public static final ItemMachineMod tracksegment = new ItemTrackSegment();
@@ -202,57 +205,57 @@ public class ModItems {
 		// machines
 
 		if (Reference.enableBagger) {
-			GameRegistry.registerItem(bagger, "bagger");
+			ForgeRegistries.ITEMS.register(bagger);// , "bagger");
 
 		}
 		if (Reference.enableBulldozer) {
-			GameRegistry.registerItem(bulldozer, "bulldozer");
+			ForgeRegistries.ITEMS.register(bulldozer);// , "bulldozer");
 		}
 
 		if (Reference.enableCombine) {
-			GameRegistry.registerItem(combine, "combine");
+			ForgeRegistries.ITEMS.register(combine);// , "combine");
 
 		}
 		if (Reference.enableCrane) {
-			GameRegistry.registerItem(crane, "crane");
+			ForgeRegistries.ITEMS.register(crane);// , "crane");
 
 		}
 		if (Reference.enableDrillingRig) {
-			GameRegistry.registerItem(drillingrig, "drillingrig");
+			ForgeRegistries.ITEMS.register(drillingrig);// , "drillingrig");
 
 		}
 
 		if (Reference.enableDumptruck) {
-			GameRegistry.registerItem(dumptruck, "dumptruck");
+			ForgeRegistries.ITEMS.register(dumptruck);// , "dumptruck");
 
 		}
 
 		if (Reference.enableExcavator) {
-			GameRegistry.registerItem(excavator, "excavator");
+			ForgeRegistries.ITEMS.register(excavator);// , "excavator");
 
 		}
 
 		if (Reference.enableGrader) {
-			GameRegistry.registerItem(grader, "grader");
+			ForgeRegistries.ITEMS.register(grader);// , "grader");
 
 		}
 
 		if (Reference.enableLawnmower) {
-			GameRegistry.registerItem(lawnmower, "lawnmower");
+			ForgeRegistries.ITEMS.register(lawnmower);// , "lawnmower");
 
 		}
 		if (Reference.enableLoader) {
-			GameRegistry.registerItem(loader, "loader");
+			ForgeRegistries.ITEMS.register(loader);// , "loader");
 
 		}
 
 		if (Reference.enableOilRig) {
-			GameRegistry.registerItem(oilrig, "oilrig");
+			ForgeRegistries.ITEMS.register(oilrig);// , "oilrig");
 
 		}
 
 		if (Reference.enablePaver) {
-			GameRegistry.registerItem(paver, "paver");
+			ForgeRegistries.ITEMS.register(paver);// , "paver");
 
 		}
 
@@ -260,110 +263,110 @@ public class ModItems {
 			// pump jack future use
 		}
 		if (Reference.enableRoadRoller) {
-			GameRegistry.registerItem(roadroller, "roadroller");
+			ForgeRegistries.ITEMS.register(roadroller);// , "roadroller");
 
 		}
 		if (Reference.enableSemiTractor) {
-			GameRegistry.registerItem(semitractor, "semitractor");
+			ForgeRegistries.ITEMS.register(semitractor);// , "semitractor");
 
 		}
 		if (Reference.enableSub) {
-			GameRegistry.registerItem(sub, "sub");
+			ForgeRegistries.ITEMS.register(sub);// , "sub");
 
 		}
 
 		if (Reference.enableChopper) {
-			GameRegistry.registerItem(chopper, "chopper");
+			ForgeRegistries.ITEMS.register(chopper);// , "chopper");
 
 		}
 
 		if (Reference.enableTractor) {
-			GameRegistry.registerItem(tractor, "tractor");
+			ForgeRegistries.ITEMS.register(tractor);// , "tractor");
 
 		}
 
-		GameRegistry.registerItem(paverscreed, "paverscreed");
-		GameRegistry.registerItem(rollerwheel, "rollerwheel");
+		ForgeRegistries.ITEMS.register(paverscreed);// , "paverscreed");
+		ForgeRegistries.ITEMS.register(rollerwheel);// , "rollerwheel");
 
-		GameRegistry.registerItem(liquidtanksegment, "liquidtanksegment");
+		ForgeRegistries.ITEMS.register(liquidtanksegment);// , "liquidtanksegment");
 
-		GameRegistry.registerItem(prop, "prop");
-		GameRegistry.registerItem(propcage, "propcage");
-		GameRegistry.registerItem(turboprop, "turboprop");
-		GameRegistry.registerItem(operatorsbubble, "operatorsbubble");
-		GameRegistry.registerItem(subbody, "subbody");
-		GameRegistry.registerItem(airtank, "airtank");
-		GameRegistry.registerItem(powercell, "powercell");
-		GameRegistry.registerItem(light, "light");
-		GameRegistry.registerItem(lightmodule, "lightmodule");
+		ForgeRegistries.ITEMS.register(prop);// , "prop");
+		ForgeRegistries.ITEMS.register(propcage);// , "propcage");
+		ForgeRegistries.ITEMS.register(turboprop);// , "turboprop");
+		ForgeRegistries.ITEMS.register(operatorsbubble);// , "operatorsbubble");
+		ForgeRegistries.ITEMS.register(subbody);// , "subbody");
+		ForgeRegistries.ITEMS.register(airtank);// , "airtank");
+		ForgeRegistries.ITEMS.register(powercell);// , "powercell");
+		ForgeRegistries.ITEMS.register(light);// , "light");
+		ForgeRegistries.ITEMS.register(lightmodule);// , "lightmodule");
 
-		GameRegistry.registerItem(tracksegment, "tracksegment");
+		ForgeRegistries.ITEMS.register(tracksegment);// , "tracksegment");
 
-		GameRegistry.registerItem(cutterbucket, "cutterbucket");
-		GameRegistry.registerItem(rigging, "rigging");
-		GameRegistry.registerItem(bucketwheel, "bucketwheel");
-		GameRegistry.registerItem(operatorsbooth, "operatorsbooth");
-		GameRegistry.registerItem(powerplant, "powerplant");
-		GameRegistry.registerItem(processingplant, "processingplant");
-		GameRegistry.registerItem(baggerstorage, "baggerstorage");
-		GameRegistry.registerItem(baggerbody, "baggerbody");
+		ForgeRegistries.ITEMS.register(cutterbucket);// , "cutterbucket");
+		ForgeRegistries.ITEMS.register(rigging);// , "rigging");
+		ForgeRegistries.ITEMS.register(bucketwheel);// , "bucketwheel");
+		ForgeRegistries.ITEMS.register(operatorsbooth);// , "operatorsbooth");
+		ForgeRegistries.ITEMS.register(powerplant);// , "powerplant");
+		ForgeRegistries.ITEMS.register(processingplant);// , "processingplant");
+		ForgeRegistries.ITEMS.register(baggerstorage);// , "baggerstorage");
+		ForgeRegistries.ITEMS.register(baggerbody);// , "baggerbody");
 
-		GameRegistry.registerItem(conecrusher, "conecrusher");
+		ForgeRegistries.ITEMS.register(conecrusher);// , "conecrusher");
 
-		GameRegistry.registerItem(boomarmsegment, "boomarmsegment");
+		ForgeRegistries.ITEMS.register(boomarmsegment);// , "boomarmsegment");
 
-		GameRegistry.registerItem(hose, "hose");
-		GameRegistry.registerItem(mowerdeck, "mowerdeck");
-		GameRegistry.registerItem(rawasphalt, "rawasphalt");
+		ForgeRegistries.ITEMS.register(hose);// , "hose");
+		ForgeRegistries.ITEMS.register(mowerdeck);// , "mowerdeck");
+		ForgeRegistries.ITEMS.register(rawasphalt);// , "rawasphalt");
 
-		GameRegistry.registerItem(lidwithspout, "lidwithspout");
-		GameRegistry.registerItem(handdrill, "handdrill");
-		GameRegistry.registerItem(anfo, "anfo");
+		ForgeRegistries.ITEMS.register(lidwithspout);// , "lidwithspout");
+		ForgeRegistries.ITEMS.register(handdrill);// , "handdrill");
+		ForgeRegistries.ITEMS.register(anfo);// , "anfo");
 
-		GameRegistry.registerItem(cornseed, "cornseed");
-		GameRegistry.registerItem(trencher, "trencher");
-		GameRegistry.registerItem(irondust, "irondust");
-		GameRegistry.registerItem(golddust, "golddust");
+		ForgeRegistries.ITEMS.register(cornseed);// , "cornseed");
+		ForgeRegistries.ITEMS.register(trencher);// , "trencher");
+		ForgeRegistries.ITEMS.register(irondust);// , "irondust");
+		ForgeRegistries.ITEMS.register(golddust);// , "golddust");
 
-		GameRegistry.registerItem(drillhead, "drillhead");
-		GameRegistry.registerItem(drillpipe, "drillpipe");
-		GameRegistry.registerItem(plow, "plow");
-		GameRegistry.registerItem(planter, "planter");
-		GameRegistry.registerItem(sprayer, "sprayer");
-		GameRegistry.registerItem(woodengear, "woodengear");
-		GameRegistry.registerItem(stonegear, "stonegear");
-		GameRegistry.registerItem(irongear, "irongear");
+		ForgeRegistries.ITEMS.register(drillhead);// , "drillhead");
+		ForgeRegistries.ITEMS.register(drillpipe);// , "drillpipe");
+		ForgeRegistries.ITEMS.register(plow);// , "plow");
+		ForgeRegistries.ITEMS.register(planter);// , "planter");
+		ForgeRegistries.ITEMS.register(sprayer);// , "sprayer");
+		ForgeRegistries.ITEMS.register(woodengear);// , "woodengear");
+		ForgeRegistries.ITEMS.register(stonegear);// , "stonegear");
+		ForgeRegistries.ITEMS.register(irongear);// , "irongear");
 
-		GameRegistry.registerItem(transmission, "transmission");
-		GameRegistry.registerItem(turbofan, "turbofan");
+		ForgeRegistries.ITEMS.register(transmission);// , "transmission");
+		ForgeRegistries.ITEMS.register(turbofan);// , "turbofan");
 
-		GameRegistry.registerItem(camshaft, "camshaft");
-		GameRegistry.registerItem(piston, "piston");
-		GameRegistry.registerItem(turbo, "turbo");
-		GameRegistry.registerItem(turboengine, "turboengine");
-		GameRegistry.registerItem(flatbedtrailer, "flatbedtrailer");
+		ForgeRegistries.ITEMS.register(camshaft);// , "camshaft");
+		ForgeRegistries.ITEMS.register(piston);// , "piston");
+		ForgeRegistries.ITEMS.register(turbo);// , "turbo");
+		ForgeRegistries.ITEMS.register(turboengine);// , "turboengine");
+		ForgeRegistries.ITEMS.register(flatbedtrailer);// , "flatbedtrailer");
 
-		GameRegistry.registerItem(livestocktrailer, "livestocktrailer");
-		GameRegistry.registerItem(tankertrailer, "tankertrailer");
-		GameRegistry.registerItem(cargotrailer, "cargotrailer");
+		ForgeRegistries.ITEMS.register(livestocktrailer);// , "livestocktrailer");
+		ForgeRegistries.ITEMS.register(tankertrailer);// , "tankertrailer");
+		ForgeRegistries.ITEMS.register(cargotrailer);// , "cargotrailer");
 
-		GameRegistry.registerItem(dozerblade, "dozerblade");
-		GameRegistry.registerItem(tracks, "tracks");
-		GameRegistry.registerItem(wheel, "wheel");
-		GameRegistry.registerItem(loaderbucket, "loaderbucket");
-		GameRegistry.registerItem(dumperbed, "dumperbed");
-		GameRegistry.registerItem(engine, "engine");
-		GameRegistry.registerItem(havesterhead, "havesterhead");
-		GameRegistry.registerItem(fuelcan, "fuelcan");
-		GameRegistry.registerItem(graderblade, "graderblade");
-		GameRegistry.registerItem(wrench, "wrench");
+		ForgeRegistries.ITEMS.register(dozerblade);// , "dozerblade");
+		ForgeRegistries.ITEMS.register(tracks);// , "tracks");
+		ForgeRegistries.ITEMS.register(wheel);// , "wheel");
+		ForgeRegistries.ITEMS.register(loaderbucket);// , "loaderbucket");
+		ForgeRegistries.ITEMS.register(dumperbed);// , "dumperbed");
+		ForgeRegistries.ITEMS.register(engine);// , "engine");
+		ForgeRegistries.ITEMS.register(havesterhead);// , "havesterhead");
+		ForgeRegistries.ITEMS.register(fuelcan);// , "fuelcan");
+		ForgeRegistries.ITEMS.register(graderblade);// , "graderblade");
+		ForgeRegistries.ITEMS.register(wrench);// , "wrench");
 
-		GameRegistry.registerItem(carbondust, "carbondust");
+		ForgeRegistries.ITEMS.register(carbondust);// , "carbondust");
 
-		GameRegistry.registerItem(steeldust, "steeldust");
+		ForgeRegistries.ITEMS.register(steeldust);// , "steeldust");
 
-		GameRegistry.registerItem(steelingot, "steelingot");
-		GameRegistry.registerItem(aluminumingot, "aluminumingot");
+		ForgeRegistries.ITEMS.register(steelingot);// , "steelingot");
+		ForgeRegistries.ITEMS.register(aluminumingot);// , "aluminumingot");
 
 		/// register ore dict
 		OreDictionary.registerOre("gearWood", woodengear);

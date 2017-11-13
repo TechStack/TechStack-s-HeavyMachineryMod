@@ -64,7 +64,7 @@ public class EntityBagger extends EntityMachineModRideable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			if (this.getControllingPassenger() != null && currentFuelLevel > 0) {
 				this.Attribute2++;
 				currentFuelLevel--;
@@ -111,18 +111,18 @@ public class EntityBagger extends EntityMachineModRideable {
 
 						bp = new BlockPos(posX + calcTwoOffsetX(10 + h + hOffsetDuetoYoffset, 0, 0), posY + bucketOffsetY + v + 3, posZ + calcTwoOffsetZ(10 + h + hOffsetDuetoYoffset, 0, 0));
 
-						if (!(worldObj.getBlockState(bp).getBlock().isAir(worldObj.getBlockState(bp), worldObj, bp)) && !(worldObj.getBlockState(bp).getBlock() == Blocks.BEDROCK) && !(worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.WATER) && !(worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.LAVA)
-								&& !(worldObj.getBlockState(bp).getBlock() == Blocks.OBSIDIAN)) {
+						if (!(world.getBlockState(bp).getBlock().isAir(world.getBlockState(bp), world, bp)) && !(world.getBlockState(bp).getBlock() == Blocks.BEDROCK) && !(world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)) == Material.WATER) && !(world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)) == Material.LAVA)
+								&& !(world.getBlockState(bp).getBlock() == Blocks.OBSIDIAN)) {
 
-							// worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-							// worldObj.setBlockToAir(bp);
-							BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
+							// world.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, world.getBlockState(bp), 0);
+							// world.setBlockToAir(bp);
+							BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
 						}
 
 						AxisAlignedBB bucketboundingBox = new AxisAlignedBB(bp.getX(), bp.getY(), bp.getZ(), bp.getX() + 1, bp.getY() + 1, bp.getZ() + 1);
 
-						List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
+						List list = this.world.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
 						collidedEntitiesInList(list);
 
 						// if (this.Attribute1 == this.getMinAngle()) {
@@ -147,7 +147,7 @@ public class EntityBagger extends EntityMachineModRideable {
 						// entityItem.motionY = 0;
 						// // entityItem.motionZ = rand.nextGaussian() * factor;
 						// entityItem.forceSpawn = true;
-						// worldObj.spawnEntityInWorld(entityItem);
+						// world.spawnEntityInWorld(entityItem);
 						// // item.stackSize = 0;
 						//
 						// this.setInventorySlotContents(i, null);
@@ -175,14 +175,14 @@ public class EntityBagger extends EntityMachineModRideable {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
 				if (entity instanceof EntityItem) {
-					ItemStack is = ((EntityItem) entity).getEntityItem().copy();
-					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
+					ItemStack is = ((EntityItem) entity).getItem().copy();
+					is.setItemDamage(((EntityItem) entity).getItem().getItemDamage());
 					if (!entity.isDead) {
-						if (is.stackSize > 0) {
+						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
 
-							if (is1 != null && is1.stackSize != 0) {
-								((EntityItem) entity).setEntityItemStack(is1);
+							if (is1 != null && is1.getCount() != 0) {
+								((EntityItem) entity).setItem(is1);
 							} else {
 								entity.setDead();
 							}

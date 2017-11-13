@@ -58,7 +58,7 @@ public class ModelChopper extends ModelTransportable {
 			EntityChopper ec = (EntityChopper) entity;
 			double dx = ec.motionX;
 			double dz = ec.motionZ;
-			float speed = MathHelper.sqrt_double(dx * dx + dz * dz);
+			float speed = MathHelper.sqrt(dx * dx + dz * dz);
 			if (ec.isPlayerAccelerating) {
 				GL11.glRotatef(10f, 1, 0, 0);
 			}

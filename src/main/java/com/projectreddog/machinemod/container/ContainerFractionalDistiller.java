@@ -127,7 +127,7 @@ public class ContainerFractionalDistiller extends Container {
 			if (stackInSlot.getCount() == stack.getCount()) {
 				return null;
 			}
-			slotObject.onPickupFromSlot(player, stackInSlot);
+			slotObject.onTake(player, stackInSlot);
 		}
 		return stack;
 	}
@@ -143,7 +143,7 @@ public class ContainerFractionalDistiller extends Container {
 				IContainerListener icrafting = (IContainerListener) this.listeners.get(i);
 
 				if (lastValue[j] != this.fractionaldistiller.getField(j)) {
-					icrafting.sendProgressBarUpdate(this, j, this.fractionaldistiller.getField(j));
+					icrafting.sendWindowProperty(this, j, this.fractionaldistiller.getField(j));
 				}
 			}
 			lastValue[j] = this.fractionaldistiller.getField(j);

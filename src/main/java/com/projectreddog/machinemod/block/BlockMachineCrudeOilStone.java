@@ -15,6 +15,8 @@ public class BlockMachineCrudeOilStone extends BlockMachineMod {
 		super();
 		// 1.8
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_CRUDE_OIL_STONE);
+		this.setRegistryName(Reference.MODBLOCK_MACHINE_CRUDE_OIL_STONE);
+
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setHardness(5f);// not sure on the hardness
 		this.setSoundType(SoundType.STONE);

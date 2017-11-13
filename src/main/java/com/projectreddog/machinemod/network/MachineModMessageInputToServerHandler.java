@@ -12,7 +12,7 @@ public class MachineModMessageInputToServerHandler implements IMessageHandler<Ma
 	@Override
 	public IMessage onMessage(final MachineModMessageInputToServer message, final MessageContext ctx) {
 
-		ctx.getServerHandler().playerEntity.getServer().addScheduledTask(new Runnable() {
+		ctx.getServerHandler().player.getServer().addScheduledTask(new Runnable() {
 			public void run() {
 				processMessage(message, ctx);
 			}
@@ -22,12 +22,12 @@ public class MachineModMessageInputToServerHandler implements IMessageHandler<Ma
 
 	public void processMessage(MachineModMessageInputToServer message, MessageContext ctx) {
 
-		Entity entity = ctx.getServerHandler().playerEntity.worldObj.getEntityByID(message.entityid);
+		Entity entity = ctx.getServerHandler().player.world.getEntityByID(message.entityid);
 
 		if (entity != null) {
 
 			if (entity instanceof EntityMachineModRideable) {
-				if (((EntityMachineModRideable) entity).getControllingPassenger() == ctx.getServerHandler().playerEntity) {
+				if (((EntityMachineModRideable) entity).getControllingPassenger() == ctx.getServerHandler().player) {
 					// its ridden by this player (avoid some hacks)
 					((EntityMachineModRideable) entity).isPlayerAccelerating = message.isPlayerAccelerating;
 					((EntityMachineModRideable) entity).isPlayerBreaking = message.isPlayerBreaking;

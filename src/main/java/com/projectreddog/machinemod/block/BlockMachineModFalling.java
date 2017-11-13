@@ -91,7 +91,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 
 					// world.setBlockToAir(x, y, z);
 
-					world.spawnEntityInWorld(entityfallingblock);
+					world.spawnEntity(entityfallingblock);
 				}
 			} else {
 
@@ -136,7 +136,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 		for (int i = -1; i < 2; i++) {
 			for (int j = -1; j < 2; j++) {
 
-				if ((MathHelper.abs_int(i) == 1 && j == 0) || (i == 0 && MathHelper.abs_int(j) == 1)) {
+				if ((MathHelper.abs(i) == 1 && j == 0) || (i == 0 && MathHelper.abs(j) == 1)) {
 
 					bp = new BlockPos(x + i, y, z + j);
 					block = world.getBlockState(bp).getBlock();

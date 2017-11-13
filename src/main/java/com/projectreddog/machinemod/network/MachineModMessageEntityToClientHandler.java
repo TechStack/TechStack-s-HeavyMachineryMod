@@ -15,8 +15,8 @@ public class MachineModMessageEntityToClientHandler implements IMessageHandler<M
 		// LogHelper.info("in machineModMessageEntityToClient Handler");
 		// LogHelper.info("Message data" + message);
 		// LogHelper.info("on message MachineModMessageEntityToClientHandler");
-		if (Minecraft.getMinecraft().theWorld != null) {
-			if (Minecraft.getMinecraft().theWorld.isRemote) {
+		if (Minecraft.getMinecraft().world != null) {
+			if (Minecraft.getMinecraft().world.isRemote) {
 
 				Minecraft.getMinecraft().addScheduledTask(new Runnable() {
 					public void run() {
@@ -30,9 +30,9 @@ public class MachineModMessageEntityToClientHandler implements IMessageHandler<M
 
 	public void processMessage(MachineModMessageEntityToClient message) {
 		if (message != null) {
-			if (Minecraft.getMinecraft().theWorld != null) {
-				if (Minecraft.getMinecraft().thePlayer != null) {
-					Entity entity = Minecraft.getMinecraft().theWorld.getEntityByID(message.entityid);
+			if (Minecraft.getMinecraft().world != null) {
+				if (Minecraft.getMinecraft().player != null) {
+					Entity entity = Minecraft.getMinecraft().world.getEntityByID(message.entityid);
 
 					if (entity != null) {
 

@@ -1,7 +1,6 @@
 package com.projectreddog.machinemod.item;
 
 import com.projectreddog.machinemod.init.ModBlocks;
-import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,12 +14,16 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
 public class ItemCornSeed extends ItemFood implements IPlantable {
+	public String registryName = "cornseed";
 
 	public ItemCornSeed() {
 
 		// heal sat wolf fav
 		super(2, 0.3F, false);
-		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + "cornseed");
+		// this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + "cornseed");
+		this.setUnlocalizedName(registryName);
+		this.setRegistryName(registryName);
+
 		this.maxStackSize = 64;
 
 	}
@@ -40,7 +43,7 @@ public class ItemCornSeed extends ItemFood implements IPlantable {
 			return false;
 		} else if (worldIn.getBlockState(pos).getBlock().canSustainPlant(worldIn.getBlockState(pos), worldIn, pos, EnumFacing.UP, this) && worldIn.isAirBlock(pos.up())) {
 			worldIn.setBlockState(pos.up(), ModBlocks.corn.getDefaultState());
-			--stack.stackSize;
+			stack.setCount(stack.getCount() - 1);
 			return true;
 		} else {
 			return false;

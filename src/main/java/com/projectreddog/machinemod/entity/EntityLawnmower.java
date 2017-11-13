@@ -7,9 +7,9 @@ import com.projectreddog.machinemod.init.ModItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 public class EntityLawnmower extends EntityMachineModRideable {
@@ -38,7 +38,7 @@ public class EntityLawnmower extends EntityMachineModRideable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// digMethodA();
 			BlockPos bp;
 			int angle = 0;
@@ -46,26 +46,26 @@ public class EntityLawnmower extends EntityMachineModRideable {
 			// (3 wide)
 			if (this.isPlayerPushingSprintButton) {
 				bp = new BlockPos(posX, posY - 1, posZ);
-				if (worldObj.getBlockState(bp).getBlock() == Blocks.GRASS) {
+				if (world.getBlockState(bp).getBlock() == Blocks.GRASS) {
 
 					// withProperty(FACING, placer.getHorizontalFacing().getOpposite()
 					if (this.yaw < 45 || this.yaw > 315) {
-						worldObj.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, EnumFacing.SOUTH));
+						world.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, EnumFacing.SOUTH));
 					} else if (this.yaw > 45 && this.yaw < 135) {
-						worldObj.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, EnumFacing.WEST));
+						world.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, EnumFacing.WEST));
 					} else if (this.yaw > 135 && this.yaw < 225) {
-						worldObj.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, EnumFacing.NORTH));
+						world.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, EnumFacing.NORTH));
 					} else {
-						worldObj.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, EnumFacing.EAST));
+						world.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, EnumFacing.EAST));
 					}
 					ItemStack is = new ItemStack(Blocks.TALLGRASS, 1, 1);
-					EntityItem entityItem = new EntityItem(worldObj, bp.getX(), bp.getY() + 1, bp.getZ(), is);
+					EntityItem entityItem = new EntityItem(world, bp.getX(), bp.getY() + 1, bp.getZ(), is);
 
 					entityItem.forceSpawn = true;
 					entityItem.motionX = 0;
 					entityItem.motionY = 0;
 					entityItem.motionZ = 0;
-					worldObj.spawnEntityInWorld(entityItem);
+					world.spawnEntity(entityItem);
 				}
 
 			}

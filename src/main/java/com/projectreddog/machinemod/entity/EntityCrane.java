@@ -30,7 +30,7 @@ public class EntityCrane extends EntityMachineModRideable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// if (this.Attribute1 == this.getMaxAngle()) {
 			// bucket Down
 			// break blocks first
@@ -45,8 +45,8 @@ public class EntityCrane extends EntityMachineModRideable {
 						}
 						BlockPos bp;
 						bp = new BlockPos(posX + calcTwoOffsetX(10 + j, angle, i), posY + k + 26 - ((int) this.Attribute1), posZ + calcTwoOffsetZ(10 + j, angle, i));
-						if (worldObj.getBlockState(bp).getBlock().getBlockHardness(worldObj.getBlockState(bp), worldObj, bp) < 100) {
-							BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
+						if (world.getBlockState(bp).getBlock().getBlockHardness(world.getBlockState(bp), world, bp) < 100) {
+							BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
 						}
 					}

@@ -12,7 +12,7 @@ public class MachineModMessageRequestAllInventoryToServerHandler implements IMes
 	@Override
 	public IMessage onMessage(final MachineModMessageRequestAllInventoryToServer message, final MessageContext ctx) {
 
-		ctx.getServerHandler().playerEntity.getServer().addScheduledTask(new Runnable() {
+		ctx.getServerHandler().player.getServer().addScheduledTask(new Runnable() {
 			public void run() {
 				processMessage(message, ctx);
 			}
@@ -22,7 +22,7 @@ public class MachineModMessageRequestAllInventoryToServerHandler implements IMes
 
 	public void processMessage(MachineModMessageRequestAllInventoryToServer message, MessageContext ctx) {
 
-		Entity entity = ctx.getServerHandler().playerEntity.worldObj.getEntityByID(message.entityid);
+		Entity entity = ctx.getServerHandler().player.world.getEntityByID(message.entityid);
 
 		if (entity != null) {
 
@@ -30,7 +30,7 @@ public class MachineModMessageRequestAllInventoryToServerHandler implements IMes
 
 				// do function to send inventory to client
 
-				((EntityMachineModRideable) entity).sendAllInventoryToPlayer(ctx.getServerHandler().playerEntity);
+				((EntityMachineModRideable) entity).sendAllInventoryToPlayer(ctx.getServerHandler().player);
 			}
 		}
 	}

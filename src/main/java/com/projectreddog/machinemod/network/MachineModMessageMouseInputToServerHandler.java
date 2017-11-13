@@ -13,7 +13,7 @@ public class MachineModMessageMouseInputToServerHandler implements IMessageHandl
 	@Override
 	public IMessage onMessage(final MachineModMessageMouseInputToServer message, final MessageContext ctx) {
 
-		ctx.getServerHandler().playerEntity.getServer().addScheduledTask(new Runnable() {
+		ctx.getServerHandler().player.getServer().addScheduledTask(new Runnable() {
 			public void run() {
 				processMessage(message, ctx);
 			}
@@ -23,12 +23,12 @@ public class MachineModMessageMouseInputToServerHandler implements IMessageHandl
 
 	public void processMessage(MachineModMessageMouseInputToServer message, MessageContext ctx) {
 
-		Entity entity = ctx.getServerHandler().playerEntity.worldObj.getEntityByID(message.entityid);
+		Entity entity = ctx.getServerHandler().player.world.getEntityByID(message.entityid);
 
 		if (entity != null) {
 
 			if (entity instanceof EntityExcavator) {
-				if (((EntityExcavator) entity).getControllingPassenger() == ctx.getServerHandler().playerEntity) {
+				if (((EntityExcavator) entity).getControllingPassenger() == ctx.getServerHandler().player) {
 					// its ridden by this player (avoid some hacks)
 					((EntityExcavator) entity).targetBlockPos = new BlockPos(message.posX, message.posY, message.posZ);
 				}

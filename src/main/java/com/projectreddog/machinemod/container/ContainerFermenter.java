@@ -79,7 +79,7 @@ public class ContainerFermenter extends Container {
 			if (stackInSlot.getCount() == stack.getCount()) {
 				return null;
 			}
-			slotObject.onPickupFromSlot(player, stackInSlot);
+			slotObject.onTake(player, stackInSlot);
 		}
 		return stack;
 	}
@@ -94,7 +94,7 @@ public class ContainerFermenter extends Container {
 			IContainerListener icrafting = (IContainerListener) this.listeners.get(i);
 
 			if (this.lastFuelStorage != this.fermenter.getField(0)) {
-				icrafting.sendProgressBarUpdate(this, 0, this.fermenter.getField(0));
+				icrafting.sendWindowProperty(this, 0, this.fermenter.getField(0));
 			}
 
 		}

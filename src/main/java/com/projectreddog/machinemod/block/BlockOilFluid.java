@@ -17,6 +17,7 @@ public class BlockOilFluid extends BlockFluidClassic {
 		// TODO Auto-generated constructor stub
 		setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_FLUID_OIL);
+		this.setRegistryName(Reference.MODBLOCK_MACHINE_FLUID_OIL);
 
 	}
 

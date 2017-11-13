@@ -58,7 +58,7 @@ public class EntityExcavator extends EntityMachineModRideable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// if (this.Attribute1 == this.getMaxAngle()) {
 			// bucket Down
 			// break blocks first
@@ -115,7 +115,7 @@ public class EntityExcavator extends EntityMachineModRideable {
 
 				// BlockPos bp = new BlockPos(posX + calcTwoOffsetX(10, 0, 0), posY + +3, posZ + calcTwoOffsetZ(10, 0, 0));
 
-				ModNetwork.sendPacketToAllAround((new MachineModMessageEntityCurrentTargetPosToClient(this.getEntityId(), this.currPosX, this.currPosY, this.currPosZ, this.angleArm1, this.angleArm2, this.angleArm3, this.mainBodyRotation)), new TargetPoint(worldObj.provider.getDimension(), posX, posY, posZ, 80));
+				ModNetwork.sendPacketToAllAround((new MachineModMessageEntityCurrentTargetPosToClient(this.getEntityId(), this.currPosX, this.currPosY, this.currPosZ, this.angleArm1, this.angleArm2, this.angleArm3, this.mainBodyRotation)), new TargetPoint(world.provider.getDimension(), posX, posY, posZ, 80));
 				// if (this.isPlayerPushingSprintButton) {
 				// player wants to break the block
 				// bp = new BlockPos(currPosX, currPosY, currPosZ);
@@ -130,14 +130,15 @@ public class EntityExcavator extends EntityMachineModRideable {
 				// BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -1d, (360 - this.yaw), (float) this.angleArm1 - 40, 10d, (360 - this.yaw), (float) this.angleArm2 - 90, 10d, 0, 0, 0);
 
 				if (this.angleArm3 < 42) {
-					BlockUtil.BreakBlock(worldObj, BP, this.getControllingPassenger());
+					BlockUtil.BreakBlock(world, BP, this.getControllingPassenger());
 					AxisAlignedBB bucketboundingBox = new AxisAlignedBB(BP);
-					bucketboundingBox.expandXyz(1d);
-					List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
+					// was expand
+					bucketboundingBox.grow(1d);
+					List list = this.world.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
 					collidedEntitiesInList(list);
 				}
 				// LogHelper.info(BP);
-				// worldObj.setBlockState(BP, Blocks.DIRT.getDefaultState());
+				// world.setBlockState(BP, Blocks.DIRT.getDefaultState());
 
 				// }
 				if (this.angleArm3 > 42) {
@@ -148,13 +149,13 @@ public class EntityExcavator extends EntityMachineModRideable {
 					for (int i = 0; i < this.getSizeInventory(); i++) {
 						ItemStack item = this.getStackInSlot(i);
 
-						if (item != null && item.stackSize > 0) {
+						if (item != null && item.getCount() > 0) {
 							;
 
-							EntityItem entityItem = new EntityItem(worldObj, BP.getX(), BP.getY() - 1, BP.getZ(), item);
+							EntityItem entityItem = new EntityItem(world, BP.getX(), BP.getY() - 1, BP.getZ(), item);
 
 							if (item.hasTagCompound()) {
-								entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+								entityItem.getItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
 							}
 
 							float factor = 0.05F;
@@ -162,7 +163,7 @@ public class EntityExcavator extends EntityMachineModRideable {
 							entityItem.motionY = 0;
 							// entityItem.motionZ = rand.nextGaussian() * factor;
 							entityItem.forceSpawn = true;
-							worldObj.spawnEntityInWorld(entityItem);
+							world.spawnEntity(entityItem);
 							// item.stackSize = 0;
 
 							this.setInventorySlotContents(i, null);
@@ -180,14 +181,14 @@ public class EntityExcavator extends EntityMachineModRideable {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
 				if (entity instanceof EntityItem) {
-					ItemStack is = ((EntityItem) entity).getEntityItem().copy();
-					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
+					ItemStack is = ((EntityItem) entity).getItem().copy();
+					is.setItemDamage(((EntityItem) entity).getItem().getItemDamage());
 					if (!entity.isDead) {
-						if (is.stackSize > 0) {
+						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
 
-							if (is1 != null && is1.stackSize != 0) {
-								((EntityItem) entity).setEntityItemStack(is1);
+							if (is1 != null && is1.getCount() != 0) {
+								((EntityItem) entity).setItem(is1);
 							} else {
 								entity.setDead();
 							}

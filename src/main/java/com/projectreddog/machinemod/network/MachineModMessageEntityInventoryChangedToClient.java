@@ -82,7 +82,7 @@ public class MachineModMessageEntityInventoryChangedToClient implements IMessage
 			buf.writeShort(-1);
 		} else {
 			buf.writeShort(Item.getIdFromItem(this.is.getItem()));
-			buf.writeByte(this.is.stackSize);
+			buf.writeByte(this.is.getCount());
 			buf.writeShort(this.is.getMetadata());
 			NBTTagCompound nbttagcompound = null;
 

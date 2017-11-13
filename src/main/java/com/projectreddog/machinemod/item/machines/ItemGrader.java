@@ -14,18 +14,23 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ItemGrader extends ItemTransportable {
+	public String registryName = "grader";
 
 	public ModelTransportable mt;
 
 	public ItemGrader() {
 		super();
-		this.setUnlocalizedName("grader");
+		this.setUnlocalizedName(registryName);
+		this.setRegistryName(registryName);
+
 		this.maxStackSize = 1;
 
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
+		// public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
+		ItemStack stack = player.getActiveItemStack();
 		boolean result = false;
 
 		if (!world.isRemote)// / only run on server
@@ -40,10 +45,10 @@ public class ItemGrader extends ItemTransportable {
 			entityGrader.prevPosX = x + .5d;
 			entityGrader.prevPosY = y + 1.0d;
 			entityGrader.prevPosZ = z + .5d;
-			result = world.spawnEntityInWorld(entityGrader);
+			result = world.spawnEntity(entityGrader);
 			// LogHelper.info("Spawn entity resutl:" + result );
 			if (result && !player.capabilities.isCreativeMode) {
-				stack.stackSize--;
+				stack.setCount(stack.getCount() - 1);
 			}
 		}
 		if (result) {

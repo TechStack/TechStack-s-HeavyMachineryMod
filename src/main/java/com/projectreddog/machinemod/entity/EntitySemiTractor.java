@@ -60,11 +60,11 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 
 			AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(bedRampBackOffset, 90, -1) + posX - .5d, posY, calcTwoOffsetZ(bedRampBackOffset, 90, -1) + posZ - .5d, calcTwoOffsetX(bedRampBackOffset, 90, 1) + posX + .5d, posY + 1, calcTwoOffsetZ(bedRampBackOffset, 90, 1) + posZ + .5d);
 
-			List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
+			List list = this.world.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
 			collidedEntitiesInList(list);
 
 			if (getStackInSlot(0) != null) {
@@ -74,14 +74,14 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 
 						if (getStackInSlot(1) != null && getStackInSlot(1).getItem() instanceof ItemTransportable) {
 
-							EntityMachineModRideable eMMR = ((ItemTransportable) getStackInSlot(1).getItem()).getEntityToSpawn(worldObj);
+							EntityMachineModRideable eMMR = ((ItemTransportable) getStackInSlot(1).getItem()).getEntityToSpawn(world);
 
 							eMMR.setPosition(calcTwoOffsetX(bedRampBackOffset + -3, 90, -1) + posX - .5d, posY, calcTwoOffsetZ(bedRampBackOffset + -3, 90, -1) + posZ - .5d);
 							eMMR.prevPosX = calcTwoOffsetX(bedRampBackOffset + -1, 90, -1) + posX - .5d;
 							eMMR.prevPosY = posY + 1.0d;
 							eMMR.prevPosZ = calcTwoOffsetZ(bedRampBackOffset + -1, 90, -1) + posZ - .5d;
 							eMMR.currentFuelLevel = carriedMachinesFuelStorage;
-							worldObj.spawnEntityInWorld(eMMR);
+							world.spawnEntity(eMMR);
 							carriedMachinesFuelStorage = 0;
 							decrStackSize(1, 1);
 						}
@@ -109,7 +109,7 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 							if (entity instanceof EntityMachineModRideable && ((EntityMachineModRideable) entity).droppedItem instanceof ItemTransportable) {
 								ItemStack is = new ItemStack(((EntityMachineModRideable) entity).getItemToBeDropped());
 								if (!entity.isDead) {
-									if (is.stackSize > 0) {
+									if (is.getCount() > 0) {
 										ItemStack is1 = addToinventory(is);
 										carriedMachinesFuelStorage = ((EntityMachineModRideable) entity).currentFuelLevel;
 										entity.setDead();
@@ -195,7 +195,7 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 			fluid = new FluidStack(resource, Math.min(maxOilStorage, resource.amount));
 
 			if (this != null) {
-				FluidEvent.fireEvent(new FluidEvent.FluidFillingEvent(fluid, worldObj, this.getPosition(), this, fluid.amount));
+				FluidEvent.fireEvent(new FluidEvent.FluidFillingEvent(fluid, world, this.getPosition(), this, fluid.amount));
 			}
 			return fluid.amount;
 		}
@@ -213,7 +213,7 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 		}
 
 		if (this != null) {
-			FluidEvent.fireEvent(new FluidEvent.FluidFillingEvent(fluid, worldObj, this.getPosition(), this, filled));
+			FluidEvent.fireEvent(new FluidEvent.FluidFillingEvent(fluid, world, this.getPosition(), this, filled));
 		}
 		return filled;
 	}
@@ -243,7 +243,7 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 			}
 
 			if (this != null) {
-				FluidEvent.fireEvent(new FluidEvent.FluidDrainingEvent(fluid, worldObj, this.getPosition(), this, drained));
+				FluidEvent.fireEvent(new FluidEvent.FluidDrainingEvent(fluid, world, this.getPosition(), this, drained));
 			}
 		}
 		return stack;

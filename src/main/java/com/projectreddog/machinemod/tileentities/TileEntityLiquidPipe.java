@@ -42,7 +42,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 		// pump in first
 		if (te instanceof IFluidTank) {
 			IFluidTank lc = (IFluidTank) te;
-			if ((getPercentFull(lc) > getPercentFull(this)) && (this.worldObj.isBlockPowered(this.pos) || lc instanceof TileEntityLiquidPipe)) {
+			if ((getPercentFull(lc) > getPercentFull(this)) && (this.world.isBlockPowered(this.pos) || lc instanceof TileEntityLiquidPipe)) {
 				// target is fuller than source so Pull!
 				if (lc.getFluid() != null) {
 					if (this.getFluid() != null) {
@@ -68,7 +68,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 						// return true;
 					}
 				}
-			} else if (getPercentFull(lc) != getPercentFull(this) && (((!(this.worldObj.isBlockPowered(this.pos))) || lc instanceof TileEntityLiquidPipe))) {
+			} else if (getPercentFull(lc) != getPercentFull(this) && (((!(this.world.isBlockPowered(this.pos))) || lc instanceof TileEntityLiquidPipe))) {
 				// the lc has less fluid so pump to it
 				if (this.getFluid() != null) {
 					if (lc.getFluid() != null) {
@@ -115,7 +115,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 		}
 
 		if (Reference.enableDebugPipeCode) {
-			if (!this.worldObj.isRemote) {
+			if (!this.world.isRemote) {
 				int tempFluidID;
 				if (this.getFluid() != null) {
 					// TODO FIX LIQUID PIPES
@@ -126,7 +126,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 					tempFluidID = -1;
 				}
 
-				ModNetwork.simpleNetworkWrapper.sendToAllAround(new MachineModMessageLiquidPipeToClient(this.pos.getX(), this.pos.getY(), this.pos.getZ(), this.getFluidAmount(), tempFluidID), new TargetPoint(this.worldObj.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 48));
+				ModNetwork.simpleNetworkWrapper.sendToAllAround(new MachineModMessageLiquidPipeToClient(this.pos.getX(), this.pos.getY(), this.pos.getZ(), this.getFluidAmount(), tempFluidID), new TargetPoint(this.world.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 48));
 			}
 		}
 		ticksSinceLastConnectionUpdate++;
@@ -134,7 +134,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 			// has room for fluid
 			if (connectedNorth) {
 				// check the TE to the north to see if it has more fluid
-				te = this.worldObj.getTileEntity(pos.north());
+				te = this.world.getTileEntity(pos.north());
 				if (transferFluid(te)) {
 					return;
 				}
@@ -143,7 +143,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 			if (connectedSouth) {
 				// check the TE to the north to see if it has more fluid
 
-				te = this.worldObj.getTileEntity(pos.south());
+				te = this.world.getTileEntity(pos.south());
 				if (transferFluid(te)) {
 					return;
 				}
@@ -152,7 +152,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 			if (connectedEast) {
 				// check the TE to the north to see if it has more fluid
 
-				te = this.worldObj.getTileEntity(pos.east());
+				te = this.world.getTileEntity(pos.east());
 				if (transferFluid(te)) {
 					return;
 				}
@@ -161,7 +161,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 			if (connectedWest) {
 				// check the TE to the north to see if it has more fluid
 
-				te = this.worldObj.getTileEntity(pos.west());
+				te = this.world.getTileEntity(pos.west());
 				if (transferFluid(te)) {
 					return;
 				}
@@ -170,7 +170,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 			if (connectedUp) {
 				// check the TE to the north to see if it has more fluid
 
-				te = this.worldObj.getTileEntity(pos.up());
+				te = this.world.getTileEntity(pos.up());
 				if (transferFluid(te)) {
 					return;
 				}
@@ -180,7 +180,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 			if (connectedDown) {
 				// check the TE to the north to see if it has more fluid
 
-				te = this.worldObj.getTileEntity(pos.down());
+				te = this.world.getTileEntity(pos.down());
 				if (transferFluid(te)) {
 					return;
 				}
@@ -199,7 +199,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 		connectedDown = false;
 		connectedUp = false;
 		for (EnumFacing e : EnumFacing.VALUES) {
-			if (this.worldObj.getTileEntity(this.pos.offset(e)) instanceof IFluidTank) {
+			if (this.world.getTileEntity(this.pos.offset(e)) instanceof IFluidTank) {
 				// LogHelper.info("Connection point found to the : " + e.toString());
 				switch (e) {
 				case NORTH:

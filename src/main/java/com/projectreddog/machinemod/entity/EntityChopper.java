@@ -42,7 +42,7 @@ public class EntityChopper extends EntityMachineModRideable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			if (this.getControllingPassenger() != null && currentFuelLevel > 0) {
 				this.Attribute2++;
 				currentFuelLevel--;
@@ -50,14 +50,14 @@ public class EntityChopper extends EntityMachineModRideable {
 
 			if ((this.currentFuelLevel > 0 && isPlayerPushingSprintButton) || this.getControllingPassenger() == null || this.currentFuelLevel == 0) {
 				this.motionY -= 0.04D;
-				if (this.getControllingPassenger() == null && !this.isCollidedVertically && this.currentFuelLevel > 0) {
+				if (this.getControllingPassenger() == null && !this.collidedVertically && this.currentFuelLevel > 0) {
 					this.Attribute2++;
 				}
 
 			}
 			if (this.currentFuelLevel > 0 && isPlayerPushingJumpButton) {
 
-				if (worldObj.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) {
+				if (world.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) {
 					this.motionY += 0.08D;
 				}
 			}
@@ -74,8 +74,8 @@ public class EntityChopper extends EntityMachineModRideable {
 				entityPlayer.motionY = 0;
 
 			}
-			if (this.isCollidedHorizontally) {
-				this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 5, true);
+			if (this.collidedHorizontally) {
+				this.world.createExplosion(this, this.posX, this.posY, this.posZ, 5, true);
 				this.setDead();
 			}
 		}
@@ -90,10 +90,10 @@ public class EntityChopper extends EntityMachineModRideable {
 	public void doParticleEffects() {
 		if (this.currentFuelLevel > 0 && this.getControllingPassenger() != null && (this.isPlayerAccelerating || this.isPlayerBreaking || this.isPlayerPushingJumpButton || this.isPlayerPushingSprintButton || this.isPlayerTurningLeft || this.isPlayerTurningRight)) {
 			for (int i = 0; i < 3; i++) {
-				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset), this.posY + particleTopOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset), 0, 0, 0, 0);
-				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset * -1), this.posY + particleTopOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset * -1), 0, 0, 0, 0);
-				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset), this.posY - particleBottmOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset), 0, 0, 0, 0);
-				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset * -1), this.posY - particleBottmOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset * -1), 0, 0, 0, 0);
+				world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset), this.posY + particleTopOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset), 0, 0, 0, 0);
+				world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset * -1), this.posY + particleTopOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset * -1), 0, 0, 0, 0);
+				world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset), this.posY - particleBottmOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset), 0, 0, 0, 0);
+				world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset * -1), this.posY - particleBottmOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset * -1), 0, 0, 0, 0);
 			}
 		}
 	}

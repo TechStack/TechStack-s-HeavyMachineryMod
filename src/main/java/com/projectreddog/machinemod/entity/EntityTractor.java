@@ -15,6 +15,7 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -46,7 +47,7 @@ public class EntityTractor extends EntityMachineModRideable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// digMethodA();
 			BlockPos bp;
 			int angle = 0;
@@ -65,13 +66,13 @@ public class EntityTractor extends EntityMachineModRideable {
 					if (this.getStackInSlot(0) != null) {
 						if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachment) {
 							if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlow) {
-								if (worldObj.getBlockState(bp).getBlock() == Blocks.DIRT || worldObj.getBlockState(bp).getBlock() == Blocks.GRASS) {
-									worldObj.setBlockState(bp, Blocks.FARMLAND.getDefaultState());
-									if (worldObj.getBlockState(bp.up()).getBlock().getMaterial(worldObj.getBlockState(bp.up())) == Material.PLANTS || worldObj.getBlockState(bp.up()).getBlock().getMaterial(worldObj.getBlockState(bp.up())).isReplaceable()) {
-										BlockUtil.BreakBlock(worldObj, bp.up(), this.getControllingPassenger());
+								if (world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.GRASS) {
+									world.setBlockState(bp, Blocks.FARMLAND.getDefaultState());
+									if (world.getBlockState(bp.up()).getBlock().getMaterial(world.getBlockState(bp.up())) == Material.PLANTS || world.getBlockState(bp.up()).getBlock().getMaterial(world.getBlockState(bp.up())).isReplaceable()) {
+										BlockUtil.BreakBlock(world, bp.up(), this.getControllingPassenger());
 
 									} else {
-										// LogHelper.info(worldObj.getBlockState(bp.offsetUp()).getBlock().getMaterial());
+										// LogHelper.info(world.getBlockState(bp.offsetUp()).getBlock().getMaterial());
 									}
 								}
 							} else if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {
@@ -81,12 +82,12 @@ public class EntityTractor extends EntityMachineModRideable {
 								// attachment only
 								{
 									if (this.getStackInSlot(j) != null) {
-										if (this.getStackInSlot(j).stackSize > 0) {
+										if (this.getStackInSlot(j).getCount() > 0) {
 
 											if (this.getStackInSlot(j).getItem() instanceof IPlantable) {
-												if (worldObj.getBlockState(bp).getBlock().canSustainPlant(worldObj.getBlockState(bp), worldObj, bp, EnumFacing.UP, (IPlantable) this.getStackInSlot(j).getItem()) && worldObj.isAirBlock(bp.up())) {
+												if (world.getBlockState(bp).getBlock().canSustainPlant(world.getBlockState(bp), world, bp, EnumFacing.UP, (IPlantable) this.getStackInSlot(j).getItem()) && world.isAirBlock(bp.up())) {
 
-													worldObj.setBlockState(bp.up(), ((IPlantable) this.getStackInSlot(j).getItem()).getPlant(worldObj, bp.up()));
+													world.setBlockState(bp.up(), ((IPlantable) this.getStackInSlot(j).getItem()).getPlant(world, bp.up()));
 													this.decrStackSize(j, 1);
 													j = 9;
 
@@ -95,12 +96,12 @@ public class EntityTractor extends EntityMachineModRideable {
 										}
 									}
 								}
-								// if (worldObj.getBlockState(bp).getBlock() ==
+								// if (world.getBlockState(bp).getBlock() ==
 								// Blocks.farmland &&
-								// worldObj.isAirBlock(bp.offset(EnumFacing.UP,
+								// world.isAirBlock(bp.offset(EnumFacing.UP,
 								// 1))) {
 								//
-								// worldObj.setBlockState(bp.offset(EnumFacing.UP,
+								// world.setBlockState(bp.offset(EnumFacing.UP,
 								// 1), Blocks.wheat.getDefaultState());
 								// }
 							} else if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentSprayer) {
@@ -111,7 +112,7 @@ public class EntityTractor extends EntityMachineModRideable {
 								// attachment only
 								{
 									if (this.getStackInSlot(j) != null) {
-										if (this.getStackInSlot(j).stackSize > 0) {
+										if (this.getStackInSlot(j).getCount() > 0) {
 
 											if (this.getStackInSlot(j).getItem() instanceof ItemDye) {
 
@@ -123,14 +124,14 @@ public class EntityTractor extends EntityMachineModRideable {
 													if (this.getControllingPassenger() != null && this.getControllingPassenger() instanceof EntityPlayer) {
 														p = ((EntityPlayer) this.getControllingPassenger());
 													} else {
-														p = net.minecraftforge.common.util.FakePlayerFactory.getMinecraft((net.minecraft.world.WorldServer) worldObj);
+														p = net.minecraftforge.common.util.FakePlayerFactory.getMinecraft((net.minecraft.world.WorldServer) world);
 													}
-													boolean didUse = ((ItemDye) this.getStackInSlot(j).getItem()).applyBonemeal(this.getStackInSlot(j), worldObj, bp.up(), p);
+													boolean didUse = ((ItemDye) this.getStackInSlot(j).getItem()).applyBonemeal(this.getStackInSlot(j), world, bp.up(), p, EnumHand.MAIN_HAND);
 
 													if (didUse) {
 														// used to clear out 0
 														// size stack
-														if (this.getStackInSlot(j).stackSize == 0) {
+														if (this.getStackInSlot(j).getCount() == 0) {
 															setInventorySlotContents(j, null);
 														}
 
@@ -146,8 +147,8 @@ public class EntityTractor extends EntityMachineModRideable {
 							} else if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentTrencher) {
 								// Fertilize checks & actions
 								if (i == 0) {
-									if (worldObj.getBlockState(bp).getBlock() == Blocks.DIRT || worldObj.getBlockState(bp).getBlock() == Blocks.GRASS || worldObj.getBlockState(bp).getBlock() == Blocks.FARMLAND) {
-										BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
+									if (world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.FARMLAND) {
+										BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
 									}
 								}

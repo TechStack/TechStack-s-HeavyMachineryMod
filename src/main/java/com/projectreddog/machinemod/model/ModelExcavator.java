@@ -59,7 +59,7 @@ public class ModelExcavator extends ModelTransportable {
 			GL11.glTranslatef(0, 0, 1);
 			GL11.glRotatef(180, 0.0F, 1.0F, 0.0F);
 			// GL11.glRotatef((float) ((EntityExcavator) entity).mainBodyRotation, 0, 1, 0f);
-			if (((EntityExcavator) entity).getControllingPassenger() != null && ((EntityExcavator) entity).getControllingPassenger() == Minecraft.getMinecraft().thePlayer) {
+			if (((EntityExcavator) entity).getControllingPassenger() != null && ((EntityExcavator) entity).getControllingPassenger() == Minecraft.getMinecraft().player) {
 				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 				GL11.glEnable(GL11.GL_BLEND);
 				GL11.glColor4d(1, 1, 1, .50d);

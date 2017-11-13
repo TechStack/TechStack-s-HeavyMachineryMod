@@ -1,13 +1,13 @@
 package com.projectreddog.machinemod.network;
 
+import com.projectreddog.machinemod.entity.EntityExcavator;
+import com.projectreddog.machinemod.entity.EntityMachineModRideable;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-
-import com.projectreddog.machinemod.entity.EntityExcavator;
-import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 
 public class MachineModMessageEntityCurrentTargetPosToClientHandler implements IMessageHandler<MachineModMessageEntityCurrentTargetPosToClient, IMessage> {
 
@@ -16,8 +16,8 @@ public class MachineModMessageEntityCurrentTargetPosToClientHandler implements I
 		// LogHelper.info("in machineModMessageEntityToClient Handler");
 		// LogHelper.info("Message data" + message);
 		// LogHelper.info("on message MachineModMessageEntityToClientHandler");
-		if (Minecraft.getMinecraft().theWorld != null) {
-			if (Minecraft.getMinecraft().theWorld.isRemote) {
+		if (Minecraft.getMinecraft().world != null) {
+			if (Minecraft.getMinecraft().world.isRemote) {
 
 				Minecraft.getMinecraft().addScheduledTask(new Runnable() {
 					public void run() {
@@ -31,9 +31,9 @@ public class MachineModMessageEntityCurrentTargetPosToClientHandler implements I
 
 	public void processMessage(MachineModMessageEntityCurrentTargetPosToClient message) {
 		if (message != null) {
-			if (Minecraft.getMinecraft().theWorld != null) {
-				if (Minecraft.getMinecraft().thePlayer != null) {
-					Entity entity = Minecraft.getMinecraft().theWorld.getEntityByID(message.entityid);
+			if (Minecraft.getMinecraft().world != null) {
+				if (Minecraft.getMinecraft().player != null) {
+					Entity entity = Minecraft.getMinecraft().world.getEntityByID(message.entityid);
 
 					if (entity != null) {
 

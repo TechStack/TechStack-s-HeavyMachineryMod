@@ -35,7 +35,7 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 
 	@Override
 	public void update() {
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// LogHelper.info("TE update entity called");
 
 			if (remainBurnTime > 0) {
@@ -77,7 +77,7 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
 			byte slot = tag.getByte("Slot");
 			if (slot >= 0 && slot < inventory.length) {
-				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
+				inventory[slot] = new ItemStack(tag);
 			}
 		}
 	}
@@ -125,9 +125,9 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 	public boolean transferFuel() {
 		if (this.fuelStorage > 0) {
 
-			if (worldObj.getBlockState(this.pos.offset(this.outputDirection())).getBlock() == ModBlocks.machinefuelpump) {
+			if (world.getBlockState(this.pos.offset(this.outputDirection())).getBlock() == ModBlocks.machinefuelpump) {
 				// its a distiller so we can transfer fuel!
-				TileEntityFuelPump tEC = (TileEntityFuelPump) worldObj.getTileEntity(this.pos.offset(this.outputDirection()));
+				TileEntityFuelPump tEC = (TileEntityFuelPump) world.getTileEntity(this.pos.offset(this.outputDirection()));
 				if (tEC.canAcceptFluid()) {
 					tEC.addFluid(1);
 					this.fuelStorage = this.fuelStorage - 1;
@@ -140,7 +140,7 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 
 	@Override
 	public EnumFacing outputDirection() {
-		EnumFacing ef = (EnumFacing) worldObj.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
+		EnumFacing ef = (EnumFacing) world.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
 		// switch (ef) {
 		// case NORTH:
 		// return EnumFacing.SOUTH;
@@ -188,7 +188,7 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer playerIn) {
+	public boolean isUsableByPlayer(EntityPlayer playerIn) {
 		return playerIn.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
 	}
 
@@ -206,11 +206,11 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 	public ItemStack decrStackSize(int slot, int amt) {
 		ItemStack stack = getStackInSlot(slot);
 		if (stack != null) {
-			if (stack.stackSize <= amt) {
+			if (stack.getCount() <= amt) {
 				setInventorySlotContents(slot, null);
 			} else {
 				stack = stack.splitStack(amt);
-				if (stack.stackSize == 0) {
+				if (stack.getCount() == 0) {
 					setInventorySlotContents(slot, null);
 				}
 
@@ -231,8 +231,8 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inventory[slot] = stack;
-		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
-			stack.stackSize = getInventoryStackLimit();
+		if (stack != null && stack.getCount() > getInventoryStackLimit()) {
+			stack.setCount(getInventoryStackLimit());
 		}
 
 	}
@@ -308,4 +308,14 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 		return false;
 	}
 
+	@Override
+	public boolean isEmpty() {
+		for (int i = 0; i < inventory.length; i++) {
+			if (!inventory[i].isEmpty()) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 }

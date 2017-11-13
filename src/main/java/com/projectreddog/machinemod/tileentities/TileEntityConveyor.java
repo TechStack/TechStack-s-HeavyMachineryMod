@@ -7,13 +7,14 @@ import com.projectreddog.machinemod.init.ModBlocks;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.MoverType;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 
 public class TileEntityConveyor extends TileEntity implements ITickable {
 
@@ -38,11 +39,11 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 		// need to add the block state's enum facing to this block so it can be
 		// rotated.
 
-		if (!worldObj.isBlockPowered(this.pos)) {
+		if (!world.isBlockPowered(this.pos)) {
 
-			if (worldObj.getBlockState(pos).getBlock() == ModBlocks.machineconveyor) {
-				if (BlockMachineModConveyor.shouldLift(worldObj, this.pos)) {
-					EnumFacing checkDirection = (EnumFacing) worldObj.getBlockState(this.pos).getValue(BlockMachineModConveyor.FACING);
+			if (world.getBlockState(pos).getBlock() == ModBlocks.machineconveyor) {
+				if (BlockMachineModConveyor.shouldLift(world, this.pos)) {
+					EnumFacing checkDirection = (EnumFacing) world.getBlockState(this.pos).getValue(BlockMachineModConveyor.FACING);
 					BlockPos bp = this.pos;// this.pos.offset(checkDirection);
 					BlockPos bp2 = this.pos.up().add(1, 1, 1);
 					BlockPos temp;
@@ -66,13 +67,13 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 				} else {
 					boundingBox = new AxisAlignedBB(this.pos.up(), this.pos.up().add(1, 1, 1));
 				}
-				List list = worldObj.getEntitiesWithinAABB(EntityItem.class, boundingBox);
+				List list = world.getEntitiesWithinAABB(EntityItem.class, boundingBox);
 				processEntitiesInList(list);
 
-				list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, boundingBox);
+				list = world.getEntitiesWithinAABB(EntityLivingBase.class, boundingBox);
 				processEntitiesInList(list);
 
-				list = worldObj.getEntitiesWithinAABB(EntityXPOrb.class, boundingBox);
+				list = world.getEntitiesWithinAABB(EntityXPOrb.class, boundingBox);
 				processEntitiesInList(list);
 
 			}
@@ -89,7 +90,7 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 				// if (entity instanceof EntityLivingBase) {
 				// ((EntityLivingBase) entity).moveEntity(.1d, 0, 0);
 				// } else {
-				EnumFacing ef = (EnumFacing) worldObj.getBlockState(this.pos).getValue(BlockMachineModConveyor.FACING);
+				EnumFacing ef = (EnumFacing) world.getBlockState(this.pos).getValue(BlockMachineModConveyor.FACING);
 				double x = 0, y = 0, z = 0;
 				if (ef == EnumFacing.EAST) {
 					x = MoveSpeed;
@@ -109,7 +110,7 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 					z = 0;
 				}
 
-				if (BlockMachineModConveyor.shouldLift(worldObj, this.pos)) {
+				if (BlockMachineModConveyor.shouldLift(world, this.pos)) {
 					// Should lift maybe?
 					if (new BlockPos(entity.posX, entity.posY, entity.posZ).getX() == this.pos.getX() && new BlockPos(entity.posX, entity.posY, entity.posZ).getZ() == this.pos.getZ()) {
 						// entity in same pos no Y adustment
@@ -128,10 +129,11 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 
 				}
 
-				entity.moveEntity(x, y, z);
+				entity.move(MoverType.SELF, x, y, z);
 				// entity.setPosition(entity.getPosition().getX() + 0.1d, entity.getPosition().getY(), entity.getPosition().getZ());
 				// }
 			}
 		}
 	}
+
 }

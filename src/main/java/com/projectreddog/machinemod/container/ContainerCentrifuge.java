@@ -78,7 +78,7 @@ public class ContainerCentrifuge extends Container {
 			if (stackInSlot.getCount() == stack.getCount()) {
 				return null;
 			}
-			slotObject.onPickupFromSlot(player, stackInSlot);
+			slotObject.onTake(player, stackInSlot);
 		}
 		return stack;
 	}
@@ -93,7 +93,7 @@ public class ContainerCentrifuge extends Container {
 			IContainerListener icrafting = (IContainerListener) this.listeners.get(i);
 
 			if (this.lastFuelStorage != this.centrifuge.getField(0)) {
-				icrafting.sendProgressBarUpdate(this, 0, this.centrifuge.getField(0));
+				icrafting.sendWindowProperty(this, 0, this.centrifuge.getField(0));
 			}
 
 		}

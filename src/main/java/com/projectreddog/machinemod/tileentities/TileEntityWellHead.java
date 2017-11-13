@@ -38,7 +38,7 @@ public class TileEntityWellHead extends TileEntity implements ITickable, IFluidT
 
 	@Override
 	public void update() {
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 
 			cooldown = cooldown - 1;
 			// LogHelper.info("TE FERMENTER CD" + cooldown);
@@ -61,8 +61,8 @@ public class TileEntityWellHead extends TileEntity implements ITickable, IFluidT
 		// find nearby oil tanker trucks and pump oil to them!
 		AxisAlignedBB pumpboundingBox = new AxisAlignedBB(this.pos.north(3).west(3).down(1), this.pos.south(3).east(3).up(1));
 
-		// List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, pumpboundingBox);
-		List list = this.worldObj.getEntitiesWithinAABB(EntitySemiTractor.class, pumpboundingBox);
+		// List list = this.world.getEntitiesWithinAABBExcludingEntity(this, pumpboundingBox);
+		List list = this.world.getEntitiesWithinAABB(EntitySemiTractor.class, pumpboundingBox);
 
 		collidedEntitiesInList(list);
 	}
@@ -102,7 +102,7 @@ public class TileEntityWellHead extends TileEntity implements ITickable, IFluidT
 				for (int z = this.getPos().getZ() - Reference.wellHeadMaxRange; z <= this.getPos().getZ() + Reference.wellHeadMaxRange; z++) {
 					for (int y = Reference.crudeOilStoneGenMinlevel; y <= Reference.crudeOilStoneGenMaxlevel; y++) {
 						currentPos = new BlockPos(x, y, z);
-						if (this.worldObj.getBlockState(currentPos).getBlock() == ModBlocks.machinecrudeoilstone) {
+						if (this.world.getBlockState(currentPos).getBlock() == ModBlocks.machinecrudeoilstone) {
 							currentOilDeposit = currentPos;
 							return;
 						}
@@ -112,7 +112,7 @@ public class TileEntityWellHead extends TileEntity implements ITickable, IFluidT
 		} else {
 			// has deposit Do nothing for now Later we must check if
 			// it has been fully depleted
-			if (this.worldObj.getBlockState(currentOilDeposit).getBlock() == ModBlocks.machinecrudeoilstone) {
+			if (this.world.getBlockState(currentOilDeposit).getBlock() == ModBlocks.machinecrudeoilstone) {
 				return;
 			} else {
 				currentOilDeposit = null;
@@ -121,7 +121,7 @@ public class TileEntityWellHead extends TileEntity implements ITickable, IFluidT
 	}
 
 	public void pumpOil() {
-		worldObj.setBlockState(currentOilDeposit, Blocks.AIR.getDefaultState());
+		world.setBlockState(currentOilDeposit, Blocks.AIR.getDefaultState());
 		fill(new FluidStack(ModBlocks.fluidOil, 1000), true);
 
 		blocksFound = blocksFound + 1;

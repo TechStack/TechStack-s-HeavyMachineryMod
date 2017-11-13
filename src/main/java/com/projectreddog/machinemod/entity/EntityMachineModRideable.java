@@ -18,6 +18,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.MoverType;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -117,7 +118,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	}
 
 	public void clientInit() {
-		if (worldObj.isRemote) {
+		if (world.isRemote) {
 			// client side so request inventory
 			if (shouldSendClientInvetoryUpdates) {
 				ModNetwork.simpleNetworkWrapper.sendToServer((new MachineModMessageRequestAllInventoryToServer(this.getEntityId())));
@@ -168,22 +169,22 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		for (int i = 0; i < this.getSizeInventory(); i++) {
 			ItemStack item = this.getStackInSlot(i);
 
-			if (item != null && item.stackSize > 0) {
+			if (item != null && item.getCount() > 0) {
 				float rx = rand.nextFloat() * 0.8F + 0.1F;
 				float ry = rand.nextFloat() * 0.8F + 0.1F;
 				float rz = rand.nextFloat() * 0.8F + 0.1F;
 
-				EntityItem entityItem = new EntityItem(worldObj, posX + rx, posY + ry, posZ + rz, item);
+				EntityItem entityItem = new EntityItem(world, posX + rx, posY + ry, posZ + rz, item);
 
 				if (item.hasTagCompound()) {
-					entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+					entityItem.getItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
 				}
 
 				float factor = 0.05F;
 				entityItem.motionX = rand.nextGaussian() * factor;
 				entityItem.motionY = rand.nextGaussian() * factor + 0.2F;
 				entityItem.motionZ = rand.nextGaussian() * factor;
-				worldObj.spawnEntityInWorld(entityItem);
+				world.spawnEntity(entityItem);
 				// item.stackSize = 0;
 				this.setInventorySlotContents(i, null);
 
@@ -194,9 +195,9 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	}
 
 	@Override
-	public boolean processInitialInteract(EntityPlayer player, @Nullable ItemStack stack, EnumHand hand) // should be proper class
+	public boolean processInitialInteract(EntityPlayer player, EnumHand hand) // should be proper class
 	{
-		if (!worldObj.isRemote && getControllingPassenger() == null) {
+		if (!world.isRemote && getControllingPassenger() == null) {
 			// server side and no rider
 			if (player.getHeldItem(EnumHand.MAIN_HAND) != null && player.getHeldItem(EnumHand.MAIN_HAND).getItem() == ModItems.fuelcan && player.getHeldItem(EnumHand.MAIN_HAND).getItemDamage() < player.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage()) {
 				// player holding a fuel can & it has fuel in it so put fuel into the machine !
@@ -235,13 +236,13 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 					player.startRiding(this);
 				}
 			}
-		} else if (worldObj.isRemote && this.getControllingPassenger() == null) {
+		} else if (world.isRemote && this.getControllingPassenger() == null) {
 			if (player.isSneaking()) {
 				// if (getItemToBeDropped() != null) {
 
 				this.setDead();
-				// this.worldObj.removeEntity(this);
-				// this.worldObj.getChunkFromChunkCoords(this.chunkCoordX, this.chunkCoordZ).removeEntity(this);
+				// this.world.removeEntity(this);
+				// this.world.getChunkFromChunkCoords(this.chunkCoordX, this.chunkCoordZ).removeEntity(this);
 				// this.addedToChunk = true;
 
 				// }
@@ -281,7 +282,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		// should cause it to stop & not star when the re-enter if they leave
 		// while the machine is moving
 
-		if (isWaterOnly && (!(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.WATER))) {
+		if (isWaterOnly && (!(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.WATER))) {
 			isPlayerAccelerating = false;
 			isPlayerBreaking = false;
 			isPlayerTurningRight = false;
@@ -317,17 +318,17 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			this.setDead();
 		}
 
-		if (worldObj.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))) || worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.WATER
-				|| worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.LAVA || worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() == Blocks.SNOW_LAYER
-				|| worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.PLANTS
-				|| worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))).isReplaceable()) {
+		if (world.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))) || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.WATER
+				|| world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.LAVA || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() == Blocks.SNOW_LAYER
+				|| world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.PLANTS
+				|| world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))).isReplaceable()) {
 			// in air block so fall i'll actually park the entity inside the
 			// block below just a little bit.
 
 			if (willSink) {
 				this.motionY -= 0.03999999910593033D;
 			} else {
-				if (worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(worldObj.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.WATER || canFly) {
+				if (world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.WATER || canFly) {
 					// do nothing
 					this.motionY = this.motionY * .85D;
 
@@ -425,11 +426,11 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 		// motionY= speedY;
 		// setPosition( posX+speedX,posY+motionY, posZ+speedZ);
-		if (this.worldObj.getBlockState(new BlockPos(this.posX, this.posY - 1, this.posZ)).getBlock() == ModBlocks.machinecompressedasphalt) {
+		if (this.world.getBlockState(new BlockPos(this.posX, this.posY - 1, this.posZ)).getBlock() == ModBlocks.machinecompressedasphalt) {
 			this.onGround = true;
 		}
-
-		moveEntity(motionX, motionY, motionZ);
+		// TODO POSSIBLE BUGs ???? untested
+		move(MoverType.SELF, motionX, motionY, motionZ);
 		//
 		// if (lastPosX != posX || lastPosY != posY || lastPosZ != posZ ||
 		// lastAttribute1 != Attribute1 || sendInterval > 9) {
@@ -450,7 +451,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 		// if (tickssincelastbroadcast > 20 || lastPosX != posX || lastPosY != posY || lastPosZ != posZ || lastAttribute1 != Attribute1 || lastYaw != yaw || lastCurrentFuelLevel != currentFuelLevel) {
 		// something changed (or its been 1 second) so send it to clients in need
-		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityToClient(this.getEntityId(), this.posX, this.posY, this.posZ, this.yaw, this.Attribute1, this.Attribute2, this.currentFuelLevel)), new TargetPoint(worldObj.provider.getDimension(), posX, posY, posZ, 224)); // sendInterval = 0;
+		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityToClient(this.getEntityId(), this.posX, this.posY, this.posZ, this.yaw, this.Attribute1, this.Attribute2, this.currentFuelLevel)), new TargetPoint(world.provider.getDimension(), posX, posY, posZ, 224)); // sendInterval = 0;
 		// tickssincelastbroadcast = 0;
 		// }
 		// tickssincelastbroadcast = tickssincelastbroadcast + 1;
@@ -460,10 +461,10 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		// ModNetwork.simpleNetworkWrapper.sendToAllAround((new
 		// MachineModMessageEntityToClient(
 		// this.getEntityId(),this.posX,this.posY,this.posZ,this.yaw,this.Attribute1)),
-		// new TargetPoint(worldObj.provider.getDimensionId(), posX, posY, posZ,
+		// new TargetPoint(world.provider.getDimensionId(), posX, posY, posZ,
 		// 80));
 
-		List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox());
+		List list = this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox());
 		for (int i = 0; i < list.size(); ++i) {
 			Entity entity = (Entity) list.get(i);
 			if (entity != null) {
@@ -505,7 +506,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 		// updateServer();
 		// play the sound
-		// worldObj.playSoundAtEntity(this, "engine", 1f, 1f);
+		// world.playSoundAtEntity(this, "engine", 1f, 1f);
 
 		// this.noClip = true;
 		this.motionX = 0;
@@ -538,7 +539,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		}
 		// LogHelper.info("Client: isinvis:" +
 		// this.isInvisibleToPlayer(Minecraft.getMinecraft().thePlayer) +
-		// " DIMID:" + worldObj.provider.getDimensionId() + " X:" + posX +
+		// " DIMID:" + world.provider.getDimensionId() + " X:" + posX +
 		// " Y:" + posY + " Z:" + posZ);
 		//
 		//
@@ -558,8 +559,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		}
 		if (clientTicksSinceLastServerPulse > Reference.clientRemoveInactiveEntityTimer) {
 			this.setDead();
-			// this.worldObj.removeEntity(this);
-			// this.worldObj.getChunkFromChunkCoords(this.chunkCoordX, this.chunkCoordZ).removeEntity(this);
+			// this.world.removeEntity(this);
+			// this.world.getChunkFromChunkCoords(this.chunkCoordX, this.chunkCoordZ).removeEntity(this);
 			// this.addedToChunk = true;
 
 		}
@@ -588,7 +589,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// server side
 			updateServer();
 
@@ -651,7 +652,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
 			byte slot = tag.getByte("Slot");
 			if (slot >= 0 && slot < inventory.length) {
-				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
+				inventory[slot] = new ItemStack(tag);
 			}
 		}
 	}
@@ -792,11 +793,10 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public void toppleTree(BlockPos bp, int depth, int widthDepth, Block previousBlock) {
 		if (depth < Reference.MAX_TREE_DEPTH) {
 			if (widthDepth < Reference.MAX_TREE_WIDTH) {
-				if (worldObj.getBlockState(bp).getBlock() == Blocks.LOG || worldObj.getBlockState(bp).getBlock() == Blocks.LOG2 || worldObj.getBlockState(bp).getBlock() == Blocks.LEAVES || worldObj.getBlockState(bp).getBlock() == Blocks.LEAVES2 || worldObj.getBlockState(bp).getBlock().isWood(worldObj, bp)
-						|| worldObj.getBlockState(bp).getBlock().isLeaves(worldObj.getBlockState(bp), worldObj, bp)) {
+				if (world.getBlockState(bp).getBlock() == Blocks.LOG || world.getBlockState(bp).getBlock() == Blocks.LOG2 || world.getBlockState(bp).getBlock() == Blocks.LEAVES || world.getBlockState(bp).getBlock() == Blocks.LEAVES2 || world.getBlockState(bp).getBlock().isWood(world, bp) || world.getBlockState(bp).getBlock().isLeaves(world.getBlockState(bp), world, bp)) {
 
-					previousBlock = worldObj.getBlockState(bp).getBlock();
-					BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
+					previousBlock = world.getBlockState(bp).getBlock();
+					BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
 					toppleTree(bp.offset(EnumFacing.DOWN), depth + 1, widthDepth, previousBlock);
 					toppleTree(bp.offset(EnumFacing.UP), depth + 1, widthDepth, previousBlock);
@@ -815,26 +815,26 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	protected ItemStack addToinventory(ItemStack is) {
 		int i = getSizeInventory();
 
-		for (int j = 0; j < i && is != null && is.stackSize > 0; ++j) {
+		for (int j = 0; j < i && is != null && is.getCount() > 0; ++j) {
 			if (is != null) {
 
 				if (getStackInSlot(j) != null) {
 					if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getItemDamage() == is.getItemDamage()) {
 						// same item remove from is put into slot any amt not to
 						// excede stack max
-						if (getStackInSlot(j).stackSize < getStackInSlot(j).getMaxStackSize()) {
+						if (getStackInSlot(j).getCount() < getStackInSlot(j).getMaxStackSize()) {
 							// we have room to add to this stack
-							if (is.stackSize <= getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize) {
+							if (is.getCount() <= getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount()) {
 								// /all of the stack will fit in this slot do
 								// so.
 
-								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).stackSize + is.stackSize, is.getItemDamage()));
+								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).getCount() + is.getCount(), is.getItemDamage()));
 								is = null;
 							} else {
 								// we have more
-								int countRemain = is.stackSize - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize);
+								int countRemain = is.getCount() - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount());
 								setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getItemDamage()));
-								is.stackSize = countRemain;
+								is.setCount(countRemain);
 							}
 
 						}
@@ -866,13 +866,13 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inventory[slot] = stack;
-		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
-			stack.stackSize = getInventoryStackLimit();
+		if (stack != null && stack.getCount() > getInventoryStackLimit()) {
+			stack.setCount(getInventoryStackLimit());
 		}
-		if (!(this.worldObj.isRemote)) {
+		if (!(this.world.isRemote)) {
 			// send packet to notify client of contents of machine's inventory
 			if (this.shouldSendClientInvetoryUpdates) {
-				ModNetwork.sendPacketToAllAround((new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), slot, inventory[slot])), new TargetPoint(worldObj.provider.getDimension(), posX, posY, posZ, 80));
+				ModNetwork.sendPacketToAllAround((new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), slot, inventory[slot])), new TargetPoint(world.provider.getDimension(), posX, posY, posZ, 80));
 			}
 		}
 
@@ -916,7 +916,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
+	public boolean isUsableByPlayer(EntityPlayer player) {
 		// check if the player is near the entity.
 		return player.getDistanceSq(posX, posY, posZ) < 64;
 	}
@@ -925,11 +925,11 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public ItemStack decrStackSize(int slot, int amt) {
 		ItemStack stack = getStackInSlot(slot);
 		if (stack != null) {
-			if (stack.stackSize <= amt) {
+			if (stack.getCount() <= amt) {
 				setInventorySlotContents(slot, null);
 			} else {
 				stack = stack.splitStack(amt);
-				if (stack.stackSize == 0) {
+				if (stack.getCount() == 0) {
 					setInventorySlotContents(slot, null);
 				}
 
@@ -977,6 +977,17 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public Entity getControllingPassenger() {
 		List<Entity> list = this.getPassengers();
 		return list.isEmpty() ? null : (Entity) list.get(0);
+	}
+
+	@Override
+	public boolean isEmpty() {
+		for (int i = 0; i < inventory.length; i++) {
+			if (!inventory[i].isEmpty()) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 }
