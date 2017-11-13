@@ -6,7 +6,7 @@ import com.projectreddog.machinemod.model.ModelOilRig;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.culling.ICamera;
 import net.minecraft.client.renderer.entity.Render;
@@ -70,13 +70,13 @@ public class RenderOilRig extends Render {
 
 	}
 
-	private void RenderHelper_B(VertexBuffer p_175033_1_, BakedQuad p_175033_2_, int p_175033_3_) {
+	private void RenderHelper_B(BufferBuilder p_175033_1_, BakedQuad p_175033_2_, int p_175033_3_) {
 		p_175033_1_.addVertexData(p_175033_2_.getVertexData());
 		p_175033_1_.putColor4(p_175033_3_);
 		this.RenderHelper_C(p_175033_1_, p_175033_2_);
 	}
 
-	private void RenderHelper_C(VertexBuffer p_175038_1_, BakedQuad p_175038_2_) {
+	private void RenderHelper_C(BufferBuilder p_175038_1_, BakedQuad p_175038_2_) {
 		Vec3i vec3i = p_175038_2_.getFace().getDirectionVec();
 		p_175038_1_.putNormal((float) vec3i.getX(), (float) vec3i.getY(), (float) vec3i.getZ());
 	}

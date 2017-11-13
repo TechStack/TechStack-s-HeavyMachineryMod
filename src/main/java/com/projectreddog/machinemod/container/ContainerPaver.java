@@ -1,12 +1,12 @@
 package com.projectreddog.machinemod.container;
 
+import com.projectreddog.machinemod.entity.EntityPaver;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-
-import com.projectreddog.machinemod.entity.EntityPaver;
 
 public class ContainerPaver extends Container {
 
@@ -64,13 +64,13 @@ public class ContainerPaver extends Container {
 				return null;
 			}
 
-			if (stackInSlot.stackSize == 0) {
+			if (stackInSlot.getCount() == 0) {
 				slotObject.putStack(null);
 			} else {
 				slotObject.onSlotChanged();
 			}
 
-			if (stackInSlot.stackSize == stack.stackSize) {
+			if (stackInSlot.getCount() == stack.getCount()) {
 				return null;
 			}
 			slotObject.onPickupFromSlot(player, stackInSlot);

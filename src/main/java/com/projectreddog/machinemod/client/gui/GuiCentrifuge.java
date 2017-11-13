@@ -1,14 +1,14 @@
 package com.projectreddog.machinemod.client.gui;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.container.ContainerCentrifuge;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
+
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
 
 public class GuiCentrifuge extends GuiContainer {
 	private TileEntityCentrifuge centrifuge;
@@ -36,7 +36,7 @@ public class GuiCentrifuge extends GuiContainer {
 		// //draws "Inventory" or your regional equivalent
 		// fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"),
 		// 8, ySize - 96 + 2, 4210752);
-		fontRendererObj.drawString("Fuel: " + centrifuge.fuelStorage, 5, 5, 4210752);
+		this.fontRenderer.drawString("Fuel: " + centrifuge.fuelStorage, 5, 5, 4210752);
 
 	}
 

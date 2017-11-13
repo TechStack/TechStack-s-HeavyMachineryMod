@@ -1,14 +1,14 @@
 package com.projectreddog.machinemod.client.gui;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.container.ContainerFermenter;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
+
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
 
 public class GuiFermenter extends GuiContainer {
 
@@ -37,7 +37,7 @@ public class GuiFermenter extends GuiContainer {
 		// //draws "Inventory" or your regional equivalent
 		// fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"),
 		// 8, ySize - 96 + 2, 4210752);
-		fontRendererObj.drawString("Fermented Mash: " + fermenter.getField(0), 5, 5, 4210752);
+		this.fontRenderer.drawString("Fermented Mash: " + fermenter.getField(0), 5, 5, 4210752);
 	}
 
 	@Override

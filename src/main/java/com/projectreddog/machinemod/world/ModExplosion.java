@@ -86,7 +86,7 @@ public class ModExplosion extends Explosion {
 					double d3 = d0 - this.explosionX;
 					double d4 = d1 - this.explosionY;
 					double d5 = d2 - this.explosionZ;
-					double d6 = (double) MathHelper.sqrt_double(d3 * d3 + d4 * d4 + d5 * d5);
+					double d6 = (double) MathHelper.sqrt(d3 * d3 + d4 * d4 + d5 * d5);
 					d3 /= d6;
 					d4 /= d6;
 					d5 /= d6;

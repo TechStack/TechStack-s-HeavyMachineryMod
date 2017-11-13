@@ -1,14 +1,14 @@
 package com.projectreddog.machinemod.client.gui;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.container.ContainerDistiller;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
+
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
 
 public class GuiDistiller extends GuiContainer {
 	private TileEntityDistiller distiller;
@@ -36,7 +36,7 @@ public class GuiDistiller extends GuiContainer {
 		// //draws "Inventory" or your regional equivalent
 		// fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"),
 		// 8, ySize - 96 + 2, 4210752);
-		fontRendererObj.drawString("Fermented Mash: " + distiller.fuelStorage + "Burn Time:" + distiller.remainBurnTime, 5, 5, 4210752);
+		this.fontRenderer.drawString("Fermented Mash: " + distiller.fuelStorage + "Burn Time:" + distiller.remainBurnTime, 5, 5, 4210752);
 
 	}
 
