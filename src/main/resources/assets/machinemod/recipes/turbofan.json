@@ -1,0 +1,21 @@
+{
+    "result": {
+        "item": "machinemod:turbofan"
+    },
+    "pattern" : [
+    " b ",
+    "bib",
+    " b "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+        "item": "minecraft:iron_bars"      
+      },
+  "i":{
+        "type": "forge:ore_dict",
+        "ore": "ingotIron"   
+      
+      }
+    }
+}

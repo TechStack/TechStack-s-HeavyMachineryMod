@@ -1,0 +1,21 @@
+{
+    "result": {
+        "item": "machinemod:turbo"
+    },
+    "pattern" : [
+        "iii",
+        "fff",
+        "iii"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "i":{
+        "type": "forge:ore_dict",
+        "ore": "ingotIron"   
+      
+      },
+      "f":{
+      "item": "machinemod:turbofan"
+      }
+    }
+}

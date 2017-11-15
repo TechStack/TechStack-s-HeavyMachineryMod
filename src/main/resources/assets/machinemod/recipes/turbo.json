@@ -1,0 +1,25 @@
+{
+    "result": {
+        "item": "machinemod:turbo"
+    },
+    "pattern" : [
+        " pp",
+        "iii",
+        " ww"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "p":{
+        "type": "forge:ore_dict",
+        "ore": "plankWood"   
+      
+      },
+      "i":{
+      "type": "forge:ore_dict",
+        "ore": "ingotIron"
+      },
+      "w":{
+      "item":"machinemod:wheel"
+      }
+    }
+}

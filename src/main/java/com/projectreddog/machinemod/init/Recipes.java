@@ -8,9 +8,9 @@ public class Recipes {
 
 	public static void init() {
 		// TODO convert these to JSON :(
-		// GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.drillpipe), "i i", "i i", "i i", 'i', "ingotIron"));
+		// CONVERTED // GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.drillpipe), "i i", "i i", "i i", 'i', "ingotIron"));
 		//
-		// GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.drillhead), " p ", "dpd", " d ", 'p', ModItems.drillpipe, 'd', "gemDiamond"));
+		// // CONVERTED //GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.drillhead), " p ", "dpd", " d ", 'p', ModItems.drillpipe, 'd', "gemDiamond"));
 		//
 		// GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.woodengear), " s ", "s s", " s ", 's', "stickWood"));
 		//
