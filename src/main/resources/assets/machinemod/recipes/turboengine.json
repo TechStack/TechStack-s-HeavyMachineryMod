@@ -3,9 +3,9 @@
         "item": "machinemod:turboengine"
     },
     "pattern" : [
-        " ",
+        "   ",
         "tet",
-        " "
+        "   "
     ],
     "type": "forge:ore_shaped",
   "key": {

@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "machinemod:wheel"
+    },
+    "pattern" :[
+     "sis",
+     "i i",
+     "sis"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+          "type": "forge:ore_dict",
+           "ore": "ingotIron"   
+      
+      },
+    "s": {
+    "type": "forge:ore_dict",
+    "ore": "slimeball"
+    }
+      
+    }
+}
