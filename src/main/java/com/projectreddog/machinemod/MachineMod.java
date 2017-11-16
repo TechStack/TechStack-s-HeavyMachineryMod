@@ -37,8 +37,9 @@ public class MachineMod {
 
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 		FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
-		ModItems.init();
 		ModBlocks.init();
+
+		ModItems.init();
 		ModNetwork.init();
 
 	}

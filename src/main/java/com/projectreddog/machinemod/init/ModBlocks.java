@@ -48,6 +48,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -105,44 +106,57 @@ public class ModBlocks {
 
 	public static void init() {
 		ForgeRegistries.BLOCKS.register(machineassemblytable);// Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE
-		ForgeRegistries.BLOCKS.register(steelblock);// , Reference.MODBLOCK_STEEL_BLOCK);
-
-		ForgeRegistries.BLOCKS.register(machineasphalt);// , Reference.MODBLOCK_MACHINE_ASPHALT);
-
-		ForgeRegistries.BLOCKS.register(machinecompressedasphalt);// , Reference.MODBLOCK_MACHINE_COMPRESSED_ASPHALT);
-		ForgeRegistries.BLOCKS.register(machinecrudeoilstone);// , Reference.MODBLOCK_MACHINE_CRUDE_OIL_STONE);
-
-		ForgeRegistries.BLOCKS.register(machinecrate);// , Reference.MODBLOCK_MACHINE_CRATE);
-
-		ForgeRegistries.BLOCKS.register(corn);// , Reference.MODBLOCK_MACHINE_CORN);
-
-		ForgeRegistries.BLOCKS.register(machinedrilledstone);// , Reference.MODBLOCK_MACHINE_DRILLED_STONE);
-		ForgeRegistries.BLOCKS.register(machinedrilledandesite);// , Reference.MODBLOCK_MACHINE_DRILLED_ANDESITE);
-
-		ForgeRegistries.BLOCKS.register(machinedrilleddiorite);// , Reference.MODBLOCK_MACHINE_DRILLED_DIORITE);
-
-		ForgeRegistries.BLOCKS.register(machinedrilledgranite);// , Reference.MODBLOCK_MACHINE_DRILLED_GRANITE);
-
-		ForgeRegistries.BLOCKS.register(machineexplosivepackeddrilledstone);// , Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE);
-		ForgeRegistries.BLOCKS.register(machineblastedstone);// , ItemBlockBlastedStone.class, Reference.MODBLOCK_MACHINE_BLASTED_STONE);
-		ForgeRegistries.BLOCKS.register(machineblastedstone2);// , Reference.MODBLOCK_MACHINE_BLASTED_STONE2);
-
-		ForgeRegistries.BLOCKS.register(machineprimarycrhuser);// , Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
-		ForgeRegistries.BLOCKS.register(machinecentrifuge);// , Reference.MODBLOCK_MACHINE_CENTRIFUGE);
-
-		ForgeRegistries.BLOCKS.register(machineconveyor);// , Reference.MODBLOCK_MACHINE_CONVEYOR);
-		ForgeRegistries.BLOCKS.register(machinefractionaldistillation);// , Reference.MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION);
-		ForgeRegistries.BLOCKS.register(machineasphaltmixer);// , Reference.MODBLOCK_MACHINE_ASPHALT_MIXER);
-
-		ForgeRegistries.BLOCKS.register(machineliquidPipe);// , Reference.MODBLOCK_MACHINE_LIQUID_PIPE);
-		ForgeRegistries.BLOCKS.register(machinescreen);// , Reference.MODBLOCK_MACHINE_SCREEN);
-		ForgeRegistries.BLOCKS.register(machinemowedgrass);// , Reference.MODBLOCK_MACHINE_MOWED_GRASS);
-
-		ForgeRegistries.BLOCKS.register(machinefuelpump);// , Reference.MODBLOCK_MACHINE_FUEL_PUMP);
-		ForgeRegistries.BLOCKS.register(machinedistiller);// , Reference.MODBLOCK_MACHINE_DISTILLER);
-		ForgeRegistries.BLOCKS.register(machinefermenter);// , Reference.MODBLOCK_MACHINE_FERMENTER);
-
-		ForgeRegistries.BLOCKS.register(machinewellhead);// , Reference.MODBLOCK_MACHINE_WELL_HEAD);
+		// TODO need to register items for all blocks too!
+		ForgeRegistries.BLOCKS.register(steelblock);
+		ForgeRegistries.ITEMS.register(new ItemBlock(steelblock).setRegistryName(ModBlocks.steelblock.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineasphalt);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineasphalt).setRegistryName(ModBlocks.machineasphalt.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinecompressedasphalt);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinecompressedasphalt).setRegistryName(ModBlocks.machinecompressedasphalt.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinecrudeoilstone);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinecrudeoilstone).setRegistryName(ModBlocks.machinecrudeoilstone.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinecrate);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinecrate).setRegistryName(ModBlocks.machinecrate.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(corn);
+		ForgeRegistries.ITEMS.register(new ItemBlock(corn).setRegistryName(ModBlocks.corn.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinedrilledstone);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinedrilledstone).setRegistryName(ModBlocks.machinedrilledstone.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinedrilledandesite);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinedrilledandesite).setRegistryName(ModBlocks.machinedrilledandesite.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinedrilleddiorite);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinedrilleddiorite).setRegistryName(ModBlocks.machinedrilleddiorite.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinedrilledgranite);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinedrilledgranite).setRegistryName(ModBlocks.machinedrilledgranite.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineexplosivepackeddrilledstone);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineexplosivepackeddrilledstone).setRegistryName(ModBlocks.machineexplosivepackeddrilledstone.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineblastedstone);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineblastedstone).setRegistryName(ModBlocks.machineblastedstone.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineblastedstone2);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineblastedstone2).setRegistryName(ModBlocks.machineblastedstone2.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineprimarycrhuser);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineprimarycrhuser).setRegistryName(ModBlocks.machineprimarycrhuser.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinecentrifuge);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinecentrifuge).setRegistryName(ModBlocks.machinecentrifuge.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineconveyor);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineconveyor).setRegistryName(ModBlocks.machineconveyor.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinefractionaldistillation);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinefractionaldistillation).setRegistryName(ModBlocks.machinefractionaldistillation.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineasphaltmixer);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineasphaltmixer).setRegistryName(ModBlocks.machineasphaltmixer.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineliquidPipe);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineliquidPipe).setRegistryName(ModBlocks.machineliquidPipe.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinescreen);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinescreen).setRegistryName(ModBlocks.machinescreen.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinemowedgrass);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinemowedgrass).setRegistryName(ModBlocks.machinemowedgrass.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinefuelpump);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinefuelpump).setRegistryName(ModBlocks.machinefuelpump.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinedistiller);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinedistiller).setRegistryName(ModBlocks.machinedistiller.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinefermenter);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinefermenter).setRegistryName(ModBlocks.machinefermenter.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinewellhead);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinewellhead).setRegistryName(ModBlocks.machinewellhead.getRegistryName()));
 
 		// next section for tile entities regsistration.
 		GameRegistry.registerTileEntity(TileEntityPrimaryCrusher.class, Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
@@ -187,7 +201,8 @@ public class ModBlocks {
 		//
 		//
 
-		ForgeRegistries.BLOCKS.register(oilFluidBlock);// , Reference.MODBLOCK_MACHINE_FLUID_OIL);
+		ForgeRegistries.BLOCKS.register(oilFluidBlock);
+		ForgeRegistries.ITEMS.register(new ItemBlock(oilFluidBlock).setRegistryName(ModBlocks.oilFluidBlock.getRegistryName()));
 
 		// fluidBioFuel.setDensity(10);
 		// FluidRegistry.registerFluid(fluidBioFuel);
