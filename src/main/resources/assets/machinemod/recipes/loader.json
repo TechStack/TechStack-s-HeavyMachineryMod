@@ -1,0 +1,25 @@
+{
+    "result": {
+        "item": "machinemod:loader"
+    },
+    "pattern" :[
+		"   ",
+		"bet",
+		"w w"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+       "item":"machinemod:loaderbucket"
+      },
+    "e": {
+      "item": "machinemod:engine"
+      },
+    "t": {
+      "item": "machinemod:transmission"
+      },
+    "w": {
+      "item": "machinemod:wheel"
+      }
+    }
+}

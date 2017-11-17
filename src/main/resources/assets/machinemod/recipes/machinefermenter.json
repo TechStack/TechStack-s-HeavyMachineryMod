@@ -1,0 +1,27 @@
+{
+    "result": {
+        "item": "machinemod:machinefermenter"
+    },
+    "pattern" : [
+    "www", 
+    "wcw", 
+    "h  "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+      "h":{
+    "item":"machinemod:hose"
+    },
+    "c":{
+    "item":"minecraft:chest"
+    },
+     "w":{
+    "type": "forge:ore_dict",
+    "ore": "plankWood"   
+  
+    }
+    
+    }
+    
+    
+}

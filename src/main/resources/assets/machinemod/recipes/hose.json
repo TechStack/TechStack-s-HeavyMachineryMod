@@ -1,17 +1,17 @@
 {
     "result": {
-        "item": "machinemod:camshaft"
+        "item": "machinemod:hose"
     },
     "pattern" : [
-    "   ",
-    " i ",
-    "i i"
+    " s ",
+    " s ",
+    " s "
     ],
     "type": "forge:ore_shaped",
   "key": {
-    "i":{
+    "s":{
         "type": "forge:ore_dict",
-        "ore": "ingotIron"   
+        "ore": "slimeball"   
       
       }
     }

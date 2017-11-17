@@ -230,6 +230,8 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 	 * 
 	 */
 	public boolean AddStack(ItemStack stackToAdd) {
+
+		// TODO Null crash needs fixed
 		if (stackToAdd.isItemEqual(HeldItem) || HeldItem == null) {
 			processInputOutputSlots();
 			setInventorySlotContents(1, stackToAdd);

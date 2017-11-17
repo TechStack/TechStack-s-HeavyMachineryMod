@@ -1,0 +1,25 @@
+{
+    "result": {
+        "item": "machinemod:dumptruck"
+    },
+    "pattern" :[
+		" b ",
+		"et ",
+		"w w"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+       "item":"machinemod:dumperbed"
+      },
+    "e": {
+      "item": "machinemod:engine"
+      },
+    "t": {
+      "item": "machinemod:transmission"
+      },
+    "w": {
+      "item": "machinemod:wheel"
+      }
+    }
+}

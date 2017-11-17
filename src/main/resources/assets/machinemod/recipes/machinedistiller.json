@@ -1,0 +1,28 @@
+{
+    "result": {
+        "item": "machinemod:machinedistiller"
+    },
+    "pattern" : [
+    "h  ",
+    "bcb",
+    "fff"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+      "h":{
+    "item":"machinemod:hose"
+    },
+    "c":{
+    "item":"minecraft:cauldron"
+    },
+    "b":{
+    "item":"minecraft:brewing_stand"
+    },
+    "f":{
+    "item":"minecraft:furnace"
+    }
+    
+    }
+    
+    
+}
