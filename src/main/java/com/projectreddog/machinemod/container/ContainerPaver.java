@@ -27,7 +27,7 @@ public class ContainerPaver extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return paver.isUseableByPlayer(player);
+		return paver.isUsableByPlayer(player);
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {

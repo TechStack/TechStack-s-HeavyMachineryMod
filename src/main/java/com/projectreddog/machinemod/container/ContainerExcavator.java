@@ -27,7 +27,7 @@ public class ContainerExcavator extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return excavator.isUseableByPlayer(player);
+		return excavator.isUsableByPlayer(player);
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {

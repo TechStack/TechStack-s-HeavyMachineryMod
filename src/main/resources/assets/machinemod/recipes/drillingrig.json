@@ -1,0 +1,32 @@
+{
+    "result": {
+        "item": "machinemod:drillingrig"
+    },
+    "pattern" : [
+       "pgg",
+       "pet",
+       "drr"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "p":{
+    "item":"machinemod:drillpipe"
+    },
+    "e":{
+    "item":"machinemod:engine"
+    },
+    "g":{
+    "item":"minecraft:glass"
+    },
+    "t":{
+    "item":"machinemod:transmission"
+    },
+      "r":{
+    "item":"machinemod:tracks"
+    },
+     "d":{
+    "item":"machinemod:drillhead"
+    }
+    }
+    
+}

@@ -27,7 +27,8 @@ public class ContainerBagger extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return dumpbagger.isUseableByPlayer(player);
+		return dumpbagger.isUsableByPlayer(player);
+
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {

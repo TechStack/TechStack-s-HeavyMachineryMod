@@ -27,7 +27,7 @@ public class ContainerGrader extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return grader.isUseableByPlayer(player);
+		return grader.isUsableByPlayer(player);
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {

@@ -430,7 +430,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			this.onGround = true;
 		}
 		// TODO POSSIBLE BUGs ???? untested
-		move(MoverType.PISTON, motionX, motionY, motionZ);
+		move(MoverType.PISTON, motionX * 1.2, motionY * 1.2, motionZ * 1.2);
 		//
 		// if (lastPosX != posX || lastPosY != posY || lastPosZ != posZ ||
 		// lastAttribute1 != Attribute1 || sendInterval > 9) {

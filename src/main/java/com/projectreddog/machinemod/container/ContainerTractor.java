@@ -27,7 +27,7 @@ public class ContainerTractor extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return tractor.isUseableByPlayer(player);
+		return tractor.isUsableByPlayer(player);
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {

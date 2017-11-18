@@ -1,0 +1,17 @@
+{
+    "result": {
+        "item": "machinemod:boomarmsegment"
+    },
+    "pattern" : [
+       "b  ",
+       " b ",
+       " b "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "b":{
+    "item":"minecraft:iron_block"
+    }
+    }
+    
+}

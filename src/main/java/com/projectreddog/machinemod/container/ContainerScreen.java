@@ -35,7 +35,7 @@ public class ContainerScreen extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return screen.isUseableByPlayer(player);
+		return screen.isUsableByPlayer(player);
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {

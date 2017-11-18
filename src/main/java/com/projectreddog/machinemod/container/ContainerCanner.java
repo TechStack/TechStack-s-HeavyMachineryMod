@@ -31,7 +31,7 @@ public class ContainerCanner extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return canner.isUseableByPlayer(player);
+		return canner.isUsableByPlayer(player);
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {

@@ -27,7 +27,7 @@ public class ContainerLoader extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return loader.isUseableByPlayer(player);
+		return loader.isUsableByPlayer(player);
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {

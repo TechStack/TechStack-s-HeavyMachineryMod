@@ -1,0 +1,21 @@
+{
+    "result": {
+        "item": "machinemod:fuelcan",
+        "data" :1000
+    },
+    "pattern" : [
+        "   ",
+        " l ",
+        " b "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "l":{
+    "item":"machinemod:lidwithspout"
+    },
+    "b":{
+    "item":"minecraft:bucket"
+    }
+    }
+    
+}

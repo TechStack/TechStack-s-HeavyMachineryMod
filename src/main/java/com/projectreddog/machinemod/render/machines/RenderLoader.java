@@ -73,7 +73,7 @@ public class RenderLoader extends Render {
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelLoader.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
-		GlStateManager.translate(-1.4f, -0.25F, -.85F);
+		GlStateManager.translate(-2f, -0.00F, -1.57F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glScalef(.5f, .5f, .5f);
 		EntityLoader eL = ((EntityLoader) entity);
@@ -90,11 +90,11 @@ public class RenderLoader extends Render {
 
 				if (count > 4) {
 					count = 0;
-					GlStateManager.translate(-3.5f, 0.0F, 0F);
+					GlStateManager.translate(-4f, 0.0F, 0F);
 					GlStateManager.translate(0, 0.0F, .5F);
 
 				}
-				GlStateManager.translate(.7F, 0.0F, 0F);
+				GlStateManager.translate(1.1F, 0.0F, 0F);
 				count += 1;
 
 				GL11.glRotatef(45, 1, 1, 0);

@@ -1,11 +1,91 @@
-# Blender MTL File: 'prototypeexcavatorMk2.blend'
-# Material Count: 1
+# Exported from 3D Builder
 
-newmtl None
-Ns 0
-Ka 0.000000 0.000000 0.000000
-Kd 0.8 0.8 0.8
-Ks 0.8 0.8 0.8
-d 1
-illum 2
-map_Kd excavator.png
+newmtl dark_grey
+Kd 0.200000 0.200000 0.200000
+
+newmtl White
+Kd 0.878431 0.878431 0.878431
+
+newmtl Gray
+Kd 0.501961 0.501961 0.501961
+
+newmtl dark_grey
+Kd 0.200000 0.200000 0.200000
+
+newmtl Black
+Kd 0.000000 0.000000 0.000000
+
+newmtl White_0
+Kd 1.000000 1.000000 1.000000
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000
+
+newmtl Black
+Kd 0.000000 0.000000 0.000000
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000
+
+newmtl White_0
+Kd 1.000000 1.000000 1.000000
+
+newmtl dark_grey
+Kd 0.200000 0.200000 0.200000
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000
+
+newmtl dark_grey
+Kd 0.200000 0.200000 0.200000
+
+newmtl dark_grey
+Kd 0.200000 0.200000 0.200000
+
+newmtl dark_grey
+Kd 0.200000 0.200000 0.200000
+
+newmtl dark_grey
+Kd 0.200000 0.200000 0.200000
+
+newmtl dark_grey
+Kd 0.200000 0.200000 0.200000
+
+newmtl dark_grey
+Kd 0.200000 0.200000 0.200000
+
+newmtl dark_grey
+Kd 0.200000 0.200000 0.200000
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000
+
+newmtl Gray
+Kd 0.501961 0.501961 0.501961
+
+newmtl dark_grey
+Kd 0.200000 0.200000 0.200000
+
+newmtl White
+Kd 0.878431 0.878431 0.878431
+
+newmtl dark_grey
+Kd 0.200000 0.200000 0.200000
+
+newmtl dark_grey
+Kd 0.200000 0.200000 0.200000
+
+newmtl dark_grey
+Kd 0.200000 0.200000 0.200000
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000

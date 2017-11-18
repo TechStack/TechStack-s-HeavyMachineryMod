@@ -33,7 +33,7 @@ public class ContainerFermenter extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return fermenter.isUseableByPlayer(player);
+		return fermenter.isUsableByPlayer(player);
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {

@@ -27,7 +27,7 @@ public class ContainerCombine extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return combine.isUseableByPlayer(player);
+		return combine.isUsableByPlayer(player);
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
