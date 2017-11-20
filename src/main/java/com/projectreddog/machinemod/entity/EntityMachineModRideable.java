@@ -24,7 +24,6 @@ import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -32,19 +31,45 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 
-public class EntityMachineModRideable extends Entity implements IInventory {
+public class EntityMachineModRideable extends Entity {
 
 	public double velocity;
 	public float yaw;
-	protected ItemStack[] inventory;
+	private NonNullList<ItemStack> chestContents = NonNullList.<ItemStack> withSize(27, ItemStack.EMPTY);
+
+	public int SIZE = 0;
+	// protected ItemStack[] inventory;
+	public IItemHandler inventory;
+
+	@Override
+	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			return true;
+		}
+		return super.hasCapability(capability, facing);
+	}
+
+	@Override
+	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			return (T) inventory;
+		}
+		return super.getCapability(capability, facing);
+	}
+
 	public boolean shouldSendClientInvetoryUpdates = false;
 	public int tickssincelastbroadcast = 0;
 
@@ -109,7 +134,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		super(world);
 		setSize(1.5F, 0.6F); // should be overridden in Extened version.
 		this.stepHeight = 1F;
-		inventory = new ItemStack[0];
+		inventory = new ItemStackHandler(SIZE);
 
 	}
 
@@ -166,8 +191,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		// need to drop additional items from the inventory of the item
 		Random rand = new Random();
 
-		for (int i = 0; i < this.getSizeInventory(); i++) {
-			ItemStack item = this.getStackInSlot(i);
+		for (int i = 0; i < SIZE; i++) {
+			ItemStack item = inventory.getStackInSlot(i);
 
 			if (item != null && item.getCount() > 0) {
 				float rx = rand.nextFloat() * 0.8F + 0.1F;
@@ -186,7 +211,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 				entityItem.motionZ = rand.nextGaussian() * factor;
 				world.spawnEntity(entityItem);
 				// item.stackSize = 0;
-				this.setInventorySlotContents(i, null);
+				inventory.insertItem(i, ItemStack.EMPTY, false);
 
 			}
 		}
@@ -430,7 +455,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 			this.onGround = true;
 		}
 		// TODO POSSIBLE BUGs ???? untested
-		move(MoverType.PISTON, motionX * 1.2, motionY * 1.2, motionZ * 1.2);
+		move(MoverType.PISTON, motionX * 2, motionY * 2, motionZ * 2);
 		//
 		// if (lastPosX != posX || lastPosY != posY || lastPosZ != posZ ||
 		// lastAttribute1 != Attribute1 || sendInterval > 9) {
@@ -651,9 +676,9 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		for (int i = 0; i < tagList.tagCount(); i++) {
 			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
 			byte slot = tag.getByte("Slot");
-			if (slot >= 0 && slot < inventory.length) {
-				inventory[slot] = new ItemStack(tag);
-			}
+			// if (slot >= 0 && slot < inventory.length) {
+			inventory.insertItem(slot, new ItemStack(tag), false);
+			// }
 		}
 	}
 
@@ -672,8 +697,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "RUN_TIMER_EMAIN", runTimeTillNextFuelUsage);
 		// inventory
 		NBTTagList itemList = new NBTTagList();
-		for (int i = 0; i < inventory.length; i++) {
-			ItemStack stack = inventory[i];
+		for (int i = 0; i < SIZE; i++) {
+			ItemStack stack = inventory.getStackInSlot(i);
 			if (stack != null) {
 				NBTTagCompound tag = new NBTTagCompound();
 				tag.setByte("Slot", (byte) i);
@@ -813,27 +838,27 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	// adds to this objects inventory if it can
 	// any remaining amount will be returned
 	protected ItemStack addToinventory(ItemStack is) {
-		int i = getSizeInventory();
+		int i = this.SIZE;
 
-		for (int j = 0; j < i && is != null && is.getCount() > 0; ++j) {
-			if (is != null) {
+		for (int j = 0; j < i && !is.isEmpty() && is.getCount() > 0; ++j) {
+			if (!is.isEmpty()) {
 
-				if (getStackInSlot(j) != null) {
-					if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getItemDamage() == is.getItemDamage()) {
+				if (!inventory.getStackInSlot(j).isEmpty()) {
+					if (inventory.getStackInSlot(j).getItem() == is.getItem() && inventory.getStackInSlot(j).getItemDamage() == is.getItemDamage()) {
 						// same item remove from is put into slot any amt not to
 						// excede stack max
-						if (getStackInSlot(j).getCount() < getStackInSlot(j).getMaxStackSize()) {
+						if (inventory.getStackInSlot(j).getCount() < inventory.getStackInSlot(j).getMaxStackSize()) {
 							// we have room to add to this stack
-							if (is.getCount() <= getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount()) {
+							if (is.getCount() <= inventory.getStackInSlot(j).getMaxStackSize() - inventory.getStackInSlot(j).getCount()) {
 								// /all of the stack will fit in this slot do
 								// so.
 
-								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).getCount() + is.getCount(), is.getItemDamage()));
-								is = null;
+								inventory.insertItem(j, new ItemStack(inventory.getStackInSlot(j).getItem(), inventory.getStackInSlot(j).getCount() + is.getCount(), is.getItemDamage()), false);
+								is = ItemStack.EMPTY;
 							} else {
 								// we have more
-								int countRemain = is.getCount() - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount());
-								setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getItemDamage()));
+								int countRemain = is.getCount() - (inventory.getStackInSlot(j).getMaxStackSize() - inventory.getStackInSlot(j).getCount());
+								inventory.insertItem(j, new ItemStack(is.getItem(), inventory.getStackInSlot(j).getMaxStackSize(), is.getItemDamage()), false);
 								is.setCount(countRemain);
 							}
 
@@ -841,8 +866,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 					}
 				} else {
 					// nothign in slot so set contents
-					setInventorySlotContents(j, is.copy());
-					is = null;
+					inventory.insertItem(j, is.copy(), false);
+					is = ItemStack.EMPTY;
 				}
 
 			}
@@ -853,120 +878,13 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 	}
 
-	@Override
-	public int getSizeInventory() {
-		return inventory.length;
-	}
-
-	@Override
-	public ItemStack getStackInSlot(int slot) {
-		return inventory[slot];
-	}
-
-	@Override
-	public void setInventorySlotContents(int slot, ItemStack stack) {
-		inventory[slot] = stack;
-		if (stack != null && stack.getCount() > getInventoryStackLimit()) {
-			stack.setCount(getInventoryStackLimit());
-		}
-		if (!(this.world.isRemote)) {
-			// send packet to notify client of contents of machine's inventory
-			if (this.shouldSendClientInvetoryUpdates) {
-				ModNetwork.sendPacketToAllAround((new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), slot, inventory[slot])), new TargetPoint(world.provider.getDimension(), posX, posY, posZ, 80));
-			}
-		}
-
-	}
-
 	public void sendAllInventoryToPlayer(EntityPlayerMP player) {
-		for (int i = 0; i < inventory.length; i++) {
+		for (int i = 0; i < SIZE; i++) {
 
-			ModNetwork.simpleNetworkWrapper.sendTo(new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), i, inventory[i]), player);
+			ModNetwork.simpleNetworkWrapper.sendTo(new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), i, inventory.getStackInSlot(i)), player);
 
 		}
 
-	}
-
-	@Override
-	public void markDirty() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void openInventory(EntityPlayer playerIn) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void closeInventory(EntityPlayer playerIn) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		return true;
-	}
-
-	@Override
-	public int getInventoryStackLimit() {
-		return 64;
-	}
-
-	@Override
-	public boolean isUsableByPlayer(EntityPlayer player) {
-		// check if the player is near the entity.
-		return player.getDistanceSq(posX, posY, posZ) < 64;
-	}
-
-	@Override
-	public ItemStack decrStackSize(int slot, int amt) {
-		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			if (stack.getCount() <= amt) {
-				setInventorySlotContents(slot, null);
-			} else {
-				stack = stack.splitStack(amt);
-				if (stack.getCount() == 0) {
-					setInventorySlotContents(slot, null);
-				}
-
-			}
-		}
-		return stack;
-	}
-
-	@Override
-	public ItemStack removeStackFromSlot(int slot) {
-		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			setInventorySlotContents(slot, null);
-		}
-		return stack;
-	}
-
-	@Override
-	public int getField(int id) {
-		return 0;
-	}
-
-	@Override
-	public void setField(int id, int value) {
-
-	}
-
-	@Override
-	public int getFieldCount() {
-		return 0;
-	}
-
-	@Override
-	public void clear() {
-		for (int i = 0; i < inventory.length; ++i) {
-			inventory[i] = null;
-		}
 	}
 
 	/**
@@ -979,15 +897,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		return list.isEmpty() ? null : (Entity) list.get(0);
 	}
 
-	@Override
-	public boolean isEmpty() {
-		for (int i = 0; i < inventory.length; i++) {
-			if (!inventory[i].isEmpty()) {
-				return false;
-			}
-		}
-
-		return true;
+	public boolean isUsableByPlayer(EntityPlayer player) {
+		// check if the player is near the entity.
+		return player.getDistanceSq(posX, posY, posZ) < 64;
 	}
-
 }

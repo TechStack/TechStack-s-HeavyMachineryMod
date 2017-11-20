@@ -9,6 +9,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityPumpJack extends EntityMachineModRideable {
 
@@ -20,7 +21,9 @@ public class EntityPumpJack extends EntityMachineModRideable {
 		super(world);
 
 		setSize(3f, 3f);
-		inventory = new ItemStack[54];
+		SIZE = 54;
+		inventory = new ItemStackHandler(SIZE);
+		// inventory = new ItemStack[54];
 
 		this.mountedOffsetY = .40D;
 		this.mountedOffsetX = 2.25D;

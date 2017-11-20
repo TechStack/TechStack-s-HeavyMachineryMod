@@ -15,6 +15,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityGrader extends EntityMachineModRideable {
 
@@ -24,7 +25,9 @@ public class EntityGrader extends EntityMachineModRideable {
 		super(world);
 
 		setSize(2.8f, 2.5f);
-		inventory = new ItemStack[9];
+		SIZE = 9;
+		inventory = new ItemStackHandler(SIZE);
+		// inventory = new ItemStack[9];
 
 		this.mountedOffsetY = 0.6D;
 		this.mountedOffsetX = 0.4D;
@@ -94,8 +97,8 @@ public class EntityGrader extends EntityMachineModRideable {
 				// Drop blocks
 				// TODO needs something to pace it a bit more now it drops
 				// everything way to fast.
-				for (int i = 0; i < this.getSizeInventory(); i++) {
-					ItemStack item = this.getStackInSlot(i);
+				for (int i = 0; i < SIZE; i++) {
+					ItemStack item = this.inventory.getStackInSlot(i);
 					int angle;
 					if (item != null && item.getCount() > 0) {
 						if (item.getItem() instanceof ItemBlock) {
@@ -119,7 +122,7 @@ public class EntityGrader extends EntityMachineModRideable {
 											|| world.getBlockState(bp).getBlock() == Blocks.RED_FLOWER || world.getBlockState(bp).getBlock() == Blocks.YELLOW_FLOWER || world.getBlockState(bp).getBlock() == Blocks.WATERLILY || world.getBlockState(bp).getBlock() == Blocks.BROWN_MUSHROOM_BLOCK || world.getBlockState(bp).getBlock() == Blocks.RED_MUSHROOM_BLOCK) {
 										bp = GetLowestBlockPos(bp);
 										if (world.setBlockState(bp, ib.getBlock().getDefaultState())) {
-											this.decrStackSize(i, 1);
+											this.inventory.extractItem(i, 1, false);
 										}
 										return;
 
@@ -130,7 +133,7 @@ public class EntityGrader extends EntityMachineModRideable {
 											|| world.getBlockState(bp).getBlock() == Blocks.RED_MUSHROOM_BLOCK) {
 										bp2 = GetLowestBlockPos(bp2);
 										if (world.setBlockState(bp2, ib.getBlock().getDefaultState())) {
-											this.decrStackSize(i, 1);
+											this.inventory.extractItem(i, 1, false);
 										}
 										return;
 									}

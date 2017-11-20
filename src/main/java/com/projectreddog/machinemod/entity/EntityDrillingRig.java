@@ -5,10 +5,10 @@ import com.projectreddog.machinemod.init.ModItems;
 
 import net.minecraft.block.BlockStone;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityDrillingRig extends EntityMachineModRideable {
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
@@ -19,7 +19,10 @@ public class EntityDrillingRig extends EntityMachineModRideable {
 	public EntityDrillingRig(World world) {
 		super(world);
 		setSize(5.7F, 3F);
-		inventory = new ItemStack[0];
+
+		SIZE = 0;
+		inventory = new ItemStackHandler(SIZE);
+		// inventory = new ItemStack[0];
 		this.mountedOffsetY = .5D;
 		this.mountedOffsetX = 3D;
 		this.mountedOffsetZ = 3D;

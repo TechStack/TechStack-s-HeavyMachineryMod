@@ -74,8 +74,8 @@ public class TileEntityWellHead extends TileEntity implements ITickable, IFluidT
 			if (entity != null) {
 				if (entity instanceof EntitySemiTractor) {
 					EntitySemiTractor semi = (EntitySemiTractor) entity;
-					if (semi.getStackInSlot(0) != null) {
-						if (semi.getStackInSlot(0).getItem() instanceof ItemSemiTrailerTanker) {
+					if (semi.inventory.getStackInSlot(0) != null) {
+						if (semi.inventory.getStackInSlot(0).getItem() instanceof ItemSemiTrailerTanker) {
 
 							if (!semi.isDead) {
 

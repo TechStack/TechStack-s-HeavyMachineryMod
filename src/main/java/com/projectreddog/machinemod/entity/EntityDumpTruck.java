@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityDumpTruck extends EntityMachineModRideable {
 
@@ -19,7 +20,9 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 		super(world);
 
 		setSize(3, 2);
-		inventory = new ItemStack[54];
+		SIZE = 54;
+		inventory = new ItemStackHandler(SIZE);
+		// inventory = new ItemStack[54];
 		this.mountedOffsetY = 0.35D;
 		this.mountedOffsetX = 1.5D;
 		this.mountedOffsetZ = 1.5D;
@@ -38,8 +41,8 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 			collidedEntitiesInList(list);
 			if (this.Attribute1 == getMinAngle()) {
 				// need
-				for (int i = 0; i < this.getSizeInventory(); i++) {
-					ItemStack item = this.getStackInSlot(i);
+				for (int i = 0; i < SIZE; i++) {
+					ItemStack item = this.inventory.getStackInSlot(i);
 
 					if (item != null && item.getCount() > 0) {
 						;
@@ -57,7 +60,7 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 						entityItem.forceSpawn = true;
 						world.spawnEntity(entityItem);
 						// item.stackSize = 0;
-						this.setInventorySlotContents(i, null);
+						this.inventory.insertItem(i, ItemStack.EMPTY, false);
 					}
 				}
 

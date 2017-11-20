@@ -69,8 +69,9 @@ public class RenderLoader extends Render {
 		float f4 = 0.75F;
 		GL11.glScalef(f4, f4, f4);
 		GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
-		this.bindEntityTexture(entity);
+		// this.bindEntityTexture(entity);
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
+
 		this.modelLoader.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
 		GlStateManager.translate(-2f, -0.00F, -1.57F);
@@ -80,9 +81,9 @@ public class RenderLoader extends Render {
 
 		boolean even = true;
 		int count = 0;
-		for (int i = 0; i < eL.getSizeInventory(); i++) {
-			ItemStack is = eL.getStackInSlot(i);
-			if (is != null) {
+		for (int i = 0; i < eL.SIZE; i++) {
+			ItemStack is = eL.inventory.getStackInSlot(i);
+			if (is != null && !is.isEmpty()) {
 				// EntityItem customitem = new EntityItem(eDT.worldObj);
 				// customitem.hoverStart = 0f;
 				// customitem.setEntityItemStack(is);

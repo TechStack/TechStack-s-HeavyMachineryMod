@@ -4,13 +4,13 @@ import com.projectreddog.machinemod.init.ModItems;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntitySub extends EntityMachineModRideable {
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
@@ -20,7 +20,9 @@ public class EntitySub extends EntityMachineModRideable {
 	public EntitySub(World world) {
 		super(world);
 		setSize(2.5F, 4F);
-		inventory = new ItemStack[9];
+		SIZE = 9;
+		inventory = new ItemStackHandler(SIZE);
+		// inventory = new ItemStack[9];
 		this.mountedOffsetY = 0.35D;
 		this.mountedOffsetX = 2d;
 		this.mountedOffsetZ = 2d;

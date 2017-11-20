@@ -7,6 +7,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.items.SlotItemHandler;
 
 public class ContainerGrader extends Container {
 
@@ -17,7 +18,7 @@ public class ContainerGrader extends Container {
 
 		for (int i = 0; i < 1; i++) {
 			for (int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(grader, j + i * 9, 8 + j * 18, 18 + i * 18));
+				addSlotToContainer(new SlotItemHandler(grader.inventory, j + i * 9, 8 + j * 18, 18 + i * 18));
 			}
 		}
 

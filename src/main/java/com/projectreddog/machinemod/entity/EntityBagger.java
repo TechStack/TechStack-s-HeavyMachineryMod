@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityBagger extends EntityMachineModRideable {
 
@@ -24,7 +25,9 @@ public class EntityBagger extends EntityMachineModRideable {
 		super(world);
 
 		setSize(13f, 7f);
-		inventory = new ItemStack[54];
+		SIZE = 54;
+		inventory = new ItemStackHandler(SIZE);
+		// inventory = new ItemStack[54];
 
 		this.mountedOffsetY = .40D;
 		this.mountedOffsetX = 2.25D;

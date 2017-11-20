@@ -206,8 +206,8 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 				if (entity instanceof EntitySemiTractor) {
 					EntitySemiTractor est = (EntitySemiTractor) entity;
 
-					if (est.getStackInSlot(0) != null) {
-						if (est.getStackInSlot(0).getItem() instanceof ItemSemiTrailerTanker) {
+					if (est.inventory.getStackInSlot(0) != null) {
+						if (est.inventory.getStackInSlot(0).getItem() instanceof ItemSemiTrailerTanker) {
 
 							if (!est.isDead) {
 

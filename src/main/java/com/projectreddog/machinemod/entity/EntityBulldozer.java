@@ -5,12 +5,12 @@ import com.projectreddog.machinemod.utility.BlockUtil;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityBulldozer extends EntityMachineModRideable {
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
@@ -20,7 +20,9 @@ public class EntityBulldozer extends EntityMachineModRideable {
 	public EntityBulldozer(World world) {
 		super(world);
 		setSize(4.2F, 2.5F);
-		inventory = new ItemStack[0];
+		// inventory = new ItemStack[0];
+		SIZE = 0;
+		inventory = new ItemStackHandler(SIZE);
 		this.mountedOffsetY = .87D;
 		this.mountedOffsetX = -.75D;
 		this.mountedOffsetZ = -.75D;

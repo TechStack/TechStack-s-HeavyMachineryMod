@@ -61,7 +61,7 @@ public class MachineModMessageEntityInventoryChangedToClientHandler implements I
 							// if (entity instanceof EntityDumpTruck) {
 							// EntityDumpTruck eDT = (EntityDumpTruck) entity;
 							EntityMachineModRideable eMMR = (EntityMachineModRideable) entity;
-							eMMR.setInventorySlotContents(message.slot, message.is);
+							eMMR.inventory.insertItem(message.slot, message.is, false);
 							// }
 
 						}

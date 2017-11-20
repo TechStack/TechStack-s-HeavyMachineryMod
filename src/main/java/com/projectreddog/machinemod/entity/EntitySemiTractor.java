@@ -18,6 +18,7 @@ import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntitySemiTractor extends EntityMachineModRideable implements IFluidTank {
 
@@ -32,7 +33,9 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 		super(world);
 
 		setSize(3, 2);
-		inventory = new ItemStack[9];
+		SIZE = 9;
+		inventory = new ItemStackHandler(SIZE);
+		// inventory = new ItemStack[9];
 		this.mountedOffsetY = 0.35D;
 		this.mountedOffsetX = 0.0D;
 		this.mountedOffsetZ = 0.0D;
@@ -67,14 +70,14 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 			List list = this.world.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
 			collidedEntitiesInList(list);
 
-			if (getStackInSlot(0) != null) {
-				if (getStackInSlot(0).getItem() instanceof ItemSemiTrailerFlatBed) {
+			if (this.inventory.getStackInSlot(0) != null) {
+				if (this.inventory.getStackInSlot(0).getItem() instanceof ItemSemiTrailerFlatBed) {
 
 					if (this.Attribute1 > 9) {
 
-						if (getStackInSlot(1) != null && getStackInSlot(1).getItem() instanceof ItemTransportable) {
+						if (this.inventory.getStackInSlot(1) != null && this.inventory.getStackInSlot(1).getItem() instanceof ItemTransportable) {
 
-							EntityMachineModRideable eMMR = ((ItemTransportable) getStackInSlot(1).getItem()).getEntityToSpawn(world);
+							EntityMachineModRideable eMMR = ((ItemTransportable) this.inventory.getStackInSlot(1).getItem()).getEntityToSpawn(world);
 
 							eMMR.setPosition(calcTwoOffsetX(bedRampBackOffset + -3, 90, -1) + posX - .5d, posY, calcTwoOffsetZ(bedRampBackOffset + -3, 90, -1) + posZ - .5d);
 							eMMR.prevPosX = calcTwoOffsetX(bedRampBackOffset + -1, 90, -1) + posX - .5d;
@@ -83,7 +86,7 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 							eMMR.currentFuelLevel = carriedMachinesFuelStorage;
 							world.spawnEntity(eMMR);
 							carriedMachinesFuelStorage = 0;
-							decrStackSize(1, 1);
+							this.inventory.extractItem(1, 1, false);
 						}
 					}
 				}
@@ -100,9 +103,9 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 	}
 
 	private void collidedEntitiesInList(List par1List) {
-		if (getStackInSlot(0) != null) {
-			if (getStackInSlot(0).getItem() instanceof ItemSemiTrailerFlatBed) {
-				if (getStackInSlot(1) == null) {
+		if (inventory.getStackInSlot(0) != null) {
+			if (inventory.getStackInSlot(0).getItem() instanceof ItemSemiTrailerFlatBed) {
+				if (inventory.getStackInSlot(1) == null) {
 					for (int i = 0; i < par1List.size(); ++i) {
 						Entity entity = (Entity) par1List.get(i);
 						if (entity != null) {
@@ -128,8 +131,8 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 
 	public boolean isFluidTanker() {
 
-		if (getStackInSlot(0) != null) {
-			if (getStackInSlot(0).getItem() instanceof ItemSemiTrailerTanker) {
+		if (inventory.getStackInSlot(0) != null) {
+			if (inventory.getStackInSlot(0).getItem() instanceof ItemSemiTrailerTanker) {
 				return true;
 			}
 		}

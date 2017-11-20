@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityPaver extends EntityMachineModRideable {
 
@@ -20,7 +21,9 @@ public class EntityPaver extends EntityMachineModRideable {
 		super(world);
 
 		setSize(5.5f, 4f);
-		inventory = new ItemStack[9];
+		SIZE = 9;
+		inventory = new ItemStackHandler(SIZE);
+		// inventory = new ItemStack[9];
 
 		this.mountedOffsetY = 0.75D;
 		this.mountedOffsetX = .75D;
@@ -38,9 +41,9 @@ public class EntityPaver extends EntityMachineModRideable {
 		if (!world.isRemote) {
 			if (this.isPlayerPushingSprintButton) {
 				// player trying
-				for (int j = 0; j < this.getSizeInventory(); j++) {
+				for (int j = 0; j < SIZE; j++) {
 
-					if (this.getStackInSlot(j) != null && this.getStackInSlot(j).getItem() == ModItems.rawasphalt && this.getStackInSlot(j).getCount() > 0) {
+					if (this.inventory.getStackInSlot(j) != null && this.inventory.getStackInSlot(j).getItem() == ModItems.rawasphalt && this.inventory.getStackInSlot(j).getCount() > 0) {
 						int angle;
 						for (int i = -2; i < 3; i++) {
 							if (i == 0) {
@@ -49,12 +52,12 @@ public class EntityPaver extends EntityMachineModRideable {
 								angle = 90;
 							}
 							BlockPos bp;
-							if (this.getStackInSlot(j) != null && this.getStackInSlot(j).getItem() == ModItems.rawasphalt && this.getStackInSlot(j).getCount() > 0) {
+							if (this.inventory.getStackInSlot(j) != null && this.inventory.getStackInSlot(j).getItem() == ModItems.rawasphalt && this.inventory.getStackInSlot(j).getCount() > 0) {
 								bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY - 1, posZ + calcTwoOffsetZ(3.5, angle, i));
 								if (world.isAirBlock(bp)) {
 									world.setBlockState(bp, ModBlocks.machineasphalt.getDefaultState());
 
-									this.decrStackSize(j, 1);
+									this.inventory.extractItem(j, 1, false);
 								}
 							}
 						}

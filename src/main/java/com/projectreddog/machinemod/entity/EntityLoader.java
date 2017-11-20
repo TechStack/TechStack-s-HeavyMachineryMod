@@ -14,6 +14,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityLoader extends EntityMachineModRideable {
 
@@ -23,9 +24,11 @@ public class EntityLoader extends EntityMachineModRideable {
 		super(world);
 
 		setSize(2.8f, 2.5f);
-		inventory = new ItemStack[9];
+		SIZE = 9;
+		// inventory = new ItemStack[9];
+		inventory = new ItemStackHandler(SIZE);
 
-		this.mountedOffsetY = 0.6D;
+		this.mountedOffsetY = 1D;
 		this.mountedOffsetX = 0.4D;
 		this.mountedOffsetZ = 0.4D;
 		this.maxAngle = 15;
@@ -52,14 +55,14 @@ public class EntityLoader extends EntityMachineModRideable {
 				// bucket Down
 				// break blocks first
 				int angle;
-				for (int i = -1; i < 2; i++) {
+				for (int i = -2; i < 3; i++) {
 					if (i == 0) {
 						angle = 0;
 					} else {
 						angle = 90;
 					}
 					BlockPos bp;
-					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + bucketOffsetY, posZ + calcTwoOffsetZ(3.5, angle, i));
+					bp = new BlockPos(posX + calcTwoOffsetX(5, angle, i), posY + bucketOffsetY, posZ + calcTwoOffsetZ(5, angle, i));
 					if (world.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || world.getBlockState(bp).getBlock() == Blocks.SNOW || world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.SAND || world.getBlockState(bp).getBlock() == Blocks.GRAVEL || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.CLAY
 							|| world.getBlockState(bp).getBlock() == Blocks.NETHERRACK || world.getBlockState(bp).getBlock() == Blocks.MYCELIUM || world.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || world.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2 || world.getBlockState(bp).getBlock() == Blocks.SOUL_SAND
 							|| world.getBlockState(bp).getBlock() == Blocks.TALLGRASS) {
@@ -69,7 +72,7 @@ public class EntityLoader extends EntityMachineModRideable {
 
 				}
 
-				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(3.5, 90, -1) + posX - .5d, posY + bucketOffsetY, calcTwoOffsetZ(3.5, 90, -1) + posZ - .5d, calcTwoOffsetX(3.5, 90, 1) + posX + .5d, posY + 1, calcTwoOffsetZ(3.5, 90, 1) + posZ + .5d);
+				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(5, 90, -2) + posX - .5d, posY + bucketOffsetY, calcTwoOffsetZ(5, 90, -2) + posZ - .5d, calcTwoOffsetX(5, 90, 2) + posX + .5d, posY + 1, calcTwoOffsetZ(5, 90, 2) + posZ + .5d);
 
 				List list = this.world.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
 				collidedEntitiesInList(list);
@@ -79,13 +82,12 @@ public class EntityLoader extends EntityMachineModRideable {
 				// Drop blocks
 				// TODO needs something to pace it a bit more now it drops
 				// everything way to fast.
-				for (int i = 0; i < this.getSizeInventory(); i++) {
-					ItemStack item = this.getStackInSlot(i);
+				for (int i = 0; i < SIZE; i++) {
+					ItemStack item = inventory.getStackInSlot(i);
 
-					if (item != null && item.getCount() > 0) {
-						;
+					if (!item.isEmpty() && item.getCount() > 0) {
 
-						EntityItem entityItem = new EntityItem(world, posX + calcOffsetX(3.5), posY + 4, posZ + calcOffsetZ(3.5), item);
+						EntityItem entityItem = new EntityItem(world, posX + calcOffsetX(5), posY + 4, posZ + calcOffsetZ(5), item);
 
 						if (item.hasTagCompound()) {
 							entityItem.getItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
@@ -99,7 +101,7 @@ public class EntityLoader extends EntityMachineModRideable {
 						world.spawnEntity(entityItem);
 						// item.stackSize = 0;
 
-						this.setInventorySlotContents(i, null);
+						inventory.insertItem(i, ItemStack.EMPTY, false);
 					}
 				}
 
@@ -119,15 +121,17 @@ public class EntityLoader extends EntityMachineModRideable {
 			if (entity != null) {
 				if (entity instanceof EntityItem) {
 					ItemStack is = ((EntityItem) entity).getItem().copy();
-					is.setItemDamage(((EntityItem) entity).getItem().getItemDamage());
-					if (!entity.isDead) {
-						if (is.getCount() > 0) {
-							ItemStack is1 = addToinventory(is);
+					if (!is.isEmpty() && is != null) {
+						is.setItemDamage(((EntityItem) entity).getItem().getItemDamage());
+						if (!entity.isDead) {
+							if (is.getCount() > 0) {
+								ItemStack is1 = addToinventory(is);
 
-							if (is1 != null && is1.getCount() != 0) {
-								((EntityItem) entity).setItem(is1);
-							} else {
-								entity.setDead();
+								if (is1 != null && is1.getCount() != 0) {
+									((EntityItem) entity).setItem(is1);
+								} else {
+									entity.setDead();
+								}
 							}
 						}
 					}

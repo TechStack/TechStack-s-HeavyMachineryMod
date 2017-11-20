@@ -3,10 +3,10 @@ package com.projectreddog.machinemod.entity;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.utility.BlockUtil;
 
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityCrane extends EntityMachineModRideable {
 
@@ -16,7 +16,9 @@ public class EntityCrane extends EntityMachineModRideable {
 		super(world);
 
 		setSize(9f, 24f);
-		inventory = new ItemStack[9];
+		SIZE = 9;
+		inventory = new ItemStackHandler(SIZE);
+		// inventory = new ItemStack[9];
 
 		this.mountedOffsetY = .2D;
 		this.mountedOffsetX = 5D;

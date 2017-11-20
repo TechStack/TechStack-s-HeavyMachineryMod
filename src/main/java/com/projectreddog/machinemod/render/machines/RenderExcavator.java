@@ -53,7 +53,7 @@ public class RenderExcavator extends Render {
 		GL11.glTranslatef((float) x, (float) y, (float) z);
 		GL11.glRotatef(180.0F, 0.0F, 1.0F, 0.0F);
 
-		this.bindEntityTexture(entity);
+		// this.bindEntityTexture(entity);
 		this.modelExcavator.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
 		GlStateManager.translate(-1.00f, -1.75F, -.85F);
@@ -63,8 +63,8 @@ public class RenderExcavator extends Render {
 
 		boolean even = true;
 		int count = 0;
-		for (int i = 0; i < eL.getSizeInventory(); i++) {
-			ItemStack is = eL.getStackInSlot(i);
+		for (int i = 0; i < eL.SIZE; i++) {
+			ItemStack is = eL.inventory.getStackInSlot(i);
 			if (is != null) {
 				// EntityItem customitem = new EntityItem(eDT.worldObj);
 				// customitem.hoverStart = 0f;

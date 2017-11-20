@@ -81,8 +81,8 @@ public class RenderGrader extends Render {
 
 		boolean even = true;
 		int count = 0;
-		for (int i = 0; i < eL.getSizeInventory(); i++) {
-			ItemStack is = eL.getStackInSlot(i);
+		for (int i = 0; i < eL.SIZE; i++) {
+			ItemStack is = eL.inventory.getStackInSlot(i);
 			if (is != null) {
 				// EntityItem customitem = new EntityItem(eDT.worldObj);
 				// customitem.hoverStart = 0f;

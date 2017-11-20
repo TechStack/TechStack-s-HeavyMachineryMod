@@ -20,6 +20,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityTractor extends EntityMachineModRideable {
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
@@ -29,7 +30,9 @@ public class EntityTractor extends EntityMachineModRideable {
 	public EntityTractor(World world) {
 		super(world);
 		setSize(1.5F, 2F);
-		inventory = new ItemStack[9];
+		SIZE = 9;
+		inventory = new ItemStackHandler(SIZE);
+		// inventory = new ItemStack[9];
 		this.mountedOffsetY = 0.55D;
 		this.mountedOffsetX = 0.65d;
 		this.mountedOffsetZ = 0.65d;
@@ -63,9 +66,9 @@ public class EntityTractor extends EntityMachineModRideable {
 					}
 					bp = new BlockPos(posX + calcTwoOffsetX(-3.5, angle, i), posY - 1, posZ + calcTwoOffsetZ(-3.5, angle, i));
 
-					if (this.getStackInSlot(0) != null) {
-						if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachment) {
-							if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlow) {
+					if (this.inventory.getStackInSlot(0) != null) {
+						if (this.inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachment) {
+							if (this.inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlow) {
 								if (world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.GRASS) {
 									world.setBlockState(bp, Blocks.FARMLAND.getDefaultState());
 									if (world.getBlockState(bp.up()).getBlock().getMaterial(world.getBlockState(bp.up())) == Material.PLANTS || world.getBlockState(bp.up()).getBlock().getMaterial(world.getBlockState(bp.up())).isReplaceable()) {
@@ -75,20 +78,20 @@ public class EntityTractor extends EntityMachineModRideable {
 										// LogHelper.info(world.getBlockState(bp.offsetUp()).getBlock().getMaterial());
 									}
 								}
-							} else if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {
+							} else if (this.inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {
 
 								for (int j = 1; j < 9; j++)// start at 1 because
 								// first slot is
 								// attachment only
 								{
-									if (this.getStackInSlot(j) != null) {
-										if (this.getStackInSlot(j).getCount() > 0) {
+									if (this.inventory.getStackInSlot(j) != null) {
+										if (this.inventory.getStackInSlot(j).getCount() > 0) {
 
-											if (this.getStackInSlot(j).getItem() instanceof IPlantable) {
-												if (world.getBlockState(bp).getBlock().canSustainPlant(world.getBlockState(bp), world, bp, EnumFacing.UP, (IPlantable) this.getStackInSlot(j).getItem()) && world.isAirBlock(bp.up())) {
+											if (this.inventory.getStackInSlot(j).getItem() instanceof IPlantable) {
+												if (world.getBlockState(bp).getBlock().canSustainPlant(world.getBlockState(bp), world, bp, EnumFacing.UP, (IPlantable) this.inventory.getStackInSlot(j).getItem()) && world.isAirBlock(bp.up())) {
 
-													world.setBlockState(bp.up(), ((IPlantable) this.getStackInSlot(j).getItem()).getPlant(world, bp.up()));
-													this.decrStackSize(j, 1);
+													world.setBlockState(bp.up(), ((IPlantable) this.inventory.getStackInSlot(j).getItem()).getPlant(world, bp.up()));
+													this.inventory.extractItem(j, 1, false);
 													j = 9;
 
 												}
@@ -104,21 +107,21 @@ public class EntityTractor extends EntityMachineModRideable {
 								// world.setBlockState(bp.offset(EnumFacing.UP,
 								// 1), Blocks.wheat.getDefaultState());
 								// }
-							} else if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentSprayer) {
+							} else if (this.inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentSprayer) {
 								// Fertilize checks & actions
 
 								for (int j = 1; j < 9; j++)// start at 1 because
 								// first slot is
 								// attachment only
 								{
-									if (this.getStackInSlot(j) != null) {
-										if (this.getStackInSlot(j).getCount() > 0) {
+									if (this.inventory.getStackInSlot(j) != null) {
+										if (this.inventory.getStackInSlot(j).getCount() > 0) {
 
-											if (this.getStackInSlot(j).getItem() instanceof ItemDye) {
+											if (this.inventory.getStackInSlot(j).getItem() instanceof ItemDye) {
 
 												// / NOT UPDATE PROOF ( CALLS
 												// non named function )
-												if (EnumDyeColor.byDyeDamage(this.getStackInSlot(j).getItemDamage()) == EnumDyeColor.WHITE) {
+												if (EnumDyeColor.byDyeDamage(this.inventory.getStackInSlot(j).getItemDamage()) == EnumDyeColor.WHITE) {
 
 													EntityPlayer p;
 													if (this.getControllingPassenger() != null && this.getControllingPassenger() instanceof EntityPlayer) {
@@ -126,13 +129,13 @@ public class EntityTractor extends EntityMachineModRideable {
 													} else {
 														p = net.minecraftforge.common.util.FakePlayerFactory.getMinecraft((net.minecraft.world.WorldServer) world);
 													}
-													boolean didUse = ((ItemDye) this.getStackInSlot(j).getItem()).applyBonemeal(this.getStackInSlot(j), world, bp.up(), p, EnumHand.MAIN_HAND);
+													boolean didUse = ((ItemDye) this.inventory.getStackInSlot(j).getItem()).applyBonemeal(this.inventory.getStackInSlot(j), world, bp.up(), p, EnumHand.MAIN_HAND);
 
 													if (didUse) {
 														// used to clear out 0
 														// size stack
-														if (this.getStackInSlot(j).getCount() == 0) {
-															setInventorySlotContents(j, null);
+														if (this.inventory.getStackInSlot(j).getCount() == 0) {
+															inventory.insertItem(j, ItemStack.EMPTY, false);
 														}
 
 														j = 9;
@@ -144,7 +147,7 @@ public class EntityTractor extends EntityMachineModRideable {
 									}
 								}
 
-							} else if (this.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentTrencher) {
+							} else if (this.inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentTrencher) {
 								// Fertilize checks & actions
 								if (i == 0) {
 									if (world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.FARMLAND) {

@@ -13,6 +13,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityCombine extends EntityMachineModRideable {
 
@@ -22,7 +23,9 @@ public class EntityCombine extends EntityMachineModRideable {
 		super(world);
 
 		setSize(2.8f, 2.5f);
-		inventory = new ItemStack[9];
+		SIZE = 9;
+		inventory = new ItemStackHandler(SIZE);
+		// inventory = new ItemStack[9];
 
 		this.mountedOffsetY = 0.6D;
 		this.mountedOffsetX = 0.4D;
@@ -78,8 +81,8 @@ public class EntityCombine extends EntityMachineModRideable {
 				// Drop blocks
 				// TODO needs something to pace it a bit more now it drops
 				// everything way to fast.
-				for (int i = 0; i < this.getSizeInventory(); i++) {
-					ItemStack item = this.getStackInSlot(i);
+				for (int i = 0; i < SIZE; i++) {
+					ItemStack item = this.inventory.getStackInSlot(i);
 
 					if (item != null && item.getCount() > 0) {
 						;
@@ -97,7 +100,7 @@ public class EntityCombine extends EntityMachineModRideable {
 						entityItem.forceSpawn = true;
 						world.spawnEntity(entityItem);
 						// item.stackSize = 0;
-						this.setInventorySlotContents(i, null);
+						this.inventory.insertItem(i, ItemStack.EMPTY, false);
 					}
 				}
 			}

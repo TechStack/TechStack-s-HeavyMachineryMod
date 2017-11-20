@@ -7,6 +7,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.items.SlotItemHandler;
 
 public class ContainerExcavator extends Container {
 
@@ -17,7 +18,7 @@ public class ContainerExcavator extends Container {
 
 		for (int i = 0; i < 1; i++) {
 			for (int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(excavator, j + i * 9, 8 + j * 18, 18 + i * 18));
+				addSlotToContainer(new SlotItemHandler(excavator.inventory, j + i * 9, 8 + j * 18, 18 + i * 18));
 			}
 		}
 

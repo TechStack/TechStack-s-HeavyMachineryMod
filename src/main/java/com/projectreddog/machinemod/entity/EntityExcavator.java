@@ -15,6 +15,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityExcavator extends EntityMachineModRideable {
 
@@ -40,7 +41,9 @@ public class EntityExcavator extends EntityMachineModRideable {
 		super(world);
 
 		setSize(4f, 2f);
-		inventory = new ItemStack[9];
+		SIZE = 9;
+		inventory = new ItemStackHandler(SIZE);
+		// inventory = new ItemStack[9];
 
 		this.mountedOffsetY = .5D;
 		this.mountedOffsetX = -1.5D;
@@ -122,7 +125,8 @@ public class EntityExcavator extends EntityMachineModRideable {
 				// public BlockPos calculateBlockPosGivenStartAngleDistance4(double startX, double startY, double startZ, float angleX1, float angleY1, float angleZ1, double distance1, float angleX2, float angleY2, float angleZ2, double distance2, float angleX3, float angleY3, float angleZ3, double distance3, float angleX4, float angleY4, float angleZ4, double distance4) {
 				// LogHelper.info(this.yaw);
 				// LogHelper.info(this.rotationYaw);
-				BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 9.5d, (360 - this.yaw), (float) (this.angleArm2 + 270 + this.angleArm1), 7.5d, (360 - this.yaw), (float) (this.angleArm3 + 90), -2.75d);
+				// TS old model BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 9.5d, (360 - this.yaw), (float) (this.angleArm2 + 270 + this.angleArm1), 7.5d, (360 - this.yaw), (float) (this.angleArm3 + 90), -2.75d);
+				BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 11.5d, (360 - this.yaw), (float) (this.angleArm2 + 270 + this.angleArm1), 6.5d, (360 - this.yaw), (float) (this.angleArm3 + 90), -2.75d);
 				// BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 9.5d, (360 - this.yaw), (float) (this.angleArm2 + 270 + this.angleArm1), 7.5d, 0,0,0);
 
 				// BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 9.5d, (360 - this.yaw), (float) (this.angleArm2 + 265), 7.5d, 0, 0, 0);
@@ -146,8 +150,8 @@ public class EntityExcavator extends EntityMachineModRideable {
 					// Drop blocks
 					// TODO needs something to pace it a bit more now it drops
 					// everything way to fast.
-					for (int i = 0; i < this.getSizeInventory(); i++) {
-						ItemStack item = this.getStackInSlot(i);
+					for (int i = 0; i < SIZE; i++) {
+						ItemStack item = this.inventory.getStackInSlot(i);
 
 						if (item != null && item.getCount() > 0) {
 							;
@@ -166,7 +170,7 @@ public class EntityExcavator extends EntityMachineModRideable {
 							world.spawnEntity(entityItem);
 							// item.stackSize = 0;
 
-							this.setInventorySlotContents(i, null);
+							this.inventory.insertItem(i, ItemStack.EMPTY, false);
 						}
 					}
 				}

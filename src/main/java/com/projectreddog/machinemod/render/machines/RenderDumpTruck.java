@@ -83,8 +83,8 @@ public class RenderDumpTruck extends Render {
 
 		boolean even = true;
 		int count = 0;
-		for (int i = 0; i < eDT.getSizeInventory(); i++) {
-			ItemStack is = eDT.getStackInSlot(i);
+		for (int i = 0; i < eDT.SIZE; i++) {
+			ItemStack is = eDT.inventory.getStackInSlot(i);
 			if (is != null) {
 				// EntityItem customitem = new EntityItem(eDT.worldObj);
 				// customitem.hoverStart = 0f;

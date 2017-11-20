@@ -92,8 +92,8 @@ public class RenderBagger extends Render {
 		GlStateManager.translate(0f, -1.5F, 0F);
 
 		wheelRadius = 8.f;
-		for (int i = 0; i < eL.getSizeInventory(); i++) {
-			ItemStack is = eL.getStackInSlot(i);
+		for (int i = 0; i < eL.SIZE; i++) {
+			ItemStack is = eL.inventory.getStackInSlot(i);
 			if (is != null) {
 				// EntityItem customitem = new EntityItem(eDT.worldObj);
 				// customitem.hoverStart = 0f;
