@@ -211,7 +211,8 @@ public class EntityMachineModRideable extends Entity {
 				entityItem.motionZ = rand.nextGaussian() * factor;
 				world.spawnEntity(entityItem);
 				// item.stackSize = 0;
-				inventory.insertItem(i, ItemStack.EMPTY, false);
+				inventory.extractItem(i, inventory.getStackInSlot(i).getCount(), false);
+				// inventory.insertItem(i, ItemStack.EMPTY, false);
 
 			}
 		}

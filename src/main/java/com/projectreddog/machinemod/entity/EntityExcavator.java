@@ -169,8 +169,8 @@ public class EntityExcavator extends EntityMachineModRideable {
 							entityItem.forceSpawn = true;
 							world.spawnEntity(entityItem);
 							// item.stackSize = 0;
-
-							this.inventory.insertItem(i, ItemStack.EMPTY, false);
+							inventory.extractItem(i, inventory.getStackInSlot(i).getCount(), false);
+							// this.inventory.insertItem(i, ItemStack.EMPTY, false);
 						}
 					}
 				}

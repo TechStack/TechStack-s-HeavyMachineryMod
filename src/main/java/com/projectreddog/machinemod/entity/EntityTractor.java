@@ -13,7 +13,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemDye;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -135,7 +134,8 @@ public class EntityTractor extends EntityMachineModRideable {
 														// used to clear out 0
 														// size stack
 														if (this.inventory.getStackInSlot(j).getCount() == 0) {
-															inventory.insertItem(j, ItemStack.EMPTY, false);
+															inventory.extractItem(j, inventory.getStackInSlot(j).getCount(), false);
+															// inventory.insertItem(j, ItemStack.EMPTY, false);
 														}
 
 														j = 9;
