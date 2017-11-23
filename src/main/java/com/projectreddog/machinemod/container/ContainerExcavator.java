@@ -66,7 +66,7 @@ public class ContainerExcavator extends Container {
 			}
 
 			if (stackInSlot.getCount() == 0) {
-				slotObject.putStack(null);
+				slotObject.putStack(ItemStack.EMPTY);
 			} else {
 				slotObject.onSlotChanged();
 			}

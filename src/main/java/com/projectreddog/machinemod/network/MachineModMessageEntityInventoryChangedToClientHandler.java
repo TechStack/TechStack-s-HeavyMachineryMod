@@ -65,7 +65,8 @@ public class MachineModMessageEntityInventoryChangedToClientHandler implements I
 								// updated inbound itemstack is empty so remove whatever is in this slot!
 								eMMR.inventory.extractItem(message.slot, eMMR.inventory.getStackInSlot(message.slot).getCount(), false);
 
-							} else {
+							} else if (!message.is.areItemStacksEqual(eMMR.inventory.getStackInSlot(message.slot), message.is)) {
+								eMMR.inventory.extractItem(message.slot, eMMR.inventory.getStackInSlot(message.slot).getCount(), false);
 								eMMR.inventory.insertItem(message.slot, message.is, false);
 							}
 							// }

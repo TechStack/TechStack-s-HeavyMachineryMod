@@ -65,7 +65,7 @@ public class BlockMachineCrate extends BlockContainer {
 				if (te instanceof TileEntityCrate) {
 
 					TileEntityCrate crate = (TileEntityCrate) te;
-					if (playerIn.getHeldItemMainhand() == null) {
+					if (playerIn.getHeldItemMainhand().isEmpty()) {
 						crate.removeStack(-1);// -1 for full stack to be done later
 					}
 				}
@@ -77,7 +77,8 @@ public class BlockMachineCrate extends BlockContainer {
 	// public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-		ItemStack heldItem = playerIn.getActiveItemStack();
+		playerIn.getActiveItemStack();
+		ItemStack heldItem = playerIn.getHeldItem(hand);
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (!worldIn.isRemote) {
 			// server
@@ -85,11 +86,11 @@ public class BlockMachineCrate extends BlockContainer {
 				if (te instanceof TileEntityCrate) {
 					// its a crate
 					TileEntityCrate crate = (TileEntityCrate) te;
-					if (heldItem != null) {
+					if (!heldItem.isEmpty()) {
 						boolean result = crate.AddStack(heldItem);
 						if (result) {
 							// success we added it so remove from players inventory
-							playerIn.setHeldItem(hand, null);
+							playerIn.setHeldItem(hand, ItemStack.EMPTY);
 						}
 					}
 					return true;
