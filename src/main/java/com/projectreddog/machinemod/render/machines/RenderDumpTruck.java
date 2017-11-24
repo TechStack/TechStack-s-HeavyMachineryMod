@@ -70,6 +70,7 @@ public class RenderDumpTruck extends Render {
 		GL11.glScalef(f4, f4, f4);
 		GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
 		this.bindEntityTexture(entity);
+
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
@@ -85,7 +86,7 @@ public class RenderDumpTruck extends Render {
 		int count = 0;
 		for (int i = 0; i < eDT.SIZE; i++) {
 			ItemStack is = eDT.inventory.getStackInSlot(i);
-			if (is != null) {
+			if (!is.isEmpty()) {
 				// EntityItem customitem = new EntityItem(eDT.worldObj);
 				// customitem.hoverStart = 0f;
 				// customitem.setEntityItemStack(is);

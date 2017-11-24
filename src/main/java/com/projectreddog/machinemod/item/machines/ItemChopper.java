@@ -33,7 +33,7 @@ public class ItemChopper extends ItemTransportable {
 	// hitZ)
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
 		// public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
-		ItemStack stack = player.getActiveItemStack();
+		ItemStack stack = player.getHeldItem(hand);
 		boolean result = false;
 
 		if (!world.isRemote)// / only run on server

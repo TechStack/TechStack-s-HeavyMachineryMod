@@ -6,7 +6,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -36,17 +38,21 @@ public class ItemCornSeed extends ItemFood implements IPlantable {
 	 * @param side
 	 *            The side being right-clicked
 	 */
-	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
+	// public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+
+	@Override
+	public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+		ItemStack stack = playerIn.getHeldItem(hand);
 		if (side != EnumFacing.UP) {
-			return false;
+			return EnumActionResult.FAIL;
 		} else if (!playerIn.canPlayerEdit(pos.offset(side), side, stack)) {
-			return false;
+			return EnumActionResult.FAIL;
 		} else if (worldIn.getBlockState(pos).getBlock().canSustainPlant(worldIn.getBlockState(pos), worldIn, pos, EnumFacing.UP, this) && worldIn.isAirBlock(pos.up())) {
 			worldIn.setBlockState(pos.up(), ModBlocks.corn.getDefaultState());
 			stack.setCount(stack.getCount() - 1);
-			return true;
+			return EnumActionResult.SUCCESS;
 		} else {
-			return false;
+			return EnumActionResult.FAIL;
 		}
 	}
 

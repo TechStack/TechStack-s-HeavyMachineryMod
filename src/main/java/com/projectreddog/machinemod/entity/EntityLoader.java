@@ -127,7 +127,7 @@ public class EntityLoader extends EntityMachineModRideable {
 							if (is.getCount() > 0) {
 								ItemStack is1 = addToinventory(is);
 
-								if (is1 != null && is1.getCount() != 0) {
+								if (!is1.isEmpty() && is1.getCount() != 0) {
 									((EntityItem) entity).setItem(is1);
 								} else {
 									entity.setDead();

@@ -39,12 +39,10 @@ public class BlockMachineModFalling extends BlockMachineMod {
 
 	}
 
-	/**
-	 * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are their own) Args: x, y, z, neighbor Block
-	 */
+	@Override
+	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 
-	public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock) {
-		onNeighborBlockChange(worldIn, pos.getX(), pos.getY(), pos.getZ(), neighborBlock);
+		onNeighborBlockChange(worldIn, pos.getX(), pos.getY(), pos.getZ(), blockIn);
 	}
 
 	// / my 1.7 version
@@ -59,6 +57,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 	/**
 	 * Ticks the block if it's been scheduled
 	 */
+	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		updateTick(worldIn, pos.getX(), pos.getY(), pos.getZ(), rand);
 

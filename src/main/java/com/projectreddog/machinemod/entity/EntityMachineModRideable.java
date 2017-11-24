@@ -854,7 +854,7 @@ public class EntityMachineModRideable extends Entity {
 								// /all of the stack will fit in this slot do
 								// so.
 
-								inventory.insertItem(j, new ItemStack(inventory.getStackInSlot(j).getItem(), inventory.getStackInSlot(j).getCount() + is.getCount(), is.getItemDamage()), false);
+								inventory.insertItem(j, new ItemStack(inventory.getStackInSlot(j).getItem(), is.getCount(), is.getItemDamage()), false);
 								is = ItemStack.EMPTY;
 							} else {
 								// we have more

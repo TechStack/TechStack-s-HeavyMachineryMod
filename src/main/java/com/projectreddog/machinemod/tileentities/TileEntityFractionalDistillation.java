@@ -51,6 +51,9 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 
 	public TileEntityFractionalDistillation() {
 		inventory = new ItemStack[inventorySize];
+		for (int i = 0; i < inventorySize; i++) {
+			inventory[i] = ItemStack.EMPTY;
+		}
 		fluidLevelAbove = new int[5];
 	}
 
@@ -206,7 +209,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 				if (entity instanceof EntitySemiTractor) {
 					EntitySemiTractor est = (EntitySemiTractor) entity;
 
-					if (est.inventory.getStackInSlot(0) != null) {
+					if (!est.inventory.getStackInSlot(0).isEmpty()) {
 						if (est.inventory.getStackInSlot(0).getItem() instanceof ItemSemiTrailerTanker) {
 
 							if (!est.isDead) {
@@ -380,13 +383,13 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	@Override
 	public ItemStack decrStackSize(int slot, int amt) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
+		if (!stack.isEmpty()) {
 			if (stack.getCount() <= amt) {
-				setInventorySlotContents(slot, null);
+				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
 				stack = stack.splitStack(amt);
 				if (stack.getCount() == 0) {
-					setInventorySlotContents(slot, null);
+					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}
 
 			}
@@ -397,8 +400,8 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	@Override
 	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			setInventorySlotContents(slot, null);
+		if (!stack.isEmpty()) {
+			setInventorySlotContents(slot, ItemStack.EMPTY);
 		}
 		return stack;
 	}
@@ -406,7 +409,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inventory[slot] = stack;
-		if (stack != null && stack.getCount() > getInventoryStackLimit()) {
+		if (!stack.isEmpty() && stack.getCount() > getInventoryStackLimit()) {
 			stack.setCount(getInventoryStackLimit());
 		}
 
@@ -435,7 +438,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	@Override
 	public void clear() {
 		for (int i = 0; i < inventory.length; ++i) {
-			inventory[i] = null;
+			inventory[i] = ItemStack.EMPTY;
 		}
 	}
 

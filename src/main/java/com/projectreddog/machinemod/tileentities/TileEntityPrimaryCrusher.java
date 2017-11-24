@@ -43,10 +43,13 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 	public final int BlastedStoneGemMultiplier = 2;
 	public final int BlastedStoneLapisMultiplier = 12;
 	public final int BlastedStoneRedstoneMultiplier = 8;
+	int inventorySize = 54;
 
 	public TileEntityPrimaryCrusher() {
-		inventory = new ItemStack[54];
-
+		inventory = new ItemStack[inventorySize];
+		for (int i = 0; i < inventorySize; i++) {
+			inventory[i] = ItemStack.EMPTY;
+		}
 	}
 
 	@Override
@@ -64,7 +67,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 			processEntitiesInList(list);
 			for (int i = 0; i < this.getSizeInventory(); i++) {
 				ItemStack item = this.getStackInSlot(i);
-				if (item != null) {
+				if (!item.isEmpty()) {
 					if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedstone)) {
 						if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.IRON.getMetadata()) {
 							dropDust(i, new ItemStack(ModItems.irondust, BlastedStoneOreMultiplier));
@@ -219,7 +222,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
 
-							if (is1 != null && is1.getCount() != 0) {
+							if (!is1.isEmpty() && is1.getCount() != 0) {
 								((EntityItem) entity).setItem(is1);
 							} else {
 								entity.setDead();
@@ -235,10 +238,10 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 	protected ItemStack addToinventory(ItemStack is) {
 		int i = getSizeInventory();
 
-		for (int j = 0; j < i && is != null && is.getCount() > 0; ++j) {
-			if (is != null) {
+		for (int j = 0; j < i && !is.isEmpty() && is.getCount() > 0; ++j) {
+			if (!is.isEmpty()) {
 
-				if (getStackInSlot(j) != null) {
+				if (!getStackInSlot(j).isEmpty()) {
 					if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getItemDamage() == is.getItemDamage()) {
 						// same item remove from is put into slot any amt not to
 						// excede stack max
@@ -249,7 +252,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 								// so.
 
 								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).getCount() + is.getCount(), is.getItemDamage()));
-								is = null;
+								is = ItemStack.EMPTY;
 							} else {
 								// we have more
 								int countRemain = is.getCount() - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount());
@@ -262,7 +265,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 				} else {
 					// nothign in slot so set contents
 					setInventorySlotContents(j, is.copy());
-					is = null;
+					is = ItemStack.EMPTY;
 				}
 
 			}
@@ -303,7 +306,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < inventory.length; i++) {
 			ItemStack stack = inventory[i];
-			if (stack != null) {
+			if (!stack.isEmpty()) {
 				NBTTagCompound tag = new NBTTagCompound();
 				tag.setByte("Slot", (byte) i);
 				stack.writeToNBT(tag);
@@ -346,13 +349,13 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 	@Override
 	public ItemStack decrStackSize(int slot, int amt) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
+		if (!stack.isEmpty()) {
 			if (stack.getCount() <= amt) {
-				setInventorySlotContents(slot, null);
+				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
 				stack = stack.splitStack(amt);
 				if (stack.getCount() == 0) {
-					setInventorySlotContents(slot, null);
+					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}
 
 			}
@@ -363,8 +366,8 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 	@Override
 	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			setInventorySlotContents(slot, null);
+		if (!stack.isEmpty()) {
+			setInventorySlotContents(slot, ItemStack.EMPTY);
 		}
 		return stack;
 	}
@@ -372,7 +375,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inventory[slot] = stack;
-		if (stack != null && stack.getCount() > getInventoryStackLimit()) {
+		if (!stack.isEmpty() && stack.getCount() > getInventoryStackLimit()) {
 			stack.setCount(getInventoryStackLimit());
 		}
 
@@ -421,7 +424,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 	@Override
 	public void clear() {
 		for (int i = 0; i < inventory.length; ++i) {
-			inventory[i] = null;
+			inventory[i] = ItemStack.EMPTY;
 		}
 	}
 

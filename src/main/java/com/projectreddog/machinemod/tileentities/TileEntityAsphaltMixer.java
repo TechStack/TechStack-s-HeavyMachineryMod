@@ -44,6 +44,10 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	public TileEntityAsphaltMixer() {
 		inventory = new ItemStack[inventorySize];
 		fluidLevelAbove = new int[1];
+		for (int i = 0; i < inventorySize; i++) {
+			inventory[i] = ItemStack.EMPTY;
+		}
+
 	}
 
 	@Override
@@ -211,13 +215,13 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	@Override
 	public ItemStack decrStackSize(int slot, int amt) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
+		if (!stack.isEmpty()) {
 			if (stack.getCount() <= amt) {
-				setInventorySlotContents(slot, null);
+				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
 				stack = stack.splitStack(amt);
 				if (stack.getCount() == 0) {
-					setInventorySlotContents(slot, null);
+					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}
 
 			}
@@ -228,8 +232,8 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	@Override
 	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			setInventorySlotContents(slot, null);
+		if (!stack.isEmpty()) {
+			setInventorySlotContents(slot, ItemStack.EMPTY);
 		}
 		return stack;
 	}
@@ -237,7 +241,7 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inventory[slot] = stack;
-		if (stack != null && stack.getCount() > getInventoryStackLimit()) {
+		if (!stack.isEmpty() && stack.getCount() > getInventoryStackLimit()) {
 			stack.setCount(getInventoryStackLimit());
 		}
 
@@ -266,7 +270,7 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	@Override
 	public void clear() {
 		for (int i = 0; i < inventory.length; ++i) {
-			inventory[i] = null;
+			inventory[i] = ItemStack.EMPTY;
 		}
 	}
 

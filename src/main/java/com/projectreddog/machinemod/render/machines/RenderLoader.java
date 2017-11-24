@@ -69,14 +69,15 @@ public class RenderLoader extends Render {
 		float f4 = 0.75F;
 		// GL11.glScalef(f4, f4, f4);
 		// GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
-		// this.bindEntityTexture(entity);
+		this.bindEntityTexture(entity);
+
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 
 		this.modelLoader.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
 		GlStateManager.translate(-2f, -0.00F, -1.57F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		// GL11.glScalef(.5f, .5f, .5f);
+		GL11.glScalef(.5f, .5f, .5f);
 		EntityLoader eL = ((EntityLoader) entity);
 
 		boolean even = true;

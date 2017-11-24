@@ -45,7 +45,7 @@ public class ContainerExcavator extends Container {
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
-		ItemStack stack = null;
+		ItemStack stack = ItemStack.EMPTY;
 		Slot slotObject = (Slot) inventorySlots.get(slot);
 
 		// null checks and checks if the item can be stacked (maxStackSize > 1)
@@ -56,13 +56,13 @@ public class ContainerExcavator extends Container {
 			// merges the item into player inventory since its in the Entity
 			if (slot < 9) {
 				if (!this.mergeItemStack(stackInSlot, 9, this.inventorySlots.size(), true)) {
-					return null;
+					return ItemStack.EMPTY;
 				}
 			}
 			// places it into the tileEntity is possible since its in the player
 			// inventory
 			else if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
-				return null;
+				return ItemStack.EMPTY;
 			}
 
 			if (stackInSlot.getCount() == 0) {
@@ -72,7 +72,7 @@ public class ContainerExcavator extends Container {
 			}
 
 			if (stackInSlot.getCount() == stack.getCount()) {
-				return null;
+				return ItemStack.EMPTY;
 			}
 			slotObject.onTake(player, stackInSlot);
 		}

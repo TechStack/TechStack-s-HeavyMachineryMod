@@ -34,7 +34,9 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 
 	public TileEntityScreen() {
 		inventory = new ItemStack[inventorySize];
-
+		for (int i = 0; i < inventorySize; i++) {
+			inventory[i] = ItemStack.EMPTY;
+		}
 	}
 
 	@Override
@@ -60,7 +62,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 
 	private void MoveItemsInnventory() {
 		for (int i = 0; i < 4; i++) {
-			if (getStackInSlot(4) != null && getStackInSlot(i) != null && getStackInSlot(4).getItem() != null && getStackInSlot(i).getItem() != null) {
+			if (!getStackInSlot(4).isEmpty() && !getStackInSlot(i).isEmpty() && getStackInSlot(4).getItem() != null && getStackInSlot(i).getItem() != null) {
 				if (getStackInSlot(i).getItem() == getStackInSlot(4).getItem() && getStackInSlot(i).getItem().getMetadata(getStackInSlot(i)) == getStackInSlot(4).getItem().getMetadata(getStackInSlot(4))) {
 					double x = 0, y = 0, z = 0;
 					y = this.pos.getY() + .5d;
@@ -96,7 +98,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 		}
 
 		for (int i = 0; i < 4; i++) {
-			if (getStackInSlot(4) != null && getStackInSlot(i) == null && getStackInSlot(4).getItem() != null) {
+			if (!getStackInSlot(4).isEmpty() && getStackInSlot(i).isEmpty() && getStackInSlot(4).getItem() != null) {
 
 				double x = 0, y = 0, z = 0;
 				y = this.pos.getY() + .5d;
@@ -142,7 +144,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
 
-							if (is1 != null && is1.getCount() != 0) {
+							if (!is1.isEmpty() && is1.getCount() != 0) {
 								((EntityItem) entity).setItem(is1);
 							} else {
 								entity.setDead();
@@ -158,9 +160,9 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 		int i = getSizeInventory();
 
 		int j = 4;
-		if (is != null) {
+		if (!is.isEmpty()) {
 
-			if (getStackInSlot(j) != null) {
+			if (!getStackInSlot(j).isEmpty()) {
 				if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getItemDamage() == is.getItemDamage()) {
 					// same item remove from is put into slot any amt not to
 					// excede stack max
@@ -171,7 +173,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 							// so.
 
 							setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).getCount() + is.getCount(), is.getItemDamage()));
-							is = null;
+							is = ItemStack.EMPTY;
 						} else {
 							// we have more
 							int countRemain = is.getCount() - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount());
@@ -184,7 +186,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 			} else {
 				// nothing in slot so set contents
 				setInventorySlotContents(j, is.copy());
-				is = null;
+				is = ItemStack.EMPTY;
 			}
 
 		}
@@ -221,13 +223,13 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 	@Override
 	public ItemStack decrStackSize(int slot, int amt) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
+		if (!stack.isEmpty()) {
 			if (stack.getCount() <= amt) {
-				setInventorySlotContents(slot, null);
+				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
 				stack = stack.splitStack(amt);
 				if (stack.getCount() == 0) {
-					setInventorySlotContents(slot, null);
+					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}
 
 			}
@@ -238,8 +240,8 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 	@Override
 	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			setInventorySlotContents(slot, null);
+		if (!stack.isEmpty()) {
+			setInventorySlotContents(slot, ItemStack.EMPTY);
 		}
 		return stack;
 	}
@@ -247,7 +249,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inventory[slot] = stack;
-		if (stack != null && stack.getCount() > getInventoryStackLimit()) {
+		if (!stack.isEmpty() && stack.getCount() > getInventoryStackLimit()) {
 			stack.setCount(getInventoryStackLimit());
 		}
 
@@ -329,7 +331,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < inventory.length; i++) {
 			ItemStack stack = inventory[i];
-			if (stack != null) {
+			if (!stack.isEmpty()) {
 				NBTTagCompound tag = new NBTTagCompound();
 				tag.setByte("Slot", (byte) i);
 				stack.writeToNBT(tag);
