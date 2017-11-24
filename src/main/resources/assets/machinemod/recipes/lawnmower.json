@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "machinemod:lawnmower"
+    },
+    "pattern" :[
+     "   ",
+     " e ",
+     "wmw"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "e": {
+            "item" : "machinemod:engine" 
+      },
+    "w": {
+            "item":"machinemod:wheel"
+      },
+     "m": {
+            "item":"machinemod:mowerdeck"
+      }
+        
+    }
+}

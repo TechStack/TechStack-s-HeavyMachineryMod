@@ -1,0 +1,25 @@
+{
+    "result": {
+        "item": "machinemod:machineprimarycrusher"
+    },
+    "pattern" :[
+      "o o",
+      "o o", 
+      "scs"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "o": {
+          "item":"minecraft:obsidian"
+      },
+    "s": {
+          "item":"minecraft:sticky_piston"
+           
+      },
+     "c": {
+          "item":"machinemod:conecrusher"
+           
+      }
+    }
+}
+

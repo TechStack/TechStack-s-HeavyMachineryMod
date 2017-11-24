@@ -3,9 +3,9 @@
         "item": "machinemod:wheel"
     },
     "pattern" :[
-     "sis",
-     "i i",
-     "sis"
+     " s ", 
+     "sis", 
+     " s "
     ],
     "type": "forge:ore_shaped",
   "key": {

@@ -1,0 +1,33 @@
+{
+    "result": {
+        "item": "machinemod:bagger"
+    },
+    "pattern" :[
+	  "wr ",
+	  "obe",
+	  " tt"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "w": {
+      "item":"machinemod:bucketwheel"
+      },
+      "r": {
+      "item":"machinemod:rigging"
+      },
+      "o": {
+      "item":"machinemod:operatorsbooth"
+      },
+       "b": {
+      "item":"machinemod:baggerbody"
+      },
+       "e": {
+      "item":"machinemod:powerplant"
+      },
+       "t": {
+      "item":"machinemod:tracksegment"
+      }
+        
+        
+    }
+}

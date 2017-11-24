@@ -1,0 +1,20 @@
+{
+    "result": {
+        "item": "machinemod:turboprop"
+    },
+    "pattern" :[
+     " c ", 
+     "cpc", 
+     " c "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "c": {
+           "item":"machinemod:propcage"
+      },
+    "p": {
+           "item":"machinemod:prop"
+      }    
+    }
+}
+

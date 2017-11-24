@@ -1,0 +1,22 @@
+{
+    "result": {
+        "item": "machinemod:prop"
+    },
+    "pattern" :[
+      " g ", 
+      "gig", 
+      " g "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+            "type": "forge:ore_dict",
+           "ore": "ingotIron" 
+      },
+      "g":{
+        "item":"minecraft:gold_ingot"
+      }
+        
+    }
+}
+

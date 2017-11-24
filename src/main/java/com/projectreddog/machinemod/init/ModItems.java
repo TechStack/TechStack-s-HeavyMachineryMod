@@ -47,7 +47,7 @@ import com.projectreddog.machinemod.item.components.ItemCamshaft;
 import com.projectreddog.machinemod.item.components.ItemDozerBlade;
 import com.projectreddog.machinemod.item.components.ItemDumperBed;
 import com.projectreddog.machinemod.item.components.ItemEngine;
-import com.projectreddog.machinemod.item.components.ItemHavesterHead;
+import com.projectreddog.machinemod.item.components.ItemHarvesterHead;
 import com.projectreddog.machinemod.item.components.ItemIronGear;
 import com.projectreddog.machinemod.item.components.ItemLiquidTankSegment;
 import com.projectreddog.machinemod.item.components.ItemLoaderBucket;
@@ -191,7 +191,7 @@ public class ModItems {
 	public static final ItemMachineMod loaderbucket = new ItemLoaderBucket();
 	public static final ItemMachineMod dumperbed = new ItemDumperBed();
 	public static final ItemMachineMod engine = new ItemEngine();
-	public static final ItemMachineMod havesterhead = new ItemHavesterHead();
+	public static final ItemMachineMod havesterhead = new ItemHarvesterHead();
 	public static final ItemMachineMod fuelcan = new ItemFuelCan();
 
 	public static final ItemMachineMod graderblade = new ItemGraderBlade();

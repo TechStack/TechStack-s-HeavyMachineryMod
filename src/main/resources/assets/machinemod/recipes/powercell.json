@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "machinemod:powercell"
+    },
+    "pattern" :[
+     "tct", 
+     "rrr", 
+     "rrr"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "t": {
+      "item":"minecraft:redstone_torch"
+      },
+    "c": {
+      "item":"minecraft:comparator"
+      },
+    "r": {
+      "item":"minecraft:redstone_block"
+      }
+      }
+}
+

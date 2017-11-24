@@ -3,23 +3,20 @@
         "item": "machinemod:turbo"
     },
     "pattern" : [
-        " pp",
         "iii",
-        " ww"
+        "fff",
+        "iii"
     ],
     "type": "forge:ore_shaped",
   "key": {
-    "p":{
+    "i":{
         "type": "forge:ore_dict",
-        "ore": "plankWood"   
+        "ore": "ingotIron"   
       
       },
-      "i":{
-      "type": "forge:ore_dict",
-        "ore": "ingotIron"
-      },
-      "w":{
-      "item":"machinemod:wheel"
+      "f":{
+      "item": "machinemod:turbofan"
       }
     }
 }
+

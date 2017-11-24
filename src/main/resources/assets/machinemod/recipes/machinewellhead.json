@@ -1,0 +1,18 @@
+{
+    "result": {
+        "item": "machinemod:machinewellhead"
+    },
+    "pattern" :[
+      "   ", 
+      "lll", 
+      " l "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "l": {
+      "item":"machinemod:machineliquidpipe"
+      }
+        
+    }
+}
+

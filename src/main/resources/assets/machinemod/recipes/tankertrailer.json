@@ -1,0 +1,21 @@
+{
+    "result": {
+        "item": "machinemod:tankertrailer"
+    },
+    "pattern" :[
+      "   ", 
+      "sss", 
+      " ww"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+            "item":"machinemod:liquidtanksegment"           
+      },
+      "w": {
+            "item":"machinemod:wheel"           
+      }
+        
+    }
+}
+

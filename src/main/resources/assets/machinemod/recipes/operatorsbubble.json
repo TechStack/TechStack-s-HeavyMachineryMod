@@ -1,0 +1,25 @@
+{
+    "result": {
+        "item": "machinemod:operatorsbubble"
+    },
+    "pattern" :[
+     "bib", 
+     "igi", 
+     "bib"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+            "type": "forge:ore_dict",
+           "ore": "ingotIron" 
+      },
+      "b":{
+      "item":"minecraft:iron_bars"
+      },
+      "g":{
+      "item":"minecraft:glass"
+      }
+        
+    }
+}
+

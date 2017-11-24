@@ -1,0 +1,21 @@
+{
+    "result": {
+        "item": "machinemod:conecrusher"
+    },
+    "pattern" :[
+	   "   ",
+	   " i ",
+	   " b "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+        "type": "forge:ore_dict",
+           "ore": "ingotIron" 
+      },
+    "b": {
+          "item":"minecraft:iron_block"
+           
+      }
+    }
+}

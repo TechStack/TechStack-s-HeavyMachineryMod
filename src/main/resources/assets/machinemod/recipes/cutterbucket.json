@@ -1,0 +1,21 @@
+{
+    "result": {
+        "item": "machinemod:cutterbucket"
+    },
+    "pattern" :[
+	"e e",
+    "i i", 
+    "iii"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+            "type": "forge:ore_dict",
+           "ore": "ingotIron" 
+      },
+      "e": {
+        "item":"minecraft:emerald_block"
+      }
+        
+    }
+}

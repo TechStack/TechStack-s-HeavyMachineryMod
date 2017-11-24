@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "machinemod:processingplant"
+    },
+    "pattern" :[
+	  "csc",
+	  "sps",
+	  "csc"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "c": {
+            "item":"machinemod:machineconveyor"
+      },
+      "s": {
+            "item":"machinemod:machinescreen"
+      },
+      "p": {
+            "item":"machinemod:machineprimarycrusher"
+      }
+      
+    }
+}

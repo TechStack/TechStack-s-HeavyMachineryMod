@@ -1,0 +1,32 @@
+{
+    "result": {
+        "item": "machinemod:sub"
+    },
+    "pattern" :[
+     "tlt", 
+     "ose", 
+     "tat"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "t": {
+      "item":"machinemod:turboprop" 
+      },
+    "l": {
+      "item":"machinemod:lightmodule" 
+      },
+      "o": {
+      "item":"machinemod:operatorsbubble" 
+      },
+      "s": {
+      "item":"machinemod:subbody" 
+      },
+      "e": {
+      "item":"machinemod:engine" 
+      },
+      "a": {
+      "item":"machinemod:airtank" 
+      }    
+    }
+}
+

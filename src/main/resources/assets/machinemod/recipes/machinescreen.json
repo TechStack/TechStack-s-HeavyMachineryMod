@@ -1,0 +1,28 @@
+{
+    "result": {
+        "item": "machinemod:machinescreen"
+    },
+    "pattern" :[
+	 "d d",
+	 "pbp",
+	 "iii"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+          "item":"minecraft:iron_bars"
+      },
+    "d": {
+          "item":"minecraft:diamond"
+           
+      },
+      "p": {
+          "item":"minecraft:piston"
+           
+      },
+      "i": {
+            "type": "forge:ore_dict",
+           "ore": "ingotIron" 
+      }
+    }
+}

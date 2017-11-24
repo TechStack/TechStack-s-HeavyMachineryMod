@@ -1,21 +1,25 @@
 {
     "result": {
-        "item": "machinemod:turbo"
+        "item": "machinemod:flatbedtrailer"
     },
     "pattern" : [
+        " pp",
         "iii",
-        "fff",
-        "iii"
+        " ww"
     ],
     "type": "forge:ore_shaped",
   "key": {
-    "i":{
+    "p":{
         "type": "forge:ore_dict",
-        "ore": "ingotIron"   
+        "ore": "plankWood"   
       
       },
-      "f":{
-      "item": "machinemod:turbofan"
+      "i":{
+      "type": "forge:ore_dict",
+        "ore": "ingotIron"
+      },
+      "w":{
+      "item":"machinemod:wheel"
       }
     }
 }

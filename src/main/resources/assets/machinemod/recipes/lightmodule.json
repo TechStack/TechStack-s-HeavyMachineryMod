@@ -1,0 +1,22 @@
+{
+    "result": {
+        "item": "machinemod:lightmodule"
+    },
+    "pattern" :[
+      " l ", 
+      "lrl", 
+      " l "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "r": {
+        "item":"machinemod:powercell"
+      },
+      
+      "l":{
+      "item":"machinemod:light"
+      }
+        
+    }
+}
+

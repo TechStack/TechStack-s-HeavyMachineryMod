@@ -1,0 +1,19 @@
+{
+    "result": {
+        "item": "machinemod:powerplant"
+    },
+    "pattern" :[
+	 "   ",
+	 "ttt", 
+	 "eee"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "t": {
+           "item":"turbo" 
+      },
+    "e": {
+           "item":"turboengine" 
+      }    
+    }
+}

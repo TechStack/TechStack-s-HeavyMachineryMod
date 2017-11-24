@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class Recipes {
 
 	public static void init() {
+
 		// TODO convert these to JSON :(
 		// CONVERTED // GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.drillpipe), "i i", "i i", "i i", 'i', "ingotIron"));
 		//
