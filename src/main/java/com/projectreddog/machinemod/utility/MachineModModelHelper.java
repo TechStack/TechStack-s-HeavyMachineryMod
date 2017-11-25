@@ -7,8 +7,8 @@ import org.lwjgl.opengl.GL11;
 import com.google.common.base.Function;
 import com.google.common.collect.ImmutableList;
 
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -33,7 +33,7 @@ public class MachineModModelHelper {
 	public static void renderBakedModel(IBakedModel bakedModel) {
 		Tessellator tessellator = Tessellator.getInstance();
 
-		VertexBuffer worldrenderer = tessellator.getBuffer();
+		BufferBuilder worldrenderer = tessellator.getBuffer();
 		// VertexFormat VF = new VertexFormat();
 		// TODO SORT OUT THE VERTEXFORMAT if this is not correct
 		// worldrenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);// bakedModel.getFormat());
@@ -139,8 +139,9 @@ public class MachineModModelHelper {
 			for (String key : objModel.getMatLib().getGroups().keySet()) {
 				String k = key;
 				if (!modelParts.containsKey(key)) {
-					modelParts.put(k, objModel.bake(new OBJModel.OBJState(ImmutableList.of(k), false), MYFORMAT, textureGetterFlipV));
+					// public IBakedModel bake(IModelState state, VertexFormat format, Function<ResourceLocation, TextureAtlasSprite> bakedTextureGetter)
 
+					modelParts.put(k, objModel.bake(new OBJModel.OBJState(ImmutableList.of(k), false), MYFORMAT, textureGetterFlipV));
 					// can use a list strings as a OBJModel.OBJState Turning those group objects on or off accordngly
 				}
 			}

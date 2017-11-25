@@ -1,0 +1,20 @@
+{
+    "result": {
+        "item": "machinemod:turboengine"
+    },
+    "pattern" : [
+        "   ",
+        "tet",
+        "   "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "e":{
+       "item": "machinemod:engine"   
+      
+      },
+      "t":{
+      "item": "machinemod:turbo"
+      }
+    }
+}

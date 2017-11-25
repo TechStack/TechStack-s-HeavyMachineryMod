@@ -1,7 +1,5 @@
 package com.projectreddog.machinemod.block;
 
-import javax.annotation.Nullable;
-
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.reference.Reference;
@@ -12,6 +10,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
@@ -37,6 +36,8 @@ public class BlockMachineModWellHead extends BlockContainer {
 
 		// 1.8
 		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_WELL_HEAD);
+		this.setRegistryName(Reference.MODBLOCK_MACHINE_WELL_HEAD);
+
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
 		this.setSoundType(SoundType.STONE);
@@ -59,7 +60,8 @@ public class BlockMachineModWellHead extends BlockContainer {
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+		ItemStack heldItem = playerIn.getActiveItemStack();
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te != null && !playerIn.isSneaking()) {
 			// playerIn.openGui(MachineMod.instance, Reference.GUI_DISTILLER, worldIn, pos.getX(), pos.getY(), pos.getZ());

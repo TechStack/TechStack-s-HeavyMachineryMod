@@ -1,0 +1,26 @@
+{
+    "result": {
+        "item": "machinemod:machineconveyor",
+        "count": 4
+    },
+    "pattern" :[
+      "lll", 
+      "rir", 
+      "lll"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "l": {
+          "item":"minecraft:leather"
+      },
+    "r": {
+          "item":"minecraft:redstone"
+           
+      },
+     "i": {
+          "type": "forge:ore_dict",
+           "ore": "ingotIron" 
+           
+      }
+    }
+}

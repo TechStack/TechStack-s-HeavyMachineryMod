@@ -19,7 +19,7 @@ public class RenderOverlayHandler extends Gui {
 	private Minecraft mc;
 
 	public RenderOverlayHandler() {
-		this.fontRenderer = Minecraft.getMinecraft().fontRendererObj;
+		this.fontRenderer = Minecraft.getMinecraft().fontRenderer;
 		this.mc = Minecraft.getMinecraft();
 	}
 
@@ -30,9 +30,9 @@ public class RenderOverlayHandler extends Gui {
 		// return;
 		// }
 		// LogHelper.info(event.type);
-		if (Minecraft.getMinecraft().thePlayer.isRiding()) {
-			if (Minecraft.getMinecraft().thePlayer.getRidingEntity() instanceof EntityMachineModRideable) {
-				EntityMachineModRideable emr = (EntityMachineModRideable) Minecraft.getMinecraft().thePlayer.getRidingEntity();
+		if (Minecraft.getMinecraft().player.isRiding()) {
+			if (Minecraft.getMinecraft().player.getRidingEntity() instanceof EntityMachineModRideable) {
+				EntityMachineModRideable emr = (EntityMachineModRideable) Minecraft.getMinecraft().player.getRidingEntity();
 
 				int xPos = 2;
 				int yPos = 2;
@@ -49,9 +49,9 @@ public class RenderOverlayHandler extends Gui {
 				this.drawTexturedModalRect(xPos + 10, yPos + yOffest, 0, 0, 6, 3);
 				// this.fontRenderer.drawString("Fuel:" + emr.currentFuelLevel, 0, 0, 14737632);
 
-				if (Minecraft.getMinecraft().thePlayer.getRidingEntity() instanceof EntityDrillingRig) {
+				if (Minecraft.getMinecraft().player.getRidingEntity() instanceof EntityDrillingRig) {
 
-					EntityDrillingRig edr = (EntityDrillingRig) Minecraft.getMinecraft().thePlayer.getRidingEntity();
+					EntityDrillingRig edr = (EntityDrillingRig) Minecraft.getMinecraft().player.getRidingEntity();
 					int depth = (int) (((edr.Attribute1) - 90) / 5);
 					if (depth < 0) {
 						depth = 0;

@@ -5,10 +5,10 @@ import com.projectreddog.machinemod.init.ModItems;
 
 import net.minecraft.block.BlockStone;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityDrillingRig extends EntityMachineModRideable {
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
@@ -19,7 +19,10 @@ public class EntityDrillingRig extends EntityMachineModRideable {
 	public EntityDrillingRig(World world) {
 		super(world);
 		setSize(5.7F, 3F);
-		inventory = new ItemStack[0];
+
+		SIZE = 0;
+		inventory = new ItemStackHandler(SIZE);
+		// inventory = new ItemStack[0];
 		this.mountedOffsetY = .5D;
 		this.mountedOffsetX = 3D;
 		this.mountedOffsetZ = 3D;
@@ -36,7 +39,7 @@ public class EntityDrillingRig extends EntityMachineModRideable {
 	@Override
 	public void onUpdate() {
 
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 
 			if (this.Attribute1 > 89) {
 				// drill is extended disable all movement controls
@@ -48,7 +51,7 @@ public class EntityDrillingRig extends EntityMachineModRideable {
 			}
 		}
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 
 			if (this.Attribute1 > 90) {
 				// drilling arm fully extended so now for every 10 units drill another block
@@ -59,25 +62,25 @@ public class EntityDrillingRig extends EntityMachineModRideable {
 				}
 
 				BlockPos bp = new BlockPos(posX + calcTwoOffsetX(5, 0, 0), posY - currentDepth - 1, posZ + calcTwoOffsetZ(5, 0, 0));
-				if (worldObj.getBlockState(bp).getBlock() == Blocks.STONE && worldObj.getBlockState(bp).getBlock().getMetaFromState(worldObj.getBlockState(bp)) == BlockStone.EnumType.STONE.getMetadata()) {
-					// worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-					// worldObj.setBlockToAir(bp);
-					worldObj.setBlockState(bp, ModBlocks.machinedrilledstone.getDefaultState());
+				if (world.getBlockState(bp).getBlock() == Blocks.STONE && world.getBlockState(bp).getBlock().getMetaFromState(world.getBlockState(bp)) == BlockStone.EnumType.STONE.getMetadata()) {
+					// world.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, world.getBlockState(bp), 0);
+					// world.setBlockToAir(bp);
+					world.setBlockState(bp, ModBlocks.machinedrilledstone.getDefaultState());
 
-				} else if (worldObj.getBlockState(bp).getBlock() == Blocks.STONE && worldObj.getBlockState(bp).getBlock().getMetaFromState(worldObj.getBlockState(bp)) == BlockStone.EnumType.ANDESITE.getMetadata()) {
-					// worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-					// worldObj.setBlockToAir(bp);
-					worldObj.setBlockState(bp, ModBlocks.machinedrilledandesite.getDefaultState());
+				} else if (world.getBlockState(bp).getBlock() == Blocks.STONE && world.getBlockState(bp).getBlock().getMetaFromState(world.getBlockState(bp)) == BlockStone.EnumType.ANDESITE.getMetadata()) {
+					// world.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, world.getBlockState(bp), 0);
+					// world.setBlockToAir(bp);
+					world.setBlockState(bp, ModBlocks.machinedrilledandesite.getDefaultState());
 
-				} else if (worldObj.getBlockState(bp).getBlock() == Blocks.STONE && worldObj.getBlockState(bp).getBlock().getMetaFromState(worldObj.getBlockState(bp)) == BlockStone.EnumType.DIORITE.getMetadata()) {
-					// worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-					// worldObj.setBlockToAir(bp);
-					worldObj.setBlockState(bp, ModBlocks.machinedrilleddiorite.getDefaultState());
+				} else if (world.getBlockState(bp).getBlock() == Blocks.STONE && world.getBlockState(bp).getBlock().getMetaFromState(world.getBlockState(bp)) == BlockStone.EnumType.DIORITE.getMetadata()) {
+					// world.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, world.getBlockState(bp), 0);
+					// world.setBlockToAir(bp);
+					world.setBlockState(bp, ModBlocks.machinedrilleddiorite.getDefaultState());
 
-				} else if (worldObj.getBlockState(bp).getBlock() == Blocks.STONE && worldObj.getBlockState(bp).getBlock().getMetaFromState(worldObj.getBlockState(bp)) == BlockStone.EnumType.GRANITE.getMetadata()) {
-					// worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-					// worldObj.setBlockToAir(bp);
-					worldObj.setBlockState(bp, ModBlocks.machinedrilledgranite.getDefaultState());
+				} else if (world.getBlockState(bp).getBlock() == Blocks.STONE && world.getBlockState(bp).getBlock().getMetaFromState(world.getBlockState(bp)) == BlockStone.EnumType.GRANITE.getMetadata()) {
+					// world.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, world.getBlockState(bp), 0);
+					// world.setBlockToAir(bp);
+					world.setBlockState(bp, ModBlocks.machinedrilledgranite.getDefaultState());
 
 				}
 			}

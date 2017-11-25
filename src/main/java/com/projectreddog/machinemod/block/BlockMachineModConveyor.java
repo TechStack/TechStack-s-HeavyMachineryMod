@@ -34,6 +34,8 @@ public class BlockMachineModConveyor extends BlockContainer {
 
 		// 1.8
 		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_CONVEYOR);
+		this.setRegistryName(Reference.MODBLOCK_MACHINE_CONVEYOR);
+
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
 		this.setSoundType(SoundType.METAL);
@@ -56,7 +58,7 @@ public class BlockMachineModConveyor extends BlockContainer {
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		// 3 for normal block 2 for TESR 1 liquid -1 nothing ( like air)
-		//return 3;
+		// return 3;
 		return EnumBlockRenderType.MODEL;
 	}
 

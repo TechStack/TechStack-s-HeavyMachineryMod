@@ -37,7 +37,7 @@ public class GuiCanner extends GuiContainer {
 		// //draws "Inventory" or your regional equivalent
 		// fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"),
 		// 8, ySize - 96 + 2, 4210752);
-		fontRendererObj.drawString("Fuel: " + canner.fuelStorage, 5, 5, 4210752);
+		this.fontRenderer.drawString("Fuel: " + canner.fuelStorage, 5, 5, 4210752);
 	}
 
 	@Override

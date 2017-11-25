@@ -44,11 +44,15 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	public TileEntityAsphaltMixer() {
 		inventory = new ItemStack[inventorySize];
 		fluidLevelAbove = new int[1];
+		for (int i = 0; i < inventorySize; i++) {
+			inventory[i] = ItemStack.EMPTY;
+		}
+
 	}
 
 	@Override
 	public void update() {
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			if (firstTick) {
 				firstTick = !firstTick;
 			}
@@ -211,13 +215,13 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	@Override
 	public ItemStack decrStackSize(int slot, int amt) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			if (stack.stackSize <= amt) {
-				setInventorySlotContents(slot, null);
+		if (!stack.isEmpty()) {
+			if (stack.getCount() <= amt) {
+				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
 				stack = stack.splitStack(amt);
-				if (stack.stackSize == 0) {
-					setInventorySlotContents(slot, null);
+				if (stack.getCount() == 0) {
+					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}
 
 			}
@@ -228,8 +232,8 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	@Override
 	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			setInventorySlotContents(slot, null);
+		if (!stack.isEmpty()) {
+			setInventorySlotContents(slot, ItemStack.EMPTY);
 		}
 		return stack;
 	}
@@ -237,8 +241,8 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inventory[slot] = stack;
-		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
-			stack.stackSize = getInventoryStackLimit();
+		if (!stack.isEmpty() && stack.getCount() > getInventoryStackLimit()) {
+			stack.setCount(getInventoryStackLimit());
 		}
 
 	}
@@ -266,7 +270,7 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	@Override
 	public void clear() {
 		for (int i = 0; i < inventory.length; ++i) {
-			inventory[i] = null;
+			inventory[i] = ItemStack.EMPTY;
 		}
 	}
 
@@ -326,7 +330,7 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 		case 3:
 		case 4:
 		case 5:
-			TileEntity te = this.worldObj.getTileEntity(this.pos.up(id - 1));
+			TileEntity te = this.world.getTileEntity(this.pos.up(id - 1));
 			if (te instanceof TileEntityAsphaltMixer) {
 				return ((TileEntityAsphaltMixer) te).getFluidAmount();
 			}
@@ -361,8 +365,18 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer playerIn) {
+	public boolean isUsableByPlayer(EntityPlayer playerIn) {
 		return playerIn.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
 	}
 
+	@Override
+	public boolean isEmpty() {
+		for (int i = 0; i < inventory.length; i++) {
+			if (!inventory[i].isEmpty()) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 }

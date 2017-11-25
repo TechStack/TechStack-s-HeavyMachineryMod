@@ -1,0 +1,32 @@
+
+
+{
+    "result": {
+        "item": "machinemod:paver"
+    },
+    "pattern" :[
+     " c ", 
+     " et", 
+     "sww"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "c": {
+      "item":"minecraft:chest"
+      },
+      "e": {
+      "item":"machinemod:engine"
+      },
+      "t": {
+      "item":"machinemod:transmission"
+      },
+      "s": {
+      "item":"machinemod:paverscreed"
+      },
+      "w": {
+      "item":"machinemod:wheel"
+      }
+        
+    }
+}
+

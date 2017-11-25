@@ -1,0 +1,26 @@
+
+
+{
+    "result": {
+        "item": "machinemod:roadroller"
+    },
+    "pattern" :[
+      "   ",
+      " e ", 
+      "wtw"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "e": {
+       "item":"machinemod:engine" 
+      },
+      "w": {
+       "item":"machinemod:rollerwheel" 
+      },
+      "t": {
+       "item":"machinemod:transmission" 
+      }
+        
+    }
+}
+

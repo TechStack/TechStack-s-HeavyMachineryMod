@@ -1,0 +1,17 @@
+{
+    "result": {
+        "item": "machinemod:steelblock"
+    },
+    "pattern" :[
+     "sss",
+     "sss",
+     "sss"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+       "type": "forge:ore_dict",
+           "ore": "ingotSteel"   
+      }
+    }
+}

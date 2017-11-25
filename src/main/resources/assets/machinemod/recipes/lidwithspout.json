@@ -1,0 +1,26 @@
+{
+    "result": {
+        "item": "machinemod:lidwithspout"
+    },
+    "pattern" : [
+    "s  ",
+    "sii",
+    "   "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+      "s":{
+    "type": "forge:ore_dict",
+    "ore": "slimeball"   
+  
+    },
+     "i":{
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"   
+  
+    }
+    
+    }
+    
+    
+}

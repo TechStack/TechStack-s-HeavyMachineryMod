@@ -1,7 +1,5 @@
 package com.projectreddog.machinemod.block;
 
-import javax.annotation.Nullable;
-
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityCrate;
@@ -29,7 +27,9 @@ public class BlockMachineCrate extends BlockContainer {
 	protected BlockMachineCrate(Material material) {
 		super(material);
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_CRATE);
+		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_CRATE);
+		this.setRegistryName(Reference.MODBLOCK_MACHINE_CRATE);
+
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setHardness(15f);// not sure on the hardness
 		this.setSoundType(SoundType.WOOD);
@@ -65,7 +65,7 @@ public class BlockMachineCrate extends BlockContainer {
 				if (te instanceof TileEntityCrate) {
 
 					TileEntityCrate crate = (TileEntityCrate) te;
-					if (playerIn.getHeldItemMainhand() == null) {
+					if (playerIn.getHeldItemMainhand().isEmpty()) {
 						crate.removeStack(-1);// -1 for full stack to be done later
 					}
 				}
@@ -74,7 +74,11 @@ public class BlockMachineCrate extends BlockContainer {
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	// public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+		playerIn.getActiveItemStack();
+		ItemStack heldItem = playerIn.getHeldItem(hand);
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (!worldIn.isRemote) {
 			// server
@@ -82,11 +86,11 @@ public class BlockMachineCrate extends BlockContainer {
 				if (te instanceof TileEntityCrate) {
 					// its a crate
 					TileEntityCrate crate = (TileEntityCrate) te;
-					if (heldItem != null) {
+					if (!heldItem.isEmpty()) {
 						boolean result = crate.AddStack(heldItem);
 						if (result) {
 							// success we added it so remove from players inventory
-							playerIn.setHeldItem(hand, null);
+							playerIn.setHeldItem(hand, ItemStack.EMPTY);
 						}
 					}
 					return true;

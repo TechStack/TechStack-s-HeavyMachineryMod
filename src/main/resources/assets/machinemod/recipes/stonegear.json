@@ -1,0 +1,21 @@
+{
+    "result": {
+        "item": "machinemod:stonegear"
+    },
+    "pattern" :[
+    " c ", 
+    "cwc", 
+    " c "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "c": {
+        "item": "minecraft:cobblestone"      
+      },
+      "w":{
+          "type": "forge:ore_dict",
+            "ore": "gearWood"   
+      
+      }
+    }
+}

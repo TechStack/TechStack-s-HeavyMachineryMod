@@ -1,10 +1,13 @@
 package com.projectreddog.machinemod.network;
 
+import java.util.Map;
+
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -18,8 +21,8 @@ public class MachineModMessageLiquidPipeToClientHandler implements IMessageHandl
 		// LogHelper.info("in machineModMessageEntityToClient Handler");
 		// LogHelper.info("Message data" + message);
 		// LogHelper.info("on message MachineModMessageEntityToClientHandler");
-		if (Minecraft.getMinecraft().theWorld != null) {
-			if (Minecraft.getMinecraft().theWorld.isRemote) {
+		if (Minecraft.getMinecraft().world != null) {
+			if (Minecraft.getMinecraft().world.isRemote) {
 
 				Minecraft.getMinecraft().addScheduledTask(new Runnable() {
 					public void run() {
@@ -33,15 +36,29 @@ public class MachineModMessageLiquidPipeToClientHandler implements IMessageHandl
 
 	public void processMessage(MachineModMessageLiquidPipeToClient message) {
 		if (message != null) {
-			if (Minecraft.getMinecraft().theWorld != null) {
-				if (Minecraft.getMinecraft().thePlayer != null) {
-					TileEntity entity = Minecraft.getMinecraft().theWorld.getTileEntity(new BlockPos(message.currPosX, message.currPosY, message.currPosZ));
+			if (Minecraft.getMinecraft().world != null) {
+				if (Minecraft.getMinecraft().player != null) {
+					TileEntity entity = Minecraft.getMinecraft().world.getTileEntity(new BlockPos(message.currPosX, message.currPosY, message.currPosZ));
 					if (entity != null) {
 						if (entity instanceof TileEntityLiquidPipe) {
 							if (message.fluidID == -1) {
 								((TileEntityLiquidPipe) entity).setFluid(null);
 							} else {
-								((TileEntityLiquidPipe) entity).setFluid(new FluidStack(FluidRegistry.getFluid(message.fluidID), message.liquidAmount));
+
+								// BEGIN HACK FOR no DIRECT ACCESS to ID & NO STRING can be sent via bytebuff
+								Fluid fluid = null;
+
+								for (Map.Entry<Fluid, Integer> FluidMap : FluidRegistry.getRegisteredFluidIDs().entrySet()) {
+									if (FluidMap.getValue() == message.fluidID) {
+										fluid = FluidMap.getKey();
+									}
+								}
+								if (fluid == null) {
+									((TileEntityLiquidPipe) entity).setFluid(null);
+								} else {
+									// END HACK FOR no DIRECT ACCESS to ID & NO STRING can be sent via bytebuff
+									((TileEntityLiquidPipe) entity).setFluid(new FluidStack(fluid, message.liquidAmount));
+								}
 							}
 						}
 					}

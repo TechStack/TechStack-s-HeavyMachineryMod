@@ -1,7 +1,5 @@
 package com.projectreddog.machinemod.block;
 
-import javax.annotation.Nullable;
-
 import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
@@ -31,6 +29,8 @@ public class BlockMachineModAsphaltMixer extends BlockContainer {
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 		// 1.8
 		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_ASPHALT_MIXER);
+		this.setRegistryName(Reference.MODBLOCK_MACHINE_ASPHALT_MIXER);
+
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
 		this.setSoundType(SoundType.ANVIL);
@@ -76,10 +76,11 @@ public class BlockMachineModAsphaltMixer extends BlockContainer {
 	}
 
 	@Override
-	//    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
-    //	  public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn,EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+	// public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
+	// public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn,EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn,EnumHand hand,@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+		ItemStack heldItem = playerIn.getActiveItemStack();
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te != null && !playerIn.isSneaking()) {
 			if (te instanceof TileEntityAsphaltMixer) {

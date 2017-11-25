@@ -1,0 +1,22 @@
+{
+    "result": {
+        "item": "machinemod:anfo",
+        "count":16
+    },
+    "pattern" :[
+	 "bbb",
+	 "bfb",
+	 "bbb"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+          "item":"minecraft:dye",
+          "data": 15
+      },
+    "f": {
+          "item":"machinemod:fuelcan"
+           
+      }
+    }
+}

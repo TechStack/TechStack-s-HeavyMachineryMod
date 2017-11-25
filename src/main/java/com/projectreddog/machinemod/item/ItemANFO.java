@@ -12,16 +12,21 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ItemANFO extends ItemMachineMod {
+	public String registryName = "anfo";
 
 	public ItemANFO() {
 		super();
-		this.setUnlocalizedName("anfo");
+		this.setUnlocalizedName(registryName);
+		this.setRegistryName(registryName);
+
 		this.maxStackSize = 64;
 
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
+		// public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
+		ItemStack stack = player.getHeldItem(hand);
 		boolean result = false;
 		if (world.getBlockState(pos).getBlock() == ModBlocks.machinedrilledstone || world.getBlockState(pos).getBlock() == ModBlocks.machinedrilledandesite || world.getBlockState(pos).getBlock() == ModBlocks.machinedrilleddiorite || world.getBlockState(pos).getBlock() == ModBlocks.machinedrilledgranite) {
 
@@ -56,7 +61,7 @@ public class ItemANFO extends ItemMachineMod {
 		}
 
 		if (result && !player.capabilities.isCreativeMode) {
-			stack.stackSize--;
+			stack.setCount(stack.getCount() - 1);
 		}
 		if (result) {
 			return EnumActionResult.PASS;

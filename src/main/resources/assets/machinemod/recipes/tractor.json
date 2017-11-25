@@ -1,0 +1,22 @@
+{
+    "result": {
+        "item": "machinemod:tractor"
+    },
+    "pattern" :[
+		"   ",
+		" et",
+		"w w"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "e": {
+       "item":"machinemod:engine"
+      },
+    "t": {
+      "item": "machinemod:transmission"
+      },
+    "w": {
+      "item": "machinemod:wheel"
+      }
+    }
+}

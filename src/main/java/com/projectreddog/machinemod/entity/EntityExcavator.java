@@ -15,6 +15,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityExcavator extends EntityMachineModRideable {
 
@@ -40,7 +41,9 @@ public class EntityExcavator extends EntityMachineModRideable {
 		super(world);
 
 		setSize(4f, 2f);
-		inventory = new ItemStack[9];
+		SIZE = 9;
+		inventory = new ItemStackHandler(SIZE);
+		// inventory = new ItemStack[9];
 
 		this.mountedOffsetY = .5D;
 		this.mountedOffsetX = -1.5D;
@@ -58,7 +61,7 @@ public class EntityExcavator extends EntityMachineModRideable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// if (this.Attribute1 == this.getMaxAngle()) {
 			// bucket Down
 			// break blocks first
@@ -115,14 +118,15 @@ public class EntityExcavator extends EntityMachineModRideable {
 
 				// BlockPos bp = new BlockPos(posX + calcTwoOffsetX(10, 0, 0), posY + +3, posZ + calcTwoOffsetZ(10, 0, 0));
 
-				ModNetwork.sendPacketToAllAround((new MachineModMessageEntityCurrentTargetPosToClient(this.getEntityId(), this.currPosX, this.currPosY, this.currPosZ, this.angleArm1, this.angleArm2, this.angleArm3, this.mainBodyRotation)), new TargetPoint(worldObj.provider.getDimension(), posX, posY, posZ, 80));
+				ModNetwork.sendPacketToAllAround((new MachineModMessageEntityCurrentTargetPosToClient(this.getEntityId(), this.currPosX, this.currPosY, this.currPosZ, this.angleArm1, this.angleArm2, this.angleArm3, this.mainBodyRotation)), new TargetPoint(world.provider.getDimension(), posX, posY, posZ, 80));
 				// if (this.isPlayerPushingSprintButton) {
 				// player wants to break the block
 				// bp = new BlockPos(currPosX, currPosY, currPosZ);
 				// public BlockPos calculateBlockPosGivenStartAngleDistance4(double startX, double startY, double startZ, float angleX1, float angleY1, float angleZ1, double distance1, float angleX2, float angleY2, float angleZ2, double distance2, float angleX3, float angleY3, float angleZ3, double distance3, float angleX4, float angleY4, float angleZ4, double distance4) {
 				// LogHelper.info(this.yaw);
 				// LogHelper.info(this.rotationYaw);
-				BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 9.5d, (360 - this.yaw), (float) (this.angleArm2 + 270 + this.angleArm1), 7.5d, (360 - this.yaw), (float) (this.angleArm3 + 90), -2.75d);
+				// TS old model BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 9.5d, (360 - this.yaw), (float) (this.angleArm2 + 270 + this.angleArm1), 7.5d, (360 - this.yaw), (float) (this.angleArm3 + 90), -2.75d);
+				BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 11.5d, (360 - this.yaw), (float) (this.angleArm2 + 270 + this.angleArm1), 6.5d, (360 - this.yaw), (float) (this.angleArm3 + 90), -2.75d);
 				// BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 9.5d, (360 - this.yaw), (float) (this.angleArm2 + 270 + this.angleArm1), 7.5d, 0,0,0);
 
 				// BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 9.5d, (360 - this.yaw), (float) (this.angleArm2 + 265), 7.5d, 0, 0, 0);
@@ -130,14 +134,15 @@ public class EntityExcavator extends EntityMachineModRideable {
 				// BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -1d, (360 - this.yaw), (float) this.angleArm1 - 40, 10d, (360 - this.yaw), (float) this.angleArm2 - 90, 10d, 0, 0, 0);
 
 				if (this.angleArm3 < 42) {
-					BlockUtil.BreakBlock(worldObj, BP, this.getControllingPassenger());
+					BlockUtil.BreakBlock(world, BP, this.getControllingPassenger());
 					AxisAlignedBB bucketboundingBox = new AxisAlignedBB(BP);
-					bucketboundingBox.expandXyz(1d);
-					List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
+					// was expand
+					bucketboundingBox.grow(1d);
+					List list = this.world.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
 					collidedEntitiesInList(list);
 				}
 				// LogHelper.info(BP);
-				// worldObj.setBlockState(BP, Blocks.DIRT.getDefaultState());
+				// world.setBlockState(BP, Blocks.DIRT.getDefaultState());
 
 				// }
 				if (this.angleArm3 > 42) {
@@ -145,16 +150,16 @@ public class EntityExcavator extends EntityMachineModRideable {
 					// Drop blocks
 					// TODO needs something to pace it a bit more now it drops
 					// everything way to fast.
-					for (int i = 0; i < this.getSizeInventory(); i++) {
-						ItemStack item = this.getStackInSlot(i);
+					for (int i = 0; i < SIZE; i++) {
+						ItemStack item = this.inventory.getStackInSlot(i);
 
-						if (item != null && item.stackSize > 0) {
+						if (item != null && item.getCount() > 0) {
 							;
 
-							EntityItem entityItem = new EntityItem(worldObj, BP.getX(), BP.getY() - 1, BP.getZ(), item);
+							EntityItem entityItem = new EntityItem(world, BP.getX(), BP.getY() - 1, BP.getZ(), item);
 
 							if (item.hasTagCompound()) {
-								entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+								entityItem.getItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
 							}
 
 							float factor = 0.05F;
@@ -162,10 +167,10 @@ public class EntityExcavator extends EntityMachineModRideable {
 							entityItem.motionY = 0;
 							// entityItem.motionZ = rand.nextGaussian() * factor;
 							entityItem.forceSpawn = true;
-							worldObj.spawnEntityInWorld(entityItem);
+							world.spawnEntity(entityItem);
 							// item.stackSize = 0;
-
-							this.setInventorySlotContents(i, null);
+							inventory.extractItem(i, inventory.getStackInSlot(i).getCount(), false);
+							// this.inventory.insertItem(i, ItemStack.EMPTY, false);
 						}
 					}
 				}
@@ -180,14 +185,14 @@ public class EntityExcavator extends EntityMachineModRideable {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
 				if (entity instanceof EntityItem) {
-					ItemStack is = ((EntityItem) entity).getEntityItem().copy();
-					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
+					ItemStack is = ((EntityItem) entity).getItem().copy();
+					is.setItemDamage(((EntityItem) entity).getItem().getItemDamage());
 					if (!entity.isDead) {
-						if (is.stackSize > 0) {
+						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
 
-							if (is1 != null && is1.stackSize != 0) {
-								((EntityItem) entity).setEntityItemStack(is1);
+							if (is1 != null && is1.getCount() != 0) {
+								((EntityItem) entity).setItem(is1);
 							} else {
 								entity.setDead();
 							}

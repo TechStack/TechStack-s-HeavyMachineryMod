@@ -1,0 +1,24 @@
+{
+    "result": {
+        "item": "machinemod:operatorsbooth"
+    },
+    "pattern" :[
+	 "gbb",
+	 "g i",
+	 "iii"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "g": {
+            "item":"minecraft:glass"
+      },
+      "b": {
+        "item":"minecraft:iron_bars"
+      },
+      "i": {
+          "type": "forge:ore_dict",
+           "ore": "ingotIron" 
+      }  
+        
+    }
+}

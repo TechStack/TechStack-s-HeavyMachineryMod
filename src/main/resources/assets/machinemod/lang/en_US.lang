@@ -96,7 +96,7 @@ item.machinemod:cargotrailer.name=Cargo Trailer
 tile.machinemod:machineassemblytable.name=Machine Assembly Table
 tile.machinemod:machinescreen.name=Screen
 tile.machinemod:machinesteelblock.name=Steel Block
-
+tile.machinemod:machinecrate.name=Crate
 tile.machinemod:machinedrilledstone.name=Drilled Stone
 tile.machinemod:machinedrilledandesite.name=Andesite Stone
 tile.machinemod:machinedrilleddiorite.name=Diorite Stone

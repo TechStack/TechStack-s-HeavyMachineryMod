@@ -1,0 +1,17 @@
+{
+    "result": {
+        "item": "machinemod:woodengear"
+    },
+    "pattern" :[
+    " s ", 
+    "s s", 
+    " s "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+    "type": "forge:ore_dict",
+      "ore": "stickWood"
+      }
+    }
+}

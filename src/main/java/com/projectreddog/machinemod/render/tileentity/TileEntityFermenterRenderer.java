@@ -1,16 +1,16 @@
 package com.projectreddog.machinemod.render.tileentity;
 
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.model.tileentity.ModelFermenter;
 import com.projectreddog.machinemod.reference.Reference;
+
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 
 public class TileEntityFermenterRenderer extends TileEntitySpecialRenderer {
 
@@ -18,7 +18,7 @@ public class TileEntityFermenterRenderer extends TileEntitySpecialRenderer {
 	private static ResourceLocation resourceLocation;
 
 	@Override
-	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f, int i) {
+	public void render(TileEntity tileentity, double x, double y, double z, float f, int i, float a) {
 
 		Tessellator tessellator = Tessellator.getInstance();
 
@@ -37,7 +37,7 @@ public class TileEntityFermenterRenderer extends TileEntitySpecialRenderer {
 		// GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
 		this.bindTexture(getResourceLocation());
-		GL11.glScalef(-.5F, -.5F, .5F);
+		// GL11.glScalef(-.5F, -.5F, .5F);
 
 		EnumFacing ef = (EnumFacing) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
 		switch (ef) {
@@ -49,10 +49,11 @@ public class TileEntityFermenterRenderer extends TileEntitySpecialRenderer {
 			GL11.glRotatef(180f, 0, 1, 0);
 			break;
 		case EAST:
-			GL11.glRotatef(90f, 0, 1, 0);
+
+			GL11.glRotatef(270f, 0, 1, 0);
 			break;
 		case WEST:
-			GL11.glRotatef(270f, 0, 1, 0);
+			GL11.glRotatef(90f, 0, 1, 0);
 			break;
 		default:
 			// should never happen because we are constrained to the horizontal plane so just break with no addtional rotation applied

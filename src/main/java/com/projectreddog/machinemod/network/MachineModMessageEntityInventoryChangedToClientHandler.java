@@ -1,23 +1,20 @@
 package com.projectreddog.machinemod.network;
 
+import com.projectreddog.machinemod.entity.EntityMachineModRideable;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-import com.projectreddog.machinemod.entity.EntityDumpTruck;
-import com.projectreddog.machinemod.entity.EntityLoader;
-import com.projectreddog.machinemod.entity.EntityMachineModRideable;
-import com.projectreddog.machinemod.utility.LogHelper;
-
 public class MachineModMessageEntityInventoryChangedToClientHandler implements IMessageHandler<MachineModMessageEntityInventoryChangedToClient, IMessage> {
 
 	@Override
 	public IMessage onMessage(final MachineModMessageEntityInventoryChangedToClient message, MessageContext ctx) {
 		// LogHelper.info("on message MachineModMessageEntityInventoryChangedToClient");
-		if (Minecraft.getMinecraft().theWorld != null) {
-			if (Minecraft.getMinecraft().theWorld.isRemote) {
+		if (Minecraft.getMinecraft().world != null) {
+			if (Minecraft.getMinecraft().world.isRemote) {
 
 				Minecraft.getMinecraft().addScheduledTask(new Runnable() {
 					public void run() {
@@ -31,10 +28,10 @@ public class MachineModMessageEntityInventoryChangedToClientHandler implements I
 
 	public void processMessage(MachineModMessageEntityInventoryChangedToClient message) {
 		if (message != null) {
-			if (Minecraft.getMinecraft().theWorld != null) {
-				if (Minecraft.getMinecraft().thePlayer != null) {
+			if (Minecraft.getMinecraft().world != null) {
+				if (Minecraft.getMinecraft().player != null) {
 
-					Entity entity = Minecraft.getMinecraft().theWorld.getEntityByID(message.entityid);
+					Entity entity = Minecraft.getMinecraft().world.getEntityByID(message.entityid);
 
 					if (entity != null) {
 
@@ -64,7 +61,14 @@ public class MachineModMessageEntityInventoryChangedToClientHandler implements I
 							// if (entity instanceof EntityDumpTruck) {
 							// EntityDumpTruck eDT = (EntityDumpTruck) entity;
 							EntityMachineModRideable eMMR = (EntityMachineModRideable) entity;
-							eMMR.setInventorySlotContents(message.slot, message.is);
+							if (message.is.isEmpty()) {
+								// updated inbound itemstack is empty so remove whatever is in this slot!
+								eMMR.inventory.extractItem(message.slot, eMMR.inventory.getStackInSlot(message.slot).getCount(), false);
+
+							} else if (!message.is.areItemStacksEqual(eMMR.inventory.getStackInSlot(message.slot), message.is)) {
+								eMMR.inventory.extractItem(message.slot, eMMR.inventory.getStackInSlot(message.slot).getCount(), false);
+								eMMR.inventory.insertItem(message.slot, message.is, false);
+							}
 							// }
 
 						}

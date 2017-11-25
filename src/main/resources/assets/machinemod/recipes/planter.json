@@ -1,0 +1,24 @@
+{
+    "result": {
+        "item": "machinemod:planter"
+    },
+    "pattern" :[
+    "ccc", 
+    "hhh", 
+    "ddd"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "c": {
+          "item":"minecraft:chest"
+      },
+    "h": {
+          "item": "minecraft:hopper"
+           
+      },
+    "d": {
+          "item": "minecraft:dispenser"
+           
+      }
+    }
+}

@@ -51,6 +51,7 @@ public class RenderBulldozer extends Render {
 		GL11.glScalef(f4, f4, f4);
 		GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
 		this.bindEntityTexture(entity);
+
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 

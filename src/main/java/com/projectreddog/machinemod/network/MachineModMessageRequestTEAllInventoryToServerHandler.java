@@ -13,7 +13,7 @@ public class MachineModMessageRequestTEAllInventoryToServerHandler implements IM
 	@Override
 	public IMessage onMessage(final MachineModMessageRequestTEAllInventoryToServer message, final MessageContext ctx) {
 
-		ctx.getServerHandler().playerEntity.getServer().addScheduledTask(new Runnable() {
+		ctx.getServerHandler().player.getServer().addScheduledTask(new Runnable() {
 			public void run() {
 				processMessage(message, ctx);
 			}
@@ -23,7 +23,7 @@ public class MachineModMessageRequestTEAllInventoryToServerHandler implements IM
 
 	public void processMessage(MachineModMessageRequestTEAllInventoryToServer message, MessageContext ctx) {
 
-		TileEntity Tileentity = ctx.getServerHandler().playerEntity.worldObj.getTileEntity(new BlockPos(message.x, message.y, message.z));
+		TileEntity Tileentity = ctx.getServerHandler().player.world.getTileEntity(new BlockPos(message.x, message.y, message.z));
 
 		if (Tileentity != null) {
 
@@ -31,7 +31,7 @@ public class MachineModMessageRequestTEAllInventoryToServerHandler implements IM
 
 				// do function to send inventory to client
 
-				((TileEntityCrate) Tileentity).sendAllInventoryToPlayer(ctx.getServerHandler().playerEntity);
+				((TileEntityCrate) Tileentity).sendAllInventoryToPlayer(ctx.getServerHandler().player);
 			}
 		}
 	}

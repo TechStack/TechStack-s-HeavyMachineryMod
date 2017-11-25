@@ -9,17 +9,21 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ItemFuelCan extends ItemMachineMod {
+	public String registryName = "fuelcan";
 
 	public ItemFuelCan() {
 		super();
-		this.setUnlocalizedName("fuelcan");
+		this.setUnlocalizedName(registryName);
+		this.setRegistryName(registryName);
+
 		this.maxStackSize = 1;
 		this.setMaxDamage(1000);
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
-		// testing code
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
+		// public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
+		ItemStack stack = player.getActiveItemStack(); // testing code
 		boolean result = false;
 
 		// this.setDamage(stack, this.getDamage(stack) + 1);

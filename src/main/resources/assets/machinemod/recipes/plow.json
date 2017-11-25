@@ -1,0 +1,22 @@
+{
+    "result": {
+        "item": "machinemod:plow"
+    },
+    "pattern" :[
+    "   ", 
+    "iii", 
+    "hhh"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+          "type": "forge:ore_dict",
+           "ore": "ingotIron" 
+      },
+    "h": {
+          "item": "minecraft:iron_hoe"
+           
+      }
+         
+    }
+}

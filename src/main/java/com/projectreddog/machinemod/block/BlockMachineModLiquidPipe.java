@@ -2,8 +2,6 @@ package com.projectreddog.machinemod.block;
 
 import java.util.Random;
 
-import javax.annotation.Nullable;
-
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
@@ -14,6 +12,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -29,6 +28,8 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 		// 1.8
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_LIQUID_PIPE);
+		this.setRegistryName(Reference.MODBLOCK_MACHINE_LIQUID_PIPE);
+
 		// this.setBlockName(Reference.MODBLOCK_MACHINE_DRILLED_STONE);
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_DRILLED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
@@ -52,7 +53,7 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		// 3 for normal block 2 for TESR 1 liquid -1 nothing ( like air)
-		//return 2;
+		// return 2;
 		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
 
 	}
@@ -117,7 +118,8 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer playerIn,EnumHand hand,@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+		ItemStack heldItem = playerIn.getActiveItemStack();
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te instanceof TileEntityLiquidPipe) {
 			TileEntityLiquidPipe telp = (TileEntityLiquidPipe) te;

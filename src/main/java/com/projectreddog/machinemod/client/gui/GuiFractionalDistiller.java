@@ -41,12 +41,12 @@ public class GuiFractionalDistiller extends GuiContainer {
 		int xCord = 8;
 		int yStart = 20;
 		int yOffest = 19;
-		fontRendererObj.drawString("Type       Mb", xCord, yStart - 15, 4210752);
-		fontRendererObj.drawString("Naphtha:  " + fractionaldistiller.fluidLevelAbove[4], xCord, yStart, 4210752);
-		fontRendererObj.drawString("Jet Fuel:  " + fractionaldistiller.fluidLevelAbove[3], xCord, yStart + yOffest * 1, 4210752);
-		fontRendererObj.drawString("Diesel:     " + fractionaldistiller.fluidLevelAbove[2], xCord, yStart + yOffest * 2, 4210752);
-		fontRendererObj.drawString("Bitumen:   " + fractionaldistiller.fluidLevelAbove[1], xCord, yStart + yOffest * 3, 4210752);
-		fontRendererObj.drawString("Oil:         " + fractionaldistiller.fluidLevelAbove[0], xCord, yStart + yOffest * 4, 4210752);
+		this.fontRenderer.drawString("Type       Mb", xCord, yStart - 15, 4210752);
+		this.fontRenderer.drawString("Naphtha:  " + fractionaldistiller.fluidLevelAbove[4], xCord, yStart, 4210752);
+		this.fontRenderer.drawString("Jet Fuel:  " + fractionaldistiller.fluidLevelAbove[3], xCord, yStart + yOffest * 1, 4210752);
+		this.fontRenderer.drawString("Diesel:     " + fractionaldistiller.fluidLevelAbove[2], xCord, yStart + yOffest * 2, 4210752);
+		this.fontRenderer.drawString("Bitumen:   " + fractionaldistiller.fluidLevelAbove[1], xCord, yStart + yOffest * 3, 4210752);
+		this.fontRenderer.drawString("Oil:         " + fractionaldistiller.fluidLevelAbove[0], xCord, yStart + yOffest * 4, 4210752);
 
 	}
 

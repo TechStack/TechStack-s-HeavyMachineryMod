@@ -1,0 +1,26 @@
+{
+    "result": {
+        "item": "machinemod:machinecrate"
+    },
+    "pattern" :[
+		"wew",
+		"pcp",
+		"wew"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "w": {
+       "type": "forge:ore_dict",
+        "ore": "plankWood"   
+      },
+    "e": {
+      "item": "minecraft:ender_eye"
+      },
+    "p": {
+      "item": "minecraft:ender_pearl"
+      },
+    "c": {
+      "item": "minecraft:chest"
+      }
+    }
+}

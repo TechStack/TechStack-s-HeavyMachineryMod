@@ -1,0 +1,26 @@
+{
+    "result": {
+        "item": "machinemod:subbody"
+    },
+    "pattern" :[
+     "gig", 
+     "ibi", 
+     "gig"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+            "type": "forge:ore_dict",
+           "ore": "ingotIron" 
+      },
+      
+      "g":{
+        "item":"minecraft:gold_ingot"
+      },
+      "b":{
+        "item":"minecraft:boat"
+      }
+        
+    }
+}
+

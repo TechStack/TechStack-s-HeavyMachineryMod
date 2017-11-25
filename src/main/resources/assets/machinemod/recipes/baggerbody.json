@@ -1,0 +1,29 @@
+{
+    "result": {
+        "item": "machinemod:baggerbody"
+    },
+    "pattern" :[
+	  "cpc", 
+	  "isi", 
+	  "clc"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "c": {
+            "item":"machinemod:machineconveyor" 
+      },
+    "p": {
+            "item":"machinemod:machineprimarycrusher" 
+      },
+      "i":{
+            "item":"minecraft:iron_block"
+      },
+      "s":{
+            "item":"minecraft:chest"
+      },
+      "l":{
+            "item":"minecraft:lava_bucket"
+      }
+        
+    }
+}

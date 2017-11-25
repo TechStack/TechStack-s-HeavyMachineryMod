@@ -1,0 +1,17 @@
+{
+    "result": {
+        "item": "machinemod:rigging"
+    },
+    "pattern" :[
+	 " b ",
+	 "bbb", 
+	 "   "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+           "item":"machinemod:boomarmsegment"
+      }
+        
+    }
+}

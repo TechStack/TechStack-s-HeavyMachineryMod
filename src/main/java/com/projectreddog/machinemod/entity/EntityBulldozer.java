@@ -5,12 +5,12 @@ import com.projectreddog.machinemod.utility.BlockUtil;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityBulldozer extends EntityMachineModRideable {
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
@@ -20,10 +20,12 @@ public class EntityBulldozer extends EntityMachineModRideable {
 	public EntityBulldozer(World world) {
 		super(world);
 		setSize(4.2F, 2.5F);
-		inventory = new ItemStack[0];
-		this.mountedOffsetY = .8D;
-		this.mountedOffsetX = -1.5D;
-		this.mountedOffsetZ = -1.5D;
+		// inventory = new ItemStack[0];
+		SIZE = 0;
+		inventory = new ItemStackHandler(SIZE);
+		this.mountedOffsetY = .87D;
+		this.mountedOffsetX = -.75D;
+		this.mountedOffsetZ = -.75D;
 		this.maxAngle = 15;
 		this.minAngle = -15;
 		this.droppedItem = ModItems.bulldozer;
@@ -32,7 +34,7 @@ public class EntityBulldozer extends EntityMachineModRideable {
 
 	public void doParticleEffects() {
 		if (this.currentFuelLevel > 0 && this.getControllingPassenger() != null) {
-			worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX + calcTwoOffsetX(2.1, -90, .7), this.posY + 3.5, this.posZ + calcTwoOffsetZ(2.1, -90, .7), 0, 0, 0, 0);
+			world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX + calcTwoOffsetX(2.1, -90, .7), this.posY + 3.5, this.posZ + calcTwoOffsetZ(2.1, -90, .7), 0, 0, 0, 0);
 		}
 	}
 
@@ -43,7 +45,7 @@ public class EntityBulldozer extends EntityMachineModRideable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			int bucketOffsetY = 0;
 			if (this.Attribute1 > 7) {
 				bucketOffsetY = -1;
@@ -62,12 +64,12 @@ public class EntityBulldozer extends EntityMachineModRideable {
 					}
 					BlockPos bp;
 					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + j + bucketOffsetY, posZ + calcTwoOffsetZ(3.5, angle, i));
-					if (worldObj.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || worldObj.getBlockState(bp).getBlock() == Blocks.SNOW || worldObj.getBlockState(bp).getBlock() == Blocks.DIRT || worldObj.getBlockState(bp).getBlock() == Blocks.SAND || worldObj.getBlockState(bp).getBlock() == Blocks.GRAVEL || worldObj.getBlockState(bp).getBlock() == Blocks.GRASS
-							|| worldObj.getBlockState(bp).getBlock() == Blocks.CLAY || worldObj.getBlockState(bp).getBlock() == Blocks.NETHERRACK || worldObj.getBlockState(bp).getBlock() == Blocks.MYCELIUM || worldObj.getBlockState(bp).getBlock() == Blocks.SOUL_SAND || worldObj.getBlockState(bp).getBlock() == Blocks.TALLGRASS || worldObj.getBlockState(bp).getBlock() == Blocks.FARMLAND) {
-						BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
+					if (world.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || world.getBlockState(bp).getBlock() == Blocks.SNOW || world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.SAND || world.getBlockState(bp).getBlock() == Blocks.GRAVEL || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.CLAY
+							|| world.getBlockState(bp).getBlock() == Blocks.NETHERRACK || world.getBlockState(bp).getBlock() == Blocks.MYCELIUM || world.getBlockState(bp).getBlock() == Blocks.SOUL_SAND || world.getBlockState(bp).getBlock() == Blocks.TALLGRASS || world.getBlockState(bp).getBlock() == Blocks.FARMLAND) {
+						BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
 					}
-					toppleTree(bp, 0, 0, worldObj.getBlockState(bp).getBlock());
+					toppleTree(bp, 0, 0, world.getBlockState(bp).getBlock());
 
 				}
 			}
@@ -93,11 +95,11 @@ public class EntityBulldozer extends EntityMachineModRideable {
 		int y = (int) Math.round(this.posY + yOffset);
 		int z = (int) (this.posZ + bladeOffsetZ - .5d);
 		BlockPos bp = new BlockPos(x, y, z);
-		toppleTree(bp, 0, 0, worldObj.getBlockState(bp).getBlock());
-		if (worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.GRASS || worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.GROUND || worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.SAND) {
+		toppleTree(bp, 0, 0, world.getBlockState(bp).getBlock());
+		if (world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)) == Material.GRASS || world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)) == Material.GROUND || world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)) == Material.SAND) {
 
-			worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-			worldObj.setBlockToAir(bp);
+			world.getBlockState(bp).getBlock().dropBlockAsItem(world, bp, world.getBlockState(bp), 0);
+			world.setBlockToAir(bp);
 		}
 
 		double bladeOffsetX2 = (1 * MathHelper.cos((float) ((yaw + 90 + 90) * Math.PI / 180.0D)));
@@ -106,19 +108,19 @@ public class EntityBulldozer extends EntityMachineModRideable {
 		x = (int) (this.posX + bladeOffsetX + bladeOffsetX2 - .5d);
 		z = (int) (this.posZ + bladeOffsetZ + bladeOffsetZ2 - .5d);
 		bp = new BlockPos(x, y, z);
-		toppleTree(bp, 0, 0, worldObj.getBlockState(bp).getBlock());
-		if (worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.GRASS || worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.GROUND || worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.SAND) {
-			worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-			worldObj.setBlockToAir(bp);
+		toppleTree(bp, 0, 0, world.getBlockState(bp).getBlock());
+		if (world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)) == Material.GRASS || world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)) == Material.GROUND || world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)) == Material.SAND) {
+			world.getBlockState(bp).getBlock().dropBlockAsItem(world, bp, world.getBlockState(bp), 0);
+			world.setBlockToAir(bp);
 		}
 		x = (int) (this.posX + bladeOffsetX - bladeOffsetX2 - .5d);
 		z = (int) (this.posZ + bladeOffsetZ - bladeOffsetZ2 - .5d);
 		bp = new BlockPos(x, y, z);
-		toppleTree(bp, 0, 0, worldObj.getBlockState(bp).getBlock());
+		toppleTree(bp, 0, 0, world.getBlockState(bp).getBlock());
 
-		if (worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.GRASS || worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.GROUND || worldObj.getBlockState(bp).getBlock().getMaterial(worldObj.getBlockState(bp)) == Material.SAND) {
-			worldObj.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, worldObj.getBlockState(bp), 0);
-			worldObj.setBlockToAir(bp);
+		if (world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)) == Material.GRASS || world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)) == Material.GROUND || world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)) == Material.SAND) {
+			world.getBlockState(bp).getBlock().dropBlockAsItem(world, bp, world.getBlockState(bp), 0);
+			world.setBlockToAir(bp);
 		}
 
 	}

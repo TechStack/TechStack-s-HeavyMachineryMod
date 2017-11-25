@@ -1,0 +1,25 @@
+{
+    "result": {
+        "item": "machinemod:bulldozer"
+    },
+    "pattern" :[
+		"   ",
+		" et",
+		"dkk"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "k": {
+       "item":"machinemod:tracks"
+      },
+    "e": {
+      "item": "machinemod:engine"
+      },
+    "t": {
+      "item": "machinemod:transmission"
+      },
+    "d": {
+      "item": "machinemod:dozerblade"
+      }
+    }
+}

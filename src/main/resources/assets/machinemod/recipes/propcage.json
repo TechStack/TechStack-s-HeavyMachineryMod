@@ -1,0 +1,22 @@
+{
+    "result": {
+        "item": "machinemod:propcage"
+    },
+    "pattern" :[
+      "ibi",
+      "b b",
+      "ibi"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+            "type": "forge:ore_dict",
+           "ore": "ingotIron" 
+      },
+    "b": {
+            "item":"minecraft:iron_bars"
+      }
+        
+    }
+}
+

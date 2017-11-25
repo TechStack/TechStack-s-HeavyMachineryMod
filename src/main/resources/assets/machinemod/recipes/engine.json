@@ -1,0 +1,22 @@
+{
+    "result": {
+        "item": "machinemod:engine"
+    },
+    "pattern" :[
+     "ppp",
+     " c ",
+     "ppp"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "p": {
+         "item": "machinemod:piston"
+        
+      
+      },
+    "c": {
+     "item": "machinemod:camshaft"
+    }
+      
+    }
+}

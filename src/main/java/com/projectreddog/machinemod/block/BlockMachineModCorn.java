@@ -30,6 +30,8 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 		super();
 		// 1.8
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_CORN);
+		this.setRegistryName(Reference.MODBLOCK_MACHINE_CORN);
+
 		this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
 		this.setTickRandomly(true);
 		float f = 0.5F;
@@ -66,7 +68,7 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 	}
 
 	public void growCrops(World worldIn, BlockPos p_176487_2_, IBlockState p_176487_3_) {
-		int i = ((Integer) p_176487_3_.getValue(AGE)).intValue() + MathHelper.getRandomIntegerInRange(worldIn.rand, 2, 4);
+		int i = ((Integer) p_176487_3_.getValue(AGE)).intValue() + MathHelper.getInt(worldIn.rand, 2, 4);
 
 		if (i > 6) {
 			i = 6;

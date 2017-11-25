@@ -18,7 +18,7 @@ public class TileEntityLiquidPipeRenderer extends TileEntitySpecialRenderer {
 	private static ResourceLocation resourceLocation;
 
 	@Override
-	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f, int i) {
+	public void render(TileEntity tileentity, double x, double y, double z, float f, int i, float a) {
 
 		Tessellator tessellator = Tessellator.getInstance();
 

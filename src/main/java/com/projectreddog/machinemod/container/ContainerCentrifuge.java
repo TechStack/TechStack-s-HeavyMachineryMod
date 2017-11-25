@@ -49,7 +49,7 @@ public class ContainerCentrifuge extends Container {
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
-		ItemStack stack = null;
+		ItemStack stack = ItemStack.EMPTY;
 		Slot slotObject = (Slot) inventorySlots.get(slot);
 
 		// null checks and checks if the item can be stacked (maxStackSize > 1)
@@ -60,25 +60,25 @@ public class ContainerCentrifuge extends Container {
 			// merges the item into player inventory since its in the Entity
 			if (slot < 1) {
 				if (!this.mergeItemStack(stackInSlot, 9, this.inventorySlots.size(), true)) {
-					return null;
+					return ItemStack.EMPTY;
 				}
 			}
 			// places it into the tileEntity is possible since its in the player
 			// inventory
 			else if (!this.mergeItemStack(stackInSlot, 0, 1, false)) {
-				return null;
+				return ItemStack.EMPTY;
 			}
 
-			if (stackInSlot.stackSize == 0) {
-				slotObject.putStack(null);
+			if (stackInSlot.getCount() == 0) {
+				slotObject.putStack(ItemStack.EMPTY);
 			} else {
 				slotObject.onSlotChanged();
 			}
 
-			if (stackInSlot.stackSize == stack.stackSize) {
-				return null;
+			if (stackInSlot.getCount() == stack.getCount()) {
+				return ItemStack.EMPTY;
 			}
-			slotObject.onPickupFromSlot(player, stackInSlot);
+			slotObject.onTake(player, stackInSlot);
 		}
 		return stack;
 	}
@@ -93,7 +93,7 @@ public class ContainerCentrifuge extends Container {
 			IContainerListener icrafting = (IContainerListener) this.listeners.get(i);
 
 			if (this.lastFuelStorage != this.centrifuge.getField(0)) {
-				icrafting.sendProgressBarUpdate(this, 0, this.centrifuge.getField(0));
+				icrafting.sendWindowProperty(this, 0, this.centrifuge.getField(0));
 			}
 
 		}

@@ -1,0 +1,21 @@
+{
+    "result": {
+        "item": "machinemod:bucketwheel"
+    },
+    "pattern" :[
+	 "bbb",
+	 "bib",
+	 "bbb"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+            "item":"machinemod:cutterbucket"
+      },
+      "i": {
+        "item":"minecraft:iron_block"
+      }
+        
+        
+    }
+}

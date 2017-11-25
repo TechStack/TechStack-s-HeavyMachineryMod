@@ -10,11 +10,11 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityCrate;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -44,7 +44,7 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 	}
 
 	@Override
-	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f, int i) {
+	public void render(TileEntity tileentity, double x, double y, double z, float f, int i, float a) {
 
 		Tessellator tessellator = Tessellator.getInstance();
 
@@ -72,8 +72,8 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 			int count = 0;
 			int inventoryIndex = 0;
 			ItemStack is = te.getStackInSlot(inventoryIndex);
-			if (is != null) {
-				str = FormatAmount(is.stackSize + te.AmtInReserve);
+			if (is != null && !is.isEmpty()) {
+				str = FormatAmount(is.getCount() + te.AmtInReserve);
 				// EntityItem customitem = new EntityItem(eDT.worldObj);
 				// customitem.hoverStart = 0f;
 				// customitem.setEntityItemStack(is);
@@ -90,7 +90,7 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 					TileEntityItemStackRenderer.instance.renderByItem(is);
 
 				} else {
-					VertexBuffer worldrenderer = tessellator.getBuffer();
+					BufferBuilder worldrenderer = tessellator.getBuffer();
 					worldrenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
 					this.renderManager.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
 					EnumFacing[] aenumfacing = EnumFacing.values();
@@ -114,7 +114,7 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 			Entity entity = this.rendererDispatcher.entity;
 			double d0 = te.getDistanceSq(entity.posX, entity.posY, entity.posZ);
 			// the 400 on the next line is the square of 20 *20 // save 1 math operation by pre calc
-			if (d0 <= (double) (400) && Minecraft.getMinecraft().thePlayer.isSneaking()) {
+			if (d0 <= (double) (400) && Minecraft.getMinecraft().player.isSneaking()) {
 				if (!str.equals("")) {
 					EntityRenderer.drawNameplate(this.renderManager.getFontRenderer(), str, (float) x + .5f, (float) y + .75f, (float) z + .5f, 0, f2, f1, flag1, false);
 				}
@@ -143,18 +143,18 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 		return resourceLocation;
 	}
 
-	private void RenderHelper_B(VertexBuffer p_175033_1_, BakedQuad p_175033_2_, int p_175033_3_) {
+	private void RenderHelper_B(BufferBuilder p_175033_1_, BakedQuad p_175033_2_, int p_175033_3_) {
 		p_175033_1_.addVertexData(p_175033_2_.getVertexData());
 		p_175033_1_.putColor4(p_175033_3_);
 		this.RenderHelper_C(p_175033_1_, p_175033_2_);
 	}
 
-	private void RenderHelper_C(VertexBuffer p_175038_1_, BakedQuad p_175038_2_) {
+	private void RenderHelper_C(BufferBuilder p_175038_1_, BakedQuad p_175038_2_) {
 		Vec3i vec3i = p_175038_2_.getFace().getDirectionVec();
 		p_175038_1_.putNormal((float) vec3i.getX(), (float) vec3i.getY(), (float) vec3i.getZ());
 	}
 
-	private void RenderHelper_a(VertexBuffer p_175032_1_, List p_175032_2_, int p_175032_3_, ItemStack p_175032_4_) {
+	private void RenderHelper_a(BufferBuilder p_175032_1_, List p_175032_2_, int p_175032_3_, ItemStack p_175032_4_) {
 		boolean flag = p_175032_3_ == -1 && p_175032_4_ != null;
 		BakedQuad bakedquad;
 		int j;

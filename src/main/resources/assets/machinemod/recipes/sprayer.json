@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "machinemod:sprayer"
+    },
+    "pattern" :[
+    " c ",
+    " h ",
+    "w w"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "c": {
+          "item": "minecraft:chest"
+      },
+    "h": {
+          "item": "minecraft:hopper"
+      },
+    "w": {
+          "item": "machinemod:wheel"
+      }
+         
+    }
+}

@@ -44,7 +44,7 @@ public class ModelSemiTractor extends ModelBase {
 		this.renderGroupObject("SemiTractor_Cube");
 
 		EntitySemiTractor eDT = ((EntitySemiTractor) entity);
-		ItemStack is = eDT.getStackInSlot(0);
+		ItemStack is = eDT.inventory.getStackInSlot(0);
 		if (is != null) {
 
 			if (is.getItem() instanceof ItemSemiTrailerCargo) {

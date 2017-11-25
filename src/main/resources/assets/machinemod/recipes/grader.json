@@ -1,0 +1,30 @@
+{
+    "result": {
+        "item": "machinemod:grader"
+        
+    },
+    "pattern" :[
+	  " g ",
+	  " et",
+	  "wbw"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "g": {
+            "item":"minecraft:glass"
+      },
+    "e": {
+            "item":"machinemod:engine"
+      },
+      "t": {
+            "item":"machinemod:transmission"
+      },    
+      "w": {
+            "item":"machinemod:wheel"
+      },
+      "b": {
+            "item":"machinemod:graderblade"
+      }     
+           
+    }
+}

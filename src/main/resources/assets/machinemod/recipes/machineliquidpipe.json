@@ -1,0 +1,17 @@
+{
+    "result": {
+        "item": "machinemod:machineliquidpipe"
+    },
+    "pattern" :[
+     "ss ",
+     "   ",
+     "ss "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+       "type": "forge:ore_dict",
+           "ore": "ingotSteel"   
+      }
+    }
+}

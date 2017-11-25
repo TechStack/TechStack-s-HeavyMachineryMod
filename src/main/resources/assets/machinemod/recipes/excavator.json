@@ -1,0 +1,29 @@
+{
+    "result": {
+        "item": "machinemod:excavator"
+    },
+    "pattern" : [
+       " bg",
+       "bet",
+       " rr"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "b":{
+    "item":"machinemod:boomarmsegment"
+    },
+    "e":{
+    "item":"machinemod:engine"
+    },
+    "g":{
+    "item":"minecraft:glass"
+    },
+    "t":{
+    "item":"machinemod:transmission"
+    },
+      "r":{
+    "item":"machinemod:tracks"
+    }
+    }
+    
+}

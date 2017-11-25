@@ -26,7 +26,9 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 
 	public TileEntityFuelPump() {
 		inventory = new ItemStack[inventorySize];
-
+		for (int i = 0; i < inventorySize; i++) {
+			inventory[i] = ItemStack.EMPTY;
+		}
 	}
 
 	public int addFluid(int amount) {
@@ -58,7 +60,7 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 
 	@Override
 	public void update() {
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// LogHelper.info("TE update entity called");
 
 			// transfer fuel in this case to the cans
@@ -72,7 +74,7 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 		if (this.fuelStorage > 0) {
 			for (int i = 0; i < this.getSizeInventory(); i++) {
 				ItemStack item = this.getStackInSlot(i);
-				if (item != null) {
+				if (!item.isEmpty()) {
 					if (item.getItem() == ModItems.fuelcan || item.getItem() == ModItems.handdrill) {
 						if (item.getItemDamage() > 0) {
 							int amtToTransefer = 10;
@@ -102,34 +104,34 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 	protected ItemStack addToinventory(ItemStack is) {
 		int i = getSizeInventory();
 
-		for (int j = 0; j < i && is != null && is.stackSize > 0; ++j) {
-			if (is != null) {
+		for (int j = 0; j < i && !is.isEmpty() && is.getCount() > 0; ++j) {
+			if (!is.isEmpty()) {
 
-				if (getStackInSlot(j) != null) {
+				if (!getStackInSlot(j).isEmpty()) {
 					if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getItemDamage() == is.getItemDamage()) {
 						// same item remove from is put into slot any amt not to
 						// excede stack max
-						if (getStackInSlot(j).stackSize < getStackInSlot(j).getMaxStackSize()) {
+						if (getStackInSlot(j).getCount() < getStackInSlot(j).getMaxStackSize()) {
 							// we have room to add to this stack
-							if (is.stackSize <= getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize) {
+							if (is.getCount() <= getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount()) {
 								// /all of the stack will fit in this slot do
 								// so.
 
-								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).stackSize + is.stackSize, is.getItemDamage()));
-								is = null;
+								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).getCount() + is.getCount(), is.getItemDamage()));
+								is = ItemStack.EMPTY;
 							} else {
 								// we have more
-								int countRemain = is.stackSize - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize);
+								int countRemain = is.getCount() - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount());
 								setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getItemDamage()));
-								is.stackSize = countRemain;
+								is.setCount(countRemain);
 							}
 
 						}
 					}
 				} else {
 					// nothign in slot so set contents
-					setInventorySlotContents(j, new ItemStack(is.getItem(), is.stackSize, is.getItemDamage()));
-					is = null;
+					setInventorySlotContents(j, new ItemStack(is.getItem(), is.getCount(), is.getItemDamage()));
+					is = ItemStack.EMPTY;
 				}
 
 			}
@@ -152,7 +154,7 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
 			byte slot = tag.getByte("Slot");
 			if (slot >= 0 && slot < inventory.length) {
-				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
+				inventory[slot] = new ItemStack(tag);
 			}
 		}
 	}
@@ -166,7 +168,7 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < inventory.length; i++) {
 			ItemStack stack = inventory[i];
-			if (stack != null) {
+			if (!stack.isEmpty()) {
 				NBTTagCompound tag = new NBTTagCompound();
 				tag.setByte("Slot", (byte) i);
 				stack.writeToNBT(tag);
@@ -209,13 +211,13 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 	@Override
 	public ItemStack decrStackSize(int slot, int amt) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			if (stack.stackSize <= amt) {
-				setInventorySlotContents(slot, null);
+		if (!stack.isEmpty()) {
+			if (stack.getCount() <= amt) {
+				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
 				stack = stack.splitStack(amt);
-				if (stack.stackSize == 0) {
-					setInventorySlotContents(slot, null);
+				if (stack.getCount() == 0) {
+					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}
 
 			}
@@ -226,8 +228,8 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 	@Override
 	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			setInventorySlotContents(slot, null);
+		if (!stack.isEmpty()) {
+			setInventorySlotContents(slot, ItemStack.EMPTY);
 		}
 		return stack;
 	}
@@ -235,8 +237,8 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inventory[slot] = stack;
-		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
-			stack.stackSize = getInventoryStackLimit();
+		if (!stack.isEmpty() && stack.getCount() > getInventoryStackLimit()) {
+			stack.setCount(getInventoryStackLimit());
 		}
 
 	}
@@ -247,7 +249,7 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer playerIn) {
+	public boolean isUsableByPlayer(EntityPlayer playerIn) {
 		return playerIn.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
 	}
 
@@ -300,7 +302,7 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 	@Override
 	public void clear() {
 		for (int i = 0; i < inventory.length; ++i) {
-			inventory[i] = null;
+			inventory[i] = ItemStack.EMPTY;
 		}
 	}
 
@@ -332,7 +334,7 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 
 	@Override
 	public EnumFacing outputDirection() {
-		EnumFacing ef = (EnumFacing) worldObj.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
+		EnumFacing ef = (EnumFacing) world.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
 		// switch (ef) {
 		// case NORTH:
 		// return EnumFacing.SOUTH;
@@ -346,5 +348,16 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 		// return null;
 		// }
 		return ef;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		for (int i = 0; i < inventory.length; i++) {
+			if (!inventory[i].isEmpty()) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 }

@@ -51,16 +51,19 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 
 	public TileEntityFractionalDistillation() {
 		inventory = new ItemStack[inventorySize];
+		for (int i = 0; i < inventorySize; i++) {
+			inventory[i] = ItemStack.EMPTY;
+		}
 		fluidLevelAbove = new int[5];
 	}
 
 	public int getStackOrder() {
-		if (this.pos == null || this.worldObj == null || this.worldObj.getBlockState(this.pos.down()).getBlock() == null) {
+		if (this.pos == null || this.world == null || this.world.getBlockState(this.pos.down()).getBlock() == null) {
 			return 1;
 		}
-		if (this.worldObj.getBlockState(this.pos.down()).getBlock() == ModBlocks.machinefractionaldistillation) {
-			if (this.worldObj.getTileEntity(this.pos.down()) instanceof TileEntityFractionalDistillation) {
-				TileEntityFractionalDistillation te = (TileEntityFractionalDistillation) this.worldObj.getTileEntity(this.pos.down());
+		if (this.world.getBlockState(this.pos.down()).getBlock() == ModBlocks.machinefractionaldistillation) {
+			if (this.world.getTileEntity(this.pos.down()) instanceof TileEntityFractionalDistillation) {
+				TileEntityFractionalDistillation te = (TileEntityFractionalDistillation) this.world.getTileEntity(this.pos.down());
 				return te.getStackOrder() + 1;
 			}
 		}
@@ -69,7 +72,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 
 	public boolean hasSlot(int slotIndex) {
 		int offset = slotIndex - 1;
-		if (this.worldObj.getBlockState(this.pos.up(offset)).getBlock() == ModBlocks.machinefractionaldistillation) {
+		if (this.world.getBlockState(this.pos.up(offset)).getBlock() == ModBlocks.machinefractionaldistillation) {
 			return true;
 		}
 		return false;
@@ -78,7 +81,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 
 	@Override
 	public void update() {
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			if (firstTick) {
 				LogHelper.info("Stack order:" + getStackOrder());
 				firstTick = !firstTick;
@@ -136,9 +139,9 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 		boolean canDistill = true;
 		for (int i = 1; i <= 4; i++) {
 
-			if (worldObj.getTileEntity(this.pos.up(i)) instanceof TileEntityFractionalDistillation) {
+			if (world.getTileEntity(this.pos.up(i)) instanceof TileEntityFractionalDistillation) {
 				// there is a TE of this type i blocks above
-				TileEntityFractionalDistillation tefd = (TileEntityFractionalDistillation) worldObj.getTileEntity(this.pos.up(i));
+				TileEntityFractionalDistillation tefd = (TileEntityFractionalDistillation) world.getTileEntity(this.pos.up(i));
 				if (tefd.getFluid() == null || tefd.getFluid().isFluidEqual(new FluidStack(getfluidForHeight(i + 1), 0))) {
 					// its the fluid it should be or it is a null fluid.
 					if (getfluidForHeight(i + 1) != null) {
@@ -161,9 +164,9 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 
 			for (int i = 1; i <= 4; i++) {
 
-				if (worldObj.getTileEntity(this.pos.up(i)) instanceof TileEntityFractionalDistillation) {
+				if (world.getTileEntity(this.pos.up(i)) instanceof TileEntityFractionalDistillation) {
 					// there is a TE of this type i blocks above
-					TileEntityFractionalDistillation tefd = (TileEntityFractionalDistillation) worldObj.getTileEntity(this.pos.up(i));
+					TileEntityFractionalDistillation tefd = (TileEntityFractionalDistillation) world.getTileEntity(this.pos.up(i));
 
 					tefd.fill(new FluidStack(getfluidForHeight(i + 1), 1), true);
 				}
@@ -193,7 +196,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	}
 
 	public boolean amIBottom() {
-		if (this.worldObj.getBlockState(pos.down()).getBlock() == ModBlocks.machinefractionaldistillation) {
+		if (this.world.getBlockState(pos.down()).getBlock() == ModBlocks.machinefractionaldistillation) {
 			return false;
 		}
 		return true;
@@ -206,8 +209,8 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 				if (entity instanceof EntitySemiTractor) {
 					EntitySemiTractor est = (EntitySemiTractor) entity;
 
-					if (est.getStackInSlot(0) != null) {
-						if (est.getStackInSlot(0).getItem() instanceof ItemSemiTrailerTanker) {
+					if (!est.inventory.getStackInSlot(0).isEmpty()) {
+						if (est.inventory.getStackInSlot(0).getItem() instanceof ItemSemiTrailerTanker) {
 
 							if (!est.isDead) {
 
@@ -380,13 +383,13 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	@Override
 	public ItemStack decrStackSize(int slot, int amt) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			if (stack.stackSize <= amt) {
-				setInventorySlotContents(slot, null);
+		if (!stack.isEmpty()) {
+			if (stack.getCount() <= amt) {
+				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
 				stack = stack.splitStack(amt);
-				if (stack.stackSize == 0) {
-					setInventorySlotContents(slot, null);
+				if (stack.getCount() == 0) {
+					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}
 
 			}
@@ -397,8 +400,8 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	@Override
 	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			setInventorySlotContents(slot, null);
+		if (!stack.isEmpty()) {
+			setInventorySlotContents(slot, ItemStack.EMPTY);
 		}
 		return stack;
 	}
@@ -406,8 +409,8 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inventory[slot] = stack;
-		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
-			stack.stackSize = getInventoryStackLimit();
+		if (!stack.isEmpty() && stack.getCount() > getInventoryStackLimit()) {
+			stack.setCount(getInventoryStackLimit());
 		}
 
 	}
@@ -435,7 +438,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	@Override
 	public void clear() {
 		for (int i = 0; i < inventory.length; ++i) {
-			inventory[i] = null;
+			inventory[i] = ItemStack.EMPTY;
 		}
 	}
 
@@ -495,7 +498,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 		case 3:
 		case 4:
 		case 5:
-			TileEntity te = this.worldObj.getTileEntity(this.pos.up(id - 1));
+			TileEntity te = this.world.getTileEntity(this.pos.up(id - 1));
 			if (te instanceof TileEntityFractionalDistillation) {
 				return ((TileEntityFractionalDistillation) te).getFluidAmount();
 			}
@@ -530,8 +533,18 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer playerIn) {
+	public boolean isUsableByPlayer(EntityPlayer playerIn) {
 		return playerIn.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
 	}
 
+	@Override
+	public boolean isEmpty() {
+		for (int i = 0; i < inventory.length; i++) {
+			if (!inventory[i].isEmpty()) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 }

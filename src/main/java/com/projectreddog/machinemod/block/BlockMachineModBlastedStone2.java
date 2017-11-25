@@ -16,6 +16,8 @@ public class BlockMachineModBlastedStone2 extends BlockMachineModBlastedStoneBas
 		super();
 		// 1.8
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLASTED_STONE2);
+		this.setRegistryName(Reference.MODBLOCK_MACHINE_BLASTED_STONE2);
+
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
 		this.setSoundType(SoundType.STONE);

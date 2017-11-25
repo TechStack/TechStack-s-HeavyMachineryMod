@@ -39,12 +39,10 @@ public class BlockMachineModFalling extends BlockMachineMod {
 
 	}
 
-	/**
-	 * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are their own) Args: x, y, z, neighbor Block
-	 */
+	@Override
+	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 
-	public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock) {
-		onNeighborBlockChange(worldIn, pos.getX(), pos.getY(), pos.getZ(), neighborBlock);
+		onNeighborBlockChange(worldIn, pos.getX(), pos.getY(), pos.getZ(), blockIn);
 	}
 
 	// / my 1.7 version
@@ -59,6 +57,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 	/**
 	 * Ticks the block if it's been scheduled
 	 */
+	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		updateTick(worldIn, pos.getX(), pos.getY(), pos.getZ(), rand);
 
@@ -91,7 +90,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 
 					// world.setBlockToAir(x, y, z);
 
-					world.spawnEntityInWorld(entityfallingblock);
+					world.spawnEntity(entityfallingblock);
 				}
 			} else {
 
@@ -136,7 +135,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 		for (int i = -1; i < 2; i++) {
 			for (int j = -1; j < 2; j++) {
 
-				if ((MathHelper.abs_int(i) == 1 && j == 0) || (i == 0 && MathHelper.abs_int(j) == 1)) {
+				if ((MathHelper.abs(i) == 1 && j == 0) || (i == 0 && MathHelper.abs(j) == 1)) {
 
 					bp = new BlockPos(x + i, y, z + j);
 					block = world.getBlockState(bp).getBlock();

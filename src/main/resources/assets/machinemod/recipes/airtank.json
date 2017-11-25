@@ -1,0 +1,22 @@
+{
+    "result": {
+        "item": "machinemod:airtank"
+    },
+    "pattern" :[
+      " i ", 
+      "ibi", 
+      "iii"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+            "type": "forge:ore_dict",
+           "ore": "ingotIron" 
+      },
+      "b":{
+      "item":"minecraft:glass_bottle"
+      }
+        
+    }
+}
+

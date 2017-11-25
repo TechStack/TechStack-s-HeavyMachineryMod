@@ -2,14 +2,15 @@ package com.projectreddog.machinemod.entity;
 
 import java.util.List;
 
+import com.projectreddog.machinemod.init.ModItems;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
-
-import com.projectreddog.machinemod.init.ModItems;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityDumpTruck extends EntityMachineModRideable {
 
@@ -19,7 +20,9 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 		super(world);
 
 		setSize(3, 2);
-		inventory = new ItemStack[54];
+		SIZE = 54;
+		inventory = new ItemStackHandler(SIZE);
+		// inventory = new ItemStack[54];
 		this.mountedOffsetY = 0.35D;
 		this.mountedOffsetX = 1.5D;
 		this.mountedOffsetZ = 1.5D;
@@ -33,21 +36,21 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
-			List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox());
+		if (!world.isRemote) {
+			List list = this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox());
 			collidedEntitiesInList(list);
 			if (this.Attribute1 == getMinAngle()) {
 				// need
-				for (int i = 0; i < this.getSizeInventory(); i++) {
-					ItemStack item = this.getStackInSlot(i);
+				for (int i = 0; i < SIZE; i++) {
+					ItemStack item = this.inventory.getStackInSlot(i);
 
-					if (item != null && item.stackSize > 0) {
+					if (item != null && item.getCount() > 0) {
 						;
 
-						EntityItem entityItem = new EntityItem(worldObj, posX + calcOffsetX(-3.5), posY - .1f, posZ + calcOffsetZ(-3.5), item);
+						EntityItem entityItem = new EntityItem(world, posX + calcOffsetX(-3.5), posY - .1f, posZ + calcOffsetZ(-3.5), item);
 
 						if (item.hasTagCompound()) {
-							entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+							entityItem.getItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
 						}
 
 						float factor = 0.05F;
@@ -55,9 +58,10 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 						entityItem.motionY = 0;
 						// entityItem.motionZ = rand.nextGaussian() * factor;
 						entityItem.forceSpawn = true;
-						worldObj.spawnEntityInWorld(entityItem);
+						world.spawnEntity(entityItem);
 						// item.stackSize = 0;
-						this.setInventorySlotContents(i, null);
+						inventory.extractItem(i, inventory.getStackInSlot(i).getCount(), false);
+						// this.inventory.insertItem(i, ItemStack.EMPTY, false);
 					}
 				}
 
@@ -75,14 +79,14 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
 				if (entity instanceof EntityItem) {
-					ItemStack is = ((EntityItem) entity).getEntityItem().copy();
-					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
+					ItemStack is = ((EntityItem) entity).getItem().copy();
+					is.setItemDamage(((EntityItem) entity).getItem().getItemDamage());
 					if (!entity.isDead) {
-						if (is.stackSize > 0) {
+						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
 
-							if (is1 != null && is1.stackSize != 0) {
-								((EntityItem) entity).setEntityItemStack(is1);
+							if (is1 != null && is1.getCount() != 0) {
+								((EntityItem) entity).setItem(is1);
 							} else {
 								entity.setDead();
 							}

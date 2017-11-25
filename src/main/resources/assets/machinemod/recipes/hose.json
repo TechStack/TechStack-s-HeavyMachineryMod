@@ -1,0 +1,18 @@
+{
+    "result": {
+        "item": "machinemod:hose"
+    },
+    "pattern" : [
+    " s ",
+    " s ",
+    " s "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "s":{
+        "type": "forge:ore_dict",
+        "ore": "slimeball"   
+      
+      }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "result": {
+        "item": "machinemod:machinefractionaldistillation"
+    },
+    "pattern" :[
+     "ibi",
+     "lbl",
+     "isi"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "item": "minecraft:brewing_stand"
+      },
+    "i": {
+      "item": "minecraft:iron_block"
+      },
+    "l": {
+      "item": "machinemod:machineliquidpipe"
+      },
+    "b": {
+      "item": "minecraft:iron_bars"
+      }
+    }
+}

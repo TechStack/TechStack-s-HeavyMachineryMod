@@ -1,0 +1,22 @@
+{
+    "result": {
+        "item": "machinemod:dumperbed"
+    },
+    "pattern" :[
+     "ici",
+     "ici",
+     " i "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+          "type": "forge:ore_dict",
+           "ore": "ingotIron"   
+      
+      },
+    "c": {
+     "item": "minecraft:chest"
+    }
+      
+    }
+}

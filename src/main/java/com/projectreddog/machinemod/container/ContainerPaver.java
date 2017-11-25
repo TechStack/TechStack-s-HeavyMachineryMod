@@ -1,12 +1,13 @@
 package com.projectreddog.machinemod.container;
 
+import com.projectreddog.machinemod.entity.EntityPaver;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-
-import com.projectreddog.machinemod.entity.EntityPaver;
+import net.minecraftforge.items.SlotItemHandler;
 
 public class ContainerPaver extends Container {
 
@@ -17,7 +18,7 @@ public class ContainerPaver extends Container {
 
 		for (int i = 0; i < 1; i++) {
 			for (int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(paver, j + i * 9, 8 + j * 18, 18 + i * 18));
+				addSlotToContainer(new SlotItemHandler(paver.inventory, j + i * 9, 8 + j * 18, 18 + i * 18));
 			}
 		}
 
@@ -27,7 +28,7 @@ public class ContainerPaver extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return paver.isUseableByPlayer(player);
+		return paver.isUsableByPlayer(player);
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
@@ -44,7 +45,7 @@ public class ContainerPaver extends Container {
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
-		ItemStack stack = null;
+		ItemStack stack = ItemStack.EMPTY;
 		Slot slotObject = (Slot) inventorySlots.get(slot);
 
 		// null checks and checks if the item can be stacked (maxStackSize > 1)
@@ -55,25 +56,25 @@ public class ContainerPaver extends Container {
 			// merges the item into player inventory since its in the Entity
 			if (slot < 9) {
 				if (!this.mergeItemStack(stackInSlot, 9, this.inventorySlots.size(), true)) {
-					return null;
+					return ItemStack.EMPTY;
 				}
 			}
 			// places it into the tileEntity is possible since its in the player
 			// inventory
 			else if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
-				return null;
+				return ItemStack.EMPTY;
 			}
 
-			if (stackInSlot.stackSize == 0) {
-				slotObject.putStack(null);
+			if (stackInSlot.getCount() == 0) {
+				slotObject.putStack(ItemStack.EMPTY);
 			} else {
 				slotObject.onSlotChanged();
 			}
 
-			if (stackInSlot.stackSize == stack.stackSize) {
-				return null;
+			if (stackInSlot.getCount() == stack.getCount()) {
+				return ItemStack.EMPTY;
 			}
-			slotObject.onPickupFromSlot(player, stackInSlot);
+			slotObject.onTake(player, stackInSlot);
 		}
 		return stack;
 	}

@@ -30,12 +30,14 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 
 	public TileEntityDistiller() {
 		inventory = new ItemStack[inventorySize];
-
+		for (int i = 0; i < inventorySize; i++) {
+			inventory[i] = ItemStack.EMPTY;
+		}
 	}
 
 	@Override
 	public void update() {
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// LogHelper.info("TE update entity called");
 
 			if (remainBurnTime > 0) {
@@ -77,7 +79,7 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
 			byte slot = tag.getByte("Slot");
 			if (slot >= 0 && slot < inventory.length) {
-				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
+				inventory[slot] = new ItemStack(tag);
 			}
 		}
 	}
@@ -91,7 +93,7 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < inventory.length; i++) {
 			ItemStack stack = inventory[i];
-			if (stack != null) {
+			if (!stack.isEmpty()) {
 				NBTTagCompound tag = new NBTTagCompound();
 				tag.setByte("Slot", (byte) i);
 				stack.writeToNBT(tag);
@@ -125,9 +127,9 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 	public boolean transferFuel() {
 		if (this.fuelStorage > 0) {
 
-			if (worldObj.getBlockState(this.pos.offset(this.outputDirection())).getBlock() == ModBlocks.machinefuelpump) {
+			if (world.getBlockState(this.pos.offset(this.outputDirection())).getBlock() == ModBlocks.machinefuelpump) {
 				// its a distiller so we can transfer fuel!
-				TileEntityFuelPump tEC = (TileEntityFuelPump) worldObj.getTileEntity(this.pos.offset(this.outputDirection()));
+				TileEntityFuelPump tEC = (TileEntityFuelPump) world.getTileEntity(this.pos.offset(this.outputDirection()));
 				if (tEC.canAcceptFluid()) {
 					tEC.addFluid(1);
 					this.fuelStorage = this.fuelStorage - 1;
@@ -140,7 +142,7 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 
 	@Override
 	public EnumFacing outputDirection() {
-		EnumFacing ef = (EnumFacing) worldObj.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
+		EnumFacing ef = (EnumFacing) world.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
 		// switch (ef) {
 		// case NORTH:
 		// return EnumFacing.SOUTH;
@@ -188,7 +190,7 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer playerIn) {
+	public boolean isUsableByPlayer(EntityPlayer playerIn) {
 		return playerIn.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
 	}
 
@@ -205,13 +207,13 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 	@Override
 	public ItemStack decrStackSize(int slot, int amt) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			if (stack.stackSize <= amt) {
-				setInventorySlotContents(slot, null);
+		if (!stack.isEmpty()) {
+			if (stack.getCount() <= amt) {
+				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
 				stack = stack.splitStack(amt);
-				if (stack.stackSize == 0) {
-					setInventorySlotContents(slot, null);
+				if (stack.getCount() == 0) {
+					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}
 
 			}
@@ -222,8 +224,8 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 	@Override
 	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			setInventorySlotContents(slot, null);
+		if (!stack.isEmpty()) {
+			setInventorySlotContents(slot, ItemStack.EMPTY);
 		}
 		return stack;
 	}
@@ -231,8 +233,8 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inventory[slot] = stack;
-		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
-			stack.stackSize = getInventoryStackLimit();
+		if (!stack.isEmpty() && stack.getCount() > getInventoryStackLimit()) {
+			stack.setCount(getInventoryStackLimit());
 		}
 
 	}
@@ -260,7 +262,7 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 	@Override
 	public void clear() {
 		for (int i = 0; i < inventory.length; ++i) {
-			inventory[i] = null;
+			inventory[i] = ItemStack.EMPTY;
 		}
 	}
 
@@ -308,4 +310,14 @@ public class TileEntityDistiller extends TileEntity implements ITickable, IFuelC
 		return false;
 	}
 
+	@Override
+	public boolean isEmpty() {
+		for (int i = 0; i < inventory.length; i++) {
+			if (!inventory[i].isEmpty()) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 }

@@ -17,12 +17,15 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary;
 
 public class ItemOilRig extends ItemMachineModMachine {
+	public String registryName = "oilrig";
 
 	public ModelTransportable mt;
 
 	public ItemOilRig() {
 		super();
-		this.setUnlocalizedName("oilrig");
+		this.setUnlocalizedName(registryName);
+		this.setRegistryName(registryName);
+
 		this.maxStackSize = 1;
 
 	}
@@ -75,7 +78,7 @@ public class ItemOilRig extends ItemMachineModMachine {
 		if (!world.isRemote)// / only run on server
 		{
 
-			if (BiomeDictionary.isBiomeOfType(world.getBiome(pos), BiomeDictionary.Type.OCEAN) && pos.getY() > 60 && world.isAirBlock(pos.up()) && world.getBlockState(pos).getBlock() == Blocks.WATER) {
+			if (BiomeDictionary.hasType(world.getBiome(pos), BiomeDictionary.Type.OCEAN) && pos.getY() > 60 && world.isAirBlock(pos.up()) && world.getBlockState(pos).getBlock() == Blocks.WATER) {
 
 				// LogHelper.info("Item used on loader!");
 				int x = pos.getX();
@@ -87,13 +90,13 @@ public class ItemOilRig extends ItemMachineModMachine {
 				entityOilRig.prevPosX = x + .5d;
 				entityOilRig.prevPosY = y + 1.0d;
 				entityOilRig.prevPosZ = z + .5d;
-				result = world.spawnEntityInWorld(entityOilRig);
+				result = world.spawnEntity(entityOilRig);
 				// LogHelper.info("Spawn entity resutl:" + result );
 				if (result && !player.capabilities.isCreativeMode) {
-					stack.stackSize--;
+					stack.setCount(stack.getCount() - 1);
 				}
 			} else {
-				player.addChatComponentMessage(new TextComponentTranslation("You can only place an oil rig on an ocean's surface!"));
+				player.sendStatusMessage(new TextComponentTranslation("You can only place an oil rig on an ocean's surface!"), false);
 
 			}
 		}

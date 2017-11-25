@@ -1,0 +1,30 @@
+{
+    "result": {
+        "item": "machinemod:handdrill",
+        "data": 0
+    },
+    "pattern" :[
+    "   ",
+    "dpi",
+    " i "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+          "type": "forge:ore_dict",
+           "ore": "ingotIron"   
+      
+      },
+    "d": {
+          "item" : "machinemod:drillhead"
+             
+      
+      },
+      "p": {
+          "item" : "machinemod:drillpipe"
+             
+      
+      }
+      
+    }
+}

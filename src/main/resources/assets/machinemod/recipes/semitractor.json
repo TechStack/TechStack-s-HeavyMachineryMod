@@ -1,0 +1,25 @@
+{
+    "result": {
+        "item": "machinemod:semitractor"
+    },
+    "pattern" :[
+		"o  ",
+		"et ",
+		"ww "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "o": {
+       "item":"machinemod:operatorsbooth"
+      },
+    "e": {
+      "item": "machinemod:turboengine"
+      },
+    "t": {
+      "item": "machinemod:transmission"
+      },
+    "w": {
+      "item": "machinemod:wheel"
+      }
+    }
+}

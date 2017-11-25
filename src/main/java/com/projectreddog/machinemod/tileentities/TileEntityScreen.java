@@ -34,24 +34,26 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 
 	public TileEntityScreen() {
 		inventory = new ItemStack[inventorySize];
-
+		for (int i = 0; i < inventorySize; i++) {
+			inventory[i] = ItemStack.EMPTY;
+		}
 	}
 
 	@Override
 	public void update() {
 
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			if (timeTillCoolDown > 0) {
 				timeTillCoolDown--;
 				return;
 			}
 			timeTillCoolDown = coolDownAmount;
 
-			if (worldObj.getBlockState(pos).getBlock() == ModBlocks.machinescreen) {
+			if (world.getBlockState(pos).getBlock() == ModBlocks.machinescreen) {
 
 				boundingBox = new AxisAlignedBB(this.pos.up(), this.pos.up().add(1, 1, 1));
 			}
-			List list = worldObj.getEntitiesWithinAABB(EntityItem.class, boundingBox);
+			List list = world.getEntitiesWithinAABB(EntityItem.class, boundingBox);
 			processEntitiesInList(list);
 			// TODO add method to sort item
 			MoveItemsInnventory();
@@ -60,7 +62,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 
 	private void MoveItemsInnventory() {
 		for (int i = 0; i < 4; i++) {
-			if (getStackInSlot(4) != null && getStackInSlot(i) != null && getStackInSlot(4).getItem() != null && getStackInSlot(i).getItem() != null) {
+			if (!getStackInSlot(4).isEmpty() && !getStackInSlot(i).isEmpty() && getStackInSlot(4).getItem() != null && getStackInSlot(i).getItem() != null) {
 				if (getStackInSlot(i).getItem() == getStackInSlot(4).getItem() && getStackInSlot(i).getItem().getMetadata(getStackInSlot(i)) == getStackInSlot(4).getItem().getMetadata(getStackInSlot(4))) {
 					double x = 0, y = 0, z = 0;
 					y = this.pos.getY() + .5d;
@@ -79,14 +81,14 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 					}
 
 					ItemStack tmpstack = getStackInSlot(4).copy();
-					if (tmpstack.stackSize > 1) {
-						tmpstack.stackSize = 1;
+					if (tmpstack.getCount() > 1) {
+						tmpstack.setCount(1);
 					}
-					EntityItem ei = new EntityItem(worldObj, x, y, z, tmpstack);
+					EntityItem ei = new EntityItem(world, x, y, z, tmpstack);
 					ei.motionX = 0;
 					ei.motionY = 0;
 					ei.motionZ = 0;
-					if (worldObj.spawnEntityInWorld(ei)) {
+					if (world.spawnEntity(ei)) {
 						decrStackSize(4, 1);
 						return;
 					}
@@ -96,7 +98,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 		}
 
 		for (int i = 0; i < 4; i++) {
-			if (getStackInSlot(4) != null && getStackInSlot(i) == null && getStackInSlot(4).getItem() != null) {
+			if (!getStackInSlot(4).isEmpty() && getStackInSlot(i).isEmpty() && getStackInSlot(4).getItem() != null) {
 
 				double x = 0, y = 0, z = 0;
 				y = this.pos.getY() + .5d;
@@ -114,15 +116,15 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 					z = this.pos.getZ() + .5d;
 				}
 				ItemStack tmpstack = getStackInSlot(4).copy();
-				if (tmpstack.stackSize > 1) {
-					tmpstack.stackSize = 1;
+				if (tmpstack.getCount() > 1) {
+					tmpstack.setCount(1);
 				}
-				EntityItem ei = new EntityItem(worldObj, x, y, z, tmpstack);
+				EntityItem ei = new EntityItem(world, x, y, z, tmpstack);
 				ei.motionX = 0;
 				ei.motionY = 0;
 				ei.motionZ = 0;
 
-				if (worldObj.spawnEntityInWorld(ei)) {
+				if (world.spawnEntity(ei)) {
 					decrStackSize(4, 1);
 					return;
 				}
@@ -136,14 +138,14 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
 				if (entity instanceof EntityItem) {
-					ItemStack is = ((EntityItem) entity).getEntityItem().copy();
-					is.setItemDamage(((EntityItem) entity).getEntityItem().getItemDamage());
+					ItemStack is = ((EntityItem) entity).getItem().copy();
+					is.setItemDamage(((EntityItem) entity).getItem().getItemDamage());
 					if (!entity.isDead) {
-						if (is.stackSize > 0) {
+						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
 
-							if (is1 != null && is1.stackSize != 0) {
-								((EntityItem) entity).setEntityItemStack(is1);
+							if (!is1.isEmpty() && is1.getCount() != 0) {
+								((EntityItem) entity).setItem(is1);
 							} else {
 								entity.setDead();
 							}
@@ -158,25 +160,25 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 		int i = getSizeInventory();
 
 		int j = 4;
-		if (is != null) {
+		if (!is.isEmpty()) {
 
-			if (getStackInSlot(j) != null) {
+			if (!getStackInSlot(j).isEmpty()) {
 				if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getItemDamage() == is.getItemDamage()) {
 					// same item remove from is put into slot any amt not to
 					// excede stack max
-					if (getStackInSlot(j).stackSize < getStackInSlot(j).getMaxStackSize()) {
+					if (getStackInSlot(j).getCount() < getStackInSlot(j).getMaxStackSize()) {
 						// we have room to add to this stack
-						if (is.stackSize <= getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize) {
+						if (is.getCount() <= getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount()) {
 							// /all of the stack will fit in this slot do
 							// so.
 
-							setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).stackSize + is.stackSize, is.getItemDamage()));
-							is = null;
+							setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).getCount() + is.getCount(), is.getItemDamage()));
+							is = ItemStack.EMPTY;
 						} else {
 							// we have more
-							int countRemain = is.stackSize - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).stackSize);
+							int countRemain = is.getCount() - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount());
 							setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getItemDamage()));
-							is.stackSize = countRemain;
+							is.setCount(countRemain);
 						}
 
 					}
@@ -184,7 +186,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 			} else {
 				// nothing in slot so set contents
 				setInventorySlotContents(j, is.copy());
-				is = null;
+				is = ItemStack.EMPTY;
 			}
 
 		}
@@ -221,13 +223,13 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 	@Override
 	public ItemStack decrStackSize(int slot, int amt) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			if (stack.stackSize <= amt) {
-				setInventorySlotContents(slot, null);
+		if (!stack.isEmpty()) {
+			if (stack.getCount() <= amt) {
+				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
 				stack = stack.splitStack(amt);
-				if (stack.stackSize == 0) {
-					setInventorySlotContents(slot, null);
+				if (stack.getCount() == 0) {
+					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}
 
 			}
@@ -238,8 +240,8 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 	@Override
 	public ItemStack removeStackFromSlot(int slot) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null) {
-			setInventorySlotContents(slot, null);
+		if (!stack.isEmpty()) {
+			setInventorySlotContents(slot, ItemStack.EMPTY);
 		}
 		return stack;
 	}
@@ -247,8 +249,8 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inventory[slot] = stack;
-		if (stack != null && stack.stackSize > getInventoryStackLimit()) {
-			stack.stackSize = getInventoryStackLimit();
+		if (!stack.isEmpty() && stack.getCount() > getInventoryStackLimit()) {
+			stack.setCount(getInventoryStackLimit());
 		}
 
 	}
@@ -259,7 +261,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer playerIn) {
+	public boolean isUsableByPlayer(EntityPlayer playerIn) {
 		return playerIn.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
 	}
 
@@ -314,7 +316,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
 			byte slot = tag.getByte("Slot");
 			if (slot >= 0 && slot < inventory.length) {
-				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
+				inventory[slot] = new ItemStack(tag);
 			}
 		}
 	}
@@ -329,7 +331,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < inventory.length; i++) {
 			ItemStack stack = inventory[i];
-			if (stack != null) {
+			if (!stack.isEmpty()) {
 				NBTTagCompound tag = new NBTTagCompound();
 				tag.setByte("Slot", (byte) i);
 				stack.writeToNBT(tag);
@@ -364,5 +366,16 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
 
 		return false;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		for (int i = 0; i < inventory.length; i++) {
+			if (!inventory[i].isEmpty()) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 }

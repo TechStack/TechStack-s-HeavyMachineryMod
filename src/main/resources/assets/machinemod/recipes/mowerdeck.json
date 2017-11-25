@@ -1,0 +1,21 @@
+{
+    "result": {
+        "item": "machinemod:mowerdeck"
+    },
+    "pattern" :[
+	 "   ",
+	 "iii",
+	 "sss"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+            "type": "forge:ore_dict",
+           "ore": "ingotIron" 
+      },
+    "s": {
+            "item":"minecraft:shears"
+      }
+        
+    }
+}

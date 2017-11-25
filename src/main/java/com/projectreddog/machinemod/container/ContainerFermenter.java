@@ -33,7 +33,7 @@ public class ContainerFermenter extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return fermenter.isUseableByPlayer(player);
+		return fermenter.isUsableByPlayer(player);
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
@@ -50,7 +50,7 @@ public class ContainerFermenter extends Container {
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
-		ItemStack stack = null;
+		ItemStack stack = ItemStack.EMPTY;
 		Slot slotObject = (Slot) inventorySlots.get(slot);
 
 		// null checks and checks if the item can be stacked (maxStackSize > 1)
@@ -61,25 +61,25 @@ public class ContainerFermenter extends Container {
 			// merges the item into player inventory since its in the Entity
 			if (slot < 9) {
 				if (!this.mergeItemStack(stackInSlot, 9, this.inventorySlots.size(), true)) {
-					return null;
+					return ItemStack.EMPTY;
 				}
 			}
 			// places it into the tileEntity is possible since its in the player
 			// inventory
 			else if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
-				return null;
+				return ItemStack.EMPTY;
 			}
 
-			if (stackInSlot.stackSize == 0) {
-				slotObject.putStack(null);
+			if (stackInSlot.getCount() == 0) {
+				slotObject.putStack(ItemStack.EMPTY);
 			} else {
 				slotObject.onSlotChanged();
 			}
 
-			if (stackInSlot.stackSize == stack.stackSize) {
-				return null;
+			if (stackInSlot.getCount() == stack.getCount()) {
+				return ItemStack.EMPTY;
 			}
-			slotObject.onPickupFromSlot(player, stackInSlot);
+			slotObject.onTake(player, stackInSlot);
 		}
 		return stack;
 	}
@@ -94,7 +94,7 @@ public class ContainerFermenter extends Container {
 			IContainerListener icrafting = (IContainerListener) this.listeners.get(i);
 
 			if (this.lastFuelStorage != this.fermenter.getField(0)) {
-				icrafting.sendProgressBarUpdate(this, 0, this.fermenter.getField(0));
+				icrafting.sendWindowProperty(this, 0, this.fermenter.getField(0));
 			}
 
 		}

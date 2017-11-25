@@ -1,0 +1,32 @@
+{
+    "result": {
+        "item": "machinemod:combine"
+    },
+    "pattern" :[
+	   " cc",
+	   "het",
+	   " ww"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "c": {
+          "item":"minecraft:chest"
+      },
+    "h": {
+          "item":"machinemod:harvesterhead"
+           
+      },
+      "e": {
+          "item":"machinemod:engine"
+           
+      },
+      "t": {
+          "item":"machinemod:transmission"
+           
+      },
+      "w": {
+          "item":"machinemod:wheel"
+           
+      }
+    }
+}

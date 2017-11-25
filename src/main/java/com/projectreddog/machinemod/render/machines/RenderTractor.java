@@ -1,11 +1,5 @@
 package com.projectreddog.machinemod.render.machines;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.entity.EntityTractor;
@@ -16,6 +10,12 @@ import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentSpraye
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentTrencher;
 import com.projectreddog.machinemod.model.ModelTractor;
 import com.projectreddog.machinemod.reference.Reference;
+
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.ResourceLocation;
 
 public class RenderTractor extends Render {
 
@@ -54,18 +54,18 @@ public class RenderTractor extends Render {
 		this.bindEntityTexture(entity);
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelTractor.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		if (((EntityTractor) entity).getStackInSlot(0) != null) {
-			if (((EntityTractor) entity).getStackInSlot(0).getItem() instanceof ItemTractorAttachment) {
-				if (((EntityTractor) entity).getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlow) {
+		if (((EntityTractor) entity).inventory.getStackInSlot(0) != null) {
+			if (((EntityTractor) entity).inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachment) {
+				if (((EntityTractor) entity).inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlow) {
 
 					((ModelTractor) this.modelTractor).renderGroupObject("Plow_Cube");
-				} else if (((EntityTractor) entity).getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {
+				} else if (((EntityTractor) entity).inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {
 					((ModelTractor) this.modelTractor).renderGroupObject("Planter_Cube.002");
 
-				} else if (((EntityTractor) entity).getStackInSlot(0).getItem() instanceof ItemTractorAttachmentSprayer) {
+				} else if (((EntityTractor) entity).inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentSprayer) {
 					((ModelTractor) this.modelTractor).renderGroupObject("Sprayer_Cube.004");
 
-				} else if (((EntityTractor) entity).getStackInSlot(0).getItem() instanceof ItemTractorAttachmentTrencher) {
+				} else if (((EntityTractor) entity).inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentTrencher) {
 					((ModelTractor) this.modelTractor).renderGroupObject("Trencher_Cube.003");
 
 				}

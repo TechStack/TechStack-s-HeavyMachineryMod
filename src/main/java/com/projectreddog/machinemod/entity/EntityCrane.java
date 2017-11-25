@@ -3,10 +3,10 @@ package com.projectreddog.machinemod.entity;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.utility.BlockUtil;
 
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityCrane extends EntityMachineModRideable {
 
@@ -16,7 +16,9 @@ public class EntityCrane extends EntityMachineModRideable {
 		super(world);
 
 		setSize(9f, 24f);
-		inventory = new ItemStack[9];
+		SIZE = 9;
+		inventory = new ItemStackHandler(SIZE);
+		// inventory = new ItemStack[9];
 
 		this.mountedOffsetY = .2D;
 		this.mountedOffsetX = 5D;
@@ -30,7 +32,7 @@ public class EntityCrane extends EntityMachineModRideable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// if (this.Attribute1 == this.getMaxAngle()) {
 			// bucket Down
 			// break blocks first
@@ -45,8 +47,8 @@ public class EntityCrane extends EntityMachineModRideable {
 						}
 						BlockPos bp;
 						bp = new BlockPos(posX + calcTwoOffsetX(10 + j, angle, i), posY + k + 26 - ((int) this.Attribute1), posZ + calcTwoOffsetZ(10 + j, angle, i));
-						if (worldObj.getBlockState(bp).getBlock().getBlockHardness(worldObj.getBlockState(bp), worldObj, bp) < 100) {
-							BlockUtil.BreakBlock(worldObj, bp, this.getControllingPassenger());
+						if (world.getBlockState(bp).getBlock().getBlockHardness(world.getBlockState(bp), world, bp) < 100) {
+							BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
 						}
 					}

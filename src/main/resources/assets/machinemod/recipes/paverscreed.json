@@ -1,0 +1,23 @@
+
+
+{
+    "result": {
+        "item": "machinemod:paverscreed"
+    },
+    "pattern" :[
+      "   ", 
+      " h ", 
+      "iii"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+            "type": "forge:ore_dict",
+           "ore": "ingotIron" 
+      },
+    "h": {
+        "item":"minecraft:hopper" 
+      }    
+    }
+}
+
