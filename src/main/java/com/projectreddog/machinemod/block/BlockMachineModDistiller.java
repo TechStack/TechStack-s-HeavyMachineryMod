@@ -41,7 +41,7 @@ public class BlockMachineModDistiller extends BlockContainer {
 
 		// 1.8
 		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_DISTILLER);
-		this.setRegistryName(Reference.MODBLOCK_MACHINE_DISTILLER);
+		this.setRegistryName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_DISTILLER);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
@@ -158,7 +158,7 @@ public class BlockMachineModDistiller extends BlockContainer {
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		// 3 for normal block 2 for TESR 1 liquid -1 nothing ( like air)
 		// return 3;
-		return EnumBlockRenderType.MODEL;
+		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
 
 	}
 
