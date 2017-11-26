@@ -25,14 +25,30 @@ public class EntityPaver extends EntityMachineModRideable {
 		inventory = new ItemStackHandler(SIZE);
 		// inventory = new ItemStack[9];
 
-		this.mountedOffsetY = 0.75D;
-		this.mountedOffsetX = .75D;
-		this.mountedOffsetZ = .75D;
+		this.mountedOffsetY = 0.83D;
+		this.mountedOffsetX = -1.1D;
+		this.mountedOffsetZ = -1.75D;
 		this.maxAngle = 15;
 		this.minAngle = -90;
 		this.droppedItem = ModItems.paver;
 		// this.shouldSendClientInvetoryUpdates = true;
 
+	}
+
+	@Override
+	public double getMountedXOffset() {
+		// should be overridden in extended class if not default;
+
+		return calcTwoOffsetX(this.mountedOffsetZ, 90, this.mountedOffsetX);
+		// return calcOffsetX(mountedOffsetX);
+	}
+
+	@Override
+	public double getMountedZOffset() {
+		// should be overridden in extended class if not default;
+
+		return calcTwoOffsetZ(this.mountedOffsetZ, 90, this.mountedOffsetX);
+		// return calcOffsetX(mountedOffsetX);
 	}
 
 	@Override
@@ -53,7 +69,7 @@ public class EntityPaver extends EntityMachineModRideable {
 							}
 							BlockPos bp;
 							if (this.inventory.getStackInSlot(j) != null && this.inventory.getStackInSlot(j).getItem() == ModItems.rawasphalt && this.inventory.getStackInSlot(j).getCount() > 0) {
-								bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY - 1, posZ + calcTwoOffsetZ(3.5, angle, i));
+								bp = new BlockPos(posX + calcTwoOffsetX(-3.5, angle, i), posY - 1, posZ + calcTwoOffsetZ(-3.5, angle, i));
 								if (world.isAirBlock(bp)) {
 									world.setBlockState(bp, ModBlocks.machineasphalt.getDefaultState());
 

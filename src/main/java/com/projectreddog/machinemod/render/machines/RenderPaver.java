@@ -33,6 +33,8 @@ public class RenderPaver extends Render {
 		GL11.glRotatef(180.0F - yaw, 0.0F, 1.0F, 0.0F);
 		this.bindEntityTexture(entity);
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
+		GL11.glTranslatef(0, 0, 3.5f);
+
 		this.modelPaver.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
 		GL11.glPopMatrix();

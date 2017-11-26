@@ -58,15 +58,15 @@ public class RenderTractor extends Render {
 			if (((EntityTractor) entity).inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachment) {
 				if (((EntityTractor) entity).inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlow) {
 
-					((ModelTractor) this.modelTractor).renderGroupObject("Plow_Cube");
+					((ModelTractor) this.modelTractor).renderGroupObject("Plow_Object.2");
 				} else if (((EntityTractor) entity).inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {
-					((ModelTractor) this.modelTractor).renderGroupObject("Planter_Cube.002");
+					((ModelTractor) this.modelTractor).renderGroupObject("Planter_Object.60");
 
 				} else if (((EntityTractor) entity).inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentSprayer) {
-					((ModelTractor) this.modelTractor).renderGroupObject("Sprayer_Cube.004");
+					((ModelTractor) this.modelTractor).renderGroupObject("Sprayer_Object.68");
 
 				} else if (((EntityTractor) entity).inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentTrencher) {
-					((ModelTractor) this.modelTractor).renderGroupObject("Trencher_Cube.003");
+					((ModelTractor) this.modelTractor).renderGroupObject("Ditcher_Object.1");
 
 				}
 

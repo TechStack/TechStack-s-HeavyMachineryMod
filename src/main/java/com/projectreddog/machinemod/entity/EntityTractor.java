@@ -28,13 +28,13 @@ public class EntityTractor extends EntityMachineModRideable {
 
 	public EntityTractor(World world) {
 		super(world);
-		setSize(1.5F, 2F);
+		setSize(2.5F, 2F);
 		SIZE = 9;
 		inventory = new ItemStackHandler(SIZE);
 		// inventory = new ItemStack[9];
-		this.mountedOffsetY = 0.55D;
-		this.mountedOffsetX = 0.65d;
-		this.mountedOffsetZ = 0.65d;
+		this.mountedOffsetY = 1.35D;
+		this.mountedOffsetX = 0.d;
+		this.mountedOffsetZ = 0.d;
 		this.maxAngle = 0;
 		this.minAngle = -60;
 		this.droppedItem = ModItems.tractor;
@@ -63,9 +63,9 @@ public class EntityTractor extends EntityMachineModRideable {
 					} else {
 						angle = 90;
 					}
-					bp = new BlockPos(posX + calcTwoOffsetX(-3.5, angle, i), posY - 1 + .1d, posZ + calcTwoOffsetZ(-3.5, angle, i));
+					bp = new BlockPos(posX + calcTwoOffsetX(-2.5, angle, i), posY - 1 + .1d, posZ + calcTwoOffsetZ(-2.5, angle, i));
 
-					if (this.inventory.getStackInSlot(0) != null) {
+					if (!this.inventory.getStackInSlot(0).isEmpty()) {
 						if (this.inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachment) {
 							if (this.inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlow) {
 								if (world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.GRASS) {
@@ -78,6 +78,7 @@ public class EntityTractor extends EntityMachineModRideable {
 									}
 								}
 							} else if (this.inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {
+								bp = new BlockPos(posX + calcTwoOffsetX(-4.5, angle, i), posY - 1 + .1d, posZ + calcTwoOffsetZ(-4.5, angle, i));
 
 								for (int j = 1; j < 9; j++)// start at 1 because
 								// first slot is

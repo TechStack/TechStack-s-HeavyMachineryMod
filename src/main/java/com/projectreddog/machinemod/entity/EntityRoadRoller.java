@@ -22,12 +22,12 @@ public class EntityRoadRoller extends EntityMachineModRideable {
 		setSize(5.5f, 5f);
 		// inventory = new ItemStack[9];
 
-		this.mountedOffsetY = .6D;
+		this.mountedOffsetY = .61D;
 		// this.mountedOffsetX = -0.3D;
 		// this.mountedOffsetZ = -.3D;
 		//
-		this.mountedOffsetX = 1.0D;
-		this.mountedOffsetZ = 1.0D;
+		this.mountedOffsetX = .55D;
+		this.mountedOffsetZ = .55D;
 		this.maxAngle = 15;
 		this.minAngle = -90;
 		this.droppedItem = ModItems.roadroller;

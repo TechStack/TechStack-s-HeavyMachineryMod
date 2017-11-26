@@ -84,6 +84,9 @@ public class ModelDrillingRig extends ModelTransportable {
 				depth = 0;
 			}
 
+		} else {
+			GL11.glRotatef(-90, 1, 0, 0);
+
 		}
 		// this.renderGroupObject("Arm_Cube.001");
 

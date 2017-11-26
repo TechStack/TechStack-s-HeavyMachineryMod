@@ -59,7 +59,7 @@ public class RenderSemiTractor extends Render {
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelWideBedTruck.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
-		GlStateManager.translate(0f, -0.72F, +4F);
+		GlStateManager.translate(0f, -1.72F, +8F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		// GL11.glScalef(.75f, .75f, .75f);
 		// attempt to render the items in inventory
