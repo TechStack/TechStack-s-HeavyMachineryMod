@@ -23,11 +23,13 @@ public class EntityDrillingRig extends EntityMachineModRideable {
 		SIZE = 0;
 		inventory = new ItemStackHandler(SIZE);
 		// inventory = new ItemStack[0];
-		this.mountedOffsetY = .5D;
-		this.mountedOffsetX = 3D;
-		this.mountedOffsetZ = 3D;
+		this.mountedOffsetY = .75D;
+		this.mountedOffsetX = -1D;
+		this.mountedOffsetZ = 1.2D;
 		this.maxAngle = 170;
 		this.minAngle = 0;
+		this.ignoreFrustumCheck = true;
+
 		this.droppedItem = ModItems.drillingrig;
 
 	}
@@ -61,7 +63,7 @@ public class EntityDrillingRig extends EntityMachineModRideable {
 					currentDepth = 15;
 				}
 
-				BlockPos bp = new BlockPos(posX + calcTwoOffsetX(5, 0, 0), posY - currentDepth - 1, posZ + calcTwoOffsetZ(5, 0, 0));
+				BlockPos bp = new BlockPos(posX + calcTwoOffsetX(7, 0, 0), posY - currentDepth - 1, posZ + calcTwoOffsetZ(7, 0, 0));
 				if (world.getBlockState(bp).getBlock() == Blocks.STONE && world.getBlockState(bp).getBlock().getMetaFromState(world.getBlockState(bp)) == BlockStone.EnumType.STONE.getMetadata()) {
 					// world.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, world.getBlockState(bp), 0);
 					// world.setBlockToAir(bp);
@@ -87,4 +89,21 @@ public class EntityDrillingRig extends EntityMachineModRideable {
 
 		}
 	}
+
+	@Override
+	public double getMountedXOffset() {
+		// should be overridden in extended class if not default;
+
+		return calcTwoOffsetX(this.mountedOffsetZ, 90, this.mountedOffsetX);
+		// return calcOffsetX(mountedOffsetX);
+	}
+
+	@Override
+	public double getMountedZOffset() {
+		// should be overridden in extended class if not default;
+
+		return calcTwoOffsetZ(this.mountedOffsetZ, 90, this.mountedOffsetX);
+		// return calcOffsetX(mountedOffsetX);
+	}
+
 }

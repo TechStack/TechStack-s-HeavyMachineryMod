@@ -75,7 +75,7 @@ public class RenderGrader extends Render {
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelGrader.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
-		GlStateManager.translate(-1.4f, -0.25F, -.85F);
+		GlStateManager.translate(-3.5f, -.6F, -4.4F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glScalef(.5f, .5f, .5f);
 
@@ -83,19 +83,19 @@ public class RenderGrader extends Render {
 		int count = 0;
 		for (int i = 0; i < eL.SIZE; i++) {
 			ItemStack is = eL.inventory.getStackInSlot(i);
-			if (is != null) {
+			if (!is.isEmpty()) {
 				// EntityItem customitem = new EntityItem(eDT.worldObj);
 				// customitem.hoverStart = 0f;
 				// customitem.setEntityItemStack(is);
 				IBakedModel ibakedmodel = itemRenderer.getItemModelMesher().getItemModel(is);
 
-				if (count > 4) {
-					count = 0;
-					GlStateManager.translate(-3.5f, 0.0F, 0F);
-					GlStateManager.translate(0, 0.0F, .5F);
-
-				}
-				GlStateManager.translate(.7F, 0.0F, 0F);
+				// if (count > 4) {
+				// count = 0;
+				// GlStateManager.translate(-3.5f, 0.0F, 0F);
+				// GlStateManager.translate(0, 0.0F, .5F);
+				//
+				// }
+				GlStateManager.translate(1.25F, 0.0F, 0F);
 				count += 1;
 
 				GL11.glRotatef(45, 1, 1, 0);

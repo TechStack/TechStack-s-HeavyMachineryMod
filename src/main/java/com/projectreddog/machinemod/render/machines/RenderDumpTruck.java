@@ -76,7 +76,7 @@ public class RenderDumpTruck extends Render {
 
 		this.modelDumpTruck.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
-		GlStateManager.translate(-1.1f, -1.0F, -2.9F);
+		GlStateManager.translate(-1.2f, -.75F, -4.5F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glScalef(.5f, .5f, .5f);
 		// attempt to render the items in inventory
@@ -94,11 +94,11 @@ public class RenderDumpTruck extends Render {
 
 				if (count > 4) {
 					count = 0;
-					GlStateManager.translate(-2.5f, 0.0F, 0F);
-					GlStateManager.translate(0, 0.0F, .5F);
+					GlStateManager.translate(-2.75f, 0.0F, 0F);
+					GlStateManager.translate(0, 0.0F, .75F);
 
 				}
-				GlStateManager.translate(.5F, 0.0F, 0F);
+				GlStateManager.translate(.55F, 0.0F, 0F);
 				count += 1;
 
 				GL11.glRotatef(45, 1, 1, 0);

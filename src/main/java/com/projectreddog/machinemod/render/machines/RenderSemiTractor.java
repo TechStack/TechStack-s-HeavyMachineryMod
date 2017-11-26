@@ -71,7 +71,7 @@ public class RenderSemiTractor extends Render {
 		boolean hasWidebed = false;
 		for (int i = 0; i < eDT.SIZE; i++) {
 			ItemStack is = eDT.inventory.getStackInSlot(i);
-			if (is != null) {
+			if (!is.isEmpty()) {
 				if (is.getItem() instanceof ItemSemiTrailerFlatBed) {
 					hasWidebed = true;
 				}

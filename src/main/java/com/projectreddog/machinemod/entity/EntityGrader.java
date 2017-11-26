@@ -29,9 +29,9 @@ public class EntityGrader extends EntityMachineModRideable {
 		inventory = new ItemStackHandler(SIZE);
 		// inventory = new ItemStack[9];
 
-		this.mountedOffsetY = 0.6D;
-		this.mountedOffsetX = 0.4D;
-		this.mountedOffsetZ = 0.4D;
+		this.mountedOffsetY = 1D;
+		this.mountedOffsetX = -0.9D;
+		this.mountedOffsetZ = -0.9D;
 		this.maxAngle = 15;
 		this.minAngle = -90;
 		this.droppedItem = ModItems.grader;

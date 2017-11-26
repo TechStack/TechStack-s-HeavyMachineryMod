@@ -54,7 +54,7 @@ public class RenderTractor extends Render {
 		this.bindEntityTexture(entity);
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelTractor.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		if (((EntityTractor) entity).inventory.getStackInSlot(0) != null) {
+		if (!((EntityTractor) entity).inventory.getStackInSlot(0).isEmpty()) {
 			if (((EntityTractor) entity).inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachment) {
 				if (((EntityTractor) entity).inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlow) {
 

@@ -40,6 +40,9 @@ public class ModelDumpTruck extends ModelBase {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		// myModel.renderAll();
 		// this.renderGroupObject("Truck_Base_Cube.002");
+
+		GL11.glTranslatef(0f, 0, -2.8f);
+
 		this.renderGroupObject("Object.1");
 		this.renderGroupObject("Object.2");
 		this.renderGroupObject("Object.3");
@@ -79,13 +82,14 @@ public class ModelDumpTruck extends ModelBase {
 		this.renderGroupObject("Object.37");
 		this.renderGroupObject("Object.38");
 		this.renderGroupObject("Object.39");
-		this.renderGroupObject("Object.40");
+
 		this.renderGroupObject("Object.41");
 
-		GL11.glTranslatef(0f, -1.1f, 2.8f);
+		GL11.glTranslatef(0f, -1.95f, 7.9f);
 		if (entity != null) {
 			GL11.glRotatef(((EntityDumpTruck) entity).Attribute1, 1, 0, 0);
 		}
+		this.renderGroupObject("Object.40");
 		// this.renderGroupObject("Bed_Cube.000");
 
 	}

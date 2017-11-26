@@ -45,20 +45,58 @@ public class ModelDrillingRig extends ModelTransportable {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		// myModel.renderAll();
 
-		this.renderGroupObject("Body_Cube");
+		// this.renderGroupObject("Body_Cube");
+		GL11.glTranslatef(0f, -0.f, -2.0f);
 
-		GL11.glTranslatef(0f, -1.58f, -2.75f);
+		this.renderGroupObject("Object.1");
+		this.renderGroupObject("Object.2");
+		this.renderGroupObject("Object.3");
+		this.renderGroupObject("Object.4");
+		this.renderGroupObject("Object.5");
+		this.renderGroupObject("Object.6");
+		this.renderGroupObject("Object.7");
+		this.renderGroupObject("Object.8");
+		this.renderGroupObject("Object.9");
+		this.renderGroupObject("Object.10");
+		this.renderGroupObject("Object.11");
+		this.renderGroupObject("Object.12");
+		this.renderGroupObject("Object.13");
+		this.renderGroupObject("Object.14");
+		this.renderGroupObject("Object.15");
+		this.renderGroupObject("Object.16");
+		this.renderGroupObject("Object.17");
+		this.renderGroupObject("Object.18");
 
+		this.renderGroupObject("Object.21");
+		this.renderGroupObject("Object.22");
+		GL11.glTranslatef(0f, -5.f, -3.25f);
+		float currentAngle2 = 0;
+		int depth = 0;
 		if (entity != null) {
 			float currentAngle = (((EntityMachineModRideable) entity).Attribute1);
 			if (currentAngle > 90) {
 				currentAngle = 90;
 			}
+			currentAngle = currentAngle - 90;
 			GL11.glRotatef(currentAngle, 1, 0, 0);
+			currentAngle2 = (((((EntityMachineModRideable) entity).Attribute1) - 90) / 5);
+			if (depth < 0) {
+				depth = 0;
+			}
 
 		}
-		this.renderGroupObject("Arm_Cube.001");
+		// this.renderGroupObject("Arm_Cube.001");
 
+		this.renderGroupObject("Object.20");
+		GL11.glTranslatef(-.55f, -0.30f, -2.1f);
+
+		if (currentAngle2 > 0) {
+			GL11.glTranslatef(0f, currentAngle2, 0);
+			GL11.glRotatef(currentAngle2 * 180, 0, 1, 0);
+
+		}
+
+		this.renderGroupObject("Object.19");
 	}
 
 	public void renderGroupObject(String groupName) {

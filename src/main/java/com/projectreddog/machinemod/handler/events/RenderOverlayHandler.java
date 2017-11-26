@@ -57,7 +57,7 @@ public class RenderOverlayHandler extends Gui {
 						depth = 0;
 					}
 
-					this.fontRenderer.drawString("Depth:" + (depth), 0, 20, 14737632);
+					this.fontRenderer.drawString("Depth: " + (depth), 25, 4, 14737632);
 				}
 
 			}
