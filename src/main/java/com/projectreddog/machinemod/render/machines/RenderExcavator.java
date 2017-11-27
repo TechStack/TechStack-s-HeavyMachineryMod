@@ -65,7 +65,7 @@ public class RenderExcavator extends Render {
 		int count = 0;
 		for (int i = 0; i < eL.SIZE; i++) {
 			ItemStack is = eL.inventory.getStackInSlot(i);
-			if (is != null) {
+			if (!is.isEmpty()) {
 				// EntityItem customitem = new EntityItem(eDT.worldObj);
 				// customitem.hoverStart = 0f;
 				// customitem.setEntityItemStack(is);

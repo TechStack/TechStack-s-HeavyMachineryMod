@@ -94,7 +94,7 @@ public class RenderBagger extends Render {
 		wheelRadius = 8.f;
 		for (int i = 0; i < eL.SIZE; i++) {
 			ItemStack is = eL.inventory.getStackInSlot(i);
-			if (is != null) {
+			if (!is.isEmpty()) {
 				// EntityItem customitem = new EntityItem(eDT.worldObj);
 				// customitem.hoverStart = 0f;
 				// customitem.setEntityItemStack(is);

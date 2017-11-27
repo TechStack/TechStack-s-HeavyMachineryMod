@@ -1,130 +1,52 @@
-# Exported from 3D Builder
+# Blender MTL File: 'graderprototype_blueboy17.blend'
+# Material Count: 5
+
+newmtl A8A8A8FF
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.662745 0.662745 0.662745
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Black
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
 
 newmtl Construction_Yellow
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
 Kd 0.839216 0.698039 0.000000
-
-newmtl Black
-Kd 0.000000 0.000000 0.000000
-
-newmtl Construction_Yellow
-Kd 0.839216 0.698039 0.000000
-
-newmtl Black
-Kd 0.000000 0.000000 0.000000
-
-newmtl Construction_Yellow
-Kd 0.839216 0.698039 0.000000
-
-newmtl Black
-Kd 0.000000 0.000000 0.000000
-
-newmtl Construction_Yellow
-Kd 0.839216 0.698039 0.000000
-
-newmtl Black
-Kd 0.000000 0.000000 0.000000
-
-newmtl Black
-Kd 0.000000 0.000000 0.000000
-
-newmtl dark_grey
-Kd 0.200000 0.200000 0.200000
-
-newmtl dark_grey
-Kd 0.200000 0.200000 0.200000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
 
 newmtl White
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
 Kd 1.000000 1.000000 1.000000
-
-newmtl Construction_Yellow
-Kd 0.839216 0.698039 0.000000
-
-newmtl dark_grey
-Kd 0.200000 0.200000 0.200000
-
-newmtl Black
-Kd 0.000000 0.000000 0.000000
-
-newmtl Black
-Kd 0.000000 0.000000 0.000000
-
-newmtl Construction_Yellow
-Kd 0.839216 0.698039 0.000000
-
-newmtl Black
-Kd 0.000000 0.000000 0.000000
-
-newmtl Construction_Yellow
-Kd 0.839216 0.698039 0.000000
-
-newmtl Black
-Kd 0.000000 0.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
 
 newmtl dark_grey
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
 Kd 0.200000 0.200000 0.200000
-
-newmtl dark_grey
-Kd 0.200000 0.200000 0.200000
-
-newmtl Construction_Yellow
-Kd 0.839216 0.698039 0.000000
-
-newmtl A8A8A8FF
-Kd 0.662745 0.662745 0.662745
-
-newmtl dark_grey
-Kd 0.200000 0.200000 0.200000
-
-newmtl Construction_Yellow
-Kd 0.839216 0.698039 0.000000
-
-newmtl dark_grey
-Kd 0.200000 0.200000 0.200000
-
-newmtl dark_grey
-Kd 0.200000 0.200000 0.200000
-
-newmtl dark_grey
-Kd 0.200000 0.200000 0.200000
-
-newmtl dark_grey
-Kd 0.200000 0.200000 0.200000
-
-newmtl dark_grey
-Kd 0.200000 0.200000 0.200000
-
-newmtl Black
-Kd 0.000000 0.000000 0.000000
-
-newmtl White
-Kd 1.000000 1.000000 1.000000
-
-newmtl dark_grey
-Kd 0.200000 0.200000 0.200000
-
-newmtl dark_grey
-Kd 0.200000 0.200000 0.200000
-
-newmtl A8A8A8FF
-Kd 0.662745 0.662745 0.662745
-
-newmtl A8A8A8FF
-Kd 0.662745 0.662745 0.662745
-
-newmtl Construction_Yellow
-Kd 0.839216 0.698039 0.000000
-
-newmtl Construction_Yellow
-Kd 0.839216 0.698039 0.000000
-
-newmtl dark_grey
-Kd 0.200000 0.200000 0.200000
-
-newmtl Construction_Yellow
-Kd 0.839216 0.698039 0.000000
-
-newmtl dark_grey
-Kd 0.200000 0.200000 0.200000
-
-newmtl dark_grey
-Kd 0.200000 0.200000 0.200000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2

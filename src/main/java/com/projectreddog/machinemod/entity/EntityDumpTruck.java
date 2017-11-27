@@ -19,13 +19,13 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 	public EntityDumpTruck(World world) {
 		super(world);
 
-		setSize(3, 2);
+		setSize(3.5f, 2);
 		SIZE = 54;
 		inventory = new ItemStackHandler(SIZE);
 		// inventory = new ItemStack[54];
-		this.mountedOffsetY = 0.35D;
-		this.mountedOffsetX = 1.5D;
-		this.mountedOffsetZ = 1.5D;
+		this.mountedOffsetY = 1.50D;
+		this.mountedOffsetX = 2.5D;
+		this.mountedOffsetZ = 2.5D;
 		this.maxAngle = 0;
 		this.minAngle = -60;
 		this.droppedItem = ModItems.dumptruck;
@@ -37,7 +37,9 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 	public void onUpdate() {
 		super.onUpdate();
 		if (!world.isRemote) {
-			List list = this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox());
+
+			AxisAlignedBB bedboundingBox = new AxisAlignedBB(calcTwoOffsetX(5, 90, -2) + posX - .5d, (double) posY, calcTwoOffsetZ(5, 90, -2) + posZ - .5d, calcTwoOffsetX(5, 90, 2) + posX + .5d, posY + 1, calcTwoOffsetZ(5, 90, 2) + posZ + .5d);
+			List list = this.world.getEntitiesWithinAABBExcludingEntity(this, bedboundingBox);
 			collidedEntitiesInList(list);
 			if (this.Attribute1 == getMinAngle()) {
 				// need
@@ -47,7 +49,7 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 					if (item != null && item.getCount() > 0) {
 						;
 
-						EntityItem entityItem = new EntityItem(world, posX + calcOffsetX(-3.5), posY - .1f, posZ + calcOffsetZ(-3.5), item);
+						EntityItem entityItem = new EntityItem(world, posX + calcOffsetX(-4.5), posY - .1f, posZ + calcOffsetZ(-4.5), item);
 
 						if (item.hasTagCompound()) {
 							entityItem.getItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());

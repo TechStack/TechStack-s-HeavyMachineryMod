@@ -24,7 +24,7 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 	private int carriedMachinesFuelStorage;
-	private float bedRampBackOffset = -5f;
+	private float bedRampBackOffset = -18f;
 
 	public final int maxOilStorage = 100000; // store up to 100k
 	protected FluidStack fluid = new FluidStack(ModBlocks.fluidOil, 0);
@@ -32,15 +32,17 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 	public EntitySemiTractor(World world) {
 		super(world);
 
-		setSize(3, 2);
+		setSize(3, 4);
 		SIZE = 9;
 		inventory = new ItemStackHandler(SIZE);
 		// inventory = new ItemStack[9];
-		this.mountedOffsetY = 0.35D;
-		this.mountedOffsetX = 0.0D;
-		this.mountedOffsetZ = 0.0D;
+		this.mountedOffsetY = 0.65D;
+		this.mountedOffsetX = 1.0D;
+		this.mountedOffsetZ = 1.0D;
 		this.maxAngle = 10;
 		this.minAngle = 0;
+		this.ignoreFrustumCheck = true;
+
 		this.droppedItem = ModItems.semitractor;
 		this.shouldSendClientInvetoryUpdates = true;
 		this.maxSpeed = 0.8d;
@@ -70,12 +72,12 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 			List list = this.world.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
 			collidedEntitiesInList(list);
 
-			if (this.inventory.getStackInSlot(0) != null) {
+			if (!this.inventory.getStackInSlot(0).isEmpty()) {
 				if (this.inventory.getStackInSlot(0).getItem() instanceof ItemSemiTrailerFlatBed) {
 
 					if (this.Attribute1 > 9) {
 
-						if (this.inventory.getStackInSlot(1) != null && this.inventory.getStackInSlot(1).getItem() instanceof ItemTransportable) {
+						if (!this.inventory.getStackInSlot(1).isEmpty() && this.inventory.getStackInSlot(1).getItem() instanceof ItemTransportable) {
 
 							EntityMachineModRideable eMMR = ((ItemTransportable) this.inventory.getStackInSlot(1).getItem()).getEntityToSpawn(world);
 
@@ -103,9 +105,9 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 	}
 
 	private void collidedEntitiesInList(List par1List) {
-		if (inventory.getStackInSlot(0) != null) {
+		if (!inventory.getStackInSlot(0).isEmpty()) {
 			if (inventory.getStackInSlot(0).getItem() instanceof ItemSemiTrailerFlatBed) {
-				if (inventory.getStackInSlot(1) == null) {
+				if (inventory.getStackInSlot(1).isEmpty()) {
 					for (int i = 0; i < par1List.size(); ++i) {
 						Entity entity = (Entity) par1List.get(i);
 						if (entity != null) {

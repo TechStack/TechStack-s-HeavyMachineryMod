@@ -3,7 +3,11 @@ package com.projectreddog.machinemod.model;
 import java.io.IOException;
 import java.util.HashMap;
 
+import org.lwjgl.opengl.GL11;
+
+import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
+import com.projectreddog.machinemod.item.machines.ItemTransportable;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerCargo;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerLivestock;
@@ -41,21 +45,45 @@ public class ModelSemiTractor extends ModelBase {
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		// myModel.renderAll();
-		this.renderGroupObject("SemiTractor_Cube");
+
+		GL11.glTranslatef(0f, 0, 5.f);
+
+		this.renderGroupObject("SemiTractor_Object.30");
 
 		EntitySemiTractor eDT = ((EntitySemiTractor) entity);
 		ItemStack is = eDT.inventory.getStackInSlot(0);
-		if (is != null) {
+		if (!is.isEmpty()) {
 
 			if (is.getItem() instanceof ItemSemiTrailerCargo) {
-				this.renderGroupObject("SemiTrailer_Cube.006");
+				this.renderGroupObject("CargoTrailer_Object.75");
 			} else if (is.getItem() instanceof ItemSemiTrailerLivestock) {
-				this.renderGroupObject("AnimalTrailer_Cube.003");
+				this.renderGroupObject("CargoTrailer_Object.75");
 			} else if (is.getItem() instanceof ItemSemiTrailerTanker) {
-				this.renderGroupObject("TankerTailer_Cube.002");
+				this.renderGroupObject("LiquidTanker_Object.58");
 			} else if (is.getItem() instanceof ItemSemiTrailerFlatBed) {
-				this.renderGroupObject("FlatBedTrailer_Cube.001");
+				this.renderGroupObject("FlatBed_Object.15");
+
+				ItemStack is2 = eDT.inventory.getStackInSlot(1);
+				if (!is2.isEmpty() && is2.getItem() != null && is2.getItem() instanceof ItemTransportable) {
+					// carrying a thing transportable thing!
+
+					GL11.glTranslatef(0f, -.8f, 12.55f);
+					GL11.glRotatef(((((EntityMachineModRideable) entity).Attribute1) * -11), 1, 0, 0);
+					this.renderGroupObject("FlatBedGate_Object.000");
+					GL11.glRotatef(((((EntityMachineModRideable) entity).Attribute1) * 11), 1, 0, 0);
+					GL11.glTranslatef(0f, .8f, -12.55f);
+				} else {
+
+					GL11.glTranslatef(0f, -.8f, 12.55f);
+					GL11.glRotatef(((10 - ((EntityMachineModRideable) entity).Attribute1) * -11), 1, 0, 0);
+					this.renderGroupObject("FlatBedGate_Object.000");
+					GL11.glRotatef(((10 - ((EntityMachineModRideable) entity).Attribute1) * 11), 1, 0, 0);
+					GL11.glTranslatef(0f, .8f, -12.55f);
+
+				}
+
 			}
+
 		}
 		//
 
