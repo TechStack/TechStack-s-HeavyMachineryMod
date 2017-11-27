@@ -60,10 +60,16 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy {
+
+	@Override
+	public void PreInit() {
+
+		OBJLoader.INSTANCE.addDomain(Reference.MOD_ID);
+	}
+
 	@Override
 	public void registerRenderers() {
 
-		OBJLoader.INSTANCE.addDomain(Reference.MOD_ID);
 		// LogHelper.info("in register Renderers");
 		MachineModModelHelper.setupVertexFormat();
 		RenderingRegistry.registerEntityRenderingHandler(EntityBulldozer.class, new RenderBulldozer(Minecraft.getMinecraft().getRenderManager()));
