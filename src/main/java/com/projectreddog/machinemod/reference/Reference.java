@@ -94,12 +94,21 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_LIQUID_PIPE = "machineliquidpipe";
 
 	public static final String MODBLOCK_MACHINE_DRILLED_ANDESITE = "machinedrilledandesite";
-
 	public static final String MODBLOCK_MACHINE_DRILLED_DIORITE = "machinedrilleddiorite";
-
 	public static final String MODBLOCK_MACHINE_DRILLED_GRANITE = "machinedrilledgranite";
 
 	public static final String MODBLOCK_MACHINE_BLASTED_STONE = "machineblastedstone";
+	public static final String MODBLOCK_MACHINE_BLASTED_GRANITE = "machineblastedgranite";
+	public static final String MODBLOCK_MACHINE_BLASTED_DIORITE = "machineblasteddiorite";
+	public static final String MODBLOCK_MACHINE_BLASTED_ANDESITE = "machineblastedandesite";
+	public static final String MODBLOCK_MACHINE_BLASTED_GOLD = "machineblastedgold";
+	public static final String MODBLOCK_MACHINE_BLASTED_IRON = "machineblastediron";
+	public static final String MODBLOCK_MACHINE_BLASTED_COAL = "machineblastedcoal";
+	public static final String MODBLOCK_MACHINE_BLASTED_LAPIS = "machineblastedlapis";
+	public static final String MODBLOCK_MACHINE_BLASTED_DIAMOND = "machineblasteddiamond";
+	public static final String MODBLOCK_MACHINE_BLASTED_REDSTONE = "machineblastedredstone";
+	public static final String MODBLOCK_MACHINE_BLASTED_EMERALD = "machineblastedemerald";
+
 	public static final String MODBLOCK_MACHINE_CORN = "corn";
 	public static final String MODBLOCK_MACHINE_BLASTED_STONE2 = "machineblastedstone2";
 	public static final String MODBLOCK_MACHINE_PRIMARY_CRUSHER = "machineprimarycrusher";

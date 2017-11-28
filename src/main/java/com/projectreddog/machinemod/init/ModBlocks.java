@@ -13,6 +13,16 @@ import com.projectreddog.machinemod.block.BlockMachineDrilledStone;
 import com.projectreddog.machinemod.block.BlockMachineExplosivePackedDrilledStone;
 import com.projectreddog.machinemod.block.BlockMachineMod;
 import com.projectreddog.machinemod.block.BlockMachineModAsphaltMixer;
+import com.projectreddog.machinemod.block.BlockMachineModBlastedAndesite;
+import com.projectreddog.machinemod.block.BlockMachineModBlastedCoal;
+import com.projectreddog.machinemod.block.BlockMachineModBlastedDiamond;
+import com.projectreddog.machinemod.block.BlockMachineModBlastedDiorite;
+import com.projectreddog.machinemod.block.BlockMachineModBlastedEmerald;
+import com.projectreddog.machinemod.block.BlockMachineModBlastedGold;
+import com.projectreddog.machinemod.block.BlockMachineModBlastedGranite;
+import com.projectreddog.machinemod.block.BlockMachineModBlastedIron;
+import com.projectreddog.machinemod.block.BlockMachineModBlastedLapis;
+import com.projectreddog.machinemod.block.BlockMachineModBlastedRedstone;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone2;
 import com.projectreddog.machinemod.block.BlockMachineModCentrifuge;
@@ -73,6 +83,18 @@ public class ModBlocks {
 	public static final BlockMachineMod machineexplosivepackeddrilledstone = new BlockMachineExplosivePackedDrilledStone();
 
 	public static final BlockMachineMod machineblastedstone = new BlockMachineModBlastedStone();
+
+	public static final BlockMachineMod machineblastedgranite = new BlockMachineModBlastedGranite();
+	public static final BlockMachineMod machineblasteddiorite = new BlockMachineModBlastedDiorite();
+	public static final BlockMachineMod machineblastedandesite = new BlockMachineModBlastedAndesite();
+	public static final BlockMachineMod machineblastedgold = new BlockMachineModBlastedGold();
+	public static final BlockMachineMod machineblastediron = new BlockMachineModBlastedIron();
+	public static final BlockMachineMod machineblastedcoal = new BlockMachineModBlastedCoal();
+	public static final BlockMachineMod machineblastedlapis = new BlockMachineModBlastedLapis();
+	public static final BlockMachineMod machineblasteddiamond = new BlockMachineModBlastedDiamond();
+	public static final BlockMachineMod machineblastedredstone = new BlockMachineModBlastedRedstone();
+	public static final BlockMachineMod machineblastedemerald = new BlockMachineModBlastedEmerald();
+
 	public static final BlockMachineMod machineblastedstone2 = new BlockMachineModBlastedStone2();
 	public static final Block corn = new BlockMachineModCorn();
 	public static final Block machinedistiller = new BlockMachineModDistiller();
@@ -131,9 +153,29 @@ public class ModBlocks {
 		ForgeRegistries.BLOCKS.register(machineexplosivepackeddrilledstone);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machineexplosivepackeddrilledstone).setRegistryName(ModBlocks.machineexplosivepackeddrilledstone.getRegistryName()));
 		ForgeRegistries.BLOCKS.register(machineblastedstone);
-		itemBlockBlastedStone = new ItemBlock(machineblastedstone);
-		itemBlockBlastedStone.setRegistryName(ModBlocks.machineblastedstone.getRegistryName());
-		ForgeRegistries.ITEMS.register(itemBlockBlastedStone);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineblastedstone).setRegistryName(ModBlocks.machineblastedstone.getRegistryName()));
+
+		ForgeRegistries.BLOCKS.register(machineblastedgranite);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineblastedgranite).setRegistryName(ModBlocks.machineblastedgranite.getRegistryName()));
+
+		ForgeRegistries.BLOCKS.register(machineblasteddiorite);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineblasteddiorite).setRegistryName(ModBlocks.machineblasteddiorite.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineblastedandesite);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineblastedandesite).setRegistryName(ModBlocks.machineblastedandesite.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineblastedgold);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineblastedgold).setRegistryName(ModBlocks.machineblastedgold.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineblastediron);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineblastediron).setRegistryName(ModBlocks.machineblastediron.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineblastedcoal);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineblastedcoal).setRegistryName(ModBlocks.machineblastedcoal.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineblastedlapis);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineblastedlapis).setRegistryName(ModBlocks.machineblastedlapis.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineblasteddiamond);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineblasteddiamond).setRegistryName(ModBlocks.machineblasteddiamond.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineblastedredstone);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineblastedredstone).setRegistryName(ModBlocks.machineblastedredstone.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineblastedemerald);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineblastedemerald).setRegistryName(ModBlocks.machineblastedemerald.getRegistryName()));
 
 		ForgeRegistries.BLOCKS.register(machineblastedstone2);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machineblastedstone2).setRegistryName(ModBlocks.machineblastedstone2.getRegistryName()));
@@ -244,6 +286,18 @@ public class ModBlocks {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineexplosivepackeddrilledstone), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineblastedstone), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE, "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineblastedgranite), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_GRANITE, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineblasteddiorite), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_DIORITE, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineblastedandesite), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_ANDESITE, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineblastedgold), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_GOLD, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineblastediron), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_IRON, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineblastedcoal), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_COAL, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineblastedlapis), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_LAPIS, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineblasteddiamond), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_DIAMOND, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineblastedredstone), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_REDSTONE, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineblastedemerald), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_EMERALD, "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(corn), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_CORN, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineprimarycrhuser), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER, "inventory"));
@@ -260,33 +314,6 @@ public class ModBlocks {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinewellhead), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_WELL_HEAD, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(biofuel), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FLUID_BIOFUEL, "inventory"));
-
-		// TODO FIX THE block states for blasted stone!!
-
-		// Item itemBlockBlastedStone = ForgeRegistries.BLOCKS.findItem(Reference.MOD_ID, Reference.MODBLOCK_MACHINE_BLASTED_STONE);
-
-		ModelResourceLocation itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "STONE", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.STONE.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "granite", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.GRANITE.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "diorite", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.DIORITE.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "andesite", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.ANDESITE.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "gold", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.GOLD.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "iron", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.IRON.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "coal", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.COAL.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "lapis", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.LAPIS.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "diamond", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.DIAMOND.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "redstone", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.REDSTONE.getMetadata(), itemModelResourceLocation);
-		itemModelResourceLocation = new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE + "_variants_" + "emerald", "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockBlastedStone, BlockMachineModBlastedStone.EnumVanillaOres.EMERALD.getMetadata(), itemModelResourceLocation);
 
 	}
 }
