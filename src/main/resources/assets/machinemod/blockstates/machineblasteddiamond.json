@@ -1,5 +1,9 @@
-{
+{"forge_marker": 1,
+"defaults": {
+    "model": "machinemod:machineblastedstone_variants_diamond"
+  },
     "variants": {
-        "normal": { "model": "machinemod:machineblastedstone_variants_diamond" }
+        "normal":[ { }],
+          "inventory": [{}]
     }
 }
