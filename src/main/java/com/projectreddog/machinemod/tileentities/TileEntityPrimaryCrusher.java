@@ -175,7 +175,6 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 		if (fuelStorage > 0) {
 			decrStackSize(slot, 1);
 			fuelStorage = fuelStorage - 1;
-			// TODO position entity based on enum facing :D
 			double ejectOffsetX = 0d;
 			double ejectOffsetZ = 0d;
 			EnumFacing ef = (EnumFacing) world.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
@@ -322,19 +321,16 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean hasCustomName() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public ITextComponent getDisplayName() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -487,7 +483,6 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 
 	@Override
 	public EnumFacing outputDirection() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -182,19 +182,16 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean hasCustomName() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public ITextComponent getDisplayName() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

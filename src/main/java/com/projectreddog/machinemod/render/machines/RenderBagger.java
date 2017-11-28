@@ -163,7 +163,6 @@ public class RenderBagger extends Render {
 			j = p_175032_3_;
 
 			if (flag && bakedquad.hasTintIndex()) {
-				// TODO Fix Color
 				// j = p_175032_4_.getItem().getColorFromItemStack(p_175032_4_, bakedquad.getTintIndex());
 
 				if (EntityRenderer.anaglyphEnable) {

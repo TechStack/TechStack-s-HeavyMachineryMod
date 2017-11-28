@@ -108,7 +108,6 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 
 	@Override
 	public void closeInventory(EntityPlayer player) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -142,13 +141,11 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean hasCustomName() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -234,7 +231,6 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 	 */
 	public boolean AddStack(ItemStack stackToAdd) {
 
-		// TODO Null crash needs fixed
 		if (stackToAdd.isItemEqual(HeldItem) || HeldItem.isEmpty()) {
 			processInputOutputSlots();
 			setInventorySlotContents(1, stackToAdd);
@@ -379,7 +375,6 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 
 		if (world.isRemote) {
 			rotAmt = rotAmt + 1;
