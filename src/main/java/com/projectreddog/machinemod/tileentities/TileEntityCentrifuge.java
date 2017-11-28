@@ -205,19 +205,16 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean hasCustomName() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public ITextComponent getDisplayName() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -385,7 +382,6 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 
 	@Override
 	public EnumFacing outputDirection() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

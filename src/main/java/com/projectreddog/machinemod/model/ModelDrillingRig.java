@@ -36,7 +36,6 @@ public class ModelDrillingRig extends ModelTransportable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

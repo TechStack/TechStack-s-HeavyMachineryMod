@@ -652,13 +652,11 @@ public class EntityMachineModRideable extends Entity {
 
 	@Override
 	protected void entityInit() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	protected void readEntityFromNBT(NBTTagCompound compound) {
-		// TODO Auto-generated method stub
 
 		// super.readFromNBT(compound);
 		// no need to call super it calls this method instead.

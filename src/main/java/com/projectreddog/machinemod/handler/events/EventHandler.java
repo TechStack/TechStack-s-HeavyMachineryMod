@@ -53,7 +53,7 @@ public class EventHandler {
 	//
 	// Item bucket = buckets.get(state.getBlock());
 	//
-	// // TODO: Replace with BlockState check
+	// //
 	// if (bucket != null && state.getBlock().getMetaFromState(state) == 0) {
 	// world.setBlockToAir(pos.getBlockPos());
 	// return new ItemStack(bucket);

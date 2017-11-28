@@ -8,7 +8,6 @@ public class Recipes {
 
 	public static void init() {
 
-		// TODO convert these to JSON :(
 		// CONVERTED // GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.drillpipe), "i i", "i i", "i i", 'i', "ingotIron"));
 		//
 		// // CONVERTED //GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.drillhead), " p ", "dpd", " d ", 'p', ModItems.drillpipe, 'd', "gemDiamond"));

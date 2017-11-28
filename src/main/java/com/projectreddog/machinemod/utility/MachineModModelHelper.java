@@ -35,7 +35,6 @@ public class MachineModModelHelper {
 
 		BufferBuilder worldrenderer = tessellator.getBuffer();
 		// VertexFormat VF = new VertexFormat();
-		// TODO SORT OUT THE VERTEXFORMAT if this is not correct
 		// worldrenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);// bakedModel.getFormat());
 		// OPTION A
 		BakedQuad bakedQuad1 = (BakedQuad) bakedModel.getQuads(null, null, 0).get(0);

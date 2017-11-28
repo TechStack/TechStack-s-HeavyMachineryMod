@@ -8,7 +8,6 @@ public class ItemOilBucket extends ItemBucket {
 
 	public ItemOilBucket(Block containedBlock) {
 		super(containedBlock);
-		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName(registryName);
 		this.setRegistryName(registryName);
 

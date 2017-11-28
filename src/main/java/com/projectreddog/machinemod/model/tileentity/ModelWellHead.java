@@ -34,7 +34,6 @@ public class ModelWellHead extends ModelBase {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

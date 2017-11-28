@@ -55,7 +55,6 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 			}
 			List list = world.getEntitiesWithinAABB(EntityItem.class, boundingBox);
 			processEntitiesInList(list);
-			// TODO add method to sort item
 			MoveItemsInnventory();
 		}
 	}
@@ -287,19 +286,16 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 
 	@Override
 	public void setField(int id, int value) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public int getFieldCount() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -345,7 +341,6 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 
 	@Override
 	public int[] getSlotsForFace(EnumFacing side) {
-		// TODO Auto-generated method stub
 		if (side == EnumFacing.UP) {
 			return topSlots;
 		}

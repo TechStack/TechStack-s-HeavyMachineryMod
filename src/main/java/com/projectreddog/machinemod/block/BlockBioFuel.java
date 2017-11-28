@@ -14,7 +14,6 @@ public class BlockBioFuel extends BlockFluidClassic {
 
 	public BlockBioFuel(Fluid fluid, Material material) {
 		super(fluid, material);
-		// TODO Auto-generated constructor stub
 		setCreativeTab(CreativeTabMachineMod.MACHINEMOD_ITEMS_TAB);
 		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
