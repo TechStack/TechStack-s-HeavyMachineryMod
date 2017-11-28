@@ -48,6 +48,13 @@ public class ItemFuelCan extends ItemMachineMod {
 		if (!hasContainerItem(itemStack)) {
 			return null;
 		}
-		return new ItemStack(getContainerItem(), 1, this.getMaxDamage());
+		ItemStack is = itemStack.copy();
+		is.attemptDamageItem(getMaxDamage(), itemRand, null);
+		return is;
+	}
+
+	@Override
+	public boolean hasContainerItem(ItemStack stack) {
+		return true;
 	}
 }
