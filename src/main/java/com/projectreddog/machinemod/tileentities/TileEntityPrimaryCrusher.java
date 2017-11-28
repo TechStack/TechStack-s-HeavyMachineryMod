@@ -2,7 +2,6 @@ package com.projectreddog.machinemod.tileentities;
 
 import java.util.List;
 
-import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.iface.IFuelContainer;
 import com.projectreddog.machinemod.init.ModBlocks;
@@ -68,41 +67,43 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 			for (int i = 0; i < this.getSizeInventory(); i++) {
 				ItemStack item = this.getStackInSlot(i);
 				if (!item.isEmpty()) {
-					if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedstone)) {
-						if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.IRON.getMetadata()) {
-							dropDust(i, new ItemStack(ModItems.irondust, BlastedStoneOreMultiplier));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.GOLD.getMetadata()) {
-							dropDust(i, new ItemStack(ModItems.golddust, BlastedStoneOreMultiplier));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.STONE.getMetadata()) {
-							dropDust(i, new ItemStack(Blocks.COBBLESTONE, 1));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.ANDESITE.getMetadata()) {
-							dropDust(i, new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.ANDESITE.getMetadata()));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.DIORITE.getMetadata()) {
-							dropDust(i, new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.DIORITE.getMetadata()));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.GRANITE.getMetadata()) {
-							dropDust(i, new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.GRANITE.getMetadata()));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.COAL.getMetadata()) {
-							dropDust(i, new ItemStack(Items.COAL, BlastedStoneCoalMultiplier));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.DIAMOND.getMetadata()) {
-							dropDust(i, new ItemStack(Items.DIAMOND, BlastedStoneGemMultiplier));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.EMERALD.getMetadata()) {
-							dropDust(i, new ItemStack(Items.EMERALD, BlastedStoneGemMultiplier));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.LAPIS.getMetadata()) {
-							dropDust(i, new ItemStack(Items.DYE, BlastedStoneLapisMultiplier, EnumDyeColor.BLUE.getDyeDamage()));
-							return;
-						} else if (item.getMetadata() == BlockMachineModBlastedStone.EnumVanillaOres.REDSTONE.getMetadata()) {
-							dropDust(i, new ItemStack(Items.REDSTONE, BlastedStoneRedstoneMultiplier));
-							return;
-						}
+					if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedgranite)) {
+						dropDust(i, new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.GRANITE.getMetadata()));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastediron)) {
+						dropDust(i, new ItemStack(ModItems.irondust, BlastedStoneOreMultiplier));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedgold)) {
+						dropDust(i, new ItemStack(ModItems.golddust, BlastedStoneOreMultiplier));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedstone)) {
+						dropDust(i, new ItemStack(Blocks.COBBLESTONE, 1));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedandesite)) {
+						dropDust(i, new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.ANDESITE.getMetadata()));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblasteddiorite)) {
+						dropDust(i, new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.DIORITE.getMetadata()));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedstone)) {
+						dropDust(i, new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.DIORITE.getMetadata()));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedcoal)) {
+						dropDust(i, new ItemStack(Items.COAL, BlastedStoneCoalMultiplier));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblasteddiamond)) {
+						dropDust(i, new ItemStack(Items.DIAMOND, BlastedStoneGemMultiplier));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedemerald)) {
+						dropDust(i, new ItemStack(Items.EMERALD, BlastedStoneGemMultiplier));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedlapis)) {
+						dropDust(i, new ItemStack(Items.DYE, BlastedStoneLapisMultiplier, EnumDyeColor.BLUE.getDyeDamage()));
+						return;
+					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedredstone)) {
+						dropDust(i, new ItemStack(Items.REDSTONE, BlastedStoneRedstoneMultiplier));
+						return;
+
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.IRON_ORE)) {
 						dropDust(i, new ItemStack(ModItems.irondust, VanillaOreMultiplier));
 						return;
@@ -164,6 +165,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 				}
 			}
 		}
+
 	}
 
 	/*

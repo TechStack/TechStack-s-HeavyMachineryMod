@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Random;
 
 import com.google.common.collect.Lists;
-import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
 import com.projectreddog.machinemod.init.ModBlocks;
 
 import net.minecraft.block.Block;
@@ -135,31 +134,33 @@ public class ModExplosion extends Explosion {
 				if (this.worldObj.getBlockState(bp).getBlock() == Blocks.STONE) {
 					// its stone so get variant
 					if (this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT) == BlockStone.EnumType.STONE) {
-						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.STONE));
+						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState());
 					} else if (this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT) == BlockStone.EnumType.GRANITE) {
-						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.GRANITE));
+						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedgranite.getDefaultState());
 					} else if (this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT) == BlockStone.EnumType.DIORITE) {
-						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.DIORITE));
+						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblasteddiorite.getDefaultState());
 					} else if (this.worldObj.getBlockState(bp).getValue(BlockStone.VARIANT) == BlockStone.EnumType.ANDESITE) {
-						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.ANDESITE));
+						this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedandesite.getDefaultState());
 					}
 				}
 				// not stone
 				else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.GOLD_ORE) {
-					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.GOLD));
+					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedgold.getDefaultState());
 				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.IRON_ORE) {
-					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.IRON));
+					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastediron.getDefaultState());
 				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.COAL_ORE) {
-					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.COAL));
+					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedcoal.getDefaultState());
 				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.LAPIS_ORE) {
-					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.LAPIS));
+					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedlapis.getDefaultState());
 				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.DIAMOND_ORE) {
-					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.DIAMOND));
+					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblasteddiamond.getDefaultState());
 				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.REDSTONE_ORE) {
-					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.REDSTONE));
+					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedredstone.getDefaultState());
 				} else if (this.worldObj.getBlockState(bp).getBlock() == Blocks.EMERALD_ORE) {
-					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedstone.getDefaultState().withProperty(BlockMachineModBlastedStone.PROPERTYORE, BlockMachineModBlastedStone.EnumVanillaOres.EMERALD));
-				} else if (this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2) {
+					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedemerald.getDefaultState());
+				} else if (this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedgranite || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblasteddiorite || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedandesite
+						|| this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedgold || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastediron || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedcoal || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedlapis
+						|| this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblasteddiamond || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedredstone || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedemerald || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2) {
 				} else {
 					// check for mod blocks here using ore dictionary & set it
 					// to ModBlocks.machinemodblastedstone2 ......
