@@ -7,4 +7,8 @@ public abstract class CommonProxy implements IProxy {
 	public void RegisterKeybinds() {
 
 	}
+
+	public void PreInit() {
+
+	}
 }

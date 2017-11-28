@@ -6,4 +6,6 @@ public interface IProxy {
 
 	void RegisterKeybinds();
 
+	void PreInit();
+
 }

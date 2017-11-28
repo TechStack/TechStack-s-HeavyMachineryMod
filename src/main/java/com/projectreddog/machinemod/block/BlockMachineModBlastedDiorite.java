@@ -4,13 +4,13 @@ import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.block.SoundType;
 
-public class BlockMachineModBlastedStone extends BlockMachineModBlastedStoneBase {
+public class BlockMachineModBlastedDiorite extends BlockMachineModBlastedStoneBase {
 
-	public BlockMachineModBlastedStone() {
+	public BlockMachineModBlastedDiorite() {
 		super();
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
-		this.setRegistryName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
+		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLASTED_DIORITE);
+		this.setRegistryName(Reference.MODBLOCK_MACHINE_BLASTED_DIORITE);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
