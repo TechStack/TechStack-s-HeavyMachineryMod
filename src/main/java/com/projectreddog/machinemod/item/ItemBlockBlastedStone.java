@@ -1,10 +1,7 @@
 package com.projectreddog.machinemod.item;
 
-import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 
 public class ItemBlockBlastedStone extends ItemBlock {
 
@@ -19,9 +16,4 @@ public class ItemBlockBlastedStone extends ItemBlock {
 		return metadata;
 	}
 
-	@Override
-	public String getUnlocalizedName(ItemStack stack) {
-		BlockMachineModBlastedStone.EnumVanillaOres ore = BlockMachineModBlastedStone.EnumVanillaOres.byMetadata(stack.getMetadata());
-		return super.getUnlocalizedName() + "." + ore.toString();
-	}
 }
