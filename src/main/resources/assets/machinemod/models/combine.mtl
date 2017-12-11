@@ -1,21 +1,115 @@
-# Blender MTL File: 'Combine.blend'
-# Material Count: 2
+# Exported from 3D Builder
 
-newmtl Material
-Ns 96.078431
-Ka 0.000000 0.000000 0.000000
-Kd 0.640000 0.640000 0.640000
-Ks 0.500000 0.500000 0.500000
-Ni 1.000000
-d 1.000000
-illum 2
-map_Kd combine.png
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
 
-newmtl None
-Ns 0
-Ka 0.000000 0.000000 0.000000
-Kd 0.8 0.8 0.8
-Ks 0.8 0.8 0.8
-d 1
-illum 2
-map_Kd combine.png
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl Black
+Kd 0.000000 0.000000 0.000000
+
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl dark_grey
+Kd 0.200000 0.200000 0.200000
+
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl Black
+Kd 0.000000 0.000000 0.000000
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000
+
+newmtl Black
+Kd 0.000000 0.000000 0.000000
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000
+
+newmtl Black
+Kd 0.000000 0.000000 0.000000
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000
+
+newmtl Black
+Kd 0.000000 0.000000 0.000000
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000
+
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl Black
+Kd 0.000000 0.000000 0.000000
+
+newmtl Black
+Kd 0.000000 0.000000 0.000000
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000
+
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000
+
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl dark_grey
+Kd 0.200000 0.200000 0.200000
+
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000
+
+newmtl Green
+Kd 0.129412 0.733333 0.298039
+
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000
+
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl jd_green
+Kd 0.000000 0.376471 0.062745
+
+newmtl Construction_Yellow
+Kd 0.839216 0.698039 0.000000

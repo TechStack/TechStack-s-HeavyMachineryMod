@@ -47,20 +47,20 @@ public class ModelSemiTractor extends ModelBase {
 
 		GL11.glTranslatef(0f, 0, 5.f);
 
-		this.renderGroupObject("SemiTractor_Object.30");
+		this.renderGroupObject("SemiTractor_Object.030");
 
 		EntitySemiTractor eDT = ((EntitySemiTractor) entity);
 		ItemStack is = eDT.inventory.getStackInSlot(0);
 		if (!is.isEmpty()) {
 
 			if (is.getItem() instanceof ItemSemiTrailerCargo) {
-				this.renderGroupObject("CargoTrailer_Object.75");
+				this.renderGroupObject("CargoTrailer_Object.075");
 			} else if (is.getItem() instanceof ItemSemiTrailerLivestock) {
-				this.renderGroupObject("CargoTrailer_Object.75");
+				this.renderGroupObject("Livestock_Object.55");
 			} else if (is.getItem() instanceof ItemSemiTrailerTanker) {
-				this.renderGroupObject("LiquidTanker_Object.58");
+				this.renderGroupObject("LiquidTanker_Object.101");
 			} else if (is.getItem() instanceof ItemSemiTrailerFlatBed) {
-				this.renderGroupObject("FlatBed_Object.15");
+				this.renderGroupObject("FlatBed_Object.015");
 
 				ItemStack is2 = eDT.inventory.getStackInSlot(1);
 				if (!is2.isEmpty() && is2.getItem() != null && is2.getItem() instanceof ItemTransportable) {
