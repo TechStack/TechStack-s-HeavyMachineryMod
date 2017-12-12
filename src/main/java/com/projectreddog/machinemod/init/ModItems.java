@@ -10,6 +10,7 @@ import com.projectreddog.machinemod.item.ItemBucketWheel;
 import com.projectreddog.machinemod.item.ItemCarbonDust;
 import com.projectreddog.machinemod.item.ItemConeCrusher;
 import com.projectreddog.machinemod.item.ItemCornSeed;
+import com.projectreddog.machinemod.item.ItemCreativeInstantBuild;
 import com.projectreddog.machinemod.item.ItemCutterBucket;
 import com.projectreddog.machinemod.item.ItemDrillHead;
 import com.projectreddog.machinemod.item.ItemDrillPipe;
@@ -111,6 +112,7 @@ public class ModItems {
 
 	public static final ItemMachineMod carbondust = new ItemCarbonDust();
 	public static final ItemMachineMod laser = new ItemLaser();
+	public static final ItemMachineMod creativeinstantbuild = new ItemCreativeInstantBuild();
 
 	public static final ItemMachineMod steeldust = new ItemSteelDust();
 	public static final ItemMachineMod steelingot = new ItemSteelIngot();
@@ -366,6 +368,8 @@ public class ModItems {
 
 		ForgeRegistries.ITEMS.register(carbondust);// , "carbondust");
 		ForgeRegistries.ITEMS.register(laser);
+		ForgeRegistries.ITEMS.register(creativeinstantbuild);
+
 		ForgeRegistries.ITEMS.register(steeldust);// , "steeldust");
 
 		ForgeRegistries.ITEMS.register(steelingot);// , "steelingot");
@@ -473,6 +477,8 @@ public class ModItems {
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(carbondust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "carbondust", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(laser, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "laser", "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(creativeinstantbuild, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "creativeinstantbuild", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(steeldust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "steeldust", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(steelingot, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "steelingot", "inventory"));

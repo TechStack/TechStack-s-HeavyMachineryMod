@@ -1,5 +1,9 @@
 package com.projectreddog.machinemod.item;
 
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -102,19 +106,46 @@ public class ItemLaser extends ItemMachineMod {
 		dx = maxX - minX;
 		dy = maxY - minY;
 		dz = maxZ - minZ;
+		DataOutputStream dos = null;
+		try {
+			String fileName = "TESTFILE";
+			FileOutputStream fos = new FileOutputStream(new File(fileName));
+			dos = new DataOutputStream(fos);
 
-		for (int i = minX; i <= maxX; i++) {
+			dos.writeInt(dx);
+			dos.writeInt(dy);
+			dos.writeInt(dz);
 			for (int j = minY; j <= maxY; j++) {
-				for (int k = minZ; k <= maxZ; k++) {
-					LogHelper.info(" The block at cords X,Y,Z:" + i + "," + j + "," + k + ", is a block named:" + world.getBlockState(new BlockPos(i, j, k)).getBlock().getRegistryName() + " " + world.getBlockState(new BlockPos(i, j, k)).getBlock().getMetaFromState(world.getBlockState(new BlockPos(i, j, k)).getBlock().getBlockState().getBaseState()));
-					LogHelper.info("Properties of this block are :");
-					for (IProperty p : world.getBlockState(new BlockPos(i, j, k)).getBlock().getBlockState().getProperties()) {
-						LogHelper.info("name : " + p.getName() + "  VALUE= " + world.getBlockState(new BlockPos(i, j, k)).getValue(p));
+				for (int i = minX; i <= maxX; i++) {
+					for (int k = minZ; k <= maxZ; k++) {
+						LogHelper.info(" The block at cords X,Y,Z:" + i + "," + j + "," + k + ", is a block named:" + world.getBlockState(new BlockPos(i, j, k)).getBlock().getRegistryName() + " " + world.getBlockState(new BlockPos(i, j, k)).getBlock().getMetaFromState(world.getBlockState(new BlockPos(i, j, k)).getBlock().getBlockState().getBaseState()));
+						LogHelper.info("Properties of this block are :");
+						// DEBUGGING line
+						dos.writeInt(i);
+						dos.writeInt(j);
+						dos.writeInt(k);
 
-						LogHelper.info(" I tried to find the block by name and found : " + ForgeRegistries.BLOCKS.getValue(world.getBlockState(new BlockPos(i, j, k)).getBlock().getRegistryName()).getRegistryName());
+						String BlockRegistryName = world.getBlockState(new BlockPos(i, j, k)).getBlock().getRegistryName().toString();
+						// DEBUGGING line
+						dos.writeUTF(BlockRegistryName);
+						// HOW MANY TO READ
+						dos.writeInt(world.getBlockState(new BlockPos(i, j, k)).getBlock().getBlockState().getProperties().size());
+
+						for (IProperty p : world.getBlockState(new BlockPos(i, j, k)).getBlock().getBlockState().getProperties()) {
+							LogHelper.info("name : " + p.getName() + "  VALUE= " + world.getBlockState(new BlockPos(i, j, k)).getValue(p));
+							LogHelper.info(" I tried to find the block by name and found : " + ForgeRegistries.BLOCKS.getValue(world.getBlockState(new BlockPos(i, j, k)).getBlock().getRegistryName()).getRegistryName());
+							String propertyName = p.getName();
+							String propertyValue = world.getBlockState(new BlockPos(i, j, k)).getValue(p).toString();
+							dos.writeUTF(propertyName);
+							dos.writeUTF(propertyValue);
+						}
 					}
 				}
 			}
+			dos.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+			result = false;
 		}
 
 		return result;
