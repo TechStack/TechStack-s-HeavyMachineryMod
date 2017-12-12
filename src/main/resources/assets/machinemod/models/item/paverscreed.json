@@ -1,5 +1,5 @@
 {
-      "parent": "machinemod:item/machinemod_item",
+"parent": "builtin/generated",
       "textures": {
         "layer0": "machinemod:items/paverscreed"
         }
