@@ -456,7 +456,7 @@ public class EntityMachineModRideable extends Entity {
 			this.onGround = true;
 		}
 		// TODO POSSIBLE BUGs ???? untested
-		move(MoverType.PISTON, motionX * 2, motionY * 2, motionZ * 2);
+		move(MoverType.SELF, motionX * 2, motionY * 2, motionZ * 2);
 		// LogHelper.info(world.isRemote + "Post Block @ entity :" + this.getName() + " : " + world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() + " GEN COL: " + this.collided + " horiz COL: " + this.collidedHorizontally + "vert COL: " + this.collidedVertically);
 
 		//
@@ -586,7 +586,7 @@ public class EntityMachineModRideable extends Entity {
 			isFristTick = false;
 		}
 		if (clientTicksSinceLastServerPulse > Reference.clientRemoveInactiveEntityTimer) {
-			this.setDead();
+			// this.setDead();
 			// this.world.removeEntity(this);
 			// this.world.getChunkFromChunkCoords(this.chunkCoordX, this.chunkCoordZ).removeEntity(this);
 			// this.addedToChunk = true;
