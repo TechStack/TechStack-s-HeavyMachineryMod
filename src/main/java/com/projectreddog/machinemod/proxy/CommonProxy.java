@@ -11,4 +11,8 @@ public abstract class CommonProxy implements IProxy {
 	public void PreInit() {
 
 	}
+
+	public void Init() {
+
+	}
 }
