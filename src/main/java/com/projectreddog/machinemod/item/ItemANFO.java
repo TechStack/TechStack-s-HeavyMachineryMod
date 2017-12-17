@@ -29,6 +29,8 @@ public class ItemANFO extends ItemMachineMod {
 		ItemStack stack = player.getHeldItem(hand);
 		boolean result = false;
 
+		final int MARK_BLOCKS_FOR_UPDATE_FLAG = 2;
+		final int NOTIFY_NEIGHBOURS_FLAG = 1;
 		if (world.getBlockState(pos).getBlock() == ModBlocks.machinedrilledstone || world.getBlockState(pos).getBlock() == ModBlocks.machinedrilledandesite || world.getBlockState(pos).getBlock() == ModBlocks.machinedrilleddiorite || world.getBlockState(pos).getBlock() == ModBlocks.machinedrilledgranite) {
 
 			EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineDrilledStone.FACING);
@@ -41,7 +43,7 @@ public class ItemANFO extends ItemMachineMod {
 					}
 				}
 				if (bottom != null) {
-					world.setBlockState(bottom, ModBlocks.machineexplosivepackeddrilledstone.getDefaultState(), 11);
+					world.setBlockState(bottom, ModBlocks.machineexplosivepackeddrilledstone.getDefaultState(), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
 					result = true;
 				}
 			} else if (ef == EnumFacing.EAST || ef == EnumFacing.WEST || ef == EnumFacing.NORTH || ef == EnumFacing.SOUTH) {
@@ -54,7 +56,7 @@ public class ItemANFO extends ItemMachineMod {
 					}
 				}
 				if (bottom != null) {
-					world.setBlockState(bottom, ModBlocks.machineexplosivepackeddrilledstone.getDefaultState(), 11);
+					world.setBlockState(bottom, ModBlocks.machineexplosivepackeddrilledstone.getDefaultState(), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
 					result = true;
 				}
 			}
