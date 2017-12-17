@@ -56,6 +56,7 @@ public class MachineMod {
 
 		proxy.registerRenderers();
 		proxy.RegisterKeybinds();
+		proxy.Init();
 	}
 
 	@Mod.EventHandler

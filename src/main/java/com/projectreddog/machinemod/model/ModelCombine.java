@@ -39,15 +39,25 @@ public class ModelCombine extends ModelBase {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		// renderGroupObject(MachineModModelHelper.ALL_PARTS);
 
-		renderGroupObject("Body_Cube");
-		GL11.glTranslatef(0f, -.6f, -2f);
+		renderGroupObject("FrontWheel.R_Cylinder.003");
+		renderGroupObject("FrontWheel.L_Cylinder.002");
+		renderGroupObject("RearWheel.R_Cylinder.001");
+		renderGroupObject("RearWheel.L_Cylinder");
+		renderGroupObject("Body_Object.7");
+
+		renderGroupObject("Boom_Object.1");
+
+		renderGroupObject("CornHead_Object.28");
+		GL11.glTranslatef(0f, -1.02f, -4.3f);
 
 		if (entity instanceof EntityCombine) {
 			EntityCombine ec = (EntityCombine) entity;
 			GL11.glRotatef(ec.Attribute2, 1, 0, 0);
 		}
 
-		renderGroupObject("Cylinder");
+		renderGroupObject("CornAuger_Plane.001");
+
+		// renderGroupObject("Cylinder");
 
 	}
 

@@ -343,6 +343,7 @@ public class EntityMachineModRideable extends Entity {
 		if (posY < 0) {
 			this.setDead();
 		}
+		// LogHelper.info(world.isRemote + " Pre -Block @ entity :" + this.getName() + " : " + world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() + " GEN COL: " + this.collided + " horiz COL: " + this.collidedHorizontally + "vert COL: " + this.collidedVertically);
 
 		if (world.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))) || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.WATER
 				|| world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.LAVA || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() == Blocks.SNOW_LAYER
@@ -350,7 +351,6 @@ public class EntityMachineModRideable extends Entity {
 				|| world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))).isReplaceable()) {
 			// in air block so fall i'll actually park the entity inside the
 			// block below just a little bit.
-
 			if (willSink) {
 				this.motionY -= 0.03999999910593033D;
 			} else {
@@ -456,7 +456,9 @@ public class EntityMachineModRideable extends Entity {
 			this.onGround = true;
 		}
 		// TODO POSSIBLE BUGs ???? untested
-		move(MoverType.PISTON, motionX * 2, motionY * 2, motionZ * 2);
+		move(MoverType.SELF, motionX * 2, motionY * 2, motionZ * 2);
+		// LogHelper.info(world.isRemote + "Post Block @ entity :" + this.getName() + " : " + world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() + " GEN COL: " + this.collided + " horiz COL: " + this.collidedHorizontally + "vert COL: " + this.collidedVertically);
+
 		//
 		// if (lastPosX != posX || lastPosY != posY || lastPosZ != posZ ||
 		// lastAttribute1 != Attribute1 || sendInterval > 9) {
@@ -584,7 +586,7 @@ public class EntityMachineModRideable extends Entity {
 			isFristTick = false;
 		}
 		if (clientTicksSinceLastServerPulse > Reference.clientRemoveInactiveEntityTimer) {
-			this.setDead();
+			// this.setDead();
 			// this.world.removeEntity(this);
 			// this.world.getChunkFromChunkCoords(this.chunkCoordX, this.chunkCoordZ).removeEntity(this);
 			// this.addedToChunk = true;

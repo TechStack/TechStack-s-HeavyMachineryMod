@@ -6,10 +6,13 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.item.machines.ItemTransportable;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
+import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerLivestock;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerTanker;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -29,9 +32,11 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 	public final int maxOilStorage = 100000; // store up to 100k
 	protected FluidStack fluid = new FluidStack(ModBlocks.fluidOil, 0);
 
+	public EntityLiving CarriedEntities[];
+
 	public EntitySemiTractor(World world) {
 		super(world);
-
+		CarriedEntities = new EntityLiving[10];
 		setSize(3, 4);
 		SIZE = 9;
 		inventory = new ItemStackHandler(SIZE);
@@ -91,13 +96,32 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 							this.inventory.extractItem(1, 1, false);
 						}
 					}
+				} else if (this.inventory.getStackInSlot(0).getItem() instanceof ItemSemiTrailerLivestock) {
+					if (this.Attribute1 > 9) {
+
+						for (int j = CarriedEntities.length - 1; j >= 0; j--) {
+							if (CarriedEntities[j] != null) {
+
+								// TODO set other attributes of the entity !!
+								// EntityCow temp = (EntityCow) CarriedEntities[j];
+								EntityCow temp = new EntityCow(world);
+								temp.setHealth(CarriedEntities[j].getHealth());
+								temp.setPosition(calcTwoOffsetX(bedRampBackOffset + -3, 90, -1) + posX - .5d, posY, calcTwoOffsetZ(bedRampBackOffset + -3, 90, -1) + posZ - .5d);
+								world.spawnEntity(temp);
+								CarriedEntities[j] = null;
+								return;
+							}
+						}
+					}
 				}
+
 			}
 			if (fluid != null && fluid.amount > 0) {
 
 				// LogHelper.info(fluid.amount);
 			}
 		}
+
 	}
 
 	public AxisAlignedBB getBoundingBox() {
@@ -122,6 +146,22 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 										// TODO way to store the contents of the machine's FUel level
 
 									}
+								}
+							}
+						}
+					}
+				}
+			} else if (inventory.getStackInSlot(0).getItem() instanceof ItemSemiTrailerLivestock) {
+				for (int i = 0; i < par1List.size(); ++i) {
+					Entity entity = (Entity) par1List.get(i);
+					if (entity != null) {
+						if (entity instanceof EntityCow) {
+							for (int j = 0; j < CarriedEntities.length; j++) {
+								if (CarriedEntities[j] == null) {
+									CarriedEntities[j] = (EntityCow) entity;
+									CarriedEntities[j].setHealth(((EntityCow) entity).getHealth());
+									entity.setDead();
+									return;
 								}
 							}
 						}

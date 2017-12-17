@@ -22,14 +22,14 @@ public class EntityCombine extends EntityMachineModRideable {
 	public EntityCombine(World world) {
 		super(world);
 
-		setSize(2.8f, 2.5f);
+		setSize(3.75f, 4f);
 		SIZE = 9;
 		inventory = new ItemStackHandler(SIZE);
 		// inventory = new ItemStack[9];
 
-		this.mountedOffsetY = 0.6D;
-		this.mountedOffsetX = 0.4D;
-		this.mountedOffsetZ = 0.4D;
+		this.mountedOffsetY = .7D;
+		this.mountedOffsetX = 2.8D;
+		this.mountedOffsetZ = 2.8D;
 		this.maxAngle = 0;
 		this.minAngle = 0;
 		this.droppedItem = ModItems.combine;
@@ -39,24 +39,25 @@ public class EntityCombine extends EntityMachineModRideable {
 
 	@Override
 	public void onUpdate() {
+		float forwardOffset = 4.5f;
 		super.onUpdate();
 		if (!world.isRemote) {
 			// bucket Down
 			// break blocks first
 			int angle;
 			if (this.getControllingPassenger() != null) {
-				this.Attribute2++;
+				this.Attribute2 = Attribute2 + 5;
 			}
 			if (this.isPlayerPushingSprintButton) {
 				for (int j = 0; j < 2; j++) {
-					for (int i = -2; i < 3; i++) {
+					for (int i = -4; i < 5; i++) {
 						if (i == 0) {
 							angle = 0;
 						} else {
 							angle = 90;
 						}
 						BlockPos bp;
-						bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + j, posZ + calcTwoOffsetZ(3.5, angle, i));
+						bp = new BlockPos(posX + calcTwoOffsetX(forwardOffset, angle, i), posY + j, posZ + calcTwoOffsetZ(forwardOffset, angle, i));
 						if (world.getBlockState(bp).getBlock() instanceof IGrowable) {
 
 							IGrowable iGrowable = (IGrowable) world.getBlockState(bp).getBlock();
@@ -71,7 +72,7 @@ public class EntityCombine extends EntityMachineModRideable {
 					}
 				}
 
-				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(3.5, 90, -1) + posX - .5d, posY, calcTwoOffsetZ(3.5, 90, -1) + posZ - .5d, calcTwoOffsetX(3.5, 90, 1) + posX + .5d, posY + 1, calcTwoOffsetZ(3.5, 90, 1) + posZ + .5d);
+				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(forwardOffset, 90, -4) + posX - .5d, posY, calcTwoOffsetZ(forwardOffset, 90, -4) + posZ - .5d, calcTwoOffsetX(forwardOffset, 90, 4) + posX + .5d, posY + 1, calcTwoOffsetZ(forwardOffset, 90, 4) + posZ + .5d);
 
 				List list = this.world.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
 				collidedEntitiesInList(list);
@@ -87,7 +88,7 @@ public class EntityCombine extends EntityMachineModRideable {
 					if (item != null && item.getCount() > 0) {
 						;
 
-						EntityItem entityItem = new EntityItem(world, posX + calcOffsetX(3.5), posY + 4, posZ + calcOffsetZ(3.5), item);
+						EntityItem entityItem = new EntityItem(world, posX + calcOffsetX(forwardOffset), posY + 4, posZ + calcOffsetZ(forwardOffset), item);
 
 						if (item.hasTagCompound()) {
 							entityItem.getItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
