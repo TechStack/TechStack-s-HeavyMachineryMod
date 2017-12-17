@@ -1,0 +1,21 @@
+{
+    "result": {
+        "item": "machinemod:livestocktrailer"
+    },
+    "pattern" :[
+	   "bbb",
+	   "bbb",
+	   " ww"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+        "b": {
+          "item":"minecraft:iron_bars"
+           
+      },
+          "w": {
+          "item":"machinemod:wheel"
+           
+      }
+    }
+}
