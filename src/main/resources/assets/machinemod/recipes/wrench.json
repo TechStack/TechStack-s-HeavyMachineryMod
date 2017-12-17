@@ -1,0 +1,19 @@
+{
+    "result": {
+        "item": "machinemod:wrench"
+    },
+    "pattern" :[
+     "i i", 
+     " i ", 
+     " i "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+          "type": "forge:ore_dict",
+           "ore": "ingotIron"   
+      
+      }
+      
+    }
+}

@@ -28,6 +28,7 @@ public class ItemANFO extends ItemMachineMod {
 		// public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
 		ItemStack stack = player.getHeldItem(hand);
 		boolean result = false;
+
 		if (world.getBlockState(pos).getBlock() == ModBlocks.machinedrilledstone || world.getBlockState(pos).getBlock() == ModBlocks.machinedrilledandesite || world.getBlockState(pos).getBlock() == ModBlocks.machinedrilleddiorite || world.getBlockState(pos).getBlock() == ModBlocks.machinedrilledgranite) {
 
 			EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineDrilledStone.FACING);
@@ -40,7 +41,7 @@ public class ItemANFO extends ItemMachineMod {
 					}
 				}
 				if (bottom != null) {
-					world.setBlockState(bottom, ModBlocks.machineexplosivepackeddrilledstone.getDefaultState());
+					world.setBlockState(bottom, ModBlocks.machineexplosivepackeddrilledstone.getDefaultState(), 11);
 					result = true;
 				}
 			} else if (ef == EnumFacing.EAST || ef == EnumFacing.WEST || ef == EnumFacing.NORTH || ef == EnumFacing.SOUTH) {
@@ -53,7 +54,7 @@ public class ItemANFO extends ItemMachineMod {
 					}
 				}
 				if (bottom != null) {
-					world.setBlockState(bottom, ModBlocks.machineexplosivepackeddrilledstone.getDefaultState());
+					world.setBlockState(bottom, ModBlocks.machineexplosivepackeddrilledstone.getDefaultState(), 11);
 					result = true;
 				}
 			}

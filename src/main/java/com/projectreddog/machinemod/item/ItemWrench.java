@@ -29,48 +29,57 @@ public class ItemWrench extends ItemMachineMod {
 		// public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
 		ItemStack stack = player.getActiveItemStack();
 		boolean result = false;
+		if (!world.isRemote)// / only run on server
+		{
+			if (world.getBlockState(pos).getBlock() == ModBlocks.machineconveyor) {
+				EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineModConveyor.FACING);
+				switch (ef) {
+				case NORTH:
+					world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.EAST));
+					result = true;
+					break;
+				case EAST:
+					world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.SOUTH));
+					result = true;
+					break;
+				case SOUTH:
+					world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.WEST));
+					result = true;
+					break;
+				case WEST:
+					world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.NORTH));
+					result = true;
+					break;
 
-		if (world.getBlockState(pos).getBlock() == ModBlocks.machineconveyor) {
-			EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineModConveyor.FACING);
-			switch (ef) {
-			case NORTH:
-				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.EAST), 3);
-				break;
-			case EAST:
-				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.SOUTH), 3);
-				break;
-			case SOUTH:
-				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.WEST), 3);
-				break;
-			case WEST:
-				world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.NORTH), 3);
-				break;
+				default:
+					break;
+				}
+			} else if (world.getBlockState(pos).getBlock() == ModBlocks.machinefractionaldistillation) {
+				EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineModFractionalDistillation.FACING);
+				switch (ef) {
+				case NORTH:
+					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.EAST));
+					result = true;
+					break;
+				case EAST:
+					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.SOUTH));
+					result = true;
+					break;
+				case SOUTH:
+					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.WEST));
+					result = true;
+					break;
+				case WEST:
+					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.NORTH));
+					result = true;
+					break;
 
-			default:
-				break;
+				default:
+					break;
+				}
+
 			}
-		} else if (world.getBlockState(pos).getBlock() == ModBlocks.machinefractionaldistillation) {
-			EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineModFractionalDistillation.FACING);
-			switch (ef) {
-			case NORTH:
-				world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.EAST), 3);
-				break;
-			case EAST:
-				world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.SOUTH), 3);
-				break;
-			case SOUTH:
-				world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.WEST), 3);
-				break;
-			case WEST:
-				world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.NORTH), 3);
-				break;
-
-			default:
-				break;
-			}
-
 		}
-
 		// else if (world.getBlockState(pos).getBlock() == ModBlocks.machinedistiller) {
 		// EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineModDistiller.FACING);
 		// switch (ef) {
