@@ -125,7 +125,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 		bp = new BlockPos(x, y - 1, z);
 		Block block = world.getBlockState(bp).getBlock();
 
-		if (block == Blocks.AIR || block == Blocks.FIRE || block == Blocks.WATER || block == Blocks.FLOWING_WATER)// test fall down this x
+		if (block == Blocks.AIR || block == Blocks.FIRE || block == Blocks.WATER || block == Blocks.FLOWING_WATER || block == Blocks.LAVA || block == Blocks.FLOWING_LAVA)// test fall down this x
 		// z
 		{
 
@@ -140,7 +140,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 					bp = new BlockPos(x + i, y, z + j);
 					block = world.getBlockState(bp).getBlock();
 
-					if (block == Blocks.AIR || block == Blocks.FIRE || block == Blocks.WATER || block == Blocks.FLOWING_WATER)// test fall
+					if (block == Blocks.AIR || block == Blocks.FIRE || block == Blocks.WATER || block == Blocks.FLOWING_WATER || block == Blocks.LAVA || block == Blocks.FLOWING_LAVA)// test fall
 					// down this
 					// x+1 z
 					{
@@ -148,7 +148,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 						bp = new BlockPos(x + i, y - 1, z + j);
 						block2 = world.getBlockState(bp).getBlock();
 
-						if (block2 == Blocks.AIR || block2 == Blocks.FIRE || block2 == Blocks.WATER || block2 == Blocks.FLOWING_WATER) {
+						if (block2 == Blocks.AIR || block2 == Blocks.FIRE || block2 == Blocks.WATER || block2 == Blocks.FLOWING_WATER || block2 == Blocks.LAVA || block2 == Blocks.FLOWING_LAVA) {
 
 							// this.motionX =i*1f;
 							// this.motionZ =j*1f;
