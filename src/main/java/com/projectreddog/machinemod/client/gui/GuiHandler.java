@@ -12,6 +12,7 @@ import com.projectreddog.machinemod.container.ContainerFractionalDistiller;
 import com.projectreddog.machinemod.container.ContainerGrader;
 import com.projectreddog.machinemod.container.ContainerLoader;
 import com.projectreddog.machinemod.container.ContainerPaver;
+import com.projectreddog.machinemod.container.ContainerPrimaryCrusher;
 import com.projectreddog.machinemod.container.ContainerScreen;
 import com.projectreddog.machinemod.container.ContainerTractor;
 import com.projectreddog.machinemod.container.ContainerWideBedTruck;
@@ -30,6 +31,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
+import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 import com.projectreddog.machinemod.tileentities.TileEntityScreen;
 
 import net.minecraft.entity.Entity;
@@ -185,6 +187,15 @@ public class GuiHandler implements IGuiHandler {
 					return new ContainerExcavator(player.inventory, (EntityExcavator) entity);
 				}
 			}
+		} else if (id == Reference.GUI_PRIMARY_CRUSHER) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityPrimaryCrusher) {
+
+					return new ContainerPrimaryCrusher(player.inventory, (TileEntityPrimaryCrusher) entity);
+				}
+			}
 		}
 
 		return null;
@@ -318,6 +329,14 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null) {
 				if (entity instanceof EntityExcavator) {
 					return new GuiExcavator(player.inventory, (EntityExcavator) entity);
+				}
+			}
+		} else if (id == Reference.GUI_PRIMARY_CRUSHER) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityPrimaryCrusher) {
+					return new GuiPrimaryCrusher(player.inventory, (TileEntityPrimaryCrusher) entity);
 				}
 			}
 		}
