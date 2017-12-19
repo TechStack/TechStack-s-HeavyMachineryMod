@@ -368,9 +368,10 @@ public class EntityMachineModRideable extends Entity {
 		{
 
 			this.motionY = 0;
-			this.posY = (int) this.posY + 1;
+			this.posY = ((int) (this.posY + 1));
+			this.onGround = true;
 			if (this.world.getBlockState(new BlockPos(this.posX, this.posY - 1, this.posZ)).getBlock() == Blocks.FARMLAND || this.world.getBlockState(new BlockPos(this.posX, this.posY - 1, this.posZ)).getBlock() == Blocks.SOUL_SAND) {
-				this.onGround = true;
+
 			}
 		}
 
