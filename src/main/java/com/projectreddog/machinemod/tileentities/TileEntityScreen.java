@@ -24,7 +24,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 
 	public final int inventorySize = 5;
 	public AxisAlignedBB boundingBox;
-	public int coolDownAmount = 5;
+	public int coolDownAmount = 1;
 	public int timeTillCoolDown = 0;
 
 	// slot 0 = north
@@ -81,14 +81,14 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 
 					ItemStack tmpstack = getStackInSlot(4).copy();
 					if (tmpstack.getCount() > 1) {
-						tmpstack.setCount(1);
+						tmpstack.setCount(tmpstack.getCount());
 					}
 					EntityItem ei = new EntityItem(world, x, y, z, tmpstack);
 					ei.motionX = 0;
 					ei.motionY = 0;
 					ei.motionZ = 0;
 					if (world.spawnEntity(ei)) {
-						decrStackSize(4, 1);
+						decrStackSize(4, tmpstack.getCount());
 						return;
 					}
 
@@ -116,7 +116,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 				}
 				ItemStack tmpstack = getStackInSlot(4).copy();
 				if (tmpstack.getCount() > 1) {
-					tmpstack.setCount(1);
+					tmpstack.setCount(tmpstack.getCount());
 				}
 				EntityItem ei = new EntityItem(world, x, y, z, tmpstack);
 				ei.motionX = 0;
@@ -124,7 +124,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 				ei.motionZ = 0;
 
 				if (world.spawnEntity(ei)) {
-					decrStackSize(4, 1);
+					decrStackSize(4, tmpstack.getCount());
 					return;
 				}
 
