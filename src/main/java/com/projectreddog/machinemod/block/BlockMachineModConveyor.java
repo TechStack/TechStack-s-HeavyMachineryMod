@@ -136,6 +136,7 @@ public class BlockMachineModConveyor extends BlockContainer {
 	}
 
 	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, new IProperty[] { FACING, POWERED });
 	}
 
 	@SideOnly(Side.CLIENT)
