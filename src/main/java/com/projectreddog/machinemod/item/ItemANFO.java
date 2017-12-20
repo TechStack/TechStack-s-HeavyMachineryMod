@@ -3,6 +3,7 @@ package com.projectreddog.machinemod.item;
 import com.projectreddog.machinemod.block.BlockMachineDrilledStone;
 import com.projectreddog.machinemod.init.ModBlocks;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -44,6 +45,8 @@ public class ItemANFO extends ItemMachineMod {
 				}
 				if (bottom != null) {
 					world.setBlockState(bottom, ModBlocks.machineexplosivepackeddrilledstone.getDefaultState(), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					IBlockState state = world.getBlockState(bottom);
+					world.notifyBlockUpdate(bottom, state, state, 3);
 					result = true;
 				}
 			} else if (ef == EnumFacing.EAST || ef == EnumFacing.WEST || ef == EnumFacing.NORTH || ef == EnumFacing.SOUTH) {
@@ -57,6 +60,8 @@ public class ItemANFO extends ItemMachineMod {
 				}
 				if (bottom != null) {
 					world.setBlockState(bottom, ModBlocks.machineexplosivepackeddrilledstone.getDefaultState(), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					IBlockState state = world.getBlockState(bottom);
+					world.notifyBlockUpdate(bottom, state, state, 3);
 					result = true;
 				}
 			}
