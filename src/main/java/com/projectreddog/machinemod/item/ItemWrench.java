@@ -4,6 +4,7 @@ import com.projectreddog.machinemod.block.BlockMachineModConveyor;
 import com.projectreddog.machinemod.block.BlockMachineModFractionalDistillation;
 import com.projectreddog.machinemod.init.ModBlocks;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -40,18 +41,26 @@ public class ItemWrench extends ItemMachineMod {
 				switch (ef) {
 				case NORTH:
 					world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.EAST), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					IBlockState state = world.getBlockState(pos);
+					world.notifyBlockUpdate(pos, state, state, 3);
 					result = true;
 					break;
 				case EAST:
 					world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.SOUTH), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					state = world.getBlockState(pos);
+					world.notifyBlockUpdate(pos, state, state, 3);
 					result = true;
 					break;
 				case SOUTH:
 					world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.WEST), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					state = world.getBlockState(pos);
+					world.notifyBlockUpdate(pos, state, state, 3);
 					result = true;
 					break;
 				case WEST:
 					world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.NORTH), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					state = world.getBlockState(pos);
+					world.notifyBlockUpdate(pos, state, state, 3);
 					result = true;
 					break;
 
@@ -63,18 +72,26 @@ public class ItemWrench extends ItemMachineMod {
 				switch (ef) {
 				case NORTH:
 					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.EAST), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					IBlockState state = world.getBlockState(pos);
+					world.notifyBlockUpdate(pos, state, state, 3);
 					result = true;
 					break;
 				case EAST:
 					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.SOUTH), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					state = world.getBlockState(pos);
+					world.notifyBlockUpdate(pos, state, state, 3);
 					result = true;
 					break;
 				case SOUTH:
 					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.WEST), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					state = world.getBlockState(pos);
+					world.notifyBlockUpdate(pos, state, state, 3);
 					result = true;
 					break;
 				case WEST:
 					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.NORTH), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					state = world.getBlockState(pos);
+					world.notifyBlockUpdate(pos, state, state, 3);
 					result = true;
 					break;
 
