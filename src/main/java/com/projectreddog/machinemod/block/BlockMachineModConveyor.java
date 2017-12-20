@@ -8,6 +8,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -18,12 +19,14 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockMachineModConveyor extends BlockContainer {
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+	public static final PropertyBool POWERED = PropertyBool.create("powered");
 
 	protected BlockMachineModConveyor(Material material) {
 		super(material);
@@ -41,6 +44,16 @@ public class BlockMachineModConveyor extends BlockContainer {
 		this.setSoundType(SoundType.METAL);
 		this.setHardness(1.5f);
 
+	}
+
+	@Override
+	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
+		TileEntity te = world.getTileEntity(pos);
+		boolean powered = false;
+		if (te instanceof TileEntityConveyor) {
+			powered = ((TileEntityConveyor) te).getPowered();
+		}
+		return state.withProperty(POWERED, powered);
 	}
 
 	public BlockMachineModConveyor() {
@@ -123,7 +136,7 @@ public class BlockMachineModConveyor extends BlockContainer {
 	}
 
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { FACING });
+		return new BlockStateContainer(this, new IProperty[] { FACING, POWERED });
 	}
 
 	@SideOnly(Side.CLIENT)
