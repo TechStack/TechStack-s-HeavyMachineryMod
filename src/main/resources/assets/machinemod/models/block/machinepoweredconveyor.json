@@ -1,0 +1,10 @@
+{
+    "parent": "machinemod:block/direction",
+    "textures": {
+        "top": "machinemod:blocks/machinepoweredconveyor",
+        "front": "machinemod:blocks/machinepoweredconveyor" ,
+        "side": "machinemod:blocks/machineconveyor_side",
+        "back": "machinemod:blocks/machinepoweredconveyor"
+        
+    }
+}
