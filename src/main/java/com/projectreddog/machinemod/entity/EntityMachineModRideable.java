@@ -823,7 +823,8 @@ public class EntityMachineModRideable extends Entity {
 	public void toppleTree(BlockPos bp, int depth, int widthDepth, Block previousBlock) {
 		if (depth < Reference.MAX_TREE_DEPTH) {
 			if (widthDepth < Reference.MAX_TREE_WIDTH) {
-				if (world.getBlockState(bp).getBlock() == Blocks.LOG || world.getBlockState(bp).getBlock() == Blocks.LOG2 || world.getBlockState(bp).getBlock() == Blocks.LEAVES || world.getBlockState(bp).getBlock() == Blocks.LEAVES2 || world.getBlockState(bp).getBlock().isWood(world, bp) || world.getBlockState(bp).getBlock().isLeaves(world.getBlockState(bp), world, bp)) {
+				if (world.getBlockState(bp).getBlock() == Blocks.LOG || world.getBlockState(bp).getBlock() == Blocks.LOG2 || world.getBlockState(bp).getBlock() == Blocks.LEAVES || world.getBlockState(bp).getBlock() == Blocks.LEAVES2 || world.getBlockState(bp).getBlock() == Blocks.BROWN_MUSHROOM_BLOCK || world.getBlockState(bp).getBlock() == Blocks.RED_MUSHROOM_BLOCK
+						|| world.getBlockState(bp).getBlock().isWood(world, bp) || world.getBlockState(bp).getBlock().isLeaves(world.getBlockState(bp), world, bp)) {
 
 					previousBlock = world.getBlockState(bp).getBlock();
 					BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
