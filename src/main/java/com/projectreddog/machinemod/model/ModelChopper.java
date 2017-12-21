@@ -53,6 +53,8 @@ public class ModelChopper extends ModelTransportable {
 		// renderGroupObject("Cylinder");
 		GL11.glTranslatef(f, f1, f2);
 
+		GL11.glTranslatef(0f, 0f, 1f);
+
 		if (entity instanceof EntityChopper) {
 			EntityChopper ec = (EntityChopper) entity;
 			double dx = ec.motionX;
