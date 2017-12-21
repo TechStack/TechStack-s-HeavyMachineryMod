@@ -53,6 +53,8 @@ public class ModelChopper extends ModelTransportable {
 		// renderGroupObject("Cylinder");
 		GL11.glTranslatef(f, f1, f2);
 
+		GL11.glTranslatef(0f, 0f, 1f);
+
 		if (entity instanceof EntityChopper) {
 			EntityChopper ec = (EntityChopper) entity;
 			double dx = ec.motionX;
@@ -70,26 +72,26 @@ public class ModelChopper extends ModelTransportable {
 			// GL11.glRotatef(90f, 0, 0, 1);
 			// }
 		}
-		renderGroupObject("Body_Cube");
+		renderGroupObject("CopperBody_Object.19");
 
 		if (entity instanceof EntityChopper) {
 			EntityChopper ec = (EntityChopper) entity;
 			GL11.glRotatef(ec.Attribute2 * rotorMult, 0, 1, 0);
-			renderGroupObject("MainRotor_Cube.001");
+			renderGroupObject("RotorBlade_Object.1");
 			GL11.glRotatef(ec.Attribute2 * -rotorMult, 0, 1, 0);
 
-			GL11.glTranslatef(0f, -1.6f, 4.5f);
+			GL11.glTranslatef(-.15f, -3.45f, 6.85f);
 
 			GL11.glRotatef(ec.Attribute2 * rotorMult, 1, 0, 0);
-			renderGroupObject("TailRotor_Cube.003");
+			renderGroupObject("RotorBladeTail_Object.25");
 		} else {
-			renderGroupObject("MainRotor_Cube.001");
+			renderGroupObject("RotorBlade_Object.11");
 
 			GL11.glTranslatef(0f, -1.6f, 4.5f);
 
-			renderGroupObject("TailRotor_Cube.003");
+			renderGroupObject("RotorBladeTail_Object.25");
 		}
-		renderGroupObject("Cylinder");
+		// renderGroupObject("Cylinder");
 
 	}
 
