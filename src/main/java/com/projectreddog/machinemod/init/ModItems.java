@@ -43,6 +43,7 @@ import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlante
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlow;
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentSprayer;
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentTrencher;
+import com.projectreddog.machinemod.item.chopperattachments.ItemChopperAttachmentSawBlades;
 import com.projectreddog.machinemod.item.components.ItemCamshaft;
 import com.projectreddog.machinemod.item.components.ItemDozerBlade;
 import com.projectreddog.machinemod.item.components.ItemDumperBed;
@@ -184,6 +185,8 @@ public class ModItems {
 	public static final ItemMachineMod livestocktrailer = new ItemSemiTrailerLivestock();
 	public static final ItemMachineMod tankertrailer = new ItemSemiTrailerTanker();
 	public static final ItemMachineMod cargotrailer = new ItemSemiTrailerCargo();
+
+	public static final ItemMachineMod choppersawblades = new ItemChopperAttachmentSawBlades();
 
 	public static final ItemMachineMod dozerblade = new ItemDozerBlade();
 	public static final ItemMachineMod tracks = new ItemTracks();
@@ -349,6 +352,8 @@ public class ModItems {
 		ForgeRegistries.ITEMS.register(livestocktrailer);// , "livestocktrailer");
 		ForgeRegistries.ITEMS.register(tankertrailer);// , "tankertrailer");
 		ForgeRegistries.ITEMS.register(cargotrailer);// , "cargotrailer");
+
+		ForgeRegistries.ITEMS.register(choppersawblades);
 
 		ForgeRegistries.ITEMS.register(dozerblade);// , "dozerblade");
 		ForgeRegistries.ITEMS.register(tracks);// , "tracks");
@@ -534,6 +539,7 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(livestocktrailer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "livestocktrailer", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tankertrailer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tankertrailer", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(cargotrailer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "cargotrailer", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(choppersawblades, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "choppersawblades", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(dozerblade, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "dozerblade", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tracks, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tracks", "inventory"));
