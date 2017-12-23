@@ -72,6 +72,7 @@ import com.projectreddog.machinemod.item.machines.ItemDrillingRig;
 import com.projectreddog.machinemod.item.machines.ItemDumpTruck;
 import com.projectreddog.machinemod.item.machines.ItemExcavator;
 import com.projectreddog.machinemod.item.machines.ItemGrader;
+import com.projectreddog.machinemod.item.machines.ItemLaserMiner;
 import com.projectreddog.machinemod.item.machines.ItemLawnmower;
 import com.projectreddog.machinemod.item.machines.ItemLoader;
 import com.projectreddog.machinemod.item.machines.ItemOilRig;
@@ -149,6 +150,8 @@ public class ModItems {
 	public static final ItemMachineMod drillingrig = new ItemDrillingRig();
 	public static final ItemMachineMod dumptruck = new ItemDumpTruck();
 	public static final ItemMachineMod loader = new ItemLoader();
+	public static final ItemMachineMod laserminer = new ItemLaserMiner();
+
 	public static final ItemMachineMod grader = new ItemGrader();
 
 	public static final ItemMachineMod combine = new ItemCombine();
@@ -251,7 +254,10 @@ public class ModItems {
 			ForgeRegistries.ITEMS.register(loader);// , "loader");
 
 		}
+		if (Reference.enableLaserMiner) {
+			ForgeRegistries.ITEMS.register(laserminer);
 
+		}
 		if (Reference.enableOilRig) {
 			ForgeRegistries.ITEMS.register(oilrig);// , "oilrig");
 
@@ -435,6 +441,11 @@ public class ModItems {
 		}
 		if (Reference.enableLoader) {
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(loader, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "loader", "inventory"));
+
+		}
+
+		if (Reference.enableLaserMiner) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(laserminer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "laserminer", "inventory"));
 
 		}
 

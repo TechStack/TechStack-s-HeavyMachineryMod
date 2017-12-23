@@ -49,6 +49,9 @@ public class Reference {
 	public static final String MODEL_ROADROLLER_TEXTURE_LOCATION = "models/steamroller.png";
 
 	public static final String MODEL_CRANE_TEXTURE_LOCATION = "models/crane.png";
+	public static final String MODEL_BEAM_TEXTURE_LOCATION = "models/beam.png";
+	public static final String MODEL_LASER_MINER_TEXTURE_LOCATION = "models/laserminer.png";
+
 	public static final String MODEL_EXCAVATOR_TEXTURE_LOCATION = "models/excavator.png";
 
 	public static final String GUI_FUEL_GUAGE_TEXTURE_LOCATION = "textures/gui/gui_overlay_fuel_gage.png";
@@ -146,6 +149,8 @@ public class Reference {
 	public static boolean enableGrader = true;
 	public static boolean enableLawnmower = true;
 	public static boolean enableLoader = true;
+	public static boolean enableLaserMiner = true;
+
 	public static boolean enableOilRig = true;
 	public static boolean enablePaver = true;
 	public static boolean enablePumpJack = true;
