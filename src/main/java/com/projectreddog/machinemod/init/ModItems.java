@@ -11,6 +11,7 @@ import com.projectreddog.machinemod.item.ItemCarbonDust;
 import com.projectreddog.machinemod.item.ItemConeCrusher;
 import com.projectreddog.machinemod.item.ItemCornSeed;
 import com.projectreddog.machinemod.item.ItemCutterBucket;
+import com.projectreddog.machinemod.item.ItemDebug;
 import com.projectreddog.machinemod.item.ItemDrillHead;
 import com.projectreddog.machinemod.item.ItemDrillPipe;
 import com.projectreddog.machinemod.item.ItemFuelCan;
@@ -144,6 +145,8 @@ public class ModItems {
 	public static final ItemMachineMod conecrusher = new ItemConeCrusher();
 	public static final ItemMachineMod lidwithspout = new ItemLidWithSpout();
 	public static final ItemMachineMod handdrill = new ItemHandDrill();
+
+	public static final ItemMachineMod debug = new ItemDebug();
 
 	public static final ItemMachineMod boomarmsegment = new ItemBoomArmSegment();
 
@@ -330,6 +333,8 @@ public class ModItems {
 
 		ForgeRegistries.ITEMS.register(lidwithspout);// , "lidwithspout");
 		ForgeRegistries.ITEMS.register(handdrill);// , "handdrill");
+		ForgeRegistries.ITEMS.register(debug);
+
 		ForgeRegistries.ITEMS.register(anfo);// , "anfo");
 
 		ForgeRegistries.ITEMS.register(cornseed);// , "cornseed");
@@ -535,6 +540,8 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(conecrusher, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "conecrusher", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(hose, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "hose", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(handdrill, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "handdrill", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(debug, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "debug", "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(mowerdeck, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "mowerdeck", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(boomarmsegment, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "boomarmsegment", "inventory"));

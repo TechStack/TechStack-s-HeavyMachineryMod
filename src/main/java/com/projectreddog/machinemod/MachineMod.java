@@ -4,6 +4,7 @@ import com.projectreddog.machinemod.client.handler.InputEventHandler;
 import com.projectreddog.machinemod.handler.ConfigurationHandler;
 import com.projectreddog.machinemod.handler.events.EventHandler;
 import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.init.ModDimensions;
 import com.projectreddog.machinemod.init.ModEntities;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.init.ModNetwork;
@@ -38,6 +39,8 @@ public class MachineMod {
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 		FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
 		ModBlocks.init();
+
+		ModDimensions.init();
 
 		ModItems.init();
 		ModNetwork.init();
