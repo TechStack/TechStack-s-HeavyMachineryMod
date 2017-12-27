@@ -19,8 +19,11 @@ import com.projectreddog.machinemod.entity.EntityRoadRoller;
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.entity.EntitySub;
 import com.projectreddog.machinemod.entity.EntityTractor;
+import com.projectreddog.machinemod.entity.monster.EntityExpStalker;
 import com.projectreddog.machinemod.reference.Reference;
 
+import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -54,6 +57,11 @@ public class ModEntities {
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "sub"), EntitySub.class, "sub", ++entityID, mod, 224, 1, false);
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "chopper"), EntityChopper.class, "chopper", ++entityID, mod, 224, 1, false);
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "laserminer"), EntityLaserMiner.class, "laserminer", ++entityID, mod, 224, 1, false);
+
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "expstalker"), EntityExpStalker.class, "expstalker", ++entityID, mod, 224, 1, false, 0xFFFFFF, 0x000050);
+
+		//
+		EntityRegistry.addSpawn(EntityExpStalker.class, 100, 3, 5, EnumCreatureType.MONSTER, Biomes.PLAINS);
 
 		// EntityRegistry.registerModEntity(EntityPumpJack.class, "pumpjack", ++entityID, mod, 224, 1, false);
 
