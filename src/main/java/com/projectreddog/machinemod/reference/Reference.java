@@ -93,6 +93,7 @@ public class Reference {
 
 	public static final String MODBLOCK_MACHINE_DRILLED_STONE = "machinedrilledstone";
 	public static final String MODBLOCK_MACHINE_LIQUID_PIPE = "machineliquidpipe";
+	public static final String MODBLOCK_MACHINE_LAUNCHER = "machinelauncher";
 
 	public static final String MODBLOCK_MACHINE_DRILLED_ANDESITE = "machinedrilledandesite";
 	public static final String MODBLOCK_MACHINE_DRILLED_DIORITE = "machinedrilleddiorite";
