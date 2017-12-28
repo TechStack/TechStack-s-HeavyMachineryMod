@@ -9,6 +9,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -20,6 +21,8 @@ public class EntityElytraJet extends Entity {
 	private EntityLivingBase boostedEntity;
 	private boolean boostActive;
 	private double boostAmt = 2.5d;
+
+	private float timealive;
 
 	public EntityElytraJet(World worldIn) {
 		super(worldIn);
@@ -33,91 +36,122 @@ public class EntityElytraJet extends Entity {
 		this.boostedEntity = boostedEntity;
 	}
 
+	public int getBoostedEntity() {
+		if (this.boostedEntity == null) {
+
+			return this.dataManager.get(BOOSTED_ENTITY_ID);
+
+		} else {
+			return this.boostedEntity.getEntityId();
+		}
+
+	}
+
 	public void ActivateBoost() {
 		boostActive = true;
 	}
 
 	public void DeactivateBoost() {
 		boostActive = false;
+		this.setDead();
+	}
+
+	public boolean isBoostActive() {
+		return boostActive;
 	}
 
 	/**
 	 * Called to update the entity's position/logic.
 	 */
 	public void onUpdate() {
-		// if (boostActive) {
-		this.lastTickPosX = this.posX;
-		this.lastTickPosY = this.posY;
-		this.lastTickPosZ = this.posZ;
-		super.onUpdate();
-		LogHelper.info("elytraJet Active");
-		if (this.boostedEntity == null) {
-			LogHelper.info("Null bost entity");
-			Entity entity = this.world.getEntityByID(((Integer) this.dataManager.get(BOOSTED_ENTITY_ID)).intValue());
+		if (boostActive) {
+			timealive++;
+			this.lastTickPosX = this.posX;
+			this.lastTickPosY = this.posY;
+			this.lastTickPosZ = this.posZ;
+			super.onUpdate();
+			LogHelper.info("elytraJet Active");
+			if (this.boostedEntity == null) {
+				LogHelper.info("Null bost entity");
+				Entity entity = this.world.getEntityByID(((Integer) this.dataManager.get(BOOSTED_ENTITY_ID)).intValue());
 
-			if (entity instanceof EntityLivingBase) {
-				this.boostedEntity = (EntityLivingBase) entity;
+				if (entity instanceof EntityLivingBase) {
+					this.boostedEntity = (EntityLivingBase) entity;
 
-			}
-		}
-
-		if (this.boostedEntity != null) {
-			LogHelper.info("non Null bost entity");
-			if (this.boostedEntity.isElytraFlying()) {
-				LogHelper.info("Elytra flying");
-
-				Vec3d vec3d = this.boostedEntity.getLookVec();
-				double d0 = 1.5D;
-				double d1 = 0.1D;
-				double preX = this.boostedEntity.motionX;
-				double preZ = this.boostedEntity.motionZ;
-				this.boostedEntity.motionX += (vec3d.x * boostAmt);
-				this.boostedEntity.motionY += (vec3d.y * boostAmt);
-				this.boostedEntity.motionZ += (vec3d.z * boostAmt);
-
-				LogHelper.info("Pre X, Z :" + preX + " , " + preZ + "Post : " + boostedEntity.motionX + "," + boostedEntity.motionZ);
-			} else {
-				LogHelper.info("killing");
-				this.setDead();
+				}
 			}
 
-			this.setPosition(this.boostedEntity.posX, this.boostedEntity.posY, this.boostedEntity.posZ);
-			this.motionX = this.boostedEntity.motionX;
-			this.motionY = this.boostedEntity.motionY;
-			this.motionZ = this.boostedEntity.motionZ;
+			if (this.boostedEntity != null) {
+				LogHelper.info("non Null bost entity");
+				if (this.boostedEntity.isElytraFlying()) {
+					LogHelper.info("Elytra flying");
+
+					Vec3d vec3d = this.boostedEntity.getLookVec();
+					double d0 = 1.5D;
+					double d1 = 0.1D;
+					double preX = this.boostedEntity.motionX;
+					double preZ = this.boostedEntity.motionZ;
+					// this.boostedEntity.motionX += (vec3d.x * boostAmt);
+					// this.boostedEntity.motionY += (vec3d.y * boostAmt);
+					// this.boostedEntity.motionZ += (vec3d.z * boostAmt);
+
+					this.boostedEntity.motionX += vec3d.x * 0.1D + (vec3d.x * 1.5D - this.boostedEntity.motionX) * 0.5D;
+					this.boostedEntity.motionY += vec3d.y * 0.1D + (vec3d.y * 1.5D - this.boostedEntity.motionY) * 0.5D;
+					this.boostedEntity.motionZ += vec3d.z * 0.1D + (vec3d.z * 1.5D - this.boostedEntity.motionZ) * 0.5D;
+
+					LogHelper.info("Pre X, Z :" + preX + " , " + preZ + "Post : " + boostedEntity.motionX + "," + boostedEntity.motionZ);
+				} else {
+					LogHelper.info("killing");
+					this.setDead();
+				}
+
+				this.setPosition(this.boostedEntity.posX, this.boostedEntity.posY, this.boostedEntity.posZ);
+				this.motionX = this.boostedEntity.motionX;
+				this.motionY = this.boostedEntity.motionY;
+				this.motionZ = this.boostedEntity.motionZ;
+			}
+
+			float f = MathHelper.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
+			this.rotationYaw = (float) (MathHelper.atan2(this.motionX, this.motionZ) * (180D / Math.PI));
+
+			for (this.rotationPitch = (float) (MathHelper.atan2(this.motionY, (double) f) * (180D / Math.PI)); this.rotationPitch - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F) {
+				;
+			}
+
+			while (this.rotationPitch - this.prevRotationPitch >= 180.0F) {
+				this.prevRotationPitch += 360.0F;
+			}
+
+			while (this.rotationYaw - this.prevRotationYaw < -180.0F) {
+				this.prevRotationYaw -= 360.0F;
+			}
+
+			while (this.rotationYaw - this.prevRotationYaw >= 180.0F) {
+				this.prevRotationYaw += 360.0F;
+			}
+
+			this.rotationPitch = this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * 0.2F;
+			this.rotationYaw = this.prevRotationYaw + (this.rotationYaw - this.prevRotationYaw) * 0.2F;
+
+			if (!this.isSilent()) {
+				// this.world.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_FIREWORK_LAUNCH, SoundCategory.AMBIENT, 3.0F, 1.0F);
+			}
+
+			if (this.world.isRemote && (timealive % 5) == 0) {
+				this.world.spawnParticle(EnumParticleTypes.FIREWORKS_SPARK, this.posX, this.posY - 0.3D, this.posZ, this.rand.nextGaussian() * 0.05D, -this.motionY * 0.5D, this.rand.nextGaussian() * 0.05D);
+			}
+
 		}
+	}
 
-		float f = MathHelper.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
-		this.rotationYaw = (float) (MathHelper.atan2(this.motionX, this.motionZ) * (180D / Math.PI));
+	@SideOnly(Side.CLIENT)
+	public boolean isInRangeToRenderDist(double distance) {
+		return false;
+	}
 
-		for (this.rotationPitch = (float) (MathHelper.atan2(this.motionY, (double) f) * (180D / Math.PI)); this.rotationPitch - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F) {
-			;
-		}
-
-		while (this.rotationPitch - this.prevRotationPitch >= 180.0F) {
-			this.prevRotationPitch += 360.0F;
-		}
-
-		while (this.rotationYaw - this.prevRotationYaw < -180.0F) {
-			this.prevRotationYaw -= 360.0F;
-		}
-
-		while (this.rotationYaw - this.prevRotationYaw >= 180.0F) {
-			this.prevRotationYaw += 360.0F;
-		}
-
-		this.rotationPitch = this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * 0.2F;
-		this.rotationYaw = this.prevRotationYaw + (this.rotationYaw - this.prevRotationYaw) * 0.2F;
-
-		if (!this.isSilent()) {
-			// this.world.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_FIREWORK_LAUNCH, SoundCategory.AMBIENT, 3.0F, 1.0F);
-		}
-
-		if (this.world.isRemote) {
-			// this.world.spawnParticle(EnumParticleTypes.FIREWORKS_SPARK, this.posX, this.posY - 0.3D, this.posZ, this.rand.nextGaussian() * 0.05D, -this.motionY * 0.5D, this.rand.nextGaussian() * 0.05D);
-		}
-
-		// }
+	@SideOnly(Side.CLIENT)
+	public boolean isInRangeToRender3d(double x, double y, double z) {
+		return false;
 	}
 
 	/*
