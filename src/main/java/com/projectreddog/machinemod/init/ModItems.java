@@ -13,6 +13,7 @@ import com.projectreddog.machinemod.item.ItemCornSeed;
 import com.projectreddog.machinemod.item.ItemCutterBucket;
 import com.projectreddog.machinemod.item.ItemDrillHead;
 import com.projectreddog.machinemod.item.ItemDrillPipe;
+import com.projectreddog.machinemod.item.ItemElytraJetControl;
 import com.projectreddog.machinemod.item.ItemFuelCan;
 import com.projectreddog.machinemod.item.ItemGoldDust;
 import com.projectreddog.machinemod.item.ItemGraderBlade;
@@ -101,6 +102,8 @@ public class ModItems {
 	public static final ItemMachineMod tractor = new ItemTractor();
 	public static final ItemMachineMod lawnmower = new ItemLawnmower();
 	public static final ItemMachineMod anfo = new ItemANFO();
+	public static final ItemMachineMod elytrajetcontroller = new ItemElytraJetControl();
+
 	public static final ItemMachineMod paver = new ItemPaver();
 	public static final ItemMachineMod roadroller = new ItemRoadRoller();
 	public static final ItemMachineMod paverscreed = new ItemPaverScreed();
@@ -325,6 +328,7 @@ public class ModItems {
 		ForgeRegistries.ITEMS.register(lidwithspout);// , "lidwithspout");
 		ForgeRegistries.ITEMS.register(handdrill);// , "handdrill");
 		ForgeRegistries.ITEMS.register(anfo);// , "anfo");
+		ForgeRegistries.ITEMS.register(elytrajetcontroller);
 
 		ForgeRegistries.ITEMS.register(cornseed);// , "cornseed");
 		ForgeRegistries.ITEMS.register(trencher);// , "trencher");
@@ -513,6 +517,8 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(golddust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "golddust", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(golddust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "golddust", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(anfo, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "anfo", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(elytrajetcontroller, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "elytrajetcontroller", "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(planter, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "planter", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(sprayer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "sprayer", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(woodengear, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "woodengear", "inventory"));
