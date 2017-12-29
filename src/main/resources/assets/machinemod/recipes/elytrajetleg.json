@@ -1,0 +1,27 @@
+{
+    "result": {
+        "item": "machinemod:elytrajetleg",
+                "data" :15000
+        
+    },
+    "pattern" :[
+      "tss", 
+      "tbb", 
+      "tss"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+            "type": "forge:ore_dict",
+           "ore": "ingotSteel" 
+      },
+      "b":{
+      "item":"machinemod:afterburner"
+      },
+      "t":{
+      "item":"machinemod:turbo"
+      }
+        
+    }
+}
+

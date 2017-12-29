@@ -4,11 +4,14 @@ import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.entity.EntityDrillingRig;
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
+import com.projectreddog.machinemod.init.ModItems;
+import com.projectreddog.machinemod.item.armor.ItemMachineModElytraJetLegs;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -60,6 +63,30 @@ public class RenderOverlayHandler extends Gui {
 					this.fontRenderer.drawString("Depth: " + (depth), 25, 4, 14737632);
 				}
 
+			}
+		} else if (Minecraft.getMinecraft().player.isElytraFlying()) {
+			if (!Minecraft.getMinecraft().player.getItemStackFromSlot(EntityEquipmentSlot.LEGS).isEmpty()) {
+				if (Minecraft.getMinecraft().player.getItemStackFromSlot(EntityEquipmentSlot.LEGS).getItem() == ModItems.elytrajetleg) {
+					// has elytra jet legs on ! render fulel gage!
+					int xPos = 2;
+					int yPos = 2;
+
+					GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+					GL11.glDisable(GL11.GL_LIGHTING);
+
+					this.mc.renderEngine.bindTexture(getTextureLocationGage());
+					this.drawTexturedModalRect(xPos, yPos, 0, 0, 16, 64);
+
+					this.mc.renderEngine.bindTexture(getTextureLocationMarker());
+					int currentFuelLevel = ItemMachineModElytraJetLegs.MaxFuel - Minecraft.getMinecraft().player.getItemStackFromSlot(EntityEquipmentSlot.LEGS).getItemDamage();
+					int maxFuelLevel = ItemMachineModElytraJetLegs.MaxFuel;
+
+					int yOffest = (int) (4 + (54 - (((float) currentFuelLevel / maxFuelLevel) * 54)));
+
+					this.drawTexturedModalRect(xPos + 10, yPos + yOffest, 0, 0, 6, 3);
+					// this.fontRenderer.drawString("Fuel:" + emr.currentFuelLevel, 0, 0, 14737632);
+
+				}
 			}
 		}
 	}
