@@ -18,6 +18,7 @@ import net.minecraftforge.client.model.obj.OBJModel;
 public class ModelElytraJetLegs extends ModelBiped {
 	public OBJModel objModel;
 	private HashMap<String, IBakedModel> modelParts;
+	public boolean isElytraFlying = false;
 
 	public ModelElytraJetLegs() {
 		try {
@@ -32,17 +33,38 @@ public class ModelElytraJetLegs extends ModelBiped {
 	}
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		super.render(entity, f, f1, f2, f3, f4, f5);
+		// super.render(entity, f, f1, f2, f3, f4, f5);
 		GL11.glPushMatrix();
 
 		if (isSneak) {
-			GL11.glRotatef(30f, 1, 0, 0);
-			GL11.glTranslatef(0f, 1, .125f);
-n
+			if (isElytraFlying) {
+
+				GL11.glRotatef(0f, 1, 0, 0);
+				GL11.glTranslatef(0f, 1, .5f);
+			} else {
+				GL11.glRotatef(30f, 1, 0, 0);
+				GL11.glTranslatef(0f, 1, .125f);
+			}
+
 		} else {
+
 			GL11.glTranslatef(0f, 1, .25f);
 		}
 		this.renderGroupObject("Cube_Cube.001");
+
+		if (isSneak && isElytraFlying) {
+			if (f2 % 6 < 3) {
+				this.renderGroupObject("Flame2_Cube.002");
+			} else {
+				this.renderGroupObject("Flame1_Cube");
+			}
+		}
+		if (isSneak) {
+			GL11.glTranslatef(0f, 0, 0.01f);
+		}
+		GL11.glTranslatef(0f, 0, .03f);
+
+		this.renderGroupObject("Belt_Cube.003");
 		GL11.glPopMatrix();
 	}
 

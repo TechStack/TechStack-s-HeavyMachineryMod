@@ -8,7 +8,6 @@ import com.projectreddog.machinemod.entity.EntityCrane;
 import com.projectreddog.machinemod.entity.EntityDrillingRig;
 //import com.projectreddog.machinemod.entity.EntityDrillingRig;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
-import com.projectreddog.machinemod.entity.EntityElytraJet;
 import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityGrader;
 import com.projectreddog.machinemod.entity.EntityLawnmower;
@@ -53,8 +52,6 @@ public class ModEntities {
 
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "sub"), EntitySub.class, "sub", ++entityID, mod, 224, 1, false);
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "chopper"), EntityChopper.class, "chopper", ++entityID, mod, 224, 1, false);
-
-		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "elytraJet"), EntityElytraJet.class, "chopper", ++entityID, mod, 224, 1, false);
 
 		// EntityRegistry.registerModEntity(EntityPumpJack.class, "pumpjack", ++entityID, mod, 224, 1, false);
 
