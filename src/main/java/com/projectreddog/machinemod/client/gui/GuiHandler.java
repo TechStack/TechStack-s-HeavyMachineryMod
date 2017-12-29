@@ -3,6 +3,7 @@ package com.projectreddog.machinemod.client.gui;
 import com.projectreddog.machinemod.container.ContainerBagger;
 import com.projectreddog.machinemod.container.ContainerCanner;
 import com.projectreddog.machinemod.container.ContainerCentrifuge;
+import com.projectreddog.machinemod.container.ContainerChopper;
 import com.projectreddog.machinemod.container.ContainerCombine;
 import com.projectreddog.machinemod.container.ContainerDistiller;
 import com.projectreddog.machinemod.container.ContainerDumpTruck;
@@ -17,6 +18,7 @@ import com.projectreddog.machinemod.container.ContainerScreen;
 import com.projectreddog.machinemod.container.ContainerTractor;
 import com.projectreddog.machinemod.container.ContainerWideBedTruck;
 import com.projectreddog.machinemod.entity.EntityBagger;
+import com.projectreddog.machinemod.entity.EntityChopper;
 import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityExcavator;
@@ -98,6 +100,15 @@ public class GuiHandler implements IGuiHandler {
 				if (entity instanceof EntitySemiTractor) {
 
 					return new ContainerWideBedTruck(player.inventory, (EntitySemiTractor) entity);
+				}
+			}
+		} else if (id == Reference.GUI_CHOPPER) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityChopper) {
+
+					return new ContainerChopper(player.inventory, (EntityChopper) entity);
 				}
 			}
 		} else if (id == Reference.GUI_COMBINE) {
@@ -251,6 +262,14 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null) {
 				if (entity instanceof EntitySemiTractor) {
 					return new GuiWideBedTruck(player.inventory, (EntitySemiTractor) entity);
+				}
+			}
+		} else if (id == Reference.GUI_CHOPPER) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityChopper) {
+					return new GuiChopper(player.inventory, (EntityChopper) entity);
 				}
 			}
 		} else if (id == Reference.GUI_COMBINE) {

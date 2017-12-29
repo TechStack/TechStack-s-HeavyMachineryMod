@@ -26,7 +26,7 @@ public class EntityChopper extends EntityMachineModRideable {
 		this.maxAngle = 0;
 		this.minAngle = -60;
 		this.droppedItem = ModItems.chopper;
-		this.shouldSendClientInvetoryUpdates = false;
+		this.shouldSendClientInvetoryUpdates = true;
 		this.willSink = false;
 		this.maxSpeed = 2.4d;
 		this.accelerationAmount = .08d;
