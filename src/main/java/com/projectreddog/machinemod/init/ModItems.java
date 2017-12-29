@@ -1,6 +1,7 @@
 package com.projectreddog.machinemod.init;
 
 import com.projectreddog.machinemod.item.ItemANFO;
+import com.projectreddog.machinemod.item.ItemAfterBurner;
 import com.projectreddog.machinemod.item.ItemAirTank;
 import com.projectreddog.machinemod.item.ItemAluminumIngot;
 import com.projectreddog.machinemod.item.ItemBaggerBody;
@@ -39,6 +40,7 @@ import com.projectreddog.machinemod.item.ItemSubBody;
 import com.projectreddog.machinemod.item.ItemTrackSegment;
 import com.projectreddog.machinemod.item.ItemTurboProp;
 import com.projectreddog.machinemod.item.ItemWrench;
+import com.projectreddog.machinemod.item.armor.ItemMachineModArmor;
 import com.projectreddog.machinemod.item.armor.ItemMachineModElytraJetLegs;
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlanter;
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlow;
@@ -90,7 +92,6 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemFood;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -129,7 +130,8 @@ public class ModItems {
 	public static final ItemMachineMod powercell = new ItemPowerCell();
 	public static final ItemMachineMod light = new ItemLight();
 	public static final ItemMachineMod lightmodule = new ItemLightModule();
-	public static final ItemMachineModElytraJetLegs elytrajetleg = new ItemMachineModElytraJetLegs(ArmorMaterial.IRON, EntityEquipmentSlot.LEGS);
+	public static final ItemMachineModElytraJetLegs elytrajetleg = new ItemMachineModElytraJetLegs(ItemMachineModArmor.MachineFuleConsumerMaterial, EntityEquipmentSlot.LEGS);
+	public static final ItemMachineMod afterburner = new ItemAfterBurner();
 
 	@ObjectHolder("bagger")
 	public static final ItemMachineMod bagger = new ItemBagger();
@@ -307,7 +309,8 @@ public class ModItems {
 		ForgeRegistries.ITEMS.register(powercell);// , "powercell");
 		ForgeRegistries.ITEMS.register(light);// , "light");
 		ForgeRegistries.ITEMS.register(lightmodule);// , "lightmodule");
-		ForgeRegistries.ITEMS.register(elytrajetleg);// , "lightmodule");
+		ForgeRegistries.ITEMS.register(elytrajetleg);
+		ForgeRegistries.ITEMS.register(afterburner);
 
 		ForgeRegistries.ITEMS.register(tracksegment);// , "tracksegment");
 
@@ -499,6 +502,7 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(light, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "light", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(lightmodule, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "lightmodule", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(elytrajetleg, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "elytrajetleg", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(afterburner, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "afterburner", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(cutterbucket, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "cutterbucket", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(rigging, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "rigging", "inventory"));

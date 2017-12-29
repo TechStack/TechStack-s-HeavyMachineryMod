@@ -1,0 +1,25 @@
+{
+    "result": {
+        "item": "machinemod:afterburner"
+    },
+    "pattern" :[
+      "sss", 
+      "fbb", 
+      "sss"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+            "type": "forge:ore_dict",
+           "ore": "ingotSteel" 
+      },
+      "b":{
+      "item":"minecraft:blaze_powder"
+      },
+      "f":{
+      "item":"minecraft:flint_and_steel"
+      }
+        
+    }
+}
+

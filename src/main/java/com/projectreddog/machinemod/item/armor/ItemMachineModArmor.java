@@ -3,11 +3,15 @@ package com.projectreddog.machinemod.item.armor;
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.util.EnumHelper;
 
 public class ItemMachineModArmor extends ItemArmor {
+
+	public static ArmorMaterial MachineFuleConsumerMaterial = EnumHelper.addArmorMaterial("MachineFuel", "iron", 0, new int[] { 0, 0, 0, 0 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0);
 
 	public ItemMachineModArmor(ItemArmor.ArmorMaterial material, int renderIndexIn, EntityEquipmentSlot armorType) {
 		super(material, renderIndexIn, armorType);
