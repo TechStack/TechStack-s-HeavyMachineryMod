@@ -1,11 +1,14 @@
 package com.projectreddog.machinemod.item.armor;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 import com.projectreddog.machinemod.model.armor.ModelElytraJetLegs;
 import com.projectreddog.machinemod.render.armor.RenderElytraJetAlegs;
 
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -27,6 +30,16 @@ public class ItemMachineModElytraJetLegs extends ItemMachineModArmor {
 		this.setUnlocalizedName(registryName);
 		this.setRegistryName(registryName);
 		this.maxStackSize = 1;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		tooltip.add("Equip on your waist and sneak while flying to activate!");
+		tooltip.add("Fill up with Fuel in Fuel Pump.");
+
+		tooltip.add("\u00A7aRemaining Fuel: " + (MaxFuel - stack.getItemDamage()) + "/" + MaxFuel);
+
 	}
 
 	@Override
