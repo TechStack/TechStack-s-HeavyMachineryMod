@@ -1,6 +1,7 @@
 package com.projectreddog.machinemod.item;
 
 import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -64,5 +65,28 @@ public class ItemCornSeed extends ItemFood implements IPlantable {
 	@Override
 	public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
 		return ModBlocks.corn.getDefaultState();
+	}
+
+	@Override
+	public String getUnlocalizedName() {
+		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	}
+
+	@Override
+	public String getUnlocalizedName(ItemStack itemStack) {
+		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	}
+
+	// 1.8
+	// @Override
+	// @SideOnly(Side.CLIENT)
+	// public void registerIcons(IIconRegister iconRegister)
+	// {
+	// itemIcon =
+	// iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".")+1));
+	// }
+
+	protected String getUnwrappedUnlocalizedName(String unlocalizedName) {
+		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
 	}
 }

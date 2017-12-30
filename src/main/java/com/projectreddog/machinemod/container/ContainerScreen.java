@@ -15,6 +15,7 @@ public class ContainerScreen extends Container {
 
 	public ContainerScreen(InventoryPlayer inventoryPlayer, TileEntityScreen screen) {
 		this.screen = screen;
+		lastFuelStorage = -1;
 		// slot 0 = north
 		// slot 1 = east
 		// slot 2 = south
