@@ -72,7 +72,7 @@ public class EntityCombine extends EntityMachineModRideable {
 					}
 				}
 
-				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(forwardOffset, 90, -4) + posX - .5d, posY, calcTwoOffsetZ(forwardOffset, 90, -4) + posZ - .5d, calcTwoOffsetX(forwardOffset, 90, 4) + posX + .5d, posY + 1, calcTwoOffsetZ(forwardOffset, 90, 4) + posZ + .5d);
+				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(forwardOffset - 1, 90, -4) + posX - 1d, posY, calcTwoOffsetZ(forwardOffset - 1, 90, -4) + posZ - 1d, calcTwoOffsetX(forwardOffset, 90, 4) + posX + 1d, posY + 1, calcTwoOffsetZ(forwardOffset, 90, 4) + posZ + 1d);
 
 				List list = this.world.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
 				collidedEntitiesInList(list);
