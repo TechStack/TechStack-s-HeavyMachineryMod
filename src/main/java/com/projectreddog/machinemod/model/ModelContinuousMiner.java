@@ -48,7 +48,7 @@ public class ModelContinuousMiner extends ModelTransportable {
 		GL11.glTranslatef(0, -1.8f, -2.6f);
 
 		if (entity instanceof EntityContinuousMiner) {
-			float amt = ((EntityContinuousMiner) entity).Attribute2 / 3;
+			float amt = ((EntityContinuousMiner) entity).Attribute1 + 15;
 			GL11.glRotatef(amt, 1, 0, 0);
 
 		}

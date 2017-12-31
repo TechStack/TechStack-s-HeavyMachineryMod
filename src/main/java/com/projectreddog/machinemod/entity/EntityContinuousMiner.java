@@ -2,10 +2,10 @@ package com.projectreddog.machinemod.entity;
 
 import java.util.List;
 
-import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.utility.BlockUtil;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
@@ -20,23 +20,41 @@ public class EntityContinuousMiner extends EntityMachineModRideable {
 
 	private static final AxisAlignedBB boundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 	private int direction = 0;
+	private BlockPos[][][] particlePos;
 
 	public EntityContinuousMiner(World world) {
 		super(world);
-
-		setSize(2.8f, 2.5f);
+		particlePos = new BlockPos[3][3][5];
+		setSize(3.5f, 4f);
 		SIZE = 54;
 		// inventory = new ItemStack[9];
 		inventory = new ItemStackHandler(SIZE);
 
-		this.mountedOffsetY = 1D;
-		this.mountedOffsetX = 0.4D;
-		this.mountedOffsetZ = 0.4D;
+		this.mountedOffsetY = .5D;
+		this.mountedOffsetX = -1.25D;
+		this.mountedOffsetZ = -0.2D;
 		this.maxAngle = 15;
-		this.minAngle = -90;
+		this.minAngle = -20;
 		this.droppedItem = ModItems.continuousminer;
 		this.shouldSendClientInvetoryUpdates = true;
+		this.ignoreFrustumCheck = true;
 
+	}
+
+	@Override
+	public double getMountedXOffset() {
+		// should be overridden in extended class if not default;
+
+		return calcTwoOffsetX(this.mountedOffsetZ, 90, this.mountedOffsetX);
+		// return calcOffsetX(mountedOffsetX);
+	}
+
+	@Override
+	public double getMountedZOffset() {
+		// should be overridden in extended class if not default;
+
+		return calcTwoOffsetZ(this.mountedOffsetZ, 90, this.mountedOffsetX);
+		// return calcOffsetX(mountedOffsetX);
 	}
 
 	@Override
@@ -44,55 +62,44 @@ public class EntityContinuousMiner extends EntityMachineModRideable {
 		super.onUpdate();
 		if (!world.isRemote) {
 
-			if (this.isPlayerPushingJumpButton) {
-				// player wants to dig help them dig by moving the arm up and down please
-				if (direction == 0) {
-					this.Attribute2++;
-				}
-				if (this.Attribute2 > 60) {
-					direction = 1;
-				} else if (direction == 1) {
-					this.Attribute2--;
-				}
-
-			}
-
 			int bucketOffsetY = 0;
 
-			if (this.Attribute1 > 7) {
-				bucketOffsetY = -1;
-			} else if (this.Attribute1 < -7) {
+			if (this.Attribute1 < -13) {
+				bucketOffsetY = 3;
+			} else if (this.Attribute1 < -1) {
+				bucketOffsetY = 2;
+
+			} else if (this.Attribute1 < 11) {
 				bucketOffsetY = 1;
 
 			}
-			if (this.Attribute1 > -20) {
-				// bucket Down
-				// break blocks first
-				int angle;
-				for (int i = -2; i < 3; i++) {
-					if (i == 0) {
-						angle = 0;
-					} else {
-						angle = 90;
-					}
-					BlockPos bp;
-					bp = new BlockPos(posX + calcTwoOffsetX(8, angle, i), posY + bucketOffsetY, posZ + calcTwoOffsetZ(8, angle, i));
-					if (world.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || world.getBlockState(bp).getBlock() == Blocks.SNOW || world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.SAND || world.getBlockState(bp).getBlock() == Blocks.GRAVEL || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.CLAY
-							|| world.getBlockState(bp).getBlock() == Blocks.NETHERRACK || world.getBlockState(bp).getBlock() == Blocks.MYCELIUM || world.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedgranite || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblasteddiorite
-							|| this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedandesite || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedgold || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastediron || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedcoal
-							|| this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedlapis || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblasteddiamond || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedredstone || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedemerald
-							|| world.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2 || world.getBlockState(bp).getBlock() == Blocks.SOUL_SAND || world.getBlockState(bp).getBlock() == Blocks.TALLGRASS) {
-						BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
-					}
-
+			// bucket Down
+			// break blocks first
+			int angle;
+			for (int i = -2; i < 3; i++) {
+				if (i == 0) {
+					angle = 0;
+				} else {
+					angle = 90;
 				}
+				BlockPos bp;
+				for (int j = -1; j < 2; j++) {
+					for (int k = -1; k < 2; k++) {
+						bp = new BlockPos(posX + calcTwoOffsetX(7.5 + k, angle, i), posY + bucketOffsetY + j, posZ + calcTwoOffsetZ(7.5 + k, angle, i));
+						particlePos[j + 1][k + 1][i + 2] = null;
 
-				AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(6, 90, -2) + posX - .5d, posY + bucketOffsetY, calcTwoOffsetZ(6, 90, -2) + posZ - .5d, calcTwoOffsetX(6, 90, 2) + posX + .5d, posY + 1, calcTwoOffsetZ(6, 90, 2) + posZ + .5d);
-
-				List list = this.world.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
-				collidedEntitiesInList(list);
+						if (!world.isAirBlock(bp) && world.getBlockState(bp).getBlock() != Blocks.BEDROCK && world.getBlockState(bp).getMaterial() != Material.WATER && world.getBlockState(bp).getMaterial() != Material.LAVA) {
+							BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
+						}
+					}
+				}
 			}
+			AxisAlignedBB bucketboundingBox = new AxisAlignedBB(calcTwoOffsetX(6, 90, -2) + posX - .5d, posY + bucketOffsetY, calcTwoOffsetZ(6, 90, -2) + posZ - .5d, calcTwoOffsetX(6, 90, 2) + posX + .5d, posY + 1, calcTwoOffsetZ(6, 90, 2) + posZ + .5d);
+
+			List list = this.world.getEntitiesWithinAABBExcludingEntity(this, bucketboundingBox);
+			collidedEntitiesInList(list);
+
 			if (this.Attribute1 == this.getMinAngle()) {
 				// bucket up
 				// Drop blocks
@@ -124,6 +131,11 @@ public class EntityContinuousMiner extends EntityMachineModRideable {
 			}
 
 		}
+
+	}
+
+	@Override
+	public void doParticleEffects() {
 
 	}
 
