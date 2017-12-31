@@ -24,8 +24,8 @@ public class EntitySub extends EntityMachineModRideable {
 		inventory = new ItemStackHandler(SIZE);
 		// inventory = new ItemStack[9];
 		this.mountedOffsetY = 0.35D;
-		this.mountedOffsetX = 2d;
-		this.mountedOffsetZ = 2d;
+		this.mountedOffsetX = 1.3d;
+		this.mountedOffsetZ = 1.3d;
 		this.maxAngle = 0;
 		this.minAngle = -60;
 		this.droppedItem = ModItems.sub;
@@ -66,10 +66,10 @@ public class EntitySub extends EntityMachineModRideable {
 		}
 	}
 
-	public double particleBackOffset = -.6d;
-	public double particleSideOffset = 2.3d;
-	public double particleTopOffset = 3.9d;
-	public double particleBottmOffset = -.3d;
+	public double particleBackOffset = -1.5d;
+	public double particleSideOffset = 1.2d;
+	public double particleTopOffset = 1.5d;
+	// public double particleBottmOffset = -.3d;
 
 	@Override
 	public void doParticleEffects() {
@@ -77,8 +77,7 @@ public class EntitySub extends EntityMachineModRideable {
 			for (int i = 0; i < 3; i++) {
 				world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset), this.posY + particleTopOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset), 0, 0, 0, 0);
 				world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset * -1), this.posY + particleTopOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset * -1), 0, 0, 0, 0);
-				world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset), this.posY - particleBottmOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset), 0, 0, 0, 0);
-				world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset * -1), this.posY - particleBottmOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset * -1), 0, 0, 0, 0);
+
 			}
 		}
 	}

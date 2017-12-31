@@ -9,6 +9,9 @@ package com.projectreddog.machinemod.model;
 import java.io.IOException;
 import java.util.HashMap;
 
+import org.lwjgl.opengl.GL11;
+
+import com.projectreddog.machinemod.entity.EntitySub;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
@@ -42,7 +45,40 @@ public class ModelSub extends ModelTransportable {
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
-		renderGroupObject(MachineModModelHelper.ALL_PARTS);
+		// renderGroupObject(MachineModModelHelper.ALL_PARTS);
+
+		renderGroupObject("Body");
+
+		// left prop
+		GL11.glTranslatef(1.55f, -1.7f, 0f);
+		if (entity instanceof EntitySub) {
+			EntitySub es = ((EntitySub) entity);
+			if (es.isBeingRidden()) {
+				GL11.glRotatef(entity.ticksExisted * 20, 0, 0, 1);
+				renderGroupObject("Prop");
+				GL11.glRotatef(-entity.ticksExisted * 20, 0, 0, 1);
+
+			} else {
+
+				renderGroupObject("Prop");
+			}
+
+		}
+		GL11.glTranslatef(-3.1f, 0f, 0f);
+
+		if (entity instanceof EntitySub) {
+			EntitySub es = ((EntitySub) entity);
+			if (es.isBeingRidden()) {
+				GL11.glRotatef(entity.ticksExisted * 20, 0, 0, 1);
+				renderGroupObject("Prop");
+
+			} else {
+
+				renderGroupObject("Prop");
+			}
+
+		}
+
 		// will now call rendering for each individual object
 		// this.renderGroupObject("Tractor_Cube.001");
 
