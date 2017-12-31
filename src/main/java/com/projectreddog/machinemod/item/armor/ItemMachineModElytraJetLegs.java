@@ -2,6 +2,7 @@ package com.projectreddog.machinemod.item.armor;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.projectreddog.machinemod.model.armor.ModelElytraJetLegs;
@@ -14,13 +15,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemMachineModElytraJetLegs extends ItemMachineModArmor {
+public class ItemMachineModElytraJetLegs extends ItemMachineModArmor implements ISpecialArmor {
 	public String registryName = "elytrajetleg";
 	public static final int MaxFuel = 15000;
 
@@ -30,6 +33,7 @@ public class ItemMachineModElytraJetLegs extends ItemMachineModArmor {
 		this.setUnlocalizedName(registryName);
 		this.setRegistryName(registryName);
 		this.maxStackSize = 1;
+
 	}
 
 	@Override
@@ -94,6 +98,24 @@ public class ItemMachineModElytraJetLegs extends ItemMachineModArmor {
 			}
 
 		}
+	}
+
+	@Override
+	public void damageArmor(EntityLivingBase entity, @Nonnull ItemStack stack, DamageSource source, int damage, int slot) {
+
+	}
+
+	@Override
+	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
+		// TODO Auto-generated method stub
+
+		return new ArmorProperties(0, 0, 0);
+	}
+
+	@Override
+	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

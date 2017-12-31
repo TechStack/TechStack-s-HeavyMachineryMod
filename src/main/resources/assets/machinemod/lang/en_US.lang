@@ -1,4 +1,5 @@
 # Item Localizations
+
 item.machinemod:bulldozer.name=Bulldozer
 item.machinemod:drillingrig.name=Drilling Rig
 item.machinemod:dumptruck.name=Dump Truck
@@ -8,7 +9,7 @@ item.machinemod:drillhead.name=Drill Head
 item.machinemod:tractor.name=Tractor
 item.machinemod:planter.name=Planter
 item.machinemod:plow.name=Plow
-item.machinemod:sprayer.name=Sprayer
+item.machinemod:sprayer.name=Spreader
 item.machinemod:woodengear.name=Wooden Gear
 item.machinemod:stonegear.name=Stone Gear
 item.machinemod:irongear.name=Iron Gear
