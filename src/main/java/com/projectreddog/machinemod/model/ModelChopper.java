@@ -123,11 +123,14 @@ public class ModelChopper extends ModelTransportable {
 			}
 
 		} else {
-			renderGroupObject("RotorBlade_Object.11");
+			renderGroupObject("CopperBody_Object.19");
+
+			renderGroupObject("RotorBlade_Object.1");
 
 			GL11.glTranslatef(-.15f, -3.45f, 6.85f);
 
 			renderGroupObject("RotorBladeTail_Object.25");
+
 		}
 		// renderGroupObject("Cylinder");
 

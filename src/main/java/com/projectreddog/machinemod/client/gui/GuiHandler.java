@@ -5,6 +5,7 @@ import com.projectreddog.machinemod.container.ContainerCanner;
 import com.projectreddog.machinemod.container.ContainerCentrifuge;
 import com.projectreddog.machinemod.container.ContainerChopper;
 import com.projectreddog.machinemod.container.ContainerCombine;
+import com.projectreddog.machinemod.container.ContainerContinuousMiner;
 import com.projectreddog.machinemod.container.ContainerDistiller;
 import com.projectreddog.machinemod.container.ContainerDumpTruck;
 import com.projectreddog.machinemod.container.ContainerExcavator;
@@ -20,6 +21,7 @@ import com.projectreddog.machinemod.container.ContainerWideBedTruck;
 import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.entity.EntityChopper;
 import com.projectreddog.machinemod.entity.EntityCombine;
+import com.projectreddog.machinemod.entity.EntityContinuousMiner;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityGrader;
@@ -207,6 +209,15 @@ public class GuiHandler implements IGuiHandler {
 					return new ContainerPrimaryCrusher(player.inventory, (TileEntityPrimaryCrusher) entity);
 				}
 			}
+		} else if (id == Reference.GUI_CONTINUOUSMINER) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityContinuousMiner) {
+
+					return new ContainerContinuousMiner(player.inventory, (EntityContinuousMiner) entity);
+				}
+			}
 		}
 
 		return null;
@@ -356,6 +367,14 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null) {
 				if (entity instanceof TileEntityPrimaryCrusher) {
 					return new GuiPrimaryCrusher(player.inventory, (TileEntityPrimaryCrusher) entity);
+				}
+			}
+		} else if (id == Reference.GUI_CONTINUOUSMINER) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityContinuousMiner) {
+					return new GuiContinuousMiner(player.inventory, (EntityContinuousMiner) entity);
 				}
 			}
 		}

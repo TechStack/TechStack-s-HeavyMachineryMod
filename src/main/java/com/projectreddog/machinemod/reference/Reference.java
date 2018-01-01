@@ -39,6 +39,8 @@ public class Reference {
 	public static final String MODEL_DRILLINGRIG_TEXTURE_LOCATION = "models/drillingrig.png";
 	public static final String MODEL_DUMPTRUCK_TEXTURE_LOCATION = "models/dumptruck.png";
 	public static final String MODEL_LOADER_TEXTURE_LOCATION = "models/modelloader.png";
+	public static final String MODEL_CONTINUOUSMINER_TEXTURE_LOCATION = "models/continuousminer.png";
+
 	public static final String MODEL_BAGGER_TEXTURE_LOCATION = "models/bagger.png";
 	public static final String MODEL_OIL_RIG_TEXTURE_LOCATION = "models/bagger.png";
 	public static final String MODEL_PUMP_JACK_TEXTURE_LOCATION = "models/pumpjack.png";
@@ -74,6 +76,7 @@ public class Reference {
 	public static final int GUI_EXCAVATOR = 14;
 	public static final int GUI_PRIMARY_CRUSHER = 15;
 	public static final int GUI_CHOPPER = 16;
+	public static final int GUI_CONTINUOUSMINER = 17;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;
@@ -146,6 +149,8 @@ public class Reference {
 	public static boolean enableGrader = true;
 	public static boolean enableLawnmower = true;
 	public static boolean enableLoader = true;
+	public static boolean enableContinuousMiner = true;
+
 	public static boolean enableOilRig = true;
 	public static boolean enablePaver = true;
 	public static boolean enablePumpJack = true;

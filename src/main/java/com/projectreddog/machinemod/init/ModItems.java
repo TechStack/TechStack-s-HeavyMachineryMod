@@ -70,6 +70,7 @@ import com.projectreddog.machinemod.item.machines.ItemBagger;
 import com.projectreddog.machinemod.item.machines.ItemBulldozer;
 import com.projectreddog.machinemod.item.machines.ItemChopper;
 import com.projectreddog.machinemod.item.machines.ItemCombine;
+import com.projectreddog.machinemod.item.machines.ItemContinuousMiner;
 import com.projectreddog.machinemod.item.machines.ItemCrane;
 import com.projectreddog.machinemod.item.machines.ItemDrillingRig;
 import com.projectreddog.machinemod.item.machines.ItemDumpTruck;
@@ -157,6 +158,8 @@ public class ModItems {
 	public static final ItemMachineMod dumptruck = new ItemDumpTruck();
 	public static final ItemMachineMod loader = new ItemLoader();
 	public static final ItemMachineMod grader = new ItemGrader();
+
+	public static final ItemMachineMod continuousminer = new ItemContinuousMiner();
 
 	public static final ItemMachineMod combine = new ItemCombine();
 	public static final ItemMachineMod crane = new ItemCrane();
@@ -256,6 +259,11 @@ public class ModItems {
 		}
 		if (Reference.enableLoader) {
 			ForgeRegistries.ITEMS.register(loader);// , "loader");
+
+		}
+
+		if (Reference.enableContinuousMiner) {
+			ForgeRegistries.ITEMS.register(continuousminer);
 
 		}
 
@@ -444,6 +452,11 @@ public class ModItems {
 		}
 		if (Reference.enableLoader) {
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(loader, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "loader", "inventory"));
+
+		}
+
+		if (Reference.enableContinuousMiner) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(continuousminer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "continuousminer", "inventory"));
 
 		}
 

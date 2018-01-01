@@ -79,6 +79,7 @@ public class EntityMachineModRideable extends Entity {
 	public boolean isPlayerTurningLeft = false;
 	public boolean isPlayerPushingSprintButton = false;
 	public boolean isPlayerPushingJumpButton = false;
+	public boolean isPlayerPushingUnloadButton = false;
 	// additions in 1.10.x version
 	public boolean isPlayerPushingSegment1Up = false; // default numpad 7
 	public boolean isPlayerPushingSegment1Down = false; // default numpad 1

@@ -23,12 +23,13 @@ public class MachineModMessageInputToServer implements IMessage {
 
 	public boolean isPlayerPushingTurretRight = false;// default numpad 6
 	public boolean isPlayerPushingTurretLeft = false;// default numpad 7
+	public boolean isPlayerPushingUnload = false;// default numpad 7
 
 	public MachineModMessageInputToServer() {
 
 	}
 
-	public MachineModMessageInputToServer(int entityId, boolean isPlayerAccelerating, boolean isPlayerBreaking, boolean isPlayerTurningRight, boolean isPlayerTurningLeft, boolean isPlayerPushingSprintButton, boolean isPlayerPushingJumpButton, boolean isPlayerPushingSegment1Up, boolean isPlayerPushingSegment1Down, boolean isPlayerPushingSegment2Up, boolean isPlayerPushingSegment2Down, boolean isPlayerPushingSegment3Up, boolean isPlayerPushingSegment3Down, boolean isPlayerPushingTurretRight, boolean isPlayerPushingTurretLeft) {
+	public MachineModMessageInputToServer(int entityId, boolean isPlayerAccelerating, boolean isPlayerBreaking, boolean isPlayerTurningRight, boolean isPlayerTurningLeft, boolean isPlayerPushingSprintButton, boolean isPlayerPushingJumpButton, boolean isPlayerPushingSegment1Up, boolean isPlayerPushingSegment1Down, boolean isPlayerPushingSegment2Up, boolean isPlayerPushingSegment2Down, boolean isPlayerPushingSegment3Up, boolean isPlayerPushingSegment3Down, boolean isPlayerPushingTurretRight, boolean isPlayerPushingTurretLeft, boolean isPlayerPushingUnload) {
 		super();
 		this.isPlayerAccelerating = isPlayerAccelerating;
 		this.isPlayerBreaking = isPlayerBreaking;
@@ -47,6 +48,7 @@ public class MachineModMessageInputToServer implements IMessage {
 
 		this.isPlayerPushingTurretRight = isPlayerPushingTurretRight;
 		this.isPlayerPushingTurretLeft = isPlayerPushingTurretLeft;
+		this.isPlayerPushingUnload = isPlayerPushingUnload;
 	}
 
 	@Override
@@ -67,6 +69,7 @@ public class MachineModMessageInputToServer implements IMessage {
 
 		this.isPlayerPushingTurretRight = buf.readBoolean();
 		this.isPlayerPushingTurretLeft = buf.readBoolean();
+		this.isPlayerPushingUnload = buf.readBoolean();
 	}
 
 	@Override
@@ -87,6 +90,7 @@ public class MachineModMessageInputToServer implements IMessage {
 		buf.writeBoolean(this.isPlayerPushingSegment3Down);
 		buf.writeBoolean(this.isPlayerPushingTurretRight);
 		buf.writeBoolean(this.isPlayerPushingTurretLeft);
+		buf.writeBoolean(this.isPlayerPushingUnload);
 
 	}
 

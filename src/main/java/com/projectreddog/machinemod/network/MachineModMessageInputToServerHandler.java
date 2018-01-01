@@ -45,6 +45,9 @@ public class MachineModMessageInputToServerHandler implements IMessageHandler<Ma
 
 					((EntityMachineModRideable) entity).isPlayerPushingTurretRight = message.isPlayerPushingTurretRight;
 					((EntityMachineModRideable) entity).isPlayerPushingTurretLeft = message.isPlayerPushingTurretLeft;
+
+					((EntityMachineModRideable) entity).isPlayerPushingUnloadButton = message.isPlayerPushingUnload;
+
 				}
 			}
 		}
