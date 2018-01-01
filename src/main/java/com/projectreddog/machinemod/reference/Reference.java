@@ -76,6 +76,7 @@ public class Reference {
 	public static final int GUI_EXCAVATOR = 14;
 	public static final int GUI_PRIMARY_CRUSHER = 15;
 	public static final int GUI_CHOPPER = 16;
+	public static final int GUI_CONTINUOUSMINER = 17;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;

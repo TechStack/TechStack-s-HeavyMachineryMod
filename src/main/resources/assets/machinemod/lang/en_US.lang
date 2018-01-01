@@ -47,9 +47,11 @@ item.machinemod:lidwithspout.name=Lid with Spout
 item.machinemod:lawnmower.name=Riding Lawn Mower
 item.machinemod:mowerdeck.name=Mower Deck
 item.machinemod:liquidtanksegment.name=Liquid tank segment
+item.machinemod:continuousminer.name=Continuous Miner
+item.machinemod:chopper.name=Chopper
 
 
-item.machinemod:paverscreed.name=Paver Screed
+iteme.machinemod:paverscreed.name=Paver Screed
 item.machinemod:rollerwheel.name=Roller Wheel
 item.machinemod:tracksegment.name=Track Segment
 item.machinemod:cutterbucket.name=Cutter Bucket
