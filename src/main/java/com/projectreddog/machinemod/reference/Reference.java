@@ -53,6 +53,8 @@ public class Reference {
 	public static final String MODEL_CRANE_TEXTURE_LOCATION = "models/crane.png";
 	public static final String MODEL_EXCAVATOR_TEXTURE_LOCATION = "models/excavator.png";
 
+	public static final String MODEL_ElYTRA_JET_BELT_TEXTURE_LOCATION = "models/elytrajetbelt.png";
+
 	public static final String GUI_FUEL_GUAGE_TEXTURE_LOCATION = "textures/gui/gui_overlay_fuel_gage.png";
 	public static final String GUI_FUEL_LEVEL_TEXTURE_LOCATION = "textures/gui/gui_fuel_level_marker.png";
 	// textures for Tile Entities
