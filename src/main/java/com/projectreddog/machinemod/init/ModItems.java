@@ -46,6 +46,7 @@ import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlante
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlow;
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentSprayer;
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentTrencher;
+import com.projectreddog.machinemod.item.blueprint.ItemBluePrintContinuousMiner;
 import com.projectreddog.machinemod.item.chopperattachments.ItemChopperAttachmentSawBlades;
 import com.projectreddog.machinemod.item.components.ItemCamshaft;
 import com.projectreddog.machinemod.item.components.ItemDozerBlade;
@@ -133,6 +134,8 @@ public class ModItems {
 	public static final ItemMachineMod lightmodule = new ItemLightModule();
 	public static final ItemMachineModElytraJetLegs elytrajetleg = new ItemMachineModElytraJetLegs(ItemMachineModArmor.MachineFuleConsumerMaterial, EntityEquipmentSlot.LEGS);
 	public static final ItemMachineMod afterburner = new ItemAfterBurner();
+
+	public static final ItemMachineMod blueprintcontinuousminer = new ItemBluePrintContinuousMiner();
 
 	@ObjectHolder("bagger")
 	public static final ItemMachineMod bagger = new ItemBagger();
@@ -390,6 +393,8 @@ public class ModItems {
 		ForgeRegistries.ITEMS.register(steelingot);// , "steelingot");
 		ForgeRegistries.ITEMS.register(aluminumingot);// , "aluminumingot");
 
+		ForgeRegistries.ITEMS.register(blueprintcontinuousminer);
+
 		/// register ore dict
 		OreDictionary.registerOre("gearWood", woodengear);
 		OreDictionary.registerOre("gearStone", stonegear);
@@ -516,6 +521,7 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(lightmodule, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "lightmodule", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(elytrajetleg, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "elytrajetleg", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(afterburner, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "afterburner", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(blueprintcontinuousminer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "blueprintcontinuousminer", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(cutterbucket, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "cutterbucket", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(rigging, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "rigging", "inventory"));

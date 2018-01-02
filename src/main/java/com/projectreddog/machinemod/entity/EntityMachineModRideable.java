@@ -13,6 +13,7 @@ import com.projectreddog.machinemod.network.MachineModMessageEntityToClient;
 import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServer;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.BlockUtil;
+import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -28,6 +29,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.ClassInheritanceMultiMap;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -250,7 +252,7 @@ public class EntityMachineModRideable extends Entity {
 				}
 
 			} else {
-				if (player.isSneaking()) {
+				if (player.isSneaking() && !world.isRemote) {
 					if (getItemToBeDropped() != null) {
 						this.dropItem(getItemToBeDropped(), 1);
 						this.setDead();
@@ -565,11 +567,7 @@ public class EntityMachineModRideable extends Entity {
 		}
 
 		setPosition(posX + motionX, posY + motionY, posZ + motionZ);
-		if (!this.isDead) {
-			// only do for entities not dead so we dont keep them around on the client side.
-			// this.addedToChunk = false;
-			// 1.8.9 cant do this anymore causing major Rendering FPS issues.
-		}
+
 		// LogHelper.info("Client: isinvis:" +
 		// this.isInvisibleToPlayer(Minecraft.getMinecraft().thePlayer) +
 		// " DIMID:" + world.provider.getDimensionId() + " X:" + posX +
@@ -587,8 +585,9 @@ public class EntityMachineModRideable extends Entity {
 
 		if (isFristTick) {
 			clientInit();
-		} else {
 			isFristTick = false;
+
+		} else {
 		}
 		if (clientTicksSinceLastServerPulse > Reference.clientRemoveInactiveEntityTimer) {
 			// this.setDead();
@@ -596,6 +595,32 @@ public class EntityMachineModRideable extends Entity {
 			// this.world.getChunkFromChunkCoords(this.chunkCoordX, this.chunkCoordZ).removeEntity(this);
 			// this.addedToChunk = true;
 
+		}
+
+		if (!this.isDead) {
+			int yChunk = MathHelper.floor(this.posY / 16.0D);
+			if (this.world.getChunkFromBlockCoords(new BlockPos(this)).isLoaded()) {
+				if (yChunk <= 16) {
+					ClassInheritanceMultiMap<Entity> cimm = this.world.getChunkFromBlockCoords(new BlockPos(this)).getEntityLists()[yChunk];
+					if (cimm.isEmpty()) {
+						this.world.getChunkFromBlockCoords(new BlockPos(this)).addEntity(this);
+						LogHelper.info("Adding to chunk");
+
+					} else {
+						for (Entity entity2 : cimm) {
+							if (entity2.equals(this)) {
+								return;
+							}
+						}
+						this.world.getChunkFromBlockCoords(new BlockPos(this)).addEntity(this);
+
+						LogHelper.info("Adding to chunk");
+					}
+				}
+			}
+			// only do for entities not dead so we dont keep them around on the client side.
+			// this.addedToChunk = false;
+			// 1.8.9 cant do this anymore causing major Rendering FPS issues.
 		}
 	}
 
