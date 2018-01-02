@@ -4,10 +4,10 @@ import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.init.Items;
 
-public class ItemBluePrintContinuousMiner extends ItemBluePrint {
+public class ItemBlueprintContinuousMiner extends ItemBlueprint {
 	public String registryName = "blueprintcontinuousminer";
 
-	public ItemBluePrintContinuousMiner() {
+	public ItemBlueprintContinuousMiner() {
 		super();
 		this.setUnlocalizedName(registryName);
 		this.setRegistryName(registryName);

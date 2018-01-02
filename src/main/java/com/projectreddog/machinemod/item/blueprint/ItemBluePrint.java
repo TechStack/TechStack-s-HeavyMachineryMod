@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.projectreddog.machinemod.item.ItemMachineMod;
 
-public class ItemBluePrint extends ItemMachineMod {
+public class ItemBlueprint extends ItemMachineMod {
 
 	public String outputItemName;
 
