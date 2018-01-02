@@ -7,8 +7,10 @@ import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.item.armor.ItemMachineModElytraJetLegs;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.render.armor.RenderElytraJetAlegs;
 import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.entity.Entity;
@@ -36,10 +38,13 @@ public class ModelElytraJetLegs extends ModelBiped {
 
 	}
 
+	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		// super.render(entity, f, f1, f2, f3, f4, f5);
 		GL11.glPushMatrix();
 		boolean hasFuel = false;
+		Minecraft.getMinecraft().getTextureManager().bindTexture(RenderElytraJetAlegs.getEntityTexture(entity));
+
 		if (entity instanceof EntityPlayer) {
 			ItemStack is = ((EntityPlayer) entity).getItemStackFromSlot(EntityEquipmentSlot.LEGS);
 			if (ItemMachineModElytraJetLegs.MaxFuel - is.getItemDamage() > 0) {
@@ -82,4 +87,5 @@ public class ModelElytraJetLegs extends ModelBiped {
 		MachineModModelHelper.renderBakedModel(modelParts.get(groupName));
 
 	}
+
 }
