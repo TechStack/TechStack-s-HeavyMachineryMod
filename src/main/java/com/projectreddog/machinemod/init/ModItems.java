@@ -135,7 +135,7 @@ public class ModItems {
 	public static final ItemMachineModElytraJetLegs elytrajetleg = new ItemMachineModElytraJetLegs(ItemMachineModArmor.MachineFuleConsumerMaterial, EntityEquipmentSlot.LEGS);
 	public static final ItemMachineMod afterburner = new ItemAfterBurner();
 
-	public static final ItemMachineMod blueprintcontinuousminer = new ItemBlueprintContinuousMiner();
+	public static final ItemBlueprintContinuousMiner blueprintcontinuousminer = new ItemBlueprintContinuousMiner();
 
 	@ObjectHolder("bagger")
 	public static final ItemMachineMod bagger = new ItemBagger();
