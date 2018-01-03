@@ -34,6 +34,7 @@ public class EntityCombine extends EntityMachineModRideable {
 		this.minAngle = 0;
 		this.droppedItem = ModItems.combine;
 		this.shouldSendClientInvetoryUpdates = true;
+		this.ignoreFrustumCheck = true;
 
 	}
 
