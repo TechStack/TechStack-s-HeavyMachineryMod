@@ -7,7 +7,9 @@
 package com.projectreddog.machinemod.model.tileentity;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
@@ -27,7 +29,11 @@ public class ModelFactory extends ModelBase {
 	// fields
 	public OBJModel objModel;
 	private HashMap<String, IBakedModel> modelParts;
-	private int time;
+
+	private List<AnimationState> anim = new ArrayList<AnimationState>();
+
+	private int currentAnimIndex = 0;
+	private int time = 0;
 
 	public ModelFactory() {
 
@@ -39,6 +45,16 @@ public class ModelFactory extends ModelBase {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		anim.add(new AnimationState(0, 0, 0));
+
+		anim.add(new AnimationState(0, 0, 0));
+
+		anim.add(new AnimationState(0, 0, 0));
+
+		anim.add(new AnimationState(0, 90, -90));
+		anim.add(new AnimationState(0, 90, -90));
+		anim.add(new AnimationState(0, 90, -90));
+
 	}
 
 	public void renderGroupObject(String groupName) {
@@ -46,26 +62,47 @@ public class ModelFactory extends ModelBase {
 
 	}
 
-	public void render(TileEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+	public void render(TileEntity entity, float f, float f1, float f2, float partialTicks, float f4, float f5) {
 		// super.render(null, f, f1, f2, f3, f4, f5);
-
-		// renderGroupObject(MachineModModelHelper.ALL_PARTS);
-		time--;
-
+		time++;
+		Boolean validindex = currentAnimIndex <= anim.size() - 2;// Minus 2 so we can transition from state A to B
 		renderGroupObject("Base");
-		// GL11.glRotatef(45, 0, 1, 0);
+		if (validindex) {
+			GL11.glRotatef((anim.get(currentAnimIndex).sholderAngleTarget - anim.get(currentAnimIndex).sholderAngleTarget) / time, 0, 1, 0);
+		}
 		renderGroupObject("Sholder");
-		GL11.glTranslatef(0, 2.40f, .55f);
-		GL11.glRotatef((time / 5) % 60f * 1, 1, 0, 0);
+
+		GL11.glTranslatef(0, 2.425f, -.55f);
+
+		if (validindex) {
+			GL11.glRotatef((anim.get(currentAnimIndex).upperArmAngleTarget - anim.get(currentAnimIndex).upperArmAngleTarget) / time, 1, 0, 0);
+
+		}
 
 		renderGroupObject("UpperArm");
-		// GL11.glRotatef(-45f, 1, 0, 0);
+		// if (validindex) {
+		// GL11.glRotatef(anim.get(currentAnimIndex).upperArmAngleTarget / time * -1, 1, 0, 0);
+		//
+		// }
 
-		GL11.glTranslatef(0, 0f, 1.255f);
-		GL11.glRotatef(((time / 5) % 60f) * -1, 1, 0, 0);
+		GL11.glTranslatef(0, 0f, -1.26f);
+		if (validindex) {
+			GL11.glRotatef(anim.get(currentAnimIndex).handAngleTarget / time, 1, 0, 0);
+
+		}
+		// GL11.glRotatef(((time / 5) % 60f) * -1, 1, 0, 0);
 
 		// GL11.glRotatef(45f, 1, 0, 0);
 		renderGroupObject("Hand");
+
+		if (time > 100) {
+			currentAnimIndex++;
+			time = 0;
+			if (currentAnimIndex > anim.size() - 1) {
+				currentAnimIndex = 0;
+
+			}
+		}
 		// Hand
 		// Base
 		// UpperArm
@@ -86,6 +123,19 @@ public class ModelFactory extends ModelBase {
 	public ResourceLocation getTexture() {
 
 		return new ResourceLocation("machinemod", Reference.MODEL_FACTORY_TEXTURE_LOCATION);
+	}
+
+	private class AnimationState {
+		private float sholderAngleTarget;
+		private float upperArmAngleTarget;
+		private float handAngleTarget;
+
+		public AnimationState(float sholderAngleTarget, float upperArmAngleTarget, float handAngleTarget) {
+			super();
+			this.sholderAngleTarget = sholderAngleTarget;
+			this.upperArmAngleTarget = upperArmAngleTarget;
+			this.handAngleTarget = handAngleTarget;
+		}
 	}
 
 }

@@ -12,7 +12,7 @@ public class ItemBlueprintContinuousMiner extends ItemBlueprint {
 		super();
 		this.setUnlocalizedName(registryName);
 		this.setRegistryName(registryName);
-		this.maxStackSize = 64;
+		this.workRequired = 100000;
 
 	}
 

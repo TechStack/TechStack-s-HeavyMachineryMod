@@ -8,8 +8,15 @@ import com.projectreddog.machinemod.item.ItemMachineMod;
 public class ItemBlueprint extends ItemMachineMod {
 
 	public String outputItemName;
-
+	public int workRequired;
 	public List<BlueprintIngredent> ingredents = new ArrayList<BlueprintIngredent>();
+
+	public ItemBlueprint() {
+		super();
+		this.maxStackSize = 1;
+		this.workRequired = 100000;
+
+	}
 
 	@Override
 	public String toString() {

@@ -18,7 +18,7 @@ public class TileEntityFactoryRenderer extends TileEntitySpecialRenderer {
 	private static ResourceLocation resourceLocation;
 
 	@Override
-	public void render(TileEntity tileentity, double x, double y, double z, float f, int i, float a) {
+	public void render(TileEntity tileentity, double x, double y, double z, float partialTicks, int i, float a) {
 
 		Tessellator tessellator = Tessellator.getInstance();
 
@@ -49,7 +49,7 @@ public class TileEntityFactoryRenderer extends TileEntitySpecialRenderer {
 			break;
 		}
 
-		this.teModel.render(tileentity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+		this.teModel.render(tileentity, 0.0F, 0.0F, -0.1F, partialTicks, 0.0F, 0.0625F);
 
 		GL11.glPopMatrix();
 

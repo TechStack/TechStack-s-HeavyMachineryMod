@@ -1,10 +1,9 @@
 package com.projectreddog.machinemod.tileentities;
 
-import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
-import com.projectreddog.machinemod.iface.IFuelContainer;
 import com.projectreddog.machinemod.iface.IWorkConsumer;
-import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.item.blueprint.ItemBlueprint;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -14,69 +13,44 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 
-public class TileEntityFactory extends TileEntity implements ITickable, IFuelContainer, ISidedInventory {
+public class TileEntityAssemblyTable extends TileEntity implements ITickable, ISidedInventory, IWorkConsumer {
 	protected ItemStack[] inventory;
 
-	public final int maxFuelStorage = 1000; // store up to 1k
 	public final int inventorySize = 1;
 	private static int[] sideSlots = new int[] { 0 };
 
-	public int fuelStorage = 0;
-	// public final int coolDownReset = 1200;
-	// public int cooldown = coolDownReset;
-	public int remainBurnTime = 0;
+	public int totalWorkNeededForThisTask = 0;// 1000
+	public int workConsumedForThisTask = 0;// 100
 
-	public TileEntityFactory() {
+	public TileEntityAssemblyTable() {
 		inventory = new ItemStack[inventorySize];
 		for (int i = 0; i < inventorySize; i++) {
 			inventory[i] = ItemStack.EMPTY;
 		}
+		totalWorkNeededForThisTask = 1000;
+
 	}
 
 	@Override
 	public void update() {
 		if (!world.isRemote) {
-			IWorkConsumer wc = getWorkConsumer(getTargetLocation());
-			if (wc != null) {
-				if (wc.isWorkNeeded()) {
-					wc.appyWork(10);
-				}
+			if (inventory[0].getItem() instanceof ItemBlueprint) {
+				totalWorkNeededForThisTask = ((ItemBlueprint) inventory[0].getItem()).workRequired;
 			}
-		}
 
-	}
-
-	public IWorkConsumer getWorkConsumer(BlockPos bp) {
-		TileEntity te = this.world.getTileEntity(bp);
-		if (te instanceof IWorkConsumer) {
-			return (IWorkConsumer) te;
-		}
-
-		return null;
-	}
-
-	public BlockPos getTargetLocation() {
-
-		return this.pos.offset(outputDirection(), 3);
-
-	}
-
-	public boolean canAcceptFluid() {
-		if (fuelStorage < maxFuelStorage) {
-			return true;
-		} else {
-			return false;
+			if (totalWorkNeededForThisTask == workConsumedForThisTask) {
+				// TODO : Generate the output somehow!
+				LogHelper.info("Total Work Reached!");
+				workConsumedForThisTask = 0;
+			}
 		}
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		fuelStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE");
-		remainBurnTime = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "BURN_TIME");
 		// inventory
 		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
 		for (int i = 0; i < tagList.tagCount(); i++) {
@@ -91,8 +65,6 @@ public class TileEntityFactory extends TileEntity implements ITickable, IFuelCon
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE", fuelStorage);
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "BURN_TIME", remainBurnTime);
 		// inventory
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < inventory.length; i++) {
@@ -109,65 +81,12 @@ public class TileEntityFactory extends TileEntity implements ITickable, IFuelCon
 
 	}
 
-	public int addFluid(int amount) {
-		int returnAmount;
-		if (canAcceptFluid()) {
-			if (fuelStorage + amount > maxFuelStorage) {
-				// fill to brim return amount left over
-				returnAmount = (fuelStorage + amount - maxFuelStorage);
-
-				fuelStorage = maxFuelStorage;
-			} else {
-				// not going to return any this container can hold all of the fuel
-				fuelStorage = fuelStorage + amount;
-				returnAmount = 0;
-			}
-		} else {
-			returnAmount = amount;
-		}
-		return returnAmount;
-	}
-
-	public boolean transferFuel() {
-		if (this.fuelStorage > 0) {
-
-			if (world.getBlockState(this.pos.offset(this.outputDirection())).getBlock() == ModBlocks.machinefuelpump) {
-				// its a distiller so we can transfer fuel!
-				TileEntityFuelPump tEC = (TileEntityFuelPump) world.getTileEntity(this.pos.offset(this.outputDirection()));
-				if (tEC.canAcceptFluid()) {
-					tEC.addFluid(1);
-					this.fuelStorage = this.fuelStorage - 1;
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-
-	// KEEP ME EVEN IF WE REMOVE THE FUEL interface
-	public EnumFacing outputDirection() {
-		EnumFacing ef = (EnumFacing) world.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
-		// switch (ef) {
-		// case NORTH:
-		// return EnumFacing.SOUTH;
-		// case SOUTH:
-		// return EnumFacing.NORTH;
-		// case EAST:
-		// return EnumFacing.WEST;
-		// case WEST:
-		// return EnumFacing.EAST;
-		// default:
-		// return null;
-		// }
-		return ef;
-	}
-
 	public int getField(int id) {
 		switch (id) {
 		case 0:
-			return this.fuelStorage;
+			return totalWorkNeededForThisTask;
 		case 1:
-			return this.remainBurnTime;
+			return workConsumedForThisTask;
 		default:
 			break;
 		}
@@ -178,11 +97,9 @@ public class TileEntityFactory extends TileEntity implements ITickable, IFuelCon
 	public void setField(int id, int value) {
 		switch (id) {
 		case 0:
-			this.fuelStorage = value;
-			break;
+			totalWorkNeededForThisTask = value;
 		case 1:
-			this.remainBurnTime = value;
-			break;
+			workConsumedForThisTask = value;
 		default:
 			break;
 		}
@@ -320,5 +237,35 @@ public class TileEntityFactory extends TileEntity implements ITickable, IFuelCon
 		}
 
 		return true;
+	}
+
+	@Override
+	public int appyWork(int Amount) {
+		if (amountCanConsume() >= Amount) {
+			// 0 return value we can consume it all
+			workConsumedForThisTask += Amount;
+			return 0;
+		} else {
+			workConsumedForThisTask += amountCanConsume();
+			return Amount - amountCanConsume();
+		}
+
+	}
+
+	@Override
+	public boolean isWorkNeeded() {
+		// TODO Auto-generated method stub
+		if (totalWorkNeededForThisTask > workConsumedForThisTask) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public int amountCanConsume() {
+
+		return totalWorkNeededForThisTask - workConsumedForThisTask;
+
 	}
 }
