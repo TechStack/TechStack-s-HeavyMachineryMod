@@ -15,16 +15,18 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ContainerAssemblyTable extends Container {
 
 	protected TileEntityAssemblyTable assemblyTable;
-	protected int totalWorkNeededForThisTask;
-	protected int workConsumedForThisTask;
+	protected int lasttotalWorkNeededForThisTask;
+	protected int lastworkConsumedForThisTask;
+	protected int lastHasBuildProject;
 
 	public ContainerAssemblyTable(InventoryPlayer inventoryPlayer, TileEntityAssemblyTable assemblyTable) {
 		this.assemblyTable = assemblyTable;
-		totalWorkNeededForThisTask = -1;
-		workConsumedForThisTask = -1;
+		lasttotalWorkNeededForThisTask = -1;
+		lastworkConsumedForThisTask = -1;
+		lastHasBuildProject = -1;
 		for (int i = 0; i < 1; i++) {
 			for (int j = 0; j < 1; j++) {
-				addSlotToContainer(new SlotBlueprint(assemblyTable, j + i * 9, 8 + j * 18, 18 + i * 18));
+				addSlotToContainer(new SlotBlueprint(assemblyTable, j + i * 9, (8 + j * 18), (18 + i * 18) - 2));
 			}
 		}
 
@@ -91,17 +93,20 @@ public class ContainerAssemblyTable extends Container {
 		for (int i = 0; i < this.listeners.size(); ++i) {
 			IContainerListener icrafting = (IContainerListener) this.listeners.get(i);
 
-			if (this.totalWorkNeededForThisTask != this.assemblyTable.getField(0)) {
+			if (this.lasttotalWorkNeededForThisTask != this.assemblyTable.getField(0)) {
 				icrafting.sendWindowProperty(this, 0, this.assemblyTable.getField(0));
 			}
-			if (this.workConsumedForThisTask != this.assemblyTable.getField(1)) {
+			if (this.lastworkConsumedForThisTask != this.assemblyTable.getField(1)) {
 				icrafting.sendWindowProperty(this, 1, this.assemblyTable.getField(1));
 			}
-
+			if (this.lastHasBuildProject != this.assemblyTable.getField(2)) {
+				icrafting.sendWindowProperty(this, 1, this.assemblyTable.getField(2));
+			}
 		}
 
-		this.totalWorkNeededForThisTask = this.assemblyTable.getField(0);
-		this.workConsumedForThisTask = this.assemblyTable.getField(1);
+		this.lasttotalWorkNeededForThisTask = this.assemblyTable.getField(0);
+		this.lastworkConsumedForThisTask = this.assemblyTable.getField(1);
+		this.lastHasBuildProject = this.assemblyTable.getField(2);
 
 	}
 

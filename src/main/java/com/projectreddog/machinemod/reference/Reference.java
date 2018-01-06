@@ -59,6 +59,8 @@ public class Reference {
 
 	public static final String GUI_FUEL_GUAGE_TEXTURE_LOCATION = "textures/gui/gui_overlay_fuel_gage.png";
 	public static final String GUI_FUEL_LEVEL_TEXTURE_LOCATION = "textures/gui/gui_fuel_level_marker.png";
+	public static final String GUI_WORK_PROGRESS_TEXTURE_LOCATION = "textures/gui/workprogress.png";
+
 	// textures for Tile Entities
 	public static final String MODEL_TILEENTITY_PRIMARY_CRUSHER_TEXTURE_LOCATION = "models/primarycrusher.png";
 	public static final String MODEL_TILEENTITY_CENRIFUGE_TEXTURE_LOCATION = "models/centrifuge.png";
@@ -171,5 +173,11 @@ public class Reference {
 	public static int crudeOilStoneGenMinlevel = 5;
 	public static int crudeOilStoneGenMaxlevel = 30;
 	public static int wellHeadMaxRange = 15;
+
+	// GUI BUTTONS by Screen
+	// ASSEMBLY TABLE
+	public static final int GUI_ASSEMBLY_TABLE_BUTTON_ASSEMBLE = 1;
+	public static final int GUI_ASSEMBLY_TABLE_BUTTON_NEXT_PAGE = 2;
+	public static final int GUI_ASSEMBLY_TABLE_BUTTON_PREV_PAGE = 3;
 
 }

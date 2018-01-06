@@ -18,8 +18,20 @@ public class ItemBlueprintContinuousMiner extends ItemBlueprint {
 
 	public void Init() {
 		this.outputItemName = ModItems.continuousminer.getRegistryName().toString();
-		ingredents.add(new BlueprintIngredent(Items.IRON_INGOT.getRegistryName().toString(), 100));
-		ingredents.add(new BlueprintIngredent(Items.IRON_INGOT.getRegistryName().toString(), 100));
+		ingredents.add(new BlueprintIngredent(ModItems.steelingot.getRegistryName().toString(), 128));
+		ingredents.add(new BlueprintIngredent(Items.DIAMOND.getRegistryName().toString(), 27));
+		ingredents.add(new BlueprintIngredent(Items.REDSTONE.getRegistryName().toString(), 16));
+		ingredents.add(new BlueprintIngredent(Items.LEATHER.getRegistryName().toString(), 24));
+		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
+
+		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
+		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
+		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
+		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
+		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
+		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
+		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
+		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
 
 		LogHelper.info(this);
 	}

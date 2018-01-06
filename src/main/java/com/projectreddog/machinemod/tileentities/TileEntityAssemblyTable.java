@@ -1,5 +1,9 @@
 package com.projectreddog.machinemod.tileentities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.projectreddog.machinemod.iface.ITEGuiButtonHandler;
 import com.projectreddog.machinemod.iface.IWorkConsumer;
 import com.projectreddog.machinemod.item.blueprint.ItemBlueprint;
 import com.projectreddog.machinemod.reference.Reference;
@@ -7,15 +11,18 @@ import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
-public class TileEntityAssemblyTable extends TileEntity implements ITickable, ISidedInventory, IWorkConsumer {
+public class TileEntityAssemblyTable extends TileEntity implements ITickable, ISidedInventory, IWorkConsumer, ITEGuiButtonHandler {
 	protected ItemStack[] inventory;
 
 	public final int inventorySize = 1;
@@ -23,6 +30,8 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 
 	public int totalWorkNeededForThisTask = 0;// 1000
 	public int workConsumedForThisTask = 0;// 100
+
+	public boolean hasBuildProject = false;
 
 	public TileEntityAssemblyTable() {
 		inventory = new ItemStack[inventorySize];
@@ -42,7 +51,7 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 
 			if (totalWorkNeededForThisTask == workConsumedForThisTask) {
 				// TODO : Generate the output somehow!
-				LogHelper.info("Total Work Reached!");
+				// LogHelper.info("Total Work Reached!");
 				workConsumedForThisTask = 0;
 			}
 		}
@@ -87,6 +96,8 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 			return totalWorkNeededForThisTask;
 		case 1:
 			return workConsumedForThisTask;
+		case 2:
+			return hasBuildProject ? 1 : 0;
 		default:
 			break;
 		}
@@ -100,6 +111,8 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 			totalWorkNeededForThisTask = value;
 		case 1:
 			workConsumedForThisTask = value;
+		case 2:
+			hasBuildProject = value == 0 ? false : true;
 		default:
 			break;
 		}
@@ -107,7 +120,7 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 	}
 
 	public int getFieldCount() {
-		return 2;
+		return 3;
 	}
 
 	@Override
@@ -241,6 +254,7 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 
 	@Override
 	public int appyWork(int Amount) {
+
 		if (amountCanConsume() >= Amount) {
 			// 0 return value we can consume it all
 			workConsumedForThisTask += Amount;
@@ -255,6 +269,10 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 	@Override
 	public boolean isWorkNeeded() {
 		// TODO Auto-generated method stub
+		if (hasBuildProject == false) {
+			// no active project so dont accept work.
+			return false;
+		}
 		if (totalWorkNeededForThisTask > workConsumedForThisTask) {
 			return true;
 		} else {
@@ -267,5 +285,53 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 
 		return totalWorkNeededForThisTask - workConsumedForThisTask;
 
+	}
+
+	public String getFriendlyOutputname() {
+		if (!getStackInSlot(0).isEmpty()) {
+			if (getStackInSlot(0).getItem() instanceof ItemBlueprint) {
+				String outputItemName = ((ItemBlueprint) getStackInSlot(0).getItem()).outputItemName;
+				Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(outputItemName));
+				if (item != null) {
+					String displayName = item.getItemStackDisplayName(new ItemStack(item));
+					return displayName;
+				} else {
+					LogHelper.info("An Output of an ingredent is null Tell Tech please!" + outputItemName);
+				}
+			}
+		}
+		return null;
+	}
+
+	public List<String> getFriendlyIngredentList() {
+		List<String> returnValue = new ArrayList<String>();
+		if (!getStackInSlot(0).isEmpty()) {
+			if (getStackInSlot(0).getItem() instanceof ItemBlueprint) {
+
+				for (ItemBlueprint.BlueprintIngredent ingredent : ((ItemBlueprint) getStackInSlot(0).getItem()).ingredents) {
+					String ingredentName = ingredent.getName();
+					Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(ingredentName));
+					if (item != null) {
+						returnValue.add(item.getItemStackDisplayName(new ItemStack(item)) + " X " + ingredent.getCount());
+
+					} else {
+						LogHelper.info("An Ingredent is null Tell Tech please!" + ingredentName);
+					}
+				}
+			}
+		}
+		return returnValue;
+	}
+
+	@Override
+	public void HandleGuiButton(int buttonId, EntityPlayer player) {
+		/// LogHelper.info("the button was clicked and the server knows!");
+		if (!getStackInSlot(0).isEmpty()) {
+			if (getStackInSlot(0).getItem() instanceof ItemBlueprint) {
+				//
+				workConsumedForThisTask = 0;
+				hasBuildProject = true;
+			}
+		}
 	}
 }
