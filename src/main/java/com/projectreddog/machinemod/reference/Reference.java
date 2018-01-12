@@ -1,12 +1,14 @@
 package com.projectreddog.machinemod.reference;
 
+import java.util.UUID;
+
 import com.mojang.authlib.GameProfile;
 
 public class Reference {
 	// common constants for our mod
 	// example: public static final string MOD_ID ="Blah";
 
-	public static final GameProfile gameProfile = new GameProfile(null, "[TECHSTACKS HEAVY MACHINERY MOD]");
+	public static final GameProfile gameProfile = new GameProfile(UUID.nameUUIDFromBytes("TECHSTACKS HEAVY MACHINERY MOD".getBytes()), "[TECHSTACKS HEAVY MACHINERY MOD]");
 	public static final String MOD_ID = "machinemod";
 	public static final String MOD_NAME = "MachineMod";
 	// public static final String VERSION = "${version}";
