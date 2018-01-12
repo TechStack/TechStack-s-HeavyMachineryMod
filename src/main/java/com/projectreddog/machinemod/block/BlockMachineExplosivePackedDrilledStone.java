@@ -81,6 +81,9 @@ public class BlockMachineExplosivePackedDrilledStone extends BlockMachineModMany
 		ModExplosion explosion = new ModExplosion(world, (Entity) null, x, y, z, size);
 		// explosion.isFlaming = flameing;
 		explosion.isSmoking = smoking;
+		if (net.minecraftforge.event.ForgeEventFactory.onExplosionStart(world, explosion))
+			return explosion;
+
 		explosion.doExplosionA();
 		explosion.doExplosionB(true);
 		return explosion;
