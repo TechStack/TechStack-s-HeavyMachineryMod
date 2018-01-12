@@ -42,7 +42,7 @@ public class ModelExcavator extends ModelTransportable {
 		// DEBUG CODE !
 
 		// render tracks before anything
-		GL11.glRotatef(entity.rotationYaw * -1, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(entity.rotationYaw * 1, 0.0F, 1.0F, 0.0F);
 
 		this.renderGroupObject("Object.1");
 		// rotate rest of machine to correct orentation (first)
@@ -69,10 +69,12 @@ public class ModelExcavator extends ModelTransportable {
 		this.renderGroupObject("Object.6");
 		this.renderGroupObject("Object.5");
 		this.renderGroupObject("Object.7");
-		this.renderGroupObject("Object.3");
-		this.renderGroupObject("Object.4");
+		// this.renderGroupObject("Object.3");
+		// this.renderGroupObject("Object.4");
 		this.renderGroupObject("Object.2");
 		this.renderGroupObject("Object.8");
+		this.renderGroupObject("Object.22");
+
 		// GL11.glTranslatef(-.5f, EntityExcavator.armPiviotUp, EntityExcavator.armPiviotForward);
 		if (entity != null) {
 
@@ -89,12 +91,12 @@ public class ModelExcavator extends ModelTransportable {
 
 		this.renderGroupObject("Object.9");
 		if (entity != null) {
-			GL11.glTranslatef(0f, 6.6f, 7.75f);
+			GL11.glTranslatef(0f, -6.6f, -7.75f);
 			GL11.glRotatef((float) ((((EntityExcavator) entity).angleArm2 * -1)), 1, 0, 0);
 		}
 		this.renderGroupObject("Object.10");
 		if (entity != null) {
-			GL11.glTranslatef(0f, -4.85f, .55f);
+			GL11.glTranslatef(0f, +4.85f, -.55f);
 			GL11.glRotatef((float) ((EntityExcavator) entity).angleArm3 * -1, 1, 0, 0f);
 		}
 		this.renderGroupObject("Object.11");
