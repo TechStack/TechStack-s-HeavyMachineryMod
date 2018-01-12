@@ -19,6 +19,8 @@ item.machinemod:combine.name=Combine
 item.machinemod:irondust.name=Iron Dust
 item.machinemod:golddust.name=Gold Dust
 item.machinemod:rawasphalt.name=Raw Asphalt
+gui.assemblytable.assemble=Assemble
+gui.assemblytable.name=Assembly Table
 
 item.machinemod:camshaft.name=Camshaft
 item.machinemod:piston.name=piston

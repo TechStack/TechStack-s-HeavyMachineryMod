@@ -46,7 +46,7 @@ import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlante
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlow;
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentSprayer;
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentTrencher;
-import com.projectreddog.machinemod.item.blueprint.ItemBluePrintContinuousMiner;
+import com.projectreddog.machinemod.item.blueprint.ItemBlueprintContinuousMiner;
 import com.projectreddog.machinemod.item.chopperattachments.ItemChopperAttachmentSawBlades;
 import com.projectreddog.machinemod.item.components.ItemCamshaft;
 import com.projectreddog.machinemod.item.components.ItemDozerBlade;
@@ -135,7 +135,7 @@ public class ModItems {
 	public static final ItemMachineModElytraJetLegs elytrajetleg = new ItemMachineModElytraJetLegs(ItemMachineModArmor.MachineFuleConsumerMaterial, EntityEquipmentSlot.LEGS);
 	public static final ItemMachineMod afterburner = new ItemAfterBurner();
 
-	public static final ItemMachineMod blueprintcontinuousminer = new ItemBluePrintContinuousMiner();
+	public static final ItemBlueprintContinuousMiner blueprintcontinuousminer = new ItemBlueprintContinuousMiner();
 
 	@ObjectHolder("bagger")
 	public static final ItemMachineMod bagger = new ItemBagger();
