@@ -256,6 +256,7 @@ public class EntityMachineModRideable extends Entity {
 					if (getItemToBeDropped() != null) {
 						this.dropItem(getItemToBeDropped(), 1);
 						this.setDead();
+						LogHelper.info("Server Remove Code reached" + this.getEntityId());
 						// this.addedToChunk = true;
 					}
 
@@ -267,9 +268,13 @@ public class EntityMachineModRideable extends Entity {
 			}
 		} else if (world.isRemote && this.getControllingPassenger() == null) {
 			if (player.isSneaking()) {
+
+				LogHelper.info("Client Remove Code reached" + this.getEntityId());
 				// if (getItemToBeDropped() != null) {
 
-				this.setDead();
+				// this.setDead();
+				// this.world.getChunkFromBlockCoords(new BlockPos(this)).removeEntity(this);
+				// LogHelper.info("CLIENT REMOVE THE ENTITY");
 				// this.world.removeEntity(this);
 				// this.world.getChunkFromChunkCoords(this.chunkCoordX, this.chunkCoordZ).removeEntity(this);
 				// this.addedToChunk = true;
@@ -463,7 +468,7 @@ public class EntityMachineModRideable extends Entity {
 			this.onGround = true;
 		}
 		// TODO POSSIBLE BUGs ???? untested
-		move(MoverType.SELF, motionX * 2, motionY * 2, motionZ * 2);
+		move(MoverType.SELF, motionX * 5, motionY * 5, motionZ * 5);
 		// LogHelper.info(world.isRemote + "Post Block @ entity :" + this.getName() + " : " + world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() + " GEN COL: " + this.collided + " horiz COL: " + this.collidedHorizontally + "vert COL: " + this.collidedVertically);
 
 		//
@@ -531,6 +536,8 @@ public class EntityMachineModRideable extends Entity {
 		return Reference.MOD_ID + ":" + "GENERIC_CRUSH_MACHINE" + (this.rand.nextInt(5) + 1);
 	}
 
+	public int countNotFoundXtimes = 0;
+
 	public void updateClient() {
 		clientTicksSinceLastServerPulse++;
 		if (ticksSinceLastParticle > nextParticleAtTick) {
@@ -585,13 +592,14 @@ public class EntityMachineModRideable extends Entity {
 
 		if (isFristTick) {
 			clientInit();
-			isFristTick = false;
 
 		} else {
+			isFristTick = false;
+
 		}
 		if (clientTicksSinceLastServerPulse > Reference.clientRemoveInactiveEntityTimer) {
-			// this.setDead();
-			// this.world.removeEntity(this);
+			this.setDead();
+			this.world.removeEntity(this);
 			// this.world.getChunkFromChunkCoords(this.chunkCoordX, this.chunkCoordZ).removeEntity(this);
 			// this.addedToChunk = true;
 
@@ -603,24 +611,37 @@ public class EntityMachineModRideable extends Entity {
 				if (yChunk <= 16) {
 					ClassInheritanceMultiMap<Entity> cimm = this.world.getChunkFromBlockCoords(new BlockPos(this)).getEntityLists()[yChunk];
 					if (cimm.isEmpty()) {
-						this.world.getChunkFromBlockCoords(new BlockPos(this)).addEntity(this);
-						LogHelper.info("Adding to chunk");
+
+						countNotFoundXtimes++;
+
+						if (countNotFoundXtimes > 10) {
+							this.world.getChunkFromBlockCoords(new BlockPos(this)).addEntity(this);
+							LogHelper.info("Adding to chunk1" + this.getEntityId() + " CX = " + this.world.getChunkFromBlockCoords(new BlockPos(this)).x + " CZ =  " + this.world.getChunkFromBlockCoords(new BlockPos(this)).z);
+						}
 
 					} else {
 						for (Entity entity2 : cimm) {
 							if (entity2.equals(this)) {
+								countNotFoundXtimes = 0;
 								return;
 							}
 						}
-						this.world.getChunkFromBlockCoords(new BlockPos(this)).addEntity(this);
+						countNotFoundXtimes++;
 
-						LogHelper.info("Adding to chunk");
+						if (countNotFoundXtimes > 10) {
+							this.world.getChunkFromBlockCoords(new BlockPos(this)).addEntity(this);
+
+							LogHelper.info("Adding to chunk2" + this.getEntityId() + " CX = " + this.world.getChunkFromBlockCoords(new BlockPos(this)).x + " CZ =  " + this.world.getChunkFromBlockCoords(new BlockPos(this)).z);
+						}
 					}
 				}
 			}
 			// only do for entities not dead so we dont keep them around on the client side.
 			// this.addedToChunk = false;
 			// 1.8.9 cant do this anymore causing major Rendering FPS issues.
+		} else {
+			this.world.getChunkFromBlockCoords(new BlockPos(this)).removeEntity(this);
+
 		}
 	}
 

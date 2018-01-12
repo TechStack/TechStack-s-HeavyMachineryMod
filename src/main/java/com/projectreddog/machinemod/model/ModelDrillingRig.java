@@ -54,14 +54,14 @@ public class ModelDrillingRig extends ModelTransportable {
 		this.renderGroupObject("Object.5");
 		this.renderGroupObject("Object.6");
 		this.renderGroupObject("Object.7");
-		this.renderGroupObject("Object.8");
+		// this.renderGroupObject("Object.8");
 		this.renderGroupObject("Object.9");
 		this.renderGroupObject("Object.10");
 		this.renderGroupObject("Object.11");
-		this.renderGroupObject("Object.12");
+		// this.renderGroupObject("Object.12");
 		this.renderGroupObject("Object.13");
 		this.renderGroupObject("Object.14");
-		this.renderGroupObject("Object.15");
+		// this.renderGroupObject("Object.15");
 		this.renderGroupObject("Object.16");
 		this.renderGroupObject("Object.17");
 		this.renderGroupObject("Object.18");

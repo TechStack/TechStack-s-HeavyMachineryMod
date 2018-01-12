@@ -29,6 +29,7 @@ import com.projectreddog.machinemod.block.BlockMachineModCentrifuge;
 import com.projectreddog.machinemod.block.BlockMachineModConveyor;
 import com.projectreddog.machinemod.block.BlockMachineModCorn;
 import com.projectreddog.machinemod.block.BlockMachineModDistiller;
+import com.projectreddog.machinemod.block.BlockMachineModFactory;
 import com.projectreddog.machinemod.block.BlockMachineModFermenter;
 import com.projectreddog.machinemod.block.BlockMachineModFractionalDistillation;
 import com.projectreddog.machinemod.block.BlockMachineModFuelPump;
@@ -41,10 +42,12 @@ import com.projectreddog.machinemod.block.BlockMachineSteelBlock;
 import com.projectreddog.machinemod.block.BlockOilFluid;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityAsphaltMixer;
+import com.projectreddog.machinemod.tileentities.TileEntityAssemblyTable;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 import com.projectreddog.machinemod.tileentities.TileEntityConveyor;
 import com.projectreddog.machinemod.tileentities.TileEntityCrate;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
+import com.projectreddog.machinemod.tileentities.TileEntityFactory;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
@@ -68,7 +71,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
 public class ModBlocks {
-	public static final BlockMachineMod machineassemblytable = new BlockMachineAssemblyTable();
+	public static final Block machineassemblytable = new BlockMachineAssemblyTable();
 	public static final BlockMachineMod machineasphalt = new BlockMachineAsphalt();
 	public static final BlockMachineMod steelblock = new BlockMachineSteelBlock();
 
@@ -98,6 +101,8 @@ public class ModBlocks {
 	public static final BlockMachineMod machineblastedstone2 = new BlockMachineModBlastedStone2();
 	public static final Block corn = new BlockMachineModCorn();
 	public static final Block machinedistiller = new BlockMachineModDistiller();
+	public static final Block machinefactory = new BlockMachineModFactory();
+
 	public static final Block machinefermenter = new BlockMachineModFermenter();
 	public static final Block machinefuelpump = new BlockMachineModFuelPump();
 
@@ -129,6 +134,9 @@ public class ModBlocks {
 
 	public static void init() {
 		ForgeRegistries.BLOCKS.register(machineassemblytable);// Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE
+
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineassemblytable).setRegistryName(ModBlocks.machineassemblytable.getRegistryName()));
+
 		// TODO need to register items for all blocks too!
 		ForgeRegistries.BLOCKS.register(steelblock);
 		ForgeRegistries.ITEMS.register(new ItemBlock(steelblock).setRegistryName(ModBlocks.steelblock.getRegistryName()));
@@ -199,6 +207,10 @@ public class ModBlocks {
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinefuelpump).setRegistryName(ModBlocks.machinefuelpump.getRegistryName()));
 		ForgeRegistries.BLOCKS.register(machinedistiller);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinedistiller).setRegistryName(ModBlocks.machinedistiller.getRegistryName()));
+
+		ForgeRegistries.BLOCKS.register(machinefactory);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinefactory).setRegistryName(ModBlocks.machinefactory.getRegistryName()));
+
 		ForgeRegistries.BLOCKS.register(machinefermenter);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinefermenter).setRegistryName(ModBlocks.machinefermenter.getRegistryName()));
 		ForgeRegistries.BLOCKS.register(machinewellhead);
@@ -222,6 +234,9 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileEntityWellHead.class, Reference.MODBLOCK_MACHINE_WELL_HEAD);
 
 		GameRegistry.registerTileEntity(TileEntityLiquidPipe.class, Reference.MODBLOCK_MACHINE_LIQUID_PIPE);
+		GameRegistry.registerTileEntity(TileEntityFactory.class, Reference.MODBLOCK_MACHINE_FACTORY);
+
+		GameRegistry.registerTileEntity(TileEntityAssemblyTable.class, Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 
 		// /Register Fluids
 		FluidRegistry.registerFluid(fluidOil);
@@ -308,6 +323,9 @@ public class ModBlocks {
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinefuelpump), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FUEL_PUMP, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinedistiller), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_DISTILLER, "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinefactory), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FACTORY, "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinefermenter), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FERMENTER, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinewellhead), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_WELL_HEAD, "inventory"));

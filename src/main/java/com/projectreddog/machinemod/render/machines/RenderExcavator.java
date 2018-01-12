@@ -52,8 +52,10 @@ public class RenderExcavator extends Render {
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) x, (float) y, (float) z);
 		GL11.glRotatef(180.0F, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
 
 		this.bindEntityTexture(entity);
+
 		this.modelExcavator.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
 		GlStateManager.translate(-1.00f, -1.75F, -.85F);

@@ -22,8 +22,10 @@ import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventory
 import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServerHandler;
 import com.projectreddog.machinemod.network.MachineModMessageRequestTEAllInventoryToServer;
 import com.projectreddog.machinemod.network.MachineModMessageRequestTEAllInventoryToServerHandler;
+import com.projectreddog.machinemod.network.MachineModMessageTEGuiButtonClickToServer;
 import com.projectreddog.machinemod.network.MachineModMessageTEInventoryChangedToClient;
 import com.projectreddog.machinemod.network.MachineModMessageTEInventoryChangedToClientHandler;
+import com.projectreddog.machinemod.network.MachineModMessageTeGuiButtonClickToServerHandler;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -62,6 +64,8 @@ public class ModNetwork {
 
 		simpleNetworkWrapper.registerMessage(MachineModMessageTEInventoryChangedToClientHandler.class, MachineModMessageTEInventoryChangedToClient.class, 8, Side.CLIENT);// message
 		simpleNetworkWrapper.registerMessage(MachineModMessageRequestTEAllInventoryToServerHandler.class, MachineModMessageRequestTEAllInventoryToServer.class, 9, Side.SERVER);// message // to
+
+		simpleNetworkWrapper.registerMessage(MachineModMessageTeGuiButtonClickToServerHandler.class, MachineModMessageTEGuiButtonClickToServer.class, 10, Side.SERVER);// message // to
 
 		// to
 		// client
