@@ -158,6 +158,11 @@ public class ModExplosion extends Explosion {
 	}
 
 	@Override
+	public void clearAffectedBlockPositions() {
+		this.affectedBlockPositions.clear();
+	}
+
+	@Override
 	public List<BlockPos> getAffectedBlockPositions() {
 		return this.affectedBlockPositions;
 	}
