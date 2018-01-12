@@ -158,6 +158,11 @@ public class ModExplosion extends Explosion {
 	}
 
 	@Override
+	public List<BlockPos> getAffectedBlockPositions() {
+		return this.affectedBlockPositions;
+	}
+
+	@Override
 	public void doExplosionB(boolean p_77279_1_) {
 
 		// this.affectedBlockPositions = this.getAffectedBlockPositions();
