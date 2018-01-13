@@ -608,7 +608,7 @@ public class EntityMachineModRideable extends Entity {
 		if (!this.isDead) {
 			int yChunk = MathHelper.floor(this.posY / 16.0D);
 			if (this.world.getChunkFromBlockCoords(new BlockPos(this)).isLoaded()) {
-				if (yChunk <= 16) {
+				if (yChunk < 16) {
 					ClassInheritanceMultiMap<Entity> cimm = this.world.getChunkFromBlockCoords(new BlockPos(this)).getEntityLists()[yChunk];
 					if (cimm.isEmpty()) {
 

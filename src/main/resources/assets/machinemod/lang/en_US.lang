@@ -19,6 +19,7 @@ item.machinemod:combine.name=Combine
 item.machinemod:irondust.name=Iron Dust
 item.machinemod:golddust.name=Gold Dust
 item.machinemod:rawasphalt.name=Raw Asphalt
+item.machinemod:blueprintcontinuousminer.name= Blue Print - Continuous Miner
 gui.assemblytable.assemble=Assemble
 gui.assemblytable.name=Assembly Table
 
@@ -39,7 +40,7 @@ item.machinemod:cornseed.name=Corn Seeds
 item.machinemod:fuelcan.name=Fuel Can
 item.machinemod:anfo.name=ANFO Explosives
 item.machinemod:conecrusher.name=Cone Crusher
-item.machinemod:excavator.name=Excavator
+item.machinemod:excavator.name=Excavator - WIP
 item.machinemod:widebedtruck.name=Wide Bed Truck
 item.machinemod:trencher.name=Trencher
 item.machinemod:boomarmsegment.name=Boom Arm Segment
@@ -49,7 +50,7 @@ item.machinemod:lidwithspout.name=Lid with Spout
 item.machinemod:lawnmower.name=Riding Lawn Mower
 item.machinemod:mowerdeck.name=Mower Deck
 item.machinemod:liquidtanksegment.name=Liquid tank segment
-item.machinemod:continuousminer.name=Continuous Miner
+item.machinemod:continuousminer.name=Continuous Miner - WIP
 item.machinemod:chopper.name=Chopper
 
 
@@ -87,10 +88,10 @@ item.machinemod:aluminumingot.name=Aluminum Ingot
 
 item.machinemod:paver.name=Paver
 item.machinemod:roadroller.name=Road Roller
-item.machinemod:bagger.name=Bagger
+item.machinemod:bagger.name=Bagger - WIP
 item.machinemod:grader.name=Grader
-item.machinemod:crane.name=Crane
-item.machinemod:oilrig.name=Oil Rig
+item.machinemod:crane.name=Crane - WIP
+item.machinemod:oilrig.name=Oil Rig - WIP
 item.machinemod:sub.name=Sub
 item.machinemod:semitractor.name=Semi-Tractor
 item.machinemod:livestocktrailer.name=Livestock Trailer
