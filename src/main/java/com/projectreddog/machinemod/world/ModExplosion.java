@@ -281,7 +281,7 @@ public class ModExplosion extends Explosion {
 					this.worldObj.setBlockState(new BlockPos(x, y, z), ModBlocks.machineblastedemerald.getDefaultState());
 				} else if (this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedgranite || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblasteddiorite || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedandesite
 						|| this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedgold || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastediron || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedcoal || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedlapis
-						|| this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblasteddiamond || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedredstone || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedemerald || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2) {
+						|| this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblasteddiamond || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedredstone || this.worldObj.getBlockState(bp).getBlock() == ModBlocks.machineblastedemerald) {
 				} else {
 					// check for mod blocks here using ore dictionary & set it
 					// to ModBlocks.machinemodblastedstone2 ......
