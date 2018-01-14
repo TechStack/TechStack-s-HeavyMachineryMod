@@ -18,8 +18,9 @@ item.machinemod:turbofan.name=Turbo Fan
 item.machinemod:combine.name=Combine
 item.machinemod:irondust.name=Iron Dust
 item.machinemod:golddust.name=Gold Dust
-item.machinemod:rawasphalt.name=Raw Asphalt
-item.machinemod:blueprintcontinuousminer.name= Blue Print - Continuous Miner
+item.machinemod:rawasphalt.name=Raw Asphalt -WIP
+item.machinemod:blueprintcontinuousminer.name= Blue Print - Continuous Miner - WIP
+item.machinemod:choppersawblade.name=Chopper Sawblade - WIP
 gui.assemblytable.assemble=Assemble
 gui.assemblytable.name=Assembly Table
 
@@ -54,7 +55,7 @@ item.machinemod:continuousminer.name=Continuous Miner - WIP
 item.machinemod:chopper.name=Chopper
 
 
-iteme.machinemod:paverscreed.name=Paver Screed
+item.machinemod:paverscreed.name=Paver Screed
 item.machinemod:rollerwheel.name=Roller Wheel
 item.machinemod:tracksegment.name=Track Segment
 item.machinemod:cutterbucket.name=Cutter Bucket
@@ -102,7 +103,7 @@ item.machinemod:cargotrailer.name=Cargo Trailer
 # Block Localizations
 tile.machinemod:machineassemblytable.name=Machine Assembly Table
 tile.machinemod:machinescreen.name=Screen
-tile.machinemod:machinesteelblock.name=Steel Block
+tile.machinemod:steelblock.name=Steel Block
 tile.machinemod:machinecrate.name=Crate
 tile.machinemod:machinedrilledstone.name=Drilled Stone
 tile.machinemod:machinedrilledandesite.name=Andesite Stone
@@ -112,12 +113,13 @@ tile.machinemod:machinedrilledgranite.name=Granite Stone
 
 tile.machinemod:machineasphalt.name=Asphalt
 tile.machinemod:machineliquidpipe.name=Liquid Pipe
+tile.machineliquidpipe.name=Liquid Pipe
 tile.machinemod:machinecompressedasphalt.name=Compressed Asphalt
 
 tile.machinemod:machineblastedstone.name=Blasted Stone
 tile.machinemod:machineexplosivepackeddrilledstone.name=Explosive Packed Drilled Stone
-tile.machinemod:machineprimarycrhuser.name=Primary Crusher
-tile.machinemod:machinecentrifuge.name=Centrifuge
+tile.machinemod:machineprimarycrusher.name=Primary Crusher
+tile.machinemod:machinecentrifuge.name=Centrifuge - WIP
 tile.machinemod:moonshine.name=Moonshine AKA Fire water
 tile.machinemod:machinefuelpump.name=Fuel Pump
 tile.machinemod:machinedistiller.name=Distiller
@@ -141,8 +143,12 @@ tile.machinemod:machineconveyor.name=Conveyor
 
 tile.machinemod:machinecrudeoilstone.name=Crude Oil Stone
 tile.machinemod:machinefractionaldistillation.name=Fractional Distillation Tower
-tile.machinemod:machineasphaltmixer.name=Asphalt Mixer
+tile.machinemod:machineasphaltmixer.name=Asphalt Mixer - WIP
 tile.machinemod:machinewellhead.name=Well Head
+
+tile.machinemod:machineoil.name=Oil - WIP
+tile.machinemod:machinefactory.name=Factory - WIP
+
 
 
 

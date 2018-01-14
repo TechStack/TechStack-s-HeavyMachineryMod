@@ -7,7 +7,7 @@
   "variants": {
   "thirdperson": [{"x":180}],
     "normal": [{}],
-    "inventory": [{"x":180}],"scale": 0.5,
+    "inventory": [{"x":180}],
         "facing=north": {"model": "machinemod:primarycrusher.obj","x":180, "y":180},
         "facing=south": {"model": "machinemod:primarycrusher.obj","x":180 },
         "facing=west":  {"model": "machinemod:primarycrusher.obj","x":180,"y": 90 },

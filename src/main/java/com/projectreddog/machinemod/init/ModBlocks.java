@@ -24,7 +24,6 @@ import com.projectreddog.machinemod.block.BlockMachineModBlastedIron;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedLapis;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedRedstone;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
-import com.projectreddog.machinemod.block.BlockMachineModBlastedStone2;
 import com.projectreddog.machinemod.block.BlockMachineModCentrifuge;
 import com.projectreddog.machinemod.block.BlockMachineModConveyor;
 import com.projectreddog.machinemod.block.BlockMachineModCorn;
@@ -98,7 +97,7 @@ public class ModBlocks {
 	public static final BlockMachineMod machineblastedredstone = new BlockMachineModBlastedRedstone();
 	public static final BlockMachineMod machineblastedemerald = new BlockMachineModBlastedEmerald();
 
-	public static final BlockMachineMod machineblastedstone2 = new BlockMachineModBlastedStone2();
+	// public static final BlockMachineMod machineblastedstone2 = new BlockMachineModBlastedStone2();
 	public static final Block corn = new BlockMachineModCorn();
 	public static final Block machinedistiller = new BlockMachineModDistiller();
 	public static final Block machinefactory = new BlockMachineModFactory();
@@ -185,8 +184,8 @@ public class ModBlocks {
 		ForgeRegistries.BLOCKS.register(machineblastedemerald);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machineblastedemerald).setRegistryName(ModBlocks.machineblastedemerald.getRegistryName()));
 
-		ForgeRegistries.BLOCKS.register(machineblastedstone2);
-		ForgeRegistries.ITEMS.register(new ItemBlock(machineblastedstone2).setRegistryName(ModBlocks.machineblastedstone2.getRegistryName()));
+		// ForgeRegistries.BLOCKS.register(machineblastedstone2);
+		// ForgeRegistries.ITEMS.register(new ItemBlock(machineblastedstone2).setRegistryName(ModBlocks.machineblastedstone2.getRegistryName()));
 		ForgeRegistries.BLOCKS.register(machineprimarycrhuser);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machineprimarycrhuser).setRegistryName(ModBlocks.machineprimarycrhuser.getRegistryName()));
 		ForgeRegistries.BLOCKS.register(machinecentrifuge);

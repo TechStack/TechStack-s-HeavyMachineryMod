@@ -468,7 +468,7 @@ public class EntityMachineModRideable extends Entity {
 			this.onGround = true;
 		}
 		// TODO POSSIBLE BUGs ???? untested
-		move(MoverType.SELF, motionX * 5, motionY * 5, motionZ * 5);
+		move(MoverType.SELF, motionX * 4, motionY * 4, motionZ * 4);
 		// LogHelper.info(world.isRemote + "Post Block @ entity :" + this.getName() + " : " + world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() + " GEN COL: " + this.collided + " horiz COL: " + this.collidedHorizontally + "vert COL: " + this.collidedVertically);
 
 		//
