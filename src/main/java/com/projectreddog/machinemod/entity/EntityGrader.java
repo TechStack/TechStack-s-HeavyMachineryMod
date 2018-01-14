@@ -59,8 +59,7 @@ public class EntityGrader extends EntityMachineModRideable {
 					if (world.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || world.getBlockState(bp).getBlock() == Blocks.SNOW || world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.SAND || world.getBlockState(bp).getBlock() == Blocks.GRAVEL || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.CLAY
 							|| world.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedgranite || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblasteddiorite || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedandesite
 							|| this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedgold || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastediron || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedcoal || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedlapis
-							|| this.world.getBlockState(bp).getBlock() == ModBlocks.machineblasteddiamond || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedredstone || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedemerald || world.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2 || world.getBlockState(bp).getBlock() == Blocks.SOUL_SAND
-							|| world.getBlockState(bp).getBlock() == Blocks.TALLGRASS) {
+							|| this.world.getBlockState(bp).getBlock() == ModBlocks.machineblasteddiamond || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedredstone || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedemerald || world.getBlockState(bp).getBlock() == Blocks.SOUL_SAND || world.getBlockState(bp).getBlock() == Blocks.TALLGRASS) {
 						BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
 					}
@@ -81,7 +80,7 @@ public class EntityGrader extends EntityMachineModRideable {
 					BlockPos bp;
 					bp = new BlockPos(posX + calcTwoOffsetX(2, angle, i), posY, posZ + calcTwoOffsetZ(2, angle, i));
 					if (world.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || world.getBlockState(bp).getBlock() == Blocks.SNOW || world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.SAND || world.getBlockState(bp).getBlock() == Blocks.GRAVEL || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.CLAY
-							|| world.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || world.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone2 || world.getBlockState(bp).getBlock() == Blocks.SOUL_SAND || world.getBlockState(bp).getBlock() == Blocks.TALLGRASS) {
+							|| world.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || world.getBlockState(bp).getBlock() == Blocks.SOUL_SAND || world.getBlockState(bp).getBlock() == Blocks.TALLGRASS) {
 						BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
 					}
