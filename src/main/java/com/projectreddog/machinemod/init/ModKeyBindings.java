@@ -15,6 +15,7 @@ public class ModKeyBindings {
 	public static KeyBinding KeyBindSegment3Down;
 	public static KeyBinding KeyBindTurretRight;
 	public static KeyBinding KeyBindTurretLeft;
+	public static KeyBinding KeyBindUnload;
 
 	public static void init() {
 
@@ -26,6 +27,7 @@ public class ModKeyBindings {
 		KeyBindSegment3Down = new KeyBinding("key.segment3.down", Keyboard.KEY_NUMPAD3, "key.machinemod.segment");
 		KeyBindTurretRight = new KeyBinding("key.turret.right", Keyboard.KEY_NUMPAD6, "key.machinemod.segment");
 		KeyBindTurretLeft = new KeyBinding("key.turret.left", Keyboard.KEY_NUMPAD4, "key.machinemod.segment");
+		KeyBindUnload = new KeyBinding("key.unload", Keyboard.KEY_U, "key.machinemod.special");
 
 		ClientRegistry.registerKeyBinding(KeyBindSegment1Up);
 		ClientRegistry.registerKeyBinding(KeyBindSegment1Down);
@@ -35,6 +37,7 @@ public class ModKeyBindings {
 		ClientRegistry.registerKeyBinding(KeyBindSegment3Down);
 		ClientRegistry.registerKeyBinding(KeyBindTurretRight);
 		ClientRegistry.registerKeyBinding(KeyBindTurretLeft);
+		ClientRegistry.registerKeyBinding(KeyBindUnload);
 
 	}
 

@@ -13,6 +13,7 @@ import com.projectreddog.machinemod.network.MachineModMessageEntityToClient;
 import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServer;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.BlockUtil;
+import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -28,6 +29,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.ClassInheritanceMultiMap;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -79,6 +81,7 @@ public class EntityMachineModRideable extends Entity {
 	public boolean isPlayerTurningLeft = false;
 	public boolean isPlayerPushingSprintButton = false;
 	public boolean isPlayerPushingJumpButton = false;
+	public boolean isPlayerPushingUnloadButton = false;
 	// additions in 1.10.x version
 	public boolean isPlayerPushingSegment1Up = false; // default numpad 7
 	public boolean isPlayerPushingSegment1Down = false; // default numpad 1
@@ -249,10 +252,11 @@ public class EntityMachineModRideable extends Entity {
 				}
 
 			} else {
-				if (player.isSneaking()) {
+				if (player.isSneaking() && !world.isRemote) {
 					if (getItemToBeDropped() != null) {
 						this.dropItem(getItemToBeDropped(), 1);
 						this.setDead();
+						LogHelper.info("Server Remove Code reached" + this.getEntityId());
 						// this.addedToChunk = true;
 					}
 
@@ -264,9 +268,13 @@ public class EntityMachineModRideable extends Entity {
 			}
 		} else if (world.isRemote && this.getControllingPassenger() == null) {
 			if (player.isSneaking()) {
+
+				LogHelper.info("Client Remove Code reached" + this.getEntityId());
 				// if (getItemToBeDropped() != null) {
 
-				this.setDead();
+				// this.setDead();
+				// this.world.getChunkFromBlockCoords(new BlockPos(this)).removeEntity(this);
+				// LogHelper.info("CLIENT REMOVE THE ENTITY");
 				// this.world.removeEntity(this);
 				// this.world.getChunkFromChunkCoords(this.chunkCoordX, this.chunkCoordZ).removeEntity(this);
 				// this.addedToChunk = true;
@@ -460,7 +468,7 @@ public class EntityMachineModRideable extends Entity {
 			this.onGround = true;
 		}
 		// TODO POSSIBLE BUGs ???? untested
-		move(MoverType.SELF, motionX * 2, motionY * 2, motionZ * 2);
+		move(MoverType.SELF, motionX * 4, motionY * 4, motionZ * 4);
 		// LogHelper.info(world.isRemote + "Post Block @ entity :" + this.getName() + " : " + world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() + " GEN COL: " + this.collided + " horiz COL: " + this.collidedHorizontally + "vert COL: " + this.collidedVertically);
 
 		//
@@ -528,6 +536,8 @@ public class EntityMachineModRideable extends Entity {
 		return Reference.MOD_ID + ":" + "GENERIC_CRUSH_MACHINE" + (this.rand.nextInt(5) + 1);
 	}
 
+	public int countNotFoundXtimes = 0;
+
 	public void updateClient() {
 		clientTicksSinceLastServerPulse++;
 		if (ticksSinceLastParticle > nextParticleAtTick) {
@@ -564,11 +574,7 @@ public class EntityMachineModRideable extends Entity {
 		}
 
 		setPosition(posX + motionX, posY + motionY, posZ + motionZ);
-		if (!this.isDead) {
-			// only do for entities not dead so we dont keep them around on the client side.
-			// this.addedToChunk = false;
-			// 1.8.9 cant do this anymore causing major Rendering FPS issues.
-		}
+
 		// LogHelper.info("Client: isinvis:" +
 		// this.isInvisibleToPlayer(Minecraft.getMinecraft().thePlayer) +
 		// " DIMID:" + world.provider.getDimensionId() + " X:" + posX +
@@ -586,14 +592,55 @@ public class EntityMachineModRideable extends Entity {
 
 		if (isFristTick) {
 			clientInit();
+
 		} else {
 			isFristTick = false;
+
 		}
 		if (clientTicksSinceLastServerPulse > Reference.clientRemoveInactiveEntityTimer) {
-			// this.setDead();
-			// this.world.removeEntity(this);
+			this.setDead();
+			this.world.removeEntity(this);
 			// this.world.getChunkFromChunkCoords(this.chunkCoordX, this.chunkCoordZ).removeEntity(this);
 			// this.addedToChunk = true;
+
+		}
+
+		if (!this.isDead) {
+			int yChunk = MathHelper.floor(this.posY / 16.0D);
+			if (this.world.getChunkFromBlockCoords(new BlockPos(this)).isLoaded()) {
+				if (yChunk < 16) {
+					ClassInheritanceMultiMap<Entity> cimm = this.world.getChunkFromBlockCoords(new BlockPos(this)).getEntityLists()[yChunk];
+					if (cimm.isEmpty()) {
+
+						countNotFoundXtimes++;
+
+						if (countNotFoundXtimes > 10) {
+							this.world.getChunkFromBlockCoords(new BlockPos(this)).addEntity(this);
+							LogHelper.info("Adding to chunk1" + this.getEntityId() + " CX = " + this.world.getChunkFromBlockCoords(new BlockPos(this)).x + " CZ =  " + this.world.getChunkFromBlockCoords(new BlockPos(this)).z);
+						}
+
+					} else {
+						for (Entity entity2 : cimm) {
+							if (entity2.equals(this)) {
+								countNotFoundXtimes = 0;
+								return;
+							}
+						}
+						countNotFoundXtimes++;
+
+						if (countNotFoundXtimes > 10) {
+							this.world.getChunkFromBlockCoords(new BlockPos(this)).addEntity(this);
+
+							LogHelper.info("Adding to chunk2" + this.getEntityId() + " CX = " + this.world.getChunkFromBlockCoords(new BlockPos(this)).x + " CZ =  " + this.world.getChunkFromBlockCoords(new BlockPos(this)).z);
+						}
+					}
+				}
+			}
+			// only do for entities not dead so we dont keep them around on the client side.
+			// this.addedToChunk = false;
+			// 1.8.9 cant do this anymore causing major Rendering FPS issues.
+		} else {
+			this.world.getChunkFromBlockCoords(new BlockPos(this)).removeEntity(this);
 
 		}
 	}

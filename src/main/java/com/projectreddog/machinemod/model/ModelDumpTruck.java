@@ -55,7 +55,7 @@ public class ModelDumpTruck extends ModelBase {
 		this.renderGroupObject("Object.11");
 		this.renderGroupObject("Object.12");
 		this.renderGroupObject("Object.13");
-		this.renderGroupObject("Object.14");
+
 		this.renderGroupObject("Object.15");
 		this.renderGroupObject("Object.16");
 		this.renderGroupObject("Object.17");
@@ -78,12 +78,13 @@ public class ModelDumpTruck extends ModelBase {
 		this.renderGroupObject("Object.34");
 		this.renderGroupObject("Object.35");
 		this.renderGroupObject("Object.36");
-		this.renderGroupObject("Object.37");
+		this.renderGroupObject("Object.000");
 		this.renderGroupObject("Object.38");
 		this.renderGroupObject("Object.39");
 
 		this.renderGroupObject("Object.41");
-
+		this.renderGroupObject("Object.042");
+		this.renderGroupObject("Object.043");
 		GL11.glTranslatef(0f, -1.95f, 7.9f);
 		if (entity != null) {
 			GL11.glRotatef(((EntityDumpTruck) entity).Attribute1, 1, 0, 0);

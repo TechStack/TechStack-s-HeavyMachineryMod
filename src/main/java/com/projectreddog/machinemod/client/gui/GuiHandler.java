@@ -1,10 +1,12 @@
 package com.projectreddog.machinemod.client.gui;
 
+import com.projectreddog.machinemod.container.ContainerAssemblyTable;
 import com.projectreddog.machinemod.container.ContainerBagger;
 import com.projectreddog.machinemod.container.ContainerCanner;
 import com.projectreddog.machinemod.container.ContainerCentrifuge;
 import com.projectreddog.machinemod.container.ContainerChopper;
 import com.projectreddog.machinemod.container.ContainerCombine;
+import com.projectreddog.machinemod.container.ContainerContinuousMiner;
 import com.projectreddog.machinemod.container.ContainerDistiller;
 import com.projectreddog.machinemod.container.ContainerDumpTruck;
 import com.projectreddog.machinemod.container.ContainerExcavator;
@@ -20,6 +22,7 @@ import com.projectreddog.machinemod.container.ContainerWideBedTruck;
 import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.entity.EntityChopper;
 import com.projectreddog.machinemod.entity.EntityCombine;
+import com.projectreddog.machinemod.entity.EntityContinuousMiner;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityGrader;
@@ -28,6 +31,7 @@ import com.projectreddog.machinemod.entity.EntityPaver;
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.tileentities.TileEntityAssemblyTable;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
@@ -142,6 +146,15 @@ public class GuiHandler implements IGuiHandler {
 					return new ContainerDistiller(player.inventory, (TileEntityDistiller) entity);
 				}
 			}
+		} else if (id == Reference.GUI_ASSEMBLY_TABLE) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityAssemblyTable) {
+
+					return new ContainerAssemblyTable(player.inventory, (TileEntityAssemblyTable) entity);
+				}
+			}
 		} else if (id == Reference.GUI_FRACTIONALDISTILLATION) {
 
 			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
@@ -205,6 +218,15 @@ public class GuiHandler implements IGuiHandler {
 				if (entity instanceof TileEntityPrimaryCrusher) {
 
 					return new ContainerPrimaryCrusher(player.inventory, (TileEntityPrimaryCrusher) entity);
+				}
+			}
+		} else if (id == Reference.GUI_CONTINUOUSMINER) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityContinuousMiner) {
+
+					return new ContainerContinuousMiner(player.inventory, (EntityContinuousMiner) entity);
 				}
 			}
 		}
@@ -300,6 +322,14 @@ public class GuiHandler implements IGuiHandler {
 					return new GuiDistiller(player.inventory, (TileEntityDistiller) entity);
 				}
 			}
+		} else if (id == Reference.GUI_ASSEMBLY_TABLE) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityAssemblyTable) {
+					return new GuiAssemblyTable(player.inventory, (TileEntityAssemblyTable) entity);
+				}
+			}
 		} else if (id == Reference.GUI_FRACTIONALDISTILLATION) {
 
 			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
@@ -356,6 +386,14 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null) {
 				if (entity instanceof TileEntityPrimaryCrusher) {
 					return new GuiPrimaryCrusher(player.inventory, (TileEntityPrimaryCrusher) entity);
+				}
+			}
+		} else if (id == Reference.GUI_CONTINUOUSMINER) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityContinuousMiner) {
+					return new GuiContinuousMiner(player.inventory, (EntityContinuousMiner) entity);
 				}
 			}
 		}

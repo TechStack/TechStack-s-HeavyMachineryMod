@@ -6,6 +6,7 @@ import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.entity.EntityBulldozer;
 import com.projectreddog.machinemod.entity.EntityChopper;
 import com.projectreddog.machinemod.entity.EntityCombine;
+import com.projectreddog.machinemod.entity.EntityContinuousMiner;
 import com.projectreddog.machinemod.entity.EntityCrane;
 import com.projectreddog.machinemod.entity.EntityDrillingRig;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
@@ -30,6 +31,7 @@ import com.projectreddog.machinemod.render.machines.RenderBagger;
 import com.projectreddog.machinemod.render.machines.RenderBulldozer;
 import com.projectreddog.machinemod.render.machines.RenderChopper;
 import com.projectreddog.machinemod.render.machines.RenderCombine;
+import com.projectreddog.machinemod.render.machines.RenderContinuousMiner;
 import com.projectreddog.machinemod.render.machines.RenderCrane;
 import com.projectreddog.machinemod.render.machines.RenderDrillingRig;
 import com.projectreddog.machinemod.render.machines.RenderDumpTruck;
@@ -48,12 +50,14 @@ import com.projectreddog.machinemod.render.mob.RenderExpStalker;
 import com.projectreddog.machinemod.render.tileentity.TileEntityCentrifugeRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityCrateRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityDistillerRenderer;
+import com.projectreddog.machinemod.render.tileentity.TileEntityFactoryRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityFermenterRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityFuelPumpRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityLiquidPipeRenderer;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 import com.projectreddog.machinemod.tileentities.TileEntityCrate;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
+import com.projectreddog.machinemod.tileentities.TileEntityFactory;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
@@ -113,6 +117,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityOilRig.class, new RenderOilRig(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySub.class, new RenderSub(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityChopper.class, new RenderChopper(Minecraft.getMinecraft().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityContinuousMiner.class, new RenderContinuousMiner(Minecraft.getMinecraft().getRenderManager()));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityLaserMiner.class, new RenderLaserMiner(Minecraft.getMinecraft().getRenderManager()));
 
@@ -147,6 +152,7 @@ public class ClientProxy extends CommonProxy {
 		// ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFractionalDistillation.class, new TileEntityFractionalDistillationRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLiquidPipe.class, new TileEntityLiquidPipeRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCrate.class, new TileEntityCrateRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFactory.class, new TileEntityFactoryRenderer());
 
 		// regsiter event for overlay
 		MinecraftForge.EVENT_BUS.register(new RenderOverlayHandler());

@@ -18,6 +18,7 @@ public class ContainerPrimaryCrusher extends Container {
 
 	public ContainerPrimaryCrusher(InventoryPlayer inventoryPlayer, TileEntityPrimaryCrusher primaryCrusher) {
 		this.primaryCrusher = primaryCrusher;
+		lastFuelStorage = -1;
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 9; j++) {
 				addSlotToContainer(new Slot(primaryCrusher, j + i * 9, 8 + j * 18, 18 + i * 18));

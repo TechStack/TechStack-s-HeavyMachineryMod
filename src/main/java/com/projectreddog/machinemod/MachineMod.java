@@ -4,6 +4,7 @@ import com.projectreddog.machinemod.client.handler.InputEventHandler;
 import com.projectreddog.machinemod.handler.ConfigurationHandler;
 import com.projectreddog.machinemod.handler.events.EventHandler;
 import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.init.ModBlueprint;
 import com.projectreddog.machinemod.init.ModDimensions;
 import com.projectreddog.machinemod.init.ModEntities;
 import com.projectreddog.machinemod.init.ModItems;
@@ -65,6 +66,7 @@ public class MachineMod {
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		// wrap things up .. runs after other mods do there init steps
+		ModBlueprint.init();
 
 		LogHelper.debug("Is Bulldozer Enabled: " + Reference.enableBulldozer);
 	}

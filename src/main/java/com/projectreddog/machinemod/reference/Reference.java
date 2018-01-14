@@ -1,12 +1,14 @@
 package com.projectreddog.machinemod.reference;
 
+import java.util.UUID;
+
 import com.mojang.authlib.GameProfile;
 
 public class Reference {
 	// common constants for our mod
 	// example: public static final string MOD_ID ="Blah";
 
-	public static final GameProfile gameProfile = new GameProfile(null, "[TECHSTACKS HEAVY MACHINERY MOD]");
+	public static final GameProfile gameProfile = new GameProfile(UUID.nameUUIDFromBytes("TECHSTACKS HEAVY MACHINERY MOD".getBytes()), "[TECHSTACKS HEAVY MACHINERY MOD]");
 	public static final String MOD_ID = "machinemod";
 	public static final String MOD_NAME = "MachineMod";
 	// public static final String VERSION = "${version}";
@@ -28,6 +30,8 @@ public class Reference {
 	public static final String FLUID_OIL_FLOWING_TEXTURE_LOCATION = "textures/blocks/oil_flowing.png";
 	public static final String MODEL_FUEL_PUMP_TEXTURE_LOCATION = "models/fuelpump.png";
 	public static final String MODEL_DISTILLER_TEXTURE_LOCATION = "models/distiller.png";
+	public static final String MODEL_FACTORY_TEXTURE_LOCATION = "models/factory.png";
+
 	public static final String MODEL_FRACTIONAL_DISTILATION_TEXTURE_LOCATION = "models/fractionaldistilation.png";
 	public static final String MODEL_FERMENTER_TEXTURE_LOCATION = "models/fermenter.png";
 
@@ -39,6 +43,8 @@ public class Reference {
 	public static final String MODEL_DRILLINGRIG_TEXTURE_LOCATION = "models/drillingrig.png";
 	public static final String MODEL_DUMPTRUCK_TEXTURE_LOCATION = "models/dumptruck.png";
 	public static final String MODEL_LOADER_TEXTURE_LOCATION = "models/modelloader.png";
+	public static final String MODEL_CONTINUOUSMINER_TEXTURE_LOCATION = "models/continuousminer.png";
+
 	public static final String MODEL_BAGGER_TEXTURE_LOCATION = "models/bagger.png";
 	public static final String MODEL_OIL_RIG_TEXTURE_LOCATION = "models/bagger.png";
 	public static final String MODEL_PUMP_JACK_TEXTURE_LOCATION = "models/pumpjack.png";
@@ -54,8 +60,12 @@ public class Reference {
 
 	public static final String MODEL_EXCAVATOR_TEXTURE_LOCATION = "models/excavator.png";
 
+	public static final String MODEL_ElYTRA_JET_BELT_TEXTURE_LOCATION = "models/elytrajetbelt.png";
+
 	public static final String GUI_FUEL_GUAGE_TEXTURE_LOCATION = "textures/gui/gui_overlay_fuel_gage.png";
 	public static final String GUI_FUEL_LEVEL_TEXTURE_LOCATION = "textures/gui/gui_fuel_level_marker.png";
+	public static final String GUI_WORK_PROGRESS_TEXTURE_LOCATION = "textures/gui/workprogress.png";
+
 	// textures for Tile Entities
 	public static final String MODEL_TILEENTITY_PRIMARY_CRUSHER_TEXTURE_LOCATION = "models/primarycrusher.png";
 	public static final String MODEL_TILEENTITY_CENRIFUGE_TEXTURE_LOCATION = "models/centrifuge.png";
@@ -77,6 +87,8 @@ public class Reference {
 	public static final int GUI_EXCAVATOR = 14;
 	public static final int GUI_PRIMARY_CRUSHER = 15;
 	public static final int GUI_CHOPPER = 16;
+	public static final int GUI_CONTINUOUSMINER = 17;
+	public static final int GUI_ASSEMBLY_TABLE = 18;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;
@@ -120,6 +132,8 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_DISTILLER = "machinedistiller";
 	public static final String MODBLOCK_MACHINE_WELL_HEAD = "machinewellhead";
 
+	public static final String MODBLOCK_MACHINE_FACTORY = "machinefactory";
+
 	public static final String MODBLOCK_MACHINE_FERMENTER = "machinefermenter";
 	public static final String MODBLOCK_MACHINE_FUEL_PUMP = "machinefuelpump";
 
@@ -149,7 +163,10 @@ public class Reference {
 	public static boolean enableGrader = true;
 	public static boolean enableLawnmower = true;
 	public static boolean enableLoader = true;
+
 	public static boolean enableLaserMiner = true;
+
+	public static boolean enableContinuousMiner = true;
 
 	public static boolean enableOilRig = true;
 	public static boolean enablePaver = true;
@@ -164,5 +181,11 @@ public class Reference {
 	public static int crudeOilStoneGenMinlevel = 5;
 	public static int crudeOilStoneGenMaxlevel = 30;
 	public static int wellHeadMaxRange = 15;
+
+	// GUI BUTTONS by Screen
+	// ASSEMBLY TABLE
+	public static final int GUI_ASSEMBLY_TABLE_BUTTON_ASSEMBLE = 1;
+	public static final int GUI_ASSEMBLY_TABLE_BUTTON_NEXT_PAGE = 2;
+	public static final int GUI_ASSEMBLY_TABLE_BUTTON_PREV_PAGE = 3;
 
 }
