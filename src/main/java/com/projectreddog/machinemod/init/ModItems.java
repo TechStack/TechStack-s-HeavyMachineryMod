@@ -42,6 +42,7 @@ import com.projectreddog.machinemod.item.ItemTrackSegment;
 import com.projectreddog.machinemod.item.ItemTurboProp;
 import com.projectreddog.machinemod.item.ItemWrench;
 import com.projectreddog.machinemod.item.armor.ItemMachineModArmor;
+import com.projectreddog.machinemod.item.armor.ItemMachineModCrashHelmet;
 import com.projectreddog.machinemod.item.armor.ItemMachineModElytraJetLegs;
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlanter;
 import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentPlow;
@@ -135,6 +136,7 @@ public class ModItems {
 	public static final ItemMachineMod light = new ItemLight();
 	public static final ItemMachineMod lightmodule = new ItemLightModule();
 	public static final ItemMachineModElytraJetLegs elytrajetleg = new ItemMachineModElytraJetLegs(ItemMachineModArmor.MachineFuleConsumerMaterial, EntityEquipmentSlot.LEGS);
+	public static final ItemMachineModCrashHelmet crashhelmet = new ItemMachineModCrashHelmet(ItemMachineModArmor.SteelMaterial, EntityEquipmentSlot.HEAD);
 	public static final ItemMachineMod afterburner = new ItemAfterBurner();
 
 	public static final ItemBlueprintContinuousMiner blueprintcontinuousminer = new ItemBlueprintContinuousMiner();
@@ -330,6 +332,7 @@ public class ModItems {
 		ForgeRegistries.ITEMS.register(light);// , "light");
 		ForgeRegistries.ITEMS.register(lightmodule);// , "lightmodule");
 		ForgeRegistries.ITEMS.register(elytrajetleg);
+		ForgeRegistries.ITEMS.register(crashhelmet);
 		ForgeRegistries.ITEMS.register(afterburner);
 
 		ForgeRegistries.ITEMS.register(tracksegment);// , "tracksegment");
@@ -534,6 +537,8 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(light, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "light", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(lightmodule, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "lightmodule", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(elytrajetleg, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "elytrajetleg", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(crashhelmet, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "crashhelmet", "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(afterburner, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "afterburner", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(blueprintcontinuousminer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "blueprintcontinuousminer", "inventory"));
 
