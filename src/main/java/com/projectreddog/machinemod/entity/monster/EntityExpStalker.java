@@ -45,7 +45,7 @@ public class EntityExpStalker extends EntityMob {
 		// this.targetTasks.addTask(1, new EntityAIFindEntityNearestPlayer(this));
 		this.tasks.addTask(0, new EntityAIAttackMelee(this, 1d, true));
 
-		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, null));
+		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[0]));
 
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
 

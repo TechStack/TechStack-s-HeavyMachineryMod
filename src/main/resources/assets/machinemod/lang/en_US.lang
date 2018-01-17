@@ -112,6 +112,18 @@ tile.machinemod:machinedrilledgranite.name=Granite Stone
 
 
 tile.machinemod:machineasphalt.name=Asphalt
+tile.machinemod:machinebleakdirt.name=Bleak Dirt
+tile.machinemod:machinebleakstone.name=Bleak Stone
+tile.machinemod:machinebleakoreiridonium.name=Iridonium Ore
+tile.machinemod:machinebleakoremagentia.name=Magentia Ore
+tile.machinemod:machinebleakorelimoniteum.name=Limoniteum Ore
+tile.machinemod:machinebleakorecrimsonite.name=Crimsonite Ore
+tile.machinemod:machinebleakoreazurium.name=Azurium Ore
+tile.machinemod:machinebleakorecitronite.name=Citronite Ore
+tile.machinemod:machinebleakoreunobtanium.name=Unobtanium Ore
+
+
+
 tile.machinemod:machineliquidpipe.name=Liquid Pipe
 tile.machineliquidpipe.name=Liquid Pipe
 tile.machinemod:machinecompressedasphalt.name=Compressed Asphalt

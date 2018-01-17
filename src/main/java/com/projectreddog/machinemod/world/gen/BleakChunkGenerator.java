@@ -6,6 +6,9 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.projectreddog.machinemod.entity.monster.EntityExpStalker;
+import com.projectreddog.machinemod.init.ModBiomes;
 import com.projectreddog.machinemod.world.BleakTerrainGenerator;
 
 import net.minecraft.entity.EnumCreatureType;
@@ -17,7 +20,6 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.MapGenBase;
-import net.minecraft.world.gen.MapGenCaves;
 import net.minecraftforge.event.terraingen.InitMapGenEvent.EventType;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
@@ -27,9 +29,9 @@ public class BleakChunkGenerator implements IChunkGenerator {
 	private Random random;
 	private Biome[] biomesForGeneration;
 
-	private List<Biome.SpawnListEntry> mobs;// Lists.newArrayList();
+	private List<Biome.SpawnListEntry> mobs = Lists.newArrayList(new Biome.SpawnListEntry(EntityExpStalker.class, 100, 2, 2));
 
-	private MapGenBase caveGenerator = new MapGenCaves();
+	private MapGenBase caveGenerator = new BleakMapGenCaves();
 	private BleakTerrainGenerator terraingen = new BleakTerrainGenerator();
 
 	public BleakChunkGenerator(World worldObj) {
@@ -46,12 +48,17 @@ public class BleakChunkGenerator implements IChunkGenerator {
 		ChunkPrimer chunkprimer = new ChunkPrimer();
 
 		// setup biomes for terraingen
-		this.biomesForGeneration = this.worldObj.getBiomeProvider().getBiomesForGeneration(this.biomesForGeneration, x * 4 - 2, z * 4 - 2, 10, 10);
+		this.biomesForGeneration = new Biome[256];
+		// sets the biomes for each x * Z cord
+		for (int i = 0; i < 256; i++) {
+
+			this.biomesForGeneration[i] = ModBiomes.bleak;
+		}
 		terraingen.setBiomesForGeneration(biomesForGeneration);
 		terraingen.generate(x, z, chunkprimer);
 
 		// setup biomes again for actual biome decoration
-		this.biomesForGeneration = this.worldObj.getBiomeProvider().getBiomes(this.biomesForGeneration, x * 16, z * 16, 16, 16);
+		// this.biomesForGeneration = this.worldObj.getBiomeProvider().getBiomes(this.biomesForGeneration, x * 16, z * 16, 16, 16);
 		// this will replace stone for the biome specific stones
 		terraingen.replaceBiomeBlocks(z, z, chunkprimer, this, biomesForGeneration);
 

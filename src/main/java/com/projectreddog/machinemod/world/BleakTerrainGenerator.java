@@ -2,6 +2,8 @@ package com.projectreddog.machinemod.world;
 
 import java.util.Random;
 
+import com.projectreddog.machinemod.init.ModBlocks;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -202,7 +204,7 @@ public class BleakTerrainGenerator {
 								if (height < 2) {
 									primer.setBlockState(x4 * 4 + x, height32 * 8 + h, z4 * 4 + z, Blocks.BEDROCK.getDefaultState());
 								} else if ((d15 += d16) > 0.0D) {
-									primer.setBlockState(x4 * 4 + x, height32 * 8 + h, z4 * 4 + z, Blocks.STONE.getDefaultState());
+									primer.setBlockState(x4 * 4 + x, height32 * 8 + h, z4 * 4 + z, ModBlocks.machinebleakstone.getDefaultState());
 								}
 							}
 
@@ -227,7 +229,7 @@ public class BleakTerrainGenerator {
 
 		for (int i = 0; i < 16; ++i) {
 			for (int j = 0; j < 16; ++j) {
-				Biome biome = biomes[j + i * 16];
+				Biome biome = biomes[0];
 				biome.genTerrainBlocks(this.world, this.random, primer, x * 16 + i, z * 16 + j, this.depthBuffer[j + i * 16]);
 			}
 		}

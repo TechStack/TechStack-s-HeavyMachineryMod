@@ -96,6 +96,17 @@ public class Reference {
 	public static final String MODBLOCK_STEEL_BLOCK = "steelblock";
 
 	public static final String MODBLOCK_MACHINE_ASPHALT = "machineasphalt";
+	public static final String MODBLOCK_MACHINE_BLEAK_DIRT = "machinebleakdirt";
+	public static final String MODBLOCK_MACHINE_BLEAK_STONE = "machinebleakstone";
+	public static final String MODBLOCK_MACHINE_BLEAK_ORE_IRIDONIUM = "machinebleakoreiridonium";
+	public static final String MODBLOCK_MACHINE_BLEAK_ORE_MAGENTIA = "machinebleakoremagentia";
+
+	public static final String MODBLOCK_MACHINE_BLEAK_ORE_LIMONITEUM = "machinebleakorelimoniteum";
+	public static final String MODBLOCK_MACHINE_BLEAK_ORE_CRIMSONITE = "machinebleakorecrimsonite";
+	public static final String MODBLOCK_MACHINE_BLEAK_ORE_AZURIUM = "machinebleakoreazurium";
+	public static final String MODBLOCK_MACHINE_BLEAK_ORE_CITRONITE = "machinebleakorecitronite";
+	public static final String MODBLOCK_MACHINE_BLEAK_ORE_UNOBTANIUM = "machinebleakoreunobtanium";
+
 	public static final String MODBLOCK_MACHINE_CRATE = "machinecrate";
 
 	public static final String MODBLOCK_MACHINE_CRUDE_OIL_STONE = "machinecrudeoilstone";
@@ -180,7 +191,39 @@ public class Reference {
 
 	public static int crudeOilStoneGenMinlevel = 5;
 	public static int crudeOilStoneGenMaxlevel = 30;
+
+	public static int bleakoreiridoniumGenMinlevel = 5;
+	public static int bleakoreiridoniumGenMaxlevel = 30;
+	public static int bleakoreiridoniumGenDepositSize = 8;
+
+	public static int bleakoremagentiaGenMinlevel = 5;
+	public static int bleakoremagentiaGenMaxlevel = 30;
+	public static int bleakoremagentiaGenDepositSize = 8;
+
+	public static int bleakorelimoniteumGenMinlevel = 5;
+	public static int bleakorelimoniteumGenMaxlevel = 30;
+	public static int bleakorelimoniteumGenDepositSize = 8;
+
+	public static int bleakorecrimsoniteGenMinlevel = 5;
+	public static int bleakorecrimsoniteGenMaxlevel = 30;
+	public static int bleakorecrimsoniteGenDepositSize = 8;
+
+	public static int bleakoreazuriumGenMinlevel = 5;
+	public static int bleakoreazuriumGenMaxlevel = 30;
+	public static int bleakoreazuriumGenDepositSize = 8;
+
+	public static int bleakorecitroniteGenMinlevel = 5;
+	public static int bleakorecitroniteGenMaxlevel = 30;
+	public static int bleakorecitroniteGenDepositSize = 8;
+
+	public static int bleakoreunobtaniumGenMinlevel = 5;
+	public static int bleakoreunobtaniumGenMaxlevel = 10;
+	public static int bleakoreunobtaniumGenDepositSize = 4;
+
 	public static int wellHeadMaxRange = 15;
+
+	public static int BleakBiomeID = 57;
+	public static int BleakDimID = 57;
 
 	// GUI BUTTONS by Screen
 	// ASSEMBLY TABLE

@@ -11,7 +11,7 @@ public class ModDimensions {
 	public static DimensionType bleakDimensionType;
 
 	// TODO add to the configs the DIM ID For bleak Dim
-	public static int bleakDimID = 57;
+	public static int bleakDimID = Reference.BleakDimID;
 
 	public static void init() {
 

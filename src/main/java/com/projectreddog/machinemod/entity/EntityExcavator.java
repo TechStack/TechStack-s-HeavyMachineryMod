@@ -9,6 +9,7 @@ import com.projectreddog.machinemod.utility.BlockUtil;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -40,14 +41,14 @@ public class EntityExcavator extends EntityMachineModRideable {
 	public EntityExcavator(World world) {
 		super(world);
 
-		setSize(4f, 2f);
+		setSize(4f, 4f);
 		SIZE = 9;
 		inventory = new ItemStackHandler(SIZE);
 		// inventory = new ItemStack[9];
 
-		this.mountedOffsetY = .5D;
-		this.mountedOffsetX = -1.5D;
-		this.mountedOffsetZ = 2D;
+		this.mountedOffsetY = .70D;
+		this.mountedOffsetX = -1.2D;
+		this.mountedOffsetZ = 1.1D;
 		this.maxAngle = 256;
 		this.minAngle = 0;
 		this.droppedItem = ModItems.excavator;
@@ -55,6 +56,7 @@ public class EntityExcavator extends EntityMachineModRideable {
 		currPosY = this.posY;
 		currPosZ = this.posZ;
 		this.shouldSendClientInvetoryUpdates = true;
+		this.ignoreFrustumCheck = true;
 
 	}
 
@@ -126,15 +128,20 @@ public class EntityExcavator extends EntityMachineModRideable {
 				// LogHelper.info(this.yaw);
 				// LogHelper.info(this.rotationYaw);
 				// TS old model BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 9.5d, (360 - this.yaw), (float) (this.angleArm2 + 270 + this.angleArm1), 7.5d, (360 - this.yaw), (float) (this.angleArm3 + 90), -2.75d);
-				BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 11.5d, (360 - this.yaw), (float) (this.angleArm2 + 270 + this.angleArm1), 6.5d, (360 - this.yaw), (float) (this.angleArm3 + 90), -2.75d);
+				// public BlockPos calculateBlockPosGivenStartAngleDistance4(double startX, double startY, double startZ, float yaw1, float pitch1, double distance1, float yaw2, float pitch2, double distance2, float yaw3, float pitch3, double distance3, float yaw4, float pitch4, double distance4) {
+				// PRE UPDATE NEW MODEL BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 11.5d, (360 - this.yaw), (float) (this.angleArm2 + 270 + this.angleArm1), 6.5d, (360 - this.yaw), (float) (this.angleArm3 + 90), -2.75d);
+
+				BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -0.5d, (360 - this.yaw), (float) (55f + this.angleArm1), 12.5d, (360 - this.yaw), (float) (this.angleArm2 + 270 + this.angleArm1), 8.5d, (360 - this.yaw), (float) (this.angleArm3) + 90, +2.75d);
 				// BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 9.5d, (360 - this.yaw), (float) (this.angleArm2 + 270 + this.angleArm1), 7.5d, 0,0,0);
 
 				// BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -.5d, (360 - this.yaw), (float) (45f + this.angleArm1), 9.5d, (360 - this.yaw), (float) (this.angleArm2 + 265), 7.5d, 0, 0, 0);
 
 				// BlockPos BP = this.calculateBlockPosGivenStartAngleDistance4(this.posX, this.posY, this.posZ, (360 - this.yaw) + 90, 0, -1d, (360 - this.yaw), (float) this.angleArm1 - 40, 10d, (360 - this.yaw), (float) this.angleArm2 - 90, 10d, 0, 0, 0);
+				if (this.angleArm3 < 15) {
 
-				if (this.angleArm3 < 42) {
-					BlockUtil.BreakBlock(world, BP, this.getControllingPassenger());
+					if (world.getBlockState(BP).getBlock() == Blocks.BEDROCK && world.getBlockState(BP).getBlockHardness(world, BP) != -1) {
+						BlockUtil.BreakBlock(world, BP, this.getControllingPassenger());
+					}
 					AxisAlignedBB bucketboundingBox = new AxisAlignedBB(BP);
 					// was expand
 					bucketboundingBox.grow(1d);
