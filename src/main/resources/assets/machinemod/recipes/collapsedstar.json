@@ -1,0 +1,19 @@
+{
+    "result": {
+        "item": "machinemod:collapsedstar"
+    },
+    "pattern" :[
+		"psp",
+		"sss",
+		"psp"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "p": {
+       "item":"minecraft:piston"
+      },
+    "s": {
+      "item": "minecraft:nether_star"
+      }
+    }
+}

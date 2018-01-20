@@ -149,6 +149,9 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_FUEL_PUMP = "machinefuelpump";
 
 	public static final String MODBLOCK_MACHINE_CONVEYOR = "machineconveyor";
+	public static final String MODBLOCK_MACHINE_BLEAK_PORTAL_FRAME = "machinebleakportalframe";
+	public static final String MODBLOCK_MACHINE_BLEAK_PORTAL = "machinebleakportal";
+
 	public static final String MODBLOCK_MACHINE_SCREEN = "machinescreen";
 
 	public static final String MODBLOCK_MACHINE_FLUID_BIOFUEL = "biofuel";
@@ -158,6 +161,7 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE = "machineexplosivepackeddrilledstone";
 	public static final String MACHINE_MOD_NBT_PREFIX = "MACHINE_MOD_";
 
+	public static final String CONFIG_SECTION_BLEAK = "bleak";
 	// config file settings
 	public static int clientRemoveInactiveEntityTimer = 100;
 	public static int updateConnectionTimer = 100;

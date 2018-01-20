@@ -23,7 +23,7 @@ item.machinemod:blueprintcontinuousminer.name= Blue Print - Continuous Miner - W
 item.machinemod:choppersawblade.name=Chopper Sawblade - WIP
 gui.assemblytable.assemble=Assemble
 gui.assemblytable.name=Assembly Table
-
+item.machinemod:collapsedstar.name=Collapsed Star
 item.machinemod:camshaft.name=Camshaft
 item.machinemod:piston.name=piston
 item.machinemod:turbo.name=Turbo
@@ -113,6 +113,8 @@ tile.machinemod:machinedrilledgranite.name=Granite Stone
 
 tile.machinemod:machineasphalt.name=Asphalt
 tile.machinemod:machinebleakdirt.name=Bleak Dirt
+tile.machinemod:machinebleakportalframe.name=Bleak Portal Frame
+tile.machinemod:machinebleakportal.name=Bleak Portal
 tile.machinemod:machinebleakstone.name=Bleak Stone
 tile.machinemod:machinebleakoreiridonium.name=Iridonium Ore
 tile.machinemod:machinebleakoremagentia.name=Magentia Ore

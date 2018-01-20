@@ -11,6 +11,8 @@ import com.projectreddog.machinemod.block.BlockMachineBleakOreIridonium;
 import com.projectreddog.machinemod.block.BlockMachineBleakOreLimoniteum;
 import com.projectreddog.machinemod.block.BlockMachineBleakOreMagentia;
 import com.projectreddog.machinemod.block.BlockMachineBleakOreUnobtanium;
+import com.projectreddog.machinemod.block.BlockMachineBleakPortal;
+import com.projectreddog.machinemod.block.BlockMachineBleakPortalFrame;
 import com.projectreddog.machinemod.block.BlockMachineBleakStone;
 import com.projectreddog.machinemod.block.BlockMachineCompressedAsphalt;
 import com.projectreddog.machinemod.block.BlockMachineCrate;
@@ -133,6 +135,11 @@ public class ModBlocks {
 	public static final Block machinecrate = new BlockMachineCrate();
 
 	public static final Block machineconveyor = new BlockMachineModConveyor();
+
+	public static final Block machinebleakportalframe = new BlockMachineBleakPortalFrame();
+
+	public static final Block machinebleakportal = new BlockMachineBleakPortal();
+
 	public static final Block machinefractionaldistillation = new BlockMachineModFractionalDistillation();
 	public static final Block machineliquidPipe = new BlockMachineModLiquidPipe();
 
@@ -234,6 +241,11 @@ public class ModBlocks {
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinecentrifuge).setRegistryName(ModBlocks.machinecentrifuge.getRegistryName()));
 		ForgeRegistries.BLOCKS.register(machineconveyor);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machineconveyor).setRegistryName(ModBlocks.machineconveyor.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinebleakportalframe);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinebleakportalframe).setRegistryName(ModBlocks.machinebleakportalframe.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machinebleakportal);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinebleakportal).setRegistryName(ModBlocks.machinebleakportal.getRegistryName()));
+
 		ForgeRegistries.BLOCKS.register(machinefractionaldistillation);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinefractionaldistillation).setRegistryName(ModBlocks.machinefractionaldistillation.getRegistryName()));
 		ForgeRegistries.BLOCKS.register(machineasphaltmixer);
@@ -374,6 +386,9 @@ public class ModBlocks {
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineconveyor), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_CONVEYOR, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinescreen), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_SCREEN, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakportalframe), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_PORTAL_FRAME, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakportal), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_PORTAL, "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinemowedgrass), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_MOWED_GRASS, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinefuelpump), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FUEL_PUMP, "inventory"));
