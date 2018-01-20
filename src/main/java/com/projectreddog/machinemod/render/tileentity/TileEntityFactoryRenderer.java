@@ -2,7 +2,8 @@ package com.projectreddog.machinemod.render.tileentity;
 
 import org.lwjgl.opengl.GL11;
 
-import com.projectreddog.machinemod.block.BlockMachineModFractionalDistillation;
+import com.projectreddog.machinemod.block.BlockMachineModFactory;
+import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.model.tileentity.ModelFactory;
 import com.projectreddog.machinemod.reference.Reference;
 
@@ -27,8 +28,12 @@ public class TileEntityFactoryRenderer extends TileEntitySpecialRenderer {
 		GL11.glTranslated(x + .5d, y, z + .5d);
 
 		this.bindTexture(getResourceLocation());
-
-		EnumFacing ef = (EnumFacing) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModFractionalDistillation.FACING);
+		EnumFacing ef;
+		if (tileentity.getWorld().getBlockState(tileentity.getPos()).getBlock() == ModBlocks.machinefactory) {
+			ef = (EnumFacing) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModFactory.FACING);
+		} else {
+			ef = EnumFacing.NORTH;
+		}
 		switch (ef) {
 		case NORTH:
 			// no rotate?
