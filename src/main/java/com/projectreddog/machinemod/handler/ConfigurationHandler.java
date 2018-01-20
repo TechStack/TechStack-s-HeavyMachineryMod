@@ -48,6 +48,38 @@ public class ConfigurationHandler {
 		Reference.enableChopper = configuration.get(Configuration.CATEGORY_GENERAL, "enableSub", true, "If true Sub is Enabled, if false Sub is disabled").getBoolean();
 		Reference.enableTractor = configuration.get(Configuration.CATEGORY_GENERAL, "enableTractor", true, "If true Tractor is Enabled, if false Tractor is disabled").getBoolean();
 
+		Reference.BleakBiomeID = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakbiomeid", 57, "set the BiomeId for the bleak biome").getInt();
+		Reference.BleakDimID = configuration.get(Reference.CONFIG_SECTION_BLEAK, "Bleakdimid", 57, "set the Dim ID for the bleak dimension").getInt();
+
+		Reference.bleakoreiridoniumGenMinlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoreiridoniumGenMinlevel", Reference.bleakoreiridoniumGenMinlevel, "set min level for iridonium").getInt();
+		Reference.bleakoreiridoniumGenMaxlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoreiridoniumGenMaxlevel", Reference.bleakoreiridoniumGenMaxlevel, "set Max level for iridonium").getInt();
+		Reference.bleakoreiridoniumGenDepositSize = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoreiridoniumGenDepositSize", Reference.bleakoreiridoniumGenMaxlevel, "set Deposit size for iridonium").getInt();
+
+		Reference.bleakoremagentiaGenMinlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoremagentiaGenMinlevel", Reference.bleakoremagentiaGenMinlevel, "set min level for magentia").getInt();
+		Reference.bleakoremagentiaGenMaxlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoremagentiaGenMaxlevel", Reference.bleakoremagentiaGenMaxlevel, "set Max level for magentia").getInt();
+		Reference.bleakoremagentiaGenDepositSize = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoremagentiaGenDepositSize", Reference.bleakoremagentiaGenDepositSize, "set Deposit size for magentia").getInt();
+
+		Reference.bleakorelimoniteumGenMinlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakorelimoniteumGenMinlevel", Reference.bleakorelimoniteumGenMinlevel, "set min level for limoniteum").getInt();
+		Reference.bleakorelimoniteumGenMaxlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakorelimoniteumGenMaxlevel", Reference.bleakorelimoniteumGenMaxlevel, "set Max level for limoniteum").getInt();
+		Reference.bleakorelimoniteumGenDepositSize = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakorelimoniteumGenDepositSize", Reference.bleakorelimoniteumGenDepositSize, "set Deposit size for limoniteum").getInt();
+
+		Reference.bleakorecrimsoniteGenMinlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakorecrimsoniteGenMinlevel", Reference.bleakorecrimsoniteGenMinlevel, "set min level for crimsonite").getInt();
+		Reference.bleakorecrimsoniteGenMaxlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakorecrimsoniteGenMaxlevel", Reference.bleakorecrimsoniteGenMaxlevel, "set Max level for crimsonite").getInt();
+		Reference.bleakorecrimsoniteGenDepositSize = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakorecrimsoniteGenDepositSize", Reference.bleakorecrimsoniteGenDepositSize, "set Deposit size for crimsonite").getInt();
+		;
+
+		Reference.bleakoreazuriumGenMinlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoreazuriumGenMinlevel", Reference.bleakoreazuriumGenMinlevel, "set min level for azurium").getInt();
+		Reference.bleakoreazuriumGenMaxlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoreazuriumGenMaxlevel", Reference.bleakoreazuriumGenMaxlevel, "set Max level for azurium").getInt();
+		Reference.bleakoreazuriumGenDepositSize = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoreazuriumGenDepositSize", Reference.bleakoreazuriumGenDepositSize, "set Deposit size for azurium").getInt();
+
+		Reference.bleakorecitroniteGenMinlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakorecitroniteGenMinlevel", Reference.bleakorecitroniteGenMinlevel, "set min level for citronite").getInt();
+		Reference.bleakorecitroniteGenMaxlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakorecitroniteGenMaxlevel", Reference.bleakorecitroniteGenMaxlevel, "set Max level for citronite").getInt();
+		Reference.bleakorecitroniteGenDepositSize = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakorecitroniteGenDepositSize", Reference.bleakorecitroniteGenDepositSize, "set Deposit size for citronite").getInt();
+
+		Reference.bleakoreunobtaniumGenMinlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoreunobtaniumGenMinlevel", Reference.bleakoreunobtaniumGenMinlevel, "set min level for unobtanium").getInt();
+		Reference.bleakoreunobtaniumGenMaxlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoreunobtaniumGenMaxlevel", Reference.bleakoreunobtaniumGenMaxlevel, "set Max level for unobtanium").getInt();
+		Reference.bleakoreunobtaniumGenDepositSize = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoreunobtaniumGenDepositSize", Reference.bleakoreunobtaniumGenDepositSize, "set Deposit size for unobtanium").getInt();
+
 		// save the config if it did not exits
 		if (configuration.hasChanged()) {
 			// only save it if it has been modified (may help keep from updating
