@@ -74,7 +74,7 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 			i = 6;
 		}
 
-		worldIn.setBlockState(p_176487_2_, p_176487_3_.withProperty(AGE, Integer.valueOf(i)), 2);
+		worldIn.setBlockState(p_176487_2_, p_176487_3_.withProperty(AGE, Integer.valueOf(i)), 3);
 	}
 
 	protected static float getGrowthChance(Block p_180672_0_, World worldIn, BlockPos p_180672_2_) {
