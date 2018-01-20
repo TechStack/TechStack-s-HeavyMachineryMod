@@ -196,33 +196,33 @@ public class Reference {
 	public static int crudeOilStoneGenMinlevel = 5;
 	public static int crudeOilStoneGenMaxlevel = 30;
 
-	public static int bleakoreiridoniumGenMinlevel = 5;
-	public static int bleakoreiridoniumGenMaxlevel = 30;
+	public static int bleakoreiridoniumGenMinlevel = 41;
+	public static int bleakoreiridoniumGenMaxlevel = 75;
 	public static int bleakoreiridoniumGenDepositSize = 8;
 
-	public static int bleakoremagentiaGenMinlevel = 5;
-	public static int bleakoremagentiaGenMaxlevel = 30;
+	public static int bleakoremagentiaGenMinlevel = 30;
+	public static int bleakoremagentiaGenMaxlevel = 69;
 	public static int bleakoremagentiaGenDepositSize = 8;
 
-	public static int bleakorelimoniteumGenMinlevel = 5;
-	public static int bleakorelimoniteumGenMaxlevel = 30;
+	public static int bleakorelimoniteumGenMinlevel = 61;
+	public static int bleakorelimoniteumGenMaxlevel = 94;
 	public static int bleakorelimoniteumGenDepositSize = 8;
 
-	public static int bleakorecrimsoniteGenMinlevel = 5;
-	public static int bleakorecrimsoniteGenMaxlevel = 30;
+	public static int bleakorecrimsoniteGenMinlevel = 4;
+	public static int bleakorecrimsoniteGenMaxlevel = 31;
 	public static int bleakorecrimsoniteGenDepositSize = 8;
 
-	public static int bleakoreazuriumGenMinlevel = 5;
-	public static int bleakoreazuriumGenMaxlevel = 30;
+	public static int bleakoreazuriumGenMinlevel = 4;
+	public static int bleakoreazuriumGenMaxlevel = 22;
 	public static int bleakoreazuriumGenDepositSize = 8;
 
-	public static int bleakorecitroniteGenMinlevel = 5;
-	public static int bleakorecitroniteGenMaxlevel = 30;
+	public static int bleakorecitroniteGenMinlevel = 20;
+	public static int bleakorecitroniteGenMaxlevel = 54;
 	public static int bleakorecitroniteGenDepositSize = 8;
 
-	public static int bleakoreunobtaniumGenMinlevel = 5;
-	public static int bleakoreunobtaniumGenMaxlevel = 10;
-	public static int bleakoreunobtaniumGenDepositSize = 4;
+	public static int bleakoreunobtaniumGenMinlevel = 4;
+	public static int bleakoreunobtaniumGenMaxlevel = 20;
+	public static int bleakoreunobtaniumGenDepositSize = 8;
 
 	public static int wellHeadMaxRange = 15;
 

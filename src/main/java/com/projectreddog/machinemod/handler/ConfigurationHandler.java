@@ -53,7 +53,7 @@ public class ConfigurationHandler {
 
 		Reference.bleakoreiridoniumGenMinlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoreiridoniumGenMinlevel", Reference.bleakoreiridoniumGenMinlevel, "set min level for iridonium").getInt();
 		Reference.bleakoreiridoniumGenMaxlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoreiridoniumGenMaxlevel", Reference.bleakoreiridoniumGenMaxlevel, "set Max level for iridonium").getInt();
-		Reference.bleakoreiridoniumGenDepositSize = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoreiridoniumGenDepositSize", Reference.bleakoreiridoniumGenMaxlevel, "set Deposit size for iridonium").getInt();
+		Reference.bleakoreiridoniumGenDepositSize = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoreiridoniumGenDepositSize", Reference.bleakoreiridoniumGenDepositSize, "set Deposit size for iridonium").getInt();
 
 		Reference.bleakoremagentiaGenMinlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoremagentiaGenMinlevel", Reference.bleakoremagentiaGenMinlevel, "set min level for magentia").getInt();
 		Reference.bleakoremagentiaGenMaxlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoremagentiaGenMaxlevel", Reference.bleakoremagentiaGenMaxlevel, "set Max level for magentia").getInt();

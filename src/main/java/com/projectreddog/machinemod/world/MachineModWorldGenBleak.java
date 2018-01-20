@@ -39,13 +39,13 @@ public class MachineModWorldGenBleak implements IWorldGenerator {
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 		if (world.provider.getDimension() == Reference.BleakDimID) {// was get dim id
 
-			this.runGenerator(this.gen_machineMod_bleakoreiridonium, world, random, chunkX, chunkZ, 15, Reference.bleakoreiridoniumGenMinlevel, Reference.bleakoreiridoniumGenMaxlevel);
-			this.runGenerator(this.gen_machineMod_bleakoremagentia, world, random, chunkX, chunkZ, 15, Reference.bleakoremagentiaGenMinlevel, Reference.bleakoremagentiaGenMaxlevel);
-			this.runGenerator(this.gen_machineMod_bleakorelimoniteum, world, random, chunkX, chunkZ, 15, Reference.bleakorelimoniteumGenMinlevel, Reference.bleakorelimoniteumGenMaxlevel);
-			this.runGenerator(this.gen_machineMod_bleakorecrimsonite, world, random, chunkX, chunkZ, 15, Reference.bleakorecrimsoniteGenMinlevel, Reference.bleakorecrimsoniteGenMaxlevel);
-			this.runGenerator(this.gen_machineMod_bleakoreazurium, world, random, chunkX, chunkZ, 15, Reference.bleakoreazuriumGenMinlevel, Reference.bleakoreazuriumGenMaxlevel);
-			this.runGenerator(this.gen_machineMod_bleakorecitronite, world, random, chunkX, chunkZ, 15, Reference.bleakorecitroniteGenMinlevel, Reference.bleakorecitroniteGenMaxlevel);
-			this.runGenerator(this.gen_machineMod_bleakoreunobtanium, world, random, chunkX, chunkZ, 15, Reference.bleakoreunobtaniumGenMinlevel, Reference.bleakoreunobtaniumGenMaxlevel);
+			this.runGenerator(this.gen_machineMod_bleakoreiridonium, world, random, chunkX, chunkZ, 5, Reference.bleakoreiridoniumGenMinlevel, Reference.bleakoreiridoniumGenMaxlevel);
+			this.runGenerator(this.gen_machineMod_bleakoremagentia, world, random, chunkX, chunkZ, 5, Reference.bleakoremagentiaGenMinlevel, Reference.bleakoremagentiaGenMaxlevel);
+			this.runGenerator(this.gen_machineMod_bleakorelimoniteum, world, random, chunkX, chunkZ, 5, Reference.bleakorelimoniteumGenMinlevel, Reference.bleakorelimoniteumGenMaxlevel);
+			this.runGenerator(this.gen_machineMod_bleakorecrimsonite, world, random, chunkX, chunkZ, 5, Reference.bleakorecrimsoniteGenMinlevel, Reference.bleakorecrimsoniteGenMaxlevel);
+			this.runGenerator(this.gen_machineMod_bleakoreazurium, world, random, chunkX, chunkZ, 5, Reference.bleakoreazuriumGenMinlevel, Reference.bleakoreazuriumGenMaxlevel);
+			this.runGenerator(this.gen_machineMod_bleakorecitronite, world, random, chunkX, chunkZ, 5, Reference.bleakorecitroniteGenMinlevel, Reference.bleakorecitroniteGenMaxlevel);
+			this.runGenerator(this.gen_machineMod_bleakoreunobtanium, world, random, chunkX, chunkZ, 2, Reference.bleakoreunobtaniumGenMinlevel, Reference.bleakoreunobtaniumGenMaxlevel);
 
 		}
 	}
