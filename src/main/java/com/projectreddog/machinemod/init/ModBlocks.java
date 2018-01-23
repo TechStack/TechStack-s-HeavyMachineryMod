@@ -3,6 +3,7 @@ package com.projectreddog.machinemod.init;
 import com.projectreddog.machinemod.block.BlockBioFuel;
 import com.projectreddog.machinemod.block.BlockMachineAsphalt;
 import com.projectreddog.machinemod.block.BlockMachineAssemblyTable;
+import com.projectreddog.machinemod.block.BlockMachineBleakCrystal;
 import com.projectreddog.machinemod.block.BlockMachineBleakDirt;
 import com.projectreddog.machinemod.block.BlockMachineBleakOreAzurium;
 import com.projectreddog.machinemod.block.BlockMachineBleakOreCitronite;
@@ -85,6 +86,8 @@ public class ModBlocks {
 	public static final BlockMachineMod machineasphalt = new BlockMachineAsphalt();
 
 	public static final BlockMachineMod machinebleakdirt = new BlockMachineBleakDirt();
+	public static final BlockMachineMod machinebleakcrystal = new BlockMachineBleakCrystal();
+
 	public static final BlockMachineMod machinebleakstone = new BlockMachineBleakStone();
 	public static final BlockMachineMod machinebleakoreiridonium = new BlockMachineBleakOreIridonium();
 	public static final BlockMachineMod machinebleakoremagentia = new BlockMachineBleakOreMagentia();
@@ -172,6 +175,10 @@ public class ModBlocks {
 
 		ForgeRegistries.BLOCKS.register(machinebleakdirt);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinebleakdirt).setRegistryName(ModBlocks.machinebleakdirt.getRegistryName()));
+
+		ForgeRegistries.BLOCKS.register(machinebleakcrystal);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinebleakcrystal).setRegistryName(ModBlocks.machinebleakcrystal.getRegistryName()));
+
 		ForgeRegistries.BLOCKS.register(machinebleakstone);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinebleakstone).setRegistryName(ModBlocks.machinebleakstone.getRegistryName()));
 		ForgeRegistries.BLOCKS.register(machinebleakoreiridonium);
@@ -334,6 +341,7 @@ public class ModBlocks {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineassemblytable), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineasphalt), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_ASPHALT, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakdirt), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_DIRT, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakcrystal), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_CRYSTAL, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakstone), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_STONE, "inventory"));
 

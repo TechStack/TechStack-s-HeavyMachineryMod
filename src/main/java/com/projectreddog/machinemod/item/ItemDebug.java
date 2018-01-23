@@ -1,8 +1,5 @@
 package com.projectreddog.machinemod.item;
 
-import com.projectreddog.machinemod.init.ModDimensions;
-import com.projectreddog.machinemod.world.BleakTeleporter;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.EnumActionResult;
@@ -34,9 +31,9 @@ public class ItemDebug extends ItemMachineMod {
 
 			EntityPlayerMP emp = (EntityPlayerMP) player;
 			if (player.isSneaking()) {
-				BleakTeleporter.teleportToDimension(player, 0, pos.getX(), pos.getY(), pos.getZ());
+				// BleakTeleporter.teleportToDimension(player, 0, pos.getX(), pos.getY(), pos.getZ());
 			} else {
-				BleakTeleporter.teleportToDimension(player, ModDimensions.bleakDimID, pos.getX(), pos.getY(), pos.getZ());
+				// BleakTeleporter.teleportToDimension(player, ModDimensions.bleakDimID, pos.getX(), pos.getY(), pos.getZ());
 			}
 		}
 
