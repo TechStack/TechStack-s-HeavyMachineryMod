@@ -6,6 +6,7 @@ import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.item.machines.ItemTransportable;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
 import com.projectreddog.machinemod.model.ModelChopper;
+import com.projectreddog.machinemod.model.ModelPaver;
 import com.projectreddog.machinemod.model.ModelSemiTractor;
 import com.projectreddog.machinemod.model.ModelTransportable;
 import com.projectreddog.machinemod.reference.Reference;
@@ -80,6 +81,9 @@ public class RenderSemiTractor extends Render {
 						ItemTransportable it = (ItemTransportable) is.getItem();
 						modelCarriedEntity = (it).getModel();
 						this.bindTexture(((ItemTransportable) is.getItem()).getModel().getTexture());
+						if (modelCarriedEntity instanceof ModelPaver) {
+							GL11.glTranslatef(0f, 0f, 4f);
+						}
 						if (modelCarriedEntity instanceof ModelChopper) {
 							((ItemTransportable) is.getItem()).getModel().render(null, 0.0F, 0.0F, -2F, 0.0F, 0.0F, 0.0625F);
 						} else {
