@@ -2,25 +2,21 @@ package com.projectreddog.machinemod.entity.monster;
 
 import java.util.Random;
 
-import com.projectreddog.machinemod.entity.ai.EntityAIFleeLight;
-import com.projectreddog.machinemod.entity.ai.EntityAIWanderAvoidWaterAvoidLightFlying;
 import com.projectreddog.machinemod.entity.ai.EntityFlyFastTurnHelper;
+import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAILeapAtTarget;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityMoveHelper;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.passive.EntityFlying;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityExpStalker extends EntityMob implements EntityFlying {
+public class EntityExpStalker extends EntityMob {
 
 	public EntityExpStalker(World worldIn) {
 		super(worldIn);
@@ -33,10 +29,9 @@ public class EntityExpStalker extends EntityMob implements EntityFlying {
 
 	@Override
 	public void onUpdate() {
+		this.noClip = true;
 
-		this.setNoGravity(true);
 		super.onUpdate();
-		this.setNoGravity(true);
 	}
 
 	public boolean isFlying() {
@@ -44,6 +39,51 @@ public class EntityExpStalker extends EntityMob implements EntityFlying {
 	}
 
 	public void fall(float distance, float damageMultiplier) {
+	}
+
+	public void travel(float strafe, float vertical, float forward) {
+		float f = 0.91F;
+
+		if (this.onGround) {
+			BlockPos underPos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.getEntityBoundingBox().minY) - 1, MathHelper.floor(this.posZ));
+			IBlockState underState = this.world.getBlockState(underPos);
+			f = underState.getBlock().getSlipperiness(underState, this.world, underPos, this) * 0.91F;
+		}
+
+		if (this.getAttackTarget() != null) {
+
+			EntityLivingBase elb = this.getAttackTarget();
+			LogHelper.info("attack target not null" + elb.posX + " " + elb.posY + " " + elb.posZ);
+
+		}
+
+		float f1 = .3F;
+		this.moveRelative(strafe, vertical, forward, f1);
+		f = 0.91F;
+
+		if (this.onGround) {
+			BlockPos underPos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.getEntityBoundingBox().minY) - 1, MathHelper.floor(this.posZ));
+			IBlockState underState = this.world.getBlockState(underPos);
+			f = underState.getBlock().getSlipperiness(underState, this.world, underPos, this) * 0.91F;
+		}
+
+		this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
+		this.motionX *= (double) f;
+		this.motionY *= (double) f;
+		this.motionZ *= (double) f;
+
+		this.prevLimbSwingAmount = this.limbSwingAmount;
+		double d1 = this.posX - this.prevPosX;
+		double d0 = this.posZ - this.prevPosZ;
+		float f2 = MathHelper.sqrt(d1 * d1 + d0 * d0) * 4.0F;
+
+		if (f2 > 1.0F) {
+			f2 = 1.0F;
+		}
+
+		this.limbSwingAmount += (f2 - this.limbSwingAmount) * 0.4F;
+		this.limbSwing += this.limbSwingAmount;
+
 	}
 
 	@Override
@@ -65,19 +105,20 @@ public class EntityExpStalker extends EntityMob implements EntityFlying {
 
 	@Override
 	protected void initEntityAI() {
-		this.tasks.addTask(0, new AIRandomFly(this));
 
-		this.tasks.addTask(0, new EntityAIWanderAvoidWaterAvoidLightFlying(this, .5d));
+		// this.tasks.addTask(0, new EntityAIWanderAvoidWaterAvoidLightFlying(this, .5d));
 		// this.targetTasks.addTask(1, new EntityAIFindEntityNearestPlayer(this));
-		this.tasks.addTask(0, new EntityAIFleeLight(this, .75f));
-		this.tasks.addTask(0, new EntityAILeapAtTarget(this, .75f));
-		this.tasks.addTask(1, new EntityAIAttackMelee(this, .45d, true));
-		this.targetTasks.addTask(0, new EntityAIWanderAvoidWaterAvoidLightFlying(this, .5d));
+		// this.tasks.addTask(0, new EntityAIFleeLight(this, .75f));
+		// this.tasks.addTask(3, new EntityAILeapAtTarget(this, .75f));
+		// this.tasks.addTask(1, new EntityAIAttackMelee(this, .45d, true));
+		this.tasks.addTask(4, new AIRandomFly(this));
 
-		this.targetTasks.addTask(0, new EntityAIFleeLight(this, .75f));
-		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[0]));
+		// this.targetTasks.addTask(0, new EntityAIWanderAvoidWaterAvoidLightFlying(this, .5d));
 
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+		// this.targetTasks.addTask(0, new EntityAIFleeLight(this, .75f));
+		// this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[0]));
+
+		// this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
 
 	}
 
@@ -127,11 +168,23 @@ public class EntityExpStalker extends EntityMob implements EntityFlying {
 		 * Execute a one shot task or start executing a continuous task
 		 */
 		public void startExecuting() {
-			Random random = this.parentEntity.getRNG();
-			double d0 = this.parentEntity.posX + (double) ((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-			double d1 = this.parentEntity.posY + (double) ((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-			double d2 = this.parentEntity.posZ + (double) ((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-			this.parentEntity.getMoveHelper().setMoveTo(d0, d1, d2, 1.0D);
+			double d0 = this.parentEntity.posX;
+			double d1 = this.parentEntity.posY;
+			double d2 = this.parentEntity.posZ;
+			for (int i = 0; i < 50; i++) {
+				Random random = this.parentEntity.getRNG();
+				d0 = this.parentEntity.posX + (double) ((random.nextFloat() * 2.0F - 1.0F) * 5.0F);
+
+				d2 = this.parentEntity.posZ + (double) ((random.nextFloat() * 2.0F - 1.0F) * 5.0F);
+
+				d1 = this.parentEntity.world.getHeight((int) d0, (int) d2) + 15;
+				if (this.parentEntity.world.getLight(new BlockPos(d0, d1 - 14, d2)) == 0) {
+					i = 50;
+
+					this.parentEntity.getMoveHelper().setMoveTo(d0, d1, d2, 1.0D);
+				}
+			}
+
 		}
 	}
 
