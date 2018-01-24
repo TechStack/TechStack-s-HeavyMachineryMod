@@ -6,6 +6,7 @@ import com.projectreddog.machinemod.item.ItemAirTank;
 import com.projectreddog.machinemod.item.ItemAluminumIngot;
 import com.projectreddog.machinemod.item.ItemBaggerBody;
 import com.projectreddog.machinemod.item.ItemBaggerStorage;
+import com.projectreddog.machinemod.item.ItemBleakCrystal;
 import com.projectreddog.machinemod.item.ItemBoomArmSegment;
 import com.projectreddog.machinemod.item.ItemBucketWheel;
 import com.projectreddog.machinemod.item.ItemCarbonDust;
@@ -119,6 +120,7 @@ public class ModItems {
 	public static final ItemMachineMod oilrig = new ItemOilRig();
 	public static final ItemMachineMod sub = new ItemSub();
 	public static final ItemMachineMod chopper = new ItemChopper();
+	public static final ItemMachineMod bleakcrystal = new ItemBleakCrystal();
 
 	public static final ItemMachineMod carbondust = new ItemCarbonDust();
 	public static final ItemMachineMod steeldust = new ItemSteelDust();
@@ -318,6 +320,8 @@ public class ModItems {
 			ForgeRegistries.ITEMS.register(tractor);// , "tractor");
 
 		}
+
+		ForgeRegistries.ITEMS.register(bleakcrystal);// , "paverscreed");
 
 		ForgeRegistries.ITEMS.register(paverscreed);// , "paverscreed");
 		ForgeRegistries.ITEMS.register(rollerwheel);// , "rollerwheel");
@@ -519,6 +523,8 @@ public class ModItems {
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tractor, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tractor", "inventory"));
 
 		}
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bleakcrystal, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bleakcrystal", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(carbondust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "carbondust", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(steeldust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "steeldust", "inventory"));

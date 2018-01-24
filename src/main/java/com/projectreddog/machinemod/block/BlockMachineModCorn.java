@@ -61,7 +61,7 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 				float f = getGrowthChance(this, worldIn, pos);
 
 				if (rand.nextInt((int) (25.0F / f) + 1) == 0) {
-					worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(i + 1)), 2);
+					worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(i + 1)), 3);
 				}
 			}
 		}

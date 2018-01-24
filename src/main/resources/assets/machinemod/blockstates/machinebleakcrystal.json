@@ -1,6 +1,12 @@
 {
-    "variants": {
-        "normal": { "model": "machinemod:machinebleakcrystal" }
-    }
-  
+   "variants": {
+        "age=0": { "model": "machinemod:machinebleakcrystalgrowth0" },
+        "age=1": { "model": "machinemod:machinebleakcrystalgrowth1" },
+        "age=2": { "model": "machinemod:machinebleakcrystalgrowth2" },
+        "age=3": { "model": "machinemod:machinebleakcrystalgrowth3" },
+        "age=4": { "model": "machinemod:machinebleakcrystalgrowth4" },
+        "age=5": { "model": "machinemod:machinebleakcrystalgrowth5" },
+        "age=6": { "model": "machinemod:machinebleakcrystalgrowth6" }
+  }     
+   
 }
