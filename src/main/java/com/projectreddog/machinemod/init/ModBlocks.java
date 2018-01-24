@@ -86,7 +86,6 @@ public class ModBlocks {
 	public static final BlockMachineMod machineasphalt = new BlockMachineAsphalt();
 
 	public static final BlockMachineMod machinebleakdirt = new BlockMachineBleakDirt();
-	public static final BlockMachineMod machinebleakcrystal = new BlockMachineBleakCrystal();
 
 	public static final BlockMachineMod machinebleakstone = new BlockMachineBleakStone();
 	public static final BlockMachineMod machinebleakoreiridonium = new BlockMachineBleakOreIridonium();
@@ -125,6 +124,8 @@ public class ModBlocks {
 
 	// public static final BlockMachineMod machineblastedstone2 = new BlockMachineModBlastedStone2();
 	public static final Block corn = new BlockMachineModCorn();
+	public static final Block machinebleakcrystal = new BlockMachineBleakCrystal();
+
 	public static final Block machinedistiller = new BlockMachineModDistiller();
 	public static final Block machinefactory = new BlockMachineModFactory();
 

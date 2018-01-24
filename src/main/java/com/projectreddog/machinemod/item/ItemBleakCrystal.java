@@ -1,7 +1,6 @@
 package com.projectreddog.machinemod.item;
 
 import com.projectreddog.machinemod.init.ModBlocks;
-import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,7 +46,7 @@ public class ItemBleakCrystal extends ItemMachineMod implements IPlantable {
 			return EnumActionResult.FAIL;
 		} else if (!playerIn.canPlayerEdit(pos.offset(side), side, stack)) {
 			return EnumActionResult.FAIL;
-		} else if (worldIn.getBlockState(pos).getBlock() == ModBlocks.machinebleakdirt && worldIn.isAirBlock(pos.up())) {
+		} else if (worldIn.getBlockState(pos).getBlock() == ModBlocks.machinebleakdirt && worldIn.isAirBlock(pos.up()) && worldIn.getLight(pos.up()) == 0) {
 			worldIn.setBlockState(pos.up(), ModBlocks.machinebleakcrystal.getDefaultState());
 			stack.setCount(stack.getCount() - 1);
 			return EnumActionResult.SUCCESS;
@@ -66,26 +65,4 @@ public class ItemBleakCrystal extends ItemMachineMod implements IPlantable {
 		return ModBlocks.machinebleakcrystal.getDefaultState();
 	}
 
-	@Override
-	public String getUnlocalizedName() {
-		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
-	}
-
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack) {
-		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
-	}
-
-	// 1.8
-	// @Override
-	// @SideOnly(Side.CLIENT)
-	// public void registerIcons(IIconRegister iconRegister)
-	// {
-	// itemIcon =
-	// iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".")+1));
-	// }
-
-	protected String getUnwrappedUnlocalizedName(String unlocalizedName) {
-		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
-	}
 }

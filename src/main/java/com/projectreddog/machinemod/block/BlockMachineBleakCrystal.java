@@ -15,6 +15,7 @@ import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
@@ -37,6 +38,8 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setHardness(0.0F);// not sure on the hardness
+		this.setCreativeTab((CreativeTabs) null);
+
 		this.setSoundType(SoundType.GLASS);
 	}
 
@@ -115,11 +118,11 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	}
 
 	protected Item getSeed() {
-		return ModItems.cornseed;
+		return ModItems.bleakcrystal;
 	}
 
 	protected Item getCrop() {
-		return ModItems.cornseed;
+		return ModItems.bleakcrystal;
 	}
 
 	/**
@@ -240,7 +243,7 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		super.updateTick(worldIn, pos, state, rand);
 
-		if (worldIn.getLightFromNeighbors(pos.up()) >= 9) {
+		if (worldIn.getLightFromNeighbors(pos.up()) == 0) {
 			int i = ((Integer) state.getValue(AGE)).intValue();
 
 			if (i < 6) {
