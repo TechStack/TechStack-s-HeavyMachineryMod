@@ -1,0 +1,24 @@
+{
+    "result": {
+        "item": "machinemod:crashhelmet"
+    },
+    "pattern" :[
+      "sss", 
+      "sws", 
+      "   "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+            "type": "forge:ore_dict",
+           "ore": "ingotSteel" 
+      },
+    "w": {
+           "item":"minecraft:wool",
+          "data":0
+
+      }
+        
+    }
+}
+
