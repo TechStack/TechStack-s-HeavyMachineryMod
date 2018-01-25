@@ -2,6 +2,7 @@ package com.projectreddog.machinemod.world.biome;
 
 import java.util.Random;
 
+import com.projectreddog.machinemod.block.BlockMachineBleakCrystal;
 import com.projectreddog.machinemod.entity.monster.EntityExpStalker;
 import com.projectreddog.machinemod.init.ModBlocks;
 
@@ -92,6 +93,20 @@ public class BiomeBleak extends Biome {
 				}
 			}
 		}
+	}
+
+	public void decorate(World worldIn, Random rand, BlockPos pos) {
+
+		int chance = rand.nextInt(100);
+		if (chance > 95) {
+			for (int i = 0; i < 1; ++i) {
+				int x = rand.nextInt(16) + 8;
+				int z = rand.nextInt(16) + 8;
+				int y = worldIn.getHeight(pos.getX() + x, pos.getZ() + z);
+				worldIn.setBlockState(pos.add(x, y, z), ModBlocks.machinebleakcrystal.getDefaultState().withProperty(BlockMachineBleakCrystal.AGE, rand.nextInt(6)));
+			}
+		}
+		super.decorate(worldIn, rand, pos);
 	}
 
 }

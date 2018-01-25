@@ -114,7 +114,7 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 
 	@Override
 	public boolean canBlockStay(World worldIn, BlockPos p_180671_2_, IBlockState p_180671_3_) {
-		return (worldIn.getLight(p_180671_2_) == 0 && this.canPlaceBlockOn(worldIn.getBlockState(p_180671_2_.down()).getBlock()));
+		return worldIn.provider.getDimension() == Reference.BleakDimID && (worldIn.getLight(p_180671_2_) == 0 && this.canPlaceBlockOn(worldIn.getBlockState(p_180671_2_.down()).getBlock()));
 	}
 
 	protected Item getSeed() {
@@ -161,7 +161,7 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 		if (age >= 6) {
 			int k = 3 + fortune;
 
-			for (int i = 0; i < 3 + fortune; ++i) {
+			for (int i = 0; i < 5 + fortune; ++i) {
 				if (rand.nextInt(15) <= age) {
 					ret.add(new ItemStack(this.getSeed(), 1, 0));
 				}
