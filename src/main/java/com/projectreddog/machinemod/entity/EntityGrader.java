@@ -105,7 +105,7 @@ public class EntityGrader extends EntityMachineModRideable {
 					if (item != null && item.getCount() > 0) {
 						if (item.getItem() instanceof ItemBlock) {
 							ItemBlock ib = (ItemBlock) item.getItem();
-							if (ib.getBlock() == Blocks.DIRT) {
+							if (ib.getBlock() == Blocks.DIRT || ib.getBlock() == Blocks.SAND) {
 
 								// its dirt
 

@@ -58,7 +58,7 @@ public class RenderExcavator extends Render {
 
 		this.modelExcavator.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
-		GlStateManager.translate(-1.00f, -1.75F, -.85F);
+		GlStateManager.translate(-1.6f, .90F, .85F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glScalef(.5f, .5f, .5f);
 		EntityExcavator eL = ((EntityExcavator) entity);
@@ -75,7 +75,7 @@ public class RenderExcavator extends Render {
 
 				if (count > 4) {
 					count = 0;
-					GlStateManager.translate(-3.0f, 0.0F, 0F);
+					GlStateManager.translate(-2.5f, 0.0F, 0F);
 					GlStateManager.translate(0, 0.5F, .5F);
 
 				}

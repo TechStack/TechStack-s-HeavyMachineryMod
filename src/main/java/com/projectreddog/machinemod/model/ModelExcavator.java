@@ -97,7 +97,7 @@ public class ModelExcavator extends ModelTransportable {
 		this.renderGroupObject("Object.10");
 		if (entity != null) {
 			GL11.glTranslatef(0f, +4.85f, -.55f);
-			GL11.glRotatef((float) ((EntityExcavator) entity).angleArm3 * -1, 1, 0, 0f);
+			GL11.glRotatef((float) (((EntityExcavator) entity).angleArm3 + 90) * -1, 1, 0, 0f);
 		}
 		this.renderGroupObject("Object.11");
 
