@@ -3,6 +3,7 @@ package com.projectreddog.machinemod.render.tileentity;
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
+import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.model.tileentity.ModelPrimaryCrusher;
 import com.projectreddog.machinemod.reference.Reference;
 
@@ -38,8 +39,12 @@ public class TileEntityPrimaryCrusherRenderer extends TileEntitySpecialRenderer 
 
 		this.bindTexture(getResourceLocation());
 		GL11.glScalef(-.5F, -.5F, .5F);
-
-		EnumFacing ef = (EnumFacing) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
+		EnumFacing ef;
+		if (tileentity.getWorld().getBlockState(tileentity.getPos()).getBlock() == ModBlocks.machineprimarycrhuser) {
+			ef = (EnumFacing) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
+		} else {
+			ef = EnumFacing.NORTH;
+		}
 		switch (ef) {
 		case NORTH:
 			// no rotate?

@@ -2,6 +2,7 @@ package com.projectreddog.machinemod.entity;
 
 import java.util.List;
 
+import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.utility.BlockUtil;
 
@@ -87,7 +88,7 @@ public class EntityContinuousMiner extends EntityMachineModRideable {
 						for (int k = -1; k < 2; k++) {
 							bp = new BlockPos(posX + calcTwoOffsetX(7.5 + k, angle, i), posY + bucketOffsetY + j, posZ + calcTwoOffsetZ(7.5 + k, angle, i));
 
-							if (!world.isAirBlock(bp) && world.getBlockState(bp).getBlock() != Blocks.BEDROCK && world.getBlockState(bp).getMaterial() != Material.WATER && world.getBlockState(bp).getMaterial() != Material.LAVA) {
+							if (!world.isAirBlock(bp) && world.getBlockState(bp).getBlock() != Blocks.BEDROCK && world.getBlockState(bp).getMaterial() != Material.WATER && world.getBlockState(bp).getMaterial() != Material.LAVA && world.getBlockState(bp).getBlock() != ModBlocks.machinebleakportal && world.getBlockState(bp).getBlock() != ModBlocks.machinebleakportalframe) {
 								BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 								i = 3;
 								j = 2;

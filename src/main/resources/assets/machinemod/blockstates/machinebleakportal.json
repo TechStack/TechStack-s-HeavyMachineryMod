@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "facing=north": { "model": "machinemod:machinebleakportal", "y": 180  },
+        "facing=south": { "model": "machinemod:machinebleakportal"},
+        "facing=west":  { "model": "machinemod:machinebleakportal", "y": 90 },
+        "facing=east":  { "model": "machinemod:machinebleakportal", "y": 270 }
+        
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "facing=north,netherstar=true": { "model": "machinemod:machinebleakportalframeactive", "y": 180  },
+        "facing=south,netherstar=true": { "model": "machinemod:machinebleakportalframeactive"},
+        "facing=west,netherstar=true":  { "model": "machinemod:machinebleakportalframeactive", "y": 90 },
+        "facing=east,netherstar=true":  { "model": "machinemod:machinebleakportalframeactive", "y": 270 },        
+        "facing=north,netherstar=false": { "model": "machinemod:machinebleakportalframe", "y": 180 },
+        "facing=south,netherstar=false": { "model": "machinemod:machinebleakportalframe" },
+        "facing=west,netherstar=false":  { "model": "machinemod:machinebleakportalframe" , "y": 90 },
+        "facing=east,netherstar=false": { "model": "machinemod:machinebleakportalframe", "y": 270}
+        
+    }
+}

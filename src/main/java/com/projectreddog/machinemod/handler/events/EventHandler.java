@@ -1,12 +1,19 @@
 package com.projectreddog.machinemod.handler.events;
 
 import com.projectreddog.machinemod.init.ModItems;
+import com.projectreddog.machinemod.reference.Reference;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable;
 import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import scala.util.Random;
 
@@ -33,6 +40,26 @@ public class EventHandler {
 
 		}
 
+	}
+
+	@SubscribeEvent
+	public void onLivingAttackEvent(LivingAttackEvent event) {
+		if (event.getEntity() instanceof EntityPlayer) {
+			if (((EntityPlayer) event.getEntity()).getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem() == ModItems.crashhelmet) {
+				if (event.getSource() == DamageSource.FLY_INTO_WALL) {
+					event.setCanceled(true);
+				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onGenerateMinable(GenerateMinable event) {
+		if (event.getWorld().provider.getDimension() == Reference.BleakDimID) {// was get dim id
+			if (event.getType() != GenerateMinable.EventType.CUSTOM) {
+				event.setResult(Result.DENY);
+			}
+		}
 	}
 
 	// @SubscribeEvent

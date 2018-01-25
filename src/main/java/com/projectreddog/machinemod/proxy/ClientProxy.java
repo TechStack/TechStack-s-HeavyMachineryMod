@@ -12,6 +12,7 @@ import com.projectreddog.machinemod.entity.EntityDrillingRig;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityGrader;
+import com.projectreddog.machinemod.entity.EntityLaserMiner;
 import com.projectreddog.machinemod.entity.EntityLawnmower;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityOilRig;
@@ -20,6 +21,7 @@ import com.projectreddog.machinemod.entity.EntityRoadRoller;
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.entity.EntitySub;
 import com.projectreddog.machinemod.entity.EntityTractor;
+import com.projectreddog.machinemod.entity.monster.EntityExpStalker;
 import com.projectreddog.machinemod.handler.events.RenderOverlayHandler;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
@@ -35,6 +37,7 @@ import com.projectreddog.machinemod.render.machines.RenderDrillingRig;
 import com.projectreddog.machinemod.render.machines.RenderDumpTruck;
 import com.projectreddog.machinemod.render.machines.RenderExcavator;
 import com.projectreddog.machinemod.render.machines.RenderGrader;
+import com.projectreddog.machinemod.render.machines.RenderLaserMiner;
 import com.projectreddog.machinemod.render.machines.RenderLawnmower;
 import com.projectreddog.machinemod.render.machines.RenderLoader;
 import com.projectreddog.machinemod.render.machines.RenderOilRig;
@@ -43,6 +46,7 @@ import com.projectreddog.machinemod.render.machines.RenderRoadRoller;
 import com.projectreddog.machinemod.render.machines.RenderSemiTractor;
 import com.projectreddog.machinemod.render.machines.RenderSub;
 import com.projectreddog.machinemod.render.machines.RenderTractor;
+import com.projectreddog.machinemod.render.mob.RenderExpStalker;
 import com.projectreddog.machinemod.render.tileentity.TileEntityCentrifugeRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityCrateRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityDistillerRenderer;
@@ -114,6 +118,10 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntitySub.class, new RenderSub(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityChopper.class, new RenderChopper(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityContinuousMiner.class, new RenderContinuousMiner(Minecraft.getMinecraft().getRenderManager()));
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityLaserMiner.class, new RenderLaserMiner(Minecraft.getMinecraft().getRenderManager()));
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityExpStalker.class, new RenderExpStalker(Minecraft.getMinecraft().getRenderManager()));
 
 		// RenderingRegistry.registerEntityRenderingHandler(EntityPumpJack.class, new RenderPumpJack(Minecraft.getMinecraft().getRenderManager()));
 		// TODO fix post JSON

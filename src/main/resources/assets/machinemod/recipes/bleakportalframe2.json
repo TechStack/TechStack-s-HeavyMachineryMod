@@ -1,0 +1,16 @@
+{
+    "result": {
+        "item": "machinemod:machinebleakportalframe"
+    },
+    "pattern" :[
+     " ss",
+     " ss",
+     " ss"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+     "s": {
+      "item":"machinemod:steelblock"
+      }
+    }
+}

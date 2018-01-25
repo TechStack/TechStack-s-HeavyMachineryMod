@@ -1,6 +1,6 @@
 
 {
-  "parent": "machinemod/machinewellhead",
+  "parent": "machinemod:machinewellhead",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

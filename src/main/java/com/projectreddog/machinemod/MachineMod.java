@@ -3,8 +3,10 @@ package com.projectreddog.machinemod;
 import com.projectreddog.machinemod.client.handler.InputEventHandler;
 import com.projectreddog.machinemod.handler.ConfigurationHandler;
 import com.projectreddog.machinemod.handler.events.EventHandler;
+import com.projectreddog.machinemod.init.ModBiomes;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModBlueprint;
+import com.projectreddog.machinemod.init.ModDimensions;
 import com.projectreddog.machinemod.init.ModEntities;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.init.ModNetwork;
@@ -39,6 +41,8 @@ public class MachineMod {
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 		FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
 		ModBlocks.init();
+		ModBiomes.init();
+		ModDimensions.init();
 
 		ModItems.init();
 		ModNetwork.init();
@@ -51,7 +55,9 @@ public class MachineMod {
 		// hanlders)
 		ModEntities.init(this);
 		FMLCommonHandler.instance().bus().register(new InputEventHandler());
-		MinecraftForge.EVENT_BUS.register(new EventHandler());
+		EventHandler eh = new EventHandler();
+		MinecraftForge.EVENT_BUS.register(eh);
+		MinecraftForge.ORE_GEN_BUS.register(eh);
 		Recipes.init();
 		ModWorldGen.init();
 
