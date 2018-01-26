@@ -54,6 +54,10 @@ item.machinemod:liquidtanksegment.name=Liquid tank segment
 item.machinemod:continuousminer.name=Continuous Miner - WIP
 item.machinemod:chopper.name=Chopper
 
+item.machinemod:citroniteingot.name=Citronite Ingot
+item.machinemod:iridoniumingot.name=Iridonium Ingot
+item.machinemod:limoniteumingot.name=Limoniteum Ingot
+item.machinemod:magentiaingot.name=Magentia Ingot
 
 item.machinemod:paverscreed.name=Paver Screed
 item.machinemod:rollerwheel.name=Roller Wheel

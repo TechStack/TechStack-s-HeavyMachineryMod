@@ -1,4 +1,6 @@
-package com.projectreddog.machinemod.item;
+package com.projectreddog.machinemod.item.ingots;
+
+import com.projectreddog.machinemod.item.ItemMachineMod;
 
 public class ItemSteelIngot extends ItemMachineMod {
 	public String registryName = "steelingot";

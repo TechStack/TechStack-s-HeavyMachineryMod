@@ -38,7 +38,6 @@ import com.projectreddog.machinemod.item.ItemPropCage;
 import com.projectreddog.machinemod.item.ItemRawAsphalt;
 import com.projectreddog.machinemod.item.ItemRigging;
 import com.projectreddog.machinemod.item.ItemSteelDust;
-import com.projectreddog.machinemod.item.ItemSteelIngot;
 import com.projectreddog.machinemod.item.ItemSubBody;
 import com.projectreddog.machinemod.item.ItemTrackSegment;
 import com.projectreddog.machinemod.item.ItemTurboProp;
@@ -71,6 +70,11 @@ import com.projectreddog.machinemod.item.components.ItemTurbo;
 import com.projectreddog.machinemod.item.components.ItemTurboEngine;
 import com.projectreddog.machinemod.item.components.ItemWheel;
 import com.projectreddog.machinemod.item.components.ItemWoodenGear;
+import com.projectreddog.machinemod.item.ingots.ItemCitroniteIngot;
+import com.projectreddog.machinemod.item.ingots.ItemIridoniumIngot;
+import com.projectreddog.machinemod.item.ingots.ItemLimoniteumIngot;
+import com.projectreddog.machinemod.item.ingots.ItemMagentiaIngot;
+import com.projectreddog.machinemod.item.ingots.ItemSteelIngot;
 import com.projectreddog.machinemod.item.machines.ItemBagger;
 import com.projectreddog.machinemod.item.machines.ItemBulldozer;
 import com.projectreddog.machinemod.item.machines.ItemChopper;
@@ -125,6 +129,12 @@ public class ModItems {
 	public static final ItemMachineMod carbondust = new ItemCarbonDust();
 	public static final ItemMachineMod steeldust = new ItemSteelDust();
 	public static final ItemMachineMod steelingot = new ItemSteelIngot();
+
+	public static final ItemMachineMod citroniteingot = new ItemCitroniteIngot();
+	public static final ItemMachineMod iridoniumingot = new ItemIridoniumIngot();
+	public static final ItemMachineMod limoniteumingot = new ItemLimoniteumIngot();
+	public static final ItemMachineMod magentiaingot = new ItemMagentiaIngot();
+
 	public static final ItemMachineMod aluminumingot = new ItemAluminumIngot();
 
 	public static final ItemMachineMod liquidtanksegment = new ItemLiquidTankSegment();
@@ -412,6 +422,12 @@ public class ModItems {
 		ForgeRegistries.ITEMS.register(steeldust);// , "steeldust");
 
 		ForgeRegistries.ITEMS.register(steelingot);// , "steelingot");
+
+		ForgeRegistries.ITEMS.register(citroniteingot);
+		ForgeRegistries.ITEMS.register(iridoniumingot);
+		ForgeRegistries.ITEMS.register(limoniteumingot);
+		ForgeRegistries.ITEMS.register(magentiaingot);
+
 		ForgeRegistries.ITEMS.register(aluminumingot);// , "aluminumingot");
 
 		ForgeRegistries.ITEMS.register(blueprintcontinuousminer);
@@ -424,6 +440,12 @@ public class ModItems {
 		OreDictionary.registerOre("dustGold", golddust);
 		OreDictionary.registerOre("dustSteel", steeldust);
 		OreDictionary.registerOre("ingotSteel", steelingot);
+
+		OreDictionary.registerOre("ingotCitronite", steelingot);
+		OreDictionary.registerOre("ingotIridonium", steelingot);
+		OreDictionary.registerOre("ingotLimoniteum", steelingot);
+		OreDictionary.registerOre("ingotMagentia", steelingot);
+
 		OreDictionary.registerOre("ingotAluminum", aluminumingot);
 
 		// buckets
@@ -529,6 +551,12 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(carbondust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "carbondust", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(steeldust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "steeldust", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(steelingot, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "steelingot", "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(citroniteingot, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "citroniteingot", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(iridoniumingot, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "iridoniumingot", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(limoniteumingot, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "limoniteumingot", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(magentiaingot, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "magentiaingot", "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(aluminumingot, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "aluminumingot", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(tracksegment, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "tracksegment", "inventory"));
