@@ -43,6 +43,16 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 		this.setSoundType(SoundType.GLASS);
 	}
 
+	@Override
+	public int getExpDrop(IBlockState state, net.minecraft.world.IBlockAccess world, BlockPos pos, int fortune) {
+
+		if ((state.getValue(AGE)).intValue() == 6) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
 	/**
 	 * is the block grass, dirt or farmland
 	 */
