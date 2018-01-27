@@ -54,6 +54,18 @@ item.machinemod:liquidtanksegment.name=Liquid tank segment
 item.machinemod:continuousminer.name=Continuous Miner - WIP
 item.machinemod:chopper.name=Chopper
 
+item.machinemod:citroniteingot.name=Citronite Ingot
+item.machinemod:iridoniumingot.name=Iridonium Ingot
+item.machinemod:limoniteumingot.name=Limoniteum Ingot
+item.machinemod:magentiaingot.name=Magentia Ingot
+
+
+item.machinemod:crimsonitepebble.name=Crimsonite Pebble
+item.machinemod:azuriumlump.name=Azurium Lump
+item.machinemod:unobtaniumgem.name=Unobtanium Gem
+
+
+
 
 item.machinemod:paverscreed.name=Paver Screed
 item.machinemod:rollerwheel.name=Roller Wheel
@@ -130,6 +142,8 @@ tile.machinemod:machinebleakoreunobtanium.name=Unobtanium Ore
 
 
 
+
+
 tile.machinemod:machineliquidpipe.name=Liquid Pipe
 tile.machineliquidpipe.name=Liquid Pipe
 tile.machinemod:machinecompressedasphalt.name=Compressed Asphalt
@@ -166,7 +180,7 @@ tile.machinemod:machinewellhead.name=Well Head
 
 tile.machinemod:machineoil.name=Oil - WIP
 tile.machinemod:machinefactory.name=Factory - WIP
-
+entity.expstalker.name=Exp Stalker
 
 
 

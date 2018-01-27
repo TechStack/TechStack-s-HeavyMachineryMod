@@ -1,6 +1,7 @@
 package com.projectreddog.machinemod.block;
 
 import com.projectreddog.machinemod.MachineMod;
+import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityAssemblyTable;
 
@@ -24,6 +25,7 @@ public class BlockMachineAssemblyTable extends BlockContainer {
 		// 1.8
 		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
+		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setHardness(15f);// not sure on the hardness

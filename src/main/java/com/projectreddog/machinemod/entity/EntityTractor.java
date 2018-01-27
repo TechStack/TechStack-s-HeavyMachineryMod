@@ -151,7 +151,7 @@ public class EntityTractor extends EntityMachineModRideable {
 							} else if (this.inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentTrencher) {
 								// Fertilize checks & actions
 								if (i == 0) {
-									if (world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.FARMLAND) {
+									if (world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.FARMLAND || world.getBlockState(bp).getBlock() == Blocks.SAND) {
 										BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
 									}
