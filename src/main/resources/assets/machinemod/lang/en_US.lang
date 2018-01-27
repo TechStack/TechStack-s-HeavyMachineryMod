@@ -59,6 +59,14 @@ item.machinemod:iridoniumingot.name=Iridonium Ingot
 item.machinemod:limoniteumingot.name=Limoniteum Ingot
 item.machinemod:magentiaingot.name=Magentia Ingot
 
+
+item.machinemod:crimsonitepebble.name=Crimsonite Pebble
+item.machinemod:azuriumlump.name=Azurium Lump
+item.machinemod:unobtaniumgem.name=Unobtanium Gem
+
+
+
+
 item.machinemod:paverscreed.name=Paver Screed
 item.machinemod:rollerwheel.name=Roller Wheel
 item.machinemod:tracksegment.name=Track Segment
@@ -131,6 +139,8 @@ tile.machinemod:machinebleakorecrimsonite.name=Crimsonite Ore
 tile.machinemod:machinebleakoreazurium.name=Azurium Ore
 tile.machinemod:machinebleakorecitronite.name=Citronite Ore
 tile.machinemod:machinebleakoreunobtanium.name=Unobtanium Ore
+
+
 
 
 
