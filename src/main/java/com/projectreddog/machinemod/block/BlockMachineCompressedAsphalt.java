@@ -9,9 +9,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockMachineCompressedAsphalt extends BlockMachineMod {
+
+	protected static final AxisAlignedBB COMPRESSED_ASPHALT_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.875D, 1.0D);
 
 	public BlockMachineCompressedAsphalt() {
 		super();
@@ -24,9 +27,9 @@ public class BlockMachineCompressedAsphalt extends BlockMachineMod {
 		this.setSoundType(SoundType.STONE);
 	}
 
-	public AxisAlignedBB getCollisionBoundingBox(World worldIn, BlockPos pos, IBlockState state) {
-		float f = 0.125F;
-		return new AxisAlignedBB((double) pos.getX(), (double) pos.getY(), (double) pos.getZ(), (double) (pos.getX() + 1), (double) ((float) (pos.getY() + 1) - f), (double) (pos.getZ() + 1));
+	@Override
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+		return COMPRESSED_ASPHALT_AABB;
 	}
 
 	/**
