@@ -10,6 +10,7 @@ import com.projectreddog.machinemod.init.ModDimensions;
 import com.projectreddog.machinemod.init.ModEntities;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.init.ModNetwork;
+import com.projectreddog.machinemod.init.ModVillage;
 import com.projectreddog.machinemod.init.ModWorldGen;
 import com.projectreddog.machinemod.init.Recipes;
 import com.projectreddog.machinemod.proxy.IProxy;
@@ -46,6 +47,7 @@ public class MachineMod {
 
 		ModItems.init();
 		ModNetwork.init();
+		ModVillage.init();
 		proxy.PreInit();
 	}
 
