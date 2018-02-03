@@ -5,7 +5,6 @@ import com.projectreddog.machinemod.iface.IFuelContainer;
 import com.projectreddog.machinemod.iface.IWorkConsumer;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -72,7 +71,7 @@ public class TileEntityFactory extends TileEntity implements ITickable, IFuelCon
 			}
 		}
 
-		LogHelper.info("Energy Level:" + energyStroage.getEnergyStored());
+		// LogHelper.info("Energy Level:" + energyStroage.getEnergyStored());
 
 	}
 

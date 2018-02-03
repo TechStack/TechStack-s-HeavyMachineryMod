@@ -3,11 +3,14 @@ package com.projectreddog.machinemod.world.gen.structure;
 import java.util.List;
 import java.util.Random;
 
+import com.mojang.authlib.GameProfile;
 import com.projectreddog.machinemod.block.BlockMachineModFactory;
 import com.projectreddog.machinemod.block.BlockMachineModFuelPump;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModVillage;
+import com.projectreddog.machinemod.reference.Reference;
 
+import net.minecraft.block.BlockSkull;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockSlab.EnumBlockHalf;
 import net.minecraft.block.BlockStairs;
@@ -19,8 +22,10 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySign;
+import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
@@ -31,6 +36,9 @@ import net.minecraft.world.gen.structure.StructureVillagePieces.Village;
 
 public class EngineerHouse extends Village {
 	int villagersSpawned = 0;
+
+	String[] TSCraftMembers = new String[] { "TechStack", "diegocob", "Chazmanm", "robbversion1", "MusicDiskMaster", "Alchao", "Czarified", "chanmaster99", "Griffen8280", "KingCam26", "SmashShock", "Dorff333", "scoote205", "drcobra", "FrozenDesign", "Doomthrak", "Pixule", "trayer3", "zenstic0", "samzataru", "XxDJ_DINOxX", "binaryactions", "tater_canon", "mwigby", "iJord4nn", "FallDownGuy",
+			"geekpeek", "mcfly64321", "DePowah", "help_12_21_2012", "MrMouselab", "nickgodin10", "Coolbum67", "King_Me56", "malcomful", "Owenrocks11", "supak1154", "Me_Is_Jake27", "frostydeath108", "spykid8", "Lazsa", "shadowmage4513", "Aragorn006", "Golden_Tree_Ink", "fierykilljoy", "Airbrat", "frost11111", "Gazer29", "Lunesta210x2", "matthewl6970", "kreezxil", "ProRed" };
 
 	public EngineerHouse(StructureVillagePieces.Start start, int type, StructureBoundingBox bounds, EnumFacing facing) {
 		super(start, type);
@@ -138,6 +146,7 @@ public class EngineerHouse extends Village {
 
 		this.placeTorch(worldIn, EnumFacing.SOUTH, 11, 5, 10, structureBoundingBoxIn);
 
+		String theChosenOne = TSCraftMembers[MathHelper.getInt(new Random(), 0, TSCraftMembers.length - 1)];
 		this.setBlockState(worldIn, Blocks.WALL_SIGN.getDefaultState().withProperty(BlockWallSign.FACING, EnumFacing.SOUTH), 5, 7, 1, structureBoundingBoxIn);
 		BlockPos blockpos = new BlockPos(this.getXWithOffset(5, 1), this.getYWithOffset(7), this.getZWithOffset(5, 1));
 
@@ -148,11 +157,25 @@ public class EngineerHouse extends Village {
 
 				tes.signText[0] = new TextComponentString("");
 				tes.signText[1] = new TextComponentString("");
-				tes.signText[2] = new TextComponentString("CZ'S");
+				tes.signText[2] = new TextComponentString(theChosenOne + "'s");
 				tes.signText[3] = new TextComponentString("Workshop");
 			}
 		}
 
+		if (Reference.enablePlayerSkullsInWorldGen) {
+			this.setBlockState(worldIn, Blocks.SKULL.getDefaultState().withProperty(BlockSkull.FACING, EnumFacing.SOUTH), 5, 8, 1, structureBoundingBoxIn);
+			blockpos = new BlockPos(this.getXWithOffset(5, 1), this.getYWithOffset(8), this.getZWithOffset(5, 1));
+
+			te = worldIn.getTileEntity(blockpos);
+			if (te != null) {
+				if (te instanceof TileEntitySkull) {
+					TileEntitySkull tes = (TileEntitySkull) te;
+
+					tes.setPlayerProfile(new GameProfile(null, theChosenOne));
+				}
+			}
+
+		}
 		// this.setBlockState(worldIn, cobble, 0, 1, 0, structureBoundingBoxIn);
 
 		// this.setBlockState(worldIn, cobble, 0, 3, 0, structureBoundingBoxIn);

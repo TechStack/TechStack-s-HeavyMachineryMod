@@ -16,7 +16,7 @@ public class TradeListEngineer implements ITradeList {
 	@Override
 	public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
 
-		recipeList.add(0, new MerchantRecipe(new ItemStack(Blocks.EMERALD_BLOCK, 5), new ItemStack(ModItems.blueprintcontinuousminer)));
+		recipeList.add(0, new MerchantRecipe(new ItemStack(Blocks.EMERALD_BLOCK, 2), new ItemStack(ModItems.blueprintcontinuousminer)));
 	}
 
 }

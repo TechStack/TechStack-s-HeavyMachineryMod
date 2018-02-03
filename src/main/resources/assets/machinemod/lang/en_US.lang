@@ -186,6 +186,7 @@ tile.machinemod:machineoil.name=Oil - WIP
 tile.machinemod:machinefactory.name=Factory - WIP
 entity.expstalker.name=Exp Stalker
 
+entity.Villager.Miner=Mining Engineer
 
 
 

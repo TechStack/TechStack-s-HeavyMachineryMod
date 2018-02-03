@@ -48,6 +48,8 @@ public class ConfigurationHandler {
 		Reference.enableChopper = configuration.get(Configuration.CATEGORY_GENERAL, "enableSub", true, "If true Sub is Enabled, if false Sub is disabled").getBoolean();
 		Reference.enableTractor = configuration.get(Configuration.CATEGORY_GENERAL, "enableTractor", true, "If true Tractor is Enabled, if false Tractor is disabled").getBoolean();
 
+		Reference.enablePlayerSkullsInWorldGen = configuration.get(Configuration.CATEGORY_GENERAL, "enablePlayerSkullsInWorldGen", Reference.enablePlayerSkullsInWorldGen, "If true player skulls above villager workshops is Enabled, if false player skulls above villager workshops will not spawn.").getBoolean();
+
 		Reference.BleakBiomeID = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakbiomeid", 57, "set the BiomeId for the bleak biome").getInt();
 		Reference.BleakDimID = configuration.get(Reference.CONFIG_SECTION_BLEAK, "Bleakdimid", 57, "set the Dim ID for the bleak dimension").getInt();
 
