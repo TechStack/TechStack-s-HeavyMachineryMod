@@ -63,6 +63,7 @@ public class BlockMachineAssemblyTable extends BlockContainer {
 			playerIn.openGui(MachineMod.instance, Reference.GUI_ASSEMBLY_TABLE, worldIn, pos.getX(), pos.getY(), pos.getZ());
 			return true;
 		} else {
+
 			return false;
 		}
 	};

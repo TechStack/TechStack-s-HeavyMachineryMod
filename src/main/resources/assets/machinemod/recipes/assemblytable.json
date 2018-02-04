@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "machinemod:machineassemblytable"
+    },
+    "pattern" :[
+    "bbb",
+    "s s",
+    "s s"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+          "type": "forge:ore_dict",
+           "ore": "ingotSteel"   
+      
+      },
+    "b": {
+          "item" : "machinemod:steelblock"
+             
+      
+      }      
+    }
+}

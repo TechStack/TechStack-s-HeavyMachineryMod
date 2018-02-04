@@ -25,7 +25,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 public class TileEntityAssemblyTable extends TileEntity implements ITickable, ISidedInventory, IWorkConsumer, ITEGuiButtonHandler {
 	protected ItemStack[] inventory;
 
-	public final int inventorySize = 1;
+	public final int inventorySize = 2;
 	private static int[] sideSlots = new int[] { 0 };
 
 	public int totalWorkNeededForThisTask = 0;// 1000
@@ -44,6 +44,7 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 
 	@Override
 	public void update() {
+
 		if (!world.isRemote) {
 			if (inventory[0].getItem() instanceof ItemBlueprint) {
 				totalWorkNeededForThisTask = ((ItemBlueprint) inventory[0].getItem()).workRequired;
@@ -52,7 +53,13 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 			if (totalWorkNeededForThisTask == workConsumedForThisTask) {
 				// TODO : Generate the output somehow!
 				// LogHelper.info("Total Work Reached!");
-				workConsumedForThisTask = 0;
+				if (getStackInSlot(1) == ItemStack.EMPTY) {
+					setInventorySlotContents(1, getOutputItemStack());
+
+					workConsumedForThisTask = 0;
+					hasBuildProject = false;
+					this.markDirty();
+				}
 			}
 		}
 	}
@@ -69,6 +76,12 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 				inventory[slot] = new ItemStack(tag);
 			}
 		}
+
+		totalWorkNeededForThisTask = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "totalWorkNeededForThisTask");
+
+		workConsumedForThisTask = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "workConsumedForThisTask");
+		hasBuildProject = compound.getBoolean(Reference.MACHINE_MOD_NBT_PREFIX + "hasBuildProject");
+
 	}
 
 	@Override
@@ -86,6 +99,11 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 			}
 		}
 		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
+
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "totalWorkNeededForThisTask", totalWorkNeededForThisTask);
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "workConsumedForThisTask", workConsumedForThisTask);
+		compound.setBoolean(Reference.MACHINE_MOD_NBT_PREFIX + "hasBuildProject", hasBuildProject);
+
 		return compound;
 
 	}
@@ -258,9 +276,11 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 		if (amountCanConsume() >= Amount) {
 			// 0 return value we can consume it all
 			workConsumedForThisTask += Amount;
+			this.markDirty();
 			return 0;
 		} else {
 			workConsumedForThisTask += amountCanConsume();
+			this.markDirty();
 			return Amount - amountCanConsume();
 		}
 
@@ -303,6 +323,23 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 		return null;
 	}
 
+	public ItemStack getOutputItemStack() {
+		ItemStack is = ItemStack.EMPTY;
+		if (!getStackInSlot(0).isEmpty()) {
+			if (getStackInSlot(0).getItem() instanceof ItemBlueprint) {
+				String outputItemName = ((ItemBlueprint) getStackInSlot(0).getItem()).outputItemName;
+				Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(outputItemName));
+				if (item != null) {
+					is = new ItemStack(item, 1);
+				} else {
+					LogHelper.info("An Output of an ingredent is null Tell Tech please!" + outputItemName);
+				}
+
+			}
+		}
+		return is;
+	}
+
 	public List<String> getFriendlyIngredentList() {
 		List<String> returnValue = new ArrayList<String>();
 		if (!getStackInSlot(0).isEmpty()) {
@@ -328,9 +365,11 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 		/// LogHelper.info("the button was clicked and the server knows!");
 		if (!getStackInSlot(0).isEmpty()) {
 			if (getStackInSlot(0).getItem() instanceof ItemBlueprint) {
-				//
-				workConsumedForThisTask = 0;
-				hasBuildProject = true;
+				if (getStackInSlot(1) == ItemStack.EMPTY) {
+					workConsumedForThisTask = 0;
+					hasBuildProject = true;
+					this.markDirty();
+				}
 			}
 		}
 	}

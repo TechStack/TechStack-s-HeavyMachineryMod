@@ -1,6 +1,7 @@
 package com.projectreddog.machinemod.container;
 
 import com.projectreddog.machinemod.inventory.SlotBlueprint;
+import com.projectreddog.machinemod.inventory.SlotOutputOnly;
 import com.projectreddog.machinemod.tileentities.TileEntityAssemblyTable;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,6 +30,8 @@ public class ContainerAssemblyTable extends Container {
 				addSlotToContainer(new SlotBlueprint(assemblyTable, j + i * 9, (8 + j * 18), (18 + i * 18) - 2));
 			}
 		}
+
+		addSlotToContainer(new SlotOutputOnly(assemblyTable, 1, 113, 16));
 
 		// commonly used vanilla code that adds the player's inventory
 		bindPlayerInventory(inventoryPlayer);
@@ -62,14 +65,14 @@ public class ContainerAssemblyTable extends Container {
 			stack = stackInSlot.copy();
 
 			// merges the item into player inventory since its in the Entity
-			if (slot < 1) {
-				if (!this.mergeItemStack(stackInSlot, 9, this.inventorySlots.size(), true)) {
+			if (slot < 2) {
+				if (!this.mergeItemStack(stackInSlot, 2, this.inventorySlots.size(), true)) {
 					return ItemStack.EMPTY;
 				}
 			}
 			// places it into the tileEntity is possible since its in the player
 			// inventory
-			else if (!this.mergeItemStack(stackInSlot, 0, 1, false)) {
+			else if (!this.mergeItemStack(stackInSlot, 0, 2, false)) {
 				return ItemStack.EMPTY;
 			}
 
@@ -100,7 +103,7 @@ public class ContainerAssemblyTable extends Container {
 				icrafting.sendWindowProperty(this, 1, this.assemblyTable.getField(1));
 			}
 			if (this.lastHasBuildProject != this.assemblyTable.getField(2)) {
-				icrafting.sendWindowProperty(this, 1, this.assemblyTable.getField(2));
+				icrafting.sendWindowProperty(this, 2, this.assemblyTable.getField(2));
 			}
 		}
 

@@ -20,6 +20,12 @@ item.machinemod:irondust.name=Iron Dust
 item.machinemod:golddust.name=Gold Dust
 item.machinemod:rawasphalt.name=Raw Asphalt -WIP
 item.machinemod:blueprintcontinuousminer.name= Blue Print - Continuous Miner - WIP
+item.machinemod:blueprintconduit.name= Blue Print - Conduit - WIP
+item.machinemod:blueprintfactory.name= Blue Print - Factory - WIP
+item.machinemod:blueprintgenerator.name= Blue Print - Generator - WIP
+item.machinemod:blueprintbatterybank.name= Blue Print - Battery Bank - WIP
+
+
 item.machinemod:choppersawblade.name=Chopper Sawblade - WIP
 gui.assemblytable.assemble=Assemble
 gui.assemblytable.name=Assembly Table
@@ -46,6 +52,7 @@ item.machinemod:widebedtruck.name=Wide Bed Truck
 item.machinemod:trencher.name=Trencher
 item.machinemod:boomarmsegment.name=Boom Arm Segment
 item.machinemod:handdrill.name=Hand Drill
+item.machinemod:hammer.name=Hammer
 item.machinemod:hose.name=Hose
 item.machinemod:lidwithspout.name=Lid with Spout
 item.machinemod:lawnmower.name=Riding Lawn Mower

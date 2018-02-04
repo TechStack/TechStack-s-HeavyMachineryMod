@@ -34,7 +34,7 @@ public class TileEntityFactory extends TileEntity implements ITickable, IFuelCon
 
 	private int MAX_ENERGY_STORAGE = 1000;
 	private int MAX_ENERGY_RECEIVE = 100;
-	private int MAX_ENERGY_EXTRACT = 0;
+	private int MAX_ENERGY_EXTRACT = 100;
 	private EnergyStorage energyStroage = new EnergyStorage(MAX_ENERGY_STORAGE, MAX_ENERGY_RECEIVE, MAX_ENERGY_EXTRACT, 0);
 
 	@Override
@@ -64,9 +64,12 @@ public class TileEntityFactory extends TileEntity implements ITickable, IFuelCon
 	public void update() {
 		if (!world.isRemote) {
 			IWorkConsumer wc = getWorkConsumer(getTargetLocation());
-			if (wc != null) {
-				if (wc.isWorkNeeded()) {
-					wc.appyWork(10);
+			if (energyStroage.getEnergyStored() > 50) {
+				if (wc != null) {
+					if (wc.isWorkNeeded()) {
+						energyStroage.extractEnergy(50, false);
+						wc.appyWork(10);
+					}
 				}
 			}
 		}
