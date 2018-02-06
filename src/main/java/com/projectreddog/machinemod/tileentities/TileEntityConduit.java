@@ -1,5 +1,7 @@
 package com.projectreddog.machinemod.tileentities;
 
+import com.projectreddog.machinemod.utility.LogHelper;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -38,6 +40,9 @@ public class TileEntityConduit extends TileEntity implements ITickable {
 		if (!this.world.isRemote) {
 			// server
 
+			if (this.energyStroage.getEnergyStored() > 0) {
+				LogHelper.info("conduit at : " + this.pos + " I Have : " + this.energyStroage.getEnergyStored());
+			}
 			this.transferPower(this.pos.up(), EnumFacing.DOWN);
 			this.transferPower(this.pos.down(), EnumFacing.UP);
 
@@ -61,6 +66,9 @@ public class TileEntityConduit extends TileEntity implements ITickable {
 
 				this.energyStroage.extractEnergy(maxRemoteTransferIn, false);
 				remoteES.receiveEnergy(maxRemoteTransferIn, false);
+				if (maxRemoteTransferIn > 0) {
+					LogHelper.info("conduit at : " + this.pos + " I just transfered: " + maxRemoteTransferIn + " to " + bp + " on " + ef);
+				}
 
 			}
 		}
