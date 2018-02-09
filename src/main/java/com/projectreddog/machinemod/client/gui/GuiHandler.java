@@ -18,6 +18,7 @@ import com.projectreddog.machinemod.container.ContainerPaver;
 import com.projectreddog.machinemod.container.ContainerPrimaryCrusher;
 import com.projectreddog.machinemod.container.ContainerScreen;
 import com.projectreddog.machinemod.container.ContainerTractor;
+import com.projectreddog.machinemod.container.ContainerTurboFurnace;
 import com.projectreddog.machinemod.container.ContainerWideBedTruck;
 import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.entity.EntityChopper;
@@ -39,6 +40,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillatio
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 import com.projectreddog.machinemod.tileentities.TileEntityScreen;
+import com.projectreddog.machinemod.tileentities.TileEntityTurboFurnace;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -173,6 +175,15 @@ public class GuiHandler implements IGuiHandler {
 				if (entity instanceof TileEntityFermenter) {
 
 					return new ContainerFermenter(player.inventory, (TileEntityFermenter) entity);
+				}
+			}
+		} else if (id == Reference.GUI_TURBO_FURNACE) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityTurboFurnace) {
+
+					return new ContainerTurboFurnace(player.inventory, (TileEntityTurboFurnace) entity);
 				}
 			}
 		} else if (id == Reference.GUI_SCREEN) {
@@ -346,9 +357,15 @@ public class GuiHandler implements IGuiHandler {
 					return new GuiFermenter(player.inventory, (TileEntityFermenter) entity);
 				}
 			}
-		}
+		} else if (id == Reference.GUI_TURBO_FURNACE) {
 
-		else if (id == Reference.GUI_SCREEN) {
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityTurboFurnace) {
+					return new GuiTurboFurnace(player.inventory, (TileEntityTurboFurnace) entity);
+				}
+			}
+		} else if (id == Reference.GUI_SCREEN) {
 
 			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
 			if (entity != null) {

@@ -16,6 +16,9 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.EnergyStorage;
 
 public class TileEntityFactory extends TileEntity implements ITickable, IFuelContainer, ISidedInventory {
 	protected ItemStack[] inventory;
@@ -29,6 +32,27 @@ public class TileEntityFactory extends TileEntity implements ITickable, IFuelCon
 	// public int cooldown = coolDownReset;
 	public int remainBurnTime = 0;
 
+	private int MAX_ENERGY_STORAGE = 1000;
+	private int MAX_ENERGY_RECEIVE = 100;
+	private int MAX_ENERGY_EXTRACT = 100;
+	private EnergyStorage energyStroage = new EnergyStorage(MAX_ENERGY_STORAGE, MAX_ENERGY_RECEIVE, MAX_ENERGY_EXTRACT, 0);
+
+	@Override
+	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+		if (capability == CapabilityEnergy.ENERGY) {
+			return true;
+		}
+		return super.hasCapability(capability, facing);
+	}
+
+	@Override
+	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+		if (capability == CapabilityEnergy.ENERGY) {
+			return (T) energyStroage;
+		}
+		return super.getCapability(capability, facing);
+	}
+
 	public TileEntityFactory() {
 		inventory = new ItemStack[inventorySize];
 		for (int i = 0; i < inventorySize; i++) {
@@ -40,12 +64,17 @@ public class TileEntityFactory extends TileEntity implements ITickable, IFuelCon
 	public void update() {
 		if (!world.isRemote) {
 			IWorkConsumer wc = getWorkConsumer(getTargetLocation());
-			if (wc != null) {
-				if (wc.isWorkNeeded()) {
-					wc.appyWork(10);
+			if (energyStroage.getEnergyStored() > 50) {
+				if (wc != null) {
+					if (wc.isWorkNeeded()) {
+						energyStroage.extractEnergy(50, false);
+						wc.appyWork(10);
+					}
 				}
 			}
 		}
+
+		// LogHelper.info("Energy Level:" + energyStroage.getEnergyStored());
 
 	}
 
@@ -86,6 +115,9 @@ public class TileEntityFactory extends TileEntity implements ITickable, IFuelCon
 				inventory[slot] = new ItemStack(tag);
 			}
 		}
+		if (compound.hasKey("Energy")) {
+			this.energyStroage = new EnergyStorage(MAX_ENERGY_STORAGE, MAX_ENERGY_RECEIVE, MAX_ENERGY_EXTRACT, compound.getInteger("Energy"));
+		}
 	}
 
 	@Override
@@ -105,6 +137,8 @@ public class TileEntityFactory extends TileEntity implements ITickable, IFuelCon
 			}
 		}
 		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
+
+		compound.setInteger("Energy", this.energyStroage.getEnergyStored());
 		return compound;
 
 	}

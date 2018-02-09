@@ -10,6 +10,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -20,12 +21,14 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class TileEntityAssemblyTable extends TileEntity implements ITickable, ISidedInventory, IWorkConsumer, ITEGuiButtonHandler {
 	protected ItemStack[] inventory;
 
-	public final int inventorySize = 1;
+	public final int inventorySize = 2;
 	private static int[] sideSlots = new int[] { 0 };
 
 	public int totalWorkNeededForThisTask = 0;// 1000
@@ -44,6 +47,7 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 
 	@Override
 	public void update() {
+
 		if (!world.isRemote) {
 			if (inventory[0].getItem() instanceof ItemBlueprint) {
 				totalWorkNeededForThisTask = ((ItemBlueprint) inventory[0].getItem()).workRequired;
@@ -52,7 +56,13 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 			if (totalWorkNeededForThisTask == workConsumedForThisTask) {
 				// TODO : Generate the output somehow!
 				// LogHelper.info("Total Work Reached!");
-				workConsumedForThisTask = 0;
+				if (getStackInSlot(1) == ItemStack.EMPTY) {
+					setInventorySlotContents(1, getOutputItemStack());
+
+					workConsumedForThisTask = 0;
+					hasBuildProject = false;
+					this.markDirty();
+				}
 			}
 		}
 	}
@@ -69,6 +79,12 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 				inventory[slot] = new ItemStack(tag);
 			}
 		}
+
+		totalWorkNeededForThisTask = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "totalWorkNeededForThisTask");
+
+		workConsumedForThisTask = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "workConsumedForThisTask");
+		hasBuildProject = compound.getBoolean(Reference.MACHINE_MOD_NBT_PREFIX + "hasBuildProject");
+
 	}
 
 	@Override
@@ -86,6 +102,11 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 			}
 		}
 		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
+
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "totalWorkNeededForThisTask", totalWorkNeededForThisTask);
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "workConsumedForThisTask", workConsumedForThisTask);
+		compound.setBoolean(Reference.MACHINE_MOD_NBT_PREFIX + "hasBuildProject", hasBuildProject);
+
 		return compound;
 
 	}
@@ -258,9 +279,11 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 		if (amountCanConsume() >= Amount) {
 			// 0 return value we can consume it all
 			workConsumedForThisTask += Amount;
+			this.markDirty();
 			return 0;
 		} else {
 			workConsumedForThisTask += amountCanConsume();
+			this.markDirty();
 			return Amount - amountCanConsume();
 		}
 
@@ -303,6 +326,23 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 		return null;
 	}
 
+	public ItemStack getOutputItemStack() {
+		ItemStack is = ItemStack.EMPTY;
+		if (!getStackInSlot(0).isEmpty()) {
+			if (getStackInSlot(0).getItem() instanceof ItemBlueprint) {
+				String outputItemName = ((ItemBlueprint) getStackInSlot(0).getItem()).outputItemName;
+				Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(outputItemName));
+				if (item != null) {
+					is = new ItemStack(item, 1);
+				} else {
+					LogHelper.info("An Output of an ingredent is null Tell Tech please!" + outputItemName);
+				}
+
+			}
+		}
+		return is;
+	}
+
 	public List<String> getFriendlyIngredentList() {
 		List<String> returnValue = new ArrayList<String>();
 		if (!getStackInSlot(0).isEmpty()) {
@@ -323,14 +363,131 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 		return returnValue;
 	}
 
+	public boolean playerHasNeededItemsInInventory(EntityPlayer player) {
+		boolean result = false;
+		if (!getStackInSlot(0).isEmpty()) {
+			if (getStackInSlot(0).getItem() instanceof ItemBlueprint) {
+
+				Item[] is = new Item[((ItemBlueprint) getStackInSlot(0).getItem()).ingredents.size()];
+				int[] amtNeeded = new int[is.length];
+				int j = 0;
+				for (ItemBlueprint.BlueprintIngredent ingredent : ((ItemBlueprint) getStackInSlot(0).getItem()).ingredents) {
+					is[j] = ForgeRegistries.ITEMS.getValue(new ResourceLocation(ingredent.getName()));
+					if (is[j] != null) {
+						amtNeeded[j] = ingredent.getCount();
+						j++;
+					} else {
+						LogHelper.info("An Ingredent is null Tell Tech please!" + ingredent.getName());
+
+					}
+				}
+
+				InventoryPlayer ip = player.inventory;
+				int size = ip.getSizeInventory();
+				for (int i = 0; i < size; i++) {
+					ItemStack playerStack = ip.getStackInSlot(i);
+
+					if (!playerStack.isEmpty()) {
+						for (j = 0; j < is.length; j++) {
+							if (areItemsEqualIgnoreSize(playerStack.getItem(), is[j])) {
+								// same item check for amounts is it enough to satisfy if not just reduce the amt need by amt in this slot.
+								amtNeeded[j] = amtNeeded[j] - playerStack.getCount();
+								if (amtNeeded[j] <= 0) {
+									// we finally have enough of this item go on to next player slot!
+									j = is.length;
+								}
+							}
+						}
+					}
+				}
+				result = true;// assume we are OK and only set false if we are not
+
+				for (j = 0; j < is.length; j++) {
+					// check all the blueprint slots to seee if we have satisfied them all. if we have set the var to true
+
+					if (amtNeeded[j] > 0) {
+						// found one with more than one so sorry we failed.
+						player.sendMessage(new TextComponentString(TextFormatting.RED + "Missing: " + TextFormatting.WHITE + is[j].getItemStackDisplayName(new ItemStack(is[j])) + " X " + TextFormatting.BLUE + amtNeeded[j]));
+						result = false;
+					}
+				}
+
+			}
+		}
+		return result;
+	}
+
+	public void removeBlueprintItemsFromPlayersInventory(EntityPlayer player) {
+		boolean result = false;
+		if (!getStackInSlot(0).isEmpty()) {
+			if (getStackInSlot(0).getItem() instanceof ItemBlueprint) {
+
+				Item[] is = new Item[((ItemBlueprint) getStackInSlot(0).getItem()).ingredents.size()];
+				int[] amtNeeded = new int[is.length];
+				int j = 0;
+				for (ItemBlueprint.BlueprintIngredent ingredent : ((ItemBlueprint) getStackInSlot(0).getItem()).ingredents) {
+					is[j] = ForgeRegistries.ITEMS.getValue(new ResourceLocation(ingredent.getName()));
+					if (is[j] != null) {
+						amtNeeded[j] = ingredent.getCount();
+						j++;
+					} else {
+						LogHelper.info("An Ingredent is null Tell Tech please!" + ingredent.getName());
+
+					}
+				}
+
+				InventoryPlayer ip = player.inventory;
+				int size = ip.getSizeInventory();
+				for (int i = 0; i < size; i++) {
+					ItemStack playerStack = ip.getStackInSlot(i);
+
+					if (!playerStack.isEmpty()) {
+						for (j = 0; j < is.length; j++) {
+							if (areItemsEqualIgnoreSize(playerStack.getItem(), is[j])) {
+								// same item check for amounts is it enough to satisfy if not just reduce the amt need by amt in this slot.
+								int count = playerStack.getCount();
+								if (amtNeeded[j] > playerStack.getCount()) {
+									// remove all
+									ip.setInventorySlotContents(i, ItemStack.EMPTY);
+									amtNeeded[j] = amtNeeded[j] - count;
+								} else {
+									// amt needed is less than stack so reduce the count by amtneeded
+									ip.decrStackSize(i, amtNeeded[j]);
+									amtNeeded[j] = amtNeeded[j] - amtNeeded[j];
+								}
+
+							}
+						}
+					}
+				}
+
+			}
+		}
+	}
+
+	private boolean areItemsEqualIgnoreSize(Item a, Item b) {
+		if (b != a) {
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+
+	// TODO: add check to see if we habe items then Need to remove the items from the inventory still
 	@Override
 	public void HandleGuiButton(int buttonId, EntityPlayer player) {
 		/// LogHelper.info("the button was clicked and the server knows!");
 		if (!getStackInSlot(0).isEmpty()) {
 			if (getStackInSlot(0).getItem() instanceof ItemBlueprint) {
-				//
-				workConsumedForThisTask = 0;
-				hasBuildProject = true;
+				if (getStackInSlot(1) == ItemStack.EMPTY) {
+					if (playerHasNeededItemsInInventory(player)) {
+						removeBlueprintItemsFromPlayersInventory(player);
+						workConsumedForThisTask = 0;
+						hasBuildProject = true;
+						this.markDirty();
+					}
+				}
 			}
 		}
 	}

@@ -20,6 +20,13 @@ item.machinemod:irondust.name=Iron Dust
 item.machinemod:golddust.name=Gold Dust
 item.machinemod:rawasphalt.name=Raw Asphalt -WIP
 item.machinemod:blueprintcontinuousminer.name= Blue Print - Continuous Miner - WIP
+item.machinemod:blueprintconduit.name= Blue Print - Conduit - WIP
+item.machinemod:blueprintfactory.name= Blue Print - Factory - WIP
+item.machinemod:blueprintgenerator.name= Blue Print - Generator - WIP
+item.machinemod:blueprintbatterybank.name= Blue Print - Battery Bank - WIP
+item.machinemod:blueprintturbofurnace.name= Blue Print - Turbo Furnace - WIP
+
+
 item.machinemod:choppersawblade.name=Chopper Sawblade - WIP
 gui.assemblytable.assemble=Assemble
 gui.assemblytable.name=Assembly Table
@@ -46,6 +53,7 @@ item.machinemod:widebedtruck.name=Wide Bed Truck
 item.machinemod:trencher.name=Trencher
 item.machinemod:boomarmsegment.name=Boom Arm Segment
 item.machinemod:handdrill.name=Hand Drill
+item.machinemod:hammer.name=Hammer
 item.machinemod:hose.name=Hose
 item.machinemod:lidwithspout.name=Lid with Spout
 item.machinemod:lawnmower.name=Riding Lawn Mower
@@ -125,6 +133,11 @@ tile.machinemod:machinedrilledandesite.name=Andesite Stone
 tile.machinemod:machinedrilleddiorite.name=Diorite Stone
 tile.machinemod:machinedrilledgranite.name=Granite Stone
 
+tile.machinemod:machinegenerator.name=Generator
+tile.machinemod:machinebatterybank.name=Battery Bank
+tile.machinemod:machineconduit.name=Conduit
+
+tile.machinemod:machineturbofurnace.name=Turbo furnace
 
 tile.machinemod:machineasphalt.name=Asphalt
 tile.machinemod:machinebleakdirt.name=Bleak Dirt
@@ -182,6 +195,7 @@ tile.machinemod:machineoil.name=Oil - WIP
 tile.machinemod:machinefactory.name=Factory - WIP
 entity.expstalker.name=Exp Stalker
 
+entity.Villager.Miner=Mining Engineer
 
 
 
