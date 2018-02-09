@@ -24,6 +24,7 @@ item.machinemod:blueprintconduit.name= Blue Print - Conduit - WIP
 item.machinemod:blueprintfactory.name= Blue Print - Factory - WIP
 item.machinemod:blueprintgenerator.name= Blue Print - Generator - WIP
 item.machinemod:blueprintbatterybank.name= Blue Print - Battery Bank - WIP
+item.machinemod:blueprintturbofurnace.name= Blue Print - Turbo Furnace - WIP
 
 
 item.machinemod:choppersawblade.name=Chopper Sawblade - WIP
@@ -136,6 +137,7 @@ tile.machinemod:machinegenerator.name=Generator
 tile.machinemod:machinebatterybank.name=Battery Bank
 tile.machinemod:machineconduit.name=Conduit
 
+tile.machinemod:machineturbofurnace.name=Turbo furnace
 
 tile.machinemod:machineasphalt.name=Asphalt
 tile.machinemod:machinebleakdirt.name=Bleak Dirt

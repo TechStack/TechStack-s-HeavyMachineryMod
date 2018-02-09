@@ -66,6 +66,11 @@ public class Reference {
 	public static final String GUI_FUEL_LEVEL_TEXTURE_LOCATION = "textures/gui/gui_fuel_level_marker.png";
 	public static final String GUI_WORK_PROGRESS_TEXTURE_LOCATION = "textures/gui/workprogress.png";
 
+	public static final String GUI_TURBO_FURNACE_ARROW_CUTOUT = "textures/gui/turbofurnacearrow.png";
+	public static final String GUI_TURBO_FURNACE_ARROW_FILL = "textures/gui/arrow fill.png";
+	public static final String GUI_TURBO_FURNACE_FLAME = "textures/gui/turbofurnaceflame.png";
+	public static final String GUI_TURBO_FURNACE_FLAME_CUTOUT = "textures/gui/flamecutout.png";
+
 	// textures for Tile Entities
 	public static final String MODEL_TILEENTITY_PRIMARY_CRUSHER_TEXTURE_LOCATION = "models/primarycrusher.png";
 	public static final String MODEL_TILEENTITY_CENRIFUGE_TEXTURE_LOCATION = "models/centrifuge.png";
@@ -89,6 +94,7 @@ public class Reference {
 	public static final int GUI_CHOPPER = 16;
 	public static final int GUI_CONTINUOUSMINER = 17;
 	public static final int GUI_ASSEMBLY_TABLE = 18;
+	public static final int GUI_TURBO_FURNACE = 19;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;
@@ -156,6 +162,8 @@ public class Reference {
 
 	public static final String MODBLOCK_MACHINE_BATTERY_BANK = "machinebatterybank";
 	public static final String MODBLOCK_MACHINE_CONDUIT = "machineconduit";
+
+	public static final String MODBLOCK_MACHINE_TURBO_FURNACE = "machineturbofurnace";
 
 	public static final String MODBLOCK_MACHINE_BLEAK_PORTAL_FRAME = "machinebleakportalframe";
 	public static final String MODBLOCK_MACHINE_BLEAK_PORTAL = "machinebleakportal";

@@ -50,6 +50,7 @@ import com.projectreddog.machinemod.block.BlockMachineModGenerator;
 import com.projectreddog.machinemod.block.BlockMachineModLiquidPipe;
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.block.BlockMachineModScreen;
+import com.projectreddog.machinemod.block.BlockMachineModTruboFurnace;
 import com.projectreddog.machinemod.block.BlockMachineModWellHead;
 import com.projectreddog.machinemod.block.BlockMachineMowedGrass;
 import com.projectreddog.machinemod.block.BlockMachineSteelBlock;
@@ -71,6 +72,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityGenerator;
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 import com.projectreddog.machinemod.tileentities.TileEntityScreen;
+import com.projectreddog.machinemod.tileentities.TileEntityTurboFurnace;
 import com.projectreddog.machinemod.tileentities.TileEntityWellHead;
 
 import net.minecraft.block.Block;
@@ -108,6 +110,8 @@ public class ModBlocks {
 	public static final Block machinegenerator = new BlockMachineModGenerator();
 
 	public static final Block machinebatterybank = new BlockMachineModBatteryBank();
+
+	public static final Block machineturbofurnace = new BlockMachineModTruboFurnace();
 
 	public static final Block machineconduit = new BlockMachineModConduit();
 
@@ -189,6 +193,9 @@ public class ModBlocks {
 
 		ForgeRegistries.BLOCKS.register(machinebatterybank);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinebatterybank).setRegistryName(ModBlocks.machinebatterybank.getRegistryName()));
+
+		ForgeRegistries.BLOCKS.register(machineturbofurnace);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineturbofurnace).setRegistryName(ModBlocks.machineturbofurnace.getRegistryName()));
 
 		ForgeRegistries.BLOCKS.register(machineconduit);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machineconduit).setRegistryName(ModBlocks.machineconduit.getRegistryName()));
@@ -327,6 +334,8 @@ public class ModBlocks {
 
 		GameRegistry.registerTileEntity(TileEntityConduit.class, Reference.MODBLOCK_MACHINE_CONDUIT);
 
+		GameRegistry.registerTileEntity(TileEntityTurboFurnace.class, Reference.MODBLOCK_MACHINE_TURBO_FURNACE);
+
 		// /Register Fluids
 		FluidRegistry.registerFluid(fluidOil);
 
@@ -388,6 +397,8 @@ public class ModBlocks {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(steelblock), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_STEEL_BLOCK, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinegenerator), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_GENERATOR, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebatterybank), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BATTERY_BANK, "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineturbofurnace), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_TURBO_FURNACE, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineconduit), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_CONDUIT, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinecrudeoilstone), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_CRUDE_OIL_STONE, "inventory"));

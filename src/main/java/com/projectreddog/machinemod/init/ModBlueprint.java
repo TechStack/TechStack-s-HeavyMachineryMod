@@ -13,5 +13,7 @@ public class ModBlueprint {
 
 		ModItems.blueprintbatterybank.Init();
 
+		ModItems.blueprintturbofurnace.Init();
+
 	}
 }

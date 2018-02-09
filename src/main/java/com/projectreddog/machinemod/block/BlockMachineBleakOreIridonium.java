@@ -15,6 +15,8 @@ public class BlockMachineBleakOreIridonium extends BlockMachineMod {
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setBlockUnbreakable();// not sure on the hardness
 		this.setSoundType(SoundType.METAL);
+		this.setResistance(6000000.0F);
+
 	}
 
 }

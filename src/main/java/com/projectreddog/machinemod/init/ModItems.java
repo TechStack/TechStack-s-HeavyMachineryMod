@@ -55,6 +55,7 @@ import com.projectreddog.machinemod.item.blueprint.ItemBlueprintConduit;
 import com.projectreddog.machinemod.item.blueprint.ItemBlueprintContinuousMiner;
 import com.projectreddog.machinemod.item.blueprint.ItemBlueprintFactory;
 import com.projectreddog.machinemod.item.blueprint.ItemBlueprintGenerator;
+import com.projectreddog.machinemod.item.blueprint.ItemBlueprintTurboFurnace;
 import com.projectreddog.machinemod.item.chopperattachments.ItemChopperAttachmentSawBlades;
 import com.projectreddog.machinemod.item.components.ItemCamshaft;
 import com.projectreddog.machinemod.item.components.ItemDozerBlade;
@@ -174,6 +175,8 @@ public class ModItems {
 	public static final ItemBlueprintGenerator blueprintgenerator = new ItemBlueprintGenerator();
 
 	public static final ItemBlueprintBatteryBank blueprintbatterybank = new ItemBlueprintBatteryBank();
+
+	public static final ItemBlueprintTurboFurnace blueprintturbofurnace = new ItemBlueprintTurboFurnace();
 
 	@ObjectHolder("bagger")
 	public static final ItemMachineMod bagger = new ItemBagger();
@@ -463,6 +466,7 @@ public class ModItems {
 		ForgeRegistries.ITEMS.register(blueprintfactory);
 		ForgeRegistries.ITEMS.register(blueprintgenerator);
 		ForgeRegistries.ITEMS.register(blueprintbatterybank);
+		ForgeRegistries.ITEMS.register(blueprintturbofurnace);
 
 		/// register ore dict
 		OreDictionary.registerOre("gearWood", woodengear);
@@ -620,6 +624,7 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(blueprintfactory, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "blueprintfactory", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(blueprintgenerator, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "blueprintgenerator", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(blueprintbatterybank, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "blueprintbatterybank", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(blueprintturbofurnace, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "blueprintturbofurnace", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(cutterbucket, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "cutterbucket", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(rigging, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "rigging", "inventory"));

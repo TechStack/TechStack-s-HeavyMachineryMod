@@ -1,9 +1,9 @@
 package com.projectreddog.machinemod.block;
 
+import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
-import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.tileentities.TileEntityGenerator;
+import com.projectreddog.machinemod.tileentities.TileEntityTurboFurnace;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
@@ -14,6 +14,8 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
@@ -25,10 +27,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockMachineModGenerator extends BlockContainer {
+public class BlockMachineModTruboFurnace extends BlockContainer {
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
-	protected BlockMachineModGenerator(Material material) {
+	protected BlockMachineModTruboFurnace(Material material) {
 		super(material);
 
 		// can override later ;)
@@ -36,8 +38,8 @@ public class BlockMachineModGenerator extends BlockContainer {
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 
 		// 1.8
-		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_GENERATOR);
-		this.setRegistryName(Reference.MODBLOCK_MACHINE_GENERATOR);
+		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_TURBO_FURNACE);
+		this.setRegistryName(Reference.MODBLOCK_MACHINE_TURBO_FURNACE);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// this.setHardness(15f);// not sure on the hardness
@@ -45,6 +47,18 @@ public class BlockMachineModGenerator extends BlockContainer {
 		this.setHardness(1.5f);
 
 	}
+
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+		ItemStack heldItem = playerIn.getActiveItemStack();
+		TileEntity te = worldIn.getTileEntity(pos);
+		if (te != null && !playerIn.isSneaking()) {
+			playerIn.openGui(MachineMod.instance, Reference.GUI_TURBO_FURNACE, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			return true;
+		} else {
+			return false;
+		}
+	};
 
 	/**
 	 * Possibly modify the given BlockState before rendering it on an Entity (Minecarts, Endermen, ...)
@@ -54,7 +68,7 @@ public class BlockMachineModGenerator extends BlockContainer {
 		return this.getDefaultState().withProperty(FACING, EnumFacing.SOUTH);
 	}
 
-	public BlockMachineModGenerator() {
+	public BlockMachineModTruboFurnace() {
 		// Generic constructor (set to rock by default)
 		this(Material.IRON);
 	}
@@ -70,7 +84,7 @@ public class BlockMachineModGenerator extends BlockContainer {
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 
 		// NEED TO return the TE here
-		return new TileEntityGenerator();
+		return new TileEntityTurboFurnace();
 	}
 
 	@Override
@@ -149,51 +163,14 @@ public class BlockMachineModGenerator extends BlockContainer {
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-		ItemStack heldItem = playerIn.getActiveItemStack();
-		TileEntity te = worldIn.getTileEntity(pos);
-		if (te != null && !playerIn.isSneaking()) {
-			ItemStack playerItem = playerIn.getHeldItem(EnumHand.MAIN_HAND);
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+		TileEntity tileentity = worldIn.getTileEntity(pos);
 
-			if (playerItem != null) {
-				if (playerItem.getItem() == ModItems.fuelcan && playerItem.getItemDamage() < playerItem.getMaxDamage()) {
-
-					// put its a fuel can and has fuel !
-
-					if (te instanceof TileEntityGenerator) {
-						TileEntityGenerator tEPC = (TileEntityGenerator) te;
-						if (tEPC.fuelStorage < tEPC.maxFuelStorage) {
-							// can hold more fuel.
-							// calc remaining fuel in can see if it is = or > than the remaining fuel storage of this machine
-							int amountInCan = (playerIn.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage() - playerIn.getHeldItem(EnumHand.MAIN_HAND).getItemDamage());
-							int roomInEntityTank = tEPC.maxFuelStorage - tEPC.fuelStorage;
-							if (amountInCan > roomInEntityTank) {
-
-								playerIn.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(playerIn.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage() - (amountInCan - roomInEntityTank));
-								// will fill machine completely !
-								tEPC.fuelStorage = tEPC.maxFuelStorage;
-							} else {
-								// can will be empty becuase entity can hold 100% of the fuel from the can :O
-								playerIn.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(playerIn.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage());
-								tEPC.fuelStorage = tEPC.fuelStorage + amountInCan;
-							}
-						}
-					}
-				} else {
-					// it was not a fuel can or it was empty so open gui !
-					// playerIn.openGui(MachineMod.instance, Reference.GUI_PRIMARY_CRUSHER, worldIn, pos.getX(), pos.getY(), pos.getZ());
-					return true;
-				}
-			} else {
-				// no item in hand so open gui!
-				// playerIn.openGui(MachineMod.instance, Reference.GUI_PRIMARY_CRUSHER, worldIn, pos.getX(), pos.getY(), pos.getZ());
-				return true;
-
-			}
-			return true;
-		} else {
-			return false;
+		if (tileentity instanceof IInventory) {
+			InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) tileentity);
+			worldIn.updateComparatorOutputLevel(pos, this);
 		}
-	}
 
+		super.breakBlock(worldIn, pos, state);
+	}
 }

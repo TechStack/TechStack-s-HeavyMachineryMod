@@ -13,7 +13,7 @@ public class ItemBlueprintFactory extends ItemBlueprint {
 		super();
 		this.setUnlocalizedName(registryName);
 		this.setRegistryName(registryName);
-		this.workRequired = 10000;
+		this.workRequired = 1000;
 
 	}
 

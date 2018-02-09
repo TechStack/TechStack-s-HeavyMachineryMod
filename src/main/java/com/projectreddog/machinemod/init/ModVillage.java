@@ -27,6 +27,7 @@ public class ModVillage {
 
 		VillagerRegistry.addExtraVillageComponents(pieces, new Random(), 1);
 		VillagerRegistry.instance().registerVillageCreationHandler(new EngineerCreationHandler());
+
 		MapGenStructureIO.registerStructureComponent(EngineerHouse.class, "machinemod:engineerhouse");
 	}
 }
