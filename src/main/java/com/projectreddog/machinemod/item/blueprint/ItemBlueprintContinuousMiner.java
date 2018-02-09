@@ -24,15 +24,6 @@ public class ItemBlueprintContinuousMiner extends ItemBlueprint {
 		ingredents.add(new BlueprintIngredent(Items.LEATHER.getRegistryName().toString(), 24));
 		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
 
-		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
-		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
-		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
-		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
-		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
-		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
-		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
-		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
-
 		LogHelper.info(this);
 	}
 }

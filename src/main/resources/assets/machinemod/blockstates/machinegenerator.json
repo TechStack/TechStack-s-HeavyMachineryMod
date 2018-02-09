@@ -1,0 +1,8 @@
+{
+  "variants": {
+        "facing=north": {"model": "machinemod:machinegenerator", "y":90},        
+        "facing=south": {"model": "machinemod:machinegenerator","y": 270},
+        "facing=west":  {"model": "machinemod:machinegenerator"},
+        "facing=east":  {"model": "machinemod:machinegenerator","y": 180 }
+        }
+}

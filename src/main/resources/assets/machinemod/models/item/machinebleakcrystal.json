@@ -1,5 +1,5 @@
 {
-    "parent": "machinemod:block/machinebleakcrystal",
+    "parent": "machinemod:block/machinebleakcrystalgrowth6",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

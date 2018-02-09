@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "machinemod:hammer"
+    },
+    "pattern" :[
+    "sss",
+    "sss",
+    " t "
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+          "type": "forge:ore_dict",
+           "ore": "ingotSteel"   
+      
+      },
+    "t": {
+          "item" : "minecraft:stick"
+             
+      
+      }      
+    }
+}
