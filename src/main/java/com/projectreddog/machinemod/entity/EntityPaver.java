@@ -20,7 +20,7 @@ public class EntityPaver extends EntityMachineModRideable {
 	public EntityPaver(World world) {
 		super(world);
 
-		setSize(5.5f, 4f);
+		setSize(4.5f, 4f);
 		SIZE = 9;
 		inventory = new ItemStackHandler(SIZE);
 		// inventory = new ItemStack[9];
@@ -69,7 +69,7 @@ public class EntityPaver extends EntityMachineModRideable {
 							}
 							BlockPos bp;
 							if (this.inventory.getStackInSlot(j) != null && this.inventory.getStackInSlot(j).getItem() == ModItems.rawasphalt && this.inventory.getStackInSlot(j).getCount() > 0) {
-								bp = new BlockPos(posX + calcTwoOffsetX(-3.5, angle, i), posY - 1, posZ + calcTwoOffsetZ(-3.5, angle, i));
+								bp = new BlockPos(posX + calcTwoOffsetX(-3.5, angle, i), posY, posZ + calcTwoOffsetZ(-3.5, angle, i));
 								if (world.isAirBlock(bp)) {
 									world.setBlockState(bp, ModBlocks.machineasphalt.getDefaultState());
 

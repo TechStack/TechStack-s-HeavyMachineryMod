@@ -19,7 +19,7 @@ public class EntityRoadRoller extends EntityMachineModRideable {
 	public EntityRoadRoller(World world) {
 		super(world);
 
-		setSize(5.5f, 5f);
+		setSize(4.5f, 5f);
 		// inventory = new ItemStack[9];
 
 		this.mountedOffsetY = .61D;

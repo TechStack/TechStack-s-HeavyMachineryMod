@@ -57,7 +57,7 @@ public class TileEntityShredder extends TileEntity implements ITickable {
 				if (entity != null) {
 					if (entity instanceof EntityLivingBase) {
 						EntityLivingBase elb = (EntityLivingBase) entity;
-						elb.attackEntityFrom(new EntityDamageSource(Reference.MOD_ID + ":" + "SHREDDER" + (r.nextInt(5) + 1), FakePlayerFactory.get((WorldServer) this.world, Reference.gameProfile)), 50);
+						elb.attackEntityFrom(new EntityDamageSource(Reference.MOD_ID + ":" + "SHREDDER" + (r.nextInt(6) + 1), FakePlayerFactory.get((WorldServer) this.world, Reference.gameProfile)), 50);
 					}
 					// entity.setPosition(entity.getPosition().getX() + 0.1d, entity.getPosition().getY(), entity.getPosition().getZ());
 					// }
