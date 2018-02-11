@@ -2,7 +2,7 @@
     "parent": "machinemod:block/notflipped",
     "textures": {
         "particle": "#front",
-        "down": "#top",
+        "down": "#bottom",
         "up": "#top",
         "north": "#front",
         "east": "#side",

@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "facing=north,powered=true": { "model": "machinemod:machinepoweredshredder" },
+        "facing=south,powered=true": { "model": "machinemod:machinepoweredshredder", "y": 180 },
+        "facing=west,powered=true":  { "model": "machinemod:machinepoweredshredder", "y": 270 },
+        "facing=east,powered=true":  { "model": "machinemod:machinepoweredshredder", "y": 90 },        
+        "facing=north,powered=false": { "model": "machinemod:machineshredder" },
+        "facing=south,powered=false": { "model": "machinemod:machineshredder", "y": 180 },
+        "facing=west,powered=false":  { "model": "machinemod:machineshredder", "y": 270 },
+        "facing=east,powered=false": { "model": "machinemod:machineshredder", "y": 90 }
+        
+    }
+}
