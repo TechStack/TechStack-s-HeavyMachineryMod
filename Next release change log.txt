@@ -42,6 +42,9 @@ Changes
 			now capable of placing sand.
 		Trencher on the tractor:
 			now capable of breaking sand.
+	Block machine changes
+	   Screens can now insert directly into adjacent inventories including crates.
+	Added recipie to go from steel block back to steel ingot
 Bug Fixes:
 	Fixed: Crash when machine falls into the void
 	Possible Fix: for corn not getting picked up as a crop for other mods.
