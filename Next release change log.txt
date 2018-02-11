@@ -33,6 +33,7 @@ New Content:
 		- Turbo Furnace - Much faster than vanilla furnance but requires blaze powder as fuel- No other fuel will work. - Smelts stacks at a time.
 			Can be used to smelt bleak stone into Asphalt
 		- Bleak portal block
+		- Industrial Shredder - Kills anything that falls into the block above it. 
 	
 	World Gen:
 		Added Villager Named Engineer with custom trades. Spawns near the new Villager house or randomly when villagers breed.

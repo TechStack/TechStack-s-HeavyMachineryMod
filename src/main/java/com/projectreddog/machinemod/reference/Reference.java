@@ -169,6 +169,7 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_BLEAK_PORTAL = "machinebleakportal";
 
 	public static final String MODBLOCK_MACHINE_SCREEN = "machinescreen";
+	public static final String MODBLOCK_MACHINE_SHREDDER = "machineshredder";
 
 	public static final String MODBLOCK_MACHINE_FLUID_BIOFUEL = "biofuel";
 
