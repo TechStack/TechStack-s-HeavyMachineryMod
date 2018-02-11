@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.container;
 
 import com.projectreddog.machinemod.inventory.SlotBlazePowder;
 import com.projectreddog.machinemod.inventory.SlotNotBlazePowder;
-import com.projectreddog.machinemod.inventory.SlotOutputOnly;
+import com.projectreddog.machinemod.inventory.SlotOutputOnlyTurobFurnace;
 import com.projectreddog.machinemod.tileentities.TileEntityTurboFurnace;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,7 +32,7 @@ public class ContainerTurboFurnace extends Container {
 		// for (int i = 0; i < 1; i++) {
 		// for (int j = 0; j < 3; j++) {
 		addSlotToContainer(new SlotNotBlazePowder(turbofurnace, 0, 47, 34));
-		addSlotToContainer(new SlotOutputOnly(turbofurnace, 1, 110, 53));
+		addSlotToContainer(new SlotOutputOnlyTurobFurnace(inventoryPlayer.player, turbofurnace, 1, 110, 53));
 		addSlotToContainer(new SlotBlazePowder(turbofurnace, 2, 47, 74));
 		// }
 		// }
@@ -73,6 +73,8 @@ public class ContainerTurboFurnace extends Container {
 				if (!this.mergeItemStack(stackInSlot, 3, this.inventorySlots.size(), true)) {
 					return ItemStack.EMPTY;
 				}
+
+				slotObject.onSlotChange(stackInSlot, stack);
 			}
 			// places it into the tileEntity is possible since its in the player
 			// inventory

@@ -352,12 +352,18 @@ public class TileEntityTurboFurnace extends TileEntity implements ITickable, ISi
 	@Override
 	public int[] getSlotsForFace(EnumFacing side) {
 		// slot 0 = Output (down) Slot 1 = input (up & sides)
-		int[] Slots;
-		if (side == EnumFacing.DOWN) {
+		int[] Slots = new int[] {};
+		if (side == EnumFacing.UP) {
 			Slots = new int[] { 0 };
-		} else {
+		} else if (side == EnumFacing.EAST || side == EnumFacing.WEST || side == EnumFacing.NORTH || side == EnumFacing.SOUTH) {
+			Slots = new int[] { 2 };
+		} else if (side == EnumFacing.DOWN) {
 			Slots = new int[] { 1 };
 		}
+
+		// slot 0 = Input
+		// SLOT 1 = Output
+		// Slot 2 = FUEL
 
 		return Slots;
 
@@ -367,6 +373,15 @@ public class TileEntityTurboFurnace extends TileEntity implements ITickable, ISi
 	public boolean canInsertItem(int slot, ItemStack itemStackIn, EnumFacing direction) {
 
 		// TODO MODIFY ME LATER PLEASE
+		if (direction == EnumFacing.UP) {
+			return true;
+		}
+		if (direction == EnumFacing.WEST || direction == EnumFacing.EAST || direction == EnumFacing.NORTH || direction == EnumFacing.SOUTH) {
+			if (isItemFuel(itemStackIn)) {
+				return true;
+			}
+			return false;
+		}
 
 		return true;
 	}
