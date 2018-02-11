@@ -37,6 +37,8 @@ public class TruboFurnaceRecipes {
 
 		this.addSmeltingRecipeForBlock(ModBlocks.machinebleakorecrimsonite, new ItemStack(ModItems.crimsonitepebble), 1.5F);
 
+		this.addSmeltingRecipeForBlock(ModBlocks.machinebleakstone, new ItemStack(ModItems.rawasphalt), 1.5F);
+
 		// this.addSmeltingRecipeForBlock(Blocks.GOLD_ORE, new ItemStack(Items.GOLD_INGOT), 1.0F);
 
 		// this.addSmeltingRecipeForBlock(Blocks.DIAMOND_ORE, new ItemStack(Items.DIAMOND), 1.0F);
