@@ -116,6 +116,18 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 							}
 
 						}
+
+						if (te instanceof TileEntityCrate) {
+							TileEntityCrate tec = (TileEntityCrate) te;
+							if (tec.canInsertItem(1, tmpstack, EnumFacing.UP)) {
+								// checked if it can insert so do insert.
+								tec.setInventorySlotContents(1, tmpstack);
+								setInventorySlotContents(4, ItemStack.EMPTY);
+
+								return;
+
+							}
+						}
 					}
 
 					EntityItem ei = new EntityItem(world, x, y, z, tmpstack);
@@ -183,6 +195,17 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 							}
 						}
 
+					}
+					if (te instanceof TileEntityCrate) {
+						TileEntityCrate tec = (TileEntityCrate) te;
+						if (tec.canInsertItem(1, tmpstack, EnumFacing.UP)) {
+							// checked if it can insert so do insert.
+							tec.setInventorySlotContents(1, tmpstack);
+							setInventorySlotContents(4, ItemStack.EMPTY);
+
+							return;
+
+						}
 					}
 				}
 				EntityItem ei = new EntityItem(world, x, y, z, tmpstack);
