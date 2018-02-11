@@ -1,0 +1,53 @@
+Lots of new features in this update
+Some of which are still WIP & will be enahanced or built on in future releases I wanted to release this now to address some bugs & allow players to get started with the new features!
+
+Few examples of changes/ addtions since the last publich release.
+New Content:
+	New Dimension added
+		- Bleak Dimension
+	New Mob added
+		- Exp stalker *AI is WIP & Animations are not started yet.
+	New Items
+		- Various Ingots & Gems for bleak ores
+		- Hammer - used to perform "Work" in the assembly table
+		- Various blueprints were added. to obtain these trade with the Engineer villager for them. Used in the assembly table to make items.
+		- Collapsed star - Used to spawn a bleak portal in the bleak portal frame when placed correctly.
+			Place the frames like this (where F is the bleak portal frame  & A = Air) :
+			FAF
+			FAF
+			FAF
+			Then right click the ground under the bottom Air block to activate the Portal to the Bleak Dimension.
+		
+	New Armor
+		- Add a crash helmet - Try elytra flying into a wall while wearing it :D
+	New Blocks
+		- Bleak Stone
+		- Bleak dirt
+		- Various Bleak ores
+		- Bleak crystals
+		- Generator - WIP no gui but useable for now.
+		- Conduit - WIP - Power tansmision system not ready for real use yet. - Will not work in all cases
+		- Battery Bank- WIP - Power tansmision system not ready for real use yet. - Will not work in all cases
+		- Assembly table
+		- Factory (robot arm) Used to autoamte work in the assembly table.
+		- Turbo Furnace - Much faster than vanilla furnance but requires blaze powder as fuel- No other fuel will work. - Smelts stacks at a time.
+		- Bleak portal block
+	
+	World Gen:
+		Added Villager Named Engineer with custom trades. Spawns near the new Villager house or randomly when villagers breed.
+		Added a villager house for the engineer - Only spawns in newly generated chunks.
+Changes 
+	Machine interaction changes:
+		Grader - 
+			now capable of placing sand.
+		Trencher on the tractor:
+			now capable of breaking sand.
+Bug Fixes:
+	Fixed: Crash when machine falls into the void
+	Possible Fix: for corn not getting picked up as a crop for other mods.
+	Fixed: Crash caused by Render of the : distiller , fermeter ect
+	Fixed: Visual position of the paver on the flatbed truck.
+	Fixed: Dupe Bug in Crates
+	Fixed: Possible issue where drilled stone is not updated for other clients in MP worlds
+	Fixed: Running speed is now increased again when running on compressed asphalt
+
