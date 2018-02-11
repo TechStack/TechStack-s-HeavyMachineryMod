@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:crafting_shapeless",            
+    "ingredients":[ 
+        {
+            "item":"machinemod:steelblock"
+        }
+     ],
+    "result": {
+        "item": "machinemod:steelingot",
+        "count":9
+    }
+}
+
