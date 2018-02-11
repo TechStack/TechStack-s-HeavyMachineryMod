@@ -1,10 +1,13 @@
 package com.projectreddog.machinemod.container;
 
+import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.inventory.SlotBlueprint;
 import com.projectreddog.machinemod.inventory.SlotOutputOnly;
+import com.projectreddog.machinemod.network.MachineModMessageTEIntFieldToClient;
 import com.projectreddog.machinemod.tileentities.TileEntityAssemblyTable;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
@@ -97,13 +100,25 @@ public class ContainerAssemblyTable extends Container {
 			IContainerListener icrafting = (IContainerListener) this.listeners.get(i);
 
 			if (this.lasttotalWorkNeededForThisTask != this.assemblyTable.getField(0)) {
-				icrafting.sendWindowProperty(this, 0, this.assemblyTable.getField(0));
+				// icrafting.sendWindowProperty(this, 0, this.assemblyTable.getField(0));
+				if (icrafting instanceof EntityPlayerMP) {
+					EntityPlayerMP ep = (EntityPlayerMP) icrafting;
+					ModNetwork.simpleNetworkWrapper.sendTo(new MachineModMessageTEIntFieldToClient(this.assemblyTable.getPos().getX(), this.assemblyTable.getPos().getY(), this.assemblyTable.getPos().getZ(), 0, this.assemblyTable.getField(0)), ep);
+				}
 			}
 			if (this.lastworkConsumedForThisTask != this.assemblyTable.getField(1)) {
-				icrafting.sendWindowProperty(this, 1, this.assemblyTable.getField(1));
+				// icrafting.sendWindowProperty(this, 1, this.assemblyTable.getField(1));
+				if (icrafting instanceof EntityPlayerMP) {
+					EntityPlayerMP ep = (EntityPlayerMP) icrafting;
+					ModNetwork.simpleNetworkWrapper.sendTo(new MachineModMessageTEIntFieldToClient(this.assemblyTable.getPos().getX(), this.assemblyTable.getPos().getY(), this.assemblyTable.getPos().getZ(), 1, this.assemblyTable.getField(1)), ep);
+				}
 			}
 			if (this.lastHasBuildProject != this.assemblyTable.getField(2)) {
-				icrafting.sendWindowProperty(this, 2, this.assemblyTable.getField(2));
+				// icrafting.sendWindowProperty(this, 2, this.assemblyTable.getField(2));
+				if (icrafting instanceof EntityPlayerMP) {
+					EntityPlayerMP ep = (EntityPlayerMP) icrafting;
+					ModNetwork.simpleNetworkWrapper.sendTo(new MachineModMessageTEIntFieldToClient(this.assemblyTable.getPos().getX(), this.assemblyTable.getPos().getY(), this.assemblyTable.getPos().getZ(), 1, this.assemblyTable.getField(1)), ep);
+				}
 			}
 		}
 
