@@ -47,7 +47,7 @@ Changes
 	Block machine changes
 	   Screens can now insert directly into adjacent inventories including crates.
 	Added recipie to go from steel block back to steel ingot
-
+    Adjusted paver and road roller hit boxes
 
 Bug Fixes:
 	Fixed: Crash when machine falls into the void
