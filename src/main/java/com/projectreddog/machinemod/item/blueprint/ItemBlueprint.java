@@ -41,25 +41,27 @@ public class ItemBlueprint extends ItemMachineMod {
 
 	public String toolTipToString() {
 		String output = "";
-		Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(outputItemName));
-		if (item != null) {
-			String displayName = item.getItemStackDisplayName(new ItemStack(item));
-
-			output = "\u00A7aMakes: " + displayName + "\n";
-		}
-
-		output = output + "Ingredent: \n";
-		for (int i = 0; i < ingredents.size(); i++) {
-
-			item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(ingredents.get(i).getName()));
+		if (outputItemName != null) {
+			Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(outputItemName));
 			if (item != null) {
 				String displayName = item.getItemStackDisplayName(new ItemStack(item));
-				output = output + "   " + displayName + " X " + ingredents.get(i).getCount() + "\n";
-			} else {
-				LogHelper.info("An Output of an ingredent is null Tell Tech please!" + outputItemName);
+
+				output = "\u00A7aMakes: " + displayName + "\n";
 			}
 
-			// output = output + "Ingredent: " + ingredents.get(i).getName() + " X " + ingredents.get(i).getCount() + "\n";
+			output = output + "Ingredent: \n";
+			for (int i = 0; i < ingredents.size(); i++) {
+
+				item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(ingredents.get(i).getName()));
+				if (item != null) {
+					String displayName = item.getItemStackDisplayName(new ItemStack(item));
+					output = output + "   " + displayName + " X " + ingredents.get(i).getCount() + "\n";
+				} else {
+					LogHelper.info("An Output of an ingredent is null Tell Tech please!" + outputItemName);
+				}
+
+				// output = output + "Ingredent: " + ingredents.get(i).getName() + " X " + ingredents.get(i).getCount() + "\n";
+			}
 		}
 		return output;
 	}
