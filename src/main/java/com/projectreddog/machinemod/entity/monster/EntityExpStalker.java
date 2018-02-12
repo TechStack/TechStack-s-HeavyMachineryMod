@@ -4,7 +4,6 @@ import java.util.Random;
 
 import com.projectreddog.machinemod.entity.ai.EntityAiNearestAttackablePlayerInDarkWithExp;
 import com.projectreddog.machinemod.entity.ai.EntityFlyFastTurnHelper;
-import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -329,7 +328,7 @@ public class EntityExpStalker extends EntityMob {
 					double distanceSq3d = this.parentEntity.getDistanceSq(entitylivingbase);
 					if (distanceSq3d < 5d && this.attackTick <= 0) {
 						state = AIState.ATTACK;
-						LogHelper.info("ATTACK!");
+						// LogHelper.info("ATTACK!");
 					} else if (distanceSq2d < 5d && this.attackTick <= 0) {
 						state = AIState.ABOVE;
 						// LogHelper.info("ABOVE!");

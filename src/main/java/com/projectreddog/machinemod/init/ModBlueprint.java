@@ -15,5 +15,7 @@ public class ModBlueprint {
 
 		ModItems.blueprintturbofurnace.Init();
 
+		ModItems.blueprintshredder.Init();
+
 	}
 }

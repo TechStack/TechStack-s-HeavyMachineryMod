@@ -25,7 +25,7 @@ item.machinemod:blueprintfactory.name= Blue Print - Factory - WIP
 item.machinemod:blueprintgenerator.name= Blue Print - Generator - WIP
 item.machinemod:blueprintbatterybank.name= Blue Print - Battery Bank - WIP
 item.machinemod:blueprintturbofurnace.name= Blue Print - Turbo Furnace - WIP
-
+item.machinemod:blueprintshredder.name= Blue Print - Shredder - WIP
 
 item.machinemod:choppersawblade.name=Chopper Sawblade - WIP
 gui.assemblytable.assemble=Assemble
@@ -184,6 +184,7 @@ tile.machinemod:machineblastedemerald.name=Blasted Emerald
 
 tile.machinemod:machineblastedstone2.name=Blasted Stone for Mods - (WIP)
 tile.machinemod:machineconveyor.name=Conveyor
+tile.machinemod:machineshredder.name=Industrial Mob Shredder
 
 
 tile.machinemod:machinecrudeoilstone.name=Crude Oil Stone
@@ -207,4 +208,13 @@ death.attack.machinemod:GENERIC_CRUSH_MACHINE2=%s was squashed by a heavy machin
 death.attack.machinemod:GENERIC_CRUSH_MACHINE3=%s played chicken with heavy machine GG... GG.
 death.attack.machinemod:GENERIC_CRUSH_MACHINE4=%s can be found stuck to the bottom of the wheels of a heavy machine. 
 death.attack.machinemod:GENERIC_CRUSH_MACHINE5=%s didn't wear a hard hat on a construction site, RIP.
+
+
+
+death.attack.machinemod:SHREDDER1=%s was shredded to bits!
+death.attack.machinemod:SHREDDER2=%s tested the term Death Cube!
+death.attack.machinemod:SHREDDER3=%s was Dying to see the inside of the shredder.
+death.attack.machinemod:SHREDDER4=%s failed to obey the warning sign.
+death.attack.machinemod:SHREDDER5=%s got a hug from the shredder.
+death.attack.machinemod:SHREDDER6=%s figured out what the shredder does the hard way.
 

@@ -23,6 +23,7 @@ public class TradeListEngineer implements ITradeList {
 		recipeList.add(3, new MerchantRecipe(new ItemStack(Blocks.EMERALD_BLOCK, 1), new ItemStack(ModItems.blueprintgenerator)));
 		recipeList.add(4, new MerchantRecipe(new ItemStack(Blocks.EMERALD_BLOCK, 1), new ItemStack(ModItems.blueprintbatterybank)));
 		recipeList.add(5, new MerchantRecipe(new ItemStack(Items.EMERALD, 5), new ItemStack(ModItems.blueprintturbofurnace)));
+		recipeList.add(6, new MerchantRecipe(new ItemStack(Blocks.EMERALD_BLOCK, 1), new ItemStack(ModItems.blueprintshredder)));
 
 	}
 

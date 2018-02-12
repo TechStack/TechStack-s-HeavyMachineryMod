@@ -1,0 +1,12 @@
+{
+    "parent": "machinemod:block/directionnormal",
+    "textures": {
+        "top": "machinemod:blocks/machinepoweredshreddertop",
+        "front": "machinemod:blocks/machineshredderside" ,
+        "side": "machinemod:blocks/machineshredderside",
+        "back": "machinemod:blocks/machineshredderside",
+        "bottom": "machinemod:blocks/machinepoweredshreddertop"
+        
+        
+    }
+}

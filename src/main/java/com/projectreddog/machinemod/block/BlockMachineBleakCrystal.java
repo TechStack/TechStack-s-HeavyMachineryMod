@@ -87,11 +87,9 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 				IBlockState iblockstate = worldIn.getBlockState(blockpos1.add(i, 0, j));
 
 				if (iblockstate.getBlock().canSustainPlant(iblockstate, worldIn, blockpos1.add(i, 0, j), net.minecraft.util.EnumFacing.UP, (net.minecraftforge.common.IPlantable) p_180672_0_)) {
-					f1 = 1.0F;
 
-					if (iblockstate.getBlock().isFertile(worldIn, blockpos1.add(i, 0, j))) {
-						f1 = 3.0F;
-					}
+					f1 = 3.0F;
+
 				}
 
 				if (i != 0 || j != 0) {
