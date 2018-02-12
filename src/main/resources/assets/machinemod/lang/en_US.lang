@@ -25,7 +25,7 @@ item.machinemod:blueprintfactory.name= Blue Print - Factory - WIP
 item.machinemod:blueprintgenerator.name= Blue Print - Generator - WIP
 item.machinemod:blueprintbatterybank.name= Blue Print - Battery Bank - WIP
 item.machinemod:blueprintturbofurnace.name= Blue Print - Turbo Furnace - WIP
-
+item.machinemod:blueprintshredder.name= Blue Print - Shredder - WIP
 
 item.machinemod:choppersawblade.name=Chopper Sawblade - WIP
 gui.assemblytable.assemble=Assemble
