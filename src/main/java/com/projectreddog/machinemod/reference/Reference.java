@@ -102,6 +102,8 @@ public class Reference {
 	public static final String MODBLOCK_STEEL_BLOCK = "steelblock";
 
 	public static final String MODBLOCK_MACHINE_ASPHALT = "machineasphalt";
+	public static final String MODBLOCK_MACHINE_ASPHALT_SLAB = "machineasphaltslab";
+
 	public static final String MODBLOCK_MACHINE_BLEAK_DIRT = "machinebleakdirt";
 
 	public static final String MODBLOCK_MACHINE_BLEAK_CRYSTAL = "machinebleakcrystal";
@@ -123,6 +125,7 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_ASPHALT_MIXER = "machineasphaltmixer";
 
 	public static final String MODBLOCK_MACHINE_COMPRESSED_ASPHALT = "machinecompressedasphalt";
+	public static final String MODBLOCK_MACHINE_COMPRESSED_ASPHALT_SLAB = "machinecompressedasphaltslab";
 
 	public static final String MODBLOCK_MACHINE_MOWED_GRASS = "machinemowedgrass";
 

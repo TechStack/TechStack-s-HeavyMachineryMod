@@ -1,0 +1,17 @@
+{
+    "result": {
+        "item": "machinemod:machineasphaltslab"
+    },
+    "pattern" :[
+      "   ", 
+      "   ", 
+      "aaa"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "a": {
+            "item":"machinemod:rawasphalt" 
+      } 
+    }
+}
+
