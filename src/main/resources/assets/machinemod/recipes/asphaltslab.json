@@ -1,6 +1,7 @@
 {
     "result": {
-        "item": "machinemod:machineasphaltslab"
+        "item": "machinemod:machineasphaltslab",
+        "count": 6
     },
     "pattern" :[
       "   ", 
