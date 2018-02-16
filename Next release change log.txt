@@ -34,7 +34,9 @@ New Content:
 			Can be used to smelt bleak stone into Asphalt
 		- Bleak portal block
 		- Industrial Shredder - Kills anything that falls into the block above it. 
-	
+		-- Asphalt & Compressed Asphalt Slabs were added for making roads go up gradients. The uncompressed version must be manually placed , The paver will not place them. Roll them with the road roller to make the compressed version with the speed boost.
+	       - only the asphalt (non compressed) version is craftable by using 3 raw asphalt at the bottom of the crafting grid.
+	       
 	World Gen:
 		Added Villager Named Engineer with custom trades. Spawns near the new Villager house or randomly when villagers breed.
 		Added a villager house for the engineer - Only spawns in newly generated chunks.
