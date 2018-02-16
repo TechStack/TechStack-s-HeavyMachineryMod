@@ -147,7 +147,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 						dropDust(i, new ItemStack(Blocks.SAND, 4));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.WOOL)) {
-						dropDust(i, new ItemStack(Items.STRING, 41));
+						dropDust(i, new ItemStack(Items.STRING, 4));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.COBBLESTONE)) {
 						dropDust(i, new ItemStack(Blocks.GRAVEL, 1));
@@ -406,17 +406,33 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickable, I
 
 	@Override
 	public int getField(int id) {
+		switch (id) {
+		case 0:
+			return this.fuelStorage;
+
+		default:
+			break;
+		}
 		return 0;
+
 	}
 
 	@Override
 	public void setField(int id, int value) {
+		switch (id) {
+		case 0:
+			this.fuelStorage = value;
+			break;
+
+		default:
+			break;
+		}
 
 	}
 
 	@Override
 	public int getFieldCount() {
-		return 0;
+		return 1;
 	}
 
 	@Override

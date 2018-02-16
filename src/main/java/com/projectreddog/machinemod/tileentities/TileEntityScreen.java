@@ -16,7 +16,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
 public class TileEntityScreen extends TileEntity implements ITickable, ISidedInventory {
 	protected ItemStack[] inventory;
@@ -24,7 +27,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 
 	public final int inventorySize = 5;
 	public AxisAlignedBB boundingBox;
-	public int coolDownAmount = 5;
+	public int coolDownAmount = 1;
 	public int timeTillCoolDown = 0;
 
 	// slot 0 = north
@@ -65,30 +68,74 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 				if (getStackInSlot(i).getItem() == getStackInSlot(4).getItem() && getStackInSlot(i).getItem().getMetadata(getStackInSlot(i)) == getStackInSlot(4).getItem().getMetadata(getStackInSlot(4))) {
 					double x = 0, y = 0, z = 0;
 					y = this.pos.getY() + .5d;
+					EnumFacing ef = null;
 					if (i == 0) {
+						// north ?
+						ef = EnumFacing.NORTH;
 						x = this.pos.getX() + .5d;
 						z = this.pos.getZ() - .5d;
 					} else if (i == 1) {
+						// east
+						ef = EnumFacing.EAST;
 						x = this.pos.getX() + 1.5d;
 						z = this.pos.getZ() + .5d;
 					} else if (i == 2) {
+						// south
+						ef = EnumFacing.SOUTH;
 						x = this.pos.getX() + .5d;
 						z = this.pos.getZ() + 1.5d;
 					} else if (i == 3) {
+						// west
+						ef = EnumFacing.WEST;
 						x = this.pos.getX() - .5d;
 						z = this.pos.getZ() + .5d;
 					}
 
 					ItemStack tmpstack = getStackInSlot(4).copy();
 					if (tmpstack.getCount() > 1) {
-						tmpstack.setCount(1);
+						tmpstack.setCount(tmpstack.getCount());
 					}
+
+					// check for invetory and use it if possible
+					BlockPos bp = new BlockPos(x, y, z);
+					TileEntity te = world.getTileEntity(bp);
+					if (te != null) {
+						if (te.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, ef)) {
+							IItemHandler iih = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, ef);
+							for (int slotIndex = 0; slotIndex < iih.getSlots(); slotIndex++) {
+								ItemStack is = iih.insertItem(slotIndex, tmpstack, false);
+								tmpstack = is.copy();
+								setInventorySlotContents(4, tmpstack);
+								if (is.isEmpty()) {
+									// insert worked nothing todo anymore return ;
+									setInventorySlotContents(4, ItemStack.EMPTY);
+									return;
+								} else {
+
+								}
+							}
+
+						}
+
+						if (te instanceof TileEntityCrate) {
+							TileEntityCrate tec = (TileEntityCrate) te;
+							if (tec.canInsertItem(1, tmpstack, EnumFacing.UP)) {
+								// checked if it can insert so do insert.
+								tec.setInventorySlotContents(1, tmpstack);
+								setInventorySlotContents(4, ItemStack.EMPTY);
+
+								return;
+
+							}
+						}
+					}
+
 					EntityItem ei = new EntityItem(world, x, y, z, tmpstack);
 					ei.motionX = 0;
 					ei.motionY = 0;
 					ei.motionZ = 0;
 					if (world.spawnEntity(ei)) {
-						decrStackSize(4, 1);
+						decrStackSize(4, tmpstack.getCount());
 						return;
 					}
 
@@ -98,25 +145,68 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 
 		for (int i = 0; i < 4; i++) {
 			if (!getStackInSlot(4).isEmpty() && getStackInSlot(i).isEmpty() && getStackInSlot(4).getItem() != null) {
+				EnumFacing ef = null;
 
 				double x = 0, y = 0, z = 0;
 				y = this.pos.getY() + .5d;
 				if (i == 0) {
+					// north ?
+					ef = EnumFacing.NORTH;
 					x = this.pos.getX() + .5d;
 					z = this.pos.getZ() - .5d;
 				} else if (i == 1) {
+
+					// east
+					ef = EnumFacing.EAST;
 					x = this.pos.getX() + 1.5d;
 					z = this.pos.getZ() + .5d;
 				} else if (i == 2) {
+					// south
+					ef = EnumFacing.SOUTH;
 					x = this.pos.getX() + .5d;
 					z = this.pos.getZ() + 1.5d;
 				} else if (i == 3) {
+					// west
+					ef = EnumFacing.WEST;
 					x = this.pos.getX() - .5d;
 					z = this.pos.getZ() + .5d;
 				}
 				ItemStack tmpstack = getStackInSlot(4).copy();
 				if (tmpstack.getCount() > 1) {
-					tmpstack.setCount(1);
+					tmpstack.setCount(tmpstack.getCount());
+				}
+
+				// check for invetory and use it if possible
+				BlockPos bp = new BlockPos(x, y, z);
+				TileEntity te = world.getTileEntity(bp);
+				if (te != null) {
+					if (te.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, ef)) {
+						IItemHandler iih = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, ef);
+						for (int slotIndex = 0; slotIndex < iih.getSlots(); slotIndex++) {
+							ItemStack is = iih.insertItem(slotIndex, tmpstack, false);
+							tmpstack = is.copy();
+							setInventorySlotContents(4, tmpstack);
+							if (is.isEmpty()) {
+								// insert worked nothing todo anymore return ;
+								setInventorySlotContents(4, ItemStack.EMPTY);
+								return;
+							} else {
+
+							}
+						}
+
+					}
+					if (te instanceof TileEntityCrate) {
+						TileEntityCrate tec = (TileEntityCrate) te;
+						if (tec.canInsertItem(1, tmpstack, EnumFacing.UP)) {
+							// checked if it can insert so do insert.
+							tec.setInventorySlotContents(1, tmpstack);
+							setInventorySlotContents(4, ItemStack.EMPTY);
+
+							return;
+
+						}
+					}
 				}
 				EntityItem ei = new EntityItem(world, x, y, z, tmpstack);
 				ei.motionX = 0;
@@ -124,7 +214,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 				ei.motionZ = 0;
 
 				if (world.spawnEntity(ei)) {
-					decrStackSize(4, 1);
+					decrStackSize(4, tmpstack.getCount());
 					return;
 				}
 

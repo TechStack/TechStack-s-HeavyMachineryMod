@@ -45,8 +45,18 @@ public class ModelLoader extends ModelTransportable {
 		this.renderGroupObject("Object.2");
 		this.renderGroupObject("Object.3");
 		this.renderGroupObject("Object.4");
-		this.renderGroupObject("Object.5");
-		this.renderGroupObject("Object.6");
+
+		this.renderGroupObject("Cylinder");
+		this.renderGroupObject("Cylinder.001");
+		this.renderGroupObject("Cylinder.002");
+		this.renderGroupObject("Cylinder.003");
+
+		this.renderGroupObject("Object.000");
+		this.renderGroupObject("Object.005");
+		this.renderGroupObject("Object.006");
+		this.renderGroupObject("Object.024");
+		this.renderGroupObject("Object.025");
+
 		this.renderGroupObject("Object.7");
 		this.renderGroupObject("Object.8");
 		this.renderGroupObject("Object.9");
@@ -54,8 +64,6 @@ public class ModelLoader extends ModelTransportable {
 		this.renderGroupObject("Object.11");
 		this.renderGroupObject("Object.12");
 		this.renderGroupObject("Object.13");
-		this.renderGroupObject("Object.14");
-		this.renderGroupObject("Object.15");
 		this.renderGroupObject("Object.16");
 		this.renderGroupObject("Object.17");
 		this.renderGroupObject("Object.18");

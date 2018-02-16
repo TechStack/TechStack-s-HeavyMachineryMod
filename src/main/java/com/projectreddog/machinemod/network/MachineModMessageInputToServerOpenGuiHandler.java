@@ -2,7 +2,9 @@ package com.projectreddog.machinemod.network;
 
 import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.entity.EntityBagger;
+import com.projectreddog.machinemod.entity.EntityChopper;
 import com.projectreddog.machinemod.entity.EntityCombine;
+import com.projectreddog.machinemod.entity.EntityContinuousMiner;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityGrader;
@@ -61,6 +63,10 @@ public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHan
 							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_BAGGER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityExcavator) {
 							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_EXCAVATOR, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+						} else if (entity instanceof EntityChopper) {
+							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_CHOPPER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+						} else if (entity instanceof EntityContinuousMiner) {
+							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_CONTINUOUSMINER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						}
 
 					}

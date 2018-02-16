@@ -36,9 +36,10 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
+		float forwardOffset = -5f;
 		if (!world.isRemote) {
 
-			AxisAlignedBB bedboundingBox = new AxisAlignedBB(calcTwoOffsetX(5, 90, -2) + posX - .5d, (double) posY, calcTwoOffsetZ(5, 90, -2) + posZ - .5d, calcTwoOffsetX(5, 90, 2) + posX + .5d, posY + 1, calcTwoOffsetZ(5, 90, 2) + posZ + .5d);
+			AxisAlignedBB bedboundingBox = new AxisAlignedBB(calcTwoOffsetX(forwardOffset + 5, 90, -2) + posX - .5d, (double) posY, calcTwoOffsetZ(forwardOffset + 5, 90, -2) + posZ - .5d, calcTwoOffsetX(forwardOffset, 90, 2) + posX + .5d, posY + 1, calcTwoOffsetZ(forwardOffset, 90, 2) + posZ + .5d);
 			List list = this.world.getEntitiesWithinAABBExcludingEntity(this, bedboundingBox);
 			collidedEntitiesInList(list);
 			if (this.Attribute1 == getMinAngle()) {
@@ -49,7 +50,7 @@ public class EntityDumpTruck extends EntityMachineModRideable {
 					if (item != null && item.getCount() > 0) {
 						;
 
-						EntityItem entityItem = new EntityItem(world, posX + calcOffsetX(-4.5), posY - .1f, posZ + calcOffsetZ(-4.5), item);
+						EntityItem entityItem = new EntityItem(world, posX + calcOffsetX(forwardOffset + -1.5f), posY - .1f, posZ + calcOffsetZ(forwardOffset + -1.5f), item);
 
 						if (item.hasTagCompound()) {
 							entityItem.getItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());

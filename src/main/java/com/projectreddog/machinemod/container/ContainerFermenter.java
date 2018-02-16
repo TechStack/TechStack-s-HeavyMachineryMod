@@ -20,7 +20,7 @@ public class ContainerFermenter extends Container {
 
 	public ContainerFermenter(InventoryPlayer inventoryPlayer, TileEntityFermenter fermenter) {
 		this.fermenter = fermenter;
-
+		lastFuelStorage = -1;
 		for (int i = 0; i < 1; i++) {
 			for (int j = 0; j < 9; j++) {
 				addSlotToContainer(new Slot(fermenter, j + i * 9, 8 + j * 18, 18 + i * 18));

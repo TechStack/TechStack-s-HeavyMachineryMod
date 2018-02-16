@@ -38,4 +38,12 @@ public class BlockUtil {
 
 		return true;
 	}
+
+	public static boolean setBlockandNotify(World world, BlockPos bp, IBlockState bs) {
+		boolean result = true;
+		world.setBlockState(bp, bs);
+		IBlockState state = world.getBlockState(bp);
+		world.notifyBlockUpdate(bp, state, state, 3);
+		return result;
+	}
 }

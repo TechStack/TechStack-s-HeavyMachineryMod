@@ -20,7 +20,8 @@ public class ContainerDistiller extends Container {
 
 	public ContainerDistiller(InventoryPlayer inventoryPlayer, TileEntityDistiller distiller) {
 		this.distiller = distiller;
-
+		lastFuelStorage = -1;
+		lastRemainBurnTime = -1;
 		for (int i = 0; i < 1; i++) {
 			for (int j = 0; j < 1; j++) {
 				addSlotToContainer(new SlotFurnaceFuel(distiller, j + i * 9, 8 + j * 18, 18 + i * 18));

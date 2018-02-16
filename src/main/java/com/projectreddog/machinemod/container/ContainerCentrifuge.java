@@ -19,7 +19,8 @@ public class ContainerCentrifuge extends Container {
 
 	public ContainerCentrifuge(InventoryPlayer inventoryPlayer, TileEntityCentrifuge centrifuge) {
 		this.centrifuge = centrifuge;
-
+		lastFuelStorage = -1;
+		lastRemainBurnTime = -1;
 		for (int i = 0; i < 1; i++) {
 			for (int j = 0; j < 2; j++) {
 				addSlotToContainer(new Slot(centrifuge, j + i * 9, 8 + j * 18, 18 + i * 18));

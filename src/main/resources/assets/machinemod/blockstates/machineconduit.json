@@ -1,0 +1,51 @@
+{
+    "forge_marker":1,
+  "defaults":{
+"model": "machinemod:machineconduit_center"
+},
+  "variants": {
+        "down":{
+            "true":{
+                "submodel":"machinemod:machineconduit_down"
+            },
+            "false":{
+            //
+            }
+        },  "up":{
+            "true":{
+                "submodel":"machinemod:machineconduit_up"
+            },
+            "false":{
+            //
+            }
+        },  "north":{
+            "true":{
+                "submodel":"machinemod:machineconduit_north"
+            },
+            "false":{
+            //
+            }
+        },  "south":{
+            "true":{
+                "submodel":"machinemod:machineconduit_south"
+            },
+            "false":{
+            //
+            }
+        },  "east":{
+            "true":{
+                "submodel":"machinemod:machineconduit_east"
+            },
+            "false":{
+            //
+            }
+        },  "west":{
+            "true":{
+                "submodel":"machinemod:machineconduit_west"
+            },
+            "false":{
+            //
+            }
+        } 
+        }
+}

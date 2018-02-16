@@ -201,6 +201,7 @@ public class TileEntityCrate extends TileEntity implements ITickable, ISidedInve
 				inventory[slot] = new ItemStack(tag);
 			}
 		}
+		HeldItem = getStackInSlot(0).copy();
 	}
 
 	@Override

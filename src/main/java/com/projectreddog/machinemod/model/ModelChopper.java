@@ -12,12 +12,15 @@ import java.util.HashMap;
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.entity.EntityChopper;
+import com.projectreddog.machinemod.item.chopperattachments.ItemChopperAttachmentSawBlades;
+import com.projectreddog.machinemod.item.chopperattachments.ItemChopperAttachments;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.client.model.obj.OBJLoader;
@@ -53,6 +56,8 @@ public class ModelChopper extends ModelTransportable {
 		// renderGroupObject("Cylinder");
 		GL11.glTranslatef(f, f1, f2);
 
+		GL11.glTranslatef(0f, 0f, 1f);
+
 		if (entity instanceof EntityChopper) {
 			EntityChopper ec = (EntityChopper) entity;
 			double dx = ec.motionX;
@@ -70,26 +75,64 @@ public class ModelChopper extends ModelTransportable {
 			// GL11.glRotatef(90f, 0, 0, 1);
 			// }
 		}
-		renderGroupObject("Body_Cube");
+		renderGroupObject("CopperBody_Object.19");
 
 		if (entity instanceof EntityChopper) {
 			EntityChopper ec = (EntityChopper) entity;
 			GL11.glRotatef(ec.Attribute2 * rotorMult, 0, 1, 0);
-			renderGroupObject("MainRotor_Cube.001");
+			renderGroupObject("RotorBlade_Object.1");
 			GL11.glRotatef(ec.Attribute2 * -rotorMult, 0, 1, 0);
 
-			GL11.glTranslatef(0f, -1.6f, 4.5f);
+			GL11.glTranslatef(-.15f, -3.45f, 6.85f);
 
 			GL11.glRotatef(ec.Attribute2 * rotorMult, 1, 0, 0);
-			renderGroupObject("TailRotor_Cube.003");
+			renderGroupObject("RotorBladeTail_Object.25");
+			GL11.glRotatef(ec.Attribute2 * -rotorMult, 1, 0, 0);
+
+			//
+			GL11.glTranslatef(.15f, 0f, -6.85f);
+
+			ItemStack is2 = ((EntityChopper) entity).inventory.getStackInSlot(0);
+			if (is2.getItem() instanceof ItemChopperAttachments) {
+				// its an attachment do stuff for said attachment
+				if (ec.isPlayerAccelerating) {
+					GL11.glRotatef(-10f, 1, 0, 0);
+				}
+
+				if (ec.isPlayerBreaking) {
+					GL11.glRotatef(10f, 1, 0, 0);
+				}
+
+				if (is2.getItem() instanceof ItemChopperAttachmentSawBlades) {
+
+					renderGroupObject("BladeHanger_Object.53");
+
+					GL11.glTranslatef(0f, 8.5f, 0f);
+
+					for (int i = 1; i < 11; i++) {
+						GL11.glRotatef(ec.Attribute2 * rotorMult, 1, 0, 0);
+
+						renderGroupObject("Blade01_Cylinder.001");
+						GL11.glRotatef(ec.Attribute2 * -rotorMult, 1, 0, 0);
+
+						GL11.glTranslatef(0f, 1.9f, 0f);
+
+					}
+				}
+
+			}
+
 		} else {
-			renderGroupObject("MainRotor_Cube.001");
+			renderGroupObject("CopperBody_Object.19");
 
-			GL11.glTranslatef(0f, -1.6f, 4.5f);
+			renderGroupObject("RotorBlade_Object.1");
 
-			renderGroupObject("TailRotor_Cube.003");
+			GL11.glTranslatef(-.15f, -3.45f, 6.85f);
+
+			renderGroupObject("RotorBladeTail_Object.25");
+
 		}
-		renderGroupObject("Cylinder");
+		// renderGroupObject("Cylinder");
 
 	}
 

@@ -1,0 +1,8 @@
+{
+  "variants": {
+        "facing=north": {"model": "machinemod:machinebatterybank", "y":90},        
+        "facing=south": {"model": "machinemod:machinebatterybank", "y":270 },
+        "facing=west":  {"model": "machinemod:machinebatterybank"},
+        "facing=east":  {"model": "machinemod:machinebatterybank","y": 180 }
+        }
+}

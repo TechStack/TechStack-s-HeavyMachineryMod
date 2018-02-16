@@ -1,14 +1,14 @@
 package com.projectreddog.machinemod.client.gui;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.container.ContainerPaver;
 import com.projectreddog.machinemod.entity.EntityPaver;
 import com.projectreddog.machinemod.reference.Reference;
+
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
 
 public class GuiPaver extends GuiContainer {
 
@@ -24,6 +24,13 @@ public class GuiPaver extends GuiContainer {
 		this.xSize = 176;
 		this.ySize = 222;
 		super.initGui();
+	}
+
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		this.drawDefaultBackground();
+		super.drawScreen(mouseX, mouseY, partialTicks);
+		this.renderHoveredToolTip(mouseX, mouseY);
 	}
 
 	@Override

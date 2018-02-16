@@ -36,17 +36,24 @@ public class ModelGrader extends ModelTransportable {
 		// renderGroupObject(MachineModModelHelper.ALL_PARTS);
 		GL11.glTranslatef(0f, 0f, 4.00f);
 
-		renderGroupObject("Object.1");
-		renderGroupObject("Object.2");
-		renderGroupObject("Object.3");
-		renderGroupObject("Object.4");
+		// renderGroupObject("Object.1");
+		// renderGroupObject("Object.2");
+		// renderGroupObject("Object.3");
+		// renderGroupObject("Object.4");
+		renderGroupObject("Cylinder");
+		renderGroupObject("Cylinder.001");
+		renderGroupObject("Cylinder.002");
+		renderGroupObject("Cylinder.003");
+		renderGroupObject("Cylinder.004");
+		renderGroupObject("Cylinder.005");
+
 		renderGroupObject("Object.5");
 		renderGroupObject("Object.6");
 		renderGroupObject("Object.7");
 		renderGroupObject("Object.8");
 		renderGroupObject("Object.9");
-		renderGroupObject("Object.10");
-		renderGroupObject("Object.11");
+		// renderGroupObject("Object.10");
+		// renderGroupObject("Object.11");
 		renderGroupObject("Object.12");
 		renderGroupObject("Object.13");
 		renderGroupObject("Object.14");
@@ -64,7 +71,7 @@ public class ModelGrader extends ModelTransportable {
 		renderGroupObject("Object.26");
 		renderGroupObject("Object.27");
 		renderGroupObject("Object.28");
-		renderGroupObject("Object.29");
+		// renderGroupObject("Object.29"); // TOOD REMOVE ME was merged with 28
 		renderGroupObject("Object.30");
 
 	}

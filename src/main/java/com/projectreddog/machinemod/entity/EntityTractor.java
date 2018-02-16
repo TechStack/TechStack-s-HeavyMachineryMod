@@ -29,7 +29,7 @@ public class EntityTractor extends EntityMachineModRideable {
 	public EntityTractor(World world) {
 		super(world);
 		setSize(2.5F, 2F);
-		SIZE = 9;
+		SIZE = 54;
 		inventory = new ItemStackHandler(SIZE);
 		// inventory = new ItemStack[9];
 		this.mountedOffsetY = 1.35D;
@@ -56,7 +56,7 @@ public class EntityTractor extends EntityMachineModRideable {
 			// this will calcl the offset for three positions behind the tractor
 			// (3 wide)
 			if (this.isPlayerPushingSprintButton) {
-				for (int i = -1; i < 2; i++) {
+				for (int i = -4; i < 5; i++) {
 
 					if (i == 0) {
 						angle = 0;
@@ -80,7 +80,7 @@ public class EntityTractor extends EntityMachineModRideable {
 							} else if (this.inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentPlanter) {
 								bp = new BlockPos(posX + calcTwoOffsetX(-4.5, angle, i), posY - 1 + .1d, posZ + calcTwoOffsetZ(-4.5, angle, i));
 
-								for (int j = 1; j < 9; j++)// start at 1 because
+								for (int j = 1; j < SIZE; j++)// start at 1 because
 								// first slot is
 								// attachment only
 								{
@@ -92,7 +92,7 @@ public class EntityTractor extends EntityMachineModRideable {
 
 													world.setBlockState(bp.up(), ((IPlantable) this.inventory.getStackInSlot(j).getItem()).getPlant(world, bp.up()));
 													this.inventory.extractItem(j, 1, false);
-													j = 9;
+													j = SIZE;
 
 												}
 											}
@@ -110,7 +110,7 @@ public class EntityTractor extends EntityMachineModRideable {
 							} else if (this.inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentSprayer) {
 								// Fertilize checks & actions
 
-								for (int j = 1; j < 9; j++)// start at 1 because
+								for (int j = 1; j < SIZE; j++)// start at 1 because
 								// first slot is
 								// attachment only
 								{
@@ -139,7 +139,7 @@ public class EntityTractor extends EntityMachineModRideable {
 															// inventory.insertItem(j, ItemStack.EMPTY, false);
 														}
 
-														j = 9;
+														j = SIZE;
 													}
 
 												}
@@ -151,7 +151,7 @@ public class EntityTractor extends EntityMachineModRideable {
 							} else if (this.inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentTrencher) {
 								// Fertilize checks & actions
 								if (i == 0) {
-									if (world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.FARMLAND) {
+									if (world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.FARMLAND || world.getBlockState(bp).getBlock() == Blocks.SAND) {
 										BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
 									}

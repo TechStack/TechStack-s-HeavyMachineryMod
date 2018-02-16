@@ -18,7 +18,7 @@ public class ContainerCanner extends Container {
 
 	public ContainerCanner(InventoryPlayer inventoryPlayer, TileEntityFuelPump canner) {
 		this.canner = canner;
-
+		this.lastFuelStorage = -1;
 		for (int i = 0; i < 1; i++) {
 			for (int j = 0; j < 9; j++) {
 				addSlotToContainer(new Slot(canner, j + i * 9, 8 + j * 18, 18 + i * 18));

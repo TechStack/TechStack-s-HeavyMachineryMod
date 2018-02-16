@@ -1,5 +1,6 @@
 package com.projectreddog.machinemod.block;
 
+import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
@@ -79,7 +80,16 @@ public class BlockMachineModPrimaryCrusher extends BlockContainer {
 							}
 						}
 					}
+				} else {
+					// it was not a fuel can or it was empty so open gui !
+					playerIn.openGui(MachineMod.instance, Reference.GUI_PRIMARY_CRUSHER, worldIn, pos.getX(), pos.getY(), pos.getZ());
+					return true;
 				}
+			} else {
+				// no item in hand so open gui!
+				playerIn.openGui(MachineMod.instance, Reference.GUI_PRIMARY_CRUSHER, worldIn, pos.getX(), pos.getY(), pos.getZ());
+				return true;
+
 			}
 			return true;
 		} else {

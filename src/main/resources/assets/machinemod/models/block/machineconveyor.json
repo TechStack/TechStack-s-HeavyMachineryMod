@@ -4,7 +4,8 @@
         "top": "machinemod:blocks/machineconveyor",
         "front": "machinemod:blocks/machineconveyor" ,
         "side": "machinemod:blocks/machineconveyor_side",
-        "back": "machinemod:blocks/machineconveyor"
+        "back": "machinemod:blocks/machineconveyor",
+        "bottom": "machinemod:blocks/machineconveyor"
         
     }
 }

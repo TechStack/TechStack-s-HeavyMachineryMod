@@ -25,6 +25,10 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 
 	}
 
+	public boolean getPowered() {
+		return world.isBlockPowered(this.pos);
+	}
+
 	@Override
 	public void update() {
 

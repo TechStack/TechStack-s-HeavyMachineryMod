@@ -1,12 +1,14 @@
 package com.projectreddog.machinemod.reference;
 
+import java.util.UUID;
+
 import com.mojang.authlib.GameProfile;
 
 public class Reference {
 	// common constants for our mod
 	// example: public static final string MOD_ID ="Blah";
 
-	public static final GameProfile gameProfile = new GameProfile(null, "[TECHSTACKS HEAVY MACHINERY MOD]");
+	public static final GameProfile gameProfile = new GameProfile(UUID.nameUUIDFromBytes("TECHSTACKS HEAVY MACHINERY MOD".getBytes()), "[TECHSTACKS HEAVY MACHINERY MOD]");
 	public static final String MOD_ID = "machinemod";
 	public static final String MOD_NAME = "MachineMod";
 	// public static final String VERSION = "${version}";
@@ -28,6 +30,8 @@ public class Reference {
 	public static final String FLUID_OIL_FLOWING_TEXTURE_LOCATION = "textures/blocks/oil_flowing.png";
 	public static final String MODEL_FUEL_PUMP_TEXTURE_LOCATION = "models/fuelpump.png";
 	public static final String MODEL_DISTILLER_TEXTURE_LOCATION = "models/distiller.png";
+	public static final String MODEL_FACTORY_TEXTURE_LOCATION = "models/factory.png";
+
 	public static final String MODEL_FRACTIONAL_DISTILATION_TEXTURE_LOCATION = "models/fractionaldistilation.png";
 	public static final String MODEL_FERMENTER_TEXTURE_LOCATION = "models/fermenter.png";
 
@@ -39,6 +43,8 @@ public class Reference {
 	public static final String MODEL_DRILLINGRIG_TEXTURE_LOCATION = "models/drillingrig.png";
 	public static final String MODEL_DUMPTRUCK_TEXTURE_LOCATION = "models/dumptruck.png";
 	public static final String MODEL_LOADER_TEXTURE_LOCATION = "models/modelloader.png";
+	public static final String MODEL_CONTINUOUSMINER_TEXTURE_LOCATION = "models/continuousminer.png";
+
 	public static final String MODEL_BAGGER_TEXTURE_LOCATION = "models/bagger.png";
 	public static final String MODEL_OIL_RIG_TEXTURE_LOCATION = "models/bagger.png";
 	public static final String MODEL_PUMP_JACK_TEXTURE_LOCATION = "models/pumpjack.png";
@@ -49,10 +55,22 @@ public class Reference {
 	public static final String MODEL_ROADROLLER_TEXTURE_LOCATION = "models/steamroller.png";
 
 	public static final String MODEL_CRANE_TEXTURE_LOCATION = "models/crane.png";
+	public static final String MODEL_BEAM_TEXTURE_LOCATION = "models/beam.png";
+	public static final String MODEL_LASER_MINER_TEXTURE_LOCATION = "models/laserminer.png";
+
 	public static final String MODEL_EXCAVATOR_TEXTURE_LOCATION = "models/excavator.png";
+
+	public static final String MODEL_ElYTRA_JET_BELT_TEXTURE_LOCATION = "models/elytrajetbelt.png";
 
 	public static final String GUI_FUEL_GUAGE_TEXTURE_LOCATION = "textures/gui/gui_overlay_fuel_gage.png";
 	public static final String GUI_FUEL_LEVEL_TEXTURE_LOCATION = "textures/gui/gui_fuel_level_marker.png";
+	public static final String GUI_WORK_PROGRESS_TEXTURE_LOCATION = "textures/gui/workprogress.png";
+
+	public static final String GUI_TURBO_FURNACE_ARROW_CUTOUT = "textures/gui/turbofurnacearrow.png";
+	public static final String GUI_TURBO_FURNACE_ARROW_FILL = "textures/gui/arrow fill.png";
+	public static final String GUI_TURBO_FURNACE_FLAME = "textures/gui/turbofurnaceflame.png";
+	public static final String GUI_TURBO_FURNACE_FLAME_CUTOUT = "textures/gui/flamecutout.png";
+
 	// textures for Tile Entities
 	public static final String MODEL_TILEENTITY_PRIMARY_CRUSHER_TEXTURE_LOCATION = "models/primarycrusher.png";
 	public static final String MODEL_TILEENTITY_CENRIFUGE_TEXTURE_LOCATION = "models/centrifuge.png";
@@ -70,9 +88,13 @@ public class Reference {
 	public static final int GUI_PAVER = 10;
 	public static final int GUI_GRADER = 11;
 	public static final int GUI_BAGGER = 12;
-
 	public static final int GUI_FRACTIONALDISTILLATION = 13;
 	public static final int GUI_EXCAVATOR = 14;
+	public static final int GUI_PRIMARY_CRUSHER = 15;
+	public static final int GUI_CHOPPER = 16;
+	public static final int GUI_CONTINUOUSMINER = 17;
+	public static final int GUI_ASSEMBLY_TABLE = 18;
+	public static final int GUI_TURBO_FURNACE = 19;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;
@@ -80,6 +102,20 @@ public class Reference {
 	public static final String MODBLOCK_STEEL_BLOCK = "steelblock";
 
 	public static final String MODBLOCK_MACHINE_ASPHALT = "machineasphalt";
+	public static final String MODBLOCK_MACHINE_BLEAK_DIRT = "machinebleakdirt";
+
+	public static final String MODBLOCK_MACHINE_BLEAK_CRYSTAL = "machinebleakcrystal";
+
+	public static final String MODBLOCK_MACHINE_BLEAK_STONE = "machinebleakstone";
+	public static final String MODBLOCK_MACHINE_BLEAK_ORE_IRIDONIUM = "machinebleakoreiridonium";
+	public static final String MODBLOCK_MACHINE_BLEAK_ORE_MAGENTIA = "machinebleakoremagentia";
+
+	public static final String MODBLOCK_MACHINE_BLEAK_ORE_LIMONITEUM = "machinebleakorelimoniteum";
+	public static final String MODBLOCK_MACHINE_BLEAK_ORE_CRIMSONITE = "machinebleakorecrimsonite";
+	public static final String MODBLOCK_MACHINE_BLEAK_ORE_AZURIUM = "machinebleakoreazurium";
+	public static final String MODBLOCK_MACHINE_BLEAK_ORE_CITRONITE = "machinebleakorecitronite";
+	public static final String MODBLOCK_MACHINE_BLEAK_ORE_UNOBTANIUM = "machinebleakoreunobtanium";
+
 	public static final String MODBLOCK_MACHINE_CRATE = "machinecrate";
 
 	public static final String MODBLOCK_MACHINE_CRUDE_OIL_STONE = "machinecrudeoilstone";
@@ -116,11 +152,24 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_DISTILLER = "machinedistiller";
 	public static final String MODBLOCK_MACHINE_WELL_HEAD = "machinewellhead";
 
+	public static final String MODBLOCK_MACHINE_FACTORY = "machinefactory";
+
 	public static final String MODBLOCK_MACHINE_FERMENTER = "machinefermenter";
 	public static final String MODBLOCK_MACHINE_FUEL_PUMP = "machinefuelpump";
 
 	public static final String MODBLOCK_MACHINE_CONVEYOR = "machineconveyor";
+	public static final String MODBLOCK_MACHINE_GENERATOR = "machinegenerator";
+
+	public static final String MODBLOCK_MACHINE_BATTERY_BANK = "machinebatterybank";
+	public static final String MODBLOCK_MACHINE_CONDUIT = "machineconduit";
+
+	public static final String MODBLOCK_MACHINE_TURBO_FURNACE = "machineturbofurnace";
+
+	public static final String MODBLOCK_MACHINE_BLEAK_PORTAL_FRAME = "machinebleakportalframe";
+	public static final String MODBLOCK_MACHINE_BLEAK_PORTAL = "machinebleakportal";
+
 	public static final String MODBLOCK_MACHINE_SCREEN = "machinescreen";
+	public static final String MODBLOCK_MACHINE_SHREDDER = "machineshredder";
 
 	public static final String MODBLOCK_MACHINE_FLUID_BIOFUEL = "biofuel";
 
@@ -129,6 +178,7 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE = "machineexplosivepackeddrilledstone";
 	public static final String MACHINE_MOD_NBT_PREFIX = "MACHINE_MOD_";
 
+	public static final String CONFIG_SECTION_BLEAK = "bleak";
 	// config file settings
 	public static int clientRemoveInactiveEntityTimer = 100;
 	public static int updateConnectionTimer = 100;
@@ -145,6 +195,11 @@ public class Reference {
 	public static boolean enableGrader = true;
 	public static boolean enableLawnmower = true;
 	public static boolean enableLoader = true;
+
+	public static boolean enableLaserMiner = true;
+
+	public static boolean enableContinuousMiner = true;
+
 	public static boolean enableOilRig = true;
 	public static boolean enablePaver = true;
 	public static boolean enablePumpJack = true;
@@ -155,8 +210,48 @@ public class Reference {
 
 	public static boolean enableTractor = true;
 
+	public static boolean enablePlayerSkullsInWorldGen = true;
+
 	public static int crudeOilStoneGenMinlevel = 5;
 	public static int crudeOilStoneGenMaxlevel = 30;
+
+	public static int bleakoreiridoniumGenMinlevel = 41;
+	public static int bleakoreiridoniumGenMaxlevel = 75;
+	public static int bleakoreiridoniumGenDepositSize = 8;
+
+	public static int bleakoremagentiaGenMinlevel = 30;
+	public static int bleakoremagentiaGenMaxlevel = 69;
+	public static int bleakoremagentiaGenDepositSize = 8;
+
+	public static int bleakorelimoniteumGenMinlevel = 61;
+	public static int bleakorelimoniteumGenMaxlevel = 94;
+	public static int bleakorelimoniteumGenDepositSize = 8;
+
+	public static int bleakorecrimsoniteGenMinlevel = 4;
+	public static int bleakorecrimsoniteGenMaxlevel = 31;
+	public static int bleakorecrimsoniteGenDepositSize = 8;
+
+	public static int bleakoreazuriumGenMinlevel = 4;
+	public static int bleakoreazuriumGenMaxlevel = 22;
+	public static int bleakoreazuriumGenDepositSize = 8;
+
+	public static int bleakorecitroniteGenMinlevel = 20;
+	public static int bleakorecitroniteGenMaxlevel = 54;
+	public static int bleakorecitroniteGenDepositSize = 8;
+
+	public static int bleakoreunobtaniumGenMinlevel = 4;
+	public static int bleakoreunobtaniumGenMaxlevel = 20;
+	public static int bleakoreunobtaniumGenDepositSize = 8;
+
 	public static int wellHeadMaxRange = 15;
+
+	public static int BleakBiomeID = 57;
+	public static int BleakDimID = 57;
+
+	// GUI BUTTONS by Screen
+	// ASSEMBLY TABLE
+	public static final int GUI_ASSEMBLY_TABLE_BUTTON_ASSEMBLE = 1;
+	public static final int GUI_ASSEMBLY_TABLE_BUTTON_NEXT_PAGE = 2;
+	public static final int GUI_ASSEMBLY_TABLE_BUTTON_PREV_PAGE = 3;
 
 }

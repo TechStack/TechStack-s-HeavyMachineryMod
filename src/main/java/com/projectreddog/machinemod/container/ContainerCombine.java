@@ -16,7 +16,7 @@ public class ContainerCombine extends Container {
 	public ContainerCombine(InventoryPlayer inventoryPlayer, EntityCombine combine) {
 		this.combine = combine;
 
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 9; j++) {
 				addSlotToContainer(new SlotItemHandler(combine.inventory, j + i * 9, 8 + j * 18, 18 + i * 18));
 			}
@@ -54,14 +54,14 @@ public class ContainerCombine extends Container {
 			stack = stackInSlot.copy();
 
 			// merges the item into player inventory since its in the Entity
-			if (slot < 9) {
-				if (!this.mergeItemStack(stackInSlot, 9, this.inventorySlots.size(), true)) {
+			if (slot < 54) {
+				if (!this.mergeItemStack(stackInSlot, 54, this.inventorySlots.size(), true)) {
 					return ItemStack.EMPTY;
 				}
 			}
 			// places it into the tileEntity is possible since its in the player
 			// inventory
-			else if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
+			else if (!this.mergeItemStack(stackInSlot, 0, 54, false)) {
 				return ItemStack.EMPTY;
 			}
 

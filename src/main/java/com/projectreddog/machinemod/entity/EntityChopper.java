@@ -16,17 +16,17 @@ public class EntityChopper extends EntityMachineModRideable {
 
 	public EntityChopper(World world) {
 		super(world);
-		setSize(2.5F, 2.5F);
+		setSize(3.5F, 4F);
 		SIZE = 9;
 		inventory = new ItemStackHandler(SIZE);
 		// inventory = new ItemStack[9];
-		this.mountedOffsetY = 0.1D;
-		this.mountedOffsetX = 1d;
-		this.mountedOffsetZ = 1d;
+		this.mountedOffsetY = 0.44D;
+		this.mountedOffsetX = 2d;
+		this.mountedOffsetZ = 2d;
 		this.maxAngle = 0;
 		this.minAngle = -60;
 		this.droppedItem = ModItems.chopper;
-		this.shouldSendClientInvetoryUpdates = false;
+		this.shouldSendClientInvetoryUpdates = true;
 		this.willSink = false;
 		this.maxSpeed = 2.4d;
 		this.accelerationAmount = .08d;
@@ -84,7 +84,7 @@ public class EntityChopper extends EntityMachineModRideable {
 	}
 
 	public double particleBackOffset = -.6d;
-	public double particleSideOffset = 2.3d;
+	public double particleSideOffset = 4.3d;
 	public double particleTopOffset = 3.9d;
 	public double particleBottmOffset = -.3d;
 
@@ -97,6 +97,55 @@ public class EntityChopper extends EntityMachineModRideable {
 				world.spawnParticle(EnumParticleTypes.CLOUD, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset), this.posY - particleBottmOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset), 0, 0, 0, 0);
 				world.spawnParticle(EnumParticleTypes.CLOUD, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset * -1), this.posY - particleBottmOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset * -1), 0, 0, 0, 0);
 			}
+		}
+	}
+
+	@Override
+	public double getMountedYOffset() {
+		// should be overridden in extended class if not default;
+		if (isPlayerAccelerating) {
+			// tilt forward & Down
+			return this.height * mountedOffsetY + -.5;
+
+		} else if (isPlayerBreaking) {
+			// tilt back & up
+			return this.height * mountedOffsetY + .5;
+
+		} else {
+			// no tilt return regular amounts
+			return this.height * mountedOffsetY;
+		}
+	}
+
+	public double getMountedXOffset() {
+		// should be overridden in extended class if not default;
+		if (isPlayerAccelerating) {
+			// tilt forward & Down
+			return calcOffsetX(mountedOffsetX + .4d);
+
+		} else if (isPlayerBreaking) {
+			// tilt back & up
+			return calcOffsetX(mountedOffsetX - .4d);
+
+		} else {
+			// no tilt return regular amounts
+			return calcOffsetX(mountedOffsetX);
+		}
+	}
+
+	public double getMountedZOffset() {
+		// should be overridden in extended class if not default;
+		if (isPlayerAccelerating) {
+			// tilt forward & Down
+			return calcOffsetZ(mountedOffsetZ + .4d);
+
+		} else if (isPlayerBreaking) {
+			// tilt back & up
+			return calcOffsetZ(mountedOffsetZ - .4d);
+
+		} else {
+			// no tilt return regular amounts
+			return calcOffsetZ(mountedOffsetZ);
 		}
 	}
 }

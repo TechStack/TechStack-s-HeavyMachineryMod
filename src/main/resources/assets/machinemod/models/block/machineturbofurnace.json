@@ -1,0 +1,11 @@
+{
+     "parent": "machinemod:block/directionnormal",
+    "textures": {
+        "top": "machinemod:blocks/steelblock",
+        "front":  "machinemod:blocks/turbofurnace", 
+        "side": "machinemod:blocks/steelblock",
+        "back": "machinemod:blocks/steelblock",
+        "bottom": "machinemod:blocks/steelblock"
+   }
+   
+}

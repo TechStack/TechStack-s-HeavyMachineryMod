@@ -75,7 +75,7 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 			for (int i = 0; i < this.getSizeInventory(); i++) {
 				ItemStack item = this.getStackInSlot(i);
 				if (!item.isEmpty()) {
-					if (item.getItem() == ModItems.fuelcan || item.getItem() == ModItems.handdrill) {
+					if (item.getItem() == ModItems.fuelcan || item.getItem() == ModItems.handdrill || item.getItem() == ModItems.elytrajetleg) {
 						if (item.getItemDamage() > 0) {
 							int amtToTransefer = 10;
 							if (amtToTransefer > this.fuelStorage) {
