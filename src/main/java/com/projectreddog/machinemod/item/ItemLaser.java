@@ -9,7 +9,6 @@ import java.util.UUID;
 
 import com.projectreddog.machinemod.utility.LogHelper;
 
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -17,7 +16,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class ItemLaser extends ItemMachineMod {
 	public String registryName = "laser";
@@ -129,16 +127,17 @@ public class ItemLaser extends ItemMachineMod {
 						// DEBUGGING line
 						dos.writeUTF(BlockRegistryName);
 						// HOW MANY TO READ
-						dos.writeInt(world.getBlockState(new BlockPos(i, j, k)).getBlock().getBlockState().getProperties().size());
 
-						for (IProperty p : world.getBlockState(new BlockPos(i, j, k)).getBlock().getBlockState().getProperties()) {
-							LogHelper.info("name : " + p.getName() + "  VALUE= " + world.getBlockState(new BlockPos(i, j, k)).getValue(p));
-							LogHelper.info(" I tried to find the block by name and found : " + ForgeRegistries.BLOCKS.getValue(world.getBlockState(new BlockPos(i, j, k)).getBlock().getRegistryName()).getRegistryName());
-							String propertyName = p.getName();
-							String propertyValue = world.getBlockState(new BlockPos(i, j, k)).getValue(p).toString();
-							dos.writeUTF(propertyName);
-							dos.writeUTF(propertyValue);
-						}
+						int metaValue = world.getBlockState(new BlockPos(i, j, k)).getBlock().getMetaFromState(world.getBlockState(new BlockPos(i, j, k)));
+						dos.writeInt(metaValue);
+						// for (IProperty p : world.getBlockState(new BlockPos(i, j, k)).getBlock().getBlockState().getProperties()) {
+						// LogHelper.info("name : " + p.getName() + " VALUE= " + world.getBlockState(new BlockPos(i, j, k)).getValue(p));
+						// LogHelper.info(" I tried to find the block by name and found : " + ForgeRegistries.BLOCKS.getValue(world.getBlockState(new BlockPos(i, j, k)).getBlock().getRegistryName()).getRegistryName());
+						// String propertyName = p.getName();
+						// String propertyValue = world.getBlockState(new BlockPos(i, j, k)).getValue(p).toString();
+						// dos.writeUTF(propertyName);
+						// dos.writeUTF(propertyValue);
+						// }
 					}
 				}
 			}

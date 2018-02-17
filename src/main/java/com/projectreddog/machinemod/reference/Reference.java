@@ -156,6 +156,7 @@ public class Reference {
 
 	public static final String MODBLOCK_MACHINE_FERMENTER = "machinefermenter";
 	public static final String MODBLOCK_MACHINE_FUEL_PUMP = "machinefuelpump";
+	public static final String MODBLOCK_MACHINE_TOWER_CRANE = "machinetowercrane";
 
 	public static final String MODBLOCK_MACHINE_CONVEYOR = "machineconveyor";
 	public static final String MODBLOCK_MACHINE_GENERATOR = "machinegenerator";

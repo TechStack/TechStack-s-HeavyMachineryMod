@@ -9,7 +9,7 @@ import java.util.UUID;
 
 import com.projectreddog.machinemod.utility.LogHelper;
 
-import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -39,8 +39,8 @@ public class ItemCreativeInstantBuild extends ItemMachineMod {
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
 		// public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
 		ItemStack stack = player.getHeldItem(hand);
-		boolean result = false;
-		if (world.isRemote) {
+		boolean result = true;
+		if (!world.isRemote) {
 			// Server
 
 			BuildBlocks(world, pos.up());
@@ -80,27 +80,32 @@ public class ItemCreativeInstantBuild extends ItemMachineMod {
 						// DEBUGING STUFF;
 
 						String BlockRegistryName = dis.readUTF();
+						int metaValue = dis.readInt();
+
 						BlockPos bp = new BlockPos(i, j, k);
 
 						// DEBUGGING line
 						LogHelper.info(bp);
 						LogHelper.info("Found block:" + ForgeRegistries.BLOCKS.getValue(new ResourceLocation(BlockRegistryName)));
-						LogHelper.info("State:" + ForgeRegistries.BLOCKS.getValue(new ResourceLocation(BlockRegistryName)).getDefaultState());
-						LogHelper.info(world.setBlockState(bp, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(BlockRegistryName)).getDefaultState()));
+						LogHelper.info("State:" + ForgeRegistries.BLOCKS.getValue(new ResourceLocation(BlockRegistryName)).getStateFromMeta(metaValue));
+						world.setBlockState(bp, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(BlockRegistryName)).getStateFromMeta(metaValue));
+						IBlockState state = world.getBlockState(bp);
+						world.notifyBlockUpdate(bp, state, state, 3);
+
 						// HOW MANY TO READ
-						int propSize = dis.readInt(); // dis.writeInt(world.getBlockState(new BlockPos(i, j, k)).getBlock().getBlockState().getProperties().size());
-
-						for (int l = 0; l < propSize; l++) {
-
-							String propertyName = dis.readUTF();
-							String propertyValue = dis.readUTF();
-							IProperty ip = (IProperty) world.getBlockState(bp).getProperties().get(propertyName);
-							if (ip != null) {
-								ip.parseValue(propertyValue);
-								world.getBlockState(bp).withProperty(ip, ip.getValueClass());
-							}
-
-						}
+						// int propSize = dis.readInt(); // dis.writeInt(world.getBlockState(new BlockPos(i, j, k)).getBlock().getBlockState().getProperties().size());
+						//
+						// for (int l = 0; l < propSize; l++) {
+						//
+						// String propertyName = dis.readUTF();
+						// String propertyValue = dis.readUTF();
+						// IProperty ip = (IProperty) world.getBlockState(bp).getProperties().get(propertyName);
+						// if (ip != null) {
+						// ip.parseValue(propertyValue);
+						// world.getBlockState(bp).withProperty(ip, ip.getValueClass());
+						// }
+						//
+						// }
 
 					}
 				}
