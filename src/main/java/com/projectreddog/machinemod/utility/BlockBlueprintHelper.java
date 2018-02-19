@@ -35,7 +35,7 @@ public class BlockBlueprintHelper {
 
 			for (int j = pos1.getY(); j <= pos1.getY() + dy; j++) {
 				for (int i = pos1.getX(); i <= pos1.getX() + dx; i++) {
-					for (int k = pos1.getZ(); k <= pos1.getZ() + dz; k++) {
+					for (int k = pos1.getZ() - dz; k <= pos1.getZ(); k++) {
 
 						// DEBUGGING line
 						int i2 = dis.readInt();
@@ -44,10 +44,11 @@ public class BlockBlueprintHelper {
 						// DEBUGING STUFF;
 						String BlockRegistryName = dis.readUTF();
 						int metaValue = dis.readInt();
-						BlockPos bp = new BlockPos(i, j, k);
 
-						if (instant || (j == x && i == y && k == z)) {
+						if (instant || (i - pos1.getX() == x && j - pos1.getY() == y && pos1.getZ() - k == z)) {
+							BlockPos bp = new BlockPos(i, j, k - 1);
 							setBlockState(world, bp, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(BlockRegistryName)).getStateFromMeta(metaValue));
+
 						}
 
 					}
@@ -91,12 +92,14 @@ public class BlockBlueprintHelper {
 						// DEBUGING STUFF;
 						String BlockRegistryName = dis.readUTF();
 						int metaValue = dis.readInt();
-						BlockPos bp = new BlockPos(i, j, k);
 
-						// setBlockState(world, bp, );
+						if ((i == x && j == y && k == z)) {
+							BlockPos bp = new BlockPos(i, j, k);
 
-						return new ItemStack(Item.getItemFromBlock(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(BlockRegistryName))), 1, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(BlockRegistryName)).damageDropped(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(BlockRegistryName)).getStateFromMeta(metaValue)));
+							// setBlockState(world, bp, );
 
+							return new ItemStack(Item.getItemFromBlock(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(BlockRegistryName))), 1, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(BlockRegistryName)).damageDropped(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(BlockRegistryName)).getStateFromMeta(metaValue)));
+						}
 					}
 
 				}
@@ -110,8 +113,58 @@ public class BlockBlueprintHelper {
 		return ItemStack.EMPTY;
 	}
 
-	private static boolean setBlockState(World world, BlockPos bp, IBlockState state) {
+	public static IBlockState[][][] getBlockStateArray(String fileName) {
+		// x first , then z , then y
+		boolean result = true;
+		int dx;
+		int dy;
+		int dz;
+
+		DataInputStream dis = null;
+		try {
+			// String fileName = "TESTFILE";
+			FileInputStream fis = new FileInputStream(new File(fileName));
+			dis = new DataInputStream(fis);
+
+			dx = dis.readInt();// dx
+			dy = dis.readInt();
+			dz = dis.readInt();
+			IBlockState[][][] ibs = new IBlockState[dx + 1][dy + 1][dz + 1];
+			for (int j = 0; j <= dy; j++) {
+				for (int i = 0; i <= dx; i++) {
+					for (int k = 0; k <= dz; k++) {
+
+						// DEBUGGING line
+						int i2 = dis.readInt();
+						int j2 = dis.readInt();
+						int l2 = dis.readInt();
+						// DEBUGING STUFF;
+						String BlockRegistryName = dis.readUTF();
+						int metaValue = dis.readInt();
+						// BlockPos bp = new BlockPos(i, j, k);
+						// setBlockState(world, bp, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(BlockRegistryName)).getStateFromMeta(metaValue));
+						ibs[i][j][k] = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(BlockRegistryName)).getStateFromMeta(metaValue);
+
+						// new ItemStack( ibs[i][j][k].getBlock(), 1, ibs[i][j][k].getBlock().damageDropped(ibs[i][j][k]));
+
+					}
+
+				}
+			}
+
+			dis.close();
+			return ibs;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+
+	}
+
+	public static boolean setBlockState(World world, BlockPos bp, IBlockState state) {
 		boolean result = false;
+
 		result = world.setBlockState(bp, state);
 		if (result) {
 			IBlockState state2 = world.getBlockState(bp);

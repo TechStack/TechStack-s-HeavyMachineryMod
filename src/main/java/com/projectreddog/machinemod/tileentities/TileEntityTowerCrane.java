@@ -2,10 +2,12 @@ package com.projectreddog.machinemod.tileentities;
 
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.iface.IFuelContainer;
-import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.utility.BlockBlueprintHelper;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -13,6 +15,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -25,6 +28,28 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 	public final int inventorySize = 9;
 	public final int coolDownReset = 1200;
 	public int cooldown = coolDownReset;
+	public IBlockState[][][] BlockBluePrintArray;
+
+	public int state = -1;
+	// 0 Arm rotate to loading position and gantry moving to 0 as well.
+	// 1 Arm in loading pos - Lower wench
+	// 2 Wench picked up the block - return up
+	// 3 arm rotating to pos.
+	// 4 wench lowering
+	// 5 at pos place block !!!
+	// 6 wench going up
+
+	public double armRotation;
+	public double gantryPos;
+	public double wenchPos;
+
+	public double targetArmRotation;
+	public double targetGantryPos;
+	public double targetWenchPos;
+
+	public int currentX = 0;
+	public int currentY = 0;
+	public int currentZ = 0;
 
 	public TileEntityTowerCrane() {
 		inventory = new ItemStack[inventorySize];
@@ -69,45 +94,168 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 
 	@Override
 	public void update() {
-		if (!world.isRemote) {
-			// LogHelper.info("TE update entity called");
+		if (world.isRemote || !world.isRemote) {
 
-			// transfer fuel in this case to the cans
-			transferFuel();
+			if (BlockBluePrintArray == null) {
+				BlockBluePrintArray = BlockBlueprintHelper.getBlockStateArray("TESTFILE");
+			}
+
+			// TODO FIx to make server only latter and then use packets to update clients around !! yeah
+			//
+
+			// public int state = 0;
+			// // 0 Arm rotate to loading position and gantry moving to 0 as well.
+			// // 1 Arm in loading pos - Lower wench
+			// // 2 Wench picked up the block - return up
+			// // 3 arm rotating to pos.
+			// // 4 wench lowering
+			// // 5 at pos place block !!!
+			// // 6 wench going up
+			//
+			// public double armRotation;
+			// public double gantryPos;
+			// public double wenchPos;
+			//
+			// public double targetArmRotation;
+			// public double targetGantryPos;
+			// public double targetWenchPos;
+
+			double stepAmt = .4d;
+
+			if (Math.abs(targetArmRotation - armRotation) < stepAmt) {
+				armRotation = targetArmRotation;
+			}
+
+			if (armRotation < targetArmRotation) {
+				armRotation = armRotation + stepAmt;
+			} else if (armRotation > targetArmRotation) {
+				armRotation = armRotation - stepAmt;
+			}
+
+			if (Math.abs(targetGantryPos - gantryPos) < stepAmt) {
+				gantryPos = targetGantryPos;
+			}
+
+			if (gantryPos < targetGantryPos) {
+				gantryPos = gantryPos + stepAmt;
+			} else if (gantryPos > targetGantryPos) {
+				gantryPos = gantryPos - stepAmt;
+			}
+
+			if (Math.abs(targetWenchPos - wenchPos) < stepAmt) {
+				wenchPos = targetWenchPos;
+			}
+			if (wenchPos < targetWenchPos) {
+				wenchPos = wenchPos + stepAmt;
+			} else if (wenchPos > targetWenchPos) {
+				wenchPos = wenchPos - stepAmt;
+			}
+
+			if ((armRotation == targetArmRotation && gantryPos == targetGantryPos && wenchPos == targetWenchPos) || state == -1) {
+				state = state + 1;
+				// set new targets for state
+
+				setTargetsForState();
+
+			}
 
 		}
 	}
 
-	public boolean transferFuel() {
-		// this being the canner will transfer its fuel into the fuel cans int its slots 0-8
-		if (this.fuelStorage > 0) {
-			for (int i = 0; i < this.getSizeInventory(); i++) {
-				ItemStack item = this.getStackInSlot(i);
-				if (!item.isEmpty()) {
-					if (item.getItem() == ModItems.fuelcan || item.getItem() == ModItems.handdrill || item.getItem() == ModItems.elytrajetleg) {
-						if (item.getItemDamage() > 0) {
-							int amtToTransefer = 10;
-							if (amtToTransefer > this.fuelStorage) {
-								amtToTransefer = this.fuelStorage;
-							}
-							if (amtToTransefer > item.getItemDamage()) {
-								amtToTransefer = item.getItemDamage();
-							}
+	public void setTargetsForState() {
+		if (state > 6) {
+			state = 0;
+		}
+		if (state == 0) {
+			targetArmRotation = 0;
+			targetGantryPos = 2;
+			targetWenchPos = currentY + 5;
 
-							item.setItemDamage(item.getItemDamage() - amtToTransefer);
-							this.fuelStorage = this.fuelStorage - amtToTransefer;
-							if (item.getItemDamage() == 0) {
+		}
+		if (state == 1) {
+			targetArmRotation = 0;
+			targetGantryPos = 2;
+			targetWenchPos = 0;
 
-							}
-							i = this.getSizeInventory();
+		}
+		if (state == 2) {
+			targetArmRotation = 0;
+			targetGantryPos = 2;
+			targetWenchPos = currentY + 5;
 
-							return true;
-						}
-					}
+		}
+		if (state == 3) {
+			// // GL11.glRotated(90d - MathHelper.atan2(x, z) * 180d / 3.14, 0, 1, 0);
+
+			targetArmRotation = 90d - MathHelper.atan2(currentX, currentZ + 1) * 180d / 3.14;
+			targetGantryPos = Math.sqrt(currentX * currentX + (currentZ + 1) * (currentZ + 1));
+			targetWenchPos = currentY + 5;
+
+		}
+		if (state == 4) {
+			targetArmRotation = 90d - MathHelper.atan2(currentX, currentZ + 1) * 180d / 3.14;
+			targetGantryPos = Math.sqrt(currentX * currentX + (currentZ + 1) * (currentZ + 1));
+			targetWenchPos = currentY;
+
+		}
+
+		if (state == 5) {//
+							// TODO call block place code!
+
+			// BlockBlueprintHelper.BuildBlocks("TESTFILE", this.world, this.pos, Rotation.NONE, false, currentX, currentY, currentZ);
+			BlockBlueprintHelper.setBlockState(this.world, this.pos.add(currentX, currentY, currentZ - 1), BlockBluePrintArray[currentX][currentY][currentZ]);
+
+			currentX = currentX + 1;
+			if (currentX > 16) {
+				currentX = 0;
+				currentZ = currentZ + 1;
+			}
+			if (currentZ > 16) {
+				currentZ = 0;
+				currentY = currentY + 1;
+			}
+
+			if (currentY > 16) {
+				currentY = 0;
+				currentX = 0;
+				currentZ = 0;
+
+			}
+
+			while (BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.AIR) {
+
+				currentX = currentX + 1;
+				if (currentX > 16) {
+					currentX = 0;
+					currentZ = currentZ + 1;
+				}
+				if (currentZ > 16) {
+					currentZ = 0;
+					currentY = currentY + 1;
+				}
+
+				if (currentY > 16) {
+					currentY = 0;
+					currentX = 0;
+					currentZ = 0;
+
 				}
 			}
+
+			// state = 4;
+			targetArmRotation = 90d - MathHelper.atan2(currentX, currentZ + 1) * 180d / 3.14;
+			targetGantryPos = Math.sqrt(currentX * currentX + (currentZ + 1) * (currentZ + 1));
+			targetWenchPos = currentY + 5;
+
 		}
-		return false;
+		if (state == 6) {//
+
+			targetArmRotation = 90d - MathHelper.atan2(currentX, currentZ + 1) * 180d / 3.14;
+			targetGantryPos = Math.sqrt(currentX * currentX + (currentZ + 1) * (currentZ + 1));
+			targetWenchPos = currentY + 5;
+
+		}
+
 	}
 
 	protected ItemStack addToinventory(ItemStack is) {

@@ -9,6 +9,7 @@ import com.projectreddog.machinemod.block.BlockMachineModTowerCrane;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.model.tileentity.ModelTowerCrane;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.tileentities.TileEntityTowerCrane;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -98,8 +99,17 @@ public class TileEntityTowerCraneRenderer extends TileEntitySpecialRenderer {
 		GL11.glScalef(-1F, -1F, 1F);
 
 		// GL11.glScalef(.5f, .5f, .5f);
-
-		ItemStack is = new ItemStack(ModBlocks.machineprimarycrhuser, 1);
+		ItemStack is;
+		if (tileentity instanceof TileEntityTowerCrane) {
+			TileEntityTowerCrane tetc = (TileEntityTowerCrane) tileentity;
+			if (tetc.state == 2 || tetc.state == 3 || tetc.state == 4) {
+				is = new ItemStack(tetc.BlockBluePrintArray[tetc.currentX][tetc.currentY][tetc.currentZ].getBlock(), 1, tetc.BlockBluePrintArray[tetc.currentX][tetc.currentY][tetc.currentZ].getBlock().damageDropped(tetc.BlockBluePrintArray[tetc.currentX][tetc.currentY][tetc.currentZ]));
+			} else {
+				is = ItemStack.EMPTY;
+			}
+		} else {
+			is = ItemStack.EMPTY;
+		}
 		if (!is.isEmpty()) {
 
 			IBakedModel ibakedmodel = itemRenderer.getItemModelMesher().getItemModel(is);

@@ -12,6 +12,7 @@ import java.util.HashMap;
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.tileentities.TileEntityTowerCrane;
 import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
 import net.minecraft.client.model.ModelBase;
@@ -20,7 +21,6 @@ import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.model.obj.OBJModel;
 
@@ -61,18 +61,37 @@ public class ModelTowerCrane extends ModelBase {
 
 		renderGroupObject("Legs_Cylinder");
 
-		GL11.glRotated(90d - MathHelper.atan2(x, z) * 180d / 3.14, 0, 1, 0);
+		// public double armRotation;
+		// public double gantryPos;
+		// public double wenchPos;
+		double rotamt = 0;
+		double gantyPos = 0;
+		double wenchPos = 0;
+		if (entity instanceof TileEntityTowerCrane) {
+			TileEntityTowerCrane tetc = (TileEntityTowerCrane) entity;
+			rotamt = tetc.armRotation;
+			gantyPos = tetc.gantryPos;
+			wenchPos = tetc.wenchPos;
+		}
+		GL11.glRotated(90d - rotamt, 0, 1, 0);
+		// GL11.glRotated(90d - MathHelper.atan2(x, z) * 180d / 3.14, 0, 1, 0);
 		renderGroupObject("Top_Cylinder.002");
 		double delta = Math.sqrt(x * x + z * z);
 
-		GL11.glTranslated(0, 0, -delta);
+		// GL11.glTranslated(0, 0, -delta);
+		GL11.glTranslated(0, 0, -gantyPos);
 		renderGroupObject("Rigging_Cube.002");
 
+		GL11.glRotated(rotamt, 0, 1, 0);
+		GL11.glTranslated(0, +53.25 - wenchPos, 0);
+		renderGroupObject("Claw_Cube.003");
+
+		GL11.glTranslated(0, -53.25 + wenchPos, 0);
 		GL11.glTranslated(0, -57, 0);
 
-		GL11.glTranslated(0, 57 - y, 0);
-		GL11.glRotated(-(90d - MathHelper.atan2(x, z) * 180d / 3.14), 0, 1, 0);
-		GL11.glTranslated(-.5d, 0, -0.5d);
+		GL11.glTranslated(0, 57 - wenchPos, 0);
+
+		GL11.glTranslated(+.5d, 0, -.5d);
 
 	}
 
