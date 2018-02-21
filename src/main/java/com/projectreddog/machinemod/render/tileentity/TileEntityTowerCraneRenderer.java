@@ -81,13 +81,16 @@ public class TileEntityTowerCraneRenderer extends TileEntitySpecialRenderer {
 			break;
 		case SOUTH:
 			// rotate to south
-			GL11.glRotatef(180f, 0, 1, 0);
+			// TODO test the state to see if we are active if norotate 180
+			// GL11.glRotatef(180f, 0, 1, 0);
 			break;
 		case EAST:
-			GL11.glRotatef(90f, 0, 1, 0);
+			// TODO test the state to see if we are active if norotate 1
+			// GL11.glRotatef(90f, 0, 1, 0);
 			break;
 		case WEST:
-			GL11.glRotatef(270f, 0, 1, 0);
+			// TODO test the state to see if we are active if norotate 1
+			// GL11.glRotatef(270f, 0, 1, 0);
 			break;
 		default:
 			// should never happen because we are constrained to the horizontal plane so just break with no addtional rotation applied
@@ -180,7 +183,7 @@ public class TileEntityTowerCraneRenderer extends TileEntitySpecialRenderer {
 
 	public static ResourceLocation getResourceLocation() {
 		if (resourceLocation == null) {
-			resourceLocation = new ResourceLocation("machinemod", Reference.MODEL_TILEENTITY_PRIMARY_CRUSHER_TEXTURE_LOCATION);
+			resourceLocation = new ResourceLocation("machinemod", Reference.MODEL_LOADER_TEXTURE_LOCATION);
 		}
 		return resourceLocation;
 	}

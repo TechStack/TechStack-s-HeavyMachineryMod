@@ -1,7 +1,9 @@
 package com.projectreddog.machinemod.tileentities;
 
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
+import com.projectreddog.machinemod.block.BlockMachineModTowerCrane;
 import com.projectreddog.machinemod.iface.IFuelContainer;
+import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.BlockBlueprintHelper;
 
@@ -120,7 +122,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			// public double targetGantryPos;
 			// public double targetWenchPos;
 
-			double stepAmt = .4d;
+			double stepAmt = 30d;
 
 			if (Math.abs(targetArmRotation - armRotation) < stepAmt) {
 				armRotation = targetArmRotation;
@@ -162,7 +164,98 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		}
 	}
 
+	public EnumFacing getFacing() {
+
+		EnumFacing ef;
+		if (this.getWorld().getBlockState(this.getPos()).getBlock() == ModBlocks.machinetowercrane) {
+			ef = (EnumFacing) this.getWorld().getBlockState(this.getPos()).getValue(BlockMachineModTowerCrane.FACING);
+		} else {
+			ef = EnumFacing.NORTH;
+		}
+
+		return ef;
+	}
+
+	public int getXWithOffset(int x, int z) {
+
+		EnumFacing enumfacing = getFacing();
+		switch (enumfacing) {
+		case NORTH:
+			return x;
+		case SOUTH:
+			return x;// return this.boundingBox.minX + x;
+		case WEST:
+			return z - 17;
+		case EAST:
+			return 17 - z;
+		default:
+			return x;
+		}
+	}
+
+	public int getZWithOffset(int x, int z) {
+
+		EnumFacing enumfacing = getFacing();
+		switch (enumfacing) {
+		case NORTH:
+			return 17 - z;
+		case SOUTH:
+			return z - 17;// return this.boundingBox.minX + x;
+		case WEST:
+			return x - 17;
+		case EAST:
+			return 17 - x;
+		default:
+			return z;
+		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	public double getMaxRenderDistanceSquared() {
+		return 65536D;
+	}
+
+	public int getPlacingXWithOffset(int x, int z) {
+
+		EnumFacing enumfacing = getFacing();
+		switch (enumfacing) {
+		case NORTH:
+			return x;
+		case SOUTH:
+			return 17 - x;// return this.boundingBox.minX + x;
+		case WEST:
+			return z - 17;
+		case EAST:
+			return 17 - z;
+		default:
+			return x;
+		}
+	}
+
+	public int getPlacingZWithOffset(int x, int z) {
+
+		EnumFacing enumfacing = getFacing();
+		switch (enumfacing) {
+		case NORTH:
+			return z - 17;
+		case SOUTH:
+			return 17 - z;// return this.boundingBox.minX + x;
+		case WEST:
+			return 17 - x;
+		case EAST:
+			return x - 17;
+		default:
+			return z;
+		}
+	}
+
 	public void setTargetsForState() {
+
+		int adjustedX = getXWithOffset(currentX, currentZ);
+		int adjustedZ = getZWithOffset(currentX, currentZ);
+
+		int placingposX = getPlacingXWithOffset(currentX, currentZ);
+		int placingposZ = getPlacingZWithOffset(currentX, currentZ);
 		if (state > 6) {
 			state = 0;
 		}
@@ -187,14 +280,14 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		if (state == 3) {
 			// // GL11.glRotated(90d - MathHelper.atan2(x, z) * 180d / 3.14, 0, 1, 0);
 
-			targetArmRotation = 90d - MathHelper.atan2(currentX, currentZ + 1) * 180d / 3.14;
-			targetGantryPos = Math.sqrt(currentX * currentX + (currentZ + 1) * (currentZ + 1));
+			targetArmRotation = 90d - MathHelper.atan2(adjustedX, adjustedZ) * 180d / 3.14;
+			targetGantryPos = Math.sqrt(adjustedX * adjustedX + (adjustedZ) * (adjustedZ));
 			targetWenchPos = currentY + 5;
 
 		}
 		if (state == 4) {
-			targetArmRotation = 90d - MathHelper.atan2(currentX, currentZ + 1) * 180d / 3.14;
-			targetGantryPos = Math.sqrt(currentX * currentX + (currentZ + 1) * (currentZ + 1));
+			targetArmRotation = 90d - MathHelper.atan2(adjustedX, adjustedZ) * 180d / 3.14;
+			targetGantryPos = Math.sqrt(adjustedX * adjustedX + (adjustedZ) * (adjustedZ));
 			targetWenchPos = currentY;
 
 		}
@@ -203,7 +296,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 							// TODO call block place code!
 
 			// BlockBlueprintHelper.BuildBlocks("TESTFILE", this.world, this.pos, Rotation.NONE, false, currentX, currentY, currentZ);
-			BlockBlueprintHelper.setBlockState(this.world, this.pos.add(currentX, currentY, currentZ - 1), BlockBluePrintArray[currentX][currentY][currentZ]);
+			BlockBlueprintHelper.setBlockState(this.world, this.pos.add(placingposX, currentY, placingposZ), BlockBluePrintArray[currentX][currentY][currentZ], getFacing());
 
 			currentX = currentX + 1;
 			if (currentX > 16) {
@@ -243,15 +336,15 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			}
 
 			// state = 4;
-			targetArmRotation = 90d - MathHelper.atan2(currentX, currentZ + 1) * 180d / 3.14;
-			targetGantryPos = Math.sqrt(currentX * currentX + (currentZ + 1) * (currentZ + 1));
+			targetArmRotation = 90d - MathHelper.atan2(adjustedX, adjustedZ) * 180d / 3.14;
+			targetGantryPos = Math.sqrt(adjustedX * adjustedX + (adjustedZ) * (adjustedZ));
 			targetWenchPos = currentY + 5;
 
 		}
 		if (state == 6) {//
 
-			targetArmRotation = 90d - MathHelper.atan2(currentX, currentZ + 1) * 180d / 3.14;
-			targetGantryPos = Math.sqrt(currentX * currentX + (currentZ + 1) * (currentZ + 1));
+			targetArmRotation = 90d - MathHelper.atan2(adjustedX, adjustedZ) * 180d / 3.14;
+			targetGantryPos = Math.sqrt(adjustedX * adjustedX + (adjustedZ) * (adjustedZ));
 			targetWenchPos = currentY + 5;
 
 		}

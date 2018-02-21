@@ -30,6 +30,8 @@ public class ModelTowerCrane extends ModelBase {
 	public OBJModel objModel;
 	private HashMap<String, IBakedModel> modelParts;
 	double y;
+	public static float TOWER_HEIGHT = 57f;
+	public static float TOWER_CLAW_OFFSET = 3.75f;
 
 	public ModelTowerCrane() {
 		double y = 0;
@@ -59,7 +61,7 @@ public class ModelTowerCrane extends ModelBase {
 		}
 		int z = 3;
 
-		renderGroupObject("Legs_Cylinder");
+		renderGroupObject("Legs_Cylinder.001");
 
 		// public double armRotation;
 		// public double gantryPos;
@@ -74,22 +76,28 @@ public class ModelTowerCrane extends ModelBase {
 			wenchPos = tetc.wenchPos;
 		}
 		GL11.glRotated(90d - rotamt, 0, 1, 0);
-		// GL11.glRotated(90d - MathHelper.atan2(x, z) * 180d / 3.14, 0, 1, 0);
 		renderGroupObject("Top_Cylinder.002");
 		double delta = Math.sqrt(x * x + z * z);
 
-		// GL11.glTranslated(0, 0, -delta);
 		GL11.glTranslated(0, 0, -gantyPos);
 		renderGroupObject("Rigging_Cube.002");
+		//
+		GL11.glPushMatrix();
+		GL11.glTranslated(0, -((wenchPos + 2.)), 0);
+		GL11.glScaled(1, ((+(TOWER_HEIGHT - TOWER_CLAW_OFFSET) - wenchPos) / 2), 1);
+		renderGroupObject("Cable_Cylinder.011");
+		GL11.glPopMatrix();
+
+		//
 
 		GL11.glRotated(rotamt, 0, 1, 0);
-		GL11.glTranslated(0, +53.25 - wenchPos, 0);
+		GL11.glTranslated(0, +(TOWER_HEIGHT - TOWER_CLAW_OFFSET) - wenchPos, 0);
 		renderGroupObject("Claw_Cube.003");
 
-		GL11.glTranslated(0, -53.25 + wenchPos, 0);
-		GL11.glTranslated(0, -57, 0);
+		GL11.glTranslated(0, -(TOWER_HEIGHT - TOWER_CLAW_OFFSET) + wenchPos, 0);
+		GL11.glTranslated(0, -TOWER_HEIGHT, 0);
 
-		GL11.glTranslated(0, 57 - wenchPos, 0);
+		GL11.glTranslated(0, TOWER_HEIGHT - wenchPos, 0);
 
 		GL11.glTranslated(+.5d, 0, -.5d);
 
