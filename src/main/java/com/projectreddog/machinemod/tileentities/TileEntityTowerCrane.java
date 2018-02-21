@@ -181,7 +181,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		EnumFacing enumfacing = getFacing();
 		switch (enumfacing) {
 		case NORTH:
-			return x;
+			return x - 17;
 		case SOUTH:
 			return x;// return this.boundingBox.minX + x;
 		case WEST:
@@ -220,7 +220,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		EnumFacing enumfacing = getFacing();
 		switch (enumfacing) {
 		case NORTH:
-			return x;
+			return x - 17;
 		case SOUTH:
 			return 17 - x;// return this.boundingBox.minX + x;
 		case WEST:
@@ -249,6 +249,22 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		}
 	}
 
+	public double getPickupRotationLocation() {
+		EnumFacing enumfacing = getFacing();
+		switch (enumfacing) {
+		case NORTH:
+			return 90d;
+		case SOUTH:
+			return -90d;// return this.boundingBox.minX + x;
+		case WEST:
+			return 180d;
+		case EAST:
+			return 90d;
+		default:
+			return 0d;
+		}
+	}
+
 	public void setTargetsForState() {
 
 		int adjustedX = getXWithOffset(currentX, currentZ);
@@ -260,19 +276,19 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			state = 0;
 		}
 		if (state == 0) {
-			targetArmRotation = 0;
+			targetArmRotation = getPickupRotationLocation();
 			targetGantryPos = 2;
 			targetWenchPos = currentY + 5;
 
 		}
 		if (state == 1) {
-			targetArmRotation = 0;
+			targetArmRotation = getPickupRotationLocation();
 			targetGantryPos = 2;
 			targetWenchPos = 0;
 
 		}
 		if (state == 2) {
-			targetArmRotation = 0;
+			targetArmRotation = getPickupRotationLocation();
 			targetGantryPos = 2;
 			targetWenchPos = currentY + 5;
 
