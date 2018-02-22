@@ -27,6 +27,8 @@ import com.projectreddog.machinemod.network.MachineModMessageTEIntFieldToClient;
 import com.projectreddog.machinemod.network.MachineModMessageTEIntFieldToClientHandler;
 import com.projectreddog.machinemod.network.MachineModMessageTEInventoryChangedToClient;
 import com.projectreddog.machinemod.network.MachineModMessageTEInventoryChangedToClientHandler;
+import com.projectreddog.machinemod.network.MachineModMessageTETowerCranePosToClient;
+import com.projectreddog.machinemod.network.MachineModMessageTETowerCranePosToClientHandler;
 import com.projectreddog.machinemod.network.MachineModMessageTeGuiButtonClickToServerHandler;
 import com.projectreddog.machinemod.reference.Reference;
 
@@ -70,6 +72,7 @@ public class ModNetwork {
 		simpleNetworkWrapper.registerMessage(MachineModMessageTeGuiButtonClickToServerHandler.class, MachineModMessageTEGuiButtonClickToServer.class, 10, Side.SERVER);// message // to
 
 		simpleNetworkWrapper.registerMessage(MachineModMessageTEIntFieldToClientHandler.class, MachineModMessageTEIntFieldToClient.class, 11, Side.CLIENT);// message // to
+		simpleNetworkWrapper.registerMessage(MachineModMessageTETowerCranePosToClientHandler.class, MachineModMessageTETowerCranePosToClient.class, 12, Side.CLIENT);// message // to
 
 		// to
 		// client

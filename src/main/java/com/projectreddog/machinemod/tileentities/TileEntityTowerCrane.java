@@ -4,6 +4,8 @@ import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.block.BlockMachineModTowerCrane;
 import com.projectreddog.machinemod.iface.IFuelContainer;
 import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.init.ModNetwork;
+import com.projectreddog.machinemod.network.MachineModMessageTETowerCranePosToClient;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.BlockBlueprintHelper;
 
@@ -19,6 +21,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -52,6 +55,10 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 	public int currentX = 0;
 	public int currentY = 0;
 	public int currentZ = 0;
+
+	private double prevArmRotation;
+	private double prevGantryPos;
+	private double prevWencPos;
 
 	public TileEntityTowerCrane() {
 		inventory = new ItemStack[inventorySize];
@@ -101,6 +108,8 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			if (BlockBluePrintArray == null) {
 				BlockBluePrintArray = BlockBlueprintHelper.getBlockStateArray("TESTFILE");
 			}
+		}
+		if (!world.isRemote) { // only run on server
 
 			// TODO FIx to make server only latter and then use packets to update clients around !! yeah
 			//
@@ -112,7 +121,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			// // 3 arm rotating to pos.
 			// // 4 wench lowering
 			// // 5 at pos place block !!!
-			// // 6 wench going up
+			// // NOt needed 6 wench going up
 			//
 			// public double armRotation;
 			// public double gantryPos;
@@ -122,7 +131,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			// public double targetGantryPos;
 			// public double targetWenchPos;
 
-			double stepAmt = 30d;
+			double stepAmt = 1d;
 
 			if (Math.abs(targetArmRotation - armRotation) < stepAmt) {
 				armRotation = targetArmRotation;
@@ -160,7 +169,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 				setTargetsForState();
 
 			}
-
+			ModNetwork.sendPacketToAllAround(new MachineModMessageTETowerCranePosToClient(this.pos.getX(), this.pos.getY(), this.pos.getZ(), state, armRotation, gantryPos, wenchPos, targetArmRotation, targetGantryPos, targetWenchPos, currentX, currentY, currentZ), new TargetPoint(world.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 224)); // sendInterval = 0;
 		}
 	}
 
@@ -183,7 +192,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		case NORTH:
 			return x - 17;
 		case SOUTH:
-			return x;// return this.boundingBox.minX + x;
+			return 17 - x;// return this.boundingBox.minX + x;
 		case WEST:
 			return z - 17;
 		case EAST:
@@ -314,6 +323,10 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			// BlockBlueprintHelper.BuildBlocks("TESTFILE", this.world, this.pos, Rotation.NONE, false, currentX, currentY, currentZ);
 			BlockBlueprintHelper.setBlockState(this.world, this.pos.add(placingposX, currentY, placingposZ), BlockBluePrintArray[currentX][currentY][currentZ], getFacing());
 
+			// prevArmRotation=targetGantryPos;
+			// prevGantryPos=targetGantryPos;
+			// prevWencPos;
+
 			currentX = currentX + 1;
 			if (currentX > 16) {
 				currentX = 0;
@@ -358,10 +371,10 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 
 		}
 		if (state == 6) {//
-
-			targetArmRotation = 90d - MathHelper.atan2(adjustedX, adjustedZ) * 180d / 3.14;
-			targetGantryPos = Math.sqrt(adjustedX * adjustedX + (adjustedZ) * (adjustedZ));
-			targetWenchPos = currentY + 5;
+			// state = 0;
+			// targetArmRotation = 90d - MathHelper.atan2(adjustedX, adjustedZ) * 180d / 3.14;
+			// targetGantryPos = Math.sqrt(adjustedX * adjustedX + (adjustedZ) * (adjustedZ));
+			// targetWenchPos = currentY + 5;
 
 		}
 
@@ -414,6 +427,18 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		super.readFromNBT(compound);
 		fuelStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE");
 		cooldown = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN");
+
+		state = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "STATE");
+		armRotation = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "armRotation");
+		gantryPos = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "gantryPos");
+		wenchPos = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "wenchPos");
+		targetArmRotation = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "targetArmRotation");
+		targetGantryPos = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "targetGantryPos");
+		targetWenchPos = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "targetWenchPos");
+		currentX = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentX");
+		currentY = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentY");
+		currentZ = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentZ");
+
 		// inventory
 		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
 		for (int i = 0; i < tagList.tagCount(); i++) {
@@ -430,6 +455,18 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		super.writeToNBT(compound);
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE", fuelStorage);
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN", cooldown);
+
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "STATE", state);
+		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "armRotation", armRotation);
+		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "gantryPos", gantryPos);
+		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "wenchPos", wenchPos);
+		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "targetArmRotation", targetArmRotation);
+		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "targetGantryPos", targetGantryPos);
+		compound.setDouble(Reference.MACHINE_MOD_NBT_PREFIX + "targetWenchPos", targetWenchPos);
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentX", currentX);
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentY", currentY);
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentZ", currentZ);
+
 		// inventory
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < inventory.length; i++) {
