@@ -95,6 +95,8 @@ public class Reference {
 	public static final int GUI_CONTINUOUSMINER = 17;
 	public static final int GUI_ASSEMBLY_TABLE = 18;
 	public static final int GUI_TURBO_FURNACE = 19;
+	public static final int GUI_TOWER_CRANE = 20;
+	public static final int GUI_TOWER_CRANE_SETTINGS = 21;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;
@@ -255,4 +257,5 @@ public class Reference {
 	public static final int GUI_ASSEMBLY_TABLE_BUTTON_NEXT_PAGE = 2;
 	public static final int GUI_ASSEMBLY_TABLE_BUTTON_PREV_PAGE = 3;
 
+	public static final int GUI_TOWER_CRANE_BUTTON_SETTINGS = 1;
 }

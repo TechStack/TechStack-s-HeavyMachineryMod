@@ -59,7 +59,7 @@ public class BlockMachineModTowerCrane extends BlockContainer {
 		ItemStack heldItem = playerIn.getActiveItemStack();
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te != null && !playerIn.isSneaking()) {
-			playerIn.openGui(MachineMod.instance, Reference.GUI_CANNER, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			playerIn.openGui(MachineMod.instance, Reference.GUI_TOWER_CRANE, worldIn, pos.getX(), pos.getY(), pos.getZ());
 			return true;
 		} else {
 			return false;

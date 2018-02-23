@@ -30,7 +30,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 	private static int[] sideSlots = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
 	public final int maxFuelStorage = 10000; // store up to 10k (can fill all 9 cans & have room for one more
 	public int fuelStorage = 0;
-	public final int inventorySize = 9;
+	public final int inventorySize = 54;
 	public final int coolDownReset = 1200;
 	public int cooldown = coolDownReset;
 	public IBlockState[][][] BlockBluePrintArray;
