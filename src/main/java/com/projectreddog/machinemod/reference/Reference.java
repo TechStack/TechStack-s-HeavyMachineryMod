@@ -65,7 +65,7 @@ public class Reference {
 	public static final String GUI_FUEL_GUAGE_TEXTURE_LOCATION = "textures/gui/gui_overlay_fuel_gage.png";
 	public static final String GUI_FUEL_LEVEL_TEXTURE_LOCATION = "textures/gui/gui_fuel_level_marker.png";
 	public static final String GUI_WORK_PROGRESS_TEXTURE_LOCATION = "textures/gui/workprogress.png";
-
+	public static final String GUI_SCROLL_BAR_MARKER_LOCATION = "textures/gui/scrollbarmarker.png";
 	public static final String GUI_TURBO_FURNACE_ARROW_CUTOUT = "textures/gui/turbofurnacearrow.png";
 	public static final String GUI_TURBO_FURNACE_ARROW_FILL = "textures/gui/arrow fill.png";
 	public static final String GUI_TURBO_FURNACE_FLAME = "textures/gui/turbofurnaceflame.png";
@@ -258,4 +258,5 @@ public class Reference {
 	public static final int GUI_ASSEMBLY_TABLE_BUTTON_PREV_PAGE = 3;
 
 	public static final int GUI_TOWER_CRANE_BUTTON_SETTINGS = 1;
+	public static final int GUI_TOWER_CRANE_BUTTON_INVENTORY = 1;
 }

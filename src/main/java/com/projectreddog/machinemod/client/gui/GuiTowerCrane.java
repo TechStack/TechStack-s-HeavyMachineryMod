@@ -33,9 +33,10 @@ public class GuiTowerCrane extends GuiContainer {
 		this.xSize = 256;
 		this.ySize = 222;
 
-		int buttonX = this.width / 2 - 60;
-		int buttonY = this.height / 2 - 96;
-		this.buttonList.add(new GuiButton(Reference.GUI_TOWER_CRANE_BUTTON_SETTINGS, buttonX, buttonY, 60, 20, DeprecatedWrapper.translateToLocal("gui.towercrane.settings")));
+		int buttonX = this.width / 2 + 52;
+		int buttonY = this.height / 2 - 94;
+		this.buttonList.add(new GuiButton(Reference.GUI_TOWER_CRANE_BUTTON_SETTINGS, buttonX, buttonY, 15, 20, DeprecatedWrapper.translateToLocal("gui.towercrane.settings")));
+		// this
 
 		super.initGui();
 
@@ -77,6 +78,19 @@ public class GuiTowerCrane extends GuiContainer {
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+
+		this.mc.renderEngine.bindTexture(getTextureLocationScrollBar());
+
+		this.drawTexturedModalRect(x + 171, y + 18, 0, 0, 100, 180);
+	}
+
+	private ResourceLocation scrollbar;
+
+	protected ResourceLocation getTextureLocationScrollBar() {
+		if (scrollbar == null) {
+			scrollbar = new ResourceLocation("machinemod", Reference.GUI_SCROLL_BAR_MARKER_LOCATION);
+		}
+		return scrollbar;
 	}
 
 }
