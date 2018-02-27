@@ -1,6 +1,7 @@
 # Item Localizations
 
 item.machinemod:bulldozer.name=Bulldozer
+item.machinemod:trackloader.name=Track Loader
 item.machinemod:drillingrig.name=Drilling Rig
 item.machinemod:dumptruck.name=Dump Truck
 item.machinemod:loader.name=Loader

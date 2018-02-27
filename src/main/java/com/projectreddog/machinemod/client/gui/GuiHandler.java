@@ -17,6 +17,7 @@ import com.projectreddog.machinemod.container.ContainerLoader;
 import com.projectreddog.machinemod.container.ContainerPaver;
 import com.projectreddog.machinemod.container.ContainerPrimaryCrusher;
 import com.projectreddog.machinemod.container.ContainerScreen;
+import com.projectreddog.machinemod.container.ContainerTrackLoader;
 import com.projectreddog.machinemod.container.ContainerTractor;
 import com.projectreddog.machinemod.container.ContainerTurboFurnace;
 import com.projectreddog.machinemod.container.ContainerWideBedTruck;
@@ -30,6 +31,7 @@ import com.projectreddog.machinemod.entity.EntityGrader;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityPaver;
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
+import com.projectreddog.machinemod.entity.EntityTrackLoader;
 import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityAssemblyTable;
@@ -240,6 +242,15 @@ public class GuiHandler implements IGuiHandler {
 					return new ContainerContinuousMiner(player.inventory, (EntityContinuousMiner) entity);
 				}
 			}
+		} else if (id == Reference.GUI_TRACK_LOADER) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityTrackLoader) {
+
+					return new ContainerTrackLoader(player.inventory, (EntityTrackLoader) entity);
+				}
+			}
 		}
 
 		return null;
@@ -411,6 +422,14 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null) {
 				if (entity instanceof EntityContinuousMiner) {
 					return new GuiContinuousMiner(player.inventory, (EntityContinuousMiner) entity);
+				}
+			}
+		} else if (id == Reference.GUI_TRACK_LOADER) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityTrackLoader) {
+					return new GuiTrackLoader(player.inventory, (EntityTrackLoader) entity);
 				}
 			}
 		}

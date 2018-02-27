@@ -30,6 +30,7 @@ public class ConfigurationHandler {
 		Reference.enableDebugPipeCode = configuration.get(Configuration.CATEGORY_GENERAL, "enableDebugPipeCode", Reference.enableDebugPipeCode, "If true Pipes will render color coded based on fulid in the pipes at the cost of addtional network packets, if false networking & color coded rendering is disabled").getBoolean();
 		Reference.enableBagger = configuration.get(Configuration.CATEGORY_GENERAL, "enableBagger", true, "If true Bagger is Enabled, if false Bagger is disabled").getBoolean();
 		Reference.enableBulldozer = configuration.get(Configuration.CATEGORY_GENERAL, "enableBulldozer", true, "If true Bulldozer is Enabled, if false BullDozer is disabled").getBoolean();
+		Reference.enableTrackLoader = configuration.get(Configuration.CATEGORY_GENERAL, "enableTrackLoader", true, "If true Track Loader is Enabled, if false BullDozer is disabled").getBoolean();
 		Reference.enableChopper = configuration.get(Configuration.CATEGORY_GENERAL, "enableChopper", true, "If true Chopper is Enabled, if false Chopper is disabled").getBoolean();
 		Reference.enableCombine = configuration.get(Configuration.CATEGORY_GENERAL, "enableCombine", true, "If true Combine is Enabled, if false Combine is disabled").getBoolean();
 		Reference.enableCrane = configuration.get(Configuration.CATEGORY_GENERAL, "enableCrane", true, "If true Crane is Enabled, if false Crane is disabled").getBoolean();

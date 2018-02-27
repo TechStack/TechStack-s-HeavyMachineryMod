@@ -103,6 +103,7 @@ import com.projectreddog.machinemod.item.machines.ItemPaver;
 import com.projectreddog.machinemod.item.machines.ItemRoadRoller;
 import com.projectreddog.machinemod.item.machines.ItemSemiTractor;
 import com.projectreddog.machinemod.item.machines.ItemSub;
+import com.projectreddog.machinemod.item.machines.ItemTrackLoader;
 import com.projectreddog.machinemod.item.machines.ItemTractor;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerCargo;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
@@ -123,6 +124,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class ModItems {
 
 	public static final ItemMachineMod bulldozer = new ItemBulldozer();
+	public static final ItemMachineMod trackloader = new ItemTrackLoader();
 	public static final ItemMachineMod tractor = new ItemTractor();
 	public static final ItemMachineMod lawnmower = new ItemLawnmower();
 	public static final ItemMachineMod anfo = new ItemANFO();
@@ -276,6 +278,10 @@ public class ModItems {
 		}
 		if (Reference.enableBulldozer) {
 			ForgeRegistries.ITEMS.register(bulldozer);// , "bulldozer");
+		}
+
+		if (Reference.enableTrackLoader) {
+			ForgeRegistries.ITEMS.register(trackloader);// , "bulldozer");
 		}
 
 		if (Reference.enableCombine) {
@@ -504,6 +510,11 @@ public class ModItems {
 		}
 		if (Reference.enableBulldozer) {
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bulldozer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bulldozer", "inventory"));
+
+		}
+
+		if (Reference.enableTrackLoader) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(trackloader, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "trackloader", "inventory"));
 
 		}
 

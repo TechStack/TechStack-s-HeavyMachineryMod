@@ -17,6 +17,8 @@ public class Reference {
 	public static final String GUI_FACTORY_CLASS = "com.projectreddog.machinemod.client.gui.GuiFactory";
 	// textures for Entities
 	public static final String MODEL_BULLDOZER_TEXTURE_LOCATION = "models/bulldozer.png";
+	public static final String MODEL_TRACK_LOADER_TEXTURE_LOCATION = "models/trackloader.png";
+
 	public static final String MODEL_TRACTOR_TEXTURE_LOCATION = "models/modeltractor.png";
 	public static final String MODEL_LAWNMOWER_TEXTURE_LOCATION = "models/lawnmower.png";
 	public static final String MODEL_TESTCUBE_TEXTURE_LOCATION = "models/uv.png";
@@ -95,6 +97,7 @@ public class Reference {
 	public static final int GUI_CONTINUOUSMINER = 17;
 	public static final int GUI_ASSEMBLY_TABLE = 18;
 	public static final int GUI_TURBO_FURNACE = 19;
+	public static final int GUI_TRACK_LOADER = 20;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;
@@ -188,6 +191,7 @@ public class Reference {
 	public static boolean enableDebugPipeCode = false;
 
 	public static boolean enableBulldozer = true;
+	public static boolean enableTrackLoader = true;
 	public static boolean enableBagger = true;
 
 	public static boolean enableCombine = true;
