@@ -35,7 +35,8 @@ public class ConfigurationHandler {
 		Reference.enableCombine = configuration.get(Configuration.CATEGORY_GENERAL, "enableCombine", true, "If true Combine is Enabled, if false Combine is disabled").getBoolean();
 		Reference.enableCrane = configuration.get(Configuration.CATEGORY_GENERAL, "enableCrane", true, "If true Crane is Enabled, if false Crane is disabled").getBoolean();
 		Reference.enableDrillingRig = configuration.get(Configuration.CATEGORY_GENERAL, "enableDrillingRig", true, "If true DrillingRig is Enabled, if false DrillingRig is disabled").getBoolean();
-		Reference.enableDumptruck = configuration.get(Configuration.CATEGORY_GENERAL, "enableDumptruck", true, "If true Dumptruck is Enabled, if false Dumptruck is disabled").getBoolean();
+		Reference.enableDumptruck = configuration.get(Configuration.CATEGORY_GENERAL, "enableDumptruck", true, "If true Dump truck is Enabled, if false Dump truck is disabled").getBoolean();
+		Reference.enableUnderGroundDumptruck = configuration.get(Configuration.CATEGORY_GENERAL, "enableUnderGroundDumptruck", true, "If true Under Ground Dump truck is Enabled, if false Under Ground Dump Truck is disabled").getBoolean();
 		Reference.enableExcavator = configuration.get(Configuration.CATEGORY_GENERAL, "enableExcavator", true, "If true Excavator is Enabled, if false Excavator is disabled").getBoolean();
 		Reference.enableGrader = configuration.get(Configuration.CATEGORY_GENERAL, "enableGrader", true, "If true Grade is Enabled, if false Grade is disabled").getBoolean();
 		Reference.enableLawnmower = configuration.get(Configuration.CATEGORY_GENERAL, "enableLawnmower", true, "If true Lawnmower is Enabled, if false Lawnmower is disabled").getBoolean();

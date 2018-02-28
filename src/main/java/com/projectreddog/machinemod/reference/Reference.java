@@ -44,6 +44,8 @@ public class Reference {
 	public static final String MODEL_COMBINE_TEXTURE_LOCATION = "models/combine.png";
 	public static final String MODEL_DRILLINGRIG_TEXTURE_LOCATION = "models/drillingrig.png";
 	public static final String MODEL_DUMPTRUCK_TEXTURE_LOCATION = "models/dumptruck.png";
+	public static final String MODEL_UNDERGROUND_DUMPTRUCK_TEXTURE_LOCATION = "models/undergrounddumptruck.png";
+
 	public static final String MODEL_LOADER_TEXTURE_LOCATION = "models/modelloader.png";
 	public static final String MODEL_CONTINUOUSMINER_TEXTURE_LOCATION = "models/continuousminer.png";
 
@@ -198,6 +200,8 @@ public class Reference {
 	public static boolean enableCrane = true;
 	public static boolean enableDrillingRig = true;
 	public static boolean enableDumptruck = true;
+	public static boolean enableUnderGroundDumptruck = true;
+
 	public static boolean enableExcavator = true;
 	public static boolean enableGrader = true;
 	public static boolean enableLawnmower = true;

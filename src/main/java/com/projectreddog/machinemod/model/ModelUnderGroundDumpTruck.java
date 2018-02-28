@@ -5,28 +5,28 @@ import java.util.HashMap;
 
 import org.lwjgl.opengl.GL11;
 
+import com.projectreddog.machinemod.entity.EntityUnderGroundDumpTruck;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.model.obj.OBJModel;
 
-public class ModelBeam extends ModelBase {
+public class ModelUnderGroundDumpTruck extends ModelBase {
 	// fields
 
 	public OBJModel objModel;
 	private HashMap<String, IBakedModel> modelParts;
 
-	public ModelBeam() {
+	public ModelUnderGroundDumpTruck() {
 
 		try {
-			objModel = (OBJModel) OBJLoader.INSTANCE.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/beam.obj"));
+			objModel = (OBJModel) OBJLoader.INSTANCE.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/undergroundtruck.obj"));
 			modelParts = MachineModModelHelper.getModelsForGroups(objModel);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -37,36 +37,29 @@ public class ModelBeam extends ModelBase {
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
-		float RotateAmt = (entity.world.getTotalWorldTime() % 60) * 6;
-		GL11.glRotatef(180f, 0, 180f, 0);
-		GL11.glTranslatef(-1.15f, -1.125f, 3.25f);
+		// myModel.renderAll();
+		// this.renderGroupObject("Truck_Base_Cube.002");
 
-		GL11.glScalef(.45f, .45f, 1000f);
-		GlStateManager.disableLighting();
-		// GlStateManager.disableCull();
-		GlStateManager.enableBlend();
-		GlStateManager.depthMask(true);
-		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+		GL11.glTranslatef(0f, 0, 0f);
 
-		this.renderGroupObject("Beam_Cylinder");
-		GL11.glRotatef(RotateAmt, 0f, 0f, 1f);
-		GL11.glTranslatef(0f, 1f, 0);
-		this.renderGroupObject("Beam_Cylinder");
-		GL11.glTranslatef(1f, -1f, 0);
-		this.renderGroupObject("Beam_Cylinder");
-		GL11.glTranslatef(-1f, -1f, 0);
-		this.renderGroupObject("Beam_Cylinder");
-		GL11.glTranslatef(-1f, 1f, 0);
-		this.renderGroupObject("Beam_Cylinder");
+		this.renderGroupObject("Body");
 
-		GlStateManager.disableBlend();
-		GlStateManager.enableLighting();
-		GlStateManager.enableTexture2D();
-		GlStateManager.depthMask(true);
+		GL11.glTranslatef(0f, -1.2f, 4.25f);
+		if (entity != null) {
+			GL11.glRotatef(((EntityUnderGroundDumpTruck) entity).Attribute1, 1, 0, 0);
+		}
+		this.renderGroupObject("Bed");
+		// this.renderGroupObject("Bed_Cube.000");
+
 	}
 
 	public void renderGroupObject(String groupName) {
-		MachineModModelHelper.renderBakedModel(modelParts.get(groupName));
+		IBakedModel IB = modelParts.get(groupName);
+		if (IB != null) {
+			MachineModModelHelper.renderBakedModel(IB);
+		} else {
+			throw new IllegalArgumentException("The Object: " + groupName + " was not found in :" + modelParts.toString());
+		}
 
 	}
 
@@ -82,7 +75,6 @@ public class ModelBeam extends ModelBase {
 
 	public ResourceLocation getTexture() {
 
-		return new ResourceLocation("machinemod", Reference.MODEL_BEAM_TEXTURE_LOCATION);
+		return new ResourceLocation("machinemod", Reference.MODEL_UNDERGROUND_DUMPTRUCK_TEXTURE_LOCATION);
 	}
-
 }

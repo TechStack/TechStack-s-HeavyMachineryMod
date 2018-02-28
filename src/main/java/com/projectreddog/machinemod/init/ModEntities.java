@@ -21,6 +21,7 @@ import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.entity.EntitySub;
 import com.projectreddog.machinemod.entity.EntityTrackLoader;
 import com.projectreddog.machinemod.entity.EntityTractor;
+import com.projectreddog.machinemod.entity.EntityUnderGroundDumpTruck;
 import com.projectreddog.machinemod.entity.monster.EntityExpStalker;
 import com.projectreddog.machinemod.reference.Reference;
 
@@ -64,6 +65,7 @@ public class ModEntities {
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "expstalker"), EntityExpStalker.class, "expstalker", ++entityID, mod, 224, 1, false, 0xFFFFFF, 0x000050);
 
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "trackloader"), EntityTrackLoader.class, "trackloader", ++entityID, mod, 224, 1, false, 0xFFFFFF, 0x000050);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "undergrounddumptruck"), EntityUnderGroundDumpTruck.class, "undergrounddumptruck", ++entityID, mod, 224, 1, false, 0xFFFFFF, 0x000050);
 
 		//
 		EntityRegistry.addSpawn(EntityExpStalker.class, 100, 3, 5, EnumCreatureType.MONSTER, ModBiomes.bleak);

@@ -105,6 +105,7 @@ import com.projectreddog.machinemod.item.machines.ItemSemiTractor;
 import com.projectreddog.machinemod.item.machines.ItemSub;
 import com.projectreddog.machinemod.item.machines.ItemTrackLoader;
 import com.projectreddog.machinemod.item.machines.ItemTractor;
+import com.projectreddog.machinemod.item.machines.ItemUnderGroundDumpTruck;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerCargo;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerLivestock;
@@ -209,7 +210,10 @@ public class ModItems {
 
 	public static final ItemMachineMod drillingrig = new ItemDrillingRig();
 	public static final ItemMachineMod dumptruck = new ItemDumpTruck();
+	public static final ItemMachineMod undergrounddumptruck = new ItemUnderGroundDumpTruck();
+
 	public static final ItemMachineMod loader = new ItemLoader();
+
 	public static final ItemMachineMod laserminer = new ItemLaserMiner();
 
 	public static final ItemMachineMod grader = new ItemGrader();
@@ -299,6 +303,11 @@ public class ModItems {
 
 		if (Reference.enableDumptruck) {
 			ForgeRegistries.ITEMS.register(dumptruck);// , "dumptruck");
+
+		}
+
+		if (Reference.enableUnderGroundDumptruck) {
+			ForgeRegistries.ITEMS.register(undergrounddumptruck);// , "dumptruck");
 
 		}
 
@@ -534,6 +543,10 @@ public class ModItems {
 		if (Reference.enableDumptruck) {
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(dumptruck, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "dumptruck", "inventory"));
 
+		}
+
+		if (Reference.enableUnderGroundDumptruck) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(undergrounddumptruck, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "undergrounddumptruck", "inventory"));
 		}
 
 		if (Reference.enableExcavator) {

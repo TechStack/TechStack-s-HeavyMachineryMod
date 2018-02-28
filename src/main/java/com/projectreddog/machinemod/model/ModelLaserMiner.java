@@ -22,7 +22,7 @@ public class ModelLaserMiner extends ModelTransportable {
 	public ModelLaserMiner() {
 
 		try {
-			objModel = (OBJModel) OBJLoader.INSTANCE.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/laserMiner.obj"));
+			objModel = (OBJModel) OBJLoader.INSTANCE.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/laserminer.obj"));
 			modelParts = MachineModModelHelper.getModelsForGroups(objModel);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -33,16 +33,28 @@ public class ModelLaserMiner extends ModelTransportable {
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
-		this.renderGroupObject("FrontWheel.R_Cylinder.000");
-		this.renderGroupObject("FrontWheel.L_Cylinder.000");
-		this.renderGroupObject("FrontWheel.L_Cylinder.002");
-		this.renderGroupObject("FrontWheel.R_Cylinder.003");
-		this.renderGroupObject("Seat_Object.23");
-		this.renderGroupObject("Cube");
+		this.renderGroupObject("Body");
+		this.renderGroupObject("Arm1");
+		this.renderGroupObject("Arm2");
+		this.renderGroupObject("Arm3");
+		this.renderGroupObject("Impeller1");
+		this.renderGroupObject("Impeller2");
+
+		this.renderGroupObject("Laser1");
+		this.renderGroupObject("Laser2");
+		this.renderGroupObject("Laser3");
+		this.renderGroupObject("Laser4");
+		this.renderGroupObject("Laser5");
+
 	}
 
 	public void renderGroupObject(String groupName) {
-		MachineModModelHelper.renderBakedModel(modelParts.get(groupName));
+		IBakedModel IB = modelParts.get(groupName);
+		if (IB != null) {
+			MachineModModelHelper.renderBakedModel(IB);
+		} else {
+			throw new IllegalArgumentException("The Object: " + groupName + " was not found in :" + modelParts.toString());
+		}
 
 	}
 
