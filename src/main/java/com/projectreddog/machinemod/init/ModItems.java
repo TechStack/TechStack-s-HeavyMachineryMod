@@ -106,6 +106,7 @@ import com.projectreddog.machinemod.item.machines.ItemSub;
 import com.projectreddog.machinemod.item.machines.ItemTrackLoader;
 import com.projectreddog.machinemod.item.machines.ItemTractor;
 import com.projectreddog.machinemod.item.machines.ItemUnderGroundDumpTruck;
+import com.projectreddog.machinemod.item.machines.ItemUnderGroundLoader;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerCargo;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerLivestock;
@@ -213,6 +214,7 @@ public class ModItems {
 	public static final ItemMachineMod undergrounddumptruck = new ItemUnderGroundDumpTruck();
 
 	public static final ItemMachineMod loader = new ItemLoader();
+	public static final ItemMachineMod undergroundloader = new ItemUnderGroundLoader();
 
 	public static final ItemMachineMod laserminer = new ItemLaserMiner();
 
@@ -329,6 +331,12 @@ public class ModItems {
 			ForgeRegistries.ITEMS.register(loader);// , "loader");
 
 		}
+
+		if (Reference.enableUnderGroundLoader) {
+			ForgeRegistries.ITEMS.register(undergroundloader);// , "loader");
+
+		}
+
 		if (Reference.enableLaserMiner) {
 			ForgeRegistries.ITEMS.register(laserminer);
 
@@ -565,6 +573,11 @@ public class ModItems {
 		}
 		if (Reference.enableLoader) {
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(loader, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "loader", "inventory"));
+
+		}
+
+		if (Reference.enableUnderGroundLoader) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(undergroundloader, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "undergroundloader", "inventory"));
 
 		}
 

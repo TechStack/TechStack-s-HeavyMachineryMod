@@ -41,6 +41,7 @@ public class ConfigurationHandler {
 		Reference.enableGrader = configuration.get(Configuration.CATEGORY_GENERAL, "enableGrader", true, "If true Grade is Enabled, if false Grade is disabled").getBoolean();
 		Reference.enableLawnmower = configuration.get(Configuration.CATEGORY_GENERAL, "enableLawnmower", true, "If true Lawnmower is Enabled, if false Lawnmower is disabled").getBoolean();
 		Reference.enableLoader = configuration.get(Configuration.CATEGORY_GENERAL, "enableLoader", true, "If true Loader is Enabled, if false Loader is disabled").getBoolean();
+		Reference.enableUnderGroundLoader = configuration.get(Configuration.CATEGORY_GENERAL, "enableUnderGroundLoader ", true, "If true Under Ground Loader is Enabled, if false Under Ground Loader is disabled").getBoolean();
 		Reference.enableOilRig = configuration.get(Configuration.CATEGORY_GENERAL, "enableOilRig", true, "If true OilRig is Enabled, if false OilRig is disabled").getBoolean();
 		Reference.enablePaver = configuration.get(Configuration.CATEGORY_GENERAL, "enablePaver", true, "If true Paver is Enabled, if false Paver is disabled").getBoolean();
 		Reference.enablePumpJack = configuration.get(Configuration.CATEGORY_GENERAL, "enablePumpJack", true, "If true PumpJack is Enabled, if false PumpJack is disabled").getBoolean();

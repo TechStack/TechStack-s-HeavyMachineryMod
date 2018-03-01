@@ -47,6 +47,7 @@ public class Reference {
 	public static final String MODEL_UNDERGROUND_DUMPTRUCK_TEXTURE_LOCATION = "models/undergrounddumptruck.png";
 
 	public static final String MODEL_LOADER_TEXTURE_LOCATION = "models/modelloader.png";
+	public static final String MODEL_UNDER_GROUND_LOADER_TEXTURE_LOCATION = "models/undergroundloader.png";
 	public static final String MODEL_CONTINUOUSMINER_TEXTURE_LOCATION = "models/continuousminer.png";
 
 	public static final String MODEL_BAGGER_TEXTURE_LOCATION = "models/bagger.png";
@@ -206,6 +207,7 @@ public class Reference {
 	public static boolean enableGrader = true;
 	public static boolean enableLawnmower = true;
 	public static boolean enableLoader = true;
+	public static boolean enableUnderGroundLoader = true;
 
 	public static boolean enableLaserMiner = true;
 
