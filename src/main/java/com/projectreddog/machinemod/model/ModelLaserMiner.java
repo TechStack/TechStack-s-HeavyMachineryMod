@@ -3,6 +3,8 @@ package com.projectreddog.machinemod.model;
 import java.io.IOException;
 import java.util.HashMap;
 
+import org.lwjgl.opengl.GL11;
+
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
@@ -39,8 +41,12 @@ public class ModelLaserMiner extends ModelTransportable {
 		this.renderGroupObject("Arm3");
 		this.renderGroupObject("Impeller1");
 		this.renderGroupObject("Impeller2");
+		float RotateAmt = (entity.world.getTotalWorldTime() % 60) * 6;
+		GL11.glRotatef(RotateAmt, 0f, 0f, 1f);
 
 		this.renderGroupObject("Laser1");
+		GL11.glRotatef(RotateAmt, 0f, 0f, -1f);
+
 		this.renderGroupObject("Laser2");
 		this.renderGroupObject("Laser3");
 		this.renderGroupObject("Laser4");
