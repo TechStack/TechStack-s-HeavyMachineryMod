@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import org.lwjgl.opengl.GL11;
 
+import com.projectreddog.machinemod.entity.EntityLaserMiner;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
@@ -36,11 +37,20 @@ public class ModelLaserMiner extends ModelTransportable {
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		this.renderGroupObject("Body");
-		this.renderGroupObject("Arm1");
-		this.renderGroupObject("Arm2");
-		this.renderGroupObject("Arm3");
+		// this.renderGroupObject("Arm1");
+		// this.renderGroupObject("Arm2");
+		this.renderGroupObject("ArmRails");
+
 		this.renderGroupObject("Impeller1");
 		this.renderGroupObject("Impeller2");
+
+		if (entity instanceof EntityLaserMiner) {
+			EntityLaserMiner laserMiner = (EntityLaserMiner) entity;
+			GL11.glTranslatef(0f, laserMiner.Attribute1 / 10f, 0f);
+		}
+
+		this.renderGroupObject("Arm3");
+
 		float RotateAmt = (entity.world.getTotalWorldTime() % 60) * -6;
 
 		RotateAmt = RotateAmt + 45f;

@@ -43,7 +43,7 @@ public class ModelBeam extends ModelBase {
 		GL11.glRotatef(180f, 0, 180f, 0);
 		// GL11.glTranslatef(-1.15f, -1.125f, 3.25f);
 
-		GL11.glScalef(.3f, .3f, 1000f);
+		GL11.glScalef(.3f, .3f, 20f);
 		GlStateManager.disableLighting();
 		// GlStateManager.disableCull();
 		GlStateManager.enableBlend();

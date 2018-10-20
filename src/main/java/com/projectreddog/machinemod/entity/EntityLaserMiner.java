@@ -26,8 +26,8 @@ public class EntityLaserMiner extends EntityMachineModRideable {
 		this.mountedOffsetY = 1D;
 		this.mountedOffsetX = 0.4D;
 		this.mountedOffsetZ = 0.4D;
-		this.maxAngle = 15;
-		this.minAngle = -90;
+		this.maxAngle = 20;
+		this.minAngle = -20;
 		this.droppedItem = ModItems.laserminer;
 		this.shouldSendClientInvetoryUpdates = true;
 
