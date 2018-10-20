@@ -41,17 +41,35 @@ public class ModelLaserMiner extends ModelTransportable {
 		this.renderGroupObject("Arm3");
 		this.renderGroupObject("Impeller1");
 		this.renderGroupObject("Impeller2");
-		float RotateAmt = (entity.world.getTotalWorldTime() % 60) * 6;
+		float RotateAmt = (entity.world.getTotalWorldTime() % 60) * -6;
+
+		RotateAmt = RotateAmt + 45f;
+		GL11.glPushMatrix();
+		GL11.glTranslatef(0f, -1.80647f, 0f);
 		GL11.glRotatef(RotateAmt, 0f, 0f, 1f);
 
-		this.renderGroupObject("Laser1");
-		GL11.glRotatef(RotateAmt, 0f, 0f, -1f);
-
 		this.renderGroupObject("Laser2");
-		this.renderGroupObject("Laser3");
-		this.renderGroupObject("Laser4");
-		this.renderGroupObject("Laser5");
+		GL11.glRotatef(RotateAmt, 0f, 0f, -1f);
+		GL11.glTranslatef(.775f, 0f, 0f);
+		GL11.glRotatef(RotateAmt, 0f, 0f, 1f);
+		this.renderGroupObject("Laser2");
+		GL11.glRotatef(RotateAmt, 0f, 0f, -1f);
+		GL11.glTranslatef(.775f, 0f, 0f);
 
+		GL11.glRotatef(RotateAmt, 0f, 0f, 1f);
+		this.renderGroupObject("Laser2");
+		GL11.glRotatef(RotateAmt, 0f, 0f, -1f);
+		GL11.glTranslatef(.775f * -4, 0f, 0f);
+
+		GL11.glRotatef(RotateAmt, 0f, 0f, 1f);
+		this.renderGroupObject("Laser2");
+		GL11.glRotatef(RotateAmt, 0f, 0f, -1f);
+		GL11.glTranslatef(.775f, 0f, 0f);
+
+		GL11.glRotatef(RotateAmt, 0f, 0f, 1f);
+		this.renderGroupObject("Laser2");
+		GL11.glRotatef(RotateAmt, 0f, 0f, -1f);
+		GL11.glPopMatrix();
 	}
 
 	public void renderGroupObject(String groupName) {

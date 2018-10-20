@@ -39,7 +39,7 @@ public class RenderLaserMiner extends Render {
 		this.modelLaserMiner.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
 		// ((ModelTractor) this.modelTractor).renderGroupObject("Plow_Cube");
-		GL11.glTranslatef(-1.52f, -1.8f, -5.1f);
+		GL11.glTranslatef(-1.55f, -1.8f, -5.2f);
 		// GL11.glTranslatef(.015f, -1.8f, -5.1f);
 		this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, .0625f);
 		GL11.glTranslatef(.775f, 0f, 0f);
