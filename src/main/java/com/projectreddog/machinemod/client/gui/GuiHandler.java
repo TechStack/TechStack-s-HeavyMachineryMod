@@ -13,6 +13,7 @@ import com.projectreddog.machinemod.container.ContainerExcavator;
 import com.projectreddog.machinemod.container.ContainerFermenter;
 import com.projectreddog.machinemod.container.ContainerFractionalDistiller;
 import com.projectreddog.machinemod.container.ContainerGrader;
+import com.projectreddog.machinemod.container.ContainerLaserMiner;
 import com.projectreddog.machinemod.container.ContainerLoader;
 import com.projectreddog.machinemod.container.ContainerPaver;
 import com.projectreddog.machinemod.container.ContainerPrimaryCrusher;
@@ -28,6 +29,7 @@ import com.projectreddog.machinemod.entity.EntityContinuousMiner;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityGrader;
+import com.projectreddog.machinemod.entity.EntityLaserMiner;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityPaver;
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
@@ -253,6 +255,17 @@ public class GuiHandler implements IGuiHandler {
 			}
 		}
 
+		else if (id == Reference.GUI_LASAERMINER) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityLaserMiner) {
+
+					return new ContainerLaserMiner(player.inventory, (EntityLaserMiner) entity);
+				}
+			}
+		}
+
 		return null;
 	}
 
@@ -430,6 +443,14 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null) {
 				if (entity instanceof EntityTrackLoader) {
 					return new GuiTrackLoader(player.inventory, (EntityTrackLoader) entity);
+				}
+			}
+		} else if (id == Reference.GUI_LASAERMINER) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityLaserMiner) {
+					return new GuiLaserMiner(player.inventory, (EntityLaserMiner) entity);
 				}
 			}
 		}

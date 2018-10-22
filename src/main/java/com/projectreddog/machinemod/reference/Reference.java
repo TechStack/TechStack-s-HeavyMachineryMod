@@ -101,6 +101,7 @@ public class Reference {
 	public static final int GUI_ASSEMBLY_TABLE = 18;
 	public static final int GUI_TURBO_FURNACE = 19;
 	public static final int GUI_TRACK_LOADER = 20;
+	public static final int GUI_LASAERMINER = 21;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;

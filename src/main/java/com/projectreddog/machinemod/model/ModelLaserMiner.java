@@ -40,6 +40,7 @@ public class ModelLaserMiner extends ModelTransportable {
 		// this.renderGroupObject("Arm1");
 		// this.renderGroupObject("Arm2");
 		this.renderGroupObject("ArmRails");
+		float RotateAmt = 0;
 
 		this.renderGroupObject("Impeller1");
 		this.renderGroupObject("Impeller2");
@@ -47,11 +48,14 @@ public class ModelLaserMiner extends ModelTransportable {
 		if (entity instanceof EntityLaserMiner) {
 			EntityLaserMiner laserMiner = (EntityLaserMiner) entity;
 			GL11.glTranslatef(0f, laserMiner.Attribute1 / 10f, 0f);
+
+			if (laserMiner.isBeingRidden() && laserMiner.currentFuelLevel > 0) {
+				RotateAmt = (entity.world.getTotalWorldTime() % 60) * -6;
+			}
+
 		}
 
 		this.renderGroupObject("Arm3");
-
-		float RotateAmt = (entity.world.getTotalWorldTime() % 60) * -6;
 
 		RotateAmt = RotateAmt + 45f;
 		GL11.glPushMatrix();

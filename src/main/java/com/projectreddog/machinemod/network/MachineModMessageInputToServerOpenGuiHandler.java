@@ -8,6 +8,7 @@ import com.projectreddog.machinemod.entity.EntityContinuousMiner;
 import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityGrader;
+import com.projectreddog.machinemod.entity.EntityLaserMiner;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.entity.EntityPaver;
@@ -70,6 +71,8 @@ public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHan
 							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_CONTINUOUSMINER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityTrackLoader) {
 							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_TRACK_LOADER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+						} else if (entity instanceof EntityLaserMiner) {
+							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_LASAERMINER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						}
 
 					}

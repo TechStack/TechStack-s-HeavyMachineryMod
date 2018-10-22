@@ -43,7 +43,7 @@ public class ModelBeam extends ModelBase {
 		GL11.glRotatef(180f, 0, 180f, 0);
 		// GL11.glTranslatef(-1.15f, -1.125f, 3.25f);
 
-		GL11.glScalef(.3f, .3f, 20f);
+		GL11.glScalef(.3f, .3f, 40f);
 		GlStateManager.disableLighting();
 		// GlStateManager.disableCull();
 		GlStateManager.enableBlend();
@@ -51,7 +51,9 @@ public class ModelBeam extends ModelBase {
 		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 
 		this.renderGroupObject("Beam_Cylinder");
-		GL11.glRotatef(RotateAmt, 0f, 0f, 1f);
+		if (f5 == 1) {
+			GL11.glRotatef(RotateAmt, 0f, 0f, 1f);
+		}
 		GL11.glTranslatef(0f, 1f, 0);
 		this.renderGroupObject("Beam_Cylinder");
 		GL11.glTranslatef(1f, -1f, 0);

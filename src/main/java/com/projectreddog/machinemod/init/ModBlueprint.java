@@ -17,5 +17,7 @@ public class ModBlueprint {
 
 		ModItems.blueprintshredder.Init();
 
+		ModItems.blueprintlaserminer.Init();
+
 	}
 }
