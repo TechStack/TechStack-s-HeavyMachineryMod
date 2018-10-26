@@ -62,6 +62,7 @@ item.machinemod:lawnmower.name=Riding Lawn Mower
 item.machinemod:mowerdeck.name=Mower Deck
 item.machinemod:liquidtanksegment.name=Liquid tank segment
 item.machinemod:continuousminer.name=Continuous Miner - WIP
+item.machinemod:laserminer.name=Laser Miner - WIP
 item.machinemod:chopper.name=Chopper
 
 item.machinemod:citroniteingot.name=Citronite Ingot
