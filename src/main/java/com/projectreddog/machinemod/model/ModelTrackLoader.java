@@ -50,17 +50,37 @@ public class ModelTrackLoader extends ModelTransportable {
 
 		this.renderGroupObject("Body");
 
-		if (entity != null) {
-			GL11.glRotatef((((EntityMachineModRideable) entity).Attribute1), 1, 0, 0);
-
-		}
 		// this.renderGroupObject("Bucket_Cube.002");
 
-		this.renderGroupObject("FrontBucket");
+		GL11.glPushMatrix();
+
+		GL11.glTranslatef(0f, -2.75f, -1.5f);
+		if (entity != null) {
+			float rotamt = (float) (((EntityMachineModRideable) entity).Attribute1);
+			// if (rotamt > 5) {
+			// rotamt = 5;
+			// }
+			GL11.glRotatef(rotamt, 1, 0, 0);
+
+		}
 		this.renderGroupObject("FrontArms");
-		this.renderGroupObject("BackArmsTop");
+
+		GL11.glTranslatef(0f, 2.35f, -2.35f);
+		this.renderGroupObject("FrontBucket");
+		//
+
+		GL11.glPopMatrix();
+
+		GL11.glTranslatef(0f, -.5f, 1.25f);
+		if (entity != null) {
+			float rotamt = (float) (((EntityMachineModRideable) entity).Attribute1);
+			if (rotamt > 5) {
+				rotamt = 5;
+			}
+			GL11.glRotatef(rotamt, 1, 0, 0);
+
+		}
 		this.renderGroupObject("BackArmsBottom");
-		this.renderGroupObject("BackClaw");
 
 	}
 

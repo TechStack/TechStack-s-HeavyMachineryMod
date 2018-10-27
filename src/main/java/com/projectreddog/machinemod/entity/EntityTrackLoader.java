@@ -45,6 +45,8 @@ public class EntityTrackLoader extends EntityMachineModRideable {
 
 	@Override
 	public void onUpdate() {
+		// 3 back break when theeth are down
+		// 4 forward when bucket is down.
 		super.onUpdate();
 		if (!world.isRemote) {
 			int bucketOffsetY = 0;
@@ -64,7 +66,7 @@ public class EntityTrackLoader extends EntityMachineModRideable {
 						angle = 90;
 					}
 					BlockPos bp;
-					bp = new BlockPos(posX + calcTwoOffsetX(4.5, angle, i), posY + j + bucketOffsetY, posZ + calcTwoOffsetZ(4.5, angle, i));
+					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + j + bucketOffsetY, posZ + calcTwoOffsetZ(3.5, angle, i));
 					if (!world.isAirBlock(bp) && world.getBlockState(bp).getBlock() != Blocks.BEDROCK && world.getBlockState(bp).getMaterial() != Material.WATER && world.getBlockState(bp).getMaterial() != Material.LAVA && world.getBlockState(bp).getBlock() != ModBlocks.machinebleakportal && world.getBlockState(bp).getBlock() != ModBlocks.machinebleakportalframe) {
 						BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
