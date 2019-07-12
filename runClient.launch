@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+  <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="TechStack-s-HeavyMachineryMod"/>
+  <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="net.minecraftforge.userdev.LaunchTesting"/>
+  <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dforge.logging.console.level=debug -Dforge.logging.markers=SCAN,REGISTRIES,REGISTRYDUMP -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump &quot;-Dos.name=Windows 10&quot; -Dos.version=10.0"/>
+  <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value=""/>
+  <stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\run"/>
+  <mapAttribute key="org.eclipse.debug.core.environmentVariables">
+    <mapEntry key="MOD_CLASSES" value="examplemod%%D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\bin\main;examplemod%%D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\bin\main"/>
+    <mapEntry key="MCP_MAPPINGS" value="snapshot_20190621-1.14.2"/>
+    <mapEntry key="MCP_VERSION" value="20190624.152911"/>
+    <mapEntry key="FORGE_VERSION" value="27.0.50"/>
+    <mapEntry key="assetIndex" value="1.14"/>
+    <mapEntry key="assetDirectory" value="C:\Users\TechStack\.gradle\caches\forge_gradle\assets"/>
+    <mapEntry key="nativesDirectory" value="D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\build\natives"/>
+    <mapEntry key="FORGE_GROUP" value="net.minecraftforge"/>
+    <mapEntry key="target" value="fmluserdevclient"/>
+    <mapEntry key="MC_VERSION" value="1.14.3"/>
+  </mapAttribute>
+</launchConfiguration>
