@@ -115,13 +115,13 @@ import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerTanker;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.client.renderer.model.ModelResourceLocation;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemFood;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.ObjectHolder;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
 public class ModItems {
@@ -167,8 +167,8 @@ public class ModItems {
 	public static final ItemMachineMod powercell = new ItemPowerCell();
 	public static final ItemMachineMod light = new ItemLight();
 	public static final ItemMachineMod lightmodule = new ItemLightModule();
-	public static final ItemMachineModElytraJetLegs elytrajetleg = new ItemMachineModElytraJetLegs(ItemMachineModArmor.MachineFuleConsumerMaterial, EntityEquipmentSlot.LEGS);
-	public static final ItemMachineModCrashHelmet crashhelmet = new ItemMachineModCrashHelmet(ItemMachineModArmor.SteelMaterial, EntityEquipmentSlot.HEAD);
+	public static final ItemMachineModElytraJetLegs elytrajetleg = new ItemMachineModElytraJetLegs(ItemMachineModArmor.MachineFuleConsumerMaterial, EquipmentSlotType.LEGS);
+	public static final ItemMachineModCrashHelmet crashhelmet = new ItemMachineModCrashHelmet(ItemMachineModArmor.SteelMaterial, EquipmentSlotType.HEAD);
 	public static final ItemMachineMod afterburner = new ItemAfterBurner();
 	public static final ItemMachineMod collapsedstar = new ItemCollapsedStar();
 
@@ -274,7 +274,8 @@ public class ModItems {
 	public static final ItemMachineMod wrench = new ItemWrench();
 
 	/// buckets
-	// public static final ItemBucket oilbucket = new ItemOilBucket(ModBlocks.oilFluidBlock);
+	// public static final ItemBucket oilbucket = new
+	/// ItemOilBucket(ModBlocks.oilFluidBlock);
 
 	public static void init() {
 
@@ -311,7 +312,8 @@ public class ModItems {
 		}
 
 		if (Reference.enableUnderGroundDumptruck) {
-			ForgeRegistries.ITEMS.register(undergrounddumptruck);// , "dumptruck");
+			ForgeRegistries.ITEMS.register(undergrounddumptruck);// ,
+																	// "dumptruck");
 
 		}
 
@@ -389,7 +391,8 @@ public class ModItems {
 		ForgeRegistries.ITEMS.register(paverscreed);// , "paverscreed");
 		ForgeRegistries.ITEMS.register(rollerwheel);// , "rollerwheel");
 
-		ForgeRegistries.ITEMS.register(liquidtanksegment);// , "liquidtanksegment");
+		ForgeRegistries.ITEMS.register(liquidtanksegment);// ,
+															// "liquidtanksegment");
 
 		ForgeRegistries.ITEMS.register(prop);// , "prop");
 		ForgeRegistries.ITEMS.register(propcage);// , "propcage");
@@ -454,7 +457,8 @@ public class ModItems {
 		ForgeRegistries.ITEMS.register(turboengine);// , "turboengine");
 		ForgeRegistries.ITEMS.register(flatbedtrailer);// , "flatbedtrailer");
 
-		ForgeRegistries.ITEMS.register(livestocktrailer);// , "livestocktrailer");
+		ForgeRegistries.ITEMS.register(livestocktrailer);// ,
+															// "livestocktrailer");
 		ForgeRegistries.ITEMS.register(tankertrailer);// , "tankertrailer");
 		ForgeRegistries.ITEMS.register(cargotrailer);// , "cargotrailer");
 
@@ -518,8 +522,10 @@ public class ModItems {
 
 		// buckets
 		// GameRegistry.registerItem(oilbucket, "oilbucket");
-		// FluidContainerRegistry.registerFluidContainer(ModBlocks.fluidOil, new ItemStack(oilbucket), new ItemStack(Items.bucket));
-		// EventHandler.buckets.put(ModBlocks.oilFluidBlock, ModItems.oilbucket);
+		// FluidContainerRegistry.registerFluidContainer(ModBlocks.fluidOil, new
+		// ItemStack(oilbucket), new ItemStack(Items.bucket));
+		// EventHandler.buckets.put(ModBlocks.oilFluidBlock,
+		// ModItems.oilbucket);
 	}
 
 	public static void initItemRender() {
@@ -544,7 +550,9 @@ public class ModItems {
 
 		}
 		if (Reference.enableCrane) {
-			// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(crane, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "crane", "inventory"));
+			// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(crane,
+			// 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "crane",
+			// "inventory"));
 
 		}
 		if (Reference.enableDrillingRig) {
@@ -594,7 +602,9 @@ public class ModItems {
 		}
 
 		if (Reference.enableOilRig) {
-			// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(oilrig, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "oilrig", "inventory"));
+			// Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(oilrig,
+			// 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "oilrig",
+			// "inventory"));
 
 		}
 

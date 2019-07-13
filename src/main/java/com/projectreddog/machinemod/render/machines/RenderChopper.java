@@ -5,17 +5,17 @@ import org.lwjgl.opengl.GL11;
 import com.projectreddog.machinemod.model.ModelChopper;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderChopper extends Render {
+public class RenderChopper extends EntityRenderer {
 
-	protected ModelBase modelChopper;
+	protected EntityModel modelChopper;
 
-	public RenderChopper(RenderManager renderManager) {
+	public RenderChopper(EntityRendererManager renderManager) {
 
 		super(renderManager);
 		shadowSize = 1F;

@@ -9,7 +9,9 @@ public class BlockMachineAsphalt extends BlockMachineMod {
 	public BlockMachineAsphalt() {
 		super();
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_ASPHALT);
+
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_ASPHALT);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_ASPHALT);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);

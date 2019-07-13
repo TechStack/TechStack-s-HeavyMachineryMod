@@ -21,7 +21,8 @@ public class BlockMachineCompressedAsphalt extends BlockMachineMod {
 	public BlockMachineCompressedAsphalt() {
 		super();
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_COMPRESSED_ASPHALT);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_COMPRESSED_ASPHALT);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_COMPRESSED_ASPHALT);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);

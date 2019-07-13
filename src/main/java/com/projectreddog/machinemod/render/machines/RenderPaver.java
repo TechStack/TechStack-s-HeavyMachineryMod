@@ -5,17 +5,17 @@ import org.lwjgl.opengl.GL11;
 import com.projectreddog.machinemod.model.ModelPaver;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderPaver extends Render {
+public class RenderPaver extends EntityRenderer {
 
-	protected ModelBase modelPaver;
+	protected EntityModel modelPaver;
 
-	public RenderPaver(RenderManager renderManager) {
+	public RenderPaver(EntityRendererManager renderManager) {
 
 		super(renderManager);
 

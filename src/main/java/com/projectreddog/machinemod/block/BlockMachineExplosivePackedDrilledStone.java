@@ -17,7 +17,8 @@ public class BlockMachineExplosivePackedDrilledStone extends BlockMachineModMany
 	public BlockMachineExplosivePackedDrilledStone() {
 		super();
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_EXPLOSIVE_PACKED_DRILLED_STONE);
@@ -30,13 +31,16 @@ public class BlockMachineExplosivePackedDrilledStone extends BlockMachineModMany
 	@Override
 	// public void onNeighborBlockChange(World worldIn, BlockPos pos,
 	// IBlockState state, Block neighborBlock) {}
-	// public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
+	// public void neighborChanged(IBlockState state, World worldIn, BlockPos
+	// pos, Block blockIn, BlockPos fromPos)
 
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
 
 	{
-		// public void onNeighborChange(IBlockAccess world, BlockPos bp, BlockPos neighbor) {
-		// public void onNeighborBlockChange(World world, BlockPos bp, IBlockState bs, Block neighborBlock) {
+		// public void onNeighborChange(IBlockAccess world, BlockPos bp,
+		// BlockPos neighbor) {
+		// public void onNeighborBlockChange(World world, BlockPos bp,
+		// IBlockState bs, Block neighborBlock) {
 
 		worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
 
@@ -74,7 +78,8 @@ public class BlockMachineExplosivePackedDrilledStone extends BlockMachineModMany
 	// (World p_i1948_1_, Entity p_i1948_2_, double p_i1948_3_, double
 	// p_i1948_5_, double p_i1948_7_, float size)
 	/**
-	 * returns a new explosion. Does initiation (at time of writing Explosion is not finished)
+	 * returns a new explosion. Does initiation (at time of writing Explosion is
+	 * not finished)
 	 */
 	public ModExplosion newExplosion(World world, double x, double y, double z, float size, boolean flameing, boolean smoking) {
 

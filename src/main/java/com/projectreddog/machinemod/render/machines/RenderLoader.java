@@ -5,23 +5,22 @@ import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.model.ModelLoader;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.BufferBuilder;
-import net.minecraft.client.renderer.EntityRenderer;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderItem;
+import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.client.renderer.block.model.IBakedModel;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.model.EntityModel;
+import net.minecraft.client.renderer.model.BakedQuad;
+import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
@@ -30,20 +29,20 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3i;
 
-public class RenderLoader extends Render {
+public class RenderLoader extends EntityRenderer {
 
-	protected ModelBase modelLoader;
+	protected EntityModel modelLoader;
 
-	private RenderItem itemRenderer;
+	private ItemRenderer itemRenderer;
 
-	public RenderLoader(RenderManager renderManager) {
+	public RenderLoader(EntityRendererManager renderManager) {
 
 		super(renderManager);
 
 		// LogHelper.info("in RenderLoader constructor");
 		shadowSize = 1F;
 		this.modelLoader = new ModelLoader();
-		itemRenderer = Minecraft.getMinecraft().getRenderItem();
+		itemRenderer = Minecraft.getInstance().getItemRenderer();
 
 	}
 

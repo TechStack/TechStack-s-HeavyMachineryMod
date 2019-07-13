@@ -2,6 +2,7 @@ package com.projectreddog.machinemod.render.machines;
 
 import org.lwjgl.opengl.GL11;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.item.machines.ItemTransportable;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
@@ -11,20 +12,19 @@ import com.projectreddog.machinemod.model.ModelSemiTractor;
 import com.projectreddog.machinemod.model.ModelTransportable;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderSemiTractor extends Render {
+public class RenderSemiTractor extends EntityRenderer {
 
-	protected ModelBase modelWideBedTruck;
+	protected EntityModel modelWideBedTruck;
 	protected ModelTransportable modelCarriedEntity;
 
-	public RenderSemiTractor(RenderManager renderManager) {
+	public RenderSemiTractor(EntityRendererManager renderManager) {
 
 		super(renderManager);
 

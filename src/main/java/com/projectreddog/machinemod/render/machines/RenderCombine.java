@@ -5,17 +5,17 @@ import org.lwjgl.opengl.GL11;
 import com.projectreddog.machinemod.model.ModelCombine;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderCombine extends Render {
+public class RenderCombine extends EntityRenderer {
 
-	protected ModelBase modelCombine;
+	protected EntityModel modelCombine;
 
-	public RenderCombine(RenderManager renderManager) {
+	public RenderCombine(EntityRendererManager renderManager) {
 
 		super(renderManager);
 

@@ -10,20 +10,20 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockFaceShape;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.IProperty;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.BlockStateContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -33,7 +33,8 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	public BlockMachineBleakCrystal() {
 		super();
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLEAK_CRYSTAL);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLEAK_CRYSTAL);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_BLEAK_CRYSTAL);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
@@ -68,10 +69,9 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	/**
 	 * Spawns this Block's drops into the World as EntityItems.
 	 * 
-	 * @param chance
-	 *            The chance that each Item is actually spawned (1.0 = always, 0.0 = never)
-	 * @param fortune
-	 *            The player's fortune level
+	 * @param chance The chance that each Item is actually spawned (1.0 =
+	 * always, 0.0 = never)
+	 * @param fortune The player's fortune level
 	 */
 	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune) {
 		super.dropBlockAsItemWithChance(worldIn, pos, state, chance, 0);
@@ -179,7 +179,8 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	}
 
 	/**
-	 * Used to determine ambient occlusion and culling when rebuilding chunks for render
+	 * Used to determine ambient occlusion and culling when rebuilding chunks
+	 * for render
 	 */
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
@@ -199,9 +200,15 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	}
 
 	/**
-	 * Get the geometry of the queried face at the given position and state. This is used to decide whether things like buttons are allowed to be placed on the face, or how glass panes connect to the face, among other things.
+	 * Get the geometry of the queried face at the given position and state.
+	 * This is used to decide whether things like buttons are allowed to be
+	 * placed on the face, or how glass panes connect to the face, among other
+	 * things.
 	 * <p>
-	 * Common values are {@code SOLID}, which is the default, and {@code UNDEFINED}, which represents something that does not fit the other descriptions and will generally cause other things not to connect to the face.
+	 * Common values are {@code SOLID}, which is the default, and
+	 * {@code UNDEFINED}, which represents something that does not fit the other
+	 * descriptions and will generally cause other things not to connect to the
+	 * face.
 	 * 
 	 * @return an approximation of the form of the given face
 	 */

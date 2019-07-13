@@ -9,7 +9,8 @@ public class BlockMachineModBlastedStone extends BlockMachineModBlastedStoneBase
 	public BlockMachineModBlastedStone() {
 		super();
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);

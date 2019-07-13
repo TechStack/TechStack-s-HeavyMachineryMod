@@ -5,45 +5,44 @@ import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
 import com.projectreddog.machinemod.entity.EntityUnderGroundLoader;
 import com.projectreddog.machinemod.model.ModelUnderGroundLoader;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.BufferBuilder;
-import net.minecraft.client.renderer.EntityRenderer;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderItem;
+import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.client.renderer.block.model.IBakedModel;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.model.EntityModel;
+import net.minecraft.client.renderer.model.BakedQuad;
+import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3i;
 
-public class RenderUnderGroundLoader extends Render {
+public class RenderUnderGroundLoader extends EntityRenderer {
 
-	protected ModelBase modelundergroundLoader;
+	protected EntityModel modelundergroundLoader;
 
-	private RenderItem itemRenderer;
+	private ItemRenderer itemRenderer;
 
-	public RenderUnderGroundLoader(RenderManager renderManager) {
+	public RenderUnderGroundLoader(EntityRendererManager renderManager) {
 
 		super(renderManager);
 
 		// LogHelper.info("in RenderLoader constructor");
 		shadowSize = 1F;
 		this.modelundergroundLoader = new ModelUnderGroundLoader();
-		itemRenderer = Minecraft.getMinecraft().getRenderItem();
+		itemRenderer = Minecraft.getInstance().getItemRenderer();
 
 	}
 
@@ -75,8 +74,8 @@ public class RenderUnderGroundLoader extends Render {
 
 		this.modelundergroundLoader.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
-		GlStateManager.translate(-2f, -0.00F, -1.57F);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.translatef(-2f, -0.00F, -1.57F);
+		GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glScalef(.5f, .5f, .5f);
 		EntityUnderGroundLoader eL = ((EntityUnderGroundLoader) entity);
 
@@ -92,11 +91,11 @@ public class RenderUnderGroundLoader extends Render {
 
 				if (count > 4) {
 					count = 0;
-					GlStateManager.translate(-4f, 0.0F, 0F);
-					GlStateManager.translate(0, 0.0F, .5F);
+					GlStateManager.translatef(-4f, 0.0F, 0F);
+					GlStateManager.translatef(0, 0.0F, .5F);
 
 				}
-				GlStateManager.translate(1.1F, 0.0F, 0F);
+				GlStateManager.translatef(1.1F, 0.0F, 0F);
 				count += 1;
 
 				GL11.glRotatef(45, 1, 1, 0);
@@ -112,11 +111,11 @@ public class RenderUnderGroundLoader extends Render {
 					BufferBuilder worldrenderer = tessellator.getBuffer();
 					worldrenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
 					this.renderManager.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-					EnumFacing[] aenumfacing = EnumFacing.values();
+					Direction[] aenumfacing = Direction.values();
 					int j = aenumfacing.length;
 
 					for (int k = 0; k < j; ++k) {
-						EnumFacing enumfacing = aenumfacing[k];
+						Direction enumfacing = aenumfacing[k];
 						this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, enumfacing, 0), -1, is);
 
 					}

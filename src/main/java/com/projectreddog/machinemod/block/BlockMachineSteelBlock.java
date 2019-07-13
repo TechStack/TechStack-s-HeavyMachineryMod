@@ -11,7 +11,8 @@ public class BlockMachineSteelBlock extends BlockMachineMod {
 	public BlockMachineSteelBlock() {
 		super();
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_STEEL_BLOCK);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MODBLOCK_STEEL_BLOCK);
 		this.setRegistryName(Reference.MODBLOCK_STEEL_BLOCK);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);

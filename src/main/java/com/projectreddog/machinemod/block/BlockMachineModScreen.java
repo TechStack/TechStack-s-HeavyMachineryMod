@@ -29,7 +29,9 @@ public class BlockMachineModScreen extends BlockContainer {
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 
 		// 1.8
-		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_SCREEN);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" +
+		// Reference.MODBLOCK_MACHINE_SCREEN);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_SCREEN);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);

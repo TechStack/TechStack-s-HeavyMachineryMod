@@ -9,8 +9,8 @@ import com.projectreddog.machinemod.entity.EntityLaserMiner;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
-import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.client.renderer.block.model.IBakedModel;
+import net.minecraft.client.renderer.entity.model.RendererModel;
+import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.obj.OBJLoader;
@@ -50,7 +50,7 @@ public class ModelLaserMiner extends ModelTransportable {
 			GL11.glTranslatef(0f, laserMiner.Attribute1 / 10f, 0f);
 
 			if (laserMiner.isBeingRidden() && laserMiner.currentFuelLevel > 0) {
-				RotateAmt = (entity.world.getTotalWorldTime() % 60) * -6;
+				RotateAmt = (entity.world.getGameTime() % 60) * -6;
 			}
 
 		}
@@ -96,14 +96,14 @@ public class ModelLaserMiner extends ModelTransportable {
 
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z) {
+	private void setRotation(RendererModel model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
 
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity e) {
-		super.setRotationAngles(f, f1, f2, f3, f4, f5, e);
+		super.setRotationAngles(e, f, f1, f2, f3, f4, f5);
 	}
 
 	public ResourceLocation getTexture() {

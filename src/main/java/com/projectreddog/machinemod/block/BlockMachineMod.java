@@ -1,29 +1,27 @@
 package com.projectreddog.machinemod.block;
 
-import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
-import com.projectreddog.machinemod.reference.Reference;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
 public class BlockMachineMod extends Block {
 
-	protected BlockMachineMod(Material material) {
-		super(material);
+	protected BlockMachineMod(Properties blockProperties) {
+		super(blockProperties);
 
 		// can override later ;)
-		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
+		// TODO FIX creative tabs on blocks!
+		// this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 	}
 
 	public BlockMachineMod() {
 		// Generic constructor (set to rock by default)
-		this(Material.ROCK);
+		this(Block.Properties.create(Material.ROCK));
 	}
-
-	@Override
-	public String getUnlocalizedName() {
-		return String.format("tile.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
-	}
+// 1.14 removed 
+//	@Override
+//	public String getTranslationKey() {
+//		return String.format("tile.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getTranslationKey()));
+//	}
 
 	// 1.8 not needed?
 	// @Override

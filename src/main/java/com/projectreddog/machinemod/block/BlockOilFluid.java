@@ -15,7 +15,9 @@ public class BlockOilFluid extends BlockFluidClassic {
 	public BlockOilFluid(Fluid fluid, Material material) {
 		super(fluid, material);
 		setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
-		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_FLUID_OIL);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" +
+		// Reference.MODBLOCK_MACHINE_FLUID_OIL);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_FLUID_OIL);
 
 	}

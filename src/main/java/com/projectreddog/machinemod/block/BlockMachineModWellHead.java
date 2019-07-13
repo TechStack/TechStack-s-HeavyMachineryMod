@@ -23,7 +23,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockMachineModWellHead extends BlockContainer {
-	// public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+	// public static final PropertyDirection FACING =
+	// PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
 	protected BlockMachineModWellHead(Material material) {
 		super(material);
@@ -32,10 +33,13 @@ public class BlockMachineModWellHead extends BlockContainer {
 
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
-		// this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		// this.setDefaultState(this.blockState.getBaseState().withProperty(FACING,
+		// EnumFacing.NORTH));
 
 		// 1.8
-		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_WELL_HEAD);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" +
+		// Reference.MODBLOCK_MACHINE_WELL_HEAD);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_WELL_HEAD);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
@@ -64,7 +68,8 @@ public class BlockMachineModWellHead extends BlockContainer {
 		ItemStack heldItem = playerIn.getActiveItemStack();
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te != null && !playerIn.isSneaking()) {
-			// playerIn.openGui(MachineMod.instance, Reference.GUI_DISTILLER, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			// playerIn.openGui(MachineMod.instance, Reference.GUI_DISTILLER,
+			// worldIn, pos.getX(), pos.getY(), pos.getZ());
 			return true;
 		} else {
 			return false;

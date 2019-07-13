@@ -7,12 +7,11 @@ import com.projectreddog.machinemod.tileentities.TileEntityConduit;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.IProperty;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumBlockRenderType;
@@ -20,6 +19,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.BlockStateContainer;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -46,7 +46,9 @@ public class BlockMachineModConduit extends BlockContainer {
 		this.setDefaultState(this.blockState.getBaseState().withProperty(UP, false).withProperty(DOWN, false).withProperty(NORTH, false).withProperty(EAST, false).withProperty(SOUTH, false).withProperty(WEST, false));
 
 		// 1.8
-		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_CONDUIT);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" +
+		// Reference.MODBLOCK_MACHINE_CONDUIT);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_CONDUIT);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
@@ -62,7 +64,8 @@ public class BlockMachineModConduit extends BlockContainer {
 	}
 
 	/**
-	 * Possibly modify the given BlockState before rendering it on an Entity (Minecarts, Endermen, ...)
+	 * Possibly modify the given BlockState before rendering it on an Entity
+	 * (Minecarts, Endermen, ...)
 	 */
 	@SideOnly(Side.CLIENT)
 	public IBlockState getStateForEntityRender(IBlockState state) {

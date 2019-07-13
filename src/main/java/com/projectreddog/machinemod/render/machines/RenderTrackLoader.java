@@ -2,25 +2,27 @@ package com.projectreddog.machinemod.render.machines;
 
 import org.lwjgl.opengl.GL11;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.projectreddog.machinemod.entity.EntityTrackLoader;
 import com.projectreddog.machinemod.model.ModelTrackLoader;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 
-public class RenderTrackLoader extends Render {
+public class RenderTrackLoader extends EntityRenderer {
 
 	public static final Factory FACTORY = new Factory();
 
-	protected ModelBase modelTrackLoader;
+	protected EntityModel modelTrackLoader;
 
-	public RenderTrackLoader(RenderManager renderManager) {
+	public RenderTrackLoader(EntityRendererManager renderManager) {
 
 		super(renderManager);
 		shadowSize = 1F;

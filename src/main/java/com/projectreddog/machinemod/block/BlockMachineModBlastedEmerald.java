@@ -9,7 +9,8 @@ public class BlockMachineModBlastedEmerald extends BlockMachineModBlastedStoneBa
 	public BlockMachineModBlastedEmerald() {
 		super();
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLASTED_EMERALD);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLASTED_EMERALD);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_BLASTED_EMERALD);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);

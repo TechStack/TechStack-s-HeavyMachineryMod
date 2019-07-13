@@ -8,13 +8,12 @@ import com.projectreddog.machinemod.tileentities.TileEntityGenerator;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.IProperty;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumBlockRenderType;
@@ -22,6 +21,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.BlockStateContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -36,7 +36,9 @@ public class BlockMachineModGenerator extends BlockContainer {
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 
 		// 1.8
-		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_GENERATOR);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" +
+		// Reference.MODBLOCK_MACHINE_GENERATOR);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_GENERATOR);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
@@ -47,7 +49,8 @@ public class BlockMachineModGenerator extends BlockContainer {
 	}
 
 	/**
-	 * Possibly modify the given BlockState before rendering it on an Entity (Minecarts, Endermen, ...)
+	 * Possibly modify the given BlockState before rendering it on an Entity
+	 * (Minecarts, Endermen, ...)
 	 */
 	@SideOnly(Side.CLIENT)
 	public IBlockState getStateForEntityRender(IBlockState state) {
@@ -164,7 +167,8 @@ public class BlockMachineModGenerator extends BlockContainer {
 						TileEntityGenerator tEPC = (TileEntityGenerator) te;
 						if (tEPC.fuelStorage < tEPC.maxFuelStorage) {
 							// can hold more fuel.
-							// calc remaining fuel in can see if it is = or > than the remaining fuel storage of this machine
+							// calc remaining fuel in can see if it is = or >
+							// than the remaining fuel storage of this machine
 							int amountInCan = (playerIn.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage() - playerIn.getHeldItem(EnumHand.MAIN_HAND).getItemDamage());
 							int roomInEntityTank = tEPC.maxFuelStorage - tEPC.fuelStorage;
 							if (amountInCan > roomInEntityTank) {
@@ -173,7 +177,8 @@ public class BlockMachineModGenerator extends BlockContainer {
 								// will fill machine completely !
 								tEPC.fuelStorage = tEPC.maxFuelStorage;
 							} else {
-								// can will be empty becuase entity can hold 100% of the fuel from the can :O
+								// can will be empty becuase entity can hold
+								// 100% of the fuel from the can :O
 								playerIn.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(playerIn.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage());
 								tEPC.fuelStorage = tEPC.fuelStorage + amountInCan;
 							}
@@ -181,12 +186,16 @@ public class BlockMachineModGenerator extends BlockContainer {
 					}
 				} else {
 					// it was not a fuel can or it was empty so open gui !
-					// playerIn.openGui(MachineMod.instance, Reference.GUI_PRIMARY_CRUSHER, worldIn, pos.getX(), pos.getY(), pos.getZ());
+					// playerIn.openGui(MachineMod.instance,
+					// Reference.GUI_PRIMARY_CRUSHER, worldIn, pos.getX(),
+					// pos.getY(), pos.getZ());
 					return true;
 				}
 			} else {
 				// no item in hand so open gui!
-				// playerIn.openGui(MachineMod.instance, Reference.GUI_PRIMARY_CRUSHER, worldIn, pos.getX(), pos.getY(), pos.getZ());
+				// playerIn.openGui(MachineMod.instance,
+				// Reference.GUI_PRIMARY_CRUSHER, worldIn, pos.getX(),
+				// pos.getY(), pos.getZ());
 				return true;
 
 			}

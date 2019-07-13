@@ -27,7 +27,8 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 		super(material);
 		// 1.8
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_LIQUID_PIPE);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_LIQUID_PIPE);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_LIQUID_PIPE);
 
 		// this.setBlockName(Reference.MODBLOCK_MACHINE_DRILLED_STONE);
@@ -81,7 +82,9 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 	}
 
 	/**
-	 * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are their own) Args: x, y, z, neighbor Block
+	 * Lets the block know when one of its neighbor changes. Doesn't know which
+	 * neighbor changed (coordinates passed are their own) Args: x, y, z,
+	 * neighbor Block
 	 */
 
 	public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock) {

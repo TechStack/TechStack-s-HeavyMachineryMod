@@ -2,25 +2,25 @@ package com.projectreddog.machinemod.render.machines;
 
 import org.lwjgl.opengl.GL11;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.projectreddog.machinemod.entity.EntityBulldozer;
 import com.projectreddog.machinemod.model.ModelBulldozer;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 
-public class RenderBulldozer extends Render {
+public class RenderBulldozer extends EntityRenderer {
 
 	public static final Factory FACTORY = new Factory();
 
-	protected ModelBase modelBulldozer;
+	protected EntityModel modelBulldozer;
 
-	public RenderBulldozer(RenderManager renderManager) {
+	public RenderBulldozer(EntityRendererManager renderManager) {
 
 		super(renderManager);
 		shadowSize = 1F;
@@ -53,7 +53,7 @@ public class RenderBulldozer extends Render {
 		this.bindEntityTexture(entity);
 
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 
 		this.modelBulldozer.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
@@ -69,7 +69,7 @@ public class RenderBulldozer extends Render {
 	public static class Factory implements IRenderFactory<EntityBulldozer> {
 
 		@Override
-		public Render<? super EntityBulldozer> createRenderFor(RenderManager manager) {
+		public EntityRenderer<? super EntityBulldozer> createRenderFor(EntityRendererManager manager) {
 			return new RenderBulldozer(manager);
 		}
 

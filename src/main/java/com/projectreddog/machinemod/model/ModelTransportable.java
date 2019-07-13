@@ -1,11 +1,9 @@
 package com.projectreddog.machinemod.model;
 
-import com.projectreddog.machinemod.reference.Reference;
-
-import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.util.ResourceLocation;
 
-public abstract class ModelTransportable extends ModelBase {
+public abstract class ModelTransportable extends EntityModel {
 
 	abstract public ResourceLocation getTexture();
 }

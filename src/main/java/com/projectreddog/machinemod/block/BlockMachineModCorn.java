@@ -9,17 +9,16 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.IProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.BlockStateContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -29,14 +28,16 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 	public BlockMachineModCorn() {
 		super();
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_CORN);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_CORN);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_CORN);
 
 		this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
 		this.setTickRandomly(true);
 		float f = 0.5F;
 		// TODO Find bounds fix
-		// this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
+		// this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F +
+		// f);
 		this.setCreativeTab((CreativeTabs) null);
 		this.setHardness(0.0F);
 		this.setSoundType(SoundType.GROUND);// was grass
@@ -137,10 +138,9 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 	/**
 	 * Spawns this Block's drops into the World as EntityItems.
 	 * 
-	 * @param chance
-	 *            The chance that each Item is actually spawned (1.0 = always, 0.0 = never)
-	 * @param fortune
-	 *            The player's fortune level
+	 * @param chance The chance that each Item is actually spawned (1.0 =
+	 * always, 0.0 = never)
+	 * @param fortune The player's fortune level
 	 */
 	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune) {
 		super.dropBlockAsItemWithChance(worldIn, pos, state, chance, 0);
@@ -149,8 +149,7 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 	/**
 	 * Get the Item that this Block should drop when harvested.
 	 * 
-	 * @param fortune
-	 *            the level of the Fortune enchantment on the player's tool
+	 * @param fortune the level of the Fortune enchantment on the player's tool
 	 */
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return ((Integer) state.getValue(AGE)).intValue() == 6 ? this.getCrop() : this.getSeed();

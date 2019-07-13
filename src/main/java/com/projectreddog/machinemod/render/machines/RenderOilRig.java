@@ -5,22 +5,22 @@ import org.lwjgl.opengl.GL11;
 import com.projectreddog.machinemod.model.ModelOilRig;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.BufferBuilder;
-import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.culling.ICamera;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.model.EntityModel;
+import net.minecraft.client.renderer.model.BakedQuad;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3i;
 
-public class RenderOilRig extends Render {
+public class RenderOilRig extends EntityRenderer {
 
 	float wheelRadius = 10f;
-	protected ModelBase modelOilRig;
+	protected EntityModel modelOilRig;
 
-	public RenderOilRig(RenderManager renderManager) {
+	public RenderOilRig(EntityRendererManager renderManager) {
 
 		super(renderManager);
 

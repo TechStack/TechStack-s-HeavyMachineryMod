@@ -25,7 +25,8 @@ public class BlockMachineAssemblyTable extends BlockContainer {
 	public BlockMachineAssemblyTable() {
 		super(Material.IRON);
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 

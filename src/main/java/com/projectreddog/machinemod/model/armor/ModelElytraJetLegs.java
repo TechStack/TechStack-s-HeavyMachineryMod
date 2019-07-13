@@ -11,17 +11,17 @@ import com.projectreddog.machinemod.render.armor.RenderElytraJetAlegs;
 import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.block.model.IBakedModel;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.client.renderer.entity.model.BipedModel;
+import net.minecraft.client.renderer.model.IBakedModel;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.model.obj.OBJModel;
 
-public class ModelElytraJetLegs extends ModelBiped {
+public class ModelElytraJetLegs<T extends LivingEntity> extends BipedModel {
 	public OBJModel objModel;
 	private HashMap<String, IBakedModel> modelParts;
 	public boolean isElytraFlying = false;
@@ -38,16 +38,17 @@ public class ModelElytraJetLegs extends ModelBiped {
 
 	}
 
+	// public void render(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+	public void render(T entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		// super.render(entity, f, f1, f2, f3, f4, f5);
 		GL11.glPushMatrix();
 		boolean hasFuel = false;
-		Minecraft.getMinecraft().getTextureManager().bindTexture(RenderElytraJetAlegs.getEntityTexture(entity));
+		Minecraft.getInstance().getTextureManager().bindTexture(RenderElytraJetAlegs.getEntityTexture(entity));
 
-		if (entity instanceof EntityPlayer) {
-			ItemStack is = ((EntityPlayer) entity).getItemStackFromSlot(EntityEquipmentSlot.LEGS);
-			if (ItemMachineModElytraJetLegs.MaxFuel - is.getItemDamage() > 0) {
+		if (entity instanceof PlayerEntity) {
+			ItemStack is = ((PlayerEntity) entity).getItemStackFromSlot(EquipmentSlotType.LEGS);
+			if (ItemMachineModElytraJetLegs.MaxFuel - is.getDamage() > 0) {
 				hasFuel = true;
 			}
 		}

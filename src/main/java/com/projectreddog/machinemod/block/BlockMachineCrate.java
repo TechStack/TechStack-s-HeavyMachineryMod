@@ -27,7 +27,9 @@ public class BlockMachineCrate extends BlockContainer {
 	protected BlockMachineCrate(Material material) {
 		super(material);
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
-		this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_CRATE);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" +
+		// Reference.MODBLOCK_MACHINE_CRATE);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_CRATE);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
@@ -66,7 +68,8 @@ public class BlockMachineCrate extends BlockContainer {
 
 					TileEntityCrate crate = (TileEntityCrate) te;
 					if (playerIn.getHeldItemMainhand().isEmpty()) {
-						crate.removeStack(-1);// -1 for full stack to be done later
+						crate.removeStack(-1);// -1 for full stack to be done
+												// later
 					}
 				}
 			}
@@ -74,7 +77,9 @@ public class BlockMachineCrate extends BlockContainer {
 	}
 
 	@Override
-	// public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+	// public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState
+	// state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float
+	// hitX, float hitY, float hitZ)
 
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		playerIn.getActiveItemStack();
@@ -89,7 +94,8 @@ public class BlockMachineCrate extends BlockContainer {
 					if (!heldItem.isEmpty()) {
 						boolean result = crate.AddStack(heldItem);
 						if (result) {
-							// success we added it so remove from players inventory
+							// success we added it so remove from players
+							// inventory
 							playerIn.setHeldItem(hand, ItemStack.EMPTY);
 						}
 					}

@@ -5,53 +5,53 @@ import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
 import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.model.ModelBagger;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.BufferBuilder;
-import net.minecraft.client.renderer.EntityRenderer;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderItem;
+import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.culling.ICamera;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.model.EntityModel;
+import net.minecraft.client.renderer.model.BakedQuad;
+import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3i;
 
-public class RenderBagger extends Render {
+public class RenderBagger extends EntityRenderer {
 
 	float wheelRadius = 10f;
-	protected ModelBase modelBagger;
+	protected EntityModel modelBagger;
 
-	private RenderItem itemRenderer;
+	private ItemRenderer itemRenderer;
 
-	public RenderBagger(RenderManager renderManager) {
+	public RenderBagger(EntityRendererManager renderManager) {
 
 		super(renderManager);
 
 		// LogHelper.info("in RenderLoader constructor");
 		shadowSize = 1F;
 		this.modelBagger = new ModelBagger();
-		itemRenderer = Minecraft.getMinecraft().getRenderItem();
+		itemRenderer = Minecraft.getInstance().getItemRenderer();
 
 	}
 
 	@Override
 	public boolean shouldRender(Entity entity, ICamera camera, double camX, double camY, double camZ) {
-		return true; // super.shouldRender(entity, camera, camX, camY, camZ) || (entity.riddenByEntity != null);
+		return true; // super.shouldRender(entity, camera, camX, camY, camZ) ||
+						// (entity.riddenByEntity != null);
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class RenderBagger extends Render {
 		int count = 0;
 		// GlStateManager.translate(-.0f, 1.0F, 0F);
 		GL11.glRotatef(90f, 0, 0, 1);
-		GlStateManager.translate(0f, -1.5F, 0F);
+		GlStateManager.translatef(0f, -1.5F, 0F);
 
 		wheelRadius = 8.f;
 		for (int i = 0; i < eL.SIZE; i++) {
@@ -102,14 +102,14 @@ public class RenderBagger extends Render {
 
 				if (count > 16) {
 					count = 0;
-					GlStateManager.translate(0f, 1F, 0F);
+					GlStateManager.translatef(0f, 1F, 0F);
 
 				}
 				// GlStateManager.translate(.7F, 0.0F, 0F);
 				count += 1;
 
 				GL11.glRotatef(22.5f, 0, 1, 0);
-				GlStateManager.translate(wheelRadius, 0.0F, 0F);
+				GlStateManager.translatef(wheelRadius, 0.0F, 0F);
 				GlStateManager.enableRescaleNormal();
 
 				if (ibakedmodel.isBuiltInRenderer()) {
@@ -121,18 +121,18 @@ public class RenderBagger extends Render {
 					BufferBuilder worldrenderer = tessellator.getBuffer();
 					worldrenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
 					this.renderManager.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-					EnumFacing[] aenumfacing = EnumFacing.values();
+					Direction[] aenumfacing = Direction.values();
 					int j = aenumfacing.length;
 
 					for (int k = 0; k < j; ++k) {
-						EnumFacing enumfacing = aenumfacing[k];
+						Direction enumfacing = aenumfacing[k];
 						this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, enumfacing, 0), -1, is);
 					}
 
 					this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, null, 0), -1, is);
 					tessellator.draw();
 				}
-				GlStateManager.translate(wheelRadius * -1, 0.0F, 0F);
+				GlStateManager.translatef(wheelRadius * -1, 0.0F, 0F);
 
 				// GL11.glRotatef(-45, 1, 1, 0);
 				even = !even;
@@ -163,7 +163,8 @@ public class RenderBagger extends Render {
 			j = p_175032_3_;
 
 			if (flag && bakedquad.hasTintIndex()) {
-				// j = p_175032_4_.getItem().getColorFromItemStack(p_175032_4_, bakedquad.getTintIndex());
+				// j = p_175032_4_.getItem().getColorFromItemStack(p_175032_4_,
+				// bakedquad.getTintIndex());
 
 				if (EntityRenderer.anaglyphEnable) {
 					j = TextureUtil.anaglyphColor(j);

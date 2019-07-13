@@ -6,14 +6,12 @@ import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.IProperty;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -21,6 +19,7 @@ import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeColorHelper;
+import net.minecraft.world.chunk.BlockStateContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -33,7 +32,8 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 		super();
 
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_MOWED_GRASS);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_MOWED_GRASS);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_MOWED_GRASS);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
@@ -44,7 +44,8 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 	}
 
 	/**
-	 * Possibly modify the given BlockState before rendering it on an Entity (Minecarts, Endermen, ...)
+	 * Possibly modify the given BlockState before rendering it on an Entity
+	 * (Minecarts, Endermen, ...)
 	 */
 	@SideOnly(Side.CLIENT)
 	public IBlockState getStateForEntityRender(IBlockState state) {
@@ -123,8 +124,7 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 	/**
 	 * Get the Item that this Block should drop when harvested.
 	 * 
-	 * @param fortune
-	 *            the level of the Fortune enchantment on the player's tool
+	 * @param fortune the level of the Fortune enchantment on the player's tool
 	 */
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return Blocks.DIRT.getItemDropped(Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT), rand, fortune);

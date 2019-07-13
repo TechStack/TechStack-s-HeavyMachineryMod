@@ -11,17 +11,17 @@ import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentTrench
 import com.projectreddog.machinemod.model.ModelTractor;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderTractor extends Render {
+public class RenderTractor extends EntityRenderer {
 
-	protected ModelBase modelTractor;
+	protected EntityModel modelTractor;
 
-	public RenderTractor(RenderManager renderManager) {
+	public RenderTractor(EntityRendererManager renderManager) {
 
 		super(renderManager);
 		shadowSize = 1F;

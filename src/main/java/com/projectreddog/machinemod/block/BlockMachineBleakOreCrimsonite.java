@@ -1,26 +1,27 @@
 package com.projectreddog.machinemod.block;
 
+import java.util.List;
 import java.util.Random;
 
+import com.google.common.collect.Lists;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.Item;
+import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.storage.loot.LootContext;
 
 public class BlockMachineBleakOreCrimsonite extends BlockMachineMod {
 
 	public BlockMachineBleakOreCrimsonite() {
-		super();
+		super(Block.Properties.create(Material.ROCK).hardnessAndResistance(-1.0F, 6000000.0F).sound(SoundType.METAL));
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLEAK_ORE_CRIMSONITE);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLEAK_ORE_CRIMSONITE);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_BLEAK_ORE_CRIMSONITE);
-
-		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
-		this.setBlockUnbreakable();// not sure on the hardness
-		this.setSoundType(SoundType.METAL);
-		this.setResistance(6000000.0F);
 
 	}
 
@@ -34,8 +35,13 @@ public class BlockMachineBleakOreCrimsonite extends BlockMachineMod {
 	/**
 	 * Get the Item that this Block should drop when harvested.
 	 */
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return ModItems.crimsonitepebble;
+	@Override
+	@Deprecated
+	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+		List<ItemStack> list = Lists.newArrayList();
+		list.add(new ItemStack(ModItems.crimsonitepebble));
+
+		return list;
 	}
 
 }

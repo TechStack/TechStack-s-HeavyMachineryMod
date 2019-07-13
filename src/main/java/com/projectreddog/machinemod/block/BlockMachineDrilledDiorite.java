@@ -3,16 +3,16 @@ package com.projectreddog.machinemod.block;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.block.SoundType;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.IProperty;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.BlockStateContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -22,7 +22,8 @@ public class BlockMachineDrilledDiorite extends BlockMachineModManyTexture {
 	public BlockMachineDrilledDiorite() {
 		super();
 		// 1.8
-		this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_DRILLED_DIORITE);
+		// REMOVED 1.14
+		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_DRILLED_DIORITE);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_DRILLED_DIORITE);
 
 		// this.setBlockName(Reference.MODBLOCK_MACHINE_DRILLED_STONE);
@@ -58,7 +59,8 @@ public class BlockMachineDrilledDiorite extends BlockMachineModManyTexture {
 	}
 
 	/**
-	 * Possibly modify the given BlockState before rendering it on an Entity (Minecarts, Endermen, ...)
+	 * Possibly modify the given BlockState before rendering it on an Entity
+	 * (Minecarts, Endermen, ...)
 	 */
 	@SideOnly(Side.CLIENT)
 	public IBlockState getStateForEntityRender(IBlockState state) {
