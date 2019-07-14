@@ -7,12 +7,12 @@ import com.projectreddog.machinemod.entity.EntityCombine;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiCombine extends GuiContainer {
 
-	public GuiCombine(InventoryPlayer inventoryPlayer, EntityCombine combine) {
+	public GuiCombine(PlayerInventory inventoryPlayer, EntityCombine combine) {
 		// the container is instanciated and passed to the superclass for
 		// handling
 

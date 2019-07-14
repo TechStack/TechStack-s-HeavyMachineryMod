@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.container;
 
 import com.projectreddog.machinemod.entity.EntityLaserMiner;
 
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.SlotItemHandler;
@@ -11,7 +11,7 @@ public class ContainerLaserMiner extends Container {
 
 	protected EntityLaserMiner laserminer;
 
-	public ContainerLaserMiner(InventoryPlayer inventoryPlayer, EntityLaserMiner laserminer) {
+	public ContainerLaserMiner(PlayerInventory inventoryPlayer, EntityLaserMiner laserminer) {
 		this.laserminer = laserminer;
 
 		for (int i = 0; i < 6; i++) {
@@ -29,7 +29,7 @@ public class ContainerLaserMiner extends Container {
 		return laserminer.isUsableByPlayer(player);
 	}
 
-	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
+	protected void bindPlayerInventory(PlayerInventory inventoryPlayer) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
 				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 139 + i * 18));

@@ -7,14 +7,14 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityTurboFurnace;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiTurboFurnace extends GuiContainer {
 
 	private TileEntityTurboFurnace turboFurnace;
 
-	public GuiTurboFurnace(InventoryPlayer inventoryPlayer, TileEntityTurboFurnace turboFurnace) {
+	public GuiTurboFurnace(PlayerInventory inventoryPlayer, TileEntityTurboFurnace turboFurnace) {
 		// the container is instanciated and passed to the superclass for
 		// handling
 

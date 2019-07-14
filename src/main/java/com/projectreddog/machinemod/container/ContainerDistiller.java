@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.container;
 
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.inventory.container.IContainerListener;
@@ -16,7 +16,7 @@ public class ContainerDistiller extends Container {
 	private int lastFuelStorage;
 	private int lastRemainBurnTime;
 
-	public ContainerDistiller(InventoryPlayer inventoryPlayer, TileEntityDistiller distiller) {
+	public ContainerDistiller(PlayerInventory inventoryPlayer, TileEntityDistiller distiller) {
 		this.distiller = distiller;
 		lastFuelStorage = -1;
 		lastRemainBurnTime = -1;
@@ -35,7 +35,7 @@ public class ContainerDistiller extends Container {
 		return true;
 	}
 
-	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
+	protected void bindPlayerInventory(PlayerInventory inventoryPlayer) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
 				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 139 + i * 18));

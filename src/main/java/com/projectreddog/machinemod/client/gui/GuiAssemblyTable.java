@@ -16,7 +16,7 @@ import com.projectreddog.machinemod.utility.DeprecatedWrapper;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -29,7 +29,7 @@ public class GuiAssemblyTable extends GuiContainer {
 	private final int NEXT_BUTTON_LIST_INDEX = 1;
 	private final int PREVIOUS_BUTTON_LIST_INDEX = 2;
 
-	public GuiAssemblyTable(InventoryPlayer inventoryPlayer, TileEntityAssemblyTable asssemblyTable) {
+	public GuiAssemblyTable(PlayerInventory inventoryPlayer, TileEntityAssemblyTable asssemblyTable) {
 		// the container is instanciated and passed to the superclass for
 		// handling
 		super(new ContainerAssemblyTable(inventoryPlayer, asssemblyTable));
@@ -57,7 +57,7 @@ public class GuiAssemblyTable extends GuiContainer {
 		buttonY = this.height / 2 - 50;
 		this.buttonList.add(new GuiButton(Reference.GUI_ASSEMBLY_TABLE_BUTTON_PREV_PAGE, buttonX, buttonY, 30, 20, DeprecatedWrapper.translateToLocal("<<")));
 		this.buttonList.get(PREVIOUS_BUTTON_LIST_INDEX).enabled = currentPage > 0 ? true : false;
-		// "↓↑→←"
+		// "â†“â†‘â†’â†�"
 	}
 
 	@Override

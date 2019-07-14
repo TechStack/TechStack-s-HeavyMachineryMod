@@ -7,13 +7,13 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiFractionalDistiller extends GuiContainer {
 	private TileEntityFractionalDistillation fractionaldistiller;
 
-	public GuiFractionalDistiller(InventoryPlayer inventoryPlayer, TileEntityFractionalDistillation fractionaldistiller) {
+	public GuiFractionalDistiller(PlayerInventory inventoryPlayer, TileEntityFractionalDistillation fractionaldistiller) {
 		// the container is instanciated and passed to the superclass for
 		// handling
 

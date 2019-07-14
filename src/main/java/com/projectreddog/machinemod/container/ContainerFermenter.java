@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.container;
 
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.container.IContainerListener;
 import net.minecraft.item.ItemStack;
@@ -16,7 +16,7 @@ public class ContainerFermenter extends Container {
 	protected TileEntityFermenter fermenter;
 	protected int lastFuelStorage;
 
-	public ContainerFermenter(InventoryPlayer inventoryPlayer, TileEntityFermenter fermenter) {
+	public ContainerFermenter(PlayerInventory inventoryPlayer, TileEntityFermenter fermenter) {
 		this.fermenter = fermenter;
 		lastFuelStorage = -1;
 		for (int i = 0; i < 1; i++) {
@@ -34,7 +34,7 @@ public class ContainerFermenter extends Container {
 		return fermenter.isUsableByPlayer(player);
 	}
 
-	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
+	protected void bindPlayerInventory(PlayerInventory inventoryPlayer) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
 				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 139 + i * 18));

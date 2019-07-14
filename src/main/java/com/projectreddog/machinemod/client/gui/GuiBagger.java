@@ -7,12 +7,12 @@ import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiBagger extends GuiContainer {
 
-	public GuiBagger(InventoryPlayer inventoryPlayer, EntityBagger bagger) {
+	public GuiBagger(PlayerInventory inventoryPlayer, EntityBagger bagger) {
 		// the container is instanciated and passed to the superclass for
 		// handling
 

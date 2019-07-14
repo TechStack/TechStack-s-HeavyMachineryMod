@@ -7,12 +7,12 @@ import com.projectreddog.machinemod.entity.EntityDumpTruck;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiDumpTruck extends GuiContainer {
 
-	public GuiDumpTruck(InventoryPlayer inventoryPlayer, EntityDumpTruck dumpTruck) {
+	public GuiDumpTruck(PlayerInventory inventoryPlayer, EntityDumpTruck dumpTruck) {
 		// the container is instanciated and passed to the superclass for
 		// handling
 

@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.container;
 
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.container.IContainerListener;
 import net.minecraft.item.ItemStack;
@@ -14,7 +14,7 @@ public class ContainerCanner extends Container {
 	protected TileEntityFuelPump canner;
 	private int lastFuelStorage;
 
-	public ContainerCanner(InventoryPlayer inventoryPlayer, TileEntityFuelPump canner) {
+	public ContainerCanner(PlayerInventory inventoryPlayer, TileEntityFuelPump canner) {
 		this.canner = canner;
 		this.lastFuelStorage = -1;
 		for (int i = 0; i < 1; i++) {
@@ -32,7 +32,7 @@ public class ContainerCanner extends Container {
 		return canner.isUsableByPlayer(player);
 	}
 
-	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
+	protected void bindPlayerInventory(PlayerInventory inventoryPlayer) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
 				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 139 + i * 18));

@@ -3,7 +3,7 @@ package com.projectreddog.machinemod.container;
 import com.projectreddog.machinemod.inventory.SlotFractionalDistllerBucket;
 import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
 
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.inventory.container.IContainerListener;
@@ -43,7 +43,7 @@ public class ContainerFractionalDistiller extends Container {
 		return isSlot5Active;
 	}
 
-	public ContainerFractionalDistiller(InventoryPlayer inventoryPlayer, TileEntityFractionalDistillation fractionaldistiller) {
+	public ContainerFractionalDistiller(PlayerInventory inventoryPlayer, TileEntityFractionalDistillation fractionaldistiller) {
 		this.fractionaldistiller = fractionaldistiller;
 		lastValue = new int[this.fractionaldistiller.getFieldCount()];
 		addSlotToContainer(new SlotFurnaceFuel(fractionaldistiller, 0, 80, 108));
@@ -82,7 +82,7 @@ public class ContainerFractionalDistiller extends Container {
 		return true;
 	}
 
-	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
+	protected void bindPlayerInventory(PlayerInventory inventoryPlayer) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
 				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 139 + i * 18));

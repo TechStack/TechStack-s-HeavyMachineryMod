@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.container;
 
 import com.projectreddog.machinemod.tileentities.TileEntityScreen;
 
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 
@@ -11,7 +11,7 @@ public class ContainerScreen extends Container {
 	protected TileEntityScreen screen;
 	private int lastFuelStorage;
 
-	public ContainerScreen(InventoryPlayer inventoryPlayer, TileEntityScreen screen) {
+	public ContainerScreen(PlayerInventory inventoryPlayer, TileEntityScreen screen) {
 		this.screen = screen;
 		lastFuelStorage = -1;
 		// slot 0 = north
@@ -37,7 +37,7 @@ public class ContainerScreen extends Container {
 		return screen.isUsableByPlayer(player);
 	}
 
-	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
+	protected void bindPlayerInventory(PlayerInventory inventoryPlayer) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
 				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 139 + i * 18));

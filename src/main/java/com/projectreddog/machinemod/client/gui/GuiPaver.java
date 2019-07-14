@@ -7,12 +7,12 @@ import com.projectreddog.machinemod.entity.EntityPaver;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiPaver extends GuiContainer {
 
-	public GuiPaver(InventoryPlayer inventoryPlayer, EntityPaver paver) {
+	public GuiPaver(PlayerInventory inventoryPlayer, EntityPaver paver) {
 		// the container is instanciated and passed to the superclass for
 		// handling
 

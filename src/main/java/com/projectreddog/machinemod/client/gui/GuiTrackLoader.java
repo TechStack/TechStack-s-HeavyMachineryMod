@@ -7,12 +7,12 @@ import com.projectreddog.machinemod.entity.EntityTrackLoader;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiTrackLoader extends GuiContainer {
 
-	public GuiTrackLoader(InventoryPlayer inventoryPlayer, EntityTrackLoader trackLoader) {
+	public GuiTrackLoader(PlayerInventory inventoryPlayer, EntityTrackLoader trackLoader) {
 		// the container is instanciated and passed to the superclass for
 		// handling
 

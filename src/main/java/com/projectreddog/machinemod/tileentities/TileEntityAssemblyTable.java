@@ -9,7 +9,7 @@ import com.projectreddog.machinemod.item.blueprint.ItemBlueprint;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.LogHelper;
 
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
@@ -382,7 +382,7 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickableTile
 					}
 				}
 
-				InventoryPlayer ip = player.inventory;
+				PlayerInventory ip = player.inventory;
 				int size = ip.getSizeInventory();
 				for (int i = 0; i < size; i++) {
 					ItemStack playerStack = ip.getStackInSlot(i);
@@ -436,7 +436,7 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickableTile
 					}
 				}
 
-				InventoryPlayer ip = player.inventory;
+				PlayerInventory ip = player.inventory;
 				int size = ip.getSizeInventory();
 				for (int i = 0; i < size; i++) {
 					ItemStack playerStack = ip.getStackInSlot(i);

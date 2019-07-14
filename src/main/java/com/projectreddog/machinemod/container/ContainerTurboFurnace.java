@@ -5,7 +5,7 @@ import com.projectreddog.machinemod.inventory.SlotNotBlazePowder;
 import com.projectreddog.machinemod.inventory.SlotOutputOnlyTurobFurnace;
 import com.projectreddog.machinemod.tileentities.TileEntityTurboFurnace;
 
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.container.IContainerListener;
 import net.minecraft.item.ItemStack;
@@ -21,7 +21,7 @@ public class ContainerTurboFurnace extends Container {
 	protected int lastFuleBurnTimeRemaining = 0;
 	protected int lastProcessingTimeRemaining = 0;
 
-	public ContainerTurboFurnace(InventoryPlayer inventoryPlayer, TileEntityTurboFurnace turbofurnace) {
+	public ContainerTurboFurnace(PlayerInventory inventoryPlayer, TileEntityTurboFurnace turbofurnace) {
 		this.turbofurnace = turbofurnace;
 
 		lastFuleBurnTimeRemaining = -1;
@@ -44,7 +44,7 @@ public class ContainerTurboFurnace extends Container {
 		return turbofurnace.isUsableByPlayer(player);
 	}
 
-	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
+	protected void bindPlayerInventory(PlayerInventory inventoryPlayer) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
 				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 139 + i * 18));

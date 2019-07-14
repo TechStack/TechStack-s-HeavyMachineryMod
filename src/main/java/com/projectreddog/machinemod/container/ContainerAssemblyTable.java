@@ -23,7 +23,7 @@ public class ContainerAssemblyTable extends Container {
 	protected int lastworkConsumedForThisTask;
 	protected int lastHasBuildProject;
 
-	public ContainerAssemblyTable(InventoryPlayer playerInventory, TileEntityAssemblyTable assemblyTable) {
+	public ContainerAssemblyTable(PlayerInventory playerInventory, TileEntityAssemblyTable assemblyTable) {
 		this.assemblyTable = assemblyTable;
 		lasttotalWorkNeededForThisTask = -1;
 		lastworkConsumedForThisTask = -1;

@@ -3,6 +3,8 @@ package com.projectreddog.machinemod.item.blueprint;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.utility.LogHelper;
 
+import net.minecraft.item.Items;
+
 public class ItemBlueprintContinuousMiner extends ItemBlueprint {
 	public String registryName = "blueprintcontinuousminer";
 

@@ -7,13 +7,13 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiCentrifuge extends GuiContainer {
 	private TileEntityCentrifuge centrifuge;
 
-	public GuiCentrifuge(InventoryPlayer inventoryPlayer, TileEntityCentrifuge centrifuge) {
+	public GuiCentrifuge(PlayerInventory inventoryPlayer, TileEntityCentrifuge centrifuge) {
 		// the container is instanciated and passed to the superclass for
 		// handling
 
