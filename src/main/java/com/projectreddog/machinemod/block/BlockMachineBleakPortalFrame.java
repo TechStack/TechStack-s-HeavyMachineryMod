@@ -17,7 +17,7 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.state.IProperty;
 import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockMachineBleakPortalFrame extends BlockMachineMod {
-	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+	public static final PropertyDirection FACING = PropertyDirection.create("facing", Direction.Plane.HORIZONTAL);
 	public static final PropertyBool HAS_STAR = PropertyBool.create("netherstar");
 	protected static final AxisAlignedBB AABB_BLOCK_WEST = new AxisAlignedBB(0.5D, 0.0D, 0.0D, 1.0D, 1.D, 1.0D);
 	protected static final AxisAlignedBB AABB_BLOCK_EAST = new AxisAlignedBB(0.0D, 0.0D, 0.0D, .5D, 1.D, 1.0D);
@@ -39,7 +39,7 @@ public class BlockMachineBleakPortalFrame extends BlockMachineMod {
 
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(HAS_STAR, Boolean.valueOf(false)));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, Direction.NORTH).withProperty(HAS_STAR, Boolean.valueOf(false)));
 
 		// 1.8
 		// REMOVED 1.14
@@ -62,7 +62,7 @@ public class BlockMachineBleakPortalFrame extends BlockMachineMod {
 		return false;
 	}
 
-	public BlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+	public BlockState onBlockPlaced(World worldIn, BlockPos pos, Direction facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());// .withProperty(HAS_STAR,
 																										// false);
 	}
@@ -72,13 +72,13 @@ public class BlockMachineBleakPortalFrame extends BlockMachineMod {
 	 */
 	@SideOnly(Side.CLIENT)
 	public BlockState getStateForEntityRender(BlockState state) {
-		return this.getDefaultState().withProperty(FACING, EnumFacing.SOUTH);
+		return this.getDefaultState().withProperty(FACING, Direction.SOUTH);
 	}
 
 	/**
 	 * Called by ItemBlocks just before a block is actually set in the world, to allow for adjustments to the BlockState
 	 */
-	public BlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+	public BlockState getStateForPlacement(World worldIn, BlockPos pos, Direction facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()).withProperty(HAS_STAR, Boolean.valueOf(false));
 	}
 
@@ -86,7 +86,7 @@ public class BlockMachineBleakPortalFrame extends BlockMachineMod {
 	 * Convert the given metadata into a BlockState for this Block
 	 */
 	public BlockState getStateFromMeta(int meta) {
-		return this.getDefaultState().withProperty(HAS_STAR, Boolean.valueOf((meta & 4) != 0)).withProperty(FACING, EnumFacing.getHorizontal(meta & 3));
+		return this.getDefaultState().withProperty(HAS_STAR, Boolean.valueOf((meta & 4) != 0)).withProperty(FACING, Direction.getHorizontal(meta & 3));
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class BlockMachineBleakPortalFrame extends BlockMachineMod {
 	 */
 	public int getMetaFromState(BlockState state) {
 		int i = 0;
-		i = i | ((EnumFacing) state.getValue(FACING)).getHorizontalIndex();
+		i = i | ((Direction) state.getValue(FACING)).getHorizontalIndex();
 
 		if (((Boolean) state.getValue(HAS_STAR)).booleanValue()) {
 			i |= 4;
@@ -119,16 +119,16 @@ public class BlockMachineBleakPortalFrame extends BlockMachineMod {
 
 	@Nullable
 	public AxisAlignedBB getCollisionBoundingBox(BlockState blockState, IBlockAccess worldIn, BlockPos pos) {
-		if (blockState.getValue(FACING) == EnumFacing.WEST) {
+		if (blockState.getValue(FACING) == Direction.WEST) {
 			return AABB_BLOCK_WEST;
 		}
-		if (blockState.getValue(FACING) == EnumFacing.EAST) {
+		if (blockState.getValue(FACING) == Direction.EAST) {
 			return AABB_BLOCK_EAST;
 		}
-		if (blockState.getValue(FACING) == EnumFacing.NORTH) {
+		if (blockState.getValue(FACING) == Direction.NORTH) {
 			return AABB_BLOCK_NORTH;
 		}
-		if (blockState.getValue(FACING) == EnumFacing.SOUTH) {
+		if (blockState.getValue(FACING) == Direction.SOUTH) {
 			return AABB_BLOCK_SOUTH;
 		}
 		return NULL_AABB;
@@ -136,22 +136,22 @@ public class BlockMachineBleakPortalFrame extends BlockMachineMod {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(BlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+	public boolean shouldSideBeRendered(BlockState blockState, IBlockAccess blockAccess, BlockPos pos, Direction side) {
 		pos = pos.offset(side);
-		EnumFacing enumfacing = null;
+		Direction Direction = null;
 
 		if (blockState.getBlock() == this) {
-			enumfacing = (EnumFacing) blockState.getValue(FACING);
+			Direction = (Direction) blockState.getValue(FACING);
 
-			if (enumfacing == null) {
+			if (Direction == null) {
 				return false;
 			}
 
-			if ((enumfacing == EnumFacing.NORTH || enumfacing == EnumFacing.SOUTH) && side != EnumFacing.EAST && side != EnumFacing.WEST) {
+			if ((Direction == Direction.NORTH || Direction == Direction.SOUTH) && side != Direction.EAST && side != Direction.WEST) {
 				return false;
 			}
 
-			if ((enumfacing == EnumFacing.EAST || enumfacing == EnumFacing.WEST) && side != EnumFacing.SOUTH && side != EnumFacing.NORTH) {
+			if ((Direction == Direction.EAST || Direction == Direction.WEST) && side != Direction.SOUTH && side != Direction.NORTH) {
 				return false;
 			}
 		}
@@ -170,7 +170,7 @@ public class BlockMachineBleakPortalFrame extends BlockMachineMod {
 	}
 
 	public void DisablePortalForThisBlock(World world, BlockPos bottomOfOneSide) {
-		EnumFacing ef = world.getBlockState(bottomOfOneSide).getValue(FACING);
+		Direction ef = world.getBlockState(bottomOfOneSide).getValue(FACING);
 
 		if (world.getBlockState(bottomOfOneSide).getBlock() == ModBlocks.machinebleakportalframe) {
 			BlockUtil.setBlockandNotify(world, bottomOfOneSide, ModBlocks.machinebleakportalframe.getDefaultState().withProperty(FACING, ef).withProperty(HAS_STAR, Boolean.valueOf(false)));
@@ -180,7 +180,7 @@ public class BlockMachineBleakPortalFrame extends BlockMachineMod {
 
 	public BlockPos findBottomPortalFrame(World world, BlockPos pos) {
 		BlockPos result = pos;
-		EnumFacing ef = world.getBlockState(pos).getValue(FACING);
+		Direction ef = world.getBlockState(pos).getValue(FACING);
 		int depth = 1;
 		while (world.getBlockState(result.down()).getBlock() == ModBlocks.machinebleakportalframe && depth < 3) {
 			// its a portal frame
@@ -208,7 +208,7 @@ public class BlockMachineBleakPortalFrame extends BlockMachineMod {
 
 	public BlockPos findCenterBottom(World world, BlockPos pos) {
 		if (world.getBlockState(pos).getBlock() == ModBlocks.machinebleakportalframe) {
-			EnumFacing ef = world.getBlockState(pos).getValue(FACING);
+			Direction ef = world.getBlockState(pos).getValue(FACING);
 			BlockPos portalColumn = pos.offset(ef);
 			while (world.getBlockState(portalColumn.down()).getBlock() == ModBlocks.machinebleakportal) {
 				portalColumn = portalColumn.down();
@@ -221,7 +221,7 @@ public class BlockMachineBleakPortalFrame extends BlockMachineMod {
 
 	public boolean validatePortal(World world, BlockPos pos) {
 		boolean result = true;
-		EnumFacing ef = world.getBlockState(pos).getValue(FACING);
+		Direction ef = world.getBlockState(pos).getValue(FACING);
 		BlockPos bp = findCenterBottom(world, pos);
 		if (bp == null) {
 			result = false;

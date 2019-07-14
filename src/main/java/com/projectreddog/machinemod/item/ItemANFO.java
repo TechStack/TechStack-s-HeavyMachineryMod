@@ -7,7 +7,7 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -25,8 +25,8 @@ public class ItemANFO extends ItemMachineMod {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
-		// public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, Direction side, float xOff, float yOff, float zOff) {
+		// public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, Direction side, float xOff, float yOff, float zOff) {
 		ItemStack stack = player.getHeldItem(hand);
 		boolean result = false;
 
@@ -34,8 +34,8 @@ public class ItemANFO extends ItemMachineMod {
 		final int NOTIFY_NEIGHBOURS_FLAG = 1;
 		if (world.getBlockState(pos).getBlock() == ModBlocks.machinedrilledstone || world.getBlockState(pos).getBlock() == ModBlocks.machinedrilledandesite || world.getBlockState(pos).getBlock() == ModBlocks.machinedrilleddiorite || world.getBlockState(pos).getBlock() == ModBlocks.machinedrilledgranite) {
 
-			EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineDrilledStone.FACING);
-			if (ef == EnumFacing.DOWN || ef == EnumFacing.UP) {
+			Direction ef = (Direction) world.getBlockState(pos).getValue(BlockMachineDrilledStone.FACING);
+			if (ef == Direction.DOWN || ef == Direction.UP) {
 
 				BlockPos bottom = null;
 				for (int i = 0; i < 17; i++) {
@@ -49,7 +49,7 @@ public class ItemANFO extends ItemMachineMod {
 					world.notifyBlockUpdate(bottom, state, state, 3);
 					result = true;
 				}
-			} else if (ef == EnumFacing.EAST || ef == EnumFacing.WEST || ef == EnumFacing.NORTH || ef == EnumFacing.SOUTH) {
+			} else if (ef == Direction.EAST || ef == Direction.WEST || ef == Direction.NORTH || ef == Direction.SOUTH) {
 
 				BlockPos bottom = null;
 				for (int i = 0; i < 9; i++) {

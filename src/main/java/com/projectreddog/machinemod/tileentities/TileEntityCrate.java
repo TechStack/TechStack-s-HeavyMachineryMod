@@ -14,7 +14,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import scala.Int;
 
 public class TileEntityCrate extends TileEntity implements ITickableTileEntity, ISidedInventory {
@@ -150,10 +150,10 @@ public class TileEntityCrate extends TileEntity implements ITickableTileEntity, 
 	}
 
 	@Override
-	public int[] getSlotsForFace(EnumFacing side) {
+	public int[] getSlotsForFace(Direction side) {
 		// slot 0 = Output (down) Slot 1 = input (up & sides)
 		int[] Slots;
-		if (side == EnumFacing.DOWN) {
+		if (side == Direction.DOWN) {
 			Slots = new int[] { 0 };
 		} else {
 			Slots = new int[] { 1 };
@@ -164,13 +164,13 @@ public class TileEntityCrate extends TileEntity implements ITickableTileEntity, 
 	}
 
 	@Override
-	public boolean canInsertItem(int slot, ItemStack itemStackIn, EnumFacing direction) {
+	public boolean canInsertItem(int slot, ItemStack itemStackIn, Direction direction) {
 
 		// only slot 1 is input !
 		// need to check item too
 		if (itemStackIn.isItemEqual(HeldItem) || HeldItem.isEmpty()) {
 			// same input item or held item is null so accept the item !
-			if (slot == 1 && (direction == EnumFacing.NORTH || direction == EnumFacing.SOUTH || direction == EnumFacing.EAST || direction == EnumFacing.WEST || direction == EnumFacing.UP)) {
+			if (slot == 1 && (direction == Direction.NORTH || direction == Direction.SOUTH || direction == Direction.EAST || direction == Direction.WEST || direction == Direction.UP)) {
 				return true;
 			}
 		}
@@ -178,8 +178,8 @@ public class TileEntityCrate extends TileEntity implements ITickableTileEntity, 
 	}
 
 	@Override
-	public boolean canExtractItem(int slot, ItemStack stack, EnumFacing direction) {
-		if (slot < inventorySize && (direction == EnumFacing.DOWN)) {
+	public boolean canExtractItem(int slot, ItemStack stack, Direction direction) {
+		if (slot < inventorySize && (direction == Direction.DOWN)) {
 			return true;
 		}
 		return false;

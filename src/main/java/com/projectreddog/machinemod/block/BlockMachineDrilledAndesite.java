@@ -8,7 +8,7 @@ import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IProperty;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -34,7 +34,7 @@ public class BlockMachineDrilledAndesite extends BlockMachineModManyTexture {
 
 	}
 
-	public BlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+	public BlockState onBlockPlaced(World worldIn, BlockPos pos, Direction facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		return this.getDefaultState().withProperty(FACING, func_180695_a(worldIn, pos, placer));
 	}
 
@@ -42,16 +42,16 @@ public class BlockMachineDrilledAndesite extends BlockMachineModManyTexture {
 		worldIn.setBlockState(pos, state.withProperty(FACING, func_180695_a(worldIn, pos, placer)), 2);
 	}
 
-	public static EnumFacing func_180695_a(World worldIn, BlockPos p_180695_1_, EntityLivingBase p_180695_2_) {
+	public static Direction func_180695_a(World worldIn, BlockPos p_180695_1_, EntityLivingBase p_180695_2_) {
 		if (MathHelper.abs((float) p_180695_2_.posX - (float) p_180695_1_.getX()) < 2.0F && MathHelper.abs((float) p_180695_2_.posZ - (float) p_180695_1_.getZ()) < 2.0F) {
 			double d0 = p_180695_2_.posY + (double) p_180695_2_.getEyeHeight();
 
 			if (d0 - (double) p_180695_1_.getY() > 2.0D) {
-				return EnumFacing.UP;
+				return Direction.UP;
 			}
 
 			if ((double) p_180695_1_.getY() - d0 > 0.0D) {
-				return EnumFacing.DOWN;
+				return Direction.DOWN;
 			}
 		}
 
@@ -63,23 +63,23 @@ public class BlockMachineDrilledAndesite extends BlockMachineModManyTexture {
 	 */
 	@SideOnly(Side.CLIENT)
 	public BlockState getStateForEntityRender(BlockState state) {
-		return this.getDefaultState().withProperty(FACING, EnumFacing.SOUTH);
+		return this.getDefaultState().withProperty(FACING, Direction.SOUTH);
 	}
 
 	/**
 	 * Convert the given metadata into a BlockState for this Block
 	 */
 	public BlockState getStateFromMeta(int meta) {
-		EnumFacing enumfacing = EnumFacing.getFront(meta);
+		Direction Direction = Direction.getFront(meta);
 
-		return this.getDefaultState().withProperty(FACING, enumfacing);
+		return this.getDefaultState().withProperty(FACING, Direction);
 	}
 
 	/**
 	 * Convert the BlockState into the correct metadata value
 	 */
 	public int getMetaFromState(BlockState state) {
-		return ((EnumFacing) state.getValue(FACING)).getIndex();
+		return ((Direction) state.getValue(FACING)).getIndex();
 	}
 
 	protected BlockStateContainer createBlockState() {
@@ -87,42 +87,42 @@ public class BlockMachineDrilledAndesite extends BlockMachineModManyTexture {
 	}
 
 	@SideOnly(Side.CLIENT)
-	static final class SwitchEnumFacing {
-		static final int[] field_180356_a = new int[EnumFacing.values().length];
+	static final class SwitchDirection {
+		static final int[] field_180356_a = new int[Direction.values().length];
 
 		static {
 			try {
-				field_180356_a[EnumFacing.DOWN.ordinal()] = 1;
+				field_180356_a[Direction.DOWN.ordinal()] = 1;
 			} catch (NoSuchFieldError var6) {
 				;
 			}
 
 			try {
-				field_180356_a[EnumFacing.UP.ordinal()] = 2;
+				field_180356_a[Direction.UP.ordinal()] = 2;
 			} catch (NoSuchFieldError var5) {
 				;
 			}
 
 			try {
-				field_180356_a[EnumFacing.NORTH.ordinal()] = 3;
+				field_180356_a[Direction.NORTH.ordinal()] = 3;
 			} catch (NoSuchFieldError var4) {
 				;
 			}
 
 			try {
-				field_180356_a[EnumFacing.SOUTH.ordinal()] = 4;
+				field_180356_a[Direction.SOUTH.ordinal()] = 4;
 			} catch (NoSuchFieldError var3) {
 				;
 			}
 
 			try {
-				field_180356_a[EnumFacing.WEST.ordinal()] = 5;
+				field_180356_a[Direction.WEST.ordinal()] = 5;
 			} catch (NoSuchFieldError var2) {
 				;
 			}
 
 			try {
-				field_180356_a[EnumFacing.EAST.ordinal()] = 6;
+				field_180356_a[Direction.EAST.ordinal()] = 6;
 			} catch (NoSuchFieldError var1) {
 				;
 			}

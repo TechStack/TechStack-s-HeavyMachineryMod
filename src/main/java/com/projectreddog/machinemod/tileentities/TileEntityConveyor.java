@@ -12,7 +12,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 
@@ -47,20 +47,20 @@ public class TileEntityConveyor extends TileEntity implements ITickableTileEntit
 
 			if (world.getBlockState(pos).getBlock() == ModBlocks.machineconveyor) {
 				if (BlockMachineModConveyor.shouldLift(world, this.pos)) {
-					EnumFacing checkDirection = (EnumFacing) world.getBlockState(this.pos).getValue(BlockMachineModConveyor.FACING);
+					Direction checkDirection = (Direction) world.getBlockState(this.pos).getValue(BlockMachineModConveyor.FACING);
 					BlockPos bp = this.pos;// this.pos.offset(checkDirection);
 					BlockPos bp2 = this.pos.up().add(1, 1, 1);
 					BlockPos temp;
 					double xOffset = 0, zOffset = 0;
-					if (checkDirection == EnumFacing.EAST) {
+					if (checkDirection == Direction.EAST) {
 						bp = bp.west();
 						// working
-					} else if (checkDirection == EnumFacing.WEST) {
+					} else if (checkDirection == Direction.WEST) {
 						bp2 = bp2.east();
-					} else if (checkDirection == EnumFacing.NORTH) {
+					} else if (checkDirection == Direction.NORTH) {
 						bp2 = bp2.south();
 						// not working :(
-					} else if (checkDirection == EnumFacing.SOUTH) {
+					} else if (checkDirection == Direction.SOUTH) {
 						bp = bp.north();
 						// works naturally
 					}
@@ -94,18 +94,18 @@ public class TileEntityConveyor extends TileEntity implements ITickableTileEntit
 				// if (entity instanceof EntityLivingBase) {
 				// ((EntityLivingBase) entity).moveEntity(.1d, 0, 0);
 				// } else {
-				EnumFacing ef = (EnumFacing) world.getBlockState(this.pos).getValue(BlockMachineModConveyor.FACING);
+				Direction ef = (Direction) world.getBlockState(this.pos).getValue(BlockMachineModConveyor.FACING);
 				double x = 0, y = 0, z = 0;
-				if (ef == EnumFacing.EAST) {
+				if (ef == Direction.EAST) {
 					x = MoveSpeed;
 					z = 0;
-				} else if (ef == EnumFacing.WEST) {
+				} else if (ef == Direction.WEST) {
 					x = -MoveSpeed;
 					z = 0;
-				} else if (ef == EnumFacing.NORTH) {
+				} else if (ef == Direction.NORTH) {
 					x = 0;
 					z = -MoveSpeed;
-				} else if (ef == EnumFacing.SOUTH) {
+				} else if (ef == Direction.SOUTH) {
 					x = 0;
 					z = MoveSpeed;
 				} else {

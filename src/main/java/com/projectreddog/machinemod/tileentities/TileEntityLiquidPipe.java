@@ -7,7 +7,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
@@ -198,7 +198,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickableTileEnt
 		connectedWest = false;
 		connectedDown = false;
 		connectedUp = false;
-		for (EnumFacing e : EnumFacing.VALUES) {
+		for (Direction e : Direction.VALUES) {
 			if (this.world.getTileEntity(this.pos.offset(e)) instanceof IFluidTank) {
 				// LogHelper.info("Connection point found to the : " + e.toString());
 				switch (e) {

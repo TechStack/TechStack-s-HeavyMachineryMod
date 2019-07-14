@@ -15,7 +15,7 @@ import net.minecraft.state.IProperty;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -96,7 +96,7 @@ public class BlockMachineModConduit extends BlockContainer {
 		return false;
 	}
 
-	public BlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+	public BlockState onBlockPlaced(World worldIn, BlockPos pos, Direction facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		return this.getDefaultState().withProperty(UP, false).withProperty(DOWN, false).withProperty(NORTH, false).withProperty(EAST, false).withProperty(SOUTH, false).withProperty(WEST, false);
 	}
 
@@ -116,9 +116,9 @@ public class BlockMachineModConduit extends BlockContainer {
 	 * Convert the given metadata into a BlockState for this Block
 	 */
 	public BlockState getStateFromMeta(int meta) {
-		EnumFacing enumfacing = EnumFacing.getFront(meta);
-		if (enumfacing.getAxis() == EnumFacing.Axis.Y) {
-			enumfacing = EnumFacing.NORTH;
+		Direction Direction = Direction.getFront(meta);
+		if (Direction.getAxis() == Direction.Axis.Y) {
+			Direction = Direction.NORTH;
 		}
 		return this.getDefaultState().withProperty(UP, false).withProperty(DOWN, false).withProperty(NORTH, false).withProperty(EAST, false).withProperty(SOUTH, false).withProperty(WEST, false);
 	}
@@ -134,7 +134,7 @@ public class BlockMachineModConduit extends BlockContainer {
 		return new BlockStateContainer(this, new IProperty[] { UP, DOWN, NORTH, EAST, SOUTH, WEST });
 	}
 
-	public boolean canConnect(IBlockAccess world, BlockPos pos, EnumFacing ef) {
+	public boolean canConnect(IBlockAccess world, BlockPos pos, Direction ef) {
 		TileEntity te = world.getTileEntity(pos.offset(ef));
 		if (te != null) {
 			if (te.hasCapability(CapabilityEnergy.ENERGY, ef.getOpposite())) {
@@ -152,7 +152,7 @@ public class BlockMachineModConduit extends BlockContainer {
 
 	public BlockState getActualState(BlockState state, IBlockAccess world, BlockPos pos) {
 
-		return state.withProperty(NORTH, canConnect(world, pos, EnumFacing.NORTH)).withProperty(EAST, canConnect(world, pos, EnumFacing.EAST)).withProperty(SOUTH, canConnect(world, pos, EnumFacing.SOUTH)).withProperty(WEST, canConnect(world, pos, EnumFacing.WEST)).withProperty(UP, canConnect(world, pos, EnumFacing.UP)).withProperty(DOWN, canConnect(world, pos, EnumFacing.DOWN));
+		return state.withProperty(NORTH, canConnect(world, pos, Direction.NORTH)).withProperty(EAST, canConnect(world, pos, Direction.EAST)).withProperty(SOUTH, canConnect(world, pos, Direction.SOUTH)).withProperty(WEST, canConnect(world, pos, Direction.WEST)).withProperty(UP, canConnect(world, pos, Direction.UP)).withProperty(DOWN, canConnect(world, pos, Direction.DOWN));
 
 	}
 

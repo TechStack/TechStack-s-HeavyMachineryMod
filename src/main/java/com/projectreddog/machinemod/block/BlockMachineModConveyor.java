@@ -16,7 +16,7 @@ import net.minecraft.state.IProperty;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -25,7 +25,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockMachineModConveyor extends BlockContainer {
-	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+	public static final PropertyDirection FACING = PropertyDirection.create("facing", Direction.Plane.HORIZONTAL);
 	public static final PropertyBool POWERED = PropertyBool.create("powered");
 
 	protected BlockMachineModConveyor(Material material) {
@@ -33,7 +33,7 @@ public class BlockMachineModConveyor extends BlockContainer {
 
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, Direction.NORTH));
 
 		// 1.8
 		// REMOVED 1.14
@@ -82,12 +82,12 @@ public class BlockMachineModConveyor extends BlockContainer {
 		return false;
 	}
 
-	public BlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+	public BlockState onBlockPlaced(World worldIn, BlockPos pos, Direction facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
 	}
 
 	public static boolean shouldLift(World worldIn, BlockPos pos) {
-		EnumFacing direction = ((EnumFacing) worldIn.getBlockState(pos).getValue(FACING));
+		Direction direction = ((Direction) worldIn.getBlockState(pos).getValue(FACING));
 
 		if (worldIn.isAirBlock(pos.offset(direction.getOpposite()))) {
 			return true;
@@ -115,27 +115,27 @@ public class BlockMachineModConveyor extends BlockContainer {
 	 */
 	@SideOnly(Side.CLIENT)
 	public BlockState getStateForEntityRender(BlockState state) {
-		return this.getDefaultState().withProperty(FACING, EnumFacing.SOUTH);
+		return this.getDefaultState().withProperty(FACING, Direction.SOUTH);
 	}
 
 	/**
 	 * Convert the given metadata into a BlockState for this Block
 	 */
 	public BlockState getStateFromMeta(int meta) {
-		EnumFacing enumfacing = EnumFacing.getFront(meta);
+		Direction Direction = Direction.getFront(meta);
 
-		if (enumfacing.getAxis() == EnumFacing.Axis.Y) {
-			enumfacing = EnumFacing.NORTH;
+		if (Direction.getAxis() == Direction.Axis.Y) {
+			Direction = Direction.NORTH;
 		}
 
-		return this.getDefaultState().withProperty(FACING, enumfacing);
+		return this.getDefaultState().withProperty(FACING, Direction);
 	}
 
 	/**
 	 * Convert the BlockState into the correct metadata value
 	 */
 	public int getMetaFromState(BlockState state) {
-		return ((EnumFacing) state.getValue(FACING)).getIndex();
+		return ((Direction) state.getValue(FACING)).getIndex();
 	}
 
 	protected BlockStateContainer createBlockState() {
@@ -143,31 +143,31 @@ public class BlockMachineModConveyor extends BlockContainer {
 	}
 
 	@SideOnly(Side.CLIENT)
-	static final class SwitchEnumFacing {
-		static final int[] field_180356_a = new int[EnumFacing.values().length];
+	static final class SwitchDirection {
+		static final int[] field_180356_a = new int[Direction.values().length];
 		private static final String __OBFID = "CL_00002111";
 
 		static {
 			try {
-				field_180356_a[EnumFacing.WEST.ordinal()] = 1;
+				field_180356_a[Direction.WEST.ordinal()] = 1;
 			} catch (NoSuchFieldError var4) {
 				;
 			}
 
 			try {
-				field_180356_a[EnumFacing.EAST.ordinal()] = 2;
+				field_180356_a[Direction.EAST.ordinal()] = 2;
 			} catch (NoSuchFieldError var3) {
 				;
 			}
 
 			try {
-				field_180356_a[EnumFacing.NORTH.ordinal()] = 3;
+				field_180356_a[Direction.NORTH.ordinal()] = 3;
 			} catch (NoSuchFieldError var2) {
 				;
 			}
 
 			try {
-				field_180356_a[EnumFacing.SOUTH.ordinal()] = 4;
+				field_180356_a[Direction.SOUTH.ordinal()] = 4;
 			} catch (NoSuchFieldError var1) {
 				;
 			}

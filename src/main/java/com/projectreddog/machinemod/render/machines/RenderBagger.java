@@ -121,12 +121,12 @@ public class RenderBagger extends EntityRenderer {
 					BufferBuilder worldrenderer = tessellator.getBuffer();
 					worldrenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
 					this.renderManager.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-					Direction[] aenumfacing = Direction.values();
-					int j = aenumfacing.length;
+					Direction[] aDirection = Direction.values();
+					int j = aDirection.length;
 
 					for (int k = 0; k < j; ++k) {
-						Direction enumfacing = aenumfacing[k];
-						this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, enumfacing, 0), -1, is);
+						Direction Direction = aDirection[k];
+						this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, Direction, 0), -1, is);
 					}
 
 					this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, null, 0), -1, is);

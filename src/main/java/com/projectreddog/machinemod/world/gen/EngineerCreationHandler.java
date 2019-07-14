@@ -5,7 +5,7 @@ import java.util.Random;
 
 import com.projectreddog.machinemod.world.gen.structure.EngineerHouse;
 
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
@@ -33,7 +33,7 @@ public class EngineerCreationHandler implements IVillageCreationHandler {
 	}
 
 	@Override
-	public StructureVillagePieces.Village buildComponent(StructureVillagePieces.PieceWeight villagePiece, StructureVillagePieces.Start startPiece, List<StructureComponent> pieces, Random random, int minX, int minY, int minZ, EnumFacing facing, int componentType) {
+	public StructureVillagePieces.Village buildComponent(StructureVillagePieces.PieceWeight villagePiece, StructureVillagePieces.Start startPiece, List<StructureComponent> pieces, Random random, int minX, int minY, int minZ, Direction facing, int componentType) {
 		StructureBoundingBox bounds = StructureBoundingBox.getComponentToAddBoundingBox(minX, minY, minZ, 0, 0, 0, WIDTH, HEIGHT, DEPTH, facing);
 		return StructureComponent.findIntersecting(pieces, bounds) == null ? new EngineerHouse(startPiece, componentType, bounds, facing) : null;
 	}

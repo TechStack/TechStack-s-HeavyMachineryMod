@@ -15,7 +15,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.ITextComponent;
 
@@ -325,10 +325,10 @@ public class TileEntityCentrifuge extends TileEntity implements ITickableTileEnt
 	}
 
 	@Override
-	public int[] getSlotsForFace(EnumFacing side) {
-		if (side == EnumFacing.DOWN) {
+	public int[] getSlotsForFace(Direction side) {
+		if (side == Direction.DOWN) {
 			return bottomSlots;
-		} else if (side == EnumFacing.UP) {
+		} else if (side == Direction.UP) {
 			return topSlots;
 		}
 		// int[] topSlots2 = new int[] { 0 };
@@ -337,16 +337,16 @@ public class TileEntityCentrifuge extends TileEntity implements ITickableTileEnt
 	}
 
 	@Override
-	public boolean canInsertItem(int slot, ItemStack itemStackIn, EnumFacing direction) {
-		if (slot < 54 && direction == EnumFacing.UP) {
+	public boolean canInsertItem(int slot, ItemStack itemStackIn, Direction direction) {
+		if (slot < 54 && direction == Direction.UP) {
 			return true;
 		}
 		return false;
 	}
 
 	@Override
-	public boolean canExtractItem(int slot, ItemStack stack, EnumFacing direction) {
-		if (slot < 54 && direction == EnumFacing.DOWN) {
+	public boolean canExtractItem(int slot, ItemStack stack, Direction direction) {
+		if (slot < 54 && direction == Direction.DOWN) {
 			return true;
 		}
 		return false;
@@ -380,7 +380,7 @@ public class TileEntityCentrifuge extends TileEntity implements ITickableTileEnt
 	}
 
 	@Override
-	public EnumFacing outputDirection() {
+	public Direction outputDirection() {
 		return null;
 	}
 

@@ -19,7 +19,7 @@ import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.IProperty;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -151,7 +151,7 @@ public class BlockMachineBleakPortal extends BlockMachineMod {
 	}
 
 	public void DisablePortalForThisBlock(World world, BlockPos bottomOfOneSide) {
-		EnumFacing ef = world.getBlockState(bottomOfOneSide).getValue(FACING);
+		Direction ef = world.getBlockState(bottomOfOneSide).getValue(FACING);
 
 		if (world.getBlockState(bottomOfOneSide).getBlock() == ModBlocks.machinebleakportal) {
 			world.setBlockToAir(bottomOfOneSide);

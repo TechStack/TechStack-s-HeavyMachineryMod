@@ -7,7 +7,7 @@ import com.projectreddog.machinemod.init.ModItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -53,13 +53,13 @@ public class EntityLawnmower extends EntityMachineModRideable {
 
 					// withProperty(FACING, placer.getHorizontalFacing().getOpposite()
 					if (this.yaw < 45 || this.yaw > 315) {
-						world.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, EnumFacing.SOUTH));
+						world.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, Direction.SOUTH));
 					} else if (this.yaw > 45 && this.yaw < 135) {
-						world.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, EnumFacing.WEST));
+						world.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, Direction.WEST));
 					} else if (this.yaw > 135 && this.yaw < 225) {
-						world.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, EnumFacing.NORTH));
+						world.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, Direction.NORTH));
 					} else {
-						world.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, EnumFacing.EAST));
+						world.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, Direction.EAST));
 					}
 					ItemStack is = new ItemStack(Blocks.TALLGRASS, 1, 1);
 					EntityItem entityItem = new EntityItem(world, bp.getX(), bp.getY() + 1, bp.getZ(), is);

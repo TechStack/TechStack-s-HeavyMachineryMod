@@ -87,7 +87,7 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 				float f1 = 0.0F;
 				BlockState BlockState = worldIn.getBlockState(blockpos1.add(i, 0, j));
 
-				if (BlockState.getBlock().canSustainPlant(BlockState, worldIn, blockpos1.add(i, 0, j), net.minecraft.util.EnumFacing.UP, (net.minecraftforge.common.IPlantable) p_180672_0_)) {
+				if (BlockState.getBlock().canSustainPlant(BlockState, worldIn, blockpos1.add(i, 0, j), net.minecraft.util.Direction.UP, (net.minecraftforge.common.IPlantable) p_180672_0_)) {
 					f1 = 1.0F;
 
 					if (BlockState.getBlock().isFertile(worldIn, blockpos1.add(i, 0, j))) {

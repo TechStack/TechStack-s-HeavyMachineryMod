@@ -10,7 +10,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 
 public class TileEntityFactoryRenderer extends TileEntitySpecialRenderer {
@@ -28,11 +28,11 @@ public class TileEntityFactoryRenderer extends TileEntitySpecialRenderer {
 		GL11.glTranslated(x + .5d, y, z + .5d);
 
 		this.bindTexture(getResourceLocation());
-		EnumFacing ef;
+		Direction ef;
 		if (tileentity.getWorld().getBlockState(tileentity.getPos()).getBlock() == ModBlocks.machinefactory) {
-			ef = (EnumFacing) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModFactory.FACING);
+			ef = (Direction) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModFactory.FACING);
 		} else {
-			ef = EnumFacing.NORTH;
+			ef = Direction.NORTH;
 		}
 		switch (ef) {
 		case NORTH:

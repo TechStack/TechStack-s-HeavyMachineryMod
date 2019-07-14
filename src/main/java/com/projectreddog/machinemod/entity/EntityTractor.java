@@ -13,7 +13,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemDye;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -88,7 +88,7 @@ public class EntityTractor extends EntityMachineModRideable {
 										if (this.inventory.getStackInSlot(j).getCount() > 0) {
 
 											if (this.inventory.getStackInSlot(j).getItem() instanceof IPlantable) {
-												if (world.getBlockState(bp).getBlock().canSustainPlant(world.getBlockState(bp), world, bp, EnumFacing.UP, (IPlantable) this.inventory.getStackInSlot(j).getItem()) && world.isAirBlock(bp.up())) {
+												if (world.getBlockState(bp).getBlock().canSustainPlant(world.getBlockState(bp), world, bp, Direction.UP, (IPlantable) this.inventory.getStackInSlot(j).getItem()) && world.isAirBlock(bp.up())) {
 
 													world.setBlockState(bp.up(), ((IPlantable) this.inventory.getStackInSlot(j).getItem()).getPlant(world, bp.up()));
 													this.inventory.extractItem(j, 1, false);
@@ -101,10 +101,10 @@ public class EntityTractor extends EntityMachineModRideable {
 								}
 								// if (world.getBlockState(bp).getBlock() ==
 								// Blocks.farmland &&
-								// world.isAirBlock(bp.offset(EnumFacing.UP,
+								// world.isAirBlock(bp.offset(Direction.UP,
 								// 1))) {
 								//
-								// world.setBlockState(bp.offset(EnumFacing.UP,
+								// world.setBlockState(bp.offset(Direction.UP,
 								// 1), Blocks.wheat.getDefaultState());
 								// }
 							} else if (this.inventory.getStackInSlot(0).getItem() instanceof ItemTractorAttachmentSprayer) {

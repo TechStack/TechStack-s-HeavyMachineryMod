@@ -17,14 +17,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockMachineModWellHead extends BlockContainer {
 	// public static final PropertyDirection FACING =
-	// PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+	// PropertyDirection.create("facing", Direction.Plane.HORIZONTAL);
 
 	protected BlockMachineModWellHead(Material material) {
 		super(material);
@@ -34,7 +34,7 @@ public class BlockMachineModWellHead extends BlockContainer {
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 		// this.setDefaultState(this.blockState.getBaseState().withProperty(FACING,
-		// EnumFacing.NORTH));
+		// Direction.NORTH));
 
 		// 1.8
 		// REMOVED 1.14
@@ -54,8 +54,8 @@ public class BlockMachineModWellHead extends BlockContainer {
 
 		if (worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.machinedrilledstone) {
 
-			EnumFacing ef = (EnumFacing) worldIn.getBlockState(pos.down()).getValue(BlockMachineDrilledStone.FACING);
-			if (ef == EnumFacing.DOWN || ef == EnumFacing.UP) {
+			Direction ef = (Direction) worldIn.getBlockState(pos.down()).getValue(BlockMachineDrilledStone.FACING);
+			if (ef == Direction.DOWN || ef == Direction.UP) {
 				return true;
 
 			}
@@ -64,7 +64,7 @@ public class BlockMachineModWellHead extends BlockContainer {
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, BlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, BlockState state, EntityPlayer playerIn, EnumHand hand, Direction side, float hitX, float hitY, float hitZ) {
 		ItemStack heldItem = playerIn.getActiveItemStack();
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te != null && !playerIn.isSneaking()) {

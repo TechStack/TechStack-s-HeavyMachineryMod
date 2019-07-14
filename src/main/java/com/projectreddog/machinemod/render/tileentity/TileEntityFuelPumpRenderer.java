@@ -10,7 +10,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 
 public class TileEntityFuelPumpRenderer extends TileEntitySpecialRenderer {
@@ -39,11 +39,11 @@ public class TileEntityFuelPumpRenderer extends TileEntitySpecialRenderer {
 
 		this.bindTexture(getResourceLocation());
 		// GL11.glScalef(-.5F, -.5F, .5F);
-		EnumFacing ef;
+		Direction ef;
 		if (tileentity.getWorld().getBlockState(tileentity.getPos()).getBlock() == ModBlocks.machinefuelpump) {
-			ef = (EnumFacing) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModFuelPump.FACING);
+			ef = (Direction) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModFuelPump.FACING);
 		} else {
-			ef = EnumFacing.NORTH;
+			ef = Direction.NORTH;
 		}
 		switch (ef) {
 		case NORTH:

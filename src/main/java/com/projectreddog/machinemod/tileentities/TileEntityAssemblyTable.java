@@ -19,7 +19,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
@@ -238,8 +238,8 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickableTile
 	}
 
 	@Override
-	public int[] getSlotsForFace(EnumFacing side) {
-		if (side == EnumFacing.NORTH || side == EnumFacing.SOUTH || side == EnumFacing.EAST || side == EnumFacing.WEST) {
+	public int[] getSlotsForFace(Direction side) {
+		if (side == Direction.NORTH || side == Direction.SOUTH || side == Direction.EAST || side == Direction.WEST) {
 			return sideSlots;
 		}
 		int[] topSlots2 = new int[] { 0 };
@@ -248,16 +248,16 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickableTile
 	}
 
 	@Override
-	public boolean canInsertItem(int slot, ItemStack itemStackIn, EnumFacing direction) {
-		if (slot < inventorySize && (direction == EnumFacing.NORTH || direction == EnumFacing.SOUTH || direction == EnumFacing.EAST || direction == EnumFacing.WEST)) {
+	public boolean canInsertItem(int slot, ItemStack itemStackIn, Direction direction) {
+		if (slot < inventorySize && (direction == Direction.NORTH || direction == Direction.SOUTH || direction == Direction.EAST || direction == Direction.WEST)) {
 			return true;
 		}
 		return false;
 	}
 
 	@Override
-	public boolean canExtractItem(int slot, ItemStack stack, EnumFacing direction) {
-		if (slot < inventorySize && (direction == EnumFacing.NORTH || direction == EnumFacing.SOUTH || direction == EnumFacing.EAST || direction == EnumFacing.WEST)) {
+	public boolean canExtractItem(int slot, ItemStack stack, Direction direction) {
+		if (slot < inventorySize && (direction == Direction.NORTH || direction == Direction.SOUTH || direction == Direction.EAST || direction == Direction.WEST)) {
 			return true;
 		}
 		return false;

@@ -8,7 +8,7 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -26,8 +26,8 @@ public class ItemWrench extends ItemMachineMod {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
-		// public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float xOff, float yOff, float zOff) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, Direction side, float xOff, float yOff, float zOff) {
+		// public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, Direction side, float xOff, float yOff, float zOff) {
 		ItemStack stack = player.getActiveItemStack();
 		boolean result = false;
 
@@ -37,28 +37,28 @@ public class ItemWrench extends ItemMachineMod {
 		if (!world.isRemote)// / only run on server
 		{
 			if (world.getBlockState(pos).getBlock() == ModBlocks.machineconveyor) {
-				EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineModConveyor.FACING);
+				Direction ef = (Direction) world.getBlockState(pos).getValue(BlockMachineModConveyor.FACING);
 				switch (ef) {
 				case NORTH:
-					world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.EAST), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, Direction.EAST), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
 					BlockState state = world.getBlockState(pos);
 					world.notifyBlockUpdate(pos, state, state, 3);
 					result = true;
 					break;
 				case EAST:
-					world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.SOUTH), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, Direction.SOUTH), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
 					state = world.getBlockState(pos);
 					world.notifyBlockUpdate(pos, state, state, 3);
 					result = true;
 					break;
 				case SOUTH:
-					world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.WEST), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, Direction.WEST), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
 					state = world.getBlockState(pos);
 					world.notifyBlockUpdate(pos, state, state, 3);
 					result = true;
 					break;
 				case WEST:
-					world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.NORTH), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					world.setBlockState(pos, ModBlocks.machineconveyor.getDefaultState().withProperty(BlockMachineModConveyor.FACING, Direction.NORTH), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
 					state = world.getBlockState(pos);
 					world.notifyBlockUpdate(pos, state, state, 3);
 					result = true;
@@ -68,28 +68,28 @@ public class ItemWrench extends ItemMachineMod {
 					break;
 				}
 			} else if (world.getBlockState(pos).getBlock() == ModBlocks.machinefractionaldistillation) {
-				EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineModFractionalDistillation.FACING);
+				Direction ef = (Direction) world.getBlockState(pos).getValue(BlockMachineModFractionalDistillation.FACING);
 				switch (ef) {
 				case NORTH:
-					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.EAST), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, Direction.EAST), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
 					BlockState state = world.getBlockState(pos);
 					world.notifyBlockUpdate(pos, state, state, 3);
 					result = true;
 					break;
 				case EAST:
-					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.SOUTH), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, Direction.SOUTH), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
 					state = world.getBlockState(pos);
 					world.notifyBlockUpdate(pos, state, state, 3);
 					result = true;
 					break;
 				case SOUTH:
-					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.WEST), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, Direction.WEST), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
 					state = world.getBlockState(pos);
 					world.notifyBlockUpdate(pos, state, state, 3);
 					result = true;
 					break;
 				case WEST:
-					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.NORTH), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, Direction.NORTH), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
 					state = world.getBlockState(pos);
 					world.notifyBlockUpdate(pos, state, state, 3);
 					result = true;
@@ -102,19 +102,19 @@ public class ItemWrench extends ItemMachineMod {
 			}
 		}
 		// else if (world.getBlockState(pos).getBlock() == ModBlocks.machinedistiller) {
-		// EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineModDistiller.FACING);
+		// Direction ef = (Direction) world.getBlockState(pos).getValue(BlockMachineModDistiller.FACING);
 		// switch (ef) {
 		// case NORTH:
-		// world.setBlockState(pos, ModBlocks.machinedistiller.getDefaultState().withProperty(BlockMachineModDistiller.FACING, EnumFacing.EAST));
+		// world.setBlockState(pos, ModBlocks.machinedistiller.getDefaultState().withProperty(BlockMachineModDistiller.FACING, Direction.EAST));
 		// break;
 		// case EAST:
-		// world.setBlockState(pos, ModBlocks.machinedistiller.getDefaultState().withProperty(BlockMachineModDistiller.FACING, EnumFacing.SOUTH));
+		// world.setBlockState(pos, ModBlocks.machinedistiller.getDefaultState().withProperty(BlockMachineModDistiller.FACING, Direction.SOUTH));
 		// break;
 		// case SOUTH:
-		// world.setBlockState(pos, ModBlocks.machinedistiller.getDefaultState().withProperty(BlockMachineModDistiller.FACING, EnumFacing.WEST));
+		// world.setBlockState(pos, ModBlocks.machinedistiller.getDefaultState().withProperty(BlockMachineModDistiller.FACING, Direction.WEST));
 		// break;
 		// case WEST:
-		// world.setBlockState(pos, ModBlocks.machinedistiller.getDefaultState().withProperty(BlockMachineModDistiller.FACING, EnumFacing.NORTH));
+		// world.setBlockState(pos, ModBlocks.machinedistiller.getDefaultState().withProperty(BlockMachineModDistiller.FACING, Direction.NORTH));
 		// break;
 		//
 		// default:
@@ -122,19 +122,19 @@ public class ItemWrench extends ItemMachineMod {
 		// }
 		//
 		// } else if (world.getBlockState(pos).getBlock() == ModBlocks.machinefermenter) {
-		// EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineModFermenter.FACING);
+		// Direction ef = (Direction) world.getBlockState(pos).getValue(BlockMachineModFermenter.FACING);
 		// switch (ef) {
 		// case NORTH:
-		// world.setBlockState(pos, ModBlocks.machinefermenter.getDefaultState().withProperty(BlockMachineModFermenter.FACING, EnumFacing.EAST));
+		// world.setBlockState(pos, ModBlocks.machinefermenter.getDefaultState().withProperty(BlockMachineModFermenter.FACING, Direction.EAST));
 		// break;
 		// case EAST:
-		// world.setBlockState(pos, ModBlocks.machinefermenter.getDefaultState().withProperty(BlockMachineModFermenter.FACING, EnumFacing.SOUTH));
+		// world.setBlockState(pos, ModBlocks.machinefermenter.getDefaultState().withProperty(BlockMachineModFermenter.FACING, Direction.SOUTH));
 		// break;
 		// case SOUTH:
-		// world.setBlockState(pos, ModBlocks.machinefermenter.getDefaultState().withProperty(BlockMachineModFermenter.FACING, EnumFacing.WEST));
+		// world.setBlockState(pos, ModBlocks.machinefermenter.getDefaultState().withProperty(BlockMachineModFermenter.FACING, Direction.WEST));
 		// break;
 		// case WEST:
-		// world.setBlockState(pos, ModBlocks.machinefermenter.getDefaultState().withProperty(BlockMachineModFermenter.FACING, EnumFacing.NORTH));
+		// world.setBlockState(pos, ModBlocks.machinefermenter.getDefaultState().withProperty(BlockMachineModFermenter.FACING, Direction.NORTH));
 		// break;
 		//
 		// default:
@@ -142,20 +142,20 @@ public class ItemWrench extends ItemMachineMod {
 		// }
 		//
 		// } else if (world.getBlockState(pos).getBlock() == ModBlocks.machinefuelpump) {
-		// EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineModFuelPump.FACING);
+		// Direction ef = (Direction) world.getBlockState(pos).getValue(BlockMachineModFuelPump.FACING);
 		// switch (ef) {
 		// case NORTH:
 		//
-		// world.setBlockState(pos, ModBlocks.machinefuelpump.getDefaultState().withProperty(BlockMachineModFuelPump.FACING, EnumFacing.EAST));
+		// world.setBlockState(pos, ModBlocks.machinefuelpump.getDefaultState().withProperty(BlockMachineModFuelPump.FACING, Direction.EAST));
 		// break;
 		// case EAST:
-		// world.setBlockState(pos, ModBlocks.machinefuelpump.getDefaultState().withProperty(BlockMachineModFuelPump.FACING, EnumFacing.SOUTH));
+		// world.setBlockState(pos, ModBlocks.machinefuelpump.getDefaultState().withProperty(BlockMachineModFuelPump.FACING, Direction.SOUTH));
 		// break;
 		// case SOUTH:
-		// world.setBlockState(pos, ModBlocks.machinefuelpump.getDefaultState().withProperty(BlockMachineModFuelPump.FACING, EnumFacing.WEST));
+		// world.setBlockState(pos, ModBlocks.machinefuelpump.getDefaultState().withProperty(BlockMachineModFuelPump.FACING, Direction.WEST));
 		// break;
 		// case WEST:
-		// world.setBlockState(pos, ModBlocks.machinefuelpump.getDefaultState().withProperty(BlockMachineModFuelPump.FACING, EnumFacing.NORTH));
+		// world.setBlockState(pos, ModBlocks.machinefuelpump.getDefaultState().withProperty(BlockMachineModFuelPump.FACING, Direction.NORTH));
 		// break;
 		//
 		// default:

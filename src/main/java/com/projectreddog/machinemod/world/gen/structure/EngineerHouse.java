@@ -23,7 +23,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.tileentity.TileEntitySkull;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentString;
@@ -40,7 +40,7 @@ public class EngineerHouse extends Village {
 	String[] TSCraftMembers = new String[] { "TechStack", "diegocob", "Chazmanm", "robbversion1", "MusicDiskMaster", "Alchao", "Czarified", "chanmaster99", "Griffen8280", "KingCam26", "SmashShock", "Dorff333", "scoote205", "drcobra", "FrozenDesign", "Doomthrak", "Pixule", "trayer3", "zenstic0", "samzataru", "XxDJ_DINOxX", "binaryactions", "tater_canon", "mwigby", "iJord4nn", "FallDownGuy",
 			"geekpeek", "mcfly64321", "DePowah", "help_12_21_2012", "MrMouselab", "nickgodin10", "Coolbum67", "King_Me56", "malcomful", "Owenrocks11", "supak1154", "Me_Is_Jake27", "frostydeath108", "spykid8", "Lazsa", "shadowmage4513", "Aragorn006", "Golden_Tree_Ink", "fierykilljoy", "Airbrat", "frost11111", "Gazer29", "Lunesta210x2", "matthewl6970", "kreezxil", "ProRed" };
 
-	public EngineerHouse(StructureVillagePieces.Start start, int type, StructureBoundingBox bounds, EnumFacing facing) {
+	public EngineerHouse(StructureVillagePieces.Start start, int type, StructureBoundingBox bounds, Direction facing) {
 		super(start, type);
 		this.setCoordBaseMode(facing);
 		this.boundingBox = bounds;
@@ -88,25 +88,25 @@ public class EngineerHouse extends Village {
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 5, 2, 6, 6, 10, air, air, false);
 		// mod blocks
 
-		this.setBlockState(worldIn, ModBlocks.machinefuelpump.getDefaultState().withProperty(BlockMachineModFuelPump.FACING, EnumFacing.EAST), 2, 3, 3, structureBoundingBoxIn);
+		this.setBlockState(worldIn, ModBlocks.machinefuelpump.getDefaultState().withProperty(BlockMachineModFuelPump.FACING, Direction.EAST), 2, 3, 3, structureBoundingBoxIn);
 		this.setBlockState(worldIn, ModBlocks.machineassemblytable.getDefaultState(), 5, 3, 6, structureBoundingBoxIn);
-		this.setBlockState(worldIn, ModBlocks.machinefactory.getDefaultState().withProperty(BlockMachineModFactory.FACING, EnumFacing.SOUTH), 5, 3, 9, structureBoundingBoxIn);
+		this.setBlockState(worldIn, ModBlocks.machinefactory.getDefaultState().withProperty(BlockMachineModFactory.FACING, Direction.SOUTH), 5, 3, 9, structureBoundingBoxIn);
 
 		this.setBlockState(worldIn, Blocks.STONE_SLAB.getDefaultState().withProperty(BlockSlab.HALF, EnumBlockHalf.TOP), 12, 3, 9, structureBoundingBoxIn);
 		this.setBlockState(worldIn, Blocks.STONE_SLAB.getDefaultState().withProperty(BlockSlab.HALF, EnumBlockHalf.TOP), 11, 3, 9, structureBoundingBoxIn);
 		this.setBlockState(worldIn, Blocks.OAK_FENCE_GATE.getDefaultState(), 10, 3, 9, structureBoundingBoxIn);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 2, 7, 2, 2, 7, 11, stairs.withProperty(BlockStairs.FACING, EnumFacing.EAST), stairs.withProperty(BlockStairs.FACING, EnumFacing.EAST), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 2, 7, 2, 2, 7, 11, stairs.withProperty(BlockStairs.FACING, Direction.EAST), stairs.withProperty(BlockStairs.FACING, Direction.EAST), false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 8, 7, 2, 8, 7, 11, stairs.withProperty(BlockStairs.FACING, EnumFacing.WEST), stairs.withProperty(BlockStairs.FACING, EnumFacing.WEST), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 8, 7, 2, 8, 7, 11, stairs.withProperty(BlockStairs.FACING, Direction.WEST), stairs.withProperty(BlockStairs.FACING, Direction.WEST), false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 3, 8, 2, 3, 8, 11, stairs.withProperty(BlockStairs.FACING, EnumFacing.EAST), stairs.withProperty(BlockStairs.FACING, EnumFacing.EAST), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 3, 8, 2, 3, 8, 11, stairs.withProperty(BlockStairs.FACING, Direction.EAST), stairs.withProperty(BlockStairs.FACING, Direction.EAST), false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 7, 8, 2, 7, 8, 11, stairs.withProperty(BlockStairs.FACING, EnumFacing.WEST), stairs.withProperty(BlockStairs.FACING, EnumFacing.WEST), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 7, 8, 2, 7, 8, 11, stairs.withProperty(BlockStairs.FACING, Direction.WEST), stairs.withProperty(BlockStairs.FACING, Direction.WEST), false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 9, 2, 4, 9, 11, stairs.withProperty(BlockStairs.FACING, EnumFacing.EAST), stairs.withProperty(BlockStairs.FACING, EnumFacing.EAST), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 9, 2, 4, 9, 11, stairs.withProperty(BlockStairs.FACING, Direction.EAST), stairs.withProperty(BlockStairs.FACING, Direction.EAST), false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 6, 9, 2, 6, 9, 11, stairs.withProperty(BlockStairs.FACING, EnumFacing.WEST), stairs.withProperty(BlockStairs.FACING, EnumFacing.WEST), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 6, 9, 2, 6, 9, 11, stairs.withProperty(BlockStairs.FACING, Direction.WEST), stairs.withProperty(BlockStairs.FACING, Direction.WEST), false);
 
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 3, 7, 2, 7, 7, 2, planks, planks, false);
 
@@ -118,36 +118,36 @@ public class EngineerHouse extends Village {
 
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 9, 2, 5, 9, 11, planks, planks, false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 9, 2, 6, 9, 2, stairs.withProperty(BlockStairs.FACING, EnumFacing.NORTH), stairs.withProperty(BlockStairs.FACING, EnumFacing.NORTH), false);
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 9, 11, 6, 9, 11, stairs.withProperty(BlockStairs.FACING, EnumFacing.SOUTH), stairs.withProperty(BlockStairs.FACING, EnumFacing.SOUTH), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 9, 2, 6, 9, 2, stairs.withProperty(BlockStairs.FACING, Direction.NORTH), stairs.withProperty(BlockStairs.FACING, Direction.NORTH), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 9, 11, 6, 9, 11, stairs.withProperty(BlockStairs.FACING, Direction.SOUTH), stairs.withProperty(BlockStairs.FACING, Direction.SOUTH), false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 10, 7, 3, 10, 7, 10, stairs.withProperty(BlockStairs.FACING, EnumFacing.EAST), stairs.withProperty(BlockStairs.FACING, EnumFacing.EAST), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 10, 7, 3, 10, 7, 10, stairs.withProperty(BlockStairs.FACING, Direction.EAST), stairs.withProperty(BlockStairs.FACING, Direction.EAST), false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 12, 7, 3, 12, 7, 10, stairs.withProperty(BlockStairs.FACING, EnumFacing.WEST), stairs.withProperty(BlockStairs.FACING, EnumFacing.WEST), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 12, 7, 3, 12, 7, 10, stairs.withProperty(BlockStairs.FACING, Direction.WEST), stairs.withProperty(BlockStairs.FACING, Direction.WEST), false);
 
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 11, 7, 3, 11, 7, 10, planks, planks, false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 10, 7, 3, 11, 7, 3, stairs.withProperty(BlockStairs.FACING, EnumFacing.NORTH), stairs.withProperty(BlockStairs.FACING, EnumFacing.NORTH), false);
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 10, 7, 10, 11, 7, 10, stairs.withProperty(BlockStairs.FACING, EnumFacing.SOUTH), stairs.withProperty(BlockStairs.FACING, EnumFacing.SOUTH), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 10, 7, 3, 11, 7, 3, stairs.withProperty(BlockStairs.FACING, Direction.NORTH), stairs.withProperty(BlockStairs.FACING, Direction.NORTH), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 10, 7, 10, 11, 7, 10, stairs.withProperty(BlockStairs.FACING, Direction.SOUTH), stairs.withProperty(BlockStairs.FACING, Direction.SOUTH), false);
 
-		this.createVillageDoor(worldIn, structureBoundingBoxIn, randomIn, 11, 3, 2, EnumFacing.NORTH);
+		this.createVillageDoor(worldIn, structureBoundingBoxIn, randomIn, 11, 3, 2, Direction.NORTH);
 
-		this.createVillageDoor(worldIn, structureBoundingBoxIn, randomIn, 9, 3, 5, EnumFacing.EAST);
+		this.createVillageDoor(worldIn, structureBoundingBoxIn, randomIn, 9, 3, 5, Direction.EAST);
 
-		this.placeTorch(worldIn, EnumFacing.NORTH, 2, 5, 3, structureBoundingBoxIn);
+		this.placeTorch(worldIn, Direction.NORTH, 2, 5, 3, structureBoundingBoxIn);
 
-		this.placeTorch(worldIn, EnumFacing.NORTH, 8, 5, 3, structureBoundingBoxIn);
+		this.placeTorch(worldIn, Direction.NORTH, 8, 5, 3, structureBoundingBoxIn);
 
-		this.placeTorch(worldIn, EnumFacing.SOUTH, 3, 5, 10, structureBoundingBoxIn);
+		this.placeTorch(worldIn, Direction.SOUTH, 3, 5, 10, structureBoundingBoxIn);
 
-		this.placeTorch(worldIn, EnumFacing.SOUTH, 7, 5, 10, structureBoundingBoxIn);
+		this.placeTorch(worldIn, Direction.SOUTH, 7, 5, 10, structureBoundingBoxIn);
 
-		this.placeTorch(worldIn, EnumFacing.NORTH, 11, 5, 3, structureBoundingBoxIn);
+		this.placeTorch(worldIn, Direction.NORTH, 11, 5, 3, structureBoundingBoxIn);
 
-		this.placeTorch(worldIn, EnumFacing.SOUTH, 11, 5, 10, structureBoundingBoxIn);
+		this.placeTorch(worldIn, Direction.SOUTH, 11, 5, 10, structureBoundingBoxIn);
 
 		String theChosenOne = TSCraftMembers[MathHelper.getInt(new Random(), 0, TSCraftMembers.length - 1)];
-		this.setBlockState(worldIn, Blocks.WALL_SIGN.getDefaultState().withProperty(BlockWallSign.FACING, EnumFacing.SOUTH), 5, 7, 1, structureBoundingBoxIn);
+		this.setBlockState(worldIn, Blocks.WALL_SIGN.getDefaultState().withProperty(BlockWallSign.FACING, Direction.SOUTH), 5, 7, 1, structureBoundingBoxIn);
 		BlockPos blockpos = new BlockPos(this.getXWithOffset(5, 1), this.getYWithOffset(7), this.getZWithOffset(5, 1));
 
 		TileEntity te = worldIn.getTileEntity(blockpos);
@@ -163,7 +163,7 @@ public class EngineerHouse extends Village {
 		}
 
 		if (Reference.enablePlayerSkullsInWorldGen) {
-			this.setBlockState(worldIn, Blocks.SKULL.getDefaultState().withProperty(BlockSkull.FACING, EnumFacing.SOUTH), 5, 8, 1, structureBoundingBoxIn);
+			this.setBlockState(worldIn, Blocks.SKULL.getDefaultState().withProperty(BlockSkull.FACING, Direction.SOUTH), 5, 8, 1, structureBoundingBoxIn);
 			blockpos = new BlockPos(this.getXWithOffset(5, 1), this.getYWithOffset(8), this.getZWithOffset(5, 1));
 
 			te = worldIn.getTileEntity(blockpos);
@@ -212,7 +212,7 @@ public class EngineerHouse extends Village {
 		//
 		// this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 1, 1, 3, 3, 3, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
 		//
-		// this.placeTorch(worldIn, EnumFacing.NORTH, 2, 3, 1, structureBoundingBoxIn);
+		// this.placeTorch(worldIn, Direction.NORTH, 2, 3, 1, structureBoundingBoxIn);
 
 		for (int j = 0; j < 14; ++j) {
 			for (int i = 0; i < 11; ++i) {
@@ -226,7 +226,7 @@ public class EngineerHouse extends Village {
 
 	}
 
-	protected void createVillageDoor(World p_189927_1_, StructureBoundingBox p_189927_2_, Random p_189927_3_, int p_189927_4_, int p_189927_5_, int p_189927_6_, EnumFacing p_189927_7_) {
+	protected void createVillageDoor(World p_189927_1_, StructureBoundingBox p_189927_2_, Random p_189927_3_, int p_189927_4_, int p_189927_5_, int p_189927_6_, Direction p_189927_7_) {
 		if (!this.isZombieInfested) {
 			this.generateDoor(p_189927_1_, p_189927_2_, p_189927_3_, p_189927_4_, p_189927_5_, p_189927_6_, p_189927_7_, this.biomeDoor());
 		}
@@ -265,7 +265,7 @@ public class EngineerHouse extends Village {
 		}
 	}
 
-	public static EngineerHouse buildComponent(Start villagePiece, List pieces, Random random, int x, int y, int z, EnumFacing facing, int type) {
+	public static EngineerHouse buildComponent(Start villagePiece, List pieces, Random random, int x, int y, int z, Direction facing, int type) {
 		StructureBoundingBox box = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 11, 6, 11, facing);
 		return canVillageGoDeeper(box) && StructureComponent.findIntersecting(pieces, box) == null ? new EngineerHouse(villagePiece, type, box, facing) : null;
 	}

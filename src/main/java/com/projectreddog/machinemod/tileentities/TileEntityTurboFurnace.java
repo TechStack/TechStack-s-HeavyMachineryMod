@@ -14,7 +14,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import scala.Int;
@@ -357,14 +357,14 @@ public class TileEntityTurboFurnace extends TileEntity implements ITickableTileE
 	}
 
 	@Override
-	public int[] getSlotsForFace(EnumFacing side) {
+	public int[] getSlotsForFace(Direction side) {
 		// slot 0 = Output (down) Slot 1 = input (up & sides)
 		int[] Slots = new int[] {};
-		if (side == EnumFacing.UP) {
+		if (side == Direction.UP) {
 			Slots = new int[] { 0 };
-		} else if (side == EnumFacing.EAST || side == EnumFacing.WEST || side == EnumFacing.NORTH || side == EnumFacing.SOUTH) {
+		} else if (side == Direction.EAST || side == Direction.WEST || side == Direction.NORTH || side == Direction.SOUTH) {
 			Slots = new int[] { 2 };
-		} else if (side == EnumFacing.DOWN) {
+		} else if (side == Direction.DOWN) {
 			Slots = new int[] { 1 };
 		}
 
@@ -377,13 +377,13 @@ public class TileEntityTurboFurnace extends TileEntity implements ITickableTileE
 	}
 
 	@Override
-	public boolean canInsertItem(int slot, ItemStack itemStackIn, EnumFacing direction) {
+	public boolean canInsertItem(int slot, ItemStack itemStackIn, Direction direction) {
 
 		// TODO MODIFY ME LATER PLEASE
-		if (direction == EnumFacing.UP) {
+		if (direction == Direction.UP) {
 			return true;
 		}
-		if (direction == EnumFacing.WEST || direction == EnumFacing.EAST || direction == EnumFacing.NORTH || direction == EnumFacing.SOUTH) {
+		if (direction == Direction.WEST || direction == Direction.EAST || direction == Direction.NORTH || direction == Direction.SOUTH) {
 			if (isItemFuel(itemStackIn)) {
 				return true;
 			}
@@ -394,8 +394,8 @@ public class TileEntityTurboFurnace extends TileEntity implements ITickableTileE
 	}
 
 	@Override
-	public boolean canExtractItem(int slot, ItemStack stack, EnumFacing direction) {
-		if (slot < inventorySize && (direction == EnumFacing.DOWN)) {
+	public boolean canExtractItem(int slot, ItemStack stack, Direction direction) {
+		if (slot < inventorySize && (direction == Direction.DOWN)) {
 			return true;
 		}
 		return false;

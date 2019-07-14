@@ -3,7 +3,7 @@ package com.projectreddog.machinemod.tileentities;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
@@ -18,7 +18,7 @@ public class TileEntityBatteryBank extends TileEntity implements ITickableTileEn
 	private EnergyStorage energyStroage = new EnergyStorage(MAX_ENERGY_STORAGE, MAX_ENERGY_RECEIVE, MAX_ENERGY_EXTRACT, 0);
 
 	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+	public boolean hasCapability(Capability<?> capability, Direction facing) {
 		if (capability == CapabilityEnergy.ENERGY) {
 			return true;
 		}
@@ -26,7 +26,7 @@ public class TileEntityBatteryBank extends TileEntity implements ITickableTileEn
 	}
 
 	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+	public <T> T getCapability(Capability<T> capability, Direction facing) {
 		if (capability == CapabilityEnergy.ENERGY) {
 			return (T) energyStroage;
 		}
@@ -38,19 +38,19 @@ public class TileEntityBatteryBank extends TileEntity implements ITickableTileEn
 		if (!this.world.isRemote) {
 			// server
 
-			this.transferPower(this.pos.up(), EnumFacing.DOWN);
-			this.transferPower(this.pos.down(), EnumFacing.UP);
+			this.transferPower(this.pos.up(), Direction.DOWN);
+			this.transferPower(this.pos.down(), Direction.UP);
 
-			this.transferPower(this.pos.north(), EnumFacing.SOUTH);
-			this.transferPower(this.pos.south(), EnumFacing.NORTH);
+			this.transferPower(this.pos.north(), Direction.SOUTH);
+			this.transferPower(this.pos.south(), Direction.NORTH);
 
-			this.transferPower(this.pos.east(), EnumFacing.WEST);
-			this.transferPower(this.pos.west(), EnumFacing.EAST);
+			this.transferPower(this.pos.east(), Direction.WEST);
+			this.transferPower(this.pos.west(), Direction.EAST);
 
 		}
 	}
 
-	private void transferPower(BlockPos bp, EnumFacing ef) {
+	private void transferPower(BlockPos bp, Direction ef) {
 		TileEntity te = this.world.getTileEntity(bp);
 		if (te != null) {
 			if (te.hasCapability(CapabilityEnergy.ENERGY, ef)) {

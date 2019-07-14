@@ -10,7 +10,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 
 public class TileEntityDistillerRenderer extends TileEntitySpecialRenderer {
@@ -37,13 +37,13 @@ public class TileEntityDistillerRenderer extends TileEntitySpecialRenderer {
 		// GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
 		this.bindTexture(getResourceLocation());
-		EnumFacing ef;
+		Direction ef;
 		if (tileentity.getWorld().getBlockState(tileentity.getPos()).getBlock() == ModBlocks.machinedistiller) {
-			ef = (EnumFacing) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModDistiller.FACING);
+			ef = (Direction) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModDistiller.FACING);
 		} else {
-			ef = EnumFacing.NORTH;
+			ef = Direction.NORTH;
 		}
-		// EnumFacing ef = (EnumFacing) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModDistiller.FACING);
+		// Direction ef = (Direction) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModDistiller.FACING);
 		switch (ef) {
 		case NORTH:
 			// no rotate?

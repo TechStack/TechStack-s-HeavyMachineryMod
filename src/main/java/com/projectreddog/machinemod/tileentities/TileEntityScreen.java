@@ -14,7 +14,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
@@ -68,25 +68,25 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 				if (getStackInSlot(i).getItem() == getStackInSlot(4).getItem() && getStackInSlot(i).getItem().getMetadata(getStackInSlot(i)) == getStackInSlot(4).getItem().getMetadata(getStackInSlot(4))) {
 					double x = 0, y = 0, z = 0;
 					y = this.pos.getY() + .5d;
-					EnumFacing ef = null;
+					Direction ef = null;
 					if (i == 0) {
 						// north ?
-						ef = EnumFacing.NORTH;
+						ef = Direction.NORTH;
 						x = this.pos.getX() + .5d;
 						z = this.pos.getZ() - .5d;
 					} else if (i == 1) {
 						// east
-						ef = EnumFacing.EAST;
+						ef = Direction.EAST;
 						x = this.pos.getX() + 1.5d;
 						z = this.pos.getZ() + .5d;
 					} else if (i == 2) {
 						// south
-						ef = EnumFacing.SOUTH;
+						ef = Direction.SOUTH;
 						x = this.pos.getX() + .5d;
 						z = this.pos.getZ() + 1.5d;
 					} else if (i == 3) {
 						// west
-						ef = EnumFacing.WEST;
+						ef = Direction.WEST;
 						x = this.pos.getX() - .5d;
 						z = this.pos.getZ() + .5d;
 					}
@@ -119,7 +119,7 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 
 						if (te instanceof TileEntityCrate) {
 							TileEntityCrate tec = (TileEntityCrate) te;
-							if (tec.canInsertItem(1, tmpstack, EnumFacing.UP)) {
+							if (tec.canInsertItem(1, tmpstack, Direction.UP)) {
 								// checked if it can insert so do insert.
 								tec.setInventorySlotContents(1, tmpstack);
 								setInventorySlotContents(4, ItemStack.EMPTY);
@@ -145,29 +145,29 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 
 		for (int i = 0; i < 4; i++) {
 			if (!getStackInSlot(4).isEmpty() && getStackInSlot(i).isEmpty() && getStackInSlot(4).getItem() != null) {
-				EnumFacing ef = null;
+				Direction ef = null;
 
 				double x = 0, y = 0, z = 0;
 				y = this.pos.getY() + .5d;
 				if (i == 0) {
 					// north ?
-					ef = EnumFacing.NORTH;
+					ef = Direction.NORTH;
 					x = this.pos.getX() + .5d;
 					z = this.pos.getZ() - .5d;
 				} else if (i == 1) {
 
 					// east
-					ef = EnumFacing.EAST;
+					ef = Direction.EAST;
 					x = this.pos.getX() + 1.5d;
 					z = this.pos.getZ() + .5d;
 				} else if (i == 2) {
 					// south
-					ef = EnumFacing.SOUTH;
+					ef = Direction.SOUTH;
 					x = this.pos.getX() + .5d;
 					z = this.pos.getZ() + 1.5d;
 				} else if (i == 3) {
 					// west
-					ef = EnumFacing.WEST;
+					ef = Direction.WEST;
 					x = this.pos.getX() - .5d;
 					z = this.pos.getZ() + .5d;
 				}
@@ -198,7 +198,7 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 					}
 					if (te instanceof TileEntityCrate) {
 						TileEntityCrate tec = (TileEntityCrate) te;
-						if (tec.canInsertItem(1, tmpstack, EnumFacing.UP)) {
+						if (tec.canInsertItem(1, tmpstack, Direction.UP)) {
 							// checked if it can insert so do insert.
 							tec.setInventorySlotContents(1, tmpstack);
 							setInventorySlotContents(4, ItemStack.EMPTY);
@@ -430,8 +430,8 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 	}
 
 	@Override
-	public int[] getSlotsForFace(EnumFacing side) {
-		if (side == EnumFacing.UP) {
+	public int[] getSlotsForFace(Direction side) {
+		if (side == Direction.UP) {
 			return topSlots;
 		}
 
@@ -440,15 +440,15 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 	}
 
 	@Override
-	public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
-		if (index == 4 && direction == EnumFacing.UP) {
+	public boolean canInsertItem(int index, ItemStack itemStackIn, Direction direction) {
+		if (index == 4 && direction == Direction.UP) {
 			return true;
 		}
 		return false;
 	}
 
 	@Override
-	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
+	public boolean canExtractItem(int index, ItemStack stack, Direction direction) {
 
 		return false;
 	}

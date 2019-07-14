@@ -11,7 +11,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillatio
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 
 public class TileEntityFractionalDistillationRenderer extends TileEntitySpecialRenderer {
@@ -41,7 +41,7 @@ public class TileEntityFractionalDistillationRenderer extends TileEntitySpecialR
 		this.bindTexture(getResourceLocation());
 		GL11.glScalef(-.5F, -.5F, .5F);
 		if (tileentity instanceof TileEntityFractionalDistillation && tileentity.getWorld().getBlockState(tileentity.getPos()).getBlock() == ModBlocks.machinefractionaldistillation) {
-			EnumFacing ef = (EnumFacing) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModFractionalDistillation.FACING);
+			Direction ef = (Direction) tileentity.getWorld().getBlockState(tileentity.getPos()).getValue(BlockMachineModFractionalDistillation.FACING);
 			switch (ef) {
 			case NORTH:
 				// no rotate?

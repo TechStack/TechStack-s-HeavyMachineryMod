@@ -13,7 +13,7 @@ import net.minecraft.nbt.ListNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.text.ITextComponent;
 
 public class TileEntityDistiller extends TileEntity implements ITickableTileEntity, IFuelContainer, ISidedInventory {
@@ -141,17 +141,17 @@ public class TileEntityDistiller extends TileEntity implements ITickableTileEnti
 	}
 
 	@Override
-	public EnumFacing outputDirection() {
-		EnumFacing ef = (EnumFacing) world.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
+	public Direction outputDirection() {
+		Direction ef = (Direction) world.getBlockState(this.getPos()).getValue(BlockMachineModPrimaryCrusher.FACING);
 		// switch (ef) {
 		// case NORTH:
-		// return EnumFacing.SOUTH;
+		// return Direction.SOUTH;
 		// case SOUTH:
-		// return EnumFacing.NORTH;
+		// return Direction.NORTH;
 		// case EAST:
-		// return EnumFacing.WEST;
+		// return Direction.WEST;
 		// case WEST:
-		// return EnumFacing.EAST;
+		// return Direction.EAST;
 		// default:
 		// return null;
 		// }
@@ -282,8 +282,8 @@ public class TileEntityDistiller extends TileEntity implements ITickableTileEnti
 	}
 
 	@Override
-	public int[] getSlotsForFace(EnumFacing side) {
-		if (side == EnumFacing.NORTH || side == EnumFacing.SOUTH || side == EnumFacing.EAST || side == EnumFacing.WEST) {
+	public int[] getSlotsForFace(Direction side) {
+		if (side == Direction.NORTH || side == Direction.SOUTH || side == Direction.EAST || side == Direction.WEST) {
 			return sideSlots;
 		}
 		int[] topSlots2 = new int[] { 0 };
@@ -292,16 +292,16 @@ public class TileEntityDistiller extends TileEntity implements ITickableTileEnti
 	}
 
 	@Override
-	public boolean canInsertItem(int slot, ItemStack itemStackIn, EnumFacing direction) {
-		if (slot < inventorySize && (direction == EnumFacing.NORTH || direction == EnumFacing.SOUTH || direction == EnumFacing.EAST || direction == EnumFacing.WEST)) {
+	public boolean canInsertItem(int slot, ItemStack itemStackIn, Direction direction) {
+		if (slot < inventorySize && (direction == Direction.NORTH || direction == Direction.SOUTH || direction == Direction.EAST || direction == Direction.WEST)) {
 			return true;
 		}
 		return false;
 	}
 
 	@Override
-	public boolean canExtractItem(int slot, ItemStack stack, EnumFacing direction) {
-		if (slot < inventorySize && (direction == EnumFacing.NORTH || direction == EnumFacing.SOUTH || direction == EnumFacing.EAST || direction == EnumFacing.WEST)) {
+	public boolean canExtractItem(int slot, ItemStack stack, Direction direction) {
+		if (slot < inventorySize && (direction == Direction.NORTH || direction == Direction.SOUTH || direction == Direction.EAST || direction == Direction.WEST)) {
 			return true;
 		}
 		return false;

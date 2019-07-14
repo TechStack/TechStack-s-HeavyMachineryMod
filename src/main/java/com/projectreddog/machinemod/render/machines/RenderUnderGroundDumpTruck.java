@@ -25,7 +25,7 @@ import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3i;
 
@@ -113,13 +113,13 @@ public class RenderUnderGroundDumpTruck extends EntityRenderer {
 					BufferBuilder worldrenderer = tessellator.getBuffer();
 					worldrenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
 					this.renderManager.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-					EnumFacing[] aenumfacing = EnumFacing.values();
-					int j = aenumfacing.length;
+					Direction[] aDirection = Direction.values();
+					int j = aDirection.length;
 
 					for (int k = 0; k < j; ++k) {
-						EnumFacing enumfacing = aenumfacing[k];
-						// this.RenderHelper_a(worldrenderer, ibakedmodel.getFaceQuads(enumfacing), -1, is);
-						this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, enumfacing, 0), -1, is);
+						Direction Direction = aDirection[k];
+						// this.RenderHelper_a(worldrenderer, ibakedmodel.getFaceQuads(Direction), -1, is);
+						this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, Direction, 0), -1, is);
 
 					}
 

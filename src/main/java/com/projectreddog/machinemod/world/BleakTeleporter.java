@@ -10,7 +10,7 @@ import com.projectreddog.machinemod.init.ModDimensions;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
@@ -22,9 +22,9 @@ public class BleakTeleporter extends Teleporter {
 	private double y;
 	private double z;
 	private BlockPos portalBlockPos;
-	private EnumFacing portalFacing;
+	private Direction portalFacing;
 
-	public BleakTeleporter(WorldServer world, double x, double y, double z, BlockPos portalBlockPos, EnumFacing portalFacing) {
+	public BleakTeleporter(WorldServer world, double x, double y, double z, BlockPos portalBlockPos, Direction portalFacing) {
 		super(world);
 		this.worldServer = world;
 		this.x = x;
@@ -54,7 +54,7 @@ public class BleakTeleporter extends Teleporter {
 		entity.motionZ = 0.0f;
 	}
 
-	public static void teleportToDimension(EntityPlayerMP player, int dimension, double x, double y, double z, BlockPos portalBlockPos, EnumFacing portalFacing) {
+	public static void teleportToDimension(EntityPlayerMP player, int dimension, double x, double y, double z, BlockPos portalBlockPos, Direction portalFacing) {
 		int oldDimension = player.getEntityWorld().provider.getDimension();
 		EntityPlayerMP entityPlayerMP = (EntityPlayerMP) player;
 		MinecraftServer server = player.getEntityWorld().getMinecraftServer();
@@ -95,21 +95,21 @@ public class BleakTeleporter extends Teleporter {
 		BlockPos center = bp;
 		BlockPos side1 = bp;
 		BlockPos side2 = bp;
-		EnumFacing side1Facing;
-		EnumFacing side2Facing;
+		Direction side1Facing;
+		Direction side2Facing;
 
-		if (portalFacing == EnumFacing.EAST || portalFacing == EnumFacing.WEST) {
-			side1 = side1.offset(EnumFacing.EAST);
-			side1Facing = EnumFacing.WEST;
-			side2 = side2.offset(EnumFacing.WEST);
-			side2Facing = EnumFacing.EAST;
+		if (portalFacing == Direction.EAST || portalFacing == Direction.WEST) {
+			side1 = side1.offset(Direction.EAST);
+			side1Facing = Direction.WEST;
+			side2 = side2.offset(Direction.WEST);
+			side2Facing = Direction.EAST;
 
 		} else { // must be N or S ( No Up Or Down on the protal block)
 
-			side1 = side1.offset(EnumFacing.NORTH);
-			side1Facing = EnumFacing.SOUTH;
-			side2 = side2.offset(EnumFacing.SOUTH);
-			side2Facing = EnumFacing.NORTH;
+			side1 = side1.offset(Direction.NORTH);
+			side1Facing = Direction.SOUTH;
+			side2 = side2.offset(Direction.SOUTH);
+			side2Facing = Direction.NORTH;
 		}
 
 		for (int i = 0; i < 3; i++) {

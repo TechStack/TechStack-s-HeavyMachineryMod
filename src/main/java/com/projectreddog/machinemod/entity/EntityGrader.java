@@ -11,7 +11,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -155,8 +155,8 @@ public class EntityGrader extends EntityMachineModRideable {
 		if (bp.getY() == 1) {
 			return previous;
 		} else {
-			if (world.getBlockState(bp.offset(EnumFacing.DOWN)).getBlock().isAir(world.getBlockState(bp.offset(EnumFacing.DOWN)), world, bp.offset(EnumFacing.DOWN)) || world.getBlockState(bp.offset(EnumFacing.DOWN)).getBlock() == Blocks.WATER || world.getBlockState(bp.offset(EnumFacing.DOWN)).getBlock() == Blocks.FLOWING_WATER) {
-				return GetLowestBlockPos(bp.offset(EnumFacing.DOWN));
+			if (world.getBlockState(bp.offset(Direction.DOWN)).getBlock().isAir(world.getBlockState(bp.offset(Direction.DOWN)), world, bp.offset(Direction.DOWN)) || world.getBlockState(bp.offset(Direction.DOWN)).getBlock() == Blocks.WATER || world.getBlockState(bp.offset(Direction.DOWN)).getBlock() == Blocks.FLOWING_WATER) {
+				return GetLowestBlockPos(bp.offset(Direction.DOWN));
 			} else {
 				return previous;
 			}
