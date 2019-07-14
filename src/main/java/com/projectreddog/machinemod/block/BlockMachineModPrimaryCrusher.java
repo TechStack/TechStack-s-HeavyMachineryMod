@@ -6,7 +6,7 @@ import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 
-import net.minecraft.block.BlockContainer;
+import net.minecraft.block.ContainerBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
@@ -28,7 +28,7 @@ import net.minecraft.world.chunk.BlockStateContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockMachineModPrimaryCrusher extends BlockContainer {
+public class BlockMachineModPrimaryCrusher extends ContainerBlock {
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", Direction.Plane.HORIZONTAL);
 
 	protected BlockMachineModPrimaryCrusher(Material material) {

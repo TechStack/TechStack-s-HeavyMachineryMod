@@ -5,7 +5,7 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityWellHead;
 
-import net.minecraft.block.BlockContainer;
+import net.minecraft.block.ContainerBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockState;
@@ -22,7 +22,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockMachineModWellHead extends BlockContainer {
+public class BlockMachineModWellHead extends ContainerBlock {
 	// public static final PropertyDirection FACING =
 	// PropertyDirection.create("facing", Direction.Plane.HORIZONTAL);
 

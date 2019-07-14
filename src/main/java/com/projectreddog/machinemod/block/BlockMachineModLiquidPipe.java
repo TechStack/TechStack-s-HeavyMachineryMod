@@ -8,7 +8,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
 import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
+import net.minecraft.block.ContainerBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockState;
@@ -21,7 +21,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockMachineModLiquidPipe extends BlockContainer {
+public class BlockMachineModLiquidPipe extends ContainerBlock {
 
 	public BlockMachineModLiquidPipe(Material material) {
 		super(material);
