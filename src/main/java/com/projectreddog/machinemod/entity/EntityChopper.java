@@ -3,7 +3,7 @@ package com.projectreddog.machinemod.entity;
 import com.projectreddog.machinemod.init.ModItems;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -99,10 +99,10 @@ public class EntityChopper extends EntityMachineModRideable {
 	public void doParticleEffects() {
 		if (this.currentFuelLevel > 0 && this.getControllingPassenger() != null && (this.isPlayerAccelerating || this.isPlayerBreaking || this.isPlayerPushingJumpButton || this.isPlayerPushingSprintButton || this.isPlayerTurningLeft || this.isPlayerTurningRight)) {
 			for (int i = 0; i < 3; i++) {
-				world.spawnParticle(EnumParticleTypes.CLOUD, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset), this.posY + particleTopOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset), 0, 0, 0, 0);
-				world.spawnParticle(EnumParticleTypes.CLOUD, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset * -1), this.posY + particleTopOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset * -1), 0, 0, 0, 0);
-				world.spawnParticle(EnumParticleTypes.CLOUD, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset), this.posY - particleBottmOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset), 0, 0, 0, 0);
-				world.spawnParticle(EnumParticleTypes.CLOUD, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset * -1), this.posY - particleBottmOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset * -1), 0, 0, 0, 0);
+				world.spawnParticle(ParticleTypes.CLOUD, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset), this.posY + particleTopOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset), 0, 0, 0, 0);
+				world.spawnParticle(ParticleTypes.CLOUD, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset * -1), this.posY + particleTopOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset * -1), 0, 0, 0, 0);
+				world.spawnParticle(ParticleTypes.CLOUD, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset), this.posY - particleBottmOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset), 0, 0, 0, 0);
+				world.spawnParticle(ParticleTypes.CLOUD, this.posX + calcTwoOffsetX(particleBackOffset, -90, particleSideOffset * -1), this.posY - particleBottmOffset, this.posZ + calcTwoOffsetZ(particleBackOffset, -90, particleSideOffset * -1), 0, 0, 0, 0);
 			}
 		}
 	}

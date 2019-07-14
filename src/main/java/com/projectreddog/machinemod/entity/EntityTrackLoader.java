@@ -6,7 +6,7 @@ import com.projectreddog.machinemod.utility.BlockUtil;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -35,7 +35,7 @@ public class EntityTrackLoader extends EntityMachineModRideable {
 
 	public void doParticleEffects() {
 		if (this.currentFuelLevel > 0 && this.getControllingPassenger() != null) {
-			world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX + calcTwoOffsetX(1, -90, .4), this.posY + 3.9, this.posZ + calcTwoOffsetZ(1, -90, .4), 0, 0, 0, 0);
+			world.spawnParticle(ParticleTypes.SMOKE_LARGE, this.posX + calcTwoOffsetX(1, -90, .4), this.posY + 3.9, this.posZ + calcTwoOffsetZ(1, -90, .4), 0, 0, 0, 0);
 		}
 	}
 

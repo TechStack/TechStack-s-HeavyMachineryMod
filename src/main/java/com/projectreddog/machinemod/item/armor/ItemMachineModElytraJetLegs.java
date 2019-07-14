@@ -16,7 +16,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ParticleTypes;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
@@ -91,7 +91,7 @@ public class ItemMachineModElytraJetLegs extends ItemMachineModArmor implements 
 				player.motionZ += vec3d.z * 0.1D + (vec3d.z * 1.5D - player.motionZ) * 0.5D;
 
 				if (world.isRemote && (timealive % 5) == 0) {
-					world.spawnParticle(EnumParticleTypes.FIREWORKS_SPARK, player.posX, player.posY + 0.4D, player.posZ, 0, 0, 0);
+					world.spawnParticle(ParticleTypes.FIREWORKS_SPARK, player.posX, player.posY + 0.4D, player.posZ, 0, 0, 0);
 				}
 				remaningFuel--;
 				itemStack.setItemDamage(MaxFuel - remaningFuel);
