@@ -77,7 +77,7 @@ public class EntityChopper extends EntityMachineModRideable {
 			}
 			if (this.collidedHorizontally) {
 				this.world.createExplosion(this, this.posX, this.posY, this.posZ, 5, true);
-				this.setDead();
+				this.remove();
 			}
 		}
 		super.onUpdate();
@@ -85,7 +85,7 @@ public class EntityChopper extends EntityMachineModRideable {
 		if (!world.isRemote) {
 			if (this.collidedHorizontally) {
 				this.world.createExplosion(this, this.posX, this.posY, this.posZ, 5, true);
-				this.setDead();
+				this.remove();
 			}
 		}
 	}

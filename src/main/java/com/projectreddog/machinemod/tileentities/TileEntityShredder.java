@@ -84,7 +84,7 @@ public class TileEntityShredder extends TileEntity implements ITickableTileEntit
 
 						eexp2.forceSpawn = true;
 						this.world.spawnEntity(eexp2);
-						eexp.setDead();
+						eexp.remove();
 					}
 
 				}
@@ -114,7 +114,7 @@ public class TileEntityShredder extends TileEntity implements ITickableTileEntit
 
 						ei2.forceSpawn = true;
 						this.world.spawnEntity(ei2);
-						ei.setDead();
+						ei.remove();
 					}
 
 				}

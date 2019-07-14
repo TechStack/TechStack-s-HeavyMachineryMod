@@ -257,7 +257,7 @@ public class EntityMachineModRideable extends Entity {
 				if (player.isSneaking() && !world.isRemote) {
 					if (getItemToBeDropped() != null) {
 						this.dropItem(getItemToBeDropped(), 1);
-						this.setDead();
+						this.remove();
 						LogHelper.info("Server Remove Code reached" + this.getEntityId());
 						// this.addedToChunk = true;
 					}
@@ -274,7 +274,7 @@ public class EntityMachineModRideable extends Entity {
 				LogHelper.info("Client Remove Code reached" + this.getEntityId());
 				// if (getItemToBeDropped() != null) {
 
-				// this.setDead();
+				// this.remove();
 				// this.world.getChunkFromBlockCoords(new BlockPos(this)).removeEntity(this);
 				// LogHelper.info("CLIENT REMOVE THE ENTITY");
 				// this.world.removeEntity(this);
@@ -351,7 +351,7 @@ public class EntityMachineModRideable extends Entity {
 		lastYaw = yaw;
 		lastCurrentFuelLevel = currentFuelLevel;
 		if (posY < 0) {
-			this.setDead();
+			this.remove();
 		}
 		// LogHelper.info(world.isRemote + " Pre -Block @ entity :" + this.getName() + " : " + world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() + " GEN COL: " + this.collided + " horiz COL: " + this.collidedHorizontally + "vert COL: " + this.collidedVertically);
 
@@ -597,7 +597,7 @@ public class EntityMachineModRideable extends Entity {
 
 		}
 		if (clientTicksSinceLastServerPulse > Reference.clientRemoveInactiveEntityTimer) {
-			this.setDead();
+			this.remove();
 			this.world.removeEntity(this);
 			// this.world.getChunkFromChunkCoords(this.chunkCoordX, this.chunkCoordZ).removeEntity(this);
 			// this.addedToChunk = true;

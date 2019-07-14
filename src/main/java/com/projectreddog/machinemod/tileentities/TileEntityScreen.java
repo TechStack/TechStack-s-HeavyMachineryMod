@@ -236,7 +236,7 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 							if (!is1.isEmpty() && is1.getCount() != 0) {
 								((ItemEntity) entity).setItem(is1);
 							} else {
-								entity.setDead();
+								entity.remove();
 							}
 						}
 					}

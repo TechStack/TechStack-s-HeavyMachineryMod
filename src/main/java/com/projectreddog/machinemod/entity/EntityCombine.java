@@ -129,7 +129,7 @@ public class EntityCombine extends EntityMachineModRideable {
 							if (is1 != null && is1.getCount() != 0) {
 								((ItemEntity) entity).setItem(is1);
 							} else {
-								entity.setDead();
+								entity.remove();
 							}
 						}
 					}

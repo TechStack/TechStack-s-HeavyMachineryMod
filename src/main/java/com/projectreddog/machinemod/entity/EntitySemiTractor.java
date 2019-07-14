@@ -141,7 +141,7 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 									if (is.getCount() > 0) {
 										ItemStack is1 = addToinventory(is);
 										carriedMachinesFuelStorage = ((EntityMachineModRideable) entity).currentFuelLevel;
-										entity.setDead();
+										entity.remove();
 										return; // only add 1 item
 										// TODO way to store the contents of the machine's FUel level
 
@@ -160,7 +160,7 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 								if (CarriedEntities[j] == null) {
 									CarriedEntities[j] = (EntityCow) entity;
 									CarriedEntities[j].setHealth(((EntityCow) entity).getHealth());
-									entity.setDead();
+									entity.remove();
 									return;
 								}
 							}

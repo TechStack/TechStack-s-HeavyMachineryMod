@@ -132,7 +132,7 @@ public class EntityUnderGroundLoader extends EntityMachineModRideable {
 								if (!is1.isEmpty() && is1.getCount() != 0) {
 									((ItemEntity) entity).setItem(is1);
 								} else {
-									entity.setDead();
+									entity.remove();
 								}
 							}
 						}
