@@ -14,8 +14,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.FurnaceTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.Direction;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumHand;
@@ -84,8 +84,8 @@ public class BlockMachineModWellHead extends ContainerBlock {
 		if (stack.hasDisplayName()) {
 			TileEntity tileentity = worldIn.getTileEntity(pos);
 
-			if (tileentity instanceof TileEntityFurnace) {
-				((TileEntityFurnace) tileentity).setCustomInventoryName(stack.getDisplayName());
+			if (tileentity instanceof FurnaceTileEntity) {
+				((FurnaceTileEntity) tileentity).setCustomInventoryName(stack.getDisplayName());
 			}
 		}
 

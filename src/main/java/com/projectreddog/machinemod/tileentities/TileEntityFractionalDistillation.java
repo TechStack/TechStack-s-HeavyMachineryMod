@@ -13,9 +13,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.FurnaceTileEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.ITextComponent;
@@ -119,7 +119,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 					// consume more fuel
 					// only if it has mash to process
 					// use the furnace's default burn times
-					remainBurnTime = TileEntityFurnace.getItemBurnTime(this.getStackInSlot(0));
+					remainBurnTime = FurnaceTileEntity.getItemBurnTime(this.getStackInSlot(0));
 					if (remainBurnTime > 0) {
 						// found fuel reduce item stack (AKA consume /brun the item)
 						decrStackSize(0, 1);
