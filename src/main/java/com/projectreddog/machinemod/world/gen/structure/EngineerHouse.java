@@ -13,13 +13,13 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.block.BlockSkull;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockSlab.EnumBlockHalf;
-import net.minecraft.block.BlockStairs;
+import net.minecraft.block.StairsBlock;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWallSign;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.StairsBlock;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntityZombieVillager;
 import net.minecraft.entity.passive.EntityVillager;
-import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.tileentity.TileEntitySkull;
@@ -28,17 +28,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.structure.VillagePieces.Village;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
-import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
-import net.minecraft.world.gen.structure.StructureVillagePieces.Village;
 
 public class EngineerHouse extends Village {
 	int villagersSpawned = 0;
 
-	String[] TSCraftMembers = new String[] { "TechStack", "diegocob", "Chazmanm", "robbversion1", "MusicDiskMaster", "Alchao", "Czarified", "chanmaster99", "Griffen8280", "KingCam26", "SmashShock", "Dorff333", "scoote205", "drcobra", "FrozenDesign", "Doomthrak", "Pixule", "trayer3", "zenstic0", "samzataru", "XxDJ_DINOxX", "binaryactions", "tater_canon", "mwigby", "iJord4nn", "FallDownGuy",
-			"geekpeek", "mcfly64321", "DePowah", "help_12_21_2012", "MrMouselab", "nickgodin10", "Coolbum67", "King_Me56", "malcomful", "Owenrocks11", "supak1154", "Me_Is_Jake27", "frostydeath108", "spykid8", "Lazsa", "shadowmage4513", "Aragorn006", "Golden_Tree_Ink", "fierykilljoy", "Airbrat", "frost11111", "Gazer29", "Lunesta210x2", "matthewl6970", "kreezxil", "ProRed" };
+	String[] TSCraftMembers = new String[] { "TechStack", "diegocob", "Chazmanm", "robbversion1", "MusicDiskMaster", "Alchao", "Czarified", "chanmaster99", "Griffen8280", "KingCam26", "SmashShock", "Dorff333", "scoote205", "drcobra", "FrozenDesign", "Doomthrak", "Pixule", "trayer3", "zenstic0", "samzataru", "XxDJ_DINOxX", "binaryactions", "tater_canon", "mwigby", "iJord4nn", "FallDownGuy", "geekpeek", "mcfly64321", "DePowah", "help_12_21_2012", "MrMouselab", "nickgodin10", "Coolbum67", "King_Me56", "malcomful", "Owenrocks11", "supak1154", "Me_Is_Jake27", "frostydeath108", "spykid8", "Lazsa", "shadowmage4513", "Aragorn006", "Golden_Tree_Ink", "fierykilljoy", "Airbrat", "frost11111", "Gazer29", "Lunesta210x2", "matthewl6970", "kreezxil", "ProRed" };
 
 	public EngineerHouse(StructureVillagePieces.Start start, int type, StructureBoundingBox bounds, Direction facing) {
 		super(start, type);
@@ -96,17 +94,17 @@ public class EngineerHouse extends Village {
 		this.setBlockState(worldIn, Blocks.STONE_SLAB.getDefaultState().withProperty(BlockSlab.HALF, EnumBlockHalf.TOP), 11, 3, 9, structureBoundingBoxIn);
 		this.setBlockState(worldIn, Blocks.OAK_FENCE_GATE.getDefaultState(), 10, 3, 9, structureBoundingBoxIn);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 2, 7, 2, 2, 7, 11, stairs.withProperty(BlockStairs.FACING, Direction.EAST), stairs.withProperty(BlockStairs.FACING, Direction.EAST), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 2, 7, 2, 2, 7, 11, stairs.withProperty(StairsBlock.FACING, Direction.EAST), stairs.withProperty(StairsBlock.FACING, Direction.EAST), false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 8, 7, 2, 8, 7, 11, stairs.withProperty(BlockStairs.FACING, Direction.WEST), stairs.withProperty(BlockStairs.FACING, Direction.WEST), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 8, 7, 2, 8, 7, 11, stairs.withProperty(StairsBlock.FACING, Direction.WEST), stairs.withProperty(StairsBlock.FACING, Direction.WEST), false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 3, 8, 2, 3, 8, 11, stairs.withProperty(BlockStairs.FACING, Direction.EAST), stairs.withProperty(BlockStairs.FACING, Direction.EAST), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 3, 8, 2, 3, 8, 11, stairs.withProperty(StairsBlock.FACING, Direction.EAST), stairs.withProperty(StairsBlock.FACING, Direction.EAST), false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 7, 8, 2, 7, 8, 11, stairs.withProperty(BlockStairs.FACING, Direction.WEST), stairs.withProperty(BlockStairs.FACING, Direction.WEST), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 7, 8, 2, 7, 8, 11, stairs.withProperty(StairsBlock.FACING, Direction.WEST), stairs.withProperty(StairsBlock.FACING, Direction.WEST), false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 9, 2, 4, 9, 11, stairs.withProperty(BlockStairs.FACING, Direction.EAST), stairs.withProperty(BlockStairs.FACING, Direction.EAST), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 9, 2, 4, 9, 11, stairs.withProperty(StairsBlock.FACING, Direction.EAST), stairs.withProperty(StairsBlock.FACING, Direction.EAST), false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 6, 9, 2, 6, 9, 11, stairs.withProperty(BlockStairs.FACING, Direction.WEST), stairs.withProperty(BlockStairs.FACING, Direction.WEST), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 6, 9, 2, 6, 9, 11, stairs.withProperty(StairsBlock.FACING, Direction.WEST), stairs.withProperty(StairsBlock.FACING, Direction.WEST), false);
 
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 3, 7, 2, 7, 7, 2, planks, planks, false);
 
@@ -118,17 +116,17 @@ public class EngineerHouse extends Village {
 
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 9, 2, 5, 9, 11, planks, planks, false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 9, 2, 6, 9, 2, stairs.withProperty(BlockStairs.FACING, Direction.NORTH), stairs.withProperty(BlockStairs.FACING, Direction.NORTH), false);
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 9, 11, 6, 9, 11, stairs.withProperty(BlockStairs.FACING, Direction.SOUTH), stairs.withProperty(BlockStairs.FACING, Direction.SOUTH), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 9, 2, 6, 9, 2, stairs.withProperty(StairsBlock.FACING, Direction.NORTH), stairs.withProperty(StairsBlock.FACING, Direction.NORTH), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 9, 11, 6, 9, 11, stairs.withProperty(StairsBlock.FACING, Direction.SOUTH), stairs.withProperty(StairsBlock.FACING, Direction.SOUTH), false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 10, 7, 3, 10, 7, 10, stairs.withProperty(BlockStairs.FACING, Direction.EAST), stairs.withProperty(BlockStairs.FACING, Direction.EAST), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 10, 7, 3, 10, 7, 10, stairs.withProperty(StairsBlock.FACING, Direction.EAST), stairs.withProperty(StairsBlock.FACING, Direction.EAST), false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 12, 7, 3, 12, 7, 10, stairs.withProperty(BlockStairs.FACING, Direction.WEST), stairs.withProperty(BlockStairs.FACING, Direction.WEST), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 12, 7, 3, 12, 7, 10, stairs.withProperty(StairsBlock.FACING, Direction.WEST), stairs.withProperty(StairsBlock.FACING, Direction.WEST), false);
 
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 11, 7, 3, 11, 7, 10, planks, planks, false);
 
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 10, 7, 3, 11, 7, 3, stairs.withProperty(BlockStairs.FACING, Direction.NORTH), stairs.withProperty(BlockStairs.FACING, Direction.NORTH), false);
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 10, 7, 10, 11, 7, 10, stairs.withProperty(BlockStairs.FACING, Direction.SOUTH), stairs.withProperty(BlockStairs.FACING, Direction.SOUTH), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 10, 7, 3, 11, 7, 3, stairs.withProperty(StairsBlock.FACING, Direction.NORTH), stairs.withProperty(StairsBlock.FACING, Direction.NORTH), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 10, 7, 10, 11, 7, 10, stairs.withProperty(StairsBlock.FACING, Direction.SOUTH), stairs.withProperty(StairsBlock.FACING, Direction.SOUTH), false);
 
 		this.createVillageDoor(worldIn, structureBoundingBoxIn, randomIn, 11, 3, 2, Direction.NORTH);
 
