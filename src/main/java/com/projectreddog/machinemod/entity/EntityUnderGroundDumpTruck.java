@@ -7,7 +7,7 @@ import com.projectreddog.machinemod.init.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
@@ -53,7 +53,7 @@ public class EntityUnderGroundDumpTruck extends EntityMachineModRideable {
 						ItemEntity ItemEntity = new ItemEntity(world, posX + calcOffsetX(forwardOffset + -1.5f), posY - .1f, posZ + calcOffsetZ(forwardOffset + -1.5f), item);
 
 						if (item.hasTagCompound()) {
-							ItemEntity.getItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+							ItemEntity.getItem().setTagCompound((CompoundNBT) item.getTagCompound().copy());
 						}
 
 						float factor = 0.05F;

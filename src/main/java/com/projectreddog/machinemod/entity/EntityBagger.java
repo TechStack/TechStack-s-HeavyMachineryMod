@@ -140,7 +140,7 @@ public class EntityBagger extends EntityMachineModRideable {
 						// ItemEntity ItemEntity = new ItemEntity(worldObj, posX + calcOffsetX(3.5), posY + 4, posZ + calcOffsetZ(3.5), item);
 						//
 						// if (item.hasTagCompound()) {
-						// ItemEntity.getItemEntity().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+						// ItemEntity.getItemEntity().setTagCompound((CompoundNBT) item.getTagCompound().copy());
 						// }
 						//
 						// float factor = 0.05F;

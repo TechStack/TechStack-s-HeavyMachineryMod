@@ -28,7 +28,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ClassInheritanceMultiMap;
 import net.minecraft.util.DamageSource;
@@ -206,7 +206,7 @@ public class EntityMachineModRideable extends Entity {
 				ItemEntity ItemEntity = new ItemEntity(world, posX + rx, posY + ry, posZ + rz, item);
 
 				if (item.hasTagCompound()) {
-					ItemEntity.getItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+					ItemEntity.getItem().setTagCompound((CompoundNBT) item.getTagCompound().copy());
 				}
 
 				float factor = 0.05F;
@@ -707,7 +707,7 @@ public class EntityMachineModRideable extends Entity {
 	}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound compound) {
+	protected void readEntityFromNBT(CompoundNBT compound) {
 
 		// super.readFromNBT(compound);
 		// no need to call super it calls this method instead.
@@ -724,7 +724,7 @@ public class EntityMachineModRideable extends Entity {
 		// inventory
 		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
 		for (int i = 0; i < tagList.tagCount(); i++) {
-			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
+			CompoundNBT tag = (CompoundNBT) tagList.getCompoundTagAt(i);
 			byte slot = tag.getByte("Slot");
 			// if (slot >= 0 && slot < inventory.length) {
 			inventory.insertItem(slot, new ItemStack(tag), false);
@@ -733,7 +733,7 @@ public class EntityMachineModRideable extends Entity {
 	}
 
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound compound) {
+	protected void writeEntityToNBT(CompoundNBT compound) {
 		// super.writeToNBT(compound);
 		// no need to call the super it calls this method instead
 		compound.setFloat(Reference.MACHINE_MOD_NBT_PREFIX + "YAW", yaw);
@@ -750,7 +750,7 @@ public class EntityMachineModRideable extends Entity {
 		for (int i = 0; i < SIZE; i++) {
 			ItemStack stack = inventory.getStackInSlot(i);
 			if (stack != null) {
-				NBTTagCompound tag = new NBTTagCompound();
+				CompoundNBT tag = new CompoundNBT();
 				tag.setByte("Slot", (byte) i);
 				stack.writeToNBT(tag);
 				itemList.appendTag(tag);

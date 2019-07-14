@@ -8,9 +8,9 @@ import io.netty.buffer.ByteBufOutputStream;
 import io.netty.handler.codec.EncoderException;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTSizeTracker;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
 public class MachineModMessageEntityInventoryChangedToClient implements IMessage {
@@ -84,7 +84,7 @@ public class MachineModMessageEntityInventoryChangedToClient implements IMessage
 			buf.writeShort(Item.getIdFromItem(this.is.getItem()));
 			buf.writeByte(this.is.getCount());
 			buf.writeShort(this.is.getMetadata());
-			NBTTagCompound nbttagcompound = null;
+			CompoundNBT nbttagcompound = null;
 
 			if (this.is.getItem().isDamageable() || this.is.getItem().getShareTag()) {
 				nbttagcompound = this.is.getTagCompound();

@@ -14,7 +14,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidEvent;
@@ -55,13 +55,13 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 		this.turnRate = 3d;
 	}
 
-	protected void readEntityFromNBT(NBTTagCompound compound) {
+	protected void readEntityFromNBT(CompoundNBT compound) {
 		super.readEntityFromNBT(compound);
 		carriedMachinesFuelStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CMFULE");
 
 	}
 
-	protected void writeEntityToNBT(NBTTagCompound compound) {
+	protected void writeEntityToNBT(CompoundNBT compound) {
 		super.writeEntityToNBT(compound);
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CMFULE", carriedMachinesFuelStorage);
 

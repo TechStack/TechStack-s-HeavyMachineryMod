@@ -9,7 +9,7 @@ import net.minecraft.block.IGrowable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -92,7 +92,7 @@ public class EntityCombine extends EntityMachineModRideable {
 						ItemEntity ItemEntity = new ItemEntity(world, posX + calcOffsetX(forwardOffset), posY + 4, posZ + calcOffsetZ(forwardOffset), item);
 
 						if (item.hasTagCompound()) {
-							ItemEntity.getItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+							ItemEntity.getItem().setTagCompound((CompoundNBT) item.getTagCompound().copy());
 						}
 
 						float factor = 0.05F;
