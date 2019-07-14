@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;

@@ -4,9 +4,9 @@ import com.projectreddog.machinemod.init.ModDimensions;
 import com.projectreddog.machinemod.world.gen.BleakChunkGenerator;
 
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

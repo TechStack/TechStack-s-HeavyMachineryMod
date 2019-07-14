@@ -3,11 +3,11 @@ package com.projectreddog.machinemod.item;
 import com.projectreddog.machinemod.block.BlockMachineDrilledStone;
 import com.projectreddog.machinemod.init.ModBlocks;
 
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.Direction;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

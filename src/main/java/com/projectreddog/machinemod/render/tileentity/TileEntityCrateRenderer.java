@@ -5,23 +5,23 @@ import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
 import com.projectreddog.machinemod.model.tileentity.ModelCrate;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityCrate;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
-import net.minecraft.client.renderer.EntityRenderer;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.client.renderer.block.model.IBakedModel;
+import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.model.BakedQuad;
+import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.texture.TextureUtil;
-import net.minecraft.client.renderer.tileentity.TileItemEntityStackRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.client.renderer.tileentity.TileItemEntityStackRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;

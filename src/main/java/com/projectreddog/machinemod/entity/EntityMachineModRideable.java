@@ -25,7 +25,6 @@ import net.minecraft.entity.MoverType;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

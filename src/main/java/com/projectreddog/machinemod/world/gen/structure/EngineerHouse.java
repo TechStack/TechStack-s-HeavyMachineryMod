@@ -13,7 +13,6 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.block.BlockSkull;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockSlab.EnumBlockHalf;
-import net.minecraft.block.StairsBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWallSign;
 import net.minecraft.block.StairsBlock;

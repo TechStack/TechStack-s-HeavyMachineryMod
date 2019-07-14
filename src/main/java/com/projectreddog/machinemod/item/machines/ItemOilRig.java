@@ -5,10 +5,9 @@ import com.projectreddog.machinemod.entity.EntityOilRig;
 import com.projectreddog.machinemod.model.ModelTransportable;
 
 import net.minecraft.block.BlockLiquid;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;

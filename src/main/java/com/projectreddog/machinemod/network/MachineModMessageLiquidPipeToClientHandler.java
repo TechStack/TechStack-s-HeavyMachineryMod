@@ -2,6 +2,8 @@ package com.projectreddog.machinemod.network;
 
 import java.util.Map;
 
+import javax.xml.ws.handler.MessageContext;
+
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
 
 import net.minecraft.client.Minecraft;
@@ -12,7 +14,6 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class MachineModMessageLiquidPipeToClientHandler implements IMessageHandler<MachineModMessageLiquidPipeToClient, IMessage> {
 

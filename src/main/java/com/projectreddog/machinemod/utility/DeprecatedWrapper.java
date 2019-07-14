@@ -1,6 +1,6 @@
 package com.projectreddog.machinemod.utility;
 
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 
 public class DeprecatedWrapper {
 	// The intent of this class is to allow me to wrap deprecated method calls here for when they are later removed.

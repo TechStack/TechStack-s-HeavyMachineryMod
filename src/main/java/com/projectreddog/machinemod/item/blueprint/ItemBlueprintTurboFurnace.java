@@ -4,8 +4,6 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.utility.LogHelper;
 
-import net.minecraft.init.Blocks;
-
 public class ItemBlueprintTurboFurnace extends ItemBlueprint {
 	public String registryName = "blueprintturbofurnace";
 

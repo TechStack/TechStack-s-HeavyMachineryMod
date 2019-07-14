@@ -8,7 +8,6 @@ import com.projectreddog.machinemod.utility.BlockUtil;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;

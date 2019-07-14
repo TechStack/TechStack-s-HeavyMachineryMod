@@ -6,8 +6,8 @@ import com.projectreddog.machinemod.block.BlockMachineBleakCrystal;
 import com.projectreddog.machinemod.entity.monster.EntityExpStalker;
 import com.projectreddog.machinemod.init.ModBlocks;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;

@@ -4,7 +4,6 @@ import java.util.Random;
 
 import com.projectreddog.machinemod.init.ModBlocks;
 
-import net.minecraft.init.Blocks;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;

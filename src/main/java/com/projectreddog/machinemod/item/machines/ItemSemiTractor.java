@@ -4,8 +4,8 @@ import com.projectreddog.machinemod.entity.EntitySemiTractor;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.Direction;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

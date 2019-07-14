@@ -1,7 +1,7 @@
 package com.projectreddog.machinemod.village;
 
+import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerCareer;
-import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
 
 public class VillagerCareerMining extends VillagerCareer {
 

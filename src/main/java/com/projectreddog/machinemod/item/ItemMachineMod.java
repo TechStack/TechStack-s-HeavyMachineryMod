@@ -1,12 +1,10 @@
 package com.projectreddog.machinemod.item;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
+
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public class ItemMachineMod extends Item {
 	// this is the wrapper class that will define the common attributes for the

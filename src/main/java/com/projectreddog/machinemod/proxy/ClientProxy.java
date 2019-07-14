@@ -69,7 +69,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
 import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.IBlockColor;

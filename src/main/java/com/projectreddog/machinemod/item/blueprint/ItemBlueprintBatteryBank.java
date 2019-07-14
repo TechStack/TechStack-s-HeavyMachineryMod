@@ -3,8 +3,6 @@ package com.projectreddog.machinemod.item.blueprint;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.utility.LogHelper;
 
-import net.minecraft.init.Items;
-
 public class ItemBlueprintBatteryBank extends ItemBlueprint {
 	public String registryName = "blueprintbatterybank";
 

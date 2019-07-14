@@ -7,10 +7,10 @@ import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.PropertyInteger;
-import net.minecraft.block.state.BlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

@@ -4,9 +4,9 @@ import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.properties.DirectionProperty;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.IProperty;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;

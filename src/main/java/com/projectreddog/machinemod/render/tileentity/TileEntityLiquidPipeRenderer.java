@@ -2,11 +2,11 @@ package com.projectreddog.machinemod.render.tileentity;
 
 import org.lwjgl.opengl.GL11;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.projectreddog.machinemod.model.tileentity.ModelLiquidPipe;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
 
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;

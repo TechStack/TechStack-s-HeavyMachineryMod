@@ -5,7 +5,6 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 
 import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;

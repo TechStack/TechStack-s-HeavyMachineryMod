@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.world.gen;
 
 import com.projectreddog.machinemod.init.ModBlocks;
 
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.BlockState;
 import net.minecraft.world.gen.MapGenCaves;
 
 public class BleakMapGenCaves extends MapGenCaves {

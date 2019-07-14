@@ -1,5 +1,7 @@
 package com.projectreddog.machinemod.network;
 
+import javax.xml.ws.handler.MessageContext;
+
 import com.projectreddog.machinemod.entity.EntityExcavator;
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 
@@ -7,7 +9,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class MachineModMessageEntityCurrentTargetPosToClientHandler implements IMessageHandler<MachineModMessageEntityCurrentTargetPosToClient, IMessage> {
 

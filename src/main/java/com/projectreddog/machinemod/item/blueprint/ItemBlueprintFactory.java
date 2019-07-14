@@ -4,8 +4,6 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.utility.LogHelper;
 
-import net.minecraft.init.Items;
-
 public class ItemBlueprintFactory extends ItemBlueprint {
 	public String registryName = "blueprintfactory";
 

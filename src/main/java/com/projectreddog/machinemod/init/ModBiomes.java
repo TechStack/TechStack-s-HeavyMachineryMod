@@ -4,7 +4,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.world.biome.BiomeBleak;
 
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModBiomes {
 

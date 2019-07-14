@@ -14,13 +14,12 @@ import com.projectreddog.machinemod.world.BleakTerrainGenerator;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldEntitySpawner;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.MapGenBase;
-import net.minecraftforge.event.terraingen.InitMapGenEvent.EventType;
+import net.minecraft.world.spawner.WorldEntitySpawner;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
 public class BleakChunkGenerator implements IChunkGenerator {

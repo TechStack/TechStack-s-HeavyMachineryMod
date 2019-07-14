@@ -2,8 +2,8 @@ package com.projectreddog.machinemod.item;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerEntityMP;
-import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.Direction;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

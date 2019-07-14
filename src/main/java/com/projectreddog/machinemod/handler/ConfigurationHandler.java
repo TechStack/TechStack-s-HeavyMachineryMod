@@ -4,9 +4,8 @@ import java.io.File;
 
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ConfigurationHandler {
 

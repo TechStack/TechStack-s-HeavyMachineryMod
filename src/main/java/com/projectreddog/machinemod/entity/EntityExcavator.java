@@ -9,13 +9,12 @@ import com.projectreddog.machinemod.utility.BlockUtil;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
+import net.minecraftforge.fml.network.PacketDistributor.TargetPoint;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityExcavator extends EntityMachineModRideable {

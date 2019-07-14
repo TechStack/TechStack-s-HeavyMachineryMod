@@ -10,7 +10,6 @@ import com.projectreddog.machinemod.utility.BlockUtil;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemDye;
 import net.minecraft.util.Direction;

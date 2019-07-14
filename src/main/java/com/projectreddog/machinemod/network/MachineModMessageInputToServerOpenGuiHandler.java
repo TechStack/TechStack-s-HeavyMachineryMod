@@ -1,5 +1,7 @@
 package com.projectreddog.machinemod.network;
 
+import javax.xml.ws.handler.MessageContext;
+
 import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.entity.EntityChopper;
@@ -21,7 +23,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHandler<MachineModMessageInputToServerOpenGui, IMessage> {
 

@@ -9,7 +9,6 @@ import com.projectreddog.machinemod.item.blueprint.ItemBlueprint;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.LogHelper;
 
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.ISidedInventory;

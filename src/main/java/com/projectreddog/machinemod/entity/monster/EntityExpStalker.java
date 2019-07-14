@@ -5,7 +5,7 @@ import java.util.Random;
 import com.projectreddog.machinemod.entity.ai.EntityAiNearestAttackablePlayerInDarkWithExp;
 import com.projectreddog.machinemod.entity.ai.EntityFlyFastTurnHelper;
 
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SharedMonsterAttributes;

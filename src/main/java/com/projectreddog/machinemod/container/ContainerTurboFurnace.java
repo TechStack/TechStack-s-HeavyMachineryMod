@@ -5,8 +5,8 @@ import com.projectreddog.machinemod.inventory.SlotNotBlazePowder;
 import com.projectreddog.machinemod.inventory.SlotOutputOnlyTurobFurnace;
 import com.projectreddog.machinemod.tileentities.TileEntityTurboFurnace;
 
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.container.IContainerListener;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;

@@ -10,8 +10,8 @@ import com.projectreddog.machinemod.world.gen.structure.EngineerHouse;
 
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModVillage {
 

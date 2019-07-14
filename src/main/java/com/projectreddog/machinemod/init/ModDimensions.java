@@ -3,7 +3,7 @@ package com.projectreddog.machinemod.init;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.world.BleakWorldProvider;
 
-import net.minecraft.world.DimensionType;
+import net.minecraft.world.dimension.DimensionType;
 import net.minecraftforge.common.DimensionManager;
 
 public class ModDimensions {

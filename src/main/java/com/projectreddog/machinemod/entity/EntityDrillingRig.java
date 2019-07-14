@@ -4,7 +4,6 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 
 import net.minecraft.block.BlockStone;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
