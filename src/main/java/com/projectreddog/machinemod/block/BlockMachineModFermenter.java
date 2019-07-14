@@ -9,7 +9,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.ContainerBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.DirectionProperty;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
@@ -38,7 +37,7 @@ public class BlockMachineModFermenter extends ContainerBlock {
 
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
-		this.setDefaultState(this.state.getBaseState().withProperty(FACING, Direction.NORTH));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, Direction.NORTH));
 
 		// 1.8
 		// REMOVED 1.14
