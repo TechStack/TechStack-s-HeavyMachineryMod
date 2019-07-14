@@ -5,7 +5,7 @@ import java.util.Random;
 import com.projectreddog.machinemod.entity.ai.EntityAiNearestAttackablePlayerInDarkWithExp;
 import com.projectreddog.machinemod.entity.ai.EntityFlyFastTurnHelper;
 
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -48,7 +48,7 @@ public class EntityExpStalker extends EntityMob {
 
 		if (this.onGround) {
 			BlockPos underPos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.getEntityBoundingBox().minY) - 1, MathHelper.floor(this.posZ));
-			IBlockState underState = this.world.getBlockState(underPos);
+			BlockState underState = this.world.getBlockState(underPos);
 			f = underState.getBlock().getSlipperiness(underState, this.world, underPos, this) * 0.91F;
 		}
 
@@ -64,7 +64,7 @@ public class EntityExpStalker extends EntityMob {
 
 		if (this.onGround) {
 			BlockPos underPos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.getEntityBoundingBox().minY) - 1, MathHelper.floor(this.posZ));
-			IBlockState underState = this.world.getBlockState(underPos);
+			BlockState underState = this.world.getBlockState(underPos);
 			f = underState.getBlock().getSlipperiness(underState, this.world, underPos, this) * 0.91F;
 		}
 
@@ -88,7 +88,7 @@ public class EntityExpStalker extends EntityMob {
 	}
 
 	@Override
-	protected void updateFallState(double y, boolean onGroundIn, IBlockState state, BlockPos pos) {
+	protected void updateFallState(double y, boolean onGroundIn, BlockState state, BlockPos pos) {
 	}
 
 	@Override

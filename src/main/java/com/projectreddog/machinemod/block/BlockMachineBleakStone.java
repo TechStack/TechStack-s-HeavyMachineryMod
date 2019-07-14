@@ -28,7 +28,7 @@ public class BlockMachineBleakStone extends BlockMachineMod {
 //	 * define stone for overworld generation, and neatherack for the nether.
 //	 * @return True to allow this block to be replaced by a ore
 //	 */
-//	public boolean isReplaceableOreGen(IBlockState state, IBlockAccess world, BlockPos pos, com.google.common.base.Predicate<IBlockState> target) {
+//	public boolean isReplaceableOreGen(BlockState state, IBlockAccess world, BlockPos pos, com.google.common.base.Predicate<BlockState> target) {
 //		return true;
 //	}
 

@@ -6,8 +6,8 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.world.ModExplosion;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
@@ -30,17 +30,17 @@ public class BlockMachineExplosivePackedDrilledStone extends BlockMachineModMany
 
 	@Override
 	// public void onNeighborBlockChange(World worldIn, BlockPos pos,
-	// IBlockState state, Block neighborBlock) {}
-	// public void neighborChanged(IBlockState state, World worldIn, BlockPos
+	// BlockState state, Block neighborBlock) {}
+	// public void neighborChanged(BlockState state, World worldIn, BlockPos
 	// pos, Block blockIn, BlockPos fromPos)
 
-	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
+	public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
 
 	{
 		// public void onNeighborChange(IBlockAccess world, BlockPos bp,
 		// BlockPos neighbor) {
 		// public void onNeighborBlockChange(World world, BlockPos bp,
-		// IBlockState bs, Block neighborBlock) {
+		// BlockState bs, Block neighborBlock) {
 
 		worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
 
@@ -54,7 +54,7 @@ public class BlockMachineExplosivePackedDrilledStone extends BlockMachineModMany
 		detonate(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+	public void updateTick(World worldIn, BlockPos pos, BlockState state, Random rand) {
 		if (worldIn.isBlockPowered(pos)) {
 			detonate(worldIn, pos.getX(), pos.getY(), pos.getZ());
 		}
@@ -78,8 +78,7 @@ public class BlockMachineExplosivePackedDrilledStone extends BlockMachineModMany
 	// (World p_i1948_1_, Entity p_i1948_2_, double p_i1948_3_, double
 	// p_i1948_5_, double p_i1948_7_, float size)
 	/**
-	 * returns a new explosion. Does initiation (at time of writing Explosion is
-	 * not finished)
+	 * returns a new explosion. Does initiation (at time of writing Explosion is not finished)
 	 */
 	public ModExplosion newExplosion(World world, double x, double y, double z, float size, boolean flameing, boolean smoking) {
 

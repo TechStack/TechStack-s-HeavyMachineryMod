@@ -3,7 +3,7 @@ package com.projectreddog.machinemod.block;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -29,7 +29,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 		return this.tickRate(world);
 	}
 
-	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+	public void onBlockAdded(World worldIn, BlockPos pos, BlockState state) {
 		onBlockAdded(worldIn, pos.getX(), pos.getY(), pos.getZ());
 	}
 
@@ -40,7 +40,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 	}
 
 	@Override
-	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
+	public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
 
 		onNeighborBlockChange(worldIn, pos.getX(), pos.getY(), pos.getZ(), blockIn);
 	}
@@ -58,7 +58,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 	 * Ticks the block if it's been scheduled
 	 */
 	@Override
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+	public void updateTick(World worldIn, BlockPos pos, BlockState state, Random rand) {
 		updateTick(worldIn, pos.getX(), pos.getY(), pos.getZ(), rand);
 
 	}
@@ -95,7 +95,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 			} else {
 
 				BlockPos bp = new BlockPos(x, y, z);
-				IBlockState tmpBS = world.getBlockState(bp);
+				BlockState tmpBS = world.getBlockState(bp);
 				world.setBlockToAir(bp);
 
 				while (canFallMore(world, x, y - 1, z) && y > 0) {
@@ -120,7 +120,7 @@ public class BlockMachineModFalling extends BlockMachineMod {
 		this.motionY = 0;
 		Block block2;
 		BlockPos bp = new BlockPos(x, y, z);
-		IBlockState tmpBS = world.getBlockState(bp);
+		BlockState tmpBS = world.getBlockState(bp);
 
 		bp = new BlockPos(x, y - 1, z);
 		Block block = world.getBlockState(bp).getBlock();

@@ -6,7 +6,7 @@ import com.projectreddog.machinemod.model.ModelTransportable;
 
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -53,10 +53,10 @@ public class ItemOilRig extends ItemMachineModMachine {
 						return itemStackIn;
 					}
 
-					IBlockState iblockstate = worldIn.getBlockState(blockpos);
-					Material material = iblockstate.getBlock().getMaterial(iblockstate);
+					BlockState BlockState = worldIn.getBlockState(blockpos);
+					Material material = BlockState.getBlock().getMaterial(BlockState);
 
-					if (material == Material.WATER && ((Integer) iblockstate.getValue(BlockLiquid.LEVEL)).intValue() == 0) {
+					if (material == Material.WATER && ((Integer) BlockState.getValue(BlockLiquid.LEVEL)).intValue() == 0) {
 						if (SpawnOilRig(itemStackIn, playerIn, worldIn, blockpos)) {
 							return null;
 						} else {

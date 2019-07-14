@@ -8,7 +8,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IProperty;
@@ -59,7 +59,7 @@ public class BlockMachineModConduit extends BlockContainer {
 	}
 
 	@Deprecated
-	public boolean isFullCube(IBlockState state) {
+	public boolean isFullCube(BlockState state) {
 		return false;
 	}
 
@@ -68,7 +68,7 @@ public class BlockMachineModConduit extends BlockContainer {
 	 * (Minecarts, Endermen, ...)
 	 */
 	@SideOnly(Side.CLIENT)
-	public IBlockState getStateForEntityRender(IBlockState state) {
+	public BlockState getStateForEntityRender(BlockState state) {
 		return this.getDefaultState().withProperty(UP, false).withProperty(DOWN, false).withProperty(NORTH, false).withProperty(EAST, false).withProperty(SOUTH, false).withProperty(WEST, false);
 	}
 
@@ -78,7 +78,7 @@ public class BlockMachineModConduit extends BlockContainer {
 	}
 
 	@Override
-	public EnumBlockRenderType getRenderType(IBlockState state) {
+	public EnumBlockRenderType getRenderType(BlockState state) {
 		// 3 for normal block 2 for TESR 1 liquid -1 nothing ( like air)
 		// return 3;
 		return EnumBlockRenderType.MODEL;
@@ -92,15 +92,15 @@ public class BlockMachineModConduit extends BlockContainer {
 	}
 
 	@Override
-	public boolean isOpaqueCube(IBlockState state) {
+	public boolean isOpaqueCube(BlockState state) {
 		return false;
 	}
 
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+	public BlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		return this.getDefaultState().withProperty(UP, false).withProperty(DOWN, false).withProperty(NORTH, false).withProperty(EAST, false).withProperty(SOUTH, false).withProperty(WEST, false);
 	}
 
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, EntityLivingBase placer, ItemStack stack) {
 		worldIn.setBlockState(pos, state.withProperty(UP, false).withProperty(DOWN, false).withProperty(NORTH, false).withProperty(EAST, false).withProperty(SOUTH, false).withProperty(WEST, false), 3);
 
 		if (stack.hasDisplayName()) {
@@ -115,7 +115,7 @@ public class BlockMachineModConduit extends BlockContainer {
 	/**
 	 * Convert the given metadata into a BlockState for this Block
 	 */
-	public IBlockState getStateFromMeta(int meta) {
+	public BlockState getStateFromMeta(int meta) {
 		EnumFacing enumfacing = EnumFacing.getFront(meta);
 		if (enumfacing.getAxis() == EnumFacing.Axis.Y) {
 			enumfacing = EnumFacing.NORTH;
@@ -126,7 +126,7 @@ public class BlockMachineModConduit extends BlockContainer {
 	/**
 	 * Convert the BlockState into the correct metadata value
 	 */
-	public int getMetaFromState(IBlockState state) {
+	public int getMetaFromState(BlockState state) {
 		return 0;
 	}
 
@@ -150,7 +150,7 @@ public class BlockMachineModConduit extends BlockContainer {
 
 	}
 
-	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
+	public BlockState getActualState(BlockState state, IBlockAccess world, BlockPos pos) {
 
 		return state.withProperty(NORTH, canConnect(world, pos, EnumFacing.NORTH)).withProperty(EAST, canConnect(world, pos, EnumFacing.EAST)).withProperty(SOUTH, canConnect(world, pos, EnumFacing.SOUTH)).withProperty(WEST, canConnect(world, pos, EnumFacing.WEST)).withProperty(UP, canConnect(world, pos, EnumFacing.UP)).withProperty(DOWN, canConnect(world, pos, EnumFacing.DOWN));
 

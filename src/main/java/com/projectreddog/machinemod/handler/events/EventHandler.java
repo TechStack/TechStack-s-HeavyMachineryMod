@@ -81,7 +81,7 @@ public class EventHandler {
 	// private ItemStack fillCustomBucket(World world, MovingObjectPosition pos)
 	// {
 	//
-	// IBlockState state = world.getBlockState(pos.getBlockPos());
+	// BlockState state = world.getBlockState(pos.getBlockPos());
 	//
 	// Item bucket = buckets.get(state.getBlock());
 	//

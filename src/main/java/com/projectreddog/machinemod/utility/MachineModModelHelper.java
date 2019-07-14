@@ -1,6 +1,7 @@
 package com.projectreddog.machinemod.utility;
 
 import java.util.HashMap;
+import java.util.Random;
 
 import org.lwjgl.opengl.GL11;
 
@@ -32,14 +33,14 @@ public class MachineModModelHelper {
 
 	public static void renderBakedModel(IBakedModel bakedModel) {
 		Tessellator tessellator = Tessellator.getInstance();
-
+		Random r = new Random();
 		BufferBuilder worldrenderer = tessellator.getBuffer();
 		// VertexFormat VF = new VertexFormat();
 		// worldrenderer.begin(GL11.GL_QUADS,
 		// DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);//
 		// bakedModel.getFormat());
 		// OPTION A
-		BakedQuad bakedQuad1 = (BakedQuad) bakedModel.getQuads(null, null, 0).get(0);
+		BakedQuad bakedQuad1 = (BakedQuad) bakedModel.getQuads(null, null, r).get(0);
 
 		// DARK no normal :( due to baked quad not having it
 		// worldrenderer.begin(GL11.GL_QUADS, MYFORMAT);//
@@ -52,7 +53,7 @@ public class MachineModModelHelper {
 		// }
 		// alt version if ever needed
 
-		for (BakedQuad bakedQuad : bakedModel.getQuads(null, null, 0)) {
+		for (BakedQuad bakedQuad : bakedModel.getQuads(null, null, r)) {
 			int j = -1;
 			j = j | -16777216;
 			LightUtil.renderQuadColor(worldrenderer, bakedQuad, j);

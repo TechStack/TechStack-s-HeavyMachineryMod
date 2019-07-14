@@ -7,18 +7,18 @@ import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockBush;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.BushBlock;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockFaceShape;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IProperty;
+import net.minecraft.state.IntegerProperty;
 import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
@@ -27,8 +27,8 @@ import net.minecraft.world.chunk.BlockStateContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
-	public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 6);
+public class BlockMachineBleakCrystal extends BushBlock implements IGrowable {
+	public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 6);
 
 	public BlockMachineBleakCrystal() {
 		super();
@@ -45,7 +45,7 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	}
 
 	@Override
-	public int getExpDrop(IBlockState state, net.minecraft.world.IBlockAccess world, BlockPos pos, int fortune) {
+	public int getExpDrop(BlockState state, net.minecraft.world.IBlockAccess world, BlockPos pos, int fortune) {
 
 		if ((state.getValue(AGE)).intValue() == 6) {
 			return 1;
@@ -69,11 +69,10 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	/**
 	 * Spawns this Block's drops into the World as EntityItems.
 	 * 
-	 * @param chance The chance that each Item is actually spawned (1.0 =
-	 * always, 0.0 = never)
+	 * @param chance The chance that each Item is actually spawned (1.0 = always, 0.0 = never)
 	 * @param fortune The player's fortune level
 	 */
-	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune) {
+	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, BlockState state, float chance, int fortune) {
 		super.dropBlockAsItemWithChance(worldIn, pos, state, chance, 0);
 	}
 
@@ -84,9 +83,9 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 		for (int i = -1; i <= 1; ++i) {
 			for (int j = -1; j <= 1; ++j) {
 				float f1 = 0.0F;
-				IBlockState iblockstate = worldIn.getBlockState(blockpos1.add(i, 0, j));
+				BlockState BlockState = worldIn.getBlockState(blockpos1.add(i, 0, j));
 
-				if (iblockstate.getBlock().canSustainPlant(iblockstate, worldIn, blockpos1.add(i, 0, j), net.minecraft.util.EnumFacing.UP, (net.minecraftforge.common.IPlantable) p_180672_0_)) {
+				if (BlockState.getBlock().canSustainPlant(BlockState, worldIn, blockpos1.add(i, 0, j), Direction.UP, (net.minecraftforge.common.IPlantable) p_180672_0_)) {
 
 					f1 = 3.0F;
 
@@ -121,7 +120,7 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	}
 
 	@Override
-	public boolean canBlockStay(World worldIn, BlockPos p_180671_2_, IBlockState p_180671_3_) {
+	public boolean canBlockStay(World worldIn, BlockPos p_180671_2_, BlockState p_180671_3_) {
 		return worldIn.provider.getDimension() == Reference.BleakDimID && (worldIn.getLight(p_180671_2_) == 0 && this.canPlaceBlockOn(worldIn.getBlockState(p_180671_2_.down()).getBlock()));
 	}
 
@@ -136,22 +135,22 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	/**
 	 * Convert the BlockState into the correct metadata value
 	 */
-	public int getMetaFromState(IBlockState state) {
+	public int getMetaFromState(BlockState state) {
 		return ((Integer) state.getValue(AGE)).intValue();
 	}
 
 	/**
 	 * Convert the given metadata into a BlockState for this Block
 	 */
-	public IBlockState getStateFromMeta(int meta) {
+	public BlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(AGE, Integer.valueOf(meta));
 	}
 
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+	public Item getItemDropped(BlockState state, Random rand, int fortune) {
 		return ((Integer) state.getValue(AGE)).intValue() == 6 ? this.getCrop() : this.getSeed();
 	}
 
-	public boolean isStillGrowing(World worldIn, BlockPos p_176473_2_, IBlockState p_176473_3_, boolean p_176473_4_) {
+	public boolean isStillGrowing(World worldIn, BlockPos p_176473_2_, BlockState p_176473_3_, boolean p_176473_4_) {
 		return ((Integer) p_176473_3_.getValue(AGE)).intValue() < 6;
 	}
 
@@ -161,7 +160,7 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	}
 
 	@Override
-	public java.util.List<ItemStack> getDrops(net.minecraft.world.IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+	public java.util.List<ItemStack> getDrops(net.minecraft.world.IBlockAccess world, BlockPos pos, BlockState state, int fortune) {
 		java.util.List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
 		int age = ((Integer) state.getValue(AGE)).intValue();
 		Random rand = world instanceof World ? ((World) world).rand : new Random();
@@ -179,17 +178,16 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	}
 
 	/**
-	 * Used to determine ambient occlusion and culling when rebuilding chunks
-	 * for render
+	 * Used to determine ambient occlusion and culling when rebuilding chunks for render
 	 */
 	@Override
-	public boolean isOpaqueCube(IBlockState state) {
+	public boolean isOpaqueCube(BlockState state) {
 		return false;
 	}
 
 	@Override
 
-	public boolean isFullCube(IBlockState state) {
+	public boolean isFullCube(BlockState state) {
 		return false;
 	}
 
@@ -200,15 +198,9 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	}
 
 	/**
-	 * Get the geometry of the queried face at the given position and state.
-	 * This is used to decide whether things like buttons are allowed to be
-	 * placed on the face, or how glass panes connect to the face, among other
-	 * things.
+	 * Get the geometry of the queried face at the given position and state. This is used to decide whether things like buttons are allowed to be placed on the face, or how glass panes connect to the face, among other things.
 	 * <p>
-	 * Common values are {@code SOLID}, which is the default, and
-	 * {@code UNDEFINED}, which represents something that does not fit the other
-	 * descriptions and will generally cause other things not to connect to the
-	 * face.
+	 * Common values are {@code SOLID}, which is the default, and {@code UNDEFINED}, which represents something that does not fit the other descriptions and will generally cause other things not to connect to the face.
 	 * 
 	 * @return an approximation of the form of the given face
 	 */
@@ -223,23 +215,23 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	}
 
 	@Override
-	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, BlockState state, BlockPos pos, Direction face) {
 		return BlockFaceShape.UNDEFINED;
 	}
 
 	@Override
-	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+	public boolean canGrow(World worldIn, BlockPos pos, BlockState state, boolean isClient) {
 		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
-	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public void growCrops(World worldIn, BlockPos p_176487_2_, IBlockState p_176487_3_) {
+	public void growCrops(World worldIn, BlockPos p_176487_2_, BlockState p_176487_3_) {
 		int i = ((Integer) p_176487_3_.getValue(AGE)).intValue() + MathHelper.getInt(worldIn.rand, 2, 4);
 
 		if (i > 6) {
@@ -250,12 +242,12 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	}
 
 	@Override
-	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+	public void grow(World worldIn, Random rand, BlockPos pos, BlockState state) {
 		this.growCrops(worldIn, pos, state);
 
 	}
 
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+	public void updateTick(World worldIn, BlockPos pos, BlockState state, Random rand) {
 		super.updateTick(worldIn, pos, state, rand);
 
 		if (worldIn.getLightFromNeighbors(pos.up()) == 0) {

@@ -11,7 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -52,7 +52,7 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 	}
 
 	@Override
-	public EnumBlockRenderType getRenderType(IBlockState state) {
+	public EnumBlockRenderType getRenderType(BlockState state) {
 		// 3 for normal block 2 for TESR 1 liquid -1 nothing ( like air)
 		// return 2;
 		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
@@ -60,7 +60,7 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 	}
 
 	@Override
-	public boolean isOpaqueCube(IBlockState state) {
+	public boolean isOpaqueCube(BlockState state) {
 		return false;
 	}
 
@@ -71,7 +71,7 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 		return this.tickRate(world);
 	}
 
-	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+	public void onBlockAdded(World worldIn, BlockPos pos, BlockState state) {
 		onBlockAdded(worldIn, pos.getX(), pos.getY(), pos.getZ());
 	}
 
@@ -87,7 +87,7 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 	 * neighbor Block
 	 */
 
-	public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock) {
+	public void onNeighborBlockChange(World worldIn, BlockPos pos, BlockState state, Block neighborBlock) {
 		onNeighborBlockChange(worldIn, pos.getX(), pos.getY(), pos.getZ(), neighborBlock);
 	}
 
@@ -103,7 +103,7 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 	/**
 	 * Ticks the block if it's been scheduled
 	 */
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+	public void updateTick(World worldIn, BlockPos pos, BlockState state, Random rand) {
 
 		if (!worldIn.isRemote) {
 			if (worldIn.getTileEntity(pos) instanceof TileEntityLiquidPipe) {
@@ -121,7 +121,7 @@ public class BlockMachineModLiquidPipe extends BlockContainer {
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, BlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		ItemStack heldItem = playerIn.getActiveItemStack();
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te instanceof TileEntityLiquidPipe) {

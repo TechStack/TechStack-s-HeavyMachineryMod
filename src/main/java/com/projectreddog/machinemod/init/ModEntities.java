@@ -40,6 +40,7 @@ public class ModEntities {
 	// EntityBulldozer(new World);
 	public static void init(Object mod) {
 		// Registry.ENTITY_TYPE.register(new ResourceLocation(Reference.MOD_ID + ":" + "drillingrig"), p_218381_2_);
+
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "drillingrig"), EntityDrillingRig.class, "drillingrig", ++entityID, mod, 224, 1, false);
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "bulldozer"), EntityBulldozer.class, "bulldozer", ++entityID, mod, 224, 1, false);
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "dumptruck"), EntityDumpTruck.class, "dumptruck", ++entityID, mod, 224, 1, false);

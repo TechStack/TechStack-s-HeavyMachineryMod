@@ -3,7 +3,7 @@ package com.projectreddog.machinemod.item;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -63,7 +63,7 @@ public class ItemCornSeed extends ItemFood implements IPlantable {
 	}
 
 	@Override
-	public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
+	public BlockState getPlant(IBlockAccess world, BlockPos pos) {
 		return ModBlocks.corn.getDefaultState();
 	}
 

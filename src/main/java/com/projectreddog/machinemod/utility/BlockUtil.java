@@ -2,12 +2,12 @@ package com.projectreddog.machinemod.utility;
 
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.ServerWorld;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.event.world.BlockEvent;
@@ -15,14 +15,14 @@ import net.minecraftforge.event.world.BlockEvent;
 public class BlockUtil {
 
 	public static boolean BreakBlock(World worldObj, BlockPos pos, Entity player) {
-		IBlockState state = worldObj.getBlockState(pos);
+		BlockState state = worldObj.getBlockState(pos);
 
-		EntityPlayer passedPlayer;
+		PlayerEntity passedPlayer;
 
-		if (player instanceof EntityPlayer) {
-			passedPlayer = (EntityPlayer) player;
+		if (player instanceof PlayerEntity) {
+			passedPlayer = (PlayerEntity) player;
 		} else {
-			passedPlayer = FakePlayerFactory.get((WorldServer) worldObj, Reference.gameProfile);
+			passedPlayer = FakePlayerFactory.get((ServerWorld) worldObj, Reference.gameProfile);
 		}
 
 		BlockEvent.BreakEvent breakEvent = new BlockEvent.BreakEvent(worldObj, pos, state, passedPlayer);
@@ -32,17 +32,19 @@ public class BlockUtil {
 			return false;
 		}
 
-		worldObj.getBlockState(pos).getBlock().dropBlockAsItem(worldObj, pos, state, 0);
+		// worldObj.getBlockState(pos).getBlock().dropBlockAsItem(worldObj, pos, state, 0);
 		// TODO add block break sound
-		worldObj.setBlockToAir(pos);
+		// TODO CHECK FOR SOUND & CHECK FOR BLOCK DROPPING PROPER ITEM as we removed the above to and added true here
+
+		worldObj.destroyBlock(pos, true);
 
 		return true;
 	}
 
-	public static boolean setBlockandNotify(World world, BlockPos bp, IBlockState bs) {
+	public static boolean setBlockandNotify(World world, BlockPos bp, BlockState bs) {
 		boolean result = true;
 		world.setBlockState(bp, bs);
-		IBlockState state = world.getBlockState(bp);
+		BlockState state = world.getBlockState(bp);
 		world.notifyBlockUpdate(bp, state, state, 3);
 		return result;
 	}

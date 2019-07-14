@@ -12,7 +12,7 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.enchantment.EnchantmentProtection;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -83,14 +83,14 @@ public class ModExplosion extends Explosion {
 
 						for (float f1 = 0.3F; f > 0.0F; f -= 0.22500001F) {
 							BlockPos blockpos = new BlockPos(d4, d6, d8);
-							IBlockState iblockstate = this.worldObj.getBlockState(blockpos);
+							BlockState BlockState = this.worldObj.getBlockState(blockpos);
 
-							if (iblockstate.getMaterial() != Material.AIR) {
-								float f2 = this.exploder != null ? this.exploder.getExplosionResistance(this, this.worldObj, blockpos, iblockstate) : iblockstate.getBlock().getExplosionResistance(worldObj, blockpos, (Entity) null, this);
+							if (BlockState.getMaterial() != Material.AIR) {
+								float f2 = this.exploder != null ? this.exploder.getExplosionResistance(this, this.worldObj, blockpos, BlockState) : BlockState.getBlock().getExplosionResistance(worldObj, blockpos, (Entity) null, this);
 								f -= (f2 + 0.3F) * 0.3F;
 							}
 
-							if (f > 0.0F && (this.exploder == null || this.exploder.canExplosionDestroyBlock(this, this.worldObj, blockpos, iblockstate, f))) {
+							if (f > 0.0F && (this.exploder == null || this.exploder.canExplosionDestroyBlock(this, this.worldObj, blockpos, BlockState, f))) {
 								set.add(blockpos);
 							}
 

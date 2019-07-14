@@ -7,7 +7,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -48,14 +48,14 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 	 * (Minecarts, Endermen, ...)
 	 */
 	@SideOnly(Side.CLIENT)
-	public IBlockState getStateForEntityRender(IBlockState state) {
+	public BlockState getStateForEntityRender(BlockState state) {
 		return this.getDefaultState().withProperty(FACING, EnumFacing.SOUTH);
 	}
 
 	/**
 	 * Convert the given metadata into a BlockState for this Block
 	 */
-	public IBlockState getStateFromMeta(int meta) {
+	public BlockState getStateFromMeta(int meta) {
 		EnumFacing enumfacing = EnumFacing.getFront(meta);
 
 		if (enumfacing.getAxis() == EnumFacing.Axis.Y) {
@@ -68,7 +68,7 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 	/**
 	 * Convert the BlockState into the correct metadata value
 	 */
-	public int getMetaFromState(IBlockState state) {
+	public int getMetaFromState(BlockState state) {
 		return ((EnumFacing) state.getValue(FACING)).getIndex();
 	}
 
@@ -108,7 +108,7 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 		}
 	}
 
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+	public void updateTick(World worldIn, BlockPos pos, BlockState state, Random rand) {
 
 		if (worldIn.getLightFromNeighbors(pos.up()) < 4 && worldIn.getBlockState(pos.up()).getBlock().getLightOpacity(state, worldIn, pos.up()) > 2) {
 			worldIn.setBlockState(pos, Blocks.DIRT.getDefaultState());
@@ -126,7 +126,7 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 	 * 
 	 * @param fortune the level of the Fortune enchantment on the player's tool
 	 */
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+	public Item getItemDropped(BlockState state, Random rand, int fortune) {
 		return Blocks.DIRT.getItemDropped(Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT), rand, fortune);
 	}
 
@@ -136,7 +136,7 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public int getRenderColor(IBlockState state) {
+	public int getRenderColor(BlockState state) {
 		return this.getBlockColor();
 	}
 
@@ -150,11 +150,11 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+	public BlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
 	}
 
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, EntityLivingBase placer, ItemStack stack) {
 		worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
 	}
 

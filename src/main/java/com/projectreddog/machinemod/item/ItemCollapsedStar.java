@@ -4,7 +4,7 @@ import com.projectreddog.machinemod.block.BlockMachineBleakPortal;
 import com.projectreddog.machinemod.block.BlockMachineBleakPortalFrame;
 import com.projectreddog.machinemod.init.ModBlocks;
 
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -55,7 +55,7 @@ public class ItemCollapsedStar extends ItemMachineMod {
 												portalFacing = EnumFacing.EAST;
 
 												world.setBlockState(pos.east(), ModBlocks.machinebleakportalframe.getDefaultState().withProperty(BlockMachineBleakPortalFrame.FACING, EnumFacing.WEST).withProperty(BlockMachineBleakPortalFrame.HAS_STAR, Boolean.valueOf(true)));
-												IBlockState state = world.getBlockState(pos.east());
+												BlockState state = world.getBlockState(pos.east());
 												world.notifyBlockUpdate(pos.east(), state, state, 3);
 
 												world.setBlockState(pos.east().up(), ModBlocks.machinebleakportalframe.getDefaultState().withProperty(BlockMachineBleakPortalFrame.FACING, EnumFacing.WEST).withProperty(BlockMachineBleakPortalFrame.HAS_STAR, Boolean.valueOf(true)));
@@ -97,7 +97,7 @@ public class ItemCollapsedStar extends ItemMachineMod {
 												portalFacing = EnumFacing.SOUTH;
 
 												world.setBlockState(pos.south(), ModBlocks.machinebleakportalframe.getDefaultState().withProperty(BlockMachineBleakPortalFrame.FACING, EnumFacing.NORTH).withProperty(BlockMachineBleakPortalFrame.HAS_STAR, Boolean.valueOf(true)));
-												IBlockState state = world.getBlockState(pos.south());
+												BlockState state = world.getBlockState(pos.south());
 												world.notifyBlockUpdate(pos.south(), state, state, 3);
 												world.setBlockState(pos.south().up(), ModBlocks.machinebleakportalframe.getDefaultState().withProperty(BlockMachineBleakPortalFrame.FACING, EnumFacing.NORTH).withProperty(BlockMachineBleakPortalFrame.HAS_STAR, Boolean.valueOf(true)));
 												state = world.getBlockState(pos.south().up());
@@ -127,7 +127,7 @@ public class ItemCollapsedStar extends ItemMachineMod {
 						}
 						if (portalFacing != null) {
 							world.setBlockState(pos, ModBlocks.machinebleakportal.getDefaultState().withProperty(BlockMachineBleakPortal.FACING, portalFacing));
-							IBlockState state = world.getBlockState(pos);
+							BlockState state = world.getBlockState(pos);
 							world.notifyBlockUpdate(pos, state, state, 3);
 
 							world.setBlockState(pos.up(), ModBlocks.machinebleakportal.getDefaultState().withProperty(BlockMachineBleakPortal.FACING, portalFacing));

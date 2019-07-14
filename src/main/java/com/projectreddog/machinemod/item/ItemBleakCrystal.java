@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.item;
 
 import com.projectreddog.machinemod.init.ModBlocks;
 
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -61,7 +61,7 @@ public class ItemBleakCrystal extends ItemMachineMod implements IPlantable {
 	}
 
 	@Override
-	public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
+	public BlockState getPlant(IBlockAccess world, BlockPos pos) {
 		return ModBlocks.machinebleakcrystal.getDefaultState();
 	}
 

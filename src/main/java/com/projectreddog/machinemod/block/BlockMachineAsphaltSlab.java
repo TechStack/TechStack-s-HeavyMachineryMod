@@ -5,10 +5,12 @@ import com.projectreddog.machinemod.entity.EntityPaver;
 import com.projectreddog.machinemod.entity.EntityRoadRoller;
 import com.projectreddog.machinemod.reference.Reference;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -19,19 +21,19 @@ public class BlockMachineAsphaltSlab extends BlockMachineMod {
 	protected static final AxisAlignedBB COMPRESSED_ASPHALT_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
 
 	public BlockMachineAsphaltSlab() {
-		super();
+
+		super(Block.Properties.create(Material.ROCK).hardnessAndResistance(15f).sound(SoundType.STONE));
 		// 1.8
 		// REMOVED 1.14
 		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_ASPHALT_SLAB);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_ASPHALT_SLAB);
 
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
-		this.setHardness(15f);// not sure on the hardness
-		this.setSoundType(SoundType.STONE);
+
 	}
 
 	@Override
-	public boolean isOpaqueCube(IBlockState state) {
+	public boolean isOpaqueCube(BlockState state) {
 		return false;
 	}
 
@@ -45,27 +47,27 @@ public class BlockMachineAsphaltSlab extends BlockMachineMod {
 	}
 
 	@Override
-	public boolean isFullCube(IBlockState state) {
+	public boolean isFullCube(BlockState state) {
 		return false;
 	}
 
 	@Override
 
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+	public AxisAlignedBB getBoundingBox(BlockState state, IBlockAccess source, BlockPos pos) {
 		return COMPRESSED_ASPHALT_AABB;
 	}
 
 	@Override
-	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+	public AxisAlignedBB getCollisionBoundingBox(BlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return COMPRESSED_ASPHALT_AABB;
 	}
 
 	/**
 	 * Called When an Entity Collided with the Block
 	 */
-	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entity) {
+	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, BlockState state, Entity entity) {
 		double savedSpeed = Math.sqrt(entity.motionZ * entity.motionZ + entity.motionX * entity.motionX);
-		if (!(entity instanceof EntityPlayer)) {
+		if (!(entity instanceof PlayerEntity)) {
 			// not a player
 			if (!(entity instanceof EntityMachineModRideable)) {
 				// not a machine mod rideable
@@ -79,7 +81,7 @@ public class BlockMachineAsphaltSlab extends BlockMachineMod {
 				return;
 			}
 
-		} else if (((EntityPlayer) entity).moveForward < .8f && ((EntityPlayer) entity).moveStrafing < .8f) {
+		} else if (((PlayerEntity) entity).moveForward < .8f && ((PlayerEntity) entity).moveStrafing < .8f) {
 			return;
 			// player no longer trying to move
 		}

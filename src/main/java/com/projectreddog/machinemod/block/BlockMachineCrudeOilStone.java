@@ -4,8 +4,8 @@ import java.util.Random;
 
 import com.projectreddog.machinemod.reference.Reference;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 
 public class BlockMachineCrudeOilStone extends BlockMachineMod {
@@ -27,7 +27,7 @@ public class BlockMachineCrudeOilStone extends BlockMachineMod {
 	 * 
 	 * @param fortune the level of the Fortune enchantment on the player's tool
 	 */
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+	public Item getItemDropped(BlockState state, Random rand, int fortune) {
 		return Item.getItemFromBlock(Blocks.COBBLESTONE);
 	}
 

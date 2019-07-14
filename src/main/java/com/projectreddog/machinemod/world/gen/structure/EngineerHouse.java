@@ -15,7 +15,7 @@ import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockSlab.EnumBlockHalf;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.BlockWallSign;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntityZombieVillager;
 import net.minecraft.entity.passive.EntityVillager;
@@ -58,14 +58,14 @@ public class EngineerHouse extends Village {
 			this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 6 - 1, 0);
 		}
 
-		IBlockState cobble = this.getBiomeSpecificBlockState(Blocks.COBBLESTONE.getDefaultState());
-		IBlockState planks = this.getBiomeSpecificBlockState(Blocks.PLANKS.getDefaultState());
-		IBlockState log = this.getBiomeSpecificBlockState(Blocks.LOG.getDefaultState());
-		IBlockState stairs = this.getBiomeSpecificBlockState(Blocks.OAK_STAIRS.getDefaultState());
+		BlockState cobble = this.getBiomeSpecificBlockState(Blocks.COBBLESTONE.getDefaultState());
+		BlockState planks = this.getBiomeSpecificBlockState(Blocks.PLANKS.getDefaultState());
+		BlockState log = this.getBiomeSpecificBlockState(Blocks.LOG.getDefaultState());
+		BlockState stairs = this.getBiomeSpecificBlockState(Blocks.OAK_STAIRS.getDefaultState());
 
-		IBlockState air = Blocks.AIR.getDefaultState();
-		// IBlockState iblockstate3 = this.getBiomeSpecificBlockState(ModBlocks.steelblock.getDefaultState());
-		// IBlockState iblockstate4 = this.getBiomeSpecificBlockState(ModBlocks.steelblock.getDefaultState());
+		BlockState air = Blocks.AIR.getDefaultState();
+		// BlockState BlockState3 = this.getBiomeSpecificBlockState(ModBlocks.steelblock.getDefaultState());
+		// BlockState BlockState4 = this.getBiomeSpecificBlockState(ModBlocks.steelblock.getDefaultState());
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 2, 1, 13, 2, 11, cobble, cobble, false);
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 3, 2, 13, 6, 11, planks, planks, false);
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 2, 3, 3, 12, 6, 10, air, air, false);

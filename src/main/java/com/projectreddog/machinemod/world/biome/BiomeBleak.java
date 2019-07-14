@@ -7,7 +7,7 @@ import com.projectreddog.machinemod.entity.monster.EntityExpStalker;
 import com.projectreddog.machinemod.init.ModBlocks;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -55,8 +55,8 @@ public class BiomeBleak extends Biome {
 	 */
 	public final void generateBiomeTerrain2(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal) {
 		int i = worldIn.getSeaLevel();
-		IBlockState iblockstate = this.topBlock;
-		IBlockState iblockstate1 = this.fillerBlock;
+		BlockState BlockState = this.topBlock;
+		BlockState BlockState1 = this.fillerBlock;
 		int j = -1;
 		int k = (int) (noiseVal / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 		int l = x & 15;
@@ -67,27 +67,27 @@ public class BiomeBleak extends Biome {
 			if (j1 <= rand.nextInt(5)) {
 				chunkPrimerIn.setBlockState(i1, j1, l, BEDROCK);
 			} else {
-				IBlockState iblockstate2 = chunkPrimerIn.getBlockState(i1, j1, l);
+				BlockState BlockState2 = chunkPrimerIn.getBlockState(i1, j1, l);
 
-				if (iblockstate2.getMaterial() == Material.AIR) {
+				if (BlockState2.getMaterial() == Material.AIR) {
 					j = -1;
-				} else if (iblockstate2.getBlock() == ModBlocks.machinebleakstone) {
+				} else if (BlockState2.getBlock() == ModBlocks.machinebleakstone) {
 					if (j == -1) {
 						if (k <= 0) {
-							iblockstate = AIR;
-							iblockstate1 = STONE;
+							BlockState = AIR;
+							BlockState1 = STONE;
 						} else if (j1 >= i - 4 && j1 <= i + 1) {
-							iblockstate = this.topBlock;
-							iblockstate1 = this.fillerBlock;
+							BlockState = this.topBlock;
+							BlockState1 = this.fillerBlock;
 						}
 
 						j = k;
 
-						chunkPrimerIn.setBlockState(i1, j1, l, iblockstate1);
+						chunkPrimerIn.setBlockState(i1, j1, l, BlockState1);
 
 					} else if (j > 0) {
 						--j;
-						chunkPrimerIn.setBlockState(i1, j1, l, iblockstate1);
+						chunkPrimerIn.setBlockState(i1, j1, l, BlockState1);
 
 					}
 				}

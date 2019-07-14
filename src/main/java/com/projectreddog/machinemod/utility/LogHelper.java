@@ -1,13 +1,15 @@
 package com.projectreddog.machinemod.utility;
 
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
 
 import com.projectreddog.machinemod.reference.Reference;
 
 public class LogHelper {
 
 	public static void log(Level logLevel, Object object) {
-		net.minecraftforge.fml.common.FMLLog.log(Reference.MOD_NAME, logLevel, String.valueOf(object));
+		// TODO if perf issue CACHE the logger
+		LogManager.getLogger(Reference.MOD_NAME).log(logLevel, String.valueOf(object));
 
 	}
 
