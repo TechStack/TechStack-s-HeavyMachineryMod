@@ -2,8 +2,8 @@ package com.projectreddog.machinemod.container;
 
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 
-import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.IContainerListener;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;

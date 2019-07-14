@@ -2,8 +2,8 @@ package com.projectreddog.machinemod.container;
 
 import com.projectreddog.machinemod.tileentities.TileEntityScreen;
 
-import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 
 public class ContainerScreen extends Container {
