@@ -575,7 +575,7 @@ public class EntityMachineModRideable extends Entity {
 		setPosition(posX + motionX, posY + motionY, posZ + motionZ);
 
 		// LogHelper.info("Client: isinvis:" +
-		// this.isInvisibleToPlayer(Minecraft.getMinecraft().thePlayer) +
+		// this.isInvisibleToPlayer(Minecraft.getInstance().thePlayer) +
 		// " DIMID:" + world.provider.getDimensionId() + " X:" + posX +
 		// " Y:" + posY + " Z:" + posZ);
 		//

@@ -27,7 +27,7 @@ public class RenderExpStalker extends RenderLiving<EntityExpStalker> {
 		// LogHelper.info("in RenderLoader constructor");
 		shadowSize = 1F;
 		this.myModel = new ModelExpStalker();
-		itemRenderer = Minecraft.getMinecraft().getRenderItem();
+		itemRenderer = Minecraft.getInstance().getRenderItem();
 
 	}
 

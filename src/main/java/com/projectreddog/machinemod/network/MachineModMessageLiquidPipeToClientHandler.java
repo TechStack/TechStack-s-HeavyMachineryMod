@@ -21,10 +21,10 @@ public class MachineModMessageLiquidPipeToClientHandler implements IMessageHandl
 		// LogHelper.info("in machineModMessageEntityToClient Handler");
 		// LogHelper.info("Message data" + message);
 		// LogHelper.info("on message MachineModMessageEntityToClientHandler");
-		if (Minecraft.getMinecraft().world != null) {
-			if (Minecraft.getMinecraft().world.isRemote) {
+		if (Minecraft.getInstance().world != null) {
+			if (Minecraft.getInstance().world.isRemote) {
 
-				Minecraft.getMinecraft().addScheduledTask(new Runnable() {
+				Minecraft.getInstance().addScheduledTask(new Runnable() {
 					public void run() {
 						processMessage(message);
 					}
@@ -36,9 +36,9 @@ public class MachineModMessageLiquidPipeToClientHandler implements IMessageHandl
 
 	public void processMessage(MachineModMessageLiquidPipeToClient message) {
 		if (message != null) {
-			if (Minecraft.getMinecraft().world != null) {
-				if (Minecraft.getMinecraft().player != null) {
-					TileEntity entity = Minecraft.getMinecraft().world.getTileEntity(new BlockPos(message.currPosX, message.currPosY, message.currPosZ));
+			if (Minecraft.getInstance().world != null) {
+				if (Minecraft.getInstance().player != null) {
+					TileEntity entity = Minecraft.getInstance().world.getTileEntity(new BlockPos(message.currPosX, message.currPosY, message.currPosZ));
 					if (entity != null) {
 						if (entity instanceof TileEntityLiquidPipe) {
 							if (message.fluidID == -1) {

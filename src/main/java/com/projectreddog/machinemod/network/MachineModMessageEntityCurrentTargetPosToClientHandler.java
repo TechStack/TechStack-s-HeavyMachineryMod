@@ -16,10 +16,10 @@ public class MachineModMessageEntityCurrentTargetPosToClientHandler implements I
 		// LogHelper.info("in machineModMessageEntityToClient Handler");
 		// LogHelper.info("Message data" + message);
 		// LogHelper.info("on message MachineModMessageEntityToClientHandler");
-		if (Minecraft.getMinecraft().world != null) {
-			if (Minecraft.getMinecraft().world.isRemote) {
+		if (Minecraft.getInstance().world != null) {
+			if (Minecraft.getInstance().world.isRemote) {
 
-				Minecraft.getMinecraft().addScheduledTask(new Runnable() {
+				Minecraft.getInstance().addScheduledTask(new Runnable() {
 					public void run() {
 						processMessage(message);
 					}
@@ -31,9 +31,9 @@ public class MachineModMessageEntityCurrentTargetPosToClientHandler implements I
 
 	public void processMessage(MachineModMessageEntityCurrentTargetPosToClient message) {
 		if (message != null) {
-			if (Minecraft.getMinecraft().world != null) {
-				if (Minecraft.getMinecraft().player != null) {
-					Entity entity = Minecraft.getMinecraft().world.getEntityByID(message.entityid);
+			if (Minecraft.getInstance().world != null) {
+				if (Minecraft.getInstance().player != null) {
+					Entity entity = Minecraft.getInstance().world.getEntityByID(message.entityid);
 
 					if (entity != null) {
 

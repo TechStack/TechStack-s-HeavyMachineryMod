@@ -38,8 +38,8 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 	private RenderManager renderManager;
 
 	public TileEntityCrateRenderer() {
-		renderManager = Minecraft.getMinecraft().getRenderManager();
-		itemRenderer = Minecraft.getMinecraft().getRenderItem();
+		renderManager = Minecraft.getInstance().getRenderManager();
+		itemRenderer = Minecraft.getInstance().getRenderItem();
 
 	}
 
@@ -48,7 +48,7 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 
 		Tessellator tessellator = Tessellator.getInstance();
 
-		// Minecraft.getMinecraft().entityRenderer.enableLightMap() and
+		// Minecraft.getInstance().entityRenderer.enableLightMap() and
 		// .disableLightMap(),
 
 		GL11.glPushMatrix();
@@ -114,7 +114,7 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 			Entity entity = this.rendererDispatcher.entity;
 			double d0 = te.getDistanceSq(entity.posX, entity.posY, entity.posZ);
 			// the 400 on the next line is the square of 20 *20 // save 1 math operation by pre calc
-			if (d0 <= (double) (400) && Minecraft.getMinecraft().player.isSneaking()) {
+			if (d0 <= (double) (400) && Minecraft.getInstance().player.isSneaking()) {
 				if (!str.equals("")) {
 					EntityRenderer.drawNameplate(this.renderManager.getFontRenderer(), str, (float) x + .5f, (float) y + .75f, (float) z + .5f, 0, f2, f1, flag1, false);
 				}

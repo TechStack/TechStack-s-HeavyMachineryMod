@@ -49,7 +49,7 @@ public class RenderLawnmower extends EntityRenderer {
 
 		this.bindEntityTexture(entity);
 
-		// Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
+		// Minecraft.getInstance().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 		// this.renderManager.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);

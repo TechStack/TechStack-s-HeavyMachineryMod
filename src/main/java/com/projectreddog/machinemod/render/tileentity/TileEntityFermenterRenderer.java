@@ -23,7 +23,7 @@ public class TileEntityFermenterRenderer extends TileEntitySpecialRenderer {
 
 		Tessellator tessellator = Tessellator.getInstance();
 
-		// Minecraft.getMinecraft().entityRenderer.enableLightMap() and
+		// Minecraft.getInstance().entityRenderer.enableLightMap() and
 		// .disableLightMap(),
 
 		GL11.glPushMatrix();

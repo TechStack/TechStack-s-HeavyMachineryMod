@@ -92,7 +92,7 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void Init() {
-		final BlockColors blockcolors = Minecraft.getMinecraft().getBlockColors();
+		final BlockColors blockcolors = Minecraft.getInstance().getBlockColors();
 		blockcolors.registerBlockColorHandler(new IBlockColor() {
 			public int colorMultiplier(BlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex) {
 				return worldIn != null && pos != null ? BiomeColorHelper.getGrassColorAtPos(worldIn, pos) : ColorizerGrass.getGrassColor(0.5D, 1.0D);
@@ -105,35 +105,35 @@ public class ClientProxy extends CommonProxy {
 
 		// LogHelper.info("in register Renderers");
 		MachineModModelHelper.setupVertexFormat();
-		RenderingRegistry.registerEntityRenderingHandler(EntityBulldozer.class, new RenderBulldozer(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityDrillingRig.class, new RenderDrillingRig(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityDumpTruck.class, new RenderDumpTruck(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityLoader.class, new RenderLoader(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGrader.class, new RenderGrader(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityTractor.class, new RenderTractor(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityLawnmower.class, new RenderLawnmower(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityCombine.class, new RenderCombine(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntitySemiTractor.class, new RenderSemiTractor(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityCrane.class, new RenderCrane(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityExcavator.class, new RenderExcavator(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityPaver.class, new RenderPaver(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityBagger.class, new RenderBagger(Minecraft.getMinecraft().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBulldozer.class, new RenderBulldozer(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityDrillingRig.class, new RenderDrillingRig(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityDumpTruck.class, new RenderDumpTruck(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityLoader.class, new RenderLoader(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityGrader.class, new RenderGrader(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityTractor.class, new RenderTractor(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityLawnmower.class, new RenderLawnmower(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityCombine.class, new RenderCombine(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntitySemiTractor.class, new RenderSemiTractor(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityCrane.class, new RenderCrane(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityExcavator.class, new RenderExcavator(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityPaver.class, new RenderPaver(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBagger.class, new RenderBagger(Minecraft.getInstance().getRenderManager()));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityRoadRoller.class, new RenderRoadRoller(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityOilRig.class, new RenderOilRig(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntitySub.class, new RenderSub(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityChopper.class, new RenderChopper(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityContinuousMiner.class, new RenderContinuousMiner(Minecraft.getMinecraft().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityRoadRoller.class, new RenderRoadRoller(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityOilRig.class, new RenderOilRig(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntitySub.class, new RenderSub(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityChopper.class, new RenderChopper(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityContinuousMiner.class, new RenderContinuousMiner(Minecraft.getInstance().getRenderManager()));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityLaserMiner.class, new RenderLaserMiner(Minecraft.getMinecraft().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityLaserMiner.class, new RenderLaserMiner(Minecraft.getInstance().getRenderManager()));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityExpStalker.class, new RenderExpStalker(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityTrackLoader.class, new RenderTrackLoader(Minecraft.getMinecraft().getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityUnderGroundDumpTruck.class, new RenderUnderGroundDumpTruck(Minecraft.getMinecraft().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityExpStalker.class, new RenderExpStalker(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityTrackLoader.class, new RenderTrackLoader(Minecraft.getInstance().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityUnderGroundDumpTruck.class, new RenderUnderGroundDumpTruck(Minecraft.getInstance().getRenderManager()));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityUnderGroundLoader.class, new RenderUnderGroundLoader(Minecraft.getMinecraft().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityUnderGroundLoader.class, new RenderUnderGroundLoader(Minecraft.getInstance().getRenderManager()));
 
-		// RenderingRegistry.registerEntityRenderingHandler(EntityPumpJack.class, new RenderPumpJack(Minecraft.getMinecraft().getRenderManager()));
+		// RenderingRegistry.registerEntityRenderingHandler(EntityPumpJack.class, new RenderPumpJack(Minecraft.getInstance().getRenderManager()));
 		// TODO fix post JSON
 		// Item ItemblockBlastedStone = GameRegistry.findItem(Reference.MOD_ID, Reference.MODBLOCK_MACHINE_BLASTED_STONE);
 		// TODO Fix post Json

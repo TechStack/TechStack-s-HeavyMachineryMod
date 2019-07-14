@@ -22,8 +22,8 @@ public class RenderOverlayHandler extends Gui {
 	private Minecraft mc;
 
 	public RenderOverlayHandler() {
-		this.fontRenderer = Minecraft.getMinecraft().fontRenderer;
-		this.mc = Minecraft.getMinecraft();
+		this.fontRenderer = Minecraft.getInstance().fontRenderer;
+		this.mc = Minecraft.getInstance();
 	}
 
 	@SubscribeEvent(priority = EventPriority.NORMAL)
@@ -33,9 +33,9 @@ public class RenderOverlayHandler extends Gui {
 		// return;
 		// }
 		// LogHelper.info(event.type);
-		if (Minecraft.getMinecraft().player.isRiding()) {
-			if (Minecraft.getMinecraft().player.getRidingEntity() instanceof EntityMachineModRideable) {
-				EntityMachineModRideable emr = (EntityMachineModRideable) Minecraft.getMinecraft().player.getRidingEntity();
+		if (Minecraft.getInstance().player.isRiding()) {
+			if (Minecraft.getInstance().player.getRidingEntity() instanceof EntityMachineModRideable) {
+				EntityMachineModRideable emr = (EntityMachineModRideable) Minecraft.getInstance().player.getRidingEntity();
 
 				int xPos = 2;
 				int yPos = 2;
@@ -52,9 +52,9 @@ public class RenderOverlayHandler extends Gui {
 				this.drawTexturedModalRect(xPos + 10, yPos + yOffest, 0, 0, 6, 3);
 				// this.fontRenderer.drawString("Fuel:" + emr.currentFuelLevel, 0, 0, 14737632);
 
-				if (Minecraft.getMinecraft().player.getRidingEntity() instanceof EntityDrillingRig) {
+				if (Minecraft.getInstance().player.getRidingEntity() instanceof EntityDrillingRig) {
 
-					EntityDrillingRig edr = (EntityDrillingRig) Minecraft.getMinecraft().player.getRidingEntity();
+					EntityDrillingRig edr = (EntityDrillingRig) Minecraft.getInstance().player.getRidingEntity();
 					int depth = (int) (((edr.Attribute1) - 90) / 5);
 					if (depth < 0) {
 						depth = 0;
@@ -64,9 +64,9 @@ public class RenderOverlayHandler extends Gui {
 				}
 
 			}
-		} else if (Minecraft.getMinecraft().player.isElytraFlying()) {
-			if (!Minecraft.getMinecraft().player.getItemStackFromSlot(EntityEquipmentSlot.LEGS).isEmpty()) {
-				if (Minecraft.getMinecraft().player.getItemStackFromSlot(EntityEquipmentSlot.LEGS).getItem() == ModItems.elytrajetleg) {
+		} else if (Minecraft.getInstance().player.isElytraFlying()) {
+			if (!Minecraft.getInstance().player.getItemStackFromSlot(EntityEquipmentSlot.LEGS).isEmpty()) {
+				if (Minecraft.getInstance().player.getItemStackFromSlot(EntityEquipmentSlot.LEGS).getItem() == ModItems.elytrajetleg) {
 					// has elytra jet legs on ! render fulel gage!
 					int xPos = 2;
 					int yPos = 2;
@@ -78,7 +78,7 @@ public class RenderOverlayHandler extends Gui {
 					this.drawTexturedModalRect(xPos, yPos, 0, 0, 16, 64);
 
 					this.mc.renderEngine.bindTexture(getTextureLocationMarker());
-					int currentFuelLevel = ItemMachineModElytraJetLegs.MaxFuel - Minecraft.getMinecraft().player.getItemStackFromSlot(EntityEquipmentSlot.LEGS).getItemDamage();
+					int currentFuelLevel = ItemMachineModElytraJetLegs.MaxFuel - Minecraft.getInstance().player.getItemStackFromSlot(EntityEquipmentSlot.LEGS).getItemDamage();
 					int maxFuelLevel = ItemMachineModElytraJetLegs.MaxFuel;
 
 					int yOffest = (int) (4 + (54 - (((float) currentFuelLevel / maxFuelLevel) * 54)));

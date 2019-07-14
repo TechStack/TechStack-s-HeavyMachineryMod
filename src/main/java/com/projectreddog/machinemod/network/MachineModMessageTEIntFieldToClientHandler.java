@@ -13,10 +13,10 @@ public class MachineModMessageTEIntFieldToClientHandler implements IMessageHandl
 	@Override
 	public IMessage onMessage(final MachineModMessageTEIntFieldToClient message, MessageContext ctx) {
 		// LogHelper.info("on message MachineModMessageEntityInventoryChangedToClient");
-		if (Minecraft.getMinecraft().world != null) {
-			if (Minecraft.getMinecraft().world.isRemote) {
+		if (Minecraft.getInstance().world != null) {
+			if (Minecraft.getInstance().world.isRemote) {
 
-				Minecraft.getMinecraft().addScheduledTask(new Runnable() {
+				Minecraft.getInstance().addScheduledTask(new Runnable() {
 					public void run() {
 						processMessage(message);
 					}
@@ -28,10 +28,10 @@ public class MachineModMessageTEIntFieldToClientHandler implements IMessageHandl
 
 	public void processMessage(MachineModMessageTEIntFieldToClient message) {
 		if (message != null) {
-			if (Minecraft.getMinecraft().world != null) {
-				if (Minecraft.getMinecraft().player != null) {
+			if (Minecraft.getInstance().world != null) {
+				if (Minecraft.getInstance().player != null) {
 
-					TileEntity TileEntity = Minecraft.getMinecraft().world.getTileEntity(new BlockPos(message.x, message.y, message.z));
+					TileEntity TileEntity = Minecraft.getInstance().world.getTileEntity(new BlockPos(message.x, message.y, message.z));
 
 					if (TileEntity != null) {
 
