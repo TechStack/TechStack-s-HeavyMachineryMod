@@ -54,9 +54,9 @@ public class BleakTeleporter extends Teleporter {
 		entity.motionZ = 0.0f;
 	}
 
-	public static void teleportToDimension(EntityPlayerMP player, int dimension, double x, double y, double z, BlockPos portalBlockPos, Direction portalFacing) {
+	public static void teleportToDimension(ServerPlayerEntityplayer, int dimension, double x, double y, double z, BlockPos portalBlockPos, Direction portalFacing) {
 		int oldDimension = player.getEntityWorld().provider.getDimension();
-		EntityPlayerMP entityPlayerMP = (EntityPlayerMP) player;
+		ServerPlayerEntityServerPlayerEntity= (EntityPlayerMP) player;
 		MinecraftServer server = player.getEntityWorld().getMinecraftServer();
 		WorldServer worldServer = server.getWorld(dimension);
 

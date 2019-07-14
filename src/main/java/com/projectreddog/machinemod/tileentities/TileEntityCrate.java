@@ -401,7 +401,7 @@ public class TileEntityCrate extends TileEntity implements ITickableTileEntity, 
 
 	}
 
-	public void sendAllInventoryToPlayer(EntityPlayerMP player) {
+	public void sendAllInventoryToPlayer(ServerPlayerEntityplayer) {
 		for (int i = 0; i < inventory.length; i++) {
 
 			ModNetwork.simpleNetworkWrapper.sendTo(new MachineModMessageTEInventoryChangedToClient(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), i, inventory[i], this.AmtInReserve), player);

@@ -29,7 +29,7 @@ public class ItemDebug extends ItemMachineMod {
 		if (!world.isRemote) {
 			// server
 
-			EntityPlayerMP emp = (EntityPlayerMP) player;
+			ServerPlayerEntityemp = (EntityPlayerMP) player;
 			if (player.isSneaking()) {
 				// BleakTeleporter.teleportToDimension(player, 0, pos.getX(), pos.getY(), pos.getZ());
 			} else {

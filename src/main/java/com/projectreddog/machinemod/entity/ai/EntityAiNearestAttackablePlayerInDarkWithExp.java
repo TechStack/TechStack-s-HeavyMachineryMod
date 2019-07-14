@@ -15,8 +15,7 @@ import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Items;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EntitySelectors;
@@ -72,8 +71,8 @@ public class EntityAiNearestAttackablePlayerInDarkWithExp<T extends EntityLiving
 	public boolean shouldExecute() {
 		if (this.targetChance > 0 && this.taskOwner.getRNG().nextInt(this.targetChance) != 0) {
 			return false;
-		} else if (this.targetClass != EntityPlayer.class && this.targetClass != EntityPlayerMP.class) {
-			List<T> list = this.taskOwner.world.<T> getEntitiesWithinAABB(this.targetClass, this.getTargetableArea(this.getTargetDistance()), this.targetEntitySelector);
+		} else if (this.targetClass != EntityPlayer.class && this.targetClass != ServerPlayerEntity.class) {
+			List<T> list = this.taskOwner.world.<T>getEntitiesWithinAABB(this.targetClass, this.getTargetableArea(this.getTargetDistance()), this.targetEntitySelector);
 
 			if (list.isEmpty()) {
 				return false;
