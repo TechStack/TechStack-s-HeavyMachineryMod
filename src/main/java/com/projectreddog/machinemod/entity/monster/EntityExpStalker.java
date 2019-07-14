@@ -6,7 +6,7 @@ import com.projectreddog.machinemod.entity.ai.EntityAiNearestAttackablePlayerInD
 import com.projectreddog.machinemod.entity.ai.EntityFlyFastTurnHelper;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
@@ -54,7 +54,7 @@ public class EntityExpStalker extends EntityMob {
 
 		if (this.getAttackTarget() != null) {
 
-			EntityLivingBase elb = this.getAttackTarget();
+			LivingEntity elb = this.getAttackTarget();
 
 		}
 
@@ -287,7 +287,7 @@ public class EntityExpStalker extends EntityMob {
 		 * Execute a one shot task or start executing a continuous task
 		 */
 		public void startExecuting() {
-			EntityLivingBase entitylivingbase = this.parentEntity.getAttackTarget();
+			LivingEntity entitylivingbase = this.parentEntity.getAttackTarget();
 			Vec3d vec3d = entitylivingbase.getPositionEyes(1.0F);
 			state = AIState.MOVING_TO_TARGET;
 			this.parentEntity.moveHelper.setMoveTo(vec3d.x, vec3d.y + 10, vec3d.z, 1.0D);
@@ -305,7 +305,7 @@ public class EntityExpStalker extends EntityMob {
 		 * Keep ticking a continuous task that has already been started
 		 */
 		public void updateTask() {
-			EntityLivingBase entitylivingbase = this.parentEntity.getAttackTarget();
+			LivingEntity entitylivingbase = this.parentEntity.getAttackTarget();
 
 			if (entitylivingbase instanceof PlayerEntity) {
 				PlayerEntity ep = (PlayerEntity) entitylivingbase;

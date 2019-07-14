@@ -9,7 +9,7 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 
 import net.minecraft.entity.CreatureEntity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntitySkeleton;
@@ -21,7 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.math.BlockPos;
 
-public class EntityAiNearestAttackablePlayerInDarkWithExp<T extends EntityLivingBase> extends EntityAINearestAttackableTarget {
+public class EntityAiNearestAttackablePlayerInDarkWithExp<T extends LivingEntity> extends EntityAINearestAttackableTarget {
 
 	protected final Class<T> targetClass;
 	private final int targetChance;

@@ -19,7 +19,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.item.ItemEntity;
@@ -506,13 +506,13 @@ public class EntityMachineModRideable extends Entity {
 		for (int i = 0; i < list.size(); ++i) {
 			Entity entity = (Entity) list.get(i);
 			if (entity != null) {
-				if (entity instanceof EntityLivingBase) {
+				if (entity instanceof LivingEntity) {
 					if (!entity.isDead) {
 						if (entity != this.getControllingPassenger()) {
 							if (this.getControllingPassenger() != null) {
 								// its alive & its not the rider & has a driver (prevents player exiting the machine from getting damaged)
 
-								EntityLivingBase eLB = (EntityLivingBase) entity;
+								LivingEntity eLB = (LivingEntity) entity;
 								eLB.attackEntityFrom(new DamageSource(randomDethMessage()), 5);
 								// special case creepers because Evil !
 								if (eLB instanceof EntityCreeper) {

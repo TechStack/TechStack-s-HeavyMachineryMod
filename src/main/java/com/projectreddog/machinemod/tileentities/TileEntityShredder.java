@@ -7,7 +7,7 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -48,7 +48,7 @@ public class TileEntityShredder extends TileEntity implements ITickableTileEntit
 				if (world.getBlockState(pos).getBlock() == ModBlocks.machineshredder) {
 
 					boundingBox = new AxisAlignedBB(this.pos.up(), this.pos.up().add(1, 1, 1));
-					List list = world.getEntitiesWithinAABB(EntityLivingBase.class, boundingBox);
+					List list = world.getEntitiesWithinAABB(LivingEntity.class, boundingBox);
 					processEntitiesInList(list);
 
 					if (shouldDrop()) {
@@ -131,8 +131,8 @@ public class TileEntityShredder extends TileEntity implements ITickableTileEntit
 			for (int i = 0; i < par1List.size(); ++i) {
 				Entity entity = (Entity) par1List.get(i);
 				if (entity != null) {
-					if (entity instanceof EntityLivingBase) {
-						EntityLivingBase elb = (EntityLivingBase) entity;
+					if (entity instanceof LivingEntity) {
+						LivingEntity elb = (LivingEntity) entity;
 						elb.attackEntityFrom(new EntityDamageSource(Reference.MOD_ID + ":" + "SHREDDER" + (r.nextInt(6) + 1), FakePlayerFactory.get((WorldServer) this.world, Reference.gameProfile)), 50);
 					}
 					// entity.setPosition(entity.getPosition().getX() + 0.1d, entity.getPosition().getY(), entity.getPosition().getZ());

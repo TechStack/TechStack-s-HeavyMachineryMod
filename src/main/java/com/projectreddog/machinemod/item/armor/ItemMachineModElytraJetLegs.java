@@ -10,7 +10,7 @@ import com.projectreddog.machinemod.render.armor.RenderElytraJetAlegs;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
@@ -50,7 +50,7 @@ public class ItemMachineModElytraJetLegs extends ItemMachineModArmor implements 
 	@Override
 	@SideOnly(Side.CLIENT)
 	@Nullable
-	public ModelBiped getArmorModel(EntityLivingBase living, ItemStack stack, EntityEquipmentSlot slot, ModelBiped defaultModel) {
+	public ModelBiped getArmorModel(LivingEntity living, ItemStack stack, EntityEquipmentSlot slot, ModelBiped defaultModel) {
 		if (!stack.isEmpty()) {
 			if (stack.getItem() instanceof ItemArmor) {
 				if (EntityEquipmentSlot.LEGS == slot) {
@@ -102,12 +102,12 @@ public class ItemMachineModElytraJetLegs extends ItemMachineModArmor implements 
 	}
 
 	@Override
-	public void damageArmor(EntityLivingBase entity, @Nonnull ItemStack stack, DamageSource source, int damage, int slot) {
+	public void damageArmor(LivingEntity entity, @Nonnull ItemStack stack, DamageSource source, int damage, int slot) {
 
 	}
 
 	@Override
-	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
+	public ArmorProperties getProperties(LivingEntity player, ItemStack armor, DamageSource source, double damage, int slot) {
 		// TODO Auto-generated method stub
 
 		return new ArmorProperties(0, 0, 0);

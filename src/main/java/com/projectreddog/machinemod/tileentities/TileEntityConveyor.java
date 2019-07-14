@@ -6,7 +6,7 @@ import com.projectreddog.machinemod.block.BlockMachineModConveyor;
 import com.projectreddog.machinemod.init.ModBlocks;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.item.ItemEntity;
@@ -74,7 +74,7 @@ public class TileEntityConveyor extends TileEntity implements ITickableTileEntit
 				List list = world.getEntitiesWithinAABB(ItemEntity.class, boundingBox);
 				processEntitiesInList(list);
 
-				list = world.getEntitiesWithinAABB(EntityLivingBase.class, boundingBox);
+				list = world.getEntitiesWithinAABB(LivingEntity.class, boundingBox);
 				processEntitiesInList(list);
 
 				list = world.getEntitiesWithinAABB(EntityXPOrb.class, boundingBox);
@@ -91,8 +91,8 @@ public class TileEntityConveyor extends TileEntity implements ITickableTileEntit
 			if (entity != null) {
 				// LogHelper.info("ent in bounds");
 
-				// if (entity instanceof EntityLivingBase) {
-				// ((EntityLivingBase) entity).moveEntity(.1d, 0, 0);
+				// if (entity instanceof LivingEntity) {
+				// ((LivingEntity) entity).moveEntity(.1d, 0, 0);
 				// } else {
 				Direction ef = (Direction) world.getBlockState(this.pos).getValue(BlockMachineModConveyor.FACING);
 				double x = 0, y = 0, z = 0;

@@ -16,7 +16,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentProtection;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particles.ParticleTypes;
@@ -136,8 +136,8 @@ public class ModExplosion extends Explosion {
 						entity.attackEntityFrom(DamageSource.causeExplosionDamage(this), (float) ((int) ((d10 * d10 + d10) / 2.0D * 7.0D * (double) f3 + 1.0D)));
 						double d11 = d10;
 
-						if (entity instanceof EntityLivingBase) {
-							d11 = EnchantmentProtection.getBlastDamageReduction((EntityLivingBase) entity, d10);
+						if (entity instanceof LivingEntity) {
+							d11 = EnchantmentProtection.getBlastDamageReduction((LivingEntity) entity, d10);
 						}
 
 						entity.motionX += d5 * d11;
