@@ -6,21 +6,20 @@ import com.projectreddog.machinemod.item.crafting.TruboFurnaceRecipes;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.ListNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import scala.Int;
 
-public class TileEntityTurboFurnace extends TileEntity implements ITickable, ISidedInventory {
+public class TileEntityTurboFurnace extends TileEntity implements ITickableTileEntity, ISidedInventory {
 	int inventorySize = 3;
 
 	boolean shouldSendInvetoryUpdates = false;
@@ -50,7 +49,7 @@ public class TileEntityTurboFurnace extends TileEntity implements ITickable, ISi
 	}
 
 	@Override
-	public void update() {
+	public void tick() {
 		if (!this.world.isRemote) {
 			// server
 			if (isBurning()) {
@@ -183,43 +182,43 @@ public class TileEntityTurboFurnace extends TileEntity implements ITickable, ISi
 
 	// NBT data
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
+	public CompoundNBT write(CompoundNBT compound) {
 		// TODO WRITE OUT THE NBT CORRECLTY FOR THE VARIOUS BITs
 
-		super.writeToNBT(nbt);
+		super.write(compound);
 
-		nbt.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "fuleBurnTimeRemaining", fuleBurnTimeRemaining);
-		nbt.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "processingTimeRemaining", processingTimeRemaining);
+		compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "fuleBurnTimeRemaining", fuleBurnTimeRemaining);
+		compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "processingTimeRemaining", processingTimeRemaining);
 
 		// inventory
-		NBTTagList itemList = new NBTTagList();
+		ListNBT itemList = new ListNBT();
 		for (int i = 0; i < inventory.length; i++) {
 			ItemStack stack = inventory[i];
 			if (!stack.isEmpty()) {
-				NBTTagCompound tag = new NBTTagCompound();
-				tag.setByte("Slot", (byte) i);
-				stack.writeToNBT(tag);
-				itemList.appendTag(tag);
+				CompoundNBT tag = new CompoundNBT();
+				tag.putByte("Slot", (byte) i);
+				stack.write(tag);
+				itemList.add(tag);
 			}
 		}
-		nbt.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
-		return nbt;
+		compound.put(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
+		return compound;
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound nbt) {
-		super.readFromNBT(nbt);
+	public void read(CompoundNBT compound) {
+		super.read(compound);
 
-		fuleBurnTimeRemaining = nbt.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "fuleBurnTimeRemaining");
-		processingTimeRemaining = nbt.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "processingTimeRemaining");
+		fuleBurnTimeRemaining = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "fuleBurnTimeRemaining");
+		processingTimeRemaining = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "processingTimeRemaining");
 
 		// inventory
-		NBTTagList tagList = nbt.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", nbt.getId());
-		for (int i = 0; i < tagList.tagCount(); i++) {
-			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
+		ListNBT tagList = compound.getList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
+		for (int i = 0; i < tagList.size(); i++) {
+			CompoundNBT tag = (CompoundNBT) tagList.getCompound(i);
 			byte slot = tag.getByte("Slot");
 			if (slot >= 0 && slot < inventory.length) {
-				inventory[slot] = new ItemStack(tag);
+				inventory[slot] = ItemStack.read(tag);
 			}
 		}
 	}

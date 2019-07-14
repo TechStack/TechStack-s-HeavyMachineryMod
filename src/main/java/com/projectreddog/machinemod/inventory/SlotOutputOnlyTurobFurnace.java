@@ -3,19 +3,19 @@ package com.projectreddog.machinemod.inventory;
 import com.projectreddog.machinemod.item.crafting.TruboFurnaceRecipes;
 
 import net.minecraft.entity.item.EntityXPOrb;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.math.MathHelper;
 
 public class SlotOutputOnlyTurobFurnace extends Slot {
 	/** The player that is using the GUI where this slot resides. */
-	private final EntityPlayer player;
+	private final PlayerEntity player;
 	private int removeCount;
 
-	public SlotOutputOnlyTurobFurnace(EntityPlayer player, IInventory inventoryIn, int slotIndex, int xPosition, int yPosition) {
+	public SlotOutputOnlyTurobFurnace(PlayerEntity player, IInventory inventoryIn, int slotIndex, int xPosition, int yPosition) {
 		super(inventoryIn, slotIndex, xPosition, yPosition);
 		this.player = player;
 	}
@@ -48,7 +48,7 @@ public class SlotOutputOnlyTurobFurnace extends Slot {
 		this.onCrafting(stack);
 	}
 
-	public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack) {
+	public ItemStack onTake(PlayerEntity thePlayer, ItemStack stack) {
 		this.onCrafting(stack);
 		super.onTake(thePlayer, stack);
 		return stack;

@@ -9,18 +9,18 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.ListNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.EnergyStorage;
 
-public class TileEntityFactory extends TileEntity implements ITickable, IFuelContainer, ISidedInventory {
+public class TileEntityFactory extends TileEntity implements ITickableTileEntity, IFuelContainer, ISidedInventory {
 	protected ItemStack[] inventory;
 
 	public final int maxFuelStorage = 1000; // store up to 1k
@@ -61,7 +61,7 @@ public class TileEntityFactory extends TileEntity implements ITickable, IFuelCon
 	}
 
 	@Override
-	public void update() {
+	public void tick() {
 		if (!world.isRemote) {
 			IWorkConsumer wc = getWorkConsumer(getTargetLocation());
 			if (energyStroage.getEnergyStored() > 50) {
@@ -102,43 +102,43 @@ public class TileEntityFactory extends TileEntity implements ITickable, IFuelCon
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound compound) {
-		super.readFromNBT(compound);
-		fuelStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE");
-		remainBurnTime = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "BURN_TIME");
+	public void read(CompoundNBT compound) {
+		super.read(compound);
+		fuelStorage = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE");
+		remainBurnTime = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "BURN_TIME");
 		// inventory
-		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
-		for (int i = 0; i < tagList.tagCount(); i++) {
-			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
+		ListNBT tagList = compound.getList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
+		for (int i = 0; i < tagList.size(); i++) {
+			CompoundNBT tag = (CompoundNBT) tagList.getCompound(i);
 			byte slot = tag.getByte("Slot");
 			if (slot >= 0 && slot < inventory.length) {
-				inventory[slot] = new ItemStack(tag);
+				inventory[slot] = ItemStack.read(tag);
 			}
 		}
-		if (compound.hasKey("Energy")) {
-			this.energyStroage = new EnergyStorage(MAX_ENERGY_STORAGE, MAX_ENERGY_RECEIVE, MAX_ENERGY_EXTRACT, compound.getInteger("Energy"));
+		if (compound.contains("Energy")) {
+			this.energyStroage = new EnergyStorage(MAX_ENERGY_STORAGE, MAX_ENERGY_RECEIVE, MAX_ENERGY_EXTRACT, compound.getInt("Energy"));
 		}
 	}
 
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE", fuelStorage);
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "BURN_TIME", remainBurnTime);
+	public CompoundNBT write(CompoundNBT compound) {
+		super.write(compound);
+		compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE", fuelStorage);
+		compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "BURN_TIME", remainBurnTime);
 		// inventory
-		NBTTagList itemList = new NBTTagList();
+		ListNBT itemList = new ListNBT();
 		for (int i = 0; i < inventory.length; i++) {
 			ItemStack stack = inventory[i];
 			if (!stack.isEmpty()) {
-				NBTTagCompound tag = new NBTTagCompound();
-				tag.setByte("Slot", (byte) i);
-				stack.writeToNBT(tag);
-				itemList.appendTag(tag);
+				CompoundNBT tag = new CompoundNBT();
+				tag.putByte("Slot", (byte) i);
+				stack.write(tag);
+				itemList.add(tag);
 			}
 		}
-		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
+		compound.put(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
 
-		compound.setInteger("Energy", this.energyStroage.getEnergyStored());
+		compound.putInt("Energy", this.energyStroage.getEnergyStored());
 		return compound;
 
 	}

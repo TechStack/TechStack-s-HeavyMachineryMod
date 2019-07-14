@@ -10,13 +10,13 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 
-public class TileEntityConveyor extends TileEntity implements ITickable {
+public class TileEntityConveyor extends TileEntity implements ITickableTileEntity {
 
 	public AxisAlignedBB boundingBox;
 	public final double MoveSpeed = .1d;
@@ -30,7 +30,7 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 	}
 
 	@Override
-	public void update() {
+	public void tick() {
 
 		// MAJOR WIP need to handle other entities
 		// need to take initial velocity of the entity into account

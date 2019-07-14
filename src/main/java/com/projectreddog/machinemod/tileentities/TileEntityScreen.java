@@ -10,18 +10,18 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.ListNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
-public class TileEntityScreen extends TileEntity implements ITickable, ISidedInventory {
+public class TileEntityScreen extends TileEntity implements ITickableTileEntity, ISidedInventory {
 	protected ItemStack[] inventory;
 	private static int[] topSlots = new int[] { 4 };
 
@@ -43,7 +43,7 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 	}
 
 	@Override
-	public void update() {
+	public void tick() {
 
 		if (!world.isRemote) {
 			if (timeTillCoolDown > 0) {
@@ -390,38 +390,38 @@ public class TileEntityScreen extends TileEntity implements ITickable, ISidedInv
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound compound) {
+	public void read(CompoundNBT compound) {
 
-		super.readFromNBT(compound);
+		super.read(compound);
 
-		timeTillCoolDown = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN");
+		timeTillCoolDown = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN");
 
 		// inventory
-		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
-		for (int i = 0; i < tagList.tagCount(); i++) {
-			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
+		ListNBT tagList = compound.getList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
+		for (int i = 0; i < tagList.size(); i++) {
+			CompoundNBT tag = (CompoundNBT) tagList.getCompound(i);
 			byte slot = tag.getByte("Slot");
 			if (slot >= 0 && slot < inventory.length) {
-				inventory[slot] = new ItemStack(tag);
+				inventory[slot] = ItemStack.read(tag);
 			}
 		}
 	}
 
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
+	public CompoundNBT write(CompoundNBT compound) {
+		super.write(compound);
 
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN", timeTillCoolDown);
+		compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN", timeTillCoolDown);
 
 		// inventory
-		NBTTagList itemList = new NBTTagList();
+		ListNBT itemList = new ListNBT();
 		for (int i = 0; i < inventory.length; i++) {
 			ItemStack stack = inventory[i];
 			if (!stack.isEmpty()) {
-				NBTTagCompound tag = new NBTTagCompound();
-				tag.setByte("Slot", (byte) i);
-				stack.writeToNBT(tag);
-				itemList.appendTag(tag);
+				CompoundNBT tag = new CompoundNBT();
+				tag.putByte("Slot", (byte) i);
+				stack.write(tag);
+				itemList.add(tag);
 			}
 		}
 		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);

@@ -11,21 +11,22 @@ import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.ListNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.registries.ForgeRegistries;
 
-public class TileEntityAssemblyTable extends TileEntity implements ITickable, ISidedInventory, IWorkConsumer, ITEGuiButtonHandler {
+public class TileEntityAssemblyTable extends TileEntity implements ITickableTileEntity, ISidedInventory, IWorkConsumer, ITEGuiButtonHandler {
 	protected ItemStack[] inventory;
 
 	public final int inventorySize = 2;
@@ -46,7 +47,7 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 	}
 
 	@Override
-	public void update() {
+	public void tick() {
 
 		if (!world.isRemote) {
 			if (inventory[0].getItem() instanceof ItemBlueprint) {
@@ -68,44 +69,44 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound compound) {
-		super.readFromNBT(compound);
+	public void read(CompoundNBT compound) {
+		super.read(compound);
 		// inventory
-		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
-		for (int i = 0; i < tagList.tagCount(); i++) {
-			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
+		ListNBT tagList = compound.getList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
+		for (int i = 0; i < tagList.size(); i++) {
+			CompoundNBT tag = (CompoundNBT) tagList.getCompound(i);
 			byte slot = tag.getByte("Slot");
 			if (slot >= 0 && slot < inventory.length) {
-				inventory[slot] = new ItemStack(tag);
+				inventory[slot] = ItemStack.read(tag);
 			}
 		}
 
-		totalWorkNeededForThisTask = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "totalWorkNeededForThisTask");
+		totalWorkNeededForThisTask = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "totalWorkNeededForThisTask");
 
-		workConsumedForThisTask = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "workConsumedForThisTask");
+		workConsumedForThisTask = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "workConsumedForThisTask");
 		hasBuildProject = compound.getBoolean(Reference.MACHINE_MOD_NBT_PREFIX + "hasBuildProject");
 
 	}
 
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
+	public CompoundNBT write(CompoundNBT compound) {
+		super.write(compound);
 		// inventory
-		NBTTagList itemList = new NBTTagList();
+		ListNBT itemList = new ListNBT();
 		for (int i = 0; i < inventory.length; i++) {
 			ItemStack stack = inventory[i];
 			if (!stack.isEmpty()) {
-				NBTTagCompound tag = new NBTTagCompound();
-				tag.setByte("Slot", (byte) i);
-				stack.writeToNBT(tag);
-				itemList.appendTag(tag);
+				CompoundNBT tag = new CompoundNBT();
+				tag.putByte("Slot", (byte) i);
+				stack.write(tag);
+				itemList.add(tag);
 			}
 		}
-		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
+		compound.put(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
 
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "totalWorkNeededForThisTask", totalWorkNeededForThisTask);
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "workConsumedForThisTask", workConsumedForThisTask);
-		compound.setBoolean(Reference.MACHINE_MOD_NBT_PREFIX + "hasBuildProject", hasBuildProject);
+		compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "totalWorkNeededForThisTask", totalWorkNeededForThisTask);
+		compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "workConsumedForThisTask", workConsumedForThisTask);
+		compound.putBoolean(Reference.MACHINE_MOD_NBT_PREFIX + "hasBuildProject", hasBuildProject);
 
 		return compound;
 
@@ -145,7 +146,7 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickable, IS
 	}
 
 	@Override
-	public boolean isUsableByPlayer(EntityPlayer playerIn) {
+	public boolean isUsableByPlayer(PlayerEntity playerIn) {
 		return playerIn.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
 	}
 

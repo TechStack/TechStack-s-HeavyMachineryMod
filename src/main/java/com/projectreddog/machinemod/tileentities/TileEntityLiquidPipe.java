@@ -4,17 +4,17 @@ import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageLiquidPipeToClient;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
-import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
+import net.minecraftforge.fml.network.PacketDistributor.TargetPoint;
 
-public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFluidTank {
+public class TileEntityLiquidPipe extends TileEntity implements ITickableTileEntity, IFluidTank {
 
 	private boolean connectedNorth = false;
 	private boolean connectedSouth = false;
@@ -105,7 +105,7 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 	}
 
 	@Override
-	public void update() {
+	public void tick() {
 		if (firstTick) {
 			updateConnections();
 			firstTick = false;
@@ -350,15 +350,15 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound compound) {
-		super.readFromNBT(compound);
+	public void read(CompoundNBT compound) {
+		super.read(compound);
 		int x;
 		int y;
 		int z;
 
-		cooldown = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN");
+		cooldown = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN");
 
-		if (!compound.hasKey("Empty")) {
+		if (!compound.contains("Empty")) {
 			FluidStack fluid = FluidStack.loadFluidStackFromNBT(compound);
 			setFluid(fluid);
 		} else {
@@ -368,14 +368,14 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickable, IFlui
 	}
 
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN", cooldown);
+	public CompoundNBT write(CompoundNBT compound) {
+		super.write(compound);
+		compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN", cooldown);
 
 		if (fluid != null) {
 			fluid.writeToNBT(compound);
 		} else {
-			compound.setString("Empty", "");
+			compound.putString("Empty", "");
 		}
 		return compound;
 	}

@@ -4,12 +4,10 @@ import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IContainerListener;
-import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.container.IContainerListener;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ContainerCentrifuge extends Container {
 
@@ -103,7 +101,7 @@ public class ContainerCentrifuge extends Container {
 
 	}
 
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public void updateProgressBar(int id, int data) {
 		this.centrifuge.setField(id, data);
 	}

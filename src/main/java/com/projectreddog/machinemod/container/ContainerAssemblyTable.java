@@ -6,15 +6,15 @@ import com.projectreddog.machinemod.inventory.SlotOutputOnly;
 import com.projectreddog.machinemod.network.MachineModMessageTEIntFieldToClient;
 import com.projectreddog.machinemod.tileentities.TileEntityAssemblyTable;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IContainerListener;
-import net.minecraft.inventory.Slot;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.IContainerListener;
+import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ContainerAssemblyTable extends Container {
 
@@ -23,29 +23,29 @@ public class ContainerAssemblyTable extends Container {
 	protected int lastworkConsumedForThisTask;
 	protected int lastHasBuildProject;
 
-	public ContainerAssemblyTable(InventoryPlayer inventoryPlayer, TileEntityAssemblyTable assemblyTable) {
+	public ContainerAssemblyTable(InventoryPlayer playerInventory, TileEntityAssemblyTable assemblyTable) {
 		this.assemblyTable = assemblyTable;
 		lasttotalWorkNeededForThisTask = -1;
 		lastworkConsumedForThisTask = -1;
 		lastHasBuildProject = -1;
 		for (int i = 0; i < 1; i++) {
 			for (int j = 0; j < 1; j++) {
-				addSlotToContainer(new SlotBlueprint(assemblyTable, j + i * 9, (8 + j * 18), (18 + i * 18) - 2));
+				addSlot(new SlotBlueprint(assemblyTable, j + i * 9, (8 + j * 18), (18 + i * 18) - 2));
 			}
 		}
 
-		addSlotToContainer(new SlotOutputOnly(assemblyTable, 1, 113, 16));
+		addSlot(new SlotOutputOnly(assemblyTable, 1, 113, 16));
 
 		// commonly used vanilla code that adds the player's inventory
-		bindPlayerInventory(inventoryPlayer);
+		bindPlayerInventory(playerInventory);
 	}
 
 	@Override
-	public boolean canInteractWith(EntityPlayer player) {
+	public boolean canInteractWith(PlayerEntity player) {
 		return true;
 	}
 
-	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
+	protected void bindPlayerInventory(PlayerInventory inventoryPlayer) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
 				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 139 + i * 18));
@@ -58,7 +58,7 @@ public class ContainerAssemblyTable extends Container {
 	}
 
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
+	public ItemStack transferStackInSlot(PlayerEntity player, int slot) {
 		ItemStack stack = ItemStack.EMPTY;
 		Slot slotObject = (Slot) inventorySlots.get(slot);
 
@@ -101,22 +101,22 @@ public class ContainerAssemblyTable extends Container {
 
 			if (this.lasttotalWorkNeededForThisTask != this.assemblyTable.getField(0)) {
 				// icrafting.sendWindowProperty(this, 0, this.assemblyTable.getField(0));
-				if (icrafting instanceof EntityPlayerMP) {
-					EntityPlayerMP ep = (EntityPlayerMP) icrafting;
+				if (icrafting instanceof ServerPlayerEntity) {
+					ServerPlayerEntity ep = (ServerPlayerEntity) icrafting;
 					ModNetwork.simpleNetworkWrapper.sendTo(new MachineModMessageTEIntFieldToClient(this.assemblyTable.getPos().getX(), this.assemblyTable.getPos().getY(), this.assemblyTable.getPos().getZ(), 0, this.assemblyTable.getField(0)), ep);
 				}
 			}
 			if (this.lastworkConsumedForThisTask != this.assemblyTable.getField(1)) {
 				// icrafting.sendWindowProperty(this, 1, this.assemblyTable.getField(1));
-				if (icrafting instanceof EntityPlayerMP) {
-					EntityPlayerMP ep = (EntityPlayerMP) icrafting;
+				if (icrafting instanceof ServerPlayerEntity) {
+					ServerPlayerEntity ep = (ServerPlayerEntity) icrafting;
 					ModNetwork.simpleNetworkWrapper.sendTo(new MachineModMessageTEIntFieldToClient(this.assemblyTable.getPos().getX(), this.assemblyTable.getPos().getY(), this.assemblyTable.getPos().getZ(), 1, this.assemblyTable.getField(1)), ep);
 				}
 			}
 			if (this.lastHasBuildProject != this.assemblyTable.getField(2)) {
 				// icrafting.sendWindowProperty(this, 2, this.assemblyTable.getField(2));
-				if (icrafting instanceof EntityPlayerMP) {
-					EntityPlayerMP ep = (EntityPlayerMP) icrafting;
+				if (icrafting instanceof ServerPlayerEntity) {
+					ServerPlayerEntity ep = (ServerPlayerEntity) icrafting;
 					ModNetwork.simpleNetworkWrapper.sendTo(new MachineModMessageTEIntFieldToClient(this.assemblyTable.getPos().getX(), this.assemblyTable.getPos().getY(), this.assemblyTable.getPos().getZ(), 1, this.assemblyTable.getField(1)), ep);
 				}
 			}
@@ -128,7 +128,7 @@ public class ContainerAssemblyTable extends Container {
 
 	}
 
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public void updateProgressBar(int id, int data) {
 		this.assemblyTable.setField(id, data);
 	}

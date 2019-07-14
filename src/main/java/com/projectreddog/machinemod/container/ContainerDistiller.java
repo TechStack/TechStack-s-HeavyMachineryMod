@@ -4,13 +4,11 @@ import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IContainerListener;
-import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnaceFuel;
+import net.minecraft.inventory.container.IContainerListener;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ContainerDistiller extends Container {
 
@@ -108,7 +106,7 @@ public class ContainerDistiller extends Container {
 
 	}
 
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public void updateProgressBar(int id, int data) {
 		this.distiller.setField(id, data);
 	}

@@ -7,12 +7,10 @@ import com.projectreddog.machinemod.tileentities.TileEntityTurboFurnace;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IContainerListener;
-import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.container.IContainerListener;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 ;
 
@@ -118,7 +116,7 @@ public class ContainerTurboFurnace extends Container {
 		this.lastProcessingTimeRemaining = this.turbofurnace.getField(1);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public void updateProgressBar(int id, int data) {
 		this.turbofurnace.setField(id, data);
 	}

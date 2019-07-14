@@ -9,10 +9,9 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.init.Blocks;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fluids.FluidEvent;
@@ -20,7 +19,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
 
-public class TileEntityWellHead extends TileEntity implements ITickable, IFluidTank {
+public class TileEntityWellHead extends TileEntity implements ITickableTileEntity, IFluidTank {
 
 	public final int maxOilStorage = 100000; // store up to 100k
 
@@ -37,7 +36,7 @@ public class TileEntityWellHead extends TileEntity implements ITickable, IFluidT
 	}
 
 	@Override
-	public void update() {
+	public void tick() {
 		if (!world.isRemote) {
 
 			cooldown = cooldown - 1;
@@ -131,24 +130,24 @@ public class TileEntityWellHead extends TileEntity implements ITickable, IFluidT
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound compound) {
-		super.readFromNBT(compound);
+	public void read(CompoundNBT compound) {
+		super.read(compound);
 		int x;
 		int y;
 		int z;
 
-		cooldown = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN");
+		cooldown = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN");
 
-		if (compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_NULL") == 0) {
-			x = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_X");
-			y = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_Y");
-			z = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_Z");
+		if (compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_NULL") == 0) {
+			x = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_X");
+			y = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_Y");
+			z = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_Z");
 			currentOilDeposit = new BlockPos(x, y, z);
 		} else {
 			currentOilDeposit = null;
 		}
 
-		if (!compound.hasKey("Empty")) {
+		if (!compound.contains("Empty")) {
 			FluidStack fluid = FluidStack.loadFluidStackFromNBT(compound);
 			setFluid(fluid);
 		} else {
@@ -158,21 +157,21 @@ public class TileEntityWellHead extends TileEntity implements ITickable, IFluidT
 	}
 
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN", cooldown);
+	public CompoundNBT write(CompoundNBT compound) {
+		super.write(compound);
+		compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN", cooldown);
 
 		if (currentOilDeposit != null) {
-			compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_NULL", 0);
-			compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_X", currentOilDeposit.getX());
-			compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_Y", currentOilDeposit.getY());
-			compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_Z", currentOilDeposit.getZ());
+			compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_NULL", 0);
+			compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_X", currentOilDeposit.getX());
+			compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_Y", currentOilDeposit.getY());
+			compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_Z", currentOilDeposit.getZ());
 		}
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_NULL", 1);
+		compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_OIL_DEPOSIT_NULL", 1);
 		if (fluid != null) {
 			fluid.writeToNBT(compound);
 		} else {
-			compound.setString("Empty", "");
+			compound.putString("Empty", "");
 		}
 		return compound;
 	}

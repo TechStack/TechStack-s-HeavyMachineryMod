@@ -10,14 +10,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EntityDamageSource;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.FakePlayerFactory;
 
-public class TileEntityShredder extends TileEntity implements ITickable {
+public class TileEntityShredder extends TileEntity implements ITickableTileEntity {
 	public AxisAlignedBB boundingBox;
 	public int coolDownAmount = 1;
 	public int timeTillCoolDown = 0;
@@ -40,7 +40,7 @@ public class TileEntityShredder extends TileEntity implements ITickable {
 	}
 
 	@Override
-	public void update() {
+	public void tick() {
 
 		if (!world.isRemote) {
 			if (!world.isBlockPowered(this.pos)) {

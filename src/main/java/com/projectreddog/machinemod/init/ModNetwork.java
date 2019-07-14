@@ -30,12 +30,12 @@ import com.projectreddog.machinemod.network.MachineModMessageTEInventoryChangedT
 import com.projectreddog.machinemod.network.MachineModMessageTeGuiButtonClickToServerHandler;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.network.NetworkRegistry;
+import net.minecraftforge.fml.network.PacketDistributor.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 
 public class ModNetwork {
@@ -78,7 +78,7 @@ public class ModNetwork {
 	}
 
 	public static void sendPacketToAllAround(IMessage packet, TargetPoint tp) {
-		for (EntityPlayerMP player : (List<EntityPlayerMP>) FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayers()) {
+		for (ServerPlayerEntity player : (List<ServerPlayerEntity>) FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayers()) {
 			if (player.dimension == tp.dimension) {
 				double d4 = tp.x - player.posX;
 				double d6 = tp.z - player.posZ;

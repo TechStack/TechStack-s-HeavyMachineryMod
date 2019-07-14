@@ -3,17 +3,17 @@ package com.projectreddog.machinemod.tileentities;
 import com.projectreddog.machinemod.iface.IFuelContainer;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.energy.IEnergyStorage;
 
-public class TileEntityGenerator extends TileEntity implements ITickable, IFuelContainer {
+public class TileEntityGenerator extends TileEntity implements ITickableTileEntity, IFuelContainer {
 
 	private int MAX_ENERGY_STORAGE = 1000;
 	private int MAX_ENERGY_RECEIVE = 100;
@@ -39,7 +39,7 @@ public class TileEntityGenerator extends TileEntity implements ITickable, IFuelC
 	}
 
 	@Override
-	public void update() {
+	public void tick() {
 
 		if (!this.world.isRemote) {
 			// server
@@ -78,19 +78,19 @@ public class TileEntityGenerator extends TileEntity implements ITickable, IFuelC
 
 	// NBT data
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
-		nbt.setInteger("Energy", this.energyStroage.getEnergyStored());
-		nbt.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE", fuelStorage);
+	public CompoundNBT write(CompoundNBT compound) {
+		compound.putInt("Energy", this.energyStroage.getEnergyStored());
+		compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE", fuelStorage);
 
-		return super.writeToNBT(nbt);
+		return super.write(compound);
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound nbt) {
-		if (nbt.hasKey("Energy")) {
-			this.energyStroage = new EnergyStorage(MAX_ENERGY_STORAGE, MAX_ENERGY_RECEIVE, MAX_ENERGY_EXTRACT, nbt.getInteger("Energy"));
+	public void read(CompoundNBT compound) {
+		if (compound.contains("Energy")) {
+			this.energyStroage = new EnergyStorage(MAX_ENERGY_STORAGE, MAX_ENERGY_RECEIVE, MAX_ENERGY_EXTRACT, compound.getInt("Energy"));
 		}
-		fuelStorage = nbt.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE");
+		fuelStorage = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE");
 
 	}
 

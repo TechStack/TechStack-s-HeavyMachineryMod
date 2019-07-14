@@ -8,7 +8,6 @@ import com.projectreddog.machinemod.utility.BlockUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -23,7 +22,7 @@ public class EntityBagger extends EntityMachineModRideable {
 
 	public EntityBagger(World world) {
 		super(world);
-
+		// 1.14 appears to be during registry
 		setSize(13f, 7f);
 		SIZE = 54;
 		inventory = new ItemStackHandler(SIZE);
@@ -114,8 +113,7 @@ public class EntityBagger extends EntityMachineModRideable {
 
 						bp = new BlockPos(posX + calcTwoOffsetX(10 + h + hOffsetDuetoYoffset, 0, 0), posY + bucketOffsetY + v + 3, posZ + calcTwoOffsetZ(10 + h + hOffsetDuetoYoffset, 0, 0));
 
-						if (!(world.getBlockState(bp).getBlock().isAir(world.getBlockState(bp), world, bp)) && !(world.getBlockState(bp).getBlock() == Blocks.BEDROCK) && !(world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)) == Material.WATER) && !(world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)) == Material.LAVA)
-								&& !(world.getBlockState(bp).getBlock() == Blocks.OBSIDIAN)) {
+						if (!(world.getBlockState(bp).getBlock().isAir(world.getBlockState(bp), world, bp)) && !(world.getBlockState(bp).getBlock() == Blocks.BEDROCK) && !(world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)) == Material.WATER) && !(world.getBlockState(bp).getBlock().getMaterial(world.getBlockState(bp)) == Material.LAVA) && !(world.getBlockState(bp).getBlock() == Blocks.OBSIDIAN)) {
 
 							// world.getBlockState(bp).getBlock().dropBlockAsItem(worldObj, bp, world.getBlockState(bp), 0);
 							// world.setBlockToAir(bp);

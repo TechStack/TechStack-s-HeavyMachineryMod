@@ -9,18 +9,17 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.ListNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.ITextComponent;
 
-public class TileEntityCentrifuge extends TileEntity implements ITickable, ISidedInventory, IFuelContainer {
+public class TileEntityCentrifuge extends TileEntity implements ITickableTileEntity, ISidedInventory, IFuelContainer {
 	protected ItemStack[] inventory;
 	private static int[] bottomSlots = new int[] { 1 };
 	private static int[] topSlots = new int[] { 0 };
@@ -47,7 +46,7 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 	}
 
 	@Override
-	public void update() {
+	public void tick() {
 		if (!world.isRemote) {
 			if (timeTillCoolDown > 0) {
 				timeTillCoolDown--;
@@ -162,17 +161,17 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound compound) {
+	public void read(CompoundNBT compound) {
 
-		super.readFromNBT(compound);
+		super.read(compound);
 
 		timeTillCoolDown = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN");
 		fuelStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL");
 
 		// inventory
-		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
+		ListNBT tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
 		for (int i = 0; i < tagList.tagCount(); i++) {
-			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
+			CompoundNBT tag = (CompoundNBT) tagList.getCompoundTagAt(i);
 			byte slot = tag.getByte("Slot");
 			if (slot >= 0 && slot < inventory.length) {
 				inventory[slot] = new ItemStack(tag);
@@ -181,24 +180,24 @@ public class TileEntityCentrifuge extends TileEntity implements ITickable, ISide
 	}
 
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
+	public CompoundNBT write(CompoundNBT compound) {
+		super.write(compound);
 
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN", timeTillCoolDown);
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL", fuelStorage);
+		compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN", timeTillCoolDown);
+		compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL", fuelStorage);
 
 		// inventory
-		NBTTagList itemList = new NBTTagList();
+		ListNBT itemList = new ListNBT();
 		for (int i = 0; i < inventory.length; i++) {
 			ItemStack stack = inventory[i];
 			if (!stack.isEmpty()) {
-				NBTTagCompound tag = new NBTTagCompound();
-				tag.setByte("Slot", (byte) i);
-				stack.writeToNBT(tag);
-				itemList.appendTag(tag);
+				CompoundNBT tag = new CompoundNBT();
+				tag.putByte("Slot", (byte) i);
+				stack.write(tag);
+				itemList.add(tag);
 			}
 		}
-		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
+		compound.put(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
 		return compound;
 
 	}

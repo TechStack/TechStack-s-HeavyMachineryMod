@@ -6,10 +6,10 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fluids.FluidEvent;
@@ -17,7 +17,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
 
-public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFluidTank, ISidedInventory {
+public class TileEntityAsphaltMixer extends TileEntity implements ITickableTileEntity, IFluidTank, ISidedInventory {
 
 	public final int maxOilStorage = 1000; // store up to 100k
 	public final int inventorySize = 6;
@@ -51,7 +51,7 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	}
 
 	@Override
-	public void update() {
+	public void tick() {
 		if (!world.isRemote) {
 			if (firstTick) {
 				firstTick = !firstTick;
@@ -74,13 +74,13 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound compound) {
+	public void read(CompoundNBT compound) {
 
-		super.readFromNBT(compound);
+		super.read(compound);
 
-		timeTillCoolDown = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN");
+		timeTillCoolDown = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN");
 
-		if (!compound.hasKey("Empty")) {
+		if (!compound.contains("Empty")) {
 			FluidStack fluid = FluidStack.loadFluidStackFromNBT(compound);
 			setFluid(fluid);
 		} else {
@@ -89,14 +89,14 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickable, IFl
 	}
 
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
+	public CompoundNBT write(CompoundNBT compound) {
+		super.write(compound);
 
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN", timeTillCoolDown);
+		compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN", timeTillCoolDown);
 		if (fluid != null) {
 			fluid.writeToNBT(compound);
 		} else {
-			compound.setString("Empty", "");
+			compound.putString("Empty", "");
 		}
 		return compound;
 	}

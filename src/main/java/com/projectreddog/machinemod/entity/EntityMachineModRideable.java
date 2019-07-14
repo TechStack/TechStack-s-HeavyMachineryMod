@@ -16,22 +16,24 @@ import com.projectreddog.machinemod.utility.BlockUtil;
 import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ClassInheritanceMultiMap;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -39,7 +41,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
+import net.minecraftforge.fml.network.PacketDistributor.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -50,14 +52,14 @@ public class EntityMachineModRideable extends Entity {
 
 	public double velocity;
 	public float yaw;
-	private NonNullList<ItemStack> chestContents = NonNullList.<ItemStack> withSize(27, ItemStack.EMPTY);
+	private NonNullList<ItemStack> chestContents = NonNullList.<ItemStack>withSize(27, ItemStack.EMPTY);
 
 	public int SIZE = 0;
 	// protected ItemStack[] inventory;
 	public IItemHandler inventory;
 
 	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+	public boolean hasCapability(Capability<?> capability, Direction facing) {
 		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return true;
 		}
@@ -65,7 +67,7 @@ public class EntityMachineModRideable extends Entity {
 	}
 
 	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+	public <T> T getCapability(Capability<T> capability, Direction facing) {
 		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return (T) inventory;
 		}
@@ -134,7 +136,7 @@ public class EntityMachineModRideable extends Entity {
 	public double turnRate = 1.5d;
 
 	public EntityMachineModRideable(World world) {
-		super(world);
+		super(EntityType.creat, world);
 		setSize(1.5F, 0.6F); // should be overridden in Extened version.
 		this.stepHeight = 1F;
 		inventory = new ItemStackHandler(SIZE);
@@ -353,10 +355,7 @@ public class EntityMachineModRideable extends Entity {
 		}
 		// LogHelper.info(world.isRemote + " Pre -Block @ entity :" + this.getName() + " : " + world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() + " GEN COL: " + this.collided + " horiz COL: " + this.collidedHorizontally + "vert COL: " + this.collidedVertically);
 
-		if (world.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))) || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.WATER
-				|| world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.LAVA || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() == Blocks.SNOW_LAYER
-				|| world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.PLANTS
-				|| world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))).isReplaceable()) {
+		if (world.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))) || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.WATER || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.LAVA || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() == Blocks.SNOW_LAYER || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.PLANTS || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))).isReplaceable()) {
 			// in air block so fall i'll actually park the entity inside the
 			// block below just a little bit.
 			if (willSink) {
@@ -870,18 +869,17 @@ public class EntityMachineModRideable extends Entity {
 	public void toppleTree(BlockPos bp, int depth, int widthDepth, Block previousBlock) {
 		if (depth < Reference.MAX_TREE_DEPTH) {
 			if (widthDepth < Reference.MAX_TREE_WIDTH) {
-				if (world.getBlockState(bp).getBlock() == Blocks.LOG || world.getBlockState(bp).getBlock() == Blocks.LOG2 || world.getBlockState(bp).getBlock() == Blocks.LEAVES || world.getBlockState(bp).getBlock() == Blocks.LEAVES2 || world.getBlockState(bp).getBlock() == Blocks.BROWN_MUSHROOM_BLOCK || world.getBlockState(bp).getBlock() == Blocks.RED_MUSHROOM_BLOCK
-						|| world.getBlockState(bp).getBlock().isWood(world, bp) || world.getBlockState(bp).getBlock().isLeaves(world.getBlockState(bp), world, bp)) {
+				if (world.getBlockState(bp).getBlock() == Blocks.LOG || world.getBlockState(bp).getBlock() == Blocks.LOG2 || world.getBlockState(bp).getBlock() == Blocks.LEAVES || world.getBlockState(bp).getBlock() == Blocks.LEAVES2 || world.getBlockState(bp).getBlock() == Blocks.BROWN_MUSHROOM_BLOCK || world.getBlockState(bp).getBlock() == Blocks.RED_MUSHROOM_BLOCK || world.getBlockState(bp).getBlock().isWood(world, bp) || world.getBlockState(bp).getBlock().isLeaves(world.getBlockState(bp), world, bp)) {
 
 					previousBlock = world.getBlockState(bp).getBlock();
 					BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
-					toppleTree(bp.offset(EnumFacing.DOWN), depth + 1, widthDepth, previousBlock);
-					toppleTree(bp.offset(EnumFacing.UP), depth + 1, widthDepth, previousBlock);
-					toppleTree(bp.offset(EnumFacing.SOUTH), depth + 1, widthDepth + 1, previousBlock);
-					toppleTree(bp.offset(EnumFacing.EAST), depth + 1, widthDepth + 1, previousBlock);
-					toppleTree(bp.offset(EnumFacing.WEST), depth + 1, widthDepth + 1, previousBlock);
-					toppleTree(bp.offset(EnumFacing.NORTH), depth + 1, widthDepth + 1, previousBlock);
+					toppleTree(bp.offset(Direction.DOWN), depth + 1, widthDepth, previousBlock);
+					toppleTree(bp.offset(Direction.UP), depth + 1, widthDepth, previousBlock);
+					toppleTree(bp.offset(Direction.SOUTH), depth + 1, widthDepth + 1, previousBlock);
+					toppleTree(bp.offset(Direction.EAST), depth + 1, widthDepth + 1, previousBlock);
+					toppleTree(bp.offset(Direction.WEST), depth + 1, widthDepth + 1, previousBlock);
+					toppleTree(bp.offset(Direction.NORTH), depth + 1, widthDepth + 1, previousBlock);
 
 				}
 			}
@@ -897,7 +895,7 @@ public class EntityMachineModRideable extends Entity {
 			if (!is.isEmpty()) {
 
 				if (!inventory.getStackInSlot(j).isEmpty()) {
-					if (inventory.getStackInSlot(j).getItem() == is.getItem() && inventory.getStackInSlot(j).getItemDamage() == is.getItemDamage()) {
+					if (inventory.getStackInSlot(j).getItem() == is.getItem() && inventory.getStackInSlot(j).getDamage() == is.getDamage()) {
 						// same item remove from is put into slot any amt not to
 						// excede stack max
 						if (inventory.getStackInSlot(j).getCount() < inventory.getStackInSlot(j).getMaxStackSize()) {
@@ -906,7 +904,7 @@ public class EntityMachineModRideable extends Entity {
 								// /all of the stack will fit in this slot do
 								// so.
 
-								inventory.insertItem(j, new ItemStack(inventory.getStackInSlot(j).getItem(), is.getCount(), is.getItemDamage()), false);
+								inventory.insertItem(j, new ItemStack(inventory.getStackInSlot(j).getItem(), is.getCount(), is.getDamage()), false);
 								is = ItemStack.EMPTY;
 							} else {
 								// we have more
@@ -931,7 +929,7 @@ public class EntityMachineModRideable extends Entity {
 
 	}
 
-	public void sendAllInventoryToPlayer(EntityPlayerMP player) {
+	public void sendAllInventoryToPlayer(ServerPlayerEntity player) {
 		for (int i = 0; i < SIZE; i++) {
 
 			ModNetwork.simpleNetworkWrapper.sendTo(new MachineModMessageEntityInventoryChangedToClient(this.getEntityId(), i, inventory.getStackInSlot(i)), player);
@@ -950,7 +948,7 @@ public class EntityMachineModRideable extends Entity {
 		return list.isEmpty() ? null : (Entity) list.get(0);
 	}
 
-	public boolean isUsableByPlayer(EntityPlayer player) {
+	public boolean isUsableByPlayer(PlayerEntity player) {
 		// check if the player is near the entity.
 		return player.getDistanceSq(posX, posY, posZ) < 64;
 	}

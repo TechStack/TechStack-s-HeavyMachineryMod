@@ -8,14 +8,14 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.ListNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.text.ITextComponent;
 
-public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedInventory, IFuelContainer {
+public class TileEntityFuelPump extends TileEntity implements ITickableTileEntity, ISidedInventory, IFuelContainer {
 	protected ItemStack[] inventory;
 	private static int[] sideSlots = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
 	public final int maxFuelStorage = 10000; // store up to 10k (can fill all 9 cans & have room for one more
@@ -59,7 +59,7 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 	}
 
 	@Override
-	public void update() {
+	public void tick() {
 		if (!world.isRemote) {
 			// LogHelper.info("TE update entity called");
 
@@ -143,39 +143,39 @@ public class TileEntityFuelPump extends TileEntity implements ITickable, ISidedI
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound compound) {
+	public void read(CompoundNBT compound) {
 
-		super.readFromNBT(compound);
-		fuelStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE");
-		cooldown = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN");
+		super.read(compound);
+		fuelStorage = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE");
+		cooldown = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN");
 		// inventory
-		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
-		for (int i = 0; i < tagList.tagCount(); i++) {
-			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
+		ListNBT tagList = compound.getList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
+		for (int i = 0; i < tagList.size(); i++) {
+			CompoundNBT tag = (CompoundNBT) tagList.getCompound(i);
 			byte slot = tag.getByte("Slot");
 			if (slot >= 0 && slot < inventory.length) {
-				inventory[slot] = new ItemStack(tag);
+				inventory[slot] = ItemStack.read(tag);
 			}
 		}
 	}
 
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE", fuelStorage);
-		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN", cooldown);
+	public CompoundNBT write(CompoundNBT compound) {
+		super.write(compound);
+		compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE", fuelStorage);
+		compound.putInt(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN", cooldown);
 		// inventory
-		NBTTagList itemList = new NBTTagList();
+		ListNBT itemList = new ListNBT();
 		for (int i = 0; i < inventory.length; i++) {
 			ItemStack stack = inventory[i];
 			if (!stack.isEmpty()) {
-				NBTTagCompound tag = new NBTTagCompound();
-				tag.setByte("Slot", (byte) i);
-				stack.writeToNBT(tag);
-				itemList.appendTag(tag);
+				CompoundNBT tag = new CompoundNBT();
+				tag.putByte("Slot", (byte) i);
+				stack.write(tag);
+				itemList.add(tag);
 			}
 		}
-		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
+		compound.put(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
 		return compound;
 
 	}

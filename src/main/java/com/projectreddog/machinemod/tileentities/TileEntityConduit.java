@@ -2,17 +2,17 @@ package com.projectreddog.machinemod.tileentities;
 
 import com.projectreddog.machinemod.utility.LogHelper;
 
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.energy.IEnergyStorage;
 
-public class TileEntityConduit extends TileEntity implements ITickable {
+public class TileEntityConduit extends TileEntity implements ITickableTileEntity {
 
 	private int MAX_ENERGY_STORAGE = 100;
 	private int MAX_ENERGY_RECEIVE = 100;
@@ -36,7 +36,7 @@ public class TileEntityConduit extends TileEntity implements ITickable {
 	}
 
 	@Override
-	public void update() {
+	public void tick() {
 		if (!this.world.isRemote) {
 			// server
 
@@ -77,16 +77,16 @@ public class TileEntityConduit extends TileEntity implements ITickable {
 
 	// NBT data
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
-		nbt.setInteger("Energy", this.energyStroage.getEnergyStored());
+	public CompoundNBT write(CompoundNBT compound) {
+		compound.putInt("Energy", this.energyStroage.getEnergyStored());
 
-		return super.writeToNBT(nbt);
+		return super.write(compound);
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound nbt) {
-		if (nbt.hasKey("Energy")) {
-			this.energyStroage = new EnergyStorage(MAX_ENERGY_STORAGE, MAX_ENERGY_RECEIVE, MAX_ENERGY_EXTRACT, nbt.getInteger("Energy"));
+	public void read(CompoundNBT compound) {
+		if (compound.contains("Energy")) {
+			this.energyStroage = new EnergyStorage(MAX_ENERGY_STORAGE, MAX_ENERGY_RECEIVE, MAX_ENERGY_EXTRACT, compound.getInt("Energy"));
 		}
 	}
 }
