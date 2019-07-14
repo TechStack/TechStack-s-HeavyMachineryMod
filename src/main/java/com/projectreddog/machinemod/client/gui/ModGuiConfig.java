@@ -12,8 +12,8 @@ public class ModGuiConfig extends GuiConfig {
 
 		super(guiScreen, new ConfigElement(ConfigurationHandler.configuration.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(), Reference.MOD_ID, false, // world
 																																										// restart
-		false, // MC restart
-		GuiConfig.getAbridgedConfigPath(ConfigurationHandler.configuration.toString()));
+				false, // MC restart
+				GuiConfig.getAbridgedConfigPath(ConfigurationHandler.configuration.toString()));
 
 	}
 }

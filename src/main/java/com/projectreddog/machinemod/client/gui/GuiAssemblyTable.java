@@ -15,6 +15,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityAssemblyTable;
 import com.projectreddog.machinemod.utility.DeprecatedWrapper;
 
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;

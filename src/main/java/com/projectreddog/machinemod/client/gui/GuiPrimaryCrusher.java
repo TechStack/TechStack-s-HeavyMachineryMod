@@ -6,6 +6,7 @@ import com.projectreddog.machinemod.container.ContainerPrimaryCrusher;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 
+import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 
