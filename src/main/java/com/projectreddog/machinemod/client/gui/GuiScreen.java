@@ -6,11 +6,11 @@ import com.projectreddog.machinemod.container.ContainerScreen;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityScreen;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiScreen extends GuiContainer {
+public class GuiScreen extends ContainerScreen {
 
 	private TileEntityScreen sreen;
 
@@ -37,7 +37,7 @@ public class GuiScreen extends GuiContainer {
 	}
 
 	@Override
-	protected void drawGuiContainerForegroundLayer(int param1, int param2) {
+	protected void drawContainerScreenForegroundLayer(int param1, int param2) {
 		// draw text and stuff here
 		// the parameters for drawString are: string, x, y, color
 		// fontRenderer.drawString("Tiny", 8, 6, 4210752);
@@ -47,7 +47,7 @@ public class GuiScreen extends GuiContainer {
 	}
 
 	@Override
-	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
+	protected void drawContainerScreenBackgroundLayer(float par1, int par2, int par3) {
 		// draw your Gui here, only thing you need to change is the path
 
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

@@ -15,13 +15,13 @@ import com.projectreddog.machinemod.tileentities.TileEntityAssemblyTable;
 import com.projectreddog.machinemod.utility.DeprecatedWrapper;
 
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 
-public class GuiAssemblyTable extends GuiContainer {
+public class GuiAssemblyTable extends ContainerScreen {
 	private TileEntityAssemblyTable asssemblyTable;
 	private int currentPage = 0;
 	private int ingredentListSize = 0;
@@ -126,7 +126,7 @@ public class GuiAssemblyTable extends GuiContainer {
 	}
 
 	@Override
-	protected void drawGuiContainerForegroundLayer(int param1, int param2) {
+	protected void drawContainerScreenForegroundLayer(int param1, int param2) {
 		// draw text and stuff here
 		// the parameters for drawString are: string, x, y, color
 		// fontRenderer.drawString("Tiny", 8, 6, 4210752);
@@ -172,7 +172,7 @@ public class GuiAssemblyTable extends GuiContainer {
 	}
 
 	@Override
-	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
+	protected void drawContainerScreenBackgroundLayer(float par1, int par2, int par3) {
 		// draw your Gui here, only thing you need to change is the path
 
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
