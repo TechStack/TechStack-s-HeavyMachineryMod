@@ -11,7 +11,7 @@ import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerTanker;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -32,11 +32,11 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 	public final int maxOilStorage = 100000; // store up to 100k
 	protected FluidStack fluid = new FluidStack(ModBlocks.fluidOil, 0);
 
-	public EntityLiving CarriedEntities[];
+	public LivingEntity CarriedEntities[];
 
 	public EntitySemiTractor(World world) {
 		super(world);
-		CarriedEntities = new EntityLiving[10];
+		CarriedEntities = new LivingEntity[10];
 		setSize(3, 4);
 		SIZE = 9;
 		inventory = new ItemStackHandler(SIZE);
