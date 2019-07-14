@@ -8,7 +8,7 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModDimensions;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.PlayerEntityMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -54,9 +54,9 @@ public class BleakTeleporter extends Teleporter {
 		entity.motionZ = 0.0f;
 	}
 
-	public static void teleportToDimension(ServerPlayerEntityplayer, int dimension, double x, double y, double z, BlockPos portalBlockPos, Direction portalFacing) {
+	public static void teleportToDimension(ServerPlayerPlayerEntity, int dimension, double x, double y, double z, BlockPos portalBlockPos, Direction portalFacing) {
 		int oldDimension = player.getEntityWorld().provider.getDimension();
-		ServerPlayerEntityServerPlayerEntity= (EntityPlayerMP) player;
+		ServerPlayerEntityServerPlayerEntity= (PlayerEntityMP) player;
 		MinecraftServer server = player.getEntityWorld().getMinecraftServer();
 		WorldServer worldServer = server.getWorld(dimension);
 
@@ -64,7 +64,7 @@ public class BleakTeleporter extends Teleporter {
 			throw new IllegalArgumentException("Dimension: " + dimension + " doesn't exist!");
 		}
 
-		worldServer.getMinecraftServer().getPlayerList().transferPlayerToDimension(entityPlayerMP, dimension, new BleakTeleporter(worldServer, x, y, z, portalBlockPos, portalFacing));
+		worldServer.getMinecraftServer().getPlayerList().transferPlayerToDimension(PlayerEntityMP, dimension, new BleakTeleporter(worldServer, x, y, z, portalBlockPos, portalFacing));
 		player.setPositionAndUpdate(x, y, z);
 		if (oldDimension == 1) {
 			// For some reason teleporting out of the end does weird things. Compensate for that

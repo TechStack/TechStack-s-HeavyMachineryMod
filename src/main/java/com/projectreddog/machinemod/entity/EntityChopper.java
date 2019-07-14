@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.entity;
 
 import com.projectreddog.machinemod.init.ModItems;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -63,16 +63,16 @@ public class EntityChopper extends EntityMachineModRideable {
 				}
 			}
 
-			if (this.currentFuelLevel > 0 && this.getControllingPassenger() != null && this.getControllingPassenger() instanceof EntityPlayer) {
-				EntityPlayer entityPlayer = (EntityPlayer) this.getControllingPassenger();
-				// entityPlayer.setAir(300);
-				// entityPlayer.addPotionEffect(new PotionEffect(Potion.nightVision.id, 600, 0, true, false));
-				// entityPlayer.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 600, 0, true, false));
+			if (this.currentFuelLevel > 0 && this.getControllingPassenger() != null && this.getControllingPassenger() instanceof PlayerEntity) {
+				PlayerEntity PlayerEntity = (PlayerEntity) this.getControllingPassenger();
+				// PlayerEntity.setAir(300);
+				// PlayerEntity.addPotionEffect(new PotionEffect(Potion.nightVision.id, 600, 0, true, false));
+				// PlayerEntity.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 600, 0, true, false));
 				// reset fall distance so the player wont take extra fall damage once they land.
-				entityPlayer.fallDistance = 0;
+				PlayerEntity.fallDistance = 0;
 				// reset fall distance of the choppa because its pased on to the riding entity during the call to fall()
 				this.fallDistance = 0;
-				entityPlayer.motionY = 0;
+				PlayerEntity.motionY = 0;
 
 			}
 			if (this.collidedHorizontally) {

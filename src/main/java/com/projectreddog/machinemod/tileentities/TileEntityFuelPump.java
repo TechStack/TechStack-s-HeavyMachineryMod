@@ -5,7 +5,7 @@ import com.projectreddog.machinemod.iface.IFuelContainer;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -246,17 +246,17 @@ public class TileEntityFuelPump extends TileEntity implements ITickableTileEntit
 	}
 
 	@Override
-	public boolean isUsableByPlayer(EntityPlayer playerIn) {
+	public boolean isUsableByPlayer(PlayerEntity playerIn) {
 		return playerIn.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
 	}
 
 	@Override
-	public void openInventory(EntityPlayer playerIn) {
+	public void openInventory(PlayerEntity playerIn) {
 
 	}
 
 	@Override
-	public void closeInventory(EntityPlayer playerIn) {
+	public void closeInventory(PlayerEntity playerIn) {
 
 	}
 

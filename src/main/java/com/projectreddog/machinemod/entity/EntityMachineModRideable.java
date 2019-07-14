@@ -24,7 +24,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
@@ -226,7 +226,7 @@ public class EntityMachineModRideable extends Entity {
 	}
 
 	@Override
-	public boolean processInitialInteract(EntityPlayer player, EnumHand hand) // should be proper class
+	public boolean processInitialInteract(PlayerEntity player, EnumHand hand) // should be proper class
 	{
 		if (!world.isRemote && getControllingPassenger() == null) {
 			// server side and no rider
@@ -335,9 +335,9 @@ public class EntityMachineModRideable extends Entity {
 			isPlayerPushingSprintButton = false;
 			isPlayerPushingJumpButton = false;
 		} else {
-			if (this.getControllingPassenger() instanceof EntityPlayer) {
-				EntityPlayer entityPlayer = (EntityPlayer) this.getControllingPassenger();
-				if (entityPlayer.capabilities.isCreativeMode) {
+			if (this.getControllingPassenger() instanceof PlayerEntity) {
+				PlayerEntity PlayerEntity = (PlayerEntity) this.getControllingPassenger();
+				if (PlayerEntity.capabilities.isCreativeMode) {
 					currentFuelLevel = maxFuelLevel;
 				}
 			}

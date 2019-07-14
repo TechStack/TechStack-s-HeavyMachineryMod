@@ -18,7 +18,7 @@ import com.projectreddog.machinemod.entity.EntityTractor;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -48,31 +48,31 @@ public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHan
 					if (message.isOpenGui) {
 
 						if (entity instanceof EntityDumpTruck) {
-							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_DUMP_TRUCK, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((PlayerEntity) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_DUMP_TRUCK, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityLoader) {
-							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_LOADER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((PlayerEntity) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_LOADER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityTractor) {
-							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_TRACTOR, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((PlayerEntity) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_TRACTOR, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntitySemiTractor) {
-							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_WIDEBEDTRUCK, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((PlayerEntity) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_WIDEBEDTRUCK, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityCombine) {
-							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_COMBINE, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((PlayerEntity) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_COMBINE, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityPaver) {
-							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_PAVER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((PlayerEntity) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_PAVER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityGrader) {
-							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_GRADER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((PlayerEntity) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_GRADER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityBagger) {
-							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_BAGGER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((PlayerEntity) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_BAGGER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityExcavator) {
-							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_EXCAVATOR, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((PlayerEntity) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_EXCAVATOR, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityChopper) {
-							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_CHOPPER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((PlayerEntity) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_CHOPPER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityContinuousMiner) {
-							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_CONTINUOUSMINER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((PlayerEntity) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_CONTINUOUSMINER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityTrackLoader) {
-							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_TRACK_LOADER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((PlayerEntity) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_TRACK_LOADER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityLaserMiner) {
-							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_LASAERMINER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+							((PlayerEntity) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_LASAERMINER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						}
 
 					}

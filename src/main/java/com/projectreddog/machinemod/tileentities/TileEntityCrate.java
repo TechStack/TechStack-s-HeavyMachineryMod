@@ -5,8 +5,8 @@ import com.projectreddog.machinemod.network.MachineModMessageRequestTEAllInvento
 import com.projectreddog.machinemod.network.MachineModMessageTEInventoryChangedToClient;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerEntityMP;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
@@ -96,18 +96,18 @@ public class TileEntityCrate extends TileEntity implements ITickableTileEntity, 
 	}
 
 	@Override
-	public boolean isUsableByPlayer(EntityPlayer player) {
+	public boolean isUsableByPlayer(PlayerEntity player) {
 		return player.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
 
 	}
 
 	@Override
-	public void openInventory(EntityPlayer player) {
+	public void openInventory(PlayerEntity player) {
 
 	}
 
 	@Override
-	public void closeInventory(EntityPlayer player) {
+	public void closeInventory(PlayerEntity player) {
 
 	}
 
@@ -401,7 +401,7 @@ public class TileEntityCrate extends TileEntity implements ITickableTileEntity, 
 
 	}
 
-	public void sendAllInventoryToPlayer(ServerPlayerEntityplayer) {
+	public void sendAllInventoryToPlayer(ServerPlayerPlayerEntity) {
 		for (int i = 0; i < inventory.length; i++) {
 
 			ModNetwork.simpleNetworkWrapper.sendTo(new MachineModMessageTEInventoryChangedToClient(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), i, inventory[i], this.AmtInReserve), player);

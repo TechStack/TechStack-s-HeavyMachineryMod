@@ -4,7 +4,7 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.block.state.BlockState;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -39,10 +39,10 @@ public class ItemCornSeed extends ItemFood implements IPlantable {
 	 * @param side
 	 *            The side being right-clicked
 	 */
-	// public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, Direction facing, float hitX, float hitY, float hitZ)
+	// public EnumActionResult onItemUse(PlayerEntity player, World worldIn, BlockPos pos, EnumHand hand, Direction facing, float hitX, float hitY, float hitZ)
 
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, Direction side, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(PlayerEntity playerIn, World worldIn, BlockPos pos, EnumHand hand, Direction side, float hitX, float hitY, float hitZ) {
 		ItemStack stack = playerIn.getHeldItem(hand);
 		if (side != Direction.UP) {
 			return EnumActionResult.FAIL;

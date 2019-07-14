@@ -11,7 +11,7 @@ import com.projectreddog.machinemod.render.armor.RenderElytraJetAlegs;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -69,7 +69,7 @@ public class ItemMachineModElytraJetLegs extends ItemMachineModArmor implements 
 	private int timealive;
 
 	@Override
-	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
+	public void onArmorTick(World world, PlayerEntity player, ItemStack itemStack) {
 		boolean boostActive = player.isSneaking();
 		int remaningFuel = MaxFuel - itemStack.getItemDamage();
 		// check for 1 so it will not go below 1 . Ensure it is not broken!
@@ -113,7 +113,7 @@ public class ItemMachineModElytraJetLegs extends ItemMachineModArmor implements 
 	}
 
 	@Override
-	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
+	public int getArmorDisplay(PlayerEntity player, ItemStack armor, int slot) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

@@ -9,7 +9,7 @@ import com.projectreddog.machinemod.item.blueprint.ItemBlueprint;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.LogHelper;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.ISidedInventory;
@@ -201,12 +201,12 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickableTile
 	}
 
 	@Override
-	public void openInventory(EntityPlayer playerIn) {
+	public void openInventory(PlayerEntity playerIn) {
 
 	}
 
 	@Override
-	public void closeInventory(EntityPlayer playerIn) {
+	public void closeInventory(PlayerEntity playerIn) {
 
 	}
 
@@ -364,7 +364,7 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickableTile
 		return returnValue;
 	}
 
-	public boolean playerHasNeededItemsInInventory(EntityPlayer player) {
+	public boolean playerHasNeededItemsInInventory(PlayerEntity player) {
 		boolean result = false;
 		if (!getStackInSlot(0).isEmpty()) {
 			if (getStackInSlot(0).getItem() instanceof ItemBlueprint) {
@@ -418,7 +418,7 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickableTile
 		return result;
 	}
 
-	public void removeBlueprintItemsFromPlayersInventory(EntityPlayer player) {
+	public void removeBlueprintItemsFromPlayersInventory(PlayerEntity player) {
 		boolean result = false;
 		if (!getStackInSlot(0).isEmpty()) {
 			if (getStackInSlot(0).getItem() instanceof ItemBlueprint) {
@@ -477,7 +477,7 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickableTile
 
 	// TODO: add check to see if we habe items then Need to remove the items from the inventory still
 	@Override
-	public void HandleGuiButton(int buttonId, EntityPlayer player) {
+	public void HandleGuiButton(int buttonId, PlayerEntity player) {
 		/// LogHelper.info("the button was clicked and the server knows!");
 		if (!getStackInSlot(0).isEmpty()) {
 			if (getStackInSlot(0).getItem() instanceof ItemBlueprint) {

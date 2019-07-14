@@ -9,7 +9,7 @@ import com.projectreddog.machinemod.item.attachments.ItemTractorAttachmentTrench
 import com.projectreddog.machinemod.utility.BlockUtil;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemDye;
@@ -123,9 +123,9 @@ public class EntityTractor extends EntityMachineModRideable {
 												// non named function )
 												if (EnumDyeColor.byDyeDamage(this.inventory.getStackInSlot(j).getItemDamage()) == EnumDyeColor.WHITE) {
 
-													EntityPlayer p;
-													if (this.getControllingPassenger() != null && this.getControllingPassenger() instanceof EntityPlayer) {
-														p = ((EntityPlayer) this.getControllingPassenger());
+													PlayerEntity p;
+													if (this.getControllingPassenger() != null && this.getControllingPassenger() instanceof PlayerEntity) {
+														p = ((PlayerEntity) this.getControllingPassenger());
 													} else {
 														p = net.minecraftforge.common.util.FakePlayerFactory.getMinecraft((net.minecraft.world.WorldServer) world);
 													}

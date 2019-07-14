@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 import com.projectreddog.machinemod.item.crafting.TruboFurnaceRecipes;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -279,7 +279,7 @@ public class TileEntityTurboFurnace extends TileEntity implements ITickableTileE
 	}
 
 	@Override
-	public boolean isUsableByPlayer(EntityPlayer player) {
+	public boolean isUsableByPlayer(PlayerEntity player) {
 		return player.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
 
 	}
@@ -290,12 +290,12 @@ public class TileEntityTurboFurnace extends TileEntity implements ITickableTileE
 	}
 
 	@Override
-	public void openInventory(EntityPlayer player) {
+	public void openInventory(PlayerEntity player) {
 
 	}
 
 	@Override
-	public void closeInventory(EntityPlayer player) {
+	public void closeInventory(PlayerEntity player) {
 
 	}
 

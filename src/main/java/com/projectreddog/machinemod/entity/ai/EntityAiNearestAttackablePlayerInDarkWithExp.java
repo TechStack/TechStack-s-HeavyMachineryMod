@@ -14,7 +14,7 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -71,7 +71,7 @@ public class EntityAiNearestAttackablePlayerInDarkWithExp<T extends EntityLiving
 	public boolean shouldExecute() {
 		if (this.targetChance > 0 && this.taskOwner.getRNG().nextInt(this.targetChance) != 0) {
 			return false;
-		} else if (this.targetClass != EntityPlayer.class && this.targetClass != ServerPlayerEntity.class) {
+		} else if (this.targetClass != PlayerEntity.class && this.targetClass != ServerPlayerEntity.class) {
 			List<T> list = this.taskOwner.world.<T>getEntitiesWithinAABB(this.targetClass, this.getTargetableArea(this.getTargetDistance()), this.targetEntitySelector);
 
 			if (list.isEmpty()) {
@@ -82,9 +82,9 @@ public class EntityAiNearestAttackablePlayerInDarkWithExp<T extends EntityLiving
 				return true;
 			}
 		} else {
-			T ep = (T) this.taskOwner.world.getNearestAttackablePlayer(this.taskOwner.posX, this.taskOwner.posY + (double) this.taskOwner.getEyeHeight(), this.taskOwner.posZ, this.getTargetDistance(), this.getTargetDistance(), new Function<EntityPlayer, Double>() {
+			T ep = (T) this.taskOwner.world.getNearestAttackablePlayer(this.taskOwner.posX, this.taskOwner.posY + (double) this.taskOwner.getEyeHeight(), this.taskOwner.posZ, this.getTargetDistance(), this.getTargetDistance(), new Function<PlayerEntity, Double>() {
 				@Nullable
-				public Double apply(@Nullable EntityPlayer p_apply_1_) {
+				public Double apply(@Nullable PlayerEntity p_apply_1_) {
 					ItemStack itemstack = p_apply_1_.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
 
 					if (itemstack.getItem() == Items.SKULL) {
@@ -100,9 +100,9 @@ public class EntityAiNearestAttackablePlayerInDarkWithExp<T extends EntityLiving
 
 					return 1.0D;
 				}
-			}, (Predicate<EntityPlayer>) this.targetEntitySelector);
-			if (ep instanceof EntityPlayer) {
-				EntityPlayer entPlayer = (EntityPlayer) ep;
+			}, (Predicate<PlayerEntity>) this.targetEntitySelector);
+			if (ep instanceof PlayerEntity) {
+				PlayerEntity entPlayer = (PlayerEntity) ep;
 				if (entPlayer.experienceTotal > 0) {
 					if (entPlayer.world.getLight(new BlockPos(entPlayer.posX, entPlayer.posY, entPlayer.posZ)) == 0) {
 						this.targetEntity = ep;

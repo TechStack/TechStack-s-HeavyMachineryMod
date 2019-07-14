@@ -8,7 +8,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -59,7 +59,7 @@ public class BlockMachineCrate extends BlockContainer {
 	}
 
 	@Override
-	public void onBlockClicked(World worldIn, BlockPos pos, EntityPlayer playerIn) {
+	public void onBlockClicked(World worldIn, BlockPos pos, PlayerEntity playerIn) {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (!worldIn.isRemote) {
 			// server
@@ -78,10 +78,10 @@ public class BlockMachineCrate extends BlockContainer {
 
 	@Override
 	// public boolean onBlockActivated(World worldIn, BlockPos pos, BlockState
-	// state, EntityPlayer playerIn, EnumHand hand, Direction facing, float
+	// state, PlayerEntity playerIn, EnumHand hand, Direction facing, float
 	// hitX, float hitY, float hitZ)
 
-	public boolean onBlockActivated(World worldIn, BlockPos pos, BlockState state, EntityPlayer playerIn, EnumHand hand, Direction side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, BlockState state, PlayerEntity playerIn, EnumHand hand, Direction side, float hitX, float hitY, float hitZ) {
 		playerIn.getActiveItemStack();
 		ItemStack heldItem = playerIn.getHeldItem(hand);
 		TileEntity te = worldIn.getTileEntity(pos);

@@ -5,7 +5,7 @@ import com.projectreddog.machinemod.entity.EntityMachineModRideable;
 import com.projectreddog.machinemod.model.ModelContinuousMiner;
 import com.projectreddog.machinemod.model.ModelTransportable;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.Direction;
@@ -28,8 +28,8 @@ public class ItemContinuousMiner extends ItemTransportable {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, Direction side, float xOff, float yOff, float zOff) {
-		// public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, Direction side, float xOff, float yOff, float zOff) {
+	public EnumActionResult onItemUse(PlayerEntity player, World world, BlockPos pos, EnumHand hand, Direction side, float xOff, float yOff, float zOff) {
+		// public EnumActionResult onItemUse(ItemStack stack, PlayerEntity player, World world, BlockPos pos, EnumHand hand, Direction side, float xOff, float yOff, float zOff) {
 		ItemStack stack = player.getHeldItem(hand);
 		boolean result = false;
 

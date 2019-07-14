@@ -9,7 +9,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
@@ -79,13 +79,13 @@ public class BlockMachineModAsphaltMixer extends BlockContainer {
 
 	@Override
 	// public boolean onBlockActivated(World worldIn, BlockPos pos, BlockState
-	// state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack
+	// state, PlayerEntity playerIn, EnumHand hand, @Nullable ItemStack
 	// heldItem, Direction side, float hitX, float hitY, float hitZ)
 	// public boolean onBlockActivated(World worldIn, BlockPos pos, BlockState
-	// state, net.minecraft.entity.player.EntityPlayer playerIn,EnumHand hand,
+	// state, net.minecraft.entity.player.PlayerEntity playerIn,EnumHand hand,
 	// Direction side, float hitX, float hitY, float hitZ) {
 
-	public boolean onBlockActivated(World worldIn, BlockPos pos, BlockState state, EntityPlayer playerIn, EnumHand hand, Direction side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, BlockState state, PlayerEntity playerIn, EnumHand hand, Direction side, float hitX, float hitY, float hitZ) {
 		ItemStack heldItem = playerIn.getActiveItemStack();
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te != null && !playerIn.isSneaking()) {

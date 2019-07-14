@@ -5,7 +5,7 @@ import com.projectreddog.machinemod.init.ModBlocks;
 
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.state.BlockState;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -29,8 +29,8 @@ public class ItemHandDrill extends ItemMachineMod {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, Direction side, float xOff, float yOff, float zOff) {
-		// public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, Direction side, float xOff, float yOff, float zOff) {
+	public EnumActionResult onItemUse(PlayerEntity player, World world, BlockPos pos, EnumHand hand, Direction side, float xOff, float yOff, float zOff) {
+		// public EnumActionResult onItemUse(ItemStack stack, PlayerEntity player, World world, BlockPos pos, EnumHand hand, Direction side, float xOff, float yOff, float zOff) {
 		ItemStack stack = player.getActiveItemStack();
 		boolean result = false;
 		if (world.getBlockState(pos).getBlock() == Blocks.STONE && world.getBlockState(pos).getValue(BlockStone.VARIANT) == BlockStone.EnumType.STONE) {

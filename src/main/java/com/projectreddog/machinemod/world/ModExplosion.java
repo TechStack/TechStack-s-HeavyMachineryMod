@@ -17,7 +17,7 @@ import net.minecraft.enchantment.EnchantmentProtection;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
@@ -144,11 +144,11 @@ public class ModExplosion extends Explosion {
 						entity.motionY += d7 * d11;
 						entity.motionZ += d9 * d11;
 
-						if (entity instanceof EntityPlayer) {
-							EntityPlayer entityplayer = (EntityPlayer) entity;
+						if (entity instanceof PlayerEntity) {
+							PlayerEntity PlayerEntity = (PlayerEntity) entity;
 
-							if (!entityplayer.isSpectator() && (!entityplayer.isCreative() || !entityplayer.capabilities.isFlying)) {
-								this.getPlayerKnockbackMap().put(entityplayer, new Vec3d(d5 * d10, d7 * d10, d9 * d10));
+							if (!PlayerEntity.isSpectator() && (!PlayerEntity.isCreative() || !PlayerEntity.capabilities.isFlying)) {
+								this.getPlayerKnockbackMap().put(PlayerEntity, new Vec3d(d5 * d10, d7 * d10, d9 * d10));
 							}
 						}
 					}

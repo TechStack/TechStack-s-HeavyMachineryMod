@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.container;
 
 import com.projectreddog.machinemod.entity.EntityLoader;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
@@ -27,7 +27,7 @@ public class ContainerLoader extends Container {
 	}
 
 	@Override
-	public boolean canInteractWith(EntityPlayer player) {
+	public boolean canInteractWith(PlayerEntity player) {
 
 		return loader.isUsableByPlayer(player);
 	}
@@ -45,7 +45,7 @@ public class ContainerLoader extends Container {
 	}
 
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
+	public ItemStack transferStackInSlot(PlayerEntity player, int slot) {
 		ItemStack stack = ItemStack.EMPTY;
 		Slot slotObject = (Slot) inventorySlots.get(slot);
 

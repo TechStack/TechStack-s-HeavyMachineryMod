@@ -3,7 +3,7 @@ package com.projectreddog.machinemod.entity;
 import com.projectreddog.machinemod.init.ModItems;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ParticleTypes;
@@ -55,11 +55,11 @@ public class EntitySub extends EntityMachineModRideable {
 				}
 			}
 
-			if (this.currentFuelLevel > 0 && this.getControllingPassenger() != null && this.getControllingPassenger() instanceof EntityPlayer) {
-				EntityPlayer entityPlayer = (EntityPlayer) this.getControllingPassenger();
-				entityPlayer.setAir(300);
-				entityPlayer.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("night_vision"), 600, 0, true, false));
-				entityPlayer.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("water_breathing"), 600, 0, true, false));
+			if (this.currentFuelLevel > 0 && this.getControllingPassenger() != null && this.getControllingPassenger() instanceof PlayerEntity) {
+				PlayerEntity PlayerEntity = (PlayerEntity) this.getControllingPassenger();
+				PlayerEntity.setAir(300);
+				PlayerEntity.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("night_vision"), 600, 0, true, false));
+				PlayerEntity.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("water_breathing"), 600, 0, true, false));
 
 			}
 

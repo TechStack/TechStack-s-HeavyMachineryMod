@@ -8,7 +8,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -65,7 +65,7 @@ public class BlockMachineCompressedAsphaltSlab extends BlockMachineMod {
 	 */
 	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, BlockState state, Entity entity) {
 		double savedSpeed = Math.sqrt(entity.motionZ * entity.motionZ + entity.motionX * entity.motionX);
-		if (!(entity instanceof EntityPlayer)) {
+		if (!(entity instanceof PlayerEntity)) {
 			// not a player
 			if (!(entity instanceof EntityMachineModRideable)) {
 				// not a machine mod rideable
@@ -79,7 +79,7 @@ public class BlockMachineCompressedAsphaltSlab extends BlockMachineMod {
 				return;
 			}
 
-		} else if (((EntityPlayer) entity).moveForward < .8f && ((EntityPlayer) entity).moveStrafing < .8f) {
+		} else if (((PlayerEntity) entity).moveForward < .8f && ((PlayerEntity) entity).moveStrafing < .8f) {
 			return;
 			// player no longer trying to move
 		}

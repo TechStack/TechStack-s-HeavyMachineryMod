@@ -7,7 +7,7 @@ import com.projectreddog.machinemod.model.ModelTransportable;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockState;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -31,9 +31,9 @@ public class ItemOilRig extends ItemMachineModMachine {
 	}
 
 	/**
-	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
+	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, PlayerEntity
 	 */
-	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
+	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, PlayerEntity playerIn) {
 		boolean flag = true;
 		RayTraceResult movingobjectposition = this.rayTrace(worldIn, playerIn, flag);
 
@@ -72,7 +72,7 @@ public class ItemOilRig extends ItemMachineModMachine {
 		}
 	}
 
-	public boolean SpawnOilRig(ItemStack stack, EntityPlayer player, World world, BlockPos pos) {
+	public boolean SpawnOilRig(ItemStack stack, PlayerEntity player, World world, BlockPos pos) {
 		boolean result = false;
 
 		if (!world.isRemote)// / only run on server

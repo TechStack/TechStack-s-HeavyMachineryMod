@@ -3,7 +3,7 @@ package com.projectreddog.machinemod.tileentities;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -253,12 +253,12 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickableTileE
 	}
 
 	@Override
-	public void openInventory(EntityPlayer playerIn) {
+	public void openInventory(PlayerEntity playerIn) {
 
 	}
 
 	@Override
-	public void closeInventory(EntityPlayer playerIn) {
+	public void closeInventory(PlayerEntity playerIn) {
 
 	}
 
@@ -362,7 +362,7 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickableTileE
 	}
 
 	@Override
-	public boolean isUsableByPlayer(EntityPlayer playerIn) {
+	public boolean isUsableByPlayer(PlayerEntity playerIn) {
 		return playerIn.getDistanceSq(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ()) < 64;
 	}
 

@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.container;
 
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.container.IContainerListener;
 import net.minecraft.item.ItemStack;
@@ -30,7 +30,7 @@ public class ContainerFermenter extends Container {
 	}
 
 	@Override
-	public boolean canInteractWith(EntityPlayer player) {
+	public boolean canInteractWith(PlayerEntity player) {
 		return fermenter.isUsableByPlayer(player);
 	}
 
@@ -47,7 +47,7 @@ public class ContainerFermenter extends Container {
 	}
 
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
+	public ItemStack transferStackInSlot(PlayerEntity player, int slot) {
 		ItemStack stack = ItemStack.EMPTY;
 		Slot slotObject = (Slot) inventorySlots.get(slot);
 

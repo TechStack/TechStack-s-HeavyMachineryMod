@@ -5,7 +5,7 @@ import com.projectreddog.machinemod.inventory.SlotNotBlazePowder;
 import com.projectreddog.machinemod.inventory.SlotOutputOnlyTurobFurnace;
 import com.projectreddog.machinemod.tileentities.TileEntityTurboFurnace;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.container.IContainerListener;
 import net.minecraft.item.ItemStack;
@@ -40,7 +40,7 @@ public class ContainerTurboFurnace extends Container {
 	}
 
 	@Override
-	public boolean canInteractWith(EntityPlayer player) {
+	public boolean canInteractWith(PlayerEntity player) {
 		return turbofurnace.isUsableByPlayer(player);
 	}
 
@@ -57,7 +57,7 @@ public class ContainerTurboFurnace extends Container {
 	}
 
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
+	public ItemStack transferStackInSlot(PlayerEntity player, int slot) {
 		ItemStack stack = ItemStack.EMPTY;
 		Slot slotObject = (Slot) inventorySlots.get(slot);
 
