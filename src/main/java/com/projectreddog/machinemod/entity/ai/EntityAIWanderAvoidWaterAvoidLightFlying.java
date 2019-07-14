@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.entity.ai;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
 import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.util.math.BlockPos;
@@ -10,7 +10,7 @@ import net.minecraft.util.math.Vec3d;
 
 public class EntityAIWanderAvoidWaterAvoidLightFlying extends EntityAIWanderAvoidWater {
 
-	public EntityAIWanderAvoidWaterAvoidLightFlying(EntityCreature p_i47413_1_, double p_i47413_2_) {
+	public EntityAIWanderAvoidWaterAvoidLightFlying(CreatureEntity p_i47413_1_, double p_i47413_2_) {
 		super(p_i47413_1_, p_i47413_2_);
 	}
 

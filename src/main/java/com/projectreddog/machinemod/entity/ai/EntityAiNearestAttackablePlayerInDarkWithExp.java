@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 
-import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.EntityCreeper;
@@ -30,20 +30,20 @@ public class EntityAiNearestAttackablePlayerInDarkWithExp<T extends EntityLiving
 	protected final Predicate<? super T> targetEntitySelector;
 	protected T targetEntity;
 
-	public EntityAiNearestAttackablePlayerInDarkWithExp(EntityCreature creature, Class classTarget) {
+	public EntityAiNearestAttackablePlayerInDarkWithExp(CreatureEntity creature, Class classTarget) {
 		this(creature, classTarget, true);
 		// TODO Auto-generated constructor stub
 	}
 
-	public EntityAiNearestAttackablePlayerInDarkWithExp(EntityCreature creature, Class<T> classTarget, boolean checkSight) {
+	public EntityAiNearestAttackablePlayerInDarkWithExp(CreatureEntity creature, Class<T> classTarget, boolean checkSight) {
 		this(creature, classTarget, checkSight, false);
 	}
 
-	public EntityAiNearestAttackablePlayerInDarkWithExp(EntityCreature creature, Class<T> classTarget, boolean checkSight, boolean onlyNearby) {
+	public EntityAiNearestAttackablePlayerInDarkWithExp(CreatureEntity creature, Class<T> classTarget, boolean checkSight, boolean onlyNearby) {
 		this(creature, classTarget, 10, checkSight, onlyNearby, (Predicate) null);
 	}
 
-	public EntityAiNearestAttackablePlayerInDarkWithExp(EntityCreature creature, Class<T> classTarget, int chance, boolean checkSight, boolean onlyNearby, @Nullable final Predicate<? super T> targetSelector) {
+	public EntityAiNearestAttackablePlayerInDarkWithExp(CreatureEntity creature, Class<T> classTarget, int chance, boolean checkSight, boolean onlyNearby, @Nullable final Predicate<? super T> targetSelector) {
 		super(creature, classTarget, chance, checkSight, onlyNearby, targetSelector);
 		this.targetClass = classTarget;
 		this.targetChance = chance;
