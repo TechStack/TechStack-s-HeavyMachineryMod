@@ -33,7 +33,7 @@ public class EntityBulldozer extends EntityMachineModRideable {
 
 	public void doParticleEffects() {
 		if (this.currentFuelLevel > 0 && this.getControllingPassenger() != null) {
-			world.spawnParticle(ParticleTypes.SMOKE_LARGE, this.posX + calcTwoOffsetX(1, -90, .4), this.posY + 3.9, this.posZ + calcTwoOffsetZ(1, -90, .4), 0, 0, 0, 0);
+			world.spawnParticle(ParticleTypes.LARGE_SMOKE, this.posX + calcTwoOffsetX(1, -90, .4), this.posY + 3.9, this.posZ + calcTwoOffsetZ(1, -90, .4), 0, 0, 0, 0);
 		}
 	}
 
