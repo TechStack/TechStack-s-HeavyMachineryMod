@@ -4,7 +4,7 @@ import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.properties.DirectionProperty;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IProperty;
@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockMachineDrilledAndesite extends BlockMachineModManyTexture {
-	public static final PropertyDirection FACING = PropertyDirection.create("facing");
+	public static final DirectionProperty FACING = DirectionProperty.create("facing");
 
 	public BlockMachineDrilledAndesite() {
 		super();

@@ -6,7 +6,7 @@ import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.properties.DirectionProperty;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
@@ -24,7 +24,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockMachineMowedGrass extends BlockMachineMod {
-	public static final PropertyDirection FACING = PropertyDirection.create("facing", Direction.Plane.HORIZONTAL);
+	public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
 
 	public int intRandom = 0;
 

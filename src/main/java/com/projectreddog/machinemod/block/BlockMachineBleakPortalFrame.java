@@ -12,7 +12,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.properties.DirectionProperty;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.state.IProperty;
@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockMachineBleakPortalFrame extends BlockMachineMod {
-	public static final PropertyDirection FACING = PropertyDirection.create("facing", Direction.Plane.HORIZONTAL);
+	public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
 	public static final PropertyBool HAS_STAR = PropertyBool.create("netherstar");
 	protected static final AxisAlignedBB AABB_BLOCK_WEST = new AxisAlignedBB(0.5D, 0.0D, 0.0D, 1.0D, 1.D, 1.0D);
 	protected static final AxisAlignedBB AABB_BLOCK_EAST = new AxisAlignedBB(0.0D, 0.0D, 0.0D, .5D, 1.D, 1.0D);

@@ -5,21 +5,22 @@ import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.block.ContainerBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.properties.DirectionProperty;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.IProperty;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.Direction;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -28,7 +29,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockMachineModFermenter extends ContainerBlock {
-	public static final PropertyDirection FACING = PropertyDirection.create("facing", Direction.Plane.HORIZONTAL);
+	public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
 
 	protected BlockMachineModFermenter(Material material) {
 		super(material);
@@ -37,7 +38,7 @@ public class BlockMachineModFermenter extends ContainerBlock {
 
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, Direction.NORTH));
+		this.setDefaultState(this.state.getBaseState().withProperty(FACING, Direction.NORTH));
 
 		// 1.8
 		// REMOVED 1.14
@@ -81,8 +82,7 @@ public class BlockMachineModFermenter extends ContainerBlock {
 	}
 
 	/**
-	 * Possibly modify the given BlockState before rendering it on an Entity
-	 * (Minecarts, Endermen, ...)
+	 * Possibly modify the given BlockState before rendering it on an Entity (Minecarts, Endermen, ...)
 	 */
 	@SideOnly(Side.CLIENT)
 	public BlockState getStateForEntityRender(BlockState state) {

@@ -23,8 +23,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockMachineModWellHead extends ContainerBlock {
-	// public static final PropertyDirection FACING =
-	// PropertyDirection.create("facing", Direction.Plane.HORIZONTAL);
+	// public static final DirectionProperty FACING =
+	// DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
 
 	protected BlockMachineModWellHead(Material material) {
 		super(material);
