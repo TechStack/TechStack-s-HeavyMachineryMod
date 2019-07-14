@@ -8,7 +8,7 @@ import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -52,7 +52,7 @@ public class TileEntityShredder extends TileEntity implements ITickableTileEntit
 					processEntitiesInList(list);
 
 					if (shouldDrop()) {
-						list = world.getEntitiesWithinAABB(EntityItem.class, boundingBox);
+						list = world.getEntitiesWithinAABB(ItemEntity.class, boundingBox);
 						processEntitiesInList2(list);
 
 						list = world.getEntitiesWithinAABB(EntityXPOrb.class, boundingBox);
@@ -100,11 +100,11 @@ public class TileEntityShredder extends TileEntity implements ITickableTileEntit
 		for (int i = 0; i < par1List.size(); ++i) {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
-				if (entity instanceof EntityItem) {
-					EntityItem ei = (EntityItem) entity;
+				if (entity instanceof ItemEntity) {
+					ItemEntity ei = (ItemEntity) entity;
 					if (!ei.isDead) {
 
-						EntityItem ei2 = new EntityItem(ei.world, ei.posX, ei.posY - 2, ei.posZ, ei.getItem());
+						ItemEntity ei2 = new ItemEntity(ei.world, ei.posX, ei.posY - 2, ei.posZ, ei.getItem());
 						ei2.motionX = 0;
 						ei2.motionY = 0;
 						ei2.motionZ = 0;

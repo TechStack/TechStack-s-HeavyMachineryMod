@@ -136,7 +136,7 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 	}
 
 	/**
-	 * Spawns this Block's drops into the World as EntityItems.
+	 * Spawns this Block's drops into the World as ItemEntitys.
 	 * 
 	 * @param chance The chance that each Item is actually spawned (1.0 =
 	 * always, 0.0 = never)

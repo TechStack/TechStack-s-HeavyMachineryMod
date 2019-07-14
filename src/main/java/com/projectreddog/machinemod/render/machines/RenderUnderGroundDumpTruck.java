@@ -21,7 +21,7 @@ import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.BakedQuad;
 import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
+import net.minecraft.client.renderer.tileentity.TileItemEntityStackRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
@@ -86,9 +86,9 @@ public class RenderUnderGroundDumpTruck extends EntityRenderer {
 		for (int i = 0; i < eDT.SIZE; i++) {
 			ItemStack is = eDT.inventory.getStackInSlot(i);
 			if (!is.isEmpty()) {
-				// EntityItem customitem = new EntityItem(eDT.worldObj);
+				// ItemEntity customitem = new ItemEntity(eDT.worldObj);
 				// customitem.hoverStart = 0f;
-				// customitem.setEntityItemStack(is);
+				// customitem.setItemEntityStack(is);
 				IBakedModel ibakedmodel = itemRenderer.getItemModelMesher().getItemModel(is);
 
 				if (count > 4) {
@@ -106,7 +106,7 @@ public class RenderUnderGroundDumpTruck extends EntityRenderer {
 
 				if (ibakedmodel.isBuiltInRenderer()) {
 
-					TileEntityItemStackRenderer.instance.renderByItem(is);
+					TileItemEntityStackRenderer.instance.renderByItem(is);
 
 				} else {
 					Tessellator tessellator = Tessellator.getInstance();

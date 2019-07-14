@@ -6,7 +6,7 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -56,7 +56,7 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 
 				boundingBox = new AxisAlignedBB(this.pos.up(), this.pos.up().add(1, 1, 1));
 			}
-			List list = world.getEntitiesWithinAABB(EntityItem.class, boundingBox);
+			List list = world.getEntitiesWithinAABB(ItemEntity.class, boundingBox);
 			processEntitiesInList(list);
 			MoveItemsInnventory();
 		}
@@ -130,7 +130,7 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 						}
 					}
 
-					EntityItem ei = new EntityItem(world, x, y, z, tmpstack);
+					ItemEntity ei = new ItemEntity(world, x, y, z, tmpstack);
 					ei.motionX = 0;
 					ei.motionY = 0;
 					ei.motionZ = 0;
@@ -208,7 +208,7 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 						}
 					}
 				}
-				EntityItem ei = new EntityItem(world, x, y, z, tmpstack);
+				ItemEntity ei = new ItemEntity(world, x, y, z, tmpstack);
 				ei.motionX = 0;
 				ei.motionY = 0;
 				ei.motionZ = 0;
@@ -226,15 +226,15 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 		for (int i = 0; i < par1List.size(); ++i) {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
-				if (entity instanceof EntityItem) {
-					ItemStack is = ((EntityItem) entity).getItem().copy();
-					is.setItemDamage(((EntityItem) entity).getItem().getItemDamage());
+				if (entity instanceof ItemEntity) {
+					ItemStack is = ((ItemEntity) entity).getItem().copy();
+					is.setItemDamage(((ItemEntity) entity).getItem().getItemDamage());
 					if (!entity.isDead) {
 						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
 
 							if (!is1.isEmpty() && is1.getCount() != 0) {
-								((EntityItem) entity).setItem(is1);
+								((ItemEntity) entity).setItem(is1);
 							} else {
 								entity.setDead();
 							}

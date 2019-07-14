@@ -8,7 +8,7 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -71,7 +71,7 @@ public class TileEntityConveyor extends TileEntity implements ITickableTileEntit
 				} else {
 					boundingBox = new AxisAlignedBB(this.pos.up(), this.pos.up().add(1, 1, 1));
 				}
-				List list = world.getEntitiesWithinAABB(EntityItem.class, boundingBox);
+				List list = world.getEntitiesWithinAABB(ItemEntity.class, boundingBox);
 				processEntitiesInList(list);
 
 				list = world.getEntitiesWithinAABB(EntityLivingBase.class, boundingBox);

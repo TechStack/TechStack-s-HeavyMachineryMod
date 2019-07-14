@@ -4,7 +4,7 @@ import com.projectreddog.machinemod.block.BlockMachineMowedGrass;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
@@ -62,13 +62,13 @@ public class EntityLawnmower extends EntityMachineModRideable {
 						world.setBlockState(bp, ModBlocks.machinemowedgrass.getDefaultState().withProperty(BlockMachineMowedGrass.FACING, Direction.EAST));
 					}
 					ItemStack is = new ItemStack(Blocks.TALLGRASS, 1, 1);
-					EntityItem entityItem = new EntityItem(world, bp.getX(), bp.getY() + 1, bp.getZ(), is);
+					ItemEntity ItemEntity = new ItemEntity(world, bp.getX(), bp.getY() + 1, bp.getZ(), is);
 
-					entityItem.forceSpawn = true;
-					entityItem.motionX = 0;
-					entityItem.motionY = 0;
-					entityItem.motionZ = 0;
-					world.spawnEntity(entityItem);
+					ItemEntity.forceSpawn = true;
+					ItemEntity.motionX = 0;
+					ItemEntity.motionY = 0;
+					ItemEntity.motionZ = 0;
+					world.spawnEntity(ItemEntity);
 				}
 
 			}

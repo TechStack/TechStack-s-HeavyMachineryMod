@@ -22,7 +22,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MoverType;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.PlayerEntity;
@@ -204,17 +204,17 @@ public class EntityMachineModRideable extends Entity {
 				float ry = rand.nextFloat() * 0.8F + 0.1F;
 				float rz = rand.nextFloat() * 0.8F + 0.1F;
 
-				EntityItem entityItem = new EntityItem(world, posX + rx, posY + ry, posZ + rz, item);
+				ItemEntity ItemEntity = new ItemEntity(world, posX + rx, posY + ry, posZ + rz, item);
 
 				if (item.hasTagCompound()) {
-					entityItem.getItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+					ItemEntity.getItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
 				}
 
 				float factor = 0.05F;
-				entityItem.motionX = rand.nextGaussian() * factor;
-				entityItem.motionY = rand.nextGaussian() * factor + 0.2F;
-				entityItem.motionZ = rand.nextGaussian() * factor;
-				world.spawnEntity(entityItem);
+				ItemEntity.motionX = rand.nextGaussian() * factor;
+				ItemEntity.motionY = rand.nextGaussian() * factor + 0.2F;
+				ItemEntity.motionZ = rand.nextGaussian() * factor;
+				world.spawnEntity(ItemEntity);
 				// item.stackSize = 0;
 				inventory.extractItem(i, inventory.getStackInSlot(i).getCount(), false);
 				// inventory.insertItem(i, ItemStack.EMPTY, false);

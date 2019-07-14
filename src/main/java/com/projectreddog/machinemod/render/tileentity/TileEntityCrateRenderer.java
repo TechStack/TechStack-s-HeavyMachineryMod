@@ -20,7 +20,7 @@ import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.texture.TextureUtil;
-import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
+import net.minecraft.client.renderer.tileentity.TileItemEntityStackRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
@@ -74,9 +74,9 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 			ItemStack is = te.getStackInSlot(inventoryIndex);
 			if (is != null && !is.isEmpty()) {
 				str = FormatAmount(is.getCount() + te.AmtInReserve);
-				// EntityItem customitem = new EntityItem(eDT.worldObj);
+				// ItemEntity customitem = new ItemEntity(eDT.worldObj);
 				// customitem.hoverStart = 0f;
-				// customitem.setEntityItemStack(is);
+				// customitem.setItemEntityStack(is);
 				IBakedModel ibakedmodel = itemRenderer.getItemModelMesher().getItemModel(is);
 				GL11.glRotatef(te.rotAmt, 0, 1, 0);
 
@@ -87,7 +87,7 @@ public class TileEntityCrateRenderer extends TileEntitySpecialRenderer {
 				GlStateManager.enableRescaleNormal();
 				if (ibakedmodel.isBuiltInRenderer()) {
 
-					TileEntityItemStackRenderer.instance.renderByItem(is);
+					TileItemEntityStackRenderer.instance.renderByItem(is);
 
 				} else {
 					BufferBuilder worldrenderer = tessellator.getBuffer();

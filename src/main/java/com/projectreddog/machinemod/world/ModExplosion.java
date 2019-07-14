@@ -16,7 +16,7 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.enchantment.EnchantmentProtection;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -118,7 +118,7 @@ public class ModExplosion extends Explosion {
 		for (int k2 = 0; k2 < list.size(); ++k2) {
 			Entity entity = list.get(k2);
 
-			if (!entity.isImmuneToExplosions() && (!(entity instanceof EntityItem))) {
+			if (!entity.isImmuneToExplosions() && (!(entity instanceof ItemEntity))) {
 				double d12 = entity.getDistance(this.explosionX, this.explosionY, this.explosionZ) / (double) f3;
 
 				if (d12 <= 1.0D) {

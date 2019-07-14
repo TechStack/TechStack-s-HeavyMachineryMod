@@ -8,7 +8,7 @@ import com.projectreddog.machinemod.utility.BlockUtil;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -121,16 +121,16 @@ public class EntityLaserMiner extends EntityMachineModRideable {
 		for (int i = 0; i < par1List.size(); ++i) {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
-				if (entity instanceof EntityItem) {
-					ItemStack is = ((EntityItem) entity).getItem().copy();
+				if (entity instanceof ItemEntity) {
+					ItemStack is = ((ItemEntity) entity).getItem().copy();
 					if (!is.isEmpty() && is != null) {
-						is.setItemDamage(((EntityItem) entity).getItem().getItemDamage());
+						is.setItemDamage(((ItemEntity) entity).getItem().getItemDamage());
 						if (!entity.isDead) {
 							if (is.getCount() > 0) {
 								ItemStack is1 = addToinventory(is);
 
 								if (!is1.isEmpty() && is1.getCount() != 0) {
-									((EntityItem) entity).setItem(is1);
+									((ItemEntity) entity).setItem(is1);
 								} else {
 									entity.setDead();
 								}

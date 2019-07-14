@@ -7,7 +7,8 @@ import com.projectreddog.machinemod.utility.BlockUtil;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -137,18 +138,18 @@ public class EntityBagger extends EntityMachineModRideable {
 						// if (item != null && item.stackSize > 0) {
 						// ;
 						//
-						// EntityItem entityItem = new EntityItem(worldObj, posX + calcOffsetX(3.5), posY + 4, posZ + calcOffsetZ(3.5), item);
+						// ItemEntity ItemEntity = new ItemEntity(worldObj, posX + calcOffsetX(3.5), posY + 4, posZ + calcOffsetZ(3.5), item);
 						//
 						// if (item.hasTagCompound()) {
-						// entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+						// ItemEntity.getItemEntity().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
 						// }
 						//
 						// float factor = 0.05F;
-						// // entityItem.motionX = rand.nextGaussian() * factor;
-						// entityItem.motionY = 0;
-						// // entityItem.motionZ = rand.nextGaussian() * factor;
-						// entityItem.forceSpawn = true;
-						// world.spawnEntityInWorld(entityItem);
+						// // ItemEntity.motionX = rand.nextGaussian() * factor;
+						// ItemEntity.motionY = 0;
+						// // ItemEntity.motionZ = rand.nextGaussian() * factor;
+						// ItemEntity.forceSpawn = true;
+						// world.spawnEntityInWorld(ItemEntity);
 						// // item.stackSize = 0;
 						//
 						// this.setInventorySlotContents(i, null);
@@ -175,15 +176,15 @@ public class EntityBagger extends EntityMachineModRideable {
 		for (int i = 0; i < par1List.size(); ++i) {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
-				if (entity instanceof EntityItem) {
-					ItemStack is = ((EntityItem) entity).getItem().copy();
-					is.setItemDamage(((EntityItem) entity).getItem().getItemDamage());
+				if (entity instanceof ItemEntity) {
+					ItemStack is = ((ItemEntity) entity).getItem().copy();
+					is.setItemDamage(((ItemEntity) entity).getItem().getItemDamage());
 					if (!entity.isDead) {
 						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
 
 							if (is1 != null && is1.getCount() != 0) {
-								((EntityItem) entity).setItem(is1);
+								((ItemEntity) entity).setItem(is1);
 							} else {
 								entity.setDead();
 							}
