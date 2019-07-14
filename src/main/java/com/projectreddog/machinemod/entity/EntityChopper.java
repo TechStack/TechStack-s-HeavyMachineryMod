@@ -3,7 +3,7 @@ package com.projectreddog.machinemod.entity;
 import com.projectreddog.machinemod.init.ModItems;
 
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.ParticleTypes;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
