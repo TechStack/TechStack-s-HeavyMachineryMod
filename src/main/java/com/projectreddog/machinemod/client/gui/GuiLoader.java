@@ -6,7 +6,6 @@ import com.projectreddog.machinemod.container.ContainerLoader;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.client.gui.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 
