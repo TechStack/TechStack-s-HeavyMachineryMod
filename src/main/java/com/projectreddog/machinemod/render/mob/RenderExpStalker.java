@@ -7,18 +7,17 @@ import com.projectreddog.machinemod.model.mob.ModelExpStalker;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.RenderItem;
+import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.culling.ICamera;
 import net.minecraft.client.renderer.entity.RenderLiving;
-import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.model.Model;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderExpStalker extends RenderLiving<EntityExpStalker> {
 
-	protected static ModelBase myModel;
+	protected static Model myModel;
 
-	private RenderItem itemRenderer;
+	private ItemRenderer itemRenderer;
 
 	public RenderExpStalker(RenderManager renderManager) {
 
