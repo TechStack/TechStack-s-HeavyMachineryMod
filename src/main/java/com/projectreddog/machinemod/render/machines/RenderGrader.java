@@ -2,6 +2,7 @@ package com.projectreddog.machinemod.render.machines;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import org.lwjgl.opengl.GL11;
 
@@ -74,8 +75,8 @@ public class RenderGrader extends EntityRenderer {
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelGrader.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
-		GlStateManager.translate(-3.5f, -.6F, -4.4F);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.translatef(-3.5f, -.6F, -4.4F);
+		GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glScalef(.5f, .5f, .5f);
 
 		boolean even = true;
@@ -115,10 +116,10 @@ public class RenderGrader extends EntityRenderer {
 
 					for (int k = 0; k < j; ++k) {
 						Direction Direction = aDirection[k];
-						this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, Direction, 0), -1, is);
+						this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, Direction, new Random()), -1, is);
 					}
 
-					this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, null, 0), -1, is);
+					this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, null, new Random()), -1, is);
 					tessellator.draw();
 				}
 				GL11.glRotatef(-45, 1, 1, 0);

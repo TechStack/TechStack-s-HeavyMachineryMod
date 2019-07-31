@@ -9,8 +9,6 @@ import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -55,7 +53,7 @@ public class RenderTrackLoader extends EntityRenderer {
 		this.bindEntityTexture(entity);
 
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 
 		this.modelTrackLoader.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
@@ -71,7 +69,7 @@ public class RenderTrackLoader extends EntityRenderer {
 	public static class Factory implements IRenderFactory<EntityTrackLoader> {
 
 		@Override
-		public Render<? super EntityTrackLoader> createRenderFor(RenderManager manager) {
+		public EntityRenderer<? super EntityTrackLoader> createRenderFor(EntityRendererManager manager) {
 			return new RenderTrackLoader(manager);
 		}
 

@@ -2,6 +2,7 @@ package com.projectreddog.machinemod.render.machines;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import org.lwjgl.opengl.GL11;
 
@@ -116,11 +117,11 @@ public class RenderUnderGroundLoader extends EntityRenderer {
 
 					for (int k = 0; k < j; ++k) {
 						Direction Direction = aDirection[k];
-						this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, Direction, 0), -1, is);
+						this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, Direction, new Random()), -1, is);
 
 					}
 
-					this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, null, 0), -1, is);
+					this.RenderHelper_a(worldrenderer, ibakedmodel.getQuads(null, null, new Random()), -1, is);
 					tessellator.draw();
 				}
 				GL11.glRotatef(-45, 1, 1, 0);

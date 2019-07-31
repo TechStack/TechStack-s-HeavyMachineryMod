@@ -60,8 +60,8 @@ public class RenderSemiTractor extends EntityRenderer {
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelWideBedTruck.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
-		GlStateManager.translate(0f, -1.72F, +8F);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.translatef(0f, -1.72F, +8F);
+		GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 		// GL11.glScalef(.75f, .75f, .75f);
 		// attempt to render the items in inventory
 		EntitySemiTractor eDT = ((EntitySemiTractor) entity);
