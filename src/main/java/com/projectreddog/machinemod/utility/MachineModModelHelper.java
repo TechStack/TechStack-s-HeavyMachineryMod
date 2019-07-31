@@ -16,6 +16,7 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.vertex.VertexFormat;
 import net.minecraft.client.renderer.vertex.VertexFormatElement;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.BasicState;
 import net.minecraftforge.client.model.obj.OBJModel;
 import net.minecraftforge.client.model.pipeline.LightUtil;
 
@@ -159,14 +160,14 @@ public class MachineModModelHelper {
 //TODO POSSIBLY HORRIBLY BROKEN CODE 
 					// public IBakedModel bake(ModelBakery bakery,Function<ResourceLocation, TextureAtlasSprite> spriteGetter, ISprite sprite, VertexFormat format)
 
-					modelParts.put(k, objModel.bake(null, textureGetterFlipV, new OBJModel.OBJState(ImmutableList.of(k), false), MYFORMAT));
+					modelParts.put(k, objModel.bake(null, textureGetterFlipV, new BasicState(new OBJModel.OBJState(ImmutableList.of(k), false), false), MYFORMAT));
 					// can use a list strings as a OBJModel.OBJState Turning
 					// those group objects on or off accordngly
 				}
 			}
 		}
 
-		modelParts.put(ALL_PARTS, objModel.bake(null, textureGetterFlipV, objModel.getDefaultState(), MYFORMAT));
+		modelParts.put(ALL_PARTS, objModel.bake(null, textureGetterFlipV, new BasicState(objModel.getDefaultState(), false), MYFORMAT));
 
 		return modelParts;
 	}
