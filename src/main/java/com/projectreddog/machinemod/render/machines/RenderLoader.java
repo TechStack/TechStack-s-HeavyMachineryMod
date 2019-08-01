@@ -7,7 +7,6 @@ import java.util.Random;
 import org.lwjgl.opengl.GL11;
 
 import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
 import com.projectreddog.machinemod.entity.EntityLoader;
 import com.projectreddog.machinemod.model.ModelLoader;
 import com.projectreddog.machinemod.reference.Reference;
@@ -154,10 +153,10 @@ public class RenderLoader extends EntityRenderer {
 
 			if (flag && bakedquad.hasTintIndex()) {
 				// j = p_175032_4_.getItem().getColorFromItemStack(p_175032_4_, bakedquad.getTintIndex());
-
-				if (EntityRenderer.anaglyphEnable) {
-					j = TextureUtil.anaglyphColor(j);
-				}
+				// TODO: 1.14 removed?
+				// if (EntityRenderer.anaglyphEnable) {
+//					j = TextureUtil.anaglyphColor(j);
+				// }
 
 				j |= -16777216;
 			}
