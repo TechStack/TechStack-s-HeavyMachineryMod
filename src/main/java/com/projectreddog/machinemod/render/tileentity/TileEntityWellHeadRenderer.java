@@ -6,11 +6,11 @@ import com.projectreddog.machinemod.model.tileentity.ModelWellHead;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
-public class TileEntityWellHeadRenderer extends TileEntitySpecialRenderer {
+public class TileEntityWellHeadRenderer extends TileEntityRenderer {
 
 	private ModelWellHead teModel = new ModelWellHead();
 	private static ResourceLocation resourceLocation;

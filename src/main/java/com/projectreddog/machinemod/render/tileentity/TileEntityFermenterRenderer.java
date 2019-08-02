@@ -8,12 +8,12 @@ import com.projectreddog.machinemod.model.tileentity.ModelFermenter;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 
-public class TileEntityFermenterRenderer extends TileEntitySpecialRenderer {
+public class TileEntityFermenterRenderer extends TileEntityRenderer {
 
 	private ModelFermenter teModel = new ModelFermenter();
 	private static ResourceLocation resourceLocation;

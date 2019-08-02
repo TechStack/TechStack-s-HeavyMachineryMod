@@ -20,8 +20,8 @@ import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.BakedQuad;
 import net.minecraft.client.renderer.model.IBakedModel;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.tileentity.TileItemEntityStackRenderer;
+import net.minecraft.client.renderer.texture.AtlasTexture;
+import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
@@ -71,7 +71,7 @@ public class RenderUnderGroundDumpTruck extends EntityRenderer {
 		this.bindEntityTexture(entity);
 
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 
 		this.modelUnderGroundDumpTruck.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
@@ -106,13 +106,13 @@ public class RenderUnderGroundDumpTruck extends EntityRenderer {
 
 				if (ibakedmodel.isBuiltInRenderer()) {
 
-					TileItemEntityStackRenderer.instance.renderByItem(is);
+					ItemStackTileEntityRenderer.instance.renderByItem(is);
 
 				} else {
 					Tessellator tessellator = Tessellator.getInstance();
 					BufferBuilder worldrenderer = tessellator.getBuffer();
 					worldrenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
-					this.renderManager.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
+					this.renderManager.textureManager.bindTexture(AtlasTexture.LOCATION_BLOCKS_TEXTURE);
 					Direction[] aDirection = Direction.values();
 					int j = aDirection.length;
 

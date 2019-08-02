@@ -13,6 +13,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -33,7 +34,7 @@ public class BlockMachineAsphaltSlab extends BlockMachineMod {
 	}
 
 	@Override
-	public boolean isOpaqueCube(BlockState state) {
+	public boolean isOpaque(VoxelShape shape) {
 		return false;
 	}
 

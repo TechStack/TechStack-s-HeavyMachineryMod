@@ -8,12 +8,12 @@ import com.projectreddog.machinemod.model.tileentity.ModelDistiller;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 
-public class TileEntityDistillerRenderer extends TileEntitySpecialRenderer {
+public class TileEntityDistillerRenderer extends TileEntityRenderer {
 
 	private ModelDistiller teModel = new ModelDistiller();
 	private static ResourceLocation resourceLocation;

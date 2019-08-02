@@ -8,12 +8,12 @@ import com.projectreddog.machinemod.model.tileentity.ModelFactory;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 
-public class TileEntityFactoryRenderer extends TileEntitySpecialRenderer {
+public class TileEntityFactoryRenderer extends TileEntityRenderer {
 
 	private ModelFactory teModel = new ModelFactory();
 	private static ResourceLocation resourceLocation;

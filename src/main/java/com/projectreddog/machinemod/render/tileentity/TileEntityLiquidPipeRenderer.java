@@ -8,11 +8,11 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
 
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
-public class TileEntityLiquidPipeRenderer extends TileEntitySpecialRenderer {
+public class TileEntityLiquidPipeRenderer extends TileEntityRenderer {
 
 	private ModelLiquidPipe teModel = new ModelLiquidPipe();
 	private static ResourceLocation resourceLocation;

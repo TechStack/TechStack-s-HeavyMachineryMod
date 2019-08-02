@@ -8,12 +8,12 @@ import com.projectreddog.machinemod.model.tileentity.ModelFuelPump;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 
-public class TileEntityFuelPumpRenderer extends TileEntitySpecialRenderer {
+public class TileEntityFuelPumpRenderer extends TileEntityRenderer {
 
 	private ModelFuelPump teModel = new ModelFuelPump();
 	private static ResourceLocation resourceLocation;

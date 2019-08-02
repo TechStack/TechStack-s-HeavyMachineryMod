@@ -8,12 +8,12 @@ import com.projectreddog.machinemod.model.tileentity.ModelCentrifuge;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 
-public class TileEntityCentrifugeRenderer extends TileEntitySpecialRenderer {
+public class TileEntityCentrifugeRenderer extends TileEntityRenderer {
 
 	private ModelCentrifuge teModel = new ModelCentrifuge();
 	private static ResourceLocation resourceLocation;

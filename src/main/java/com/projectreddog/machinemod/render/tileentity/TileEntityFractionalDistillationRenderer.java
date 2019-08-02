@@ -9,12 +9,12 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
 
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 
-public class TileEntityFractionalDistillationRenderer extends TileEntitySpecialRenderer {
+public class TileEntityFractionalDistillationRenderer extends TileEntityRenderer {
 
 	private ModelFractionalDistillation teModel = new ModelFractionalDistillation();
 	private static ResourceLocation resourceLocation;
