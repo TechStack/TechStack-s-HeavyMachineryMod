@@ -7,7 +7,7 @@ public class DeprecatedWrapper {
 	// This should allow for simpler updates when they are removed because this class should be the spot to update not others.
 
 	public static String translateToLocal(String InputKey) {
-		return I18n.translateToLocal(InputKey);
+		return I18n.format(InputKey);
 	}
 
 }
