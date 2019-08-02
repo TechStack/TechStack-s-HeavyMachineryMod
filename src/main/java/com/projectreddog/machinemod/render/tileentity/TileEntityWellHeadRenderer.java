@@ -4,19 +4,19 @@ import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.model.tileentity.ModelWellHead;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.tileentities.TileEntityWellHead;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
-public class TileEntityWellHeadRenderer extends TileEntityRenderer {
+public class TileEntityWellHeadRenderer<T extends TileEntityWellHead> extends TileEntityRenderer {
 
 	private ModelWellHead teModel = new ModelWellHead();
 	private static ResourceLocation resourceLocation;
 
-	@Override
-	public void render(TileEntity tileentity, double x, double y, double z, float f, int i, float a) {
+	// removed Override may be bad choice
+	public void render(T tileentity, double x, double y, double z, float f, int i, float a) {
 
 		Tessellator tessellator = Tessellator.getInstance();
 
