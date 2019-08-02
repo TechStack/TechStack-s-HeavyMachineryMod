@@ -33,14 +33,14 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.PacketDistributor.TargetPoint;
+import net.minecraftforge.fml.network.simple.SimpleChannel;
 import net.minecraftforge.fml.relauncher.Side;
 
 public class ModNetwork {
 
-	public static SimpleNetworkWrapper simpleNetworkWrapper;
+	public static SimpleChannel simpleNetworkWrapper;
 
 	public static void init() {
 		simpleNetworkWrapper = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
