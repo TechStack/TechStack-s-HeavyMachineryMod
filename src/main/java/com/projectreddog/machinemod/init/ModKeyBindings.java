@@ -1,6 +1,7 @@
 package com.projectreddog.machinemod.init;
 
-import net.java.games.input.Keyboard;
+import org.lwjgl.glfw.GLFW;
+
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 
@@ -18,15 +19,15 @@ public class ModKeyBindings {
 
 	public static void init() {
 
-		KeyBindSegment1Up = new KeyBinding("key.segment1.up", Keyboard.KEY_NUMPAD7, "key.machinemod.segment");
-		KeyBindSegment1Down = new KeyBinding("key.segment1.down", Keyboard.KEY_NUMPAD1, "key.machinemod.segment");
-		KeyBindSegment2Up = new KeyBinding("key.segment2.up", Keyboard.KEY_NUMPAD8, "key.machinemod.segment");
-		KeyBindSegment2Down = new KeyBinding("key.segment2.down", Keyboard.KEY_NUMPAD2, "key.machinemod.segment");
-		KeyBindSegment3Up = new KeyBinding("key.segment3.up", Keyboard.KEY_NUMPAD9, "key.machinemod.segment");
-		KeyBindSegment3Down = new KeyBinding("key.segment3.down", Keyboard.KEY_NUMPAD3, "key.machinemod.segment");
-		KeyBindTurretRight = new KeyBinding("key.turret.right", Keyboard.KEY_NUMPAD6, "key.machinemod.segment");
-		KeyBindTurretLeft = new KeyBinding("key.turret.left", Keyboard.KEY_NUMPAD4, "key.machinemod.segment");
-		KeyBindUnload = new KeyBinding("key.unload", Keyboard.KEY_U, "key.machinemod.special");
+		KeyBindSegment1Up = new KeyBinding("key.segment1.up", GLFW.GLFW_KEY_KP_7, "key.machinemod.segment");
+		KeyBindSegment1Down = new KeyBinding("key.segment1.down", GLFW.GLFW_KEY_KP_1, "key.machinemod.segment");
+		KeyBindSegment2Up = new KeyBinding("key.segment2.up", GLFW.GLFW_KEY_KP_8, "key.machinemod.segment");
+		KeyBindSegment2Down = new KeyBinding("key.segment2.down", GLFW.GLFW_KEY_KP_2, "key.machinemod.segment");
+		KeyBindSegment3Up = new KeyBinding("key.segment3.up", GLFW.GLFW_KEY_KP_9, "key.machinemod.segment");
+		KeyBindSegment3Down = new KeyBinding("key.segment3.down", GLFW.GLFW_KEY_KP_3, "key.machinemod.segment");
+		KeyBindTurretRight = new KeyBinding("key.turret.right", GLFW.GLFW_KEY_KP_6, "key.machinemod.segment");
+		KeyBindTurretLeft = new KeyBinding("key.turret.left", GLFW.GLFW_KEY_KP_4, "key.machinemod.segment");
+		KeyBindUnload = new KeyBinding("key.unload", GLFW.GLFW_KEY_U, "key.machinemod.special");
 
 		ClientRegistry.registerKeyBinding(KeyBindSegment1Up);
 		ClientRegistry.registerKeyBinding(KeyBindSegment1Down);
