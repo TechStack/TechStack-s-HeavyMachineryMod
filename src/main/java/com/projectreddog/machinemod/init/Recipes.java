@@ -1,6 +1,7 @@
 package com.projectreddog.machinemod.init;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class Recipes {
