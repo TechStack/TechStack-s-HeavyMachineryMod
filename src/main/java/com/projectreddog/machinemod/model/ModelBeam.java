@@ -48,7 +48,7 @@ public class ModelBeam extends EntityModel {
 		// GlStateManager.disableCull();
 		GlStateManager.enableBlend();
 		GlStateManager.depthMask(true);
-		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+		GlStateManager.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 
 		this.renderGroupObject("Beam_Cylinder");
 		if (f5 == 1) {
@@ -65,7 +65,7 @@ public class ModelBeam extends EntityModel {
 
 		GlStateManager.disableBlend();
 		GlStateManager.enableLighting();
-		GlStateManager.enableTexture2D();
+		GlStateManager.enableTexture();
 		GlStateManager.depthMask(true);
 		GL11.glPopMatrix();
 	}

@@ -21,7 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.model.obj.OBJModel;
 
-public class ModelElytraJetLegs<T extends LivingEntity> extends BipedModel {
+public class ModelElytraJetLegs<T extends LivingEntity> extends BipedModel<T> {
 	public OBJModel objModel;
 	private HashMap<String, IBakedModel> modelParts;
 	public boolean isElytraFlying = false;
@@ -39,6 +39,7 @@ public class ModelElytraJetLegs<T extends LivingEntity> extends BipedModel {
 	}
 
 	// public void render(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+
 	@Override
 	public void render(T entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		// super.render(entity, f, f1, f2, f3, f4, f5);
