@@ -9,11 +9,11 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.culling.ICamera;
-import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.LivingRenderer;
 import net.minecraft.client.renderer.model.Model;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderExpStalker extends RenderLiving<EntityExpStalker> {
+public class RenderExpStalker extends LivingRenderer<EntityExpStalker> {
 
 	protected static Model myModel;
 
