@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.inventory;
 
 import com.projectreddog.machinemod.item.crafting.TruboFurnaceRecipes;
 
-import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
@@ -77,9 +77,9 @@ public class SlotOutputOnlyTurobFurnace extends Slot {
 			}
 
 			while (i > 0) {
-				int k = EntityXPOrb.getXPSplit(i);
+				int k = ExperienceOrbEntity.getXPSplit(i);
 				i -= k;
-				this.player.world.spawnEntity(new EntityXPOrb(this.player.world, this.player.posX, this.player.posY + 0.5D, this.player.posZ + 0.5D, k));
+				this.player.world.spawnEntity(new ExperienceOrbEntity(this.player.world, this.player.posX, this.player.posY + 0.5D, this.player.posZ + 0.5D, k));
 			}
 		}
 
