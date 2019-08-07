@@ -18,9 +18,9 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -36,7 +36,8 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickableTile
 
 	public boolean hasBuildProject = false;
 
-	public TileEntityAssemblyTable() {
+	public TileEntityAssemblyTable(TileEntityType<?> tileEntityTypeIn) {
+		super(tileEntityTypeIn);
 		inventory = new ItemStack[inventorySize];
 		for (int i = 0; i < inventorySize; i++) {
 			inventory[i] = ItemStack.EMPTY;
@@ -166,7 +167,7 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickableTile
 			if (stack.getCount() <= amt) {
 				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
-				stack = stack.splitStack(amt);
+				stack = stack.split(amt);
 				if (stack.getCount() == 0) {
 					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}
@@ -219,21 +220,6 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickableTile
 		for (int i = 0; i < inventory.length; ++i) {
 			inventory[i] = ItemStack.EMPTY;
 		}
-	}
-
-	@Override
-	public String getName() {
-		return null;
-	}
-
-	@Override
-	public boolean hasCustomName() {
-		return false;
-	}
-
-	@Override
-	public ITextComponent getDisplayName() {
-		return null;
 	}
 
 	@Override
@@ -316,7 +302,7 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickableTile
 				String outputItemName = ((ItemBlueprint) getStackInSlot(0).getItem()).outputItemName;
 				Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(outputItemName));
 				if (item != null) {
-					String displayName = item.getItemStackDisplayName(new ItemStack(item));
+					String displayName = item.getName().getString();
 					return displayName;
 				} else {
 					LogHelper.info("An Output of an ingredent is null Tell Tech please!" + outputItemName);
@@ -352,7 +338,7 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickableTile
 					String ingredentName = ingredent.getName();
 					Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(ingredentName));
 					if (item != null) {
-						returnValue.add(item.getItemStackDisplayName(new ItemStack(item)) + " X " + ingredent.getCount());
+						returnValue.add(item.getName().getString() + " X " + ingredent.getCount());
 
 					} else {
 						LogHelper.info("An Ingredent is null Tell Tech please!" + ingredentName);

@@ -12,8 +12,8 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
-import net.minecraft.util.text.ITextComponent;
 
 public class TileEntityFuelPump extends TileEntity implements ITickableTileEntity, ISidedInventory, IFuelContainer {
 	protected ItemStack[] inventory;
@@ -24,7 +24,8 @@ public class TileEntityFuelPump extends TileEntity implements ITickableTileEntit
 	public final int coolDownReset = 1200;
 	public int cooldown = coolDownReset;
 
-	public TileEntityFuelPump() {
+	public TileEntityFuelPump(TileEntityType<?> tileEntityTypeIn) {
+		super(tileEntityTypeIn);
 		inventory = new ItemStack[inventorySize];
 		for (int i = 0; i < inventorySize; i++) {
 			inventory[i] = ItemStack.EMPTY;
@@ -76,18 +77,18 @@ public class TileEntityFuelPump extends TileEntity implements ITickableTileEntit
 				ItemStack item = this.getStackInSlot(i);
 				if (!item.isEmpty()) {
 					if (item.getItem() == ModItems.fuelcan || item.getItem() == ModItems.handdrill || item.getItem() == ModItems.elytrajetleg) {
-						if (item.getItemDamage() > 0) {
+						if (item.getDamage() > 0) {
 							int amtToTransefer = 10;
 							if (amtToTransefer > this.fuelStorage) {
 								amtToTransefer = this.fuelStorage;
 							}
-							if (amtToTransefer > item.getItemDamage()) {
-								amtToTransefer = item.getItemDamage();
+							if (amtToTransefer > item.getDamage()) {
+								amtToTransefer = item.getDamage();
 							}
 
-							item.setItemDamage(item.getItemDamage() - amtToTransefer);
+							item.setDamage(item.getDamage() - amtToTransefer);
 							this.fuelStorage = this.fuelStorage - amtToTransefer;
-							if (item.getItemDamage() == 0) {
+							if (item.getDamage() == 0) {
 
 							}
 							i = this.getSizeInventory();
@@ -108,7 +109,7 @@ public class TileEntityFuelPump extends TileEntity implements ITickableTileEntit
 			if (!is.isEmpty()) {
 
 				if (!getStackInSlot(j).isEmpty()) {
-					if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getItemDamage() == is.getItemDamage()) {
+					if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getDamage() == is.getDamage()) {
 						// same item remove from is put into slot any amt not to
 						// excede stack max
 						if (getStackInSlot(j).getCount() < getStackInSlot(j).getMaxStackSize()) {
@@ -117,12 +118,12 @@ public class TileEntityFuelPump extends TileEntity implements ITickableTileEntit
 								// /all of the stack will fit in this slot do
 								// so.
 
-								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).getCount() + is.getCount(), is.getItemDamage()));
+								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).getCount() + is.getCount(), is.getDamage()));
 								is = ItemStack.EMPTY;
 							} else {
 								// we have more
 								int countRemain = is.getCount() - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount());
-								setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getItemDamage()));
+								setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getDamage()));
 								is.setCount(countRemain);
 							}
 
@@ -130,7 +131,7 @@ public class TileEntityFuelPump extends TileEntity implements ITickableTileEntit
 					}
 				} else {
 					// nothign in slot so set contents
-					setInventorySlotContents(j, new ItemStack(is.getItem(), is.getCount(), is.getItemDamage()));
+					setInventorySlotContents(j, new ItemStack(is.getItem(), is.getCount(), is.getDamage()));
 					is = ItemStack.EMPTY;
 				}
 
@@ -181,21 +182,6 @@ public class TileEntityFuelPump extends TileEntity implements ITickableTileEntit
 	}
 
 	@Override
-	public String getName() {
-		return null;
-	}
-
-	@Override
-	public boolean hasCustomName() {
-		return false;
-	}
-
-	@Override
-	public ITextComponent getDisplayName() {
-		return null;
-	}
-
-	@Override
 	public int getSizeInventory() {
 		return inventory.length;
 	}
@@ -212,7 +198,7 @@ public class TileEntityFuelPump extends TileEntity implements ITickableTileEntit
 			if (stack.getCount() <= amt) {
 				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
-				stack = stack.splitStack(amt);
+				stack = stack.split(amt);
 				if (stack.getCount() == 0) {
 					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}

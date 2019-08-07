@@ -8,13 +8,14 @@ import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.world.WorldServer;
+import net.minecraft.world.ServerWorld;
 import net.minecraftforge.common.util.FakePlayerFactory;
 
 public class TileEntityShredder extends TileEntity implements ITickableTileEntity {
@@ -27,7 +28,8 @@ public class TileEntityShredder extends TileEntity implements ITickableTileEntit
 	// slot 2 = south
 	// slot 3 = west
 
-	public TileEntityShredder() {
+	public TileEntityShredder(TileEntityType<?> tileEntityTypeIn) {
+		super(tileEntityTypeIn);
 
 	}
 
@@ -55,7 +57,7 @@ public class TileEntityShredder extends TileEntity implements ITickableTileEntit
 						list = world.getEntitiesWithinAABB(ItemEntity.class, boundingBox);
 						processEntitiesInList2(list);
 
-						list = world.getEntitiesWithinAABB(EntityXPOrb.class, boundingBox);
+						list = world.getEntitiesWithinAABB(ExperienceOrbEntity.class, boundingBox);
 						processEntitiesInList3(list);
 					}
 
@@ -70,11 +72,11 @@ public class TileEntityShredder extends TileEntity implements ITickableTileEntit
 		for (int i = 0; i < par1List.size(); ++i) {
 			Entity entity = (Entity) par1List.get(i);
 			if (entity != null) {
-				if (entity instanceof EntityXPOrb) {
-					EntityXPOrb eexp = (EntityXPOrb) entity;
+				if (entity instanceof ExperienceOrbEntity) {
+					ExperienceOrbEntity eexp = (ExperienceOrbEntity) entity;
 					if (!eexp.isDead) {
 
-						EntityXPOrb eexp2 = new EntityXPOrb(eexp.world, eexp.posX, eexp.posY - 2, eexp.posZ, eexp.getXpValue());
+						ExperienceOrbEntity eexp2 = new ExperienceOrbEntity(eexp.world, eexp.posX, eexp.posY - 2, eexp.posZ, eexp.getXpValue());
 						eexp2.motionX = 0;
 						eexp2.motionY = 0;
 						eexp2.motionZ = 0;
@@ -102,7 +104,7 @@ public class TileEntityShredder extends TileEntity implements ITickableTileEntit
 			if (entity != null) {
 				if (entity instanceof ItemEntity) {
 					ItemEntity ei = (ItemEntity) entity;
-					if (!ei.isDead) {
+					if (ei.isAlive()) {
 
 						ItemEntity ei2 = new ItemEntity(ei.world, ei.posX, ei.posY - 2, ei.posZ, ei.getItem());
 						ei2.motionX = 0;
@@ -133,7 +135,7 @@ public class TileEntityShredder extends TileEntity implements ITickableTileEntit
 				if (entity != null) {
 					if (entity instanceof LivingEntity) {
 						LivingEntity elb = (LivingEntity) entity;
-						elb.attackEntityFrom(new EntityDamageSource(Reference.MOD_ID + ":" + "SHREDDER" + (r.nextInt(6) + 1), FakePlayerFactory.get((WorldServer) this.world, Reference.gameProfile)), 50);
+						elb.attackEntityFrom(new EntityDamageSource(Reference.MOD_ID + ":" + "SHREDDER" + (r.nextInt(6) + 1), FakePlayerFactory.get((ServerWorld) this.world, Reference.gameProfile)), 50);
 					}
 					// entity.setPosition(entity.getPosition().getX() + 0.1d, entity.getPosition().getY(), entity.getPosition().getZ());
 					// }

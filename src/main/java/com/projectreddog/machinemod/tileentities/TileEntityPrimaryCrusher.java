@@ -8,13 +8,11 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
 
-import net.minecraft.block.BlockStone;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -22,9 +20,9 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.text.ITextComponent;
 
 public class TileEntityPrimaryCrusher extends TileEntity implements ITickableTileEntity, ISidedInventory, IFuelContainer {
 	protected ItemStack[] inventory;
@@ -44,7 +42,8 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickableTil
 	public final int BlastedStoneRedstoneMultiplier = 8;
 	int inventorySize = 54;
 
-	public TileEntityPrimaryCrusher() {
+	public TileEntityPrimaryCrusher(TileEntityType<?> tileEntityTypeIn) {
+		super(tileEntityTypeIn);
 		inventory = new ItemStack[inventorySize];
 		for (int i = 0; i < inventorySize; i++) {
 			inventory[i] = ItemStack.EMPTY;
@@ -68,7 +67,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickableTil
 				ItemStack item = this.getStackInSlot(i);
 				if (!item.isEmpty()) {
 					if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedgranite)) {
-						dropDust(i, new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.GRANITE.getMetadata()));
+						dropDust(i, new ItemStack(Blocks.GRANITE, 1));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastediron)) {
 						dropDust(i, new ItemStack(ModItems.irondust, BlastedStoneOreMultiplier));
@@ -80,13 +79,13 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickableTil
 						dropDust(i, new ItemStack(Blocks.COBBLESTONE, 1));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedandesite)) {
-						dropDust(i, new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.ANDESITE.getMetadata()));
+						dropDust(i, new ItemStack(Blocks.ANDESITE, 1));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblasteddiorite)) {
-						dropDust(i, new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.DIORITE.getMetadata()));
+						dropDust(i, new ItemStack(Blocks.DIORITE, 1));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedstone)) {
-						dropDust(i, new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.DIORITE.getMetadata()));
+						dropDust(i, new ItemStack(Blocks.STONE, 1));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedcoal)) {
 						dropDust(i, new ItemStack(Items.COAL, BlastedStoneCoalMultiplier));
@@ -98,7 +97,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickableTil
 						dropDust(i, new ItemStack(Items.EMERALD, BlastedStoneGemMultiplier));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedlapis)) {
-						dropDust(i, new ItemStack(Items.DYE, BlastedStoneLapisMultiplier, EnumDyeColor.BLUE.getDyeDamage()));
+						dropDust(i, new ItemStack(Items.LAPIS_LAZULI, BlastedStoneLapisMultiplier));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(ModBlocks.machineblastedredstone)) {
 						dropDust(i, new ItemStack(Items.REDSTONE, BlastedStoneRedstoneMultiplier));
@@ -110,11 +109,11 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickableTil
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.GOLD_ORE)) {
 						dropDust(i, new ItemStack(ModItems.golddust, VanillaOreMultiplier));
 						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.STONE) && item.getMetadata() == BlockStone.EnumType.STONE.getMetadata()) {
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.STONE)) {
 						dropDust(i, new ItemStack(Blocks.COBBLESTONE, 1));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.STONE)) {
-						dropDust(i, new ItemStack(item.getItem(), 1, item.getItemDamage()));
+						dropDust(i, new ItemStack(item.getItem(), 1));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.COAL_ORE)) {
 						dropDust(i, new ItemStack(Items.COAL, 1));
@@ -126,13 +125,13 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickableTil
 						dropDust(i, new ItemStack(Items.EMERALD, 1));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.LAPIS_ORE)) {
-						dropDust(i, new ItemStack(Items.DYE, 7, EnumDyeColor.BLUE.getDyeDamage()));
+						dropDust(i, new ItemStack(Items.LAPIS_LAZULI, 7));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.REDSTONE_ORE)) {
 						dropDust(i, new ItemStack(Items.REDSTONE, 5));
 						return;
 					} else if (item.getItem() == Items.BONE) {
-						dropDust(i, new ItemStack(Items.DYE, 5, EnumDyeColor.WHITE.getDyeDamage()));
+						dropDust(i, new ItemStack(Items.BONE_MEAL, 5));
 						return;
 					} else if (item.getItem() == Items.COAL) {
 						dropDust(i, new ItemStack(ModItems.carbondust, 1));
@@ -146,7 +145,8 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickableTil
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.SANDSTONE)) {
 						dropDust(i, new ItemStack(Blocks.SAND, 4));
 						return;
-					} else if (item.getItem() == Item.getItemFromBlock(Blocks.WOOL)) {
+						// TODO : 1.14 need to add other wool colors here ! or settle for only white wool working
+					} else if (item.getItem() == Item.getItemFromBlock(Blocks.WHITE_WOOL)) {
 						dropDust(i, new ItemStack(Items.STRING, 4));
 						return;
 					} else if (item.getItem() == Item.getItemFromBlock(Blocks.COBBLESTONE)) {
@@ -219,7 +219,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickableTil
 				if (entity instanceof ItemEntity) {
 					ItemStack is = ((ItemEntity) entity).getItem();
 					is.setItemDamage(((ItemEntity) entity).getItem().getItemDamage());
-					if (!entity.isDead) {
+					if (entity.isAlive()) {
 						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
 
@@ -243,7 +243,7 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickableTil
 			if (!is.isEmpty()) {
 
 				if (!getStackInSlot(j).isEmpty()) {
-					if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getItemDamage() == is.getItemDamage()) {
+					if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getDamage() == is.getDamage()) {
 						// same item remove from is put into slot any amt not to
 						// excede stack max
 						if (getStackInSlot(j).getCount() < getStackInSlot(j).getMaxStackSize()) {
@@ -252,12 +252,12 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickableTil
 								// /all of the stack will fit in this slot do
 								// so.
 
-								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).getCount() + is.getCount(), is.getItemDamage()));
+								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).getCount() + is.getCount(), is.getDamage()));
 								is = ItemStack.EMPTY;
 							} else {
 								// we have more
 								int countRemain = is.getCount() - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount());
-								setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getItemDamage()));
+								setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getDamage()));
 								is.setCount(countRemain);
 							}
 
@@ -317,21 +317,6 @@ public class TileEntityPrimaryCrusher extends TileEntity implements ITickableTil
 		compound.put(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
 		return compound;
 
-	}
-
-	@Override
-	public String getName() {
-		return null;
-	}
-
-	@Override
-	public boolean hasCustomName() {
-		return false;
-	}
-
-	@Override
-	public ITextComponent getDisplayName() {
-		return null;
 	}
 
 	@Override

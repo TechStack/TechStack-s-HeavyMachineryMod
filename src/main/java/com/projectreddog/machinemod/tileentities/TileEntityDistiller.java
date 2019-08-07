@@ -13,8 +13,8 @@ import net.minecraft.nbt.ListNBT;
 import net.minecraft.tileentity.FurnaceTileEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
-import net.minecraft.util.text.ITextComponent;
 
 public class TileEntityDistiller extends TileEntity implements ITickableTileEntity, IFuelContainer, ISidedInventory {
 	protected ItemStack[] inventory;
@@ -28,7 +28,8 @@ public class TileEntityDistiller extends TileEntity implements ITickableTileEnti
 	// public int cooldown = coolDownReset;
 	public int remainBurnTime = 0;
 
-	public TileEntityDistiller() {
+	public TileEntityDistiller(TileEntityType<?> tileEntityTypeIn) {
+		super(tileEntityTypeIn);
 		inventory = new ItemStack[inventorySize];
 		for (int i = 0; i < inventorySize; i++) {
 			inventory[i] = ItemStack.EMPTY;
@@ -211,7 +212,7 @@ public class TileEntityDistiller extends TileEntity implements ITickableTileEnti
 			if (stack.getCount() <= amt) {
 				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
-				stack = stack.splitStack(amt);
+				stack = stack.split(amt);
 				if (stack.getCount() == 0) {
 					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}
@@ -264,21 +265,6 @@ public class TileEntityDistiller extends TileEntity implements ITickableTileEnti
 		for (int i = 0; i < inventory.length; ++i) {
 			inventory[i] = ItemStack.EMPTY;
 		}
-	}
-
-	@Override
-	public String getName() {
-		return null;
-	}
-
-	@Override
-	public boolean hasCustomName() {
-		return false;
-	}
-
-	@Override
-	public ITextComponent getDisplayName() {
-		return null;
 	}
 
 	@Override

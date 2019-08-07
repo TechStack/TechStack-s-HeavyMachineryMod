@@ -8,10 +8,12 @@ import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerTanker;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.LogHelper;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fluids.FluidEvent;
@@ -31,7 +33,8 @@ public class TileEntityWellHead extends TileEntity implements ITickableTileEntit
 	protected FluidStack fluid = new FluidStack(ModBlocks.fluidOil, 0);
 	public int transferOilAmount = 10;
 
-	public TileEntityWellHead() {
+	public TileEntityWellHead(TileEntityType<?> tileEntityTypeIn) {
+		super(tileEntityTypeIn);
 
 	}
 
@@ -76,7 +79,7 @@ public class TileEntityWellHead extends TileEntity implements ITickableTileEntit
 					if (semi.inventory.getStackInSlot(0) != null) {
 						if (semi.inventory.getStackInSlot(0).getItem() instanceof ItemSemiTrailerTanker) {
 
-							if (!semi.isDead) {
+							if (semi.isAlive()) {
 
 								if (getFluidAmount() >= transferOilAmount) {
 									FluidStack moveStack = new FluidStack(fluid, transferOilAmount);

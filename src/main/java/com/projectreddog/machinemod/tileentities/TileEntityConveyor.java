@@ -8,10 +8,11 @@ import com.projectreddog.machinemod.init.ModBlocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MoverType;
-import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -21,7 +22,8 @@ public class TileEntityConveyor extends TileEntity implements ITickableTileEntit
 	public AxisAlignedBB boundingBox;
 	public final double MoveSpeed = .1d;
 
-	public TileEntityConveyor() {
+	public TileEntityConveyor(TileEntityType<?> tileEntityTypeIn) {
+		super(tileEntityTypeIn);
 
 	}
 
@@ -77,7 +79,7 @@ public class TileEntityConveyor extends TileEntity implements ITickableTileEntit
 				list = world.getEntitiesWithinAABB(LivingEntity.class, boundingBox);
 				processEntitiesInList(list);
 
-				list = world.getEntitiesWithinAABB(EntityXPOrb.class, boundingBox);
+				list = world.getEntitiesWithinAABB(ExperienceOrbEntity.class, boundingBox);
 				processEntitiesInList(list);
 
 			}

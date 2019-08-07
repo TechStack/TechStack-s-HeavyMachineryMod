@@ -13,9 +13,9 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.EnergyStorage;
@@ -53,7 +53,8 @@ public class TileEntityFactory extends TileEntity implements ITickableTileEntity
 		return super.getCapability(capability, facing);
 	}
 
-	public TileEntityFactory() {
+	public TileEntityFactory(TileEntityType<?> tileEntityTypeIn) {
+		super(tileEntityTypeIn);
 		inventory = new ItemStack[inventorySize];
 		for (int i = 0; i < inventorySize; i++) {
 			inventory[i] = ItemStack.EMPTY;
@@ -249,7 +250,7 @@ public class TileEntityFactory extends TileEntity implements ITickableTileEntity
 			if (stack.getCount() <= amt) {
 				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
-				stack = stack.splitStack(amt);
+				stack = stack.split(amt);
 				if (stack.getCount() == 0) {
 					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}
@@ -302,21 +303,6 @@ public class TileEntityFactory extends TileEntity implements ITickableTileEntity
 		for (int i = 0; i < inventory.length; ++i) {
 			inventory[i] = ItemStack.EMPTY;
 		}
-	}
-
-	@Override
-	public String getName() {
-		return null;
-	}
-
-	@Override
-	public boolean hasCustomName() {
-		return false;
-	}
-
-	@Override
-	public ITextComponent getDisplayName() {
-		return null;
 	}
 
 	@Override

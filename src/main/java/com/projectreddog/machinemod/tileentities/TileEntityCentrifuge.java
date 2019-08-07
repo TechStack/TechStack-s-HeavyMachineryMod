@@ -11,13 +11,14 @@ import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.text.ITextComponent;
 
 public class TileEntityCentrifuge extends TileEntity implements ITickableTileEntity, ISidedInventory, IFuelContainer {
 	protected ItemStack[] inventory;
@@ -37,7 +38,8 @@ public class TileEntityCentrifuge extends TileEntity implements ITickableTileEnt
 	public final int BlastedStoneRedstoneMultiplier = 8;
 	int inventorySize = 2;
 
-	public TileEntityCentrifuge() {
+	public TileEntityCentrifuge(TileEntityType<?> tileEntityTypeIn) {
+		super(tileEntityTypeIn);
 		inventory = new ItemStack[inventorySize];
 		for (int i = 0; i < inventorySize; i++) {
 			inventory[i] = ItemStack.EMPTY;
@@ -101,7 +103,7 @@ public class TileEntityCentrifuge extends TileEntity implements ITickableTileEnt
 			if (entity != null) {
 				if (entity instanceof ItemEntity) {
 					ItemStack is = ((ItemEntity) entity).getItem();
-					is.setItemDamage(((ItemEntity) entity).getItem().getItemDamage());
+					is.setDamage(((ItemEntity) entity).getItem().getDamage());
 					if (!entity.isDead) {
 						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
@@ -126,7 +128,7 @@ public class TileEntityCentrifuge extends TileEntity implements ITickableTileEnt
 			if (!is.isEmpty()) {
 
 				if (!getStackInSlot(j).isEmpty()) {
-					if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getItemDamage() == is.getItemDamage()) {
+					if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getDamage() == is.getDamage()) {
 						// same item remove from is put into slot any amt not to
 						// excede stack max
 						if (getStackInSlot(j).getCount() < getStackInSlot(j).getMaxStackSize()) {
@@ -135,12 +137,12 @@ public class TileEntityCentrifuge extends TileEntity implements ITickableTileEnt
 								// /all of the stack will fit in this slot do
 								// so.
 
-								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).getCount() + is.getCount(), is.getItemDamage()));
+								setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).getCount() + is.getCount(), is.getDamage()));
 								is = ItemStack.EMPTY;
 							} else {
 								// we have more
 								int countRemain = is.getCount() - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount());
-								setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getItemDamage()));
+								setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getDamage()));
 								is.setCount(countRemain);
 							}
 
@@ -148,7 +150,7 @@ public class TileEntityCentrifuge extends TileEntity implements ITickableTileEnt
 					}
 				} else {
 					// nothign in slot so set contents
-					setInventorySlotContents(j, new ItemStack(is.getItem(), is.getCount(), is.getItemDamage()));
+					setInventorySlotContents(j, new ItemStack(is.getItem(), is.getCount(), is.getDamage()));
 					is = ItemStack.EMPTY;
 				}
 
@@ -165,8 +167,8 @@ public class TileEntityCentrifuge extends TileEntity implements ITickableTileEnt
 
 		super.read(compound);
 
-		timeTillCoolDown = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN");
-		fuelStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL");
+		timeTillCoolDown = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "COOLDOWN");
+		fuelStorage = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL");
 
 		// inventory
 		ListNBT tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
@@ -203,21 +205,6 @@ public class TileEntityCentrifuge extends TileEntity implements ITickableTileEnt
 	}
 
 	@Override
-	public String getName() {
-		return null;
-	}
-
-	@Override
-	public boolean hasCustomName() {
-		return false;
-	}
-
-	@Override
-	public ITextComponent getDisplayName() {
-		return null;
-	}
-
-	@Override
 	public int getSizeInventory() {
 		return inventory.length;
 	}
@@ -234,7 +221,7 @@ public class TileEntityCentrifuge extends TileEntity implements ITickableTileEnt
 			if (stack.getCount() <= amt) {
 				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
-				stack = stack.splitStack(amt);
+				stack = stack.split(amt);
 				if (stack.getCount() == 0) {
 					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}

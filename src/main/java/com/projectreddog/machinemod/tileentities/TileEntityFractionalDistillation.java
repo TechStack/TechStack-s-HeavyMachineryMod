@@ -16,9 +16,9 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.FurnaceTileEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
@@ -49,7 +49,8 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 	public int remainBurnTime = 0;
 	public int fluidLevelAbove[];
 
-	public TileEntityFractionalDistillation() {
+	public TileEntityFractionalDistillation(TileEntityType<?> tileEntityTypeIn) {
+		super(tileEntityTypeIn);
 		inventory = new ItemStack[inventorySize];
 		for (int i = 0; i < inventorySize; i++) {
 			inventory[i] = ItemStack.EMPTY;
@@ -212,7 +213,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 					if (!est.inventory.getStackInSlot(0).isEmpty()) {
 						if (est.inventory.getStackInSlot(0).getItem() instanceof ItemSemiTrailerTanker) {
 
-							if (!est.isDead) {
+							if (est.isAlive()) {
 
 								if (est.getFluidAmount() >= transferOilAmount) {
 									if (est.getFluid() != null) {
@@ -387,7 +388,7 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 			if (stack.getCount() <= amt) {
 				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
-				stack = stack.splitStack(amt);
+				stack = stack.split(amt);
 				if (stack.getCount() == 0) {
 					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}
@@ -440,21 +441,6 @@ public class TileEntityFractionalDistillation extends TileEntity implements ITic
 		for (int i = 0; i < inventory.length; ++i) {
 			inventory[i] = ItemStack.EMPTY;
 		}
-	}
-
-	@Override
-	public String getName() {
-		return null;
-	}
-
-	@Override
-	public boolean hasCustomName() {
-		return false;
-	}
-
-	@Override
-	public ITextComponent getDisplayName() {
-		return null;
 	}
 
 	@Override

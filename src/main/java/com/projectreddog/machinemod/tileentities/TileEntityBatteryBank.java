@@ -78,7 +78,7 @@ public class TileEntityBatteryBank extends TileEntity implements ITickableTileEn
 	@Override
 	public void read(CompoundNBT compound) {
 		if (compound.contains("Energy")) {
-			this.energyStroage = new EnergyStorage(MAX_ENERGY_STORAGE, MAX_ENERGY_RECEIVE, MAX_ENERGY_EXTRACT, compound.getInteger("Energy"));
+			this.energyStroage = new EnergyStorage(MAX_ENERGY_STORAGE, MAX_ENERGY_RECEIVE, MAX_ENERGY_EXTRACT, compound.getInt("Energy"));
 		}
 	}
 }

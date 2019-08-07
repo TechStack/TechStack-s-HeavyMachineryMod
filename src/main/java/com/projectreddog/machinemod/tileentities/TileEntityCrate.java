@@ -6,7 +6,6 @@ import com.projectreddog.machinemod.network.MachineModMessageTEInventoryChangedT
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerEntityMP;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
@@ -14,6 +13,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import scala.Int;
 
@@ -32,7 +32,8 @@ public class TileEntityCrate extends TileEntity implements ITickableTileEntity, 
 
 	public ItemStack HeldItem = ItemStack.EMPTY;
 
-	public TileEntityCrate() {
+	public TileEntityCrate(TileEntityType<?> tileEntityTypeIn) {
+		super(tileEntityTypeIn);
 		inventory = new ItemStack[inventorySize];
 		for (int i = 0; i < inventorySize; i++) {
 			inventory[i] = ItemStack.EMPTY;
@@ -57,7 +58,7 @@ public class TileEntityCrate extends TileEntity implements ITickableTileEntity, 
 			if (stack.getCount() <= amt) {
 				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
-				stack = stack.splitStack(amt);
+				stack = stack.split(amt);
 				if (stack.getCount() == 0) {
 					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}
@@ -140,16 +141,6 @@ public class TileEntityCrate extends TileEntity implements ITickableTileEntity, 
 	}
 
 	@Override
-	public String getName() {
-		return null;
-	}
-
-	@Override
-	public boolean hasCustomName() {
-		return false;
-	}
-
-	@Override
 	public int[] getSlotsForFace(Direction side) {
 		// slot 0 = Output (down) Slot 1 = input (up & sides)
 		int[] Slots;
@@ -191,7 +182,7 @@ public class TileEntityCrate extends TileEntity implements ITickableTileEntity, 
 		super.read(compound);
 
 		// inventory
-		AmtInReserve = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "AMTINRESERVE");
+		AmtInReserve = compound.getInt(Reference.MACHINE_MOD_NBT_PREFIX + "AMTINRESERVE");
 
 		ListNBT tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
 		for (int i = 0; i < tagList.tagCount(); i++) {

@@ -9,9 +9,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
@@ -41,7 +41,9 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickableTileE
 	public int remainBurnTime = 0;
 	public int fluidLevelAbove[];
 
-	public TileEntityAsphaltMixer() {
+	public TileEntityAsphaltMixer(TileEntityType<?> tileEntityTypeIn) {
+		super(tileEntityTypeIn);
+
 		inventory = new ItemStack[inventorySize];
 		fluidLevelAbove = new int[1];
 		for (int i = 0; i < inventorySize; i++) {
@@ -219,7 +221,7 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickableTileE
 			if (stack.getCount() <= amt) {
 				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
-				stack = stack.splitStack(amt);
+				stack = stack.split(amt);
 				if (stack.getCount() == 0) {
 					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}
@@ -272,21 +274,6 @@ public class TileEntityAsphaltMixer extends TileEntity implements ITickableTileE
 		for (int i = 0; i < inventory.length; ++i) {
 			inventory[i] = ItemStack.EMPTY;
 		}
-	}
-
-	@Override
-	public String getName() {
-		return null;
-	}
-
-	@Override
-	public boolean hasCustomName() {
-		return false;
-	}
-
-	@Override
-	public ITextComponent getDisplayName() {
-		return null;
 	}
 
 	@Override

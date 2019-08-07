@@ -7,6 +7,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
@@ -30,7 +31,8 @@ public class TileEntityLiquidPipe extends TileEntity implements ITickableTileEnt
 	private TileEntity te;
 	private int cooldown;
 
-	public TileEntityLiquidPipe() {
+	public TileEntityLiquidPipe(TileEntityType<?> tileEntityTypeIn) {
+		super(tileEntityTypeIn);
 
 	}
 

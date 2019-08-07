@@ -14,10 +14,10 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
@@ -35,7 +35,8 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 	// slot 2 = south
 	// slot 3 = west
 
-	public TileEntityScreen() {
+	public TileEntityScreen(TileEntityType<?> tileEntityTypeIn) {
+		super(tileEntityTypeIn);
 		inventory = new ItemStack[inventorySize];
 		for (int i = 0; i < inventorySize; i++) {
 			inventory[i] = ItemStack.EMPTY;
@@ -229,7 +230,7 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 				if (entity instanceof ItemEntity) {
 					ItemStack is = ((ItemEntity) entity).getItem().copy();
 					is.setItemDamage(((ItemEntity) entity).getItem().getItemDamage());
-					if (!entity.isDead) {
+					if (entity.isAlive()) {
 						if (is.getCount() > 0) {
 							ItemStack is1 = addToinventory(is);
 
@@ -252,7 +253,7 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 		if (!is.isEmpty()) {
 
 			if (!getStackInSlot(j).isEmpty()) {
-				if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getItemDamage() == is.getItemDamage()) {
+				if (getStackInSlot(j).getItem() == is.getItem() && getStackInSlot(j).getDamage() == is.getDamage()) {
 					// same item remove from is put into slot any amt not to
 					// excede stack max
 					if (getStackInSlot(j).getCount() < getStackInSlot(j).getMaxStackSize()) {
@@ -261,12 +262,12 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 							// /all of the stack will fit in this slot do
 							// so.
 
-							setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).getCount() + is.getCount(), is.getItemDamage()));
+							setInventorySlotContents(j, new ItemStack(getStackInSlot(j).getItem(), getStackInSlot(j).getCount() + is.getCount(), is.getDamage()));
 							is = ItemStack.EMPTY;
 						} else {
 							// we have more
 							int countRemain = is.getCount() - (getStackInSlot(j).getMaxStackSize() - getStackInSlot(j).getCount());
-							setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getItemDamage()));
+							setInventorySlotContents(j, new ItemStack(is.getItem(), getStackInSlot(j).getMaxStackSize(), is.getDamage()));
 							is.setCount(countRemain);
 						}
 
@@ -282,21 +283,6 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 		// bug fix for picking up items that cannot be put in inventory
 		return is;
 
-	}
-
-	@Override
-	public String getName() {
-		return null;
-	}
-
-	@Override
-	public boolean hasCustomName() {
-		return false;
-	}
-
-	@Override
-	public ITextComponent getDisplayName() {
-		return null;
 	}
 
 	@Override
@@ -316,7 +302,7 @@ public class TileEntityScreen extends TileEntity implements ITickableTileEntity,
 			if (stack.getCount() <= amt) {
 				setInventorySlotContents(slot, ItemStack.EMPTY);
 			} else {
-				stack = stack.splitStack(amt);
+				stack = stack.split(amt);
 				if (stack.getCount() == 0) {
 					setInventorySlotContents(slot, ItemStack.EMPTY);
 				}
