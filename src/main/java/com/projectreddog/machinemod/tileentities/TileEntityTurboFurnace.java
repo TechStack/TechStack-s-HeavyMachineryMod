@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.tileentities;
 
 import javax.annotation.Nullable;
 
-import com.projectreddog.machinemod.item.crafting.TruboFurnaceRecipes;
+import com.projectreddog.machinemod.item.crafting.TruboFurnaceRecipe;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.player.PlayerEntity;
@@ -10,7 +10,7 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.item.crafting.FurnaceRecipe;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -91,13 +91,13 @@ public class TileEntityTurboFurnace extends TileEntity implements ITickableTileE
 			// Slot 2 = FUEL
 			int resultsize = 0;
 			ItemStack inputItemStack = getStackInSlot(0);
-			ItemStack resultItemStack = checkTruboFurnaceRecipes(inputItemStack);
+			ItemStack resultItemStack = checkTruboFurnaceRecipe(inputItemStack);
 			if (!resultItemStack.isEmpty()) {
 				resultsize = resultItemStack.getCount();
 			}
 
 			if (resultItemStack.isEmpty()) {
-				resultItemStack = FurnaceRecipes.instance().getSmeltingResult(inputItemStack);
+				resultItemStack = FurnaceRecipe.instance().getSmeltingResult(inputItemStack);
 				resultsize = resultItemStack.getMaxStackSize();
 			}
 
@@ -129,9 +129,9 @@ public class TileEntityTurboFurnace extends TileEntity implements ITickableTileE
 			// no input can't smelt it!
 			return false;
 		} else {
-			ItemStack itemstack = checkTruboFurnaceRecipes(getStackInSlot(0));
+			ItemStack itemstack = checkTruboFurnaceRecipe(getStackInSlot(0));
 			if (itemstack.isEmpty()) {
-				itemstack = FurnaceRecipes.instance().getSmeltingResult(getStackInSlot(0));
+				itemstack = FurnaceRecipe.instance().getSmeltingResult(getStackInSlot(0));
 
 			}
 			itemstack = itemstack.copy();
@@ -155,8 +155,8 @@ public class TileEntityTurboFurnace extends TileEntity implements ITickableTileE
 		}
 	}
 
-	private ItemStack checkTruboFurnaceRecipes(ItemStack input) {
-		ItemStack is = TruboFurnaceRecipes.instance().getSmeltingResult(input);
+	private ItemStack checkTruboFurnaceRecipe(ItemStack input) {
+		ItemStack is = TruboFurnaceRecipe.instance().getSmeltingResult(input);
 
 		return is;
 	}

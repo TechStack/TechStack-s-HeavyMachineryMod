@@ -1,13 +1,13 @@
 package com.projectreddog.machinemod.inventory;
 
-import com.projectreddog.machinemod.item.crafting.TruboFurnaceRecipes;
+import com.projectreddog.machinemod.item.crafting.TruboFurnaceRecipe;
 
 import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.item.crafting.FurnaceRecipe;
 import net.minecraft.util.math.MathHelper;
 
 public class SlotOutputOnlyTurobFurnace extends Slot {
@@ -59,9 +59,9 @@ public class SlotOutputOnlyTurobFurnace extends Slot {
 
 		if (!this.player.world.isRemote) {
 			int i = this.removeCount;
-			float f = FurnaceRecipes.instance().getSmeltingExperience(stack);
+			float f = FurnaceRecipe.instance().getSmeltingExperience(stack);
 			if (f == 0.0f) {
-				f = TruboFurnaceRecipes.instance().getSmeltingExperience(stack);
+				f = TruboFurnaceRecipe.instance().getSmeltingExperience(stack);
 			}
 
 			if (f == 0.0F) {
