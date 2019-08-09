@@ -394,7 +394,7 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickableTile
 					if (amtNeeded[j] > 0) {
 						// found one with more than one so sorry we failed.
 
-						player.sendMessage(new StringTextComponent(TextFormatting.RED + "Missing: " + TextFormatting.WHITE + is[j].getItemStackDisplayName(new ItemStack(is[j])) + " X " + TextFormatting.BLUE + amtNeeded[j]));
+						player.sendMessage(new StringTextComponent(TextFormatting.RED + "Missing: " + TextFormatting.WHITE + is[j].getDisplayName(new ItemStack(is[j])) + " X " + TextFormatting.BLUE + amtNeeded[j]));
 						result = false;
 					}
 				}

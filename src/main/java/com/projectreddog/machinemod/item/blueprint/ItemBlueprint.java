@@ -12,6 +12,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -44,7 +45,7 @@ public class ItemBlueprint extends ItemMachineMod {
 		if (outputItemName != null) {
 			Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(outputItemName));
 			if (item != null) {
-				String displayName = item.getItemStackDisplayName(new ItemStack(item));
+				String displayName = item.getDisplayName(new ItemStack(item)).getString();
 
 				output = "\u00A7aMakes: " + displayName + "\n";
 			}
@@ -54,7 +55,7 @@ public class ItemBlueprint extends ItemMachineMod {
 
 				item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(ingredents.get(i).getName()));
 				if (item != null) {
-					String displayName = item.getItemStackDisplayName(new ItemStack(item));
+					String displayName = item.getDisplayName(new ItemStack(item)).getString();
 					output = output + "   " + displayName + " X " + ingredents.get(i).getCount() + "\n";
 				} else {
 					LogHelper.info("An Output of an ingredent is null Tell Tech please!" + outputItemName);
@@ -87,7 +88,8 @@ public class ItemBlueprint extends ItemMachineMod {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 		tooltip.add(this.toolTipToString());
 	}
 }
