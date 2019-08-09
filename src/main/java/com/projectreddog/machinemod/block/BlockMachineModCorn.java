@@ -8,6 +8,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.PropertyInteger;
@@ -19,8 +20,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.BlockStateContainer;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockMachineModCorn extends BlockBush implements IGrowable {
 	public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 6);
@@ -138,8 +139,7 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 	/**
 	 * Spawns this Block's drops into the World as ItemEntitys.
 	 * 
-	 * @param chance The chance that each Item is actually spawned (1.0 =
-	 * always, 0.0 = never)
+	 * @param chance The chance that each Item is actually spawned (1.0 = always, 0.0 = never)
 	 * @param fortune The player's fortune level
 	 */
 	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, BlockState state, float chance, int fortune) {
@@ -163,7 +163,7 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 		return true;
 	}
 
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public Item getItem(World worldIn, BlockPos pos) {
 		return this.getSeed();
 	}

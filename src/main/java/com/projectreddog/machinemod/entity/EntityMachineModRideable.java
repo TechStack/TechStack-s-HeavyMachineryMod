@@ -39,10 +39,10 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.network.PacketDistributor.TargetPoint;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
@@ -157,7 +157,7 @@ public class EntityMachineModRideable extends Entity {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public boolean isInRangeToRenderDist(double distance) {
 		// testing with always TRUE is in range to render dist to see if it fixes invs entities
 		return true;
@@ -644,7 +644,7 @@ public class EntityMachineModRideable extends Entity {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	// override the set position and rotation function to avoid MC from setting
 	// the postion of the entity so i can handle it
 	// in my network handler ... avoids jitter
@@ -652,13 +652,13 @@ public class EntityMachineModRideable extends Entity {
 
 	}
 
-	// @SideOnly(Side.CLIENT)
+	// @OnlyIn(Dist.CLIENT)
 	// public void setPositionAndRotation2(double p_70056_1_, double p_70056_3_,
 	// double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_) {
 	//
 	// }
 	//
-	// @SideOnly(Side.CLIENT)
+	// @OnlyIn(Dist.CLIENT)
 	// public void setPositionAndRotation(double p_70056_1_, double p_70056_3_,
 	// double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_) {
 	//

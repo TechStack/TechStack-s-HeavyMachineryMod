@@ -39,7 +39,7 @@ public class ItemMachineModArmor extends ItemArmor {
 
 	// 1.8
 	// @Override
-	// @SideOnly(Side.CLIENT)
+	// @OnlyIn(Dist.CLIENT)
 	// public void registerIcons(IIconRegister iconRegister)
 	// {
 	// itemIcon =

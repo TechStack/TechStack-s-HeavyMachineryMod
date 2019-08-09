@@ -25,7 +25,7 @@ public class BlockMachineMod extends Block {
 
 	// 1.8 not needed?
 	// @Override
-	// @SideOnly(Side.CLIENT)
+	// @OnlyIn(Dist.CLIENT)
 	// public void registerBlockIcons(IIconRegister iconRegister)
 	// {
 	// blockIcon =

@@ -6,6 +6,7 @@ import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
@@ -20,8 +21,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeColorHelper;
 import net.minecraft.world.chunk.BlockStateContainer;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockMachineMowedGrass extends BlockMachineMod {
 	public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
@@ -44,10 +45,9 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 	}
 
 	/**
-	 * Possibly modify the given BlockState before rendering it on an Entity
-	 * (Minecarts, Endermen, ...)
+	 * Possibly modify the given BlockState before rendering it on an Entity (Minecarts, Endermen, ...)
 	 */
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public BlockState getStateForEntityRender(BlockState state) {
 		return this.getDefaultState().withProperty(FACING, Direction.SOUTH);
 	}
@@ -76,7 +76,7 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 		return new BlockStateContainer(this, new IProperty[] { FACING });
 	}
 
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	static final class SwitchDirection {
 		static final int[] field_180356_a = new int[Direction.values().length];
 		private static final String __OBFID = "CL_00002111";
@@ -130,22 +130,22 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 		return Blocks.DIRT.getItemDropped(Blocks.DIRT.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT), rand, fortune);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public int getBlockColor() {
 		return ColorizerGrass.getGrassColor(0.5D, 1.0D);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public int getRenderColor(BlockState state) {
 		return this.getBlockColor();
 	}
 
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public int colorMultiplier(IBlockAccess worldIn, BlockPos pos, int renderPass) {
 		return BiomeColorHelper.getGrassColorAtPos(worldIn, pos);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.CUTOUT_MIPPED;
 	}

@@ -24,8 +24,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.BlockStateContainer;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockMachineBleakPortal extends BlockMachineMod {
 	public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
@@ -98,7 +98,7 @@ public class BlockMachineBleakPortal extends BlockMachineMod {
 	/**
 	 * Possibly modify the given BlockState before rendering it on an Entity (Minecarts, Endermen, ...)
 	 */
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public BlockState getStateForEntityRender(BlockState state) {
 		return this.getDefaultState().withProperty(FACING, Direction.SOUTH);
 	}
@@ -131,7 +131,7 @@ public class BlockMachineBleakPortal extends BlockMachineMod {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.TRANSLUCENT;
 	}

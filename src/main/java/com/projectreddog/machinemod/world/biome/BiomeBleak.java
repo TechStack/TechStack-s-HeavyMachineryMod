@@ -13,8 +13,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.ChunkPrimer;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BiomeBleak extends Biome {
 
@@ -36,7 +36,7 @@ public class BiomeBleak extends Biome {
 	/**
 	 * takes temperature, returns color
 	 */
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public int getSkyColorByTemp(float currentTemperature) {
 		return MathHelper.rgb(1f, 1f, 1f);
 	}

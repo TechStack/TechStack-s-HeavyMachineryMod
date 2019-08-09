@@ -70,7 +70,7 @@ public class BleakWorldProvider extends WorldProvider {
 	 * Returns true if the given X,Z coordinate should show environmental fog.
 	 */
 	@Override
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public boolean doesXZShowFog(int x, int z) {
 		return true;
 	}

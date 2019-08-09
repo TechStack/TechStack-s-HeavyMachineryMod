@@ -24,8 +24,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.BlockStateContainer;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockMachineBleakCrystal extends BushBlock implements IGrowable {
 	public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 6);
@@ -154,7 +154,7 @@ public class BlockMachineBleakCrystal extends BushBlock implements IGrowable {
 		return ((Integer) p_176473_3_.getValue(AGE)).intValue() < 6;
 	}
 
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public Item getItem(World worldIn, BlockPos pos) {
 		return this.getSeed();
 	}
@@ -192,7 +192,7 @@ public class BlockMachineBleakCrystal extends BushBlock implements IGrowable {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.TRANSLUCENT;
 	}

@@ -20,9 +20,9 @@ import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ISpecialArmor;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMachineModElytraJetLegs extends ItemMachineModArmor implements ISpecialArmor {
 	public String registryName = "elytrajetleg";
@@ -38,7 +38,7 @@ public class ItemMachineModElytraJetLegs extends ItemMachineModArmor implements 
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		tooltip.add("Equip on your waist and sneak while flying to activate!");
 		tooltip.add("Fill up with Fuel in Fuel Pump.");
@@ -48,7 +48,7 @@ public class ItemMachineModElytraJetLegs extends ItemMachineModArmor implements 
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	@Nullable
 	public ModelBiped getArmorModel(LivingEntity living, ItemStack stack, EntityEquipmentSlot slot, ModelBiped defaultModel) {
 		if (!stack.isEmpty()) {

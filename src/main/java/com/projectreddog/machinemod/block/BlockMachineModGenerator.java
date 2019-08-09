@@ -22,8 +22,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.BlockStateContainer;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockMachineModGenerator extends ContainerBlock {
 	public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
@@ -49,10 +49,9 @@ public class BlockMachineModGenerator extends ContainerBlock {
 	}
 
 	/**
-	 * Possibly modify the given BlockState before rendering it on an Entity
-	 * (Minecarts, Endermen, ...)
+	 * Possibly modify the given BlockState before rendering it on an Entity (Minecarts, Endermen, ...)
 	 */
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public BlockState getStateForEntityRender(BlockState state) {
 		return this.getDefaultState().withProperty(FACING, Direction.SOUTH);
 	}
@@ -119,7 +118,7 @@ public class BlockMachineModGenerator extends ContainerBlock {
 		return new BlockStateContainer(this, new IProperty[] { FACING });
 	}
 
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	static final class SwitchDirection {
 		static final int[] field_180356_a = new int[Direction.values().length];
 		private static final String __OBFID = "CL_00002111";
