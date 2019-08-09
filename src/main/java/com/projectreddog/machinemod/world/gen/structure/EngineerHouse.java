@@ -25,7 +25,7 @@ import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.structure.VillagePieces.Village;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
@@ -152,10 +152,10 @@ public class EngineerHouse extends Village {
 			if (te instanceof TileEntitySign) {
 				TileEntitySign tes = (TileEntitySign) te;
 
-				tes.signText[0] = new TextComponentString("");
-				tes.signText[1] = new TextComponentString("");
-				tes.signText[2] = new TextComponentString(theChosenOne + "'s");
-				tes.signText[3] = new TextComponentString("Workshop");
+				tes.signText[0] = new StringTextComponent("");
+				tes.signText[1] = new StringTextComponent("");
+				tes.signText[2] = new StringTextComponent(theChosenOne + "'s");
+				tes.signText[3] = new StringTextComponent("Workshop");
 			}
 		}
 

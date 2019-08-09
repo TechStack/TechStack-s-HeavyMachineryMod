@@ -21,7 +21,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -393,7 +393,8 @@ public class TileEntityAssemblyTable extends TileEntity implements ITickableTile
 
 					if (amtNeeded[j] > 0) {
 						// found one with more than one so sorry we failed.
-						player.sendMessage(new TextComponentString(TextFormatting.RED + "Missing: " + TextFormatting.WHITE + is[j].getItemStackDisplayName(new ItemStack(is[j])) + " X " + TextFormatting.BLUE + amtNeeded[j]));
+
+						player.sendMessage(new StringTextComponent(TextFormatting.RED + "Missing: " + TextFormatting.WHITE + is[j].getItemStackDisplayName(new ItemStack(is[j])) + " X " + TextFormatting.BLUE + amtNeeded[j]));
 						result = false;
 					}
 				}

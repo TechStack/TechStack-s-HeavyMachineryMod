@@ -18,7 +18,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.StringTextComponent;
 import scala.Int;
 
 public class TileEntityTurboFurnace extends TileEntity implements ITickableTileEntity, ISidedInventory {
@@ -289,7 +289,7 @@ public class TileEntityTurboFurnace extends TileEntity implements ITickableTileE
 
 	@Nullable
 	public ITextComponent getDisplayName() {
-		return new TextComponentString("Turbo Furnace");
+		return new StringTextComponent("Turbo Furnace");
 	}
 
 	@Override
