@@ -11,13 +11,13 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class TruboFurnaceRecipe {
+public class TruboFurnaceRecipes {
 
 	private static final TruboFurnaceRecipe SMELTING_BASE = new TruboFurnaceRecipe();
 	/** The list of smelting results. */
-	private final Map<ItemStack, ItemStack> smeltingList = Maps.<ItemStack, ItemStack> newHashMap();
+	private final Map<ItemStack, ItemStack> smeltingList = Maps.<ItemStack, ItemStack>newHashMap();
 	/** A list which contains how many experience points each recipe output will give. */
-	private final Map<ItemStack, Float> experienceList = Maps.<ItemStack, Float> newHashMap();
+	private final Map<ItemStack, Float> experienceList = Maps.<ItemStack, Float>newHashMap();
 
 	/**
 	 * Returns an instance of FurnaceRecipe.
