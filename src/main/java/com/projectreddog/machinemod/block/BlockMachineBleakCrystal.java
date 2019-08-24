@@ -11,6 +11,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -31,17 +32,13 @@ public class BlockMachineBleakCrystal extends BushBlock implements IGrowable {
 	public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 6);
 
 	public BlockMachineBleakCrystal() {
-		super();
-		// 1.8
+		super(Block.Properties.create(Material.GLASS).hardnessAndResistance(0.0f).sound(SoundType.GLASS)); // 1.8
 		// REMOVED 1.14
 		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLEAK_CRYSTAL);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_BLEAK_CRYSTAL);
 
-		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
-		this.setHardness(0.0F);// not sure on the hardness
 		this.setCreativeTab((CreativeTabs) null);
 
-		this.setSoundType(SoundType.GLASS);
 	}
 
 	@Override

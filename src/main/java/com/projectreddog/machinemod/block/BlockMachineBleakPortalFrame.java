@@ -34,8 +34,7 @@ public class BlockMachineBleakPortalFrame extends BlockMachineMod {
 	protected static final AxisAlignedBB AABB_BLOCK_SOUTH = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.D, 0.5D);
 
 	protected BlockMachineBleakPortalFrame(Material material) {
-		super(material);
-
+		super(Block.Properties.create(Material.IRON).hardnessAndResistance(1.5f).sound(SoundType.METAL));
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, Direction.NORTH).withProperty(HAS_STAR, Boolean.valueOf(false)));
@@ -44,11 +43,6 @@ public class BlockMachineBleakPortalFrame extends BlockMachineMod {
 		// REMOVED 1.14
 		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_BLEAK_PORTAL_FRAME);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_BLEAK_PORTAL_FRAME);
-
-		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
-		// this.setHardness(15f);// not sure on the hardness
-		this.setSoundType(SoundType.METAL);
-		this.setHardness(1.5f);
 
 	}
 

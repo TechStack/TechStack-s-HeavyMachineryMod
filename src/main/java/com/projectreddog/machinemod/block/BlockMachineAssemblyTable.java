@@ -5,6 +5,7 @@ import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityAssemblyTable;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ContainerBlock;
@@ -15,6 +16,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -22,16 +24,12 @@ import net.minecraft.world.World;
 public class BlockMachineAssemblyTable extends ContainerBlock {
 
 	public BlockMachineAssemblyTable() {
-		super(Material.IRON);
-		// 1.8
+		super(Block.Properties.create(Material.IRON).hardnessAndResistance(15f).sound(SoundType.METAL)); // 1.8
 		// REMOVED 1.14
 		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 
-		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
-		this.setHardness(15f);// not sure on the hardness
-		this.setSoundType(SoundType.METAL);
 	}
 
 	@Override
