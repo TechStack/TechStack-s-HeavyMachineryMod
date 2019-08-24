@@ -11,6 +11,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -27,8 +28,7 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 	public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 6);
 
 	public BlockMachineModCorn() {
-		super();
-		// 1.8
+		super(Block.Properties.create(Material.EARTH).hardnessAndResistance(0f).sound(SoundType.GROUND)); // 1.8
 		// REMOVED 1.14
 		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_CORN);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_CORN);
@@ -40,8 +40,6 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 		// this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F +
 		// f);
 		this.setCreativeTab((CreativeTabs) null);
-		this.setHardness(0.0F);
-		this.setSoundType(SoundType.GROUND);// was grass
 		this.disableStats();
 
 	}

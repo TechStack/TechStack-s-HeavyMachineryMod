@@ -32,8 +32,7 @@ public class BlockMachineModFactory extends ContainerBlock {
 	public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
 
 	protected BlockMachineModFactory(Material material) {
-		super(material);
-		// TODO Find bounds fix
+		super(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5f).sound(SoundType.STONE)); // TODO Find bounds fix
 
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
@@ -44,11 +43,6 @@ public class BlockMachineModFactory extends ContainerBlock {
 		// this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" +
 		// Reference.MODBLOCK_MACHINE_FACTORY);
 		this.setRegistryName(Reference.MOD_ID.toLowerCase() + ":" + Reference.MODBLOCK_MACHINE_FACTORY);
-
-		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
-		// this.setHardness(15f);// not sure on the hardness
-		this.setSoundType(SoundType.STONE);
-		this.setHardness(1.5f);
 
 	}
 

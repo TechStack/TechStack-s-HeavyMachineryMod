@@ -4,6 +4,7 @@ import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityCrate;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ContainerBlock;
 import net.minecraft.block.SoundType;
@@ -25,16 +26,13 @@ public class BlockMachineCrate extends ContainerBlock {
 	}
 
 	protected BlockMachineCrate(Material material) {
-		super(material);
+		super(Block.Properties.create(Material.WOOD).hardnessAndResistance(15f).sound(SoundType.WOOD));
+
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 		// REMOVED 1.14
 		// this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" +
 		// Reference.MODBLOCK_MACHINE_CRATE);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_CRATE);
-
-		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
-		this.setHardness(15f);// not sure on the hardness
-		this.setSoundType(SoundType.WOOD);
 
 	}
 

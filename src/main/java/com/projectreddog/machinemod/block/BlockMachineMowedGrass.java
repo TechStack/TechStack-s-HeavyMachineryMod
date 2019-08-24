@@ -8,6 +8,7 @@ import net.minecraft.block.BlockDirt;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -30,16 +31,12 @@ public class BlockMachineMowedGrass extends BlockMachineMod {
 	public int intRandom = 0;
 
 	public BlockMachineMowedGrass() {
-		super();
-
+		super(Block.Properties.create(Material.EARTH).hardnessAndResistance(.25f).sound(SoundType.GROUND));
 		// 1.8
 		// REMOVED 1.14
 		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_MOWED_GRASS);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_MOWED_GRASS);
 
-		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
-		this.setHardness(.25f);// not sure on the hardness
-		this.setSoundType(SoundType.GROUND);
 		this.setTickRandomly(true);
 
 	}

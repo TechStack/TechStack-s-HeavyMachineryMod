@@ -31,8 +31,7 @@ public class BlockMachineModFractionalDistillation extends ContainerBlock {
 	public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
 
 	protected BlockMachineModFractionalDistillation(Material material) {
-		super(material);
-
+		super(Block.Properties.create(Material.ANVIL).hardnessAndResistance(15f).sound(SoundType.ANVIL));
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, Direction.NORTH));
@@ -42,11 +41,6 @@ public class BlockMachineModFractionalDistillation extends ContainerBlock {
 		// this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" +
 		// Reference.MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION);
-
-		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
-		// this.setHardness(15f);// not sure on the hardness
-		this.setSoundType(SoundType.ANVIL);
-		this.setHardness(15f);
 
 	}
 

@@ -5,6 +5,7 @@ import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ContainerBlock;
 import net.minecraft.block.SoundType;
@@ -31,8 +32,7 @@ public class BlockMachineModFermenter extends ContainerBlock {
 	public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
 
 	protected BlockMachineModFermenter(Material material) {
-		super(material);
-		// TODO Find bounds fix
+		super(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5f).sound(SoundType.STONE)); // TODO Find bounds fix
 		// this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.5F, 1.0F);
 
 		// can override later ;)
@@ -44,11 +44,6 @@ public class BlockMachineModFermenter extends ContainerBlock {
 		// this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" +
 		// Reference.MODBLOCK_MACHINE_FERMENTER);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_FERMENTER);
-
-		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
-		// this.setHardness(15f);// not sure on the hardness
-		this.setSoundType(SoundType.STONE);
-		this.setHardness(1.5f);
 
 	}
 

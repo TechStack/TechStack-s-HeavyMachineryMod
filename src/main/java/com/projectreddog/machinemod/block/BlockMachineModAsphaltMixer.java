@@ -5,6 +5,7 @@ import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityAsphaltMixer;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ContainerBlock;
 import net.minecraft.block.SoundType;
@@ -23,7 +24,7 @@ import net.minecraft.world.World;
 public class BlockMachineModAsphaltMixer extends ContainerBlock {
 
 	protected BlockMachineModAsphaltMixer(Material material) {
-		super(material);
+		super(Block.Properties.create(Material.ANVIL).hardnessAndResistance(15f).sound(SoundType.ANVIL));
 
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
@@ -32,11 +33,6 @@ public class BlockMachineModAsphaltMixer extends ContainerBlock {
 		// this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" +
 		// Reference.MODBLOCK_MACHINE_ASPHALT_MIXER);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_ASPHALT_MIXER);
-
-		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
-		// this.setHardness(15f);// not sure on the hardness
-		this.setSoundType(SoundType.ANVIL);
-		this.setHardness(15f);
 
 	}
 

@@ -24,18 +24,11 @@ import net.minecraft.world.World;
 public class BlockMachineModLiquidPipe extends ContainerBlock {
 
 	public BlockMachineModLiquidPipe(Material material) {
-		super(material);
-		// 1.8
+		super(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5f).sound(SoundType.STONE)); // 1.8
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 		// REMOVED 1.14
 		// this.setUnlocalizedName(Reference.MODBLOCK_MACHINE_LIQUID_PIPE);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_LIQUID_PIPE);
-
-		// this.setBlockName(Reference.MODBLOCK_MACHINE_DRILLED_STONE);
-		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_DRILLED_STONE);
-		// this.setHardness(15f);// not sure on the hardness
-		this.setSoundType(SoundType.STONE);
-		this.setHardness(1.5f);
 
 	}
 
@@ -82,9 +75,7 @@ public class BlockMachineModLiquidPipe extends ContainerBlock {
 	}
 
 	/**
-	 * Lets the block know when one of its neighbor changes. Doesn't know which
-	 * neighbor changed (coordinates passed are their own) Args: x, y, z,
-	 * neighbor Block
+	 * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are their own) Args: x, y, z, neighbor Block
 	 */
 
 	public void onNeighborBlockChange(World worldIn, BlockPos pos, BlockState state, Block neighborBlock) {

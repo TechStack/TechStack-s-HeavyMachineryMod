@@ -1,13 +1,12 @@
 package com.projectreddog.machinemod.block;
 
-import net.minecraft.block.SoundType;
+import net.minecraft.block.Block;
 
 public class BlockMachineModBlastedStoneBase extends BlockMachineModFalling {
 
-	public BlockMachineModBlastedStoneBase() {
-		super();
+	public BlockMachineModBlastedStoneBase(Block.Properties blockProperites) {
+		super(blockProperites);
 
-		this.setSoundType(SoundType.STONE);
 	}
 
 }

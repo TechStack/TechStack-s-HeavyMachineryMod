@@ -5,6 +5,7 @@ import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityScreen;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ContainerBlock;
 import net.minecraft.block.SoundType;
@@ -23,8 +24,7 @@ import net.minecraft.world.World;
 public class BlockMachineModScreen extends ContainerBlock {
 
 	protected BlockMachineModScreen(Material material) {
-		super(material);
-
+		super(Block.Properties.create(Material.IRON).hardnessAndResistance(1.5f).sound(SoundType.METAL));
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 
@@ -33,11 +33,6 @@ public class BlockMachineModScreen extends ContainerBlock {
 		// this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" +
 		// Reference.MODBLOCK_MACHINE_SCREEN);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_SCREEN);
-
-		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
-		// this.setHardness(15f);// not sure on the hardness
-		this.setSoundType(SoundType.METAL);
-		this.setHardness(1.5f);
 
 	}
 

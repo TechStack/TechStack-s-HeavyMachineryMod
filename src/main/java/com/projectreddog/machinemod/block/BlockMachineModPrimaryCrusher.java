@@ -6,6 +6,7 @@ import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ContainerBlock;
 import net.minecraft.block.SoundType;
@@ -32,8 +33,7 @@ public class BlockMachineModPrimaryCrusher extends ContainerBlock {
 	public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
 
 	protected BlockMachineModPrimaryCrusher(Material material) {
-		super(material);
-
+		super(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5f).sound(SoundType.STONE));
 		// can override later ;)
 		this.setCreativeTab(CreativeTabMachineMod.MACHINEMOD_BLOCKS_TAB);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, Direction.NORTH));
@@ -43,11 +43,6 @@ public class BlockMachineModPrimaryCrusher extends ContainerBlock {
 		// this.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" +
 		// Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
 		this.setRegistryName(Reference.MODBLOCK_MACHINE_PRIMARY_CRUSHER);
-
-		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_BLASTED_STONE);
-		// this.setHardness(15f);// not sure on the hardness
-		this.setSoundType(SoundType.STONE);
-		this.setHardness(1.5f);
 
 	}
 

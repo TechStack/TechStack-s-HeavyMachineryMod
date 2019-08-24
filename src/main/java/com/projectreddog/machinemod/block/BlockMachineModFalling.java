@@ -17,8 +17,8 @@ public class BlockMachineModFalling extends BlockMachineMod {
 	private float motionZ = 0f;
 	private float motionY = 0f;
 
-	public BlockMachineModFalling() {
-		super();
+	public BlockMachineModFalling(Block.Properties blockProperties) {
+		super(blockProperties);
 
 	}
 
