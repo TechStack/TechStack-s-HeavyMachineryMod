@@ -1,8 +1,26 @@
-Hard hat
+steel toed boots
+	leather on top (both sides)
+	steel ingot on bottom both sides)
+	same armor value as iron boots same durablitiy
+	but will have no damage from machines driving over you
+steeltoeboots
 
 Remote Detonator 
 
+cow feeder?
+
+Chainsaw
+
+buldozer doesnt break mellons.
+
+
+Bug?
+In bulldozer
+Dropped 2 blocks down fall damage in machines
 
 
 ---ISSUes
 No texture for the distiller
+
+
+
