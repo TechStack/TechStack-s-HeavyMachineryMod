@@ -1,9 +1,4 @@
-steel toed boots
-	leather on top (both sides)
-	steel ingot on bottom both sides)
-	same armor value as iron boots same durablitiy
-	but will have no damage from machines driving over you
-steeltoeboots
+
 
 Remote Detonator 
 
@@ -18,6 +13,11 @@ Bug?
 In bulldozer
 Dropped 2 blocks down fall damage in machines
 
+
+
+Tower crane 
+	Makes a multi-block that could be used to "produce" items.
+	lumber mill example makes wood planks?
 
 ---ISSUes
 No texture for the distiller
