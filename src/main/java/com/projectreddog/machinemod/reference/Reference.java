@@ -158,6 +158,8 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_FUEL_PUMP = "machinefuelpump";
 
 	public static final String MODBLOCK_MACHINE_CONVEYOR = "machineconveyor";
+	public static final String MODBLOCK_MACHINE_FEED_TROUGH = "machinefeedtrough";
+
 	public static final String MODBLOCK_MACHINE_GENERATOR = "machinegenerator";
 
 	public static final String MODBLOCK_MACHINE_BATTERY_BANK = "machinebatterybank";

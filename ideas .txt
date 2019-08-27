@@ -1,13 +1,24 @@
 
+cow feeder?
+	block created 
+		needs texture & model
+		needs inventory on tileentity 
+		must check the inventory for the item to feed the animals Maybe 1 slot.
+		maybe power later?
+		
+		
+		
 
 Remote Detonator 
 
-cow feeder?
+
+Storage?
 
 Chainsaw
 
 buldozer doesnt break mellons.
 
+A Fishing Trawler!
 
 Bug?
 In bulldozer
