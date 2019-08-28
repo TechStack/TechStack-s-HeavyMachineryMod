@@ -1,5 +1,6 @@
 package com.projectreddog.machinemod.block;
 
+import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityFeedTrough;
@@ -13,11 +14,16 @@ import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -27,6 +33,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockMachineModFeedTrough extends BlockContainer {
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	public static final PropertyBool POWERED = PropertyBool.create("powered");
+	protected static final AxisAlignedBB FEED_TROUGH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
 
 	protected BlockMachineModFeedTrough(Material material) {
 		super(material);
@@ -43,6 +50,16 @@ public class BlockMachineModFeedTrough extends BlockContainer {
 		// this.setHardness(15f);// not sure on the hardness
 		this.setSoundType(SoundType.METAL);
 		this.setHardness(1.5f);
+
+	}
+
+	@Override
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+		return FEED_TROUGH_AABB;
+	}
+
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return FEED_TROUGH_AABB;
 
 	}
 
@@ -170,4 +187,29 @@ public class BlockMachineModFeedTrough extends BlockContainer {
 			}
 		}
 	}
+
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+		ItemStack heldItem = playerIn.getActiveItemStack();
+		TileEntity te = worldIn.getTileEntity(pos);
+		if (te != null && !playerIn.isSneaking()) {
+			playerIn.openGui(MachineMod.instance, Reference.GUI_FEED_TROUGH, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			return true;
+		} else {
+			return false;
+		}
+	};
+
+	@Override
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+		TileEntity tileentity = worldIn.getTileEntity(pos);
+
+		if (tileentity instanceof IInventory) {
+			InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) tileentity);
+			worldIn.updateComparatorOutputLevel(pos, this);
+		}
+
+		super.breakBlock(worldIn, pos, state);
+	}
+
 }

@@ -95,6 +95,7 @@ public class Reference {
 	public static final int GUI_CONTINUOUSMINER = 17;
 	public static final int GUI_ASSEMBLY_TABLE = 18;
 	public static final int GUI_TURBO_FURNACE = 19;
+	public static final int GUI_FEED_TROUGH = 20;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;
