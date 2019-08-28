@@ -1,0 +1,14 @@
+{
+    "variants": {
+        "facing=north,powered=true": { "model": "machinemod:machinefeedtrough", "y": 90 },
+        "facing=south,powered=true": { "model": "machinemod:machinefeedtrough", "y": 270 },
+        "facing=west,powered=true":  { "model": "machinemod:machinefeedtrough", "y": 180},
+        "facing=east,powered=true":  { "model": "machinemod:machinefeedtrough" },        
+        "facing=north,powered=false": { "model": "machinemod:machinefeedtrough", "y": 90  },
+        "facing=south,powered=false": { "model": "machinemod:machinefeedtrough",  "y": 270},
+        "facing=west,powered=false":  { "model": "machinemod:machinefeedtrough", "y": 180 },
+        "facing=east,powered=false": { "model": "machinemod:machinefeedtrough" }
+        
+    }
+}
+
