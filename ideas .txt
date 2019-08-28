@@ -1,13 +1,13 @@
 
 cow feeder?
-	block created 
-		needs texture & model
-		needs inventory on tileentity 
-		must check the inventory for the item to feed the animals Maybe 1 slot.
+	Done block created 
+		Done needs texture & model
+		Done needs inventory on tileentity 
+		Done must check the inventory for the item to feed the animals Maybe 1 slot.
 		maybe power later?
-		Block height
-		show if it has items in it.
-		FIx GUI slot location and texture
+		Done Block height
+		Done show if it has items in it.
+		Done FIx GUI slot location and texture
 		
 		
 		

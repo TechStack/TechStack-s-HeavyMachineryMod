@@ -22,7 +22,7 @@ public class ContainerFeedTrough extends Container {
 		lastRemainBurnTime = -1;
 		for (int i = 0; i < 1; i++) {
 			for (int j = 0; j < 1; j++) {
-				addSlotToContainer(new Slot(feedtrough, j + i * 9, 8 + j * 18, 18 + i * 18));
+				addSlotToContainer(new Slot(feedtrough, j + i * 9, 80 + j * 18, 57 + i * 18));
 			}
 		}
 
@@ -38,12 +38,12 @@ public class ContainerFeedTrough extends Container {
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 139 + i * 18));
+				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 140 + i * 18));
 			}
 		}
 
 		for (int i = 0; i < 9; i++) {
-			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 197));
+			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 198));
 		}
 	}
 
