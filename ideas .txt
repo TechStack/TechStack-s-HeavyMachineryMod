@@ -5,8 +5,14 @@ cow feeder?
 		needs inventory on tileentity 
 		must check the inventory for the item to feed the animals Maybe 1 slot.
 		maybe power later?
+		Block height
+		show if it has items in it.
+		FIx GUI slot location and texture
 		
 		
+		
+		
+Fix distiller slot location & texture!		
 		
 
 Remote Detonator 
@@ -20,9 +26,16 @@ buldozer doesnt break mellons.
 
 A Fishing Trawler!
 
+Ginder for magical items (enchanted) and turn it into xp bottles destorys item.
+Xp bottler ?  
+	
+
+
 Bug?
 In bulldozer
 Dropped 2 blocks down fall damage in machines
+
+
 
 
 
