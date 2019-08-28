@@ -1,0 +1,50 @@
+
+cow feeder?
+	Done block created 
+		Done needs texture & model
+		Done needs inventory on tileentity 
+		Done must check the inventory for the item to feed the animals Maybe 1 slot.
+		maybe power later?
+		Done Block height
+		Done show if it has items in it.
+		Done FIx GUI slot location and texture
+		
+		
+		
+		
+Fix distiller slot location & texture!		
+		
+
+Remote Detonator 
+
+
+Storage?
+
+Chainsaw
+
+buldozer doesnt break mellons.
+
+A Fishing Trawler!
+
+Ginder for magical items (enchanted) and turn it into xp bottles destorys item.
+Xp bottler ?  
+	
+
+
+Bug?
+In bulldozer
+Dropped 2 blocks down fall damage in machines
+
+
+
+
+
+Tower crane 
+	Makes a multi-block that could be used to "produce" items.
+	lumber mill example makes wood planks?
+
+---ISSUes
+No texture for the distiller
+
+
+

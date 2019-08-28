@@ -1,3 +1,7 @@
+Log for this log :
+	steel toe boots 8/25/19
+
+
 Lots of new features in this update
 Some of which are still WIP & will be enahanced or built on in future releases I wanted to release this now to address some bugs & allow players to get started with the new features!
 
@@ -20,6 +24,7 @@ New Content:
 		
 	New Armor
 		- Add a crash helmet - Try elytra flying into a wall while wearing it :D
+		- Added steel toe boots - Wear it to be protected from machines 
 	New Blocks
 		- Bleak Stone
 		- Bleak dirt

@@ -1,7 +1,0 @@
-{
-      "parent": "machinemod:item/distiller",
-      "textures": {
-        "layer0": "machinemod:items/distiller"
-        }
- 
-}
