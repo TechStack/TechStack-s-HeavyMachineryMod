@@ -4,8 +4,11 @@ import java.util.List;
 
 import com.projectreddog.machinemod.block.BlockMachineModFeedTrough;
 import com.projectreddog.machinemod.init.ModBlocks;
+import com.projectreddog.machinemod.init.ModNetwork;
+import com.projectreddog.machinemod.network.MachineModMessageTEInventoryChangedToClient;
 import com.projectreddog.machinemod.reference.Reference;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,6 +32,7 @@ public class TileEntityFeedTrough extends TileEntity implements ITickable, ISide
 	public AxisAlignedBB boundingBox;
 	public int timeTillCoolDown = 0;
 	public int coolDownAmount = 100;
+	boolean shouldSendInvetoryUpdates = true;
 
 	public int MaxAnimalLimit = 200;
 	private int feedSizeHalf = 8;
@@ -63,6 +67,13 @@ public class TileEntityFeedTrough extends TileEntity implements ITickable, ISide
 				List list = world.getEntitiesWithinAABB(EntityAnimal.class, boundingBox);
 				processEntitiesInList(list);
 
+			}
+		}
+		if (!this.world.isRemote) {
+			// server
+			if (shouldSendInvetoryUpdates == true) {
+				ModNetwork.simpleNetworkWrapper.sendToAll(new MachineModMessageTEInventoryChangedToClient(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 0, inventory[0], 0));
+				shouldSendInvetoryUpdates = false;
 			}
 		}
 
@@ -145,6 +156,10 @@ public class TileEntityFeedTrough extends TileEntity implements ITickable, ISide
 
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
+		IBlockState state = getWorld().getBlockState(getPos());
+		this.world.notifyBlockUpdate(pos, state, state, 3);
+		shouldSendInvetoryUpdates = true;
+
 		inventory[slot] = stack;
 		if (!stack.isEmpty() && stack.getCount() > getInventoryStackLimit()) {
 			stack.setCount(getInventoryStackLimit());
@@ -208,6 +223,8 @@ public class TileEntityFeedTrough extends TileEntity implements ITickable, ISide
 		for (int i = 0; i < inventory.length; ++i) {
 			inventory[i] = ItemStack.EMPTY;
 		}
+		IBlockState state = getWorld().getBlockState(getPos());
+		this.world.notifyBlockUpdate(pos, state, state, 3);
 	}
 
 	@Override
@@ -254,6 +271,13 @@ public class TileEntityFeedTrough extends TileEntity implements ITickable, ISide
 				inventory[slot] = new ItemStack(tag);
 			}
 		}
+
+		if (getPos() != null && getWorld() != null && getWorld().getBlockState(getPos()) != null) {
+			IBlockState state = getWorld().getBlockState(getPos());
+			this.world.notifyBlockUpdate(pos, state, state, 3);
+
+		}
+		shouldSendInvetoryUpdates = true;
 	}
 
 	@Override

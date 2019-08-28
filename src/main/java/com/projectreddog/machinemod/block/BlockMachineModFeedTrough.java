@@ -33,6 +33,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockMachineModFeedTrough extends BlockContainer {
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	public static final PropertyBool POWERED = PropertyBool.create("powered");
+	public static final PropertyBool HASFEED = PropertyBool.create("hasfeed");
 	protected static final AxisAlignedBB FEED_TROUGH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
 
 	protected BlockMachineModFeedTrough(Material material) {
@@ -67,10 +68,12 @@ public class BlockMachineModFeedTrough extends BlockContainer {
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
 		TileEntity te = world.getTileEntity(pos);
 		boolean powered = false;
+		boolean hasfeed = false;
 		if (te instanceof TileEntityFeedTrough) {
 			powered = ((TileEntityFeedTrough) te).getPowered();
+			hasfeed = !((TileEntityFeedTrough) te).getStackInSlot(0).isEmpty();
 		}
-		return state.withProperty(POWERED, powered);
+		return state.withProperty(POWERED, powered).withProperty(HASFEED, hasfeed);
 	}
 
 	public BlockMachineModFeedTrough() {
@@ -153,7 +156,7 @@ public class BlockMachineModFeedTrough extends BlockContainer {
 	}
 
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { FACING, POWERED });
+		return new BlockStateContainer(this, new IProperty[] { FACING, POWERED, HASFEED });
 	}
 
 	@SideOnly(Side.CLIENT)
