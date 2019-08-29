@@ -25,6 +25,7 @@ import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -50,7 +51,7 @@ public class EntityMachineModRideable extends Entity {
 
 	public double velocity;
 	public float yaw;
-	private NonNullList<ItemStack> chestContents = NonNullList.<ItemStack> withSize(27, ItemStack.EMPTY);
+	private NonNullList<ItemStack> chestContents = NonNullList.<ItemStack>withSize(27, ItemStack.EMPTY);
 
 	public int SIZE = 0;
 	// protected ItemStack[] inventory;
@@ -353,10 +354,7 @@ public class EntityMachineModRideable extends Entity {
 		}
 		// LogHelper.info(world.isRemote + " Pre -Block @ entity :" + this.getName() + " : " + world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() + " GEN COL: " + this.collided + " horiz COL: " + this.collidedHorizontally + "vert COL: " + this.collidedVertically);
 
-		if (world.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))) || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.WATER
-				|| world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.LAVA || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() == Blocks.SNOW_LAYER
-				|| world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.PLANTS
-				|| world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))).isReplaceable()) {
+		if (world.isAirBlock(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))) || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.WATER || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.LAVA || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock() == Blocks.SNOW_LAYER || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))) == Material.PLANTS || world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d))).getBlock().getMaterial(world.getBlockState(new BlockPos((int) (posX - .5d), (int) posY, (int) (posZ - .5d)))).isReplaceable()) {
 			// in air block so fall i'll actually park the entity inside the
 			// block below just a little bit.
 			if (willSink) {
@@ -515,12 +513,16 @@ public class EntityMachineModRideable extends Entity {
 								// its alive & its not the rider & has a driver (prevents player exiting the machine from getting damaged)
 
 								EntityLivingBase eLB = (EntityLivingBase) entity;
-								eLB.attackEntityFrom(new DamageSource(randomDethMessage()), 5);
-								// special case creepers because Evil !
-								if (eLB instanceof EntityCreeper) {
-									EntityCreeper eC = (EntityCreeper) eLB;
-									// state 1 = ignited!
-									eC.setCreeperState(1);
+
+								if (eLB.getItemStackFromSlot(EntityEquipmentSlot.FEET).getItem() != ModItems.steeltoeboots) {
+
+									eLB.attackEntityFrom(new DamageSource(randomDethMessage()), 5);
+									// special case creepers because Evil !
+									if (eLB instanceof EntityCreeper) {
+										EntityCreeper eC = (EntityCreeper) eLB;
+										// state 1 = ignited!
+										eC.setCreeperState(1);
+									}
 								}
 							}
 						}
@@ -870,8 +872,7 @@ public class EntityMachineModRideable extends Entity {
 	public void toppleTree(BlockPos bp, int depth, int widthDepth, Block previousBlock) {
 		if (depth < Reference.MAX_TREE_DEPTH) {
 			if (widthDepth < Reference.MAX_TREE_WIDTH) {
-				if (world.getBlockState(bp).getBlock() == Blocks.LOG || world.getBlockState(bp).getBlock() == Blocks.LOG2 || world.getBlockState(bp).getBlock() == Blocks.LEAVES || world.getBlockState(bp).getBlock() == Blocks.LEAVES2 || world.getBlockState(bp).getBlock() == Blocks.BROWN_MUSHROOM_BLOCK || world.getBlockState(bp).getBlock() == Blocks.RED_MUSHROOM_BLOCK
-						|| world.getBlockState(bp).getBlock().isWood(world, bp) || world.getBlockState(bp).getBlock().isLeaves(world.getBlockState(bp), world, bp)) {
+				if (world.getBlockState(bp).getBlock() == Blocks.LOG || world.getBlockState(bp).getBlock() == Blocks.LOG2 || world.getBlockState(bp).getBlock() == Blocks.LEAVES || world.getBlockState(bp).getBlock() == Blocks.LEAVES2 || world.getBlockState(bp).getBlock() == Blocks.BROWN_MUSHROOM_BLOCK || world.getBlockState(bp).getBlock() == Blocks.RED_MUSHROOM_BLOCK || world.getBlockState(bp).getBlock().isWood(world, bp) || world.getBlockState(bp).getBlock().isLeaves(world.getBlockState(bp), world, bp)) {
 
 					previousBlock = world.getBlockState(bp).getBlock();
 					BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());

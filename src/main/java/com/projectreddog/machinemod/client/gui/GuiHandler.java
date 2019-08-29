@@ -10,6 +10,7 @@ import com.projectreddog.machinemod.container.ContainerContinuousMiner;
 import com.projectreddog.machinemod.container.ContainerDistiller;
 import com.projectreddog.machinemod.container.ContainerDumpTruck;
 import com.projectreddog.machinemod.container.ContainerExcavator;
+import com.projectreddog.machinemod.container.ContainerFeedTrough;
 import com.projectreddog.machinemod.container.ContainerFermenter;
 import com.projectreddog.machinemod.container.ContainerFractionalDistiller;
 import com.projectreddog.machinemod.container.ContainerGrader;
@@ -39,6 +40,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityAssemblyTable;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
+import com.projectreddog.machinemod.tileentities.TileEntityFeedTrough;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
@@ -150,6 +152,15 @@ public class GuiHandler implements IGuiHandler {
 				if (entity instanceof TileEntityDistiller) {
 
 					return new ContainerDistiller(player.inventory, (TileEntityDistiller) entity);
+				}
+			}
+		} else if (id == Reference.GUI_FEED_TROUGH) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityFeedTrough) {
+
+					return new ContainerFeedTrough(player.inventory, (TileEntityFeedTrough) entity);
 				}
 			}
 		} else if (id == Reference.GUI_ASSEMBLY_TABLE) {
@@ -355,6 +366,14 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null) {
 				if (entity instanceof TileEntityDistiller) {
 					return new GuiDistiller(player.inventory, (TileEntityDistiller) entity);
+				}
+			}
+		} else if (id == Reference.GUI_FEED_TROUGH) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityFeedTrough) {
+					return new GuiFeedTrough(player.inventory, (TileEntityFeedTrough) entity);
 				}
 			}
 		} else if (id == Reference.GUI_ASSEMBLY_TABLE) {

@@ -104,7 +104,7 @@ item.machinemod:turboprop.name=Turbo Prop
 item.machinemod:afterburner.name=After Burner
 item.machinemod:elytrajetleg.name=Elytra Jet Belt
 item.machinemod:crashhelmet.name=Crash Helmet
-
+item.machinemod:steeltoeboots.name=Steel Toe Boots
 
 item.machinemod:carbondust.name=Carbon Dust
 item.machinemod:steeldust.name=Steel Dust
@@ -190,6 +190,7 @@ tile.machinemod:machineblastedemerald.name=Blasted Emerald
 tile.machinemod:machineblastedstone2.name=Blasted Stone for Mods - (WIP)
 tile.machinemod:machineconveyor.name=Conveyor
 tile.machinemod:machineshredder.name=Industrial Mob Shredder
+tile.machinemod:machinefeedtrough.name=Feed Trough
 
 
 tile.machinemod:machinecrudeoilstone.name=Crude Oil Stone

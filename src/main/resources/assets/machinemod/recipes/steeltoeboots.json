@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "machinemod:steeltoeboots"
+    },
+    "pattern" :[
+      "   ",
+      "l l", 
+      "s s"      
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+            "type": "forge:ore_dict",
+           "ore": "ingotSteel" 
+      },
+    "l": {
+           "item":"minecraft:leather"
+
+      }
+        
+    }
+}
+
