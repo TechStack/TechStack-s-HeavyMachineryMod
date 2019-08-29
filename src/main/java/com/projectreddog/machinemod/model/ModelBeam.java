@@ -37,11 +37,13 @@ public class ModelBeam extends ModelBase {
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
+		GL11.glPushMatrix();
+
 		float RotateAmt = (entity.world.getTotalWorldTime() % 60) * 6;
 		GL11.glRotatef(180f, 0, 180f, 0);
-		GL11.glTranslatef(-1.15f, -1.125f, 3.25f);
+		// GL11.glTranslatef(-1.15f, -1.125f, 3.25f);
 
-		GL11.glScalef(.45f, .45f, 1000f);
+		GL11.glScalef(.3f, .3f, 40f);
 		GlStateManager.disableLighting();
 		// GlStateManager.disableCull();
 		GlStateManager.enableBlend();
@@ -49,7 +51,9 @@ public class ModelBeam extends ModelBase {
 		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 
 		this.renderGroupObject("Beam_Cylinder");
-		GL11.glRotatef(RotateAmt, 0f, 0f, 1f);
+		if (f5 == 1) {
+			GL11.glRotatef(RotateAmt, 0f, 0f, 1f);
+		}
 		GL11.glTranslatef(0f, 1f, 0);
 		this.renderGroupObject("Beam_Cylinder");
 		GL11.glTranslatef(1f, -1f, 0);
@@ -58,10 +62,12 @@ public class ModelBeam extends ModelBase {
 		this.renderGroupObject("Beam_Cylinder");
 		GL11.glTranslatef(-1f, 1f, 0);
 		this.renderGroupObject("Beam_Cylinder");
-		GlStateManager.enableBlend();
+
+		GlStateManager.disableBlend();
 		GlStateManager.enableLighting();
 		GlStateManager.enableTexture2D();
 		GlStateManager.depthMask(true);
+		GL11.glPopMatrix();
 	}
 
 	public void renderGroupObject(String groupName) {

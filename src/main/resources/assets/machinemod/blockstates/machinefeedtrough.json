@@ -1,0 +1,22 @@
+{
+    "variants": {
+        "facing=north,hasfeed=false,powered=true": { "model": "machinemod:machinefeedtrough", "y": 90 },
+        "facing=south,hasfeed=false,powered=true": { "model": "machinemod:machinefeedtrough", "y": 270 },
+        "facing=west,hasfeed=false,powered=true":  { "model": "machinemod:machinefeedtrough", "y": 180},
+        "facing=east,hasfeed=false,powered=true":  { "model": "machinemod:machinefeedtrough" },        
+        "facing=north,hasfeed=false,powered=false": { "model": "machinemod:machinefeedtrough", "y": 90  },
+        "facing=south,hasfeed=false,powered=false": { "model": "machinemod:machinefeedtrough",  "y": 270},
+        "facing=west,hasfeed=false,powered=false":  { "model": "machinemod:machinefeedtrough", "y": 180 },
+        "facing=east,hasfeed=false,powered=false": { "model": "machinemod:machinefeedtrough" },
+         "facing=north,hasfeed=true,powered=true": { "model": "machinemod:machinefeedtroughfull", "y": 90 },
+        "facing=south,hasfeed=true,powered=true": { "model": "machinemod:machinefeedtroughfull", "y": 270 },
+        "facing=west,hasfeed=true,powered=true":  { "model": "machinemod:machinefeedtroughfull", "y": 180},
+        "facing=east,hasfeed=true,powered=true":  { "model": "machinemod:machinefeedtroughfull" },        
+        "facing=north,hasfeed=true,powered=false": { "model": "machinemod:machinefeedtroughfull", "y": 90  },
+        "facing=south,hasfeed=true,powered=false": { "model": "machinemod:machinefeedtroughfull",  "y": 270},
+        "facing=west,hasfeed=true,powered=false":  { "model": "machinemod:machinefeedtroughfull", "y": 180 },
+        "facing=east,hasfeed=true,powered=false": { "model": "machinemod:machinefeedtroughfull" }
+        
+    }
+}
+

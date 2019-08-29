@@ -24,9 +24,9 @@ public class EntityLawnmower extends EntityMachineModRideable {
 		SIZE = 9;
 		inventory = new ItemStackHandler(SIZE);
 		// inventory = new ItemStack[9];
-		this.mountedOffsetY = 0.55D;
-		this.mountedOffsetX = -0.65d;
-		this.mountedOffsetZ = -0.65d;
+		this.mountedOffsetY = 0.75D;
+		this.mountedOffsetX = -0.90d;
+		this.mountedOffsetZ = -0.9d;
 		this.maxAngle = 0;
 		this.minAngle = -60;
 		this.droppedItem = ModItems.lawnmower;
