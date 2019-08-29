@@ -1,0 +1,21 @@
+{
+    "result": {
+        "item": "machinemod:machinefeedtrough"
+    },
+    "pattern" : [
+        "   ",
+        "srs",
+        "sss"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "s":{
+        "type": "forge:ore_dict",
+        "ore": "ingotSteel"   
+      
+      },
+     "r":{
+      "item":"minecraft:redstone"
+      }
+    }
+}
