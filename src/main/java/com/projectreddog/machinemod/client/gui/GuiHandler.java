@@ -19,6 +19,8 @@ import com.projectreddog.machinemod.container.ContainerLoader;
 import com.projectreddog.machinemod.container.ContainerPaver;
 import com.projectreddog.machinemod.container.ContainerPrimaryCrusher;
 import com.projectreddog.machinemod.container.ContainerScreen;
+import com.projectreddog.machinemod.container.ContainerTowerCrane;
+import com.projectreddog.machinemod.container.ContainerTowerCraneSettings;
 import com.projectreddog.machinemod.container.ContainerTrackLoader;
 import com.projectreddog.machinemod.container.ContainerTractor;
 import com.projectreddog.machinemod.container.ContainerTurboFurnace;
@@ -46,6 +48,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillatio
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 import com.projectreddog.machinemod.tileentities.TileEntityScreen;
+import com.projectreddog.machinemod.tileentities.TileEntityTowerCrane;
 import com.projectreddog.machinemod.tileentities.TileEntityTurboFurnace;
 
 import net.minecraft.entity.Entity;
@@ -255,6 +258,22 @@ public class GuiHandler implements IGuiHandler {
 					return new ContainerContinuousMiner(player.inventory, (EntityContinuousMiner) entity);
 				}
 			}
+		} else if (id == Reference.GUI_TOWER_CRANE) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityTowerCrane) {
+
+					return new ContainerTowerCrane(player.inventory, (TileEntityTowerCrane) entity);
+				}
+			}
+		} else if (id == Reference.GUI_TOWER_CRANE_SETTINGS) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityTowerCrane) {
+
+					return new ContainerTowerCraneSettings(player.inventory, (TileEntityTowerCrane) entity);
 		} else if (id == Reference.GUI_TRACK_LOADER) {
 
 			Entity entity = world.getEntityByID(x);
@@ -456,6 +475,20 @@ public class GuiHandler implements IGuiHandler {
 					return new GuiContinuousMiner(player.inventory, (EntityContinuousMiner) entity);
 				}
 			}
+		} else if (id == Reference.GUI_TOWER_CRANE) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityTowerCrane) {
+					return new GuiTowerCrane(player.inventory, (TileEntityTowerCrane) entity);
+				}
+			}
+		} else if (id == Reference.GUI_TOWER_CRANE_SETTINGS) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityTowerCrane) {
+					return new GuiTowerCraneSettings(player.inventory, (TileEntityTowerCrane) entity);
 		} else if (id == Reference.GUI_TRACK_LOADER) {
 
 			Entity entity = world.getEntityByID(x);

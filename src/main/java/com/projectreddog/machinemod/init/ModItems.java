@@ -13,6 +13,7 @@ import com.projectreddog.machinemod.item.ItemCarbonDust;
 import com.projectreddog.machinemod.item.ItemCollapsedStar;
 import com.projectreddog.machinemod.item.ItemConeCrusher;
 import com.projectreddog.machinemod.item.ItemCornSeed;
+import com.projectreddog.machinemod.item.ItemCreativeInstantBuild;
 import com.projectreddog.machinemod.item.ItemCutterBucket;
 import com.projectreddog.machinemod.item.ItemDrillHead;
 import com.projectreddog.machinemod.item.ItemDrillPipe;
@@ -23,6 +24,7 @@ import com.projectreddog.machinemod.item.ItemHammer;
 import com.projectreddog.machinemod.item.ItemHandDrill;
 import com.projectreddog.machinemod.item.ItemHose;
 import com.projectreddog.machinemod.item.ItemIronDust;
+import com.projectreddog.machinemod.item.ItemLaser;
 import com.projectreddog.machinemod.item.ItemLidWithSpout;
 import com.projectreddog.machinemod.item.ItemLight;
 import com.projectreddog.machinemod.item.ItemLightModule;
@@ -142,6 +144,9 @@ public class ModItems {
 	public static final ItemMachineMod bleakcrystal = new ItemBleakCrystal();
 
 	public static final ItemMachineMod carbondust = new ItemCarbonDust();
+	public static final ItemMachineMod laser = new ItemLaser();
+	public static final ItemMachineMod creativeinstantbuild = new ItemCreativeInstantBuild();
+
 	public static final ItemMachineMod steeldust = new ItemSteelDust();
 	public static final ItemMachineMod steelingot = new ItemSteelIngot();
 
@@ -476,6 +481,8 @@ public class ModItems {
 		ForgeRegistries.ITEMS.register(wrench);// , "wrench");
 
 		ForgeRegistries.ITEMS.register(carbondust);// , "carbondust");
+		ForgeRegistries.ITEMS.register(laser);
+		ForgeRegistries.ITEMS.register(creativeinstantbuild);
 
 		ForgeRegistries.ITEMS.register(steeldust);// , "steeldust");
 
@@ -635,6 +642,10 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bleakcrystal, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bleakcrystal", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(carbondust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "carbondust", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(laser, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "laser", "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(creativeinstantbuild, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "creativeinstantbuild", "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(steeldust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "steeldust", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(steelingot, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "steelingot", "inventory"));
 
