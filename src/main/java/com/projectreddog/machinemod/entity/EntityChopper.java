@@ -43,7 +43,6 @@ public class EntityChopper extends EntityMachineModRideable {
 
 	@Override
 	public void onUpdate() {
-		super.onUpdate();
 		if (!world.isRemote) {
 			if (this.getControllingPassenger() != null && currentFuelLevel > 0) {
 				this.Attribute2++;
@@ -76,6 +75,14 @@ public class EntityChopper extends EntityMachineModRideable {
 				entityPlayer.motionY = 0;
 
 			}
+			if (this.collidedHorizontally) {
+				this.world.createExplosion(this, this.posX, this.posY, this.posZ, 5, true);
+				this.setDead();
+			}
+		}
+		super.onUpdate();
+
+		if (!world.isRemote) {
 			if (this.collidedHorizontally) {
 				this.world.createExplosion(this, this.posX, this.posY, this.posZ, 5, true);
 				this.setDead();

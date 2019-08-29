@@ -1,0 +1,8 @@
+{
+    "parent": "block/half_slab",
+    "textures": {
+        "bottom": "machinemod:blocks/asphalt",
+        "top": "machinemod:blocks/asphalt",
+        "side": "machinemod:blocks/asphalt"
+    }
+}

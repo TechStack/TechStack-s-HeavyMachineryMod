@@ -1,6 +1,7 @@
 # Item Localizations
 
 item.machinemod:bulldozer.name=Bulldozer
+item.machinemod:trackloader.name=Track Loader
 item.machinemod:drillingrig.name=Drilling Rig
 item.machinemod:dumptruck.name=Dump Truck
 item.machinemod:loader.name=Loader
@@ -20,6 +21,7 @@ item.machinemod:irondust.name=Iron Dust
 item.machinemod:golddust.name=Gold Dust
 item.machinemod:rawasphalt.name=Raw Asphalt
 item.machinemod:blueprintcontinuousminer.name= Blue Print - Continuous Miner - WIP
+item.machinemod:blueprintlaserminer.name= Blue Print - Laser Miner - Tech II - WIP
 item.machinemod:blueprintconduit.name= Blue Print - Conduit - WIP
 item.machinemod:blueprintfactory.name= Blue Print - Factory - WIP
 item.machinemod:blueprintgenerator.name= Blue Print - Generator - WIP
@@ -60,6 +62,7 @@ item.machinemod:lawnmower.name=Riding Lawn Mower
 item.machinemod:mowerdeck.name=Mower Deck
 item.machinemod:liquidtanksegment.name=Liquid tank segment
 item.machinemod:continuousminer.name=Continuous Miner - WIP
+item.machinemod:laserminer.name=Laser Miner - WIP
 item.machinemod:chopper.name=Chopper
 
 item.machinemod:citroniteingot.name=Citronite Ingot
@@ -140,6 +143,7 @@ tile.machinemod:machineconduit.name=Conduit
 tile.machinemod:machineturbofurnace.name=Turbo furnace
 
 tile.machinemod:machineasphalt.name=Asphalt
+tile.machinemod:machineasphaltslab.name=Asphalt Slab
 tile.machinemod:machinebleakdirt.name=Bleak Dirt
 tile.machinemod:machinebleakcrystal.name=Bleak Crystal
 tile.machinemod:machinebleakportalframe.name=Bleak Portal Frame
@@ -160,6 +164,7 @@ tile.machinemod:machinebleakoreunobtanium.name=Unobtanium Ore
 tile.machinemod:machineliquidpipe.name=Liquid Pipe
 tile.machineliquidpipe.name=Liquid Pipe
 tile.machinemod:machinecompressedasphalt.name=Compressed Asphalt
+tile.machinemod:machinecompressedasphaltslab.name=Compressed Asphalt Slab
 
 tile.machinemod:machineblastedstone.name=Blasted Stone
 tile.machinemod:machineexplosivepackeddrilledstone.name=Explosive Packed Drilled Stone

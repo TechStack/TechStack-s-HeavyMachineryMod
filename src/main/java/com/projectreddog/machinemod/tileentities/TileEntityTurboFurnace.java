@@ -87,18 +87,25 @@ public class TileEntityTurboFurnace extends TileEntity implements ITickable, ISi
 			// slot 0 = Input
 			// SLOT 1 = Output
 			// Slot 2 = FUEL
-
+			int resultsize = 0;
 			ItemStack inputItemStack = getStackInSlot(0);
-			ItemStack resultItemStack = FurnaceRecipes.instance().getSmeltingResult(inputItemStack);
-
-			if (resultItemStack.isEmpty()) {
-				resultItemStack = checkTruboFurnaceRecipes(inputItemStack);
+			ItemStack resultItemStack = checkTruboFurnaceRecipes(inputItemStack);
+			if (!resultItemStack.isEmpty()) {
+				resultsize = resultItemStack.getCount();
 			}
 
+			if (resultItemStack.isEmpty()) {
+				resultItemStack = FurnaceRecipes.instance().getSmeltingResult(inputItemStack);
+				resultsize = resultItemStack.getMaxStackSize();
+			}
+
+			resultItemStack = resultItemStack.copy();
+			resultItemStack.setCount(resultsize);
 			ItemStack outputSlotItemStack = getStackInSlot(1);
 
 			if (outputSlotItemStack.isEmpty()) {
 				setInventorySlotContents(1, resultItemStack.copy());
+
 			} else if (outputSlotItemStack.getItem() == resultItemStack.getItem()) {
 				outputSlotItemStack.grow(resultItemStack.getCount());
 			}
@@ -120,11 +127,12 @@ public class TileEntityTurboFurnace extends TileEntity implements ITickable, ISi
 			// no input can't smelt it!
 			return false;
 		} else {
-			ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(getStackInSlot(0));
+			ItemStack itemstack = checkTruboFurnaceRecipes(getStackInSlot(0));
 			if (itemstack.isEmpty()) {
-				itemstack = checkTruboFurnaceRecipes(getStackInSlot(0));
-			}
+				itemstack = FurnaceRecipes.instance().getSmeltingResult(getStackInSlot(0));
 
+			}
+			itemstack = itemstack.copy();
 			if (itemstack.isEmpty()) {
 				return false;
 			} else {

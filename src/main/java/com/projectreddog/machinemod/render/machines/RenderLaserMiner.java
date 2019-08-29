@@ -2,6 +2,7 @@ package com.projectreddog.machinemod.render.machines;
 
 import org.lwjgl.opengl.GL11;
 
+import com.projectreddog.machinemod.entity.EntityLaserMiner;
 import com.projectreddog.machinemod.model.ModelBeam;
 import com.projectreddog.machinemod.model.ModelLaserMiner;
 import com.projectreddog.machinemod.reference.Reference;
@@ -39,7 +40,27 @@ public class RenderLaserMiner extends Render {
 		this.modelLaserMiner.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
 		// ((ModelTractor) this.modelTractor).renderGroupObject("Plow_Cube");
-		this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, .0625f);
+		GL11.glTranslatef(-1.55f, -1.8f, -5.2f);
+		// GL11.glTranslatef(.015f, -1.8f, -5.1f);
+
+		float rotatemarker = 0;
+
+		if (entity instanceof EntityLaserMiner) {
+			EntityLaserMiner laserMiner = (EntityLaserMiner) entity;
+			if (laserMiner.isBeingRidden() && laserMiner.currentFuelLevel > 0) {
+				rotatemarker = 1;
+			}
+		}
+
+		this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, rotatemarker);
+		GL11.glTranslatef(.775f, 0f, 0f);
+		this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, rotatemarker);
+		GL11.glTranslatef(.775f, 0f, 0f);
+		this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, rotatemarker);
+		GL11.glTranslatef(.775f, 0f, 0f);
+		this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, rotatemarker);
+		GL11.glTranslatef(.775f, 0f, 0f);
+		this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, rotatemarker);
 		GL11.glPopMatrix();
 	}
 

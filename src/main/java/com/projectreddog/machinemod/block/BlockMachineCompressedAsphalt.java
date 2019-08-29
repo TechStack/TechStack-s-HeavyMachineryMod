@@ -1,6 +1,8 @@
 package com.projectreddog.machinemod.block;
 
 import com.projectreddog.machinemod.entity.EntityMachineModRideable;
+import com.projectreddog.machinemod.entity.EntityPaver;
+import com.projectreddog.machinemod.entity.EntityRoadRoller;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.block.SoundType;
@@ -41,6 +43,9 @@ public class BlockMachineCompressedAsphalt extends BlockMachineMod {
 			// not a player
 			if (!(entity instanceof EntityMachineModRideable)) {
 				// not a machine mod rideable
+				return;
+
+			} else if ((entity instanceof EntityMachineModRideable) && ((entity instanceof EntityRoadRoller) || (entity instanceof EntityPaver))) {
 				return;
 
 			} else if (!((EntityMachineModRideable) entity).isPlayerAccelerating && !((EntityMachineModRideable) entity).isPlayerBreaking) {

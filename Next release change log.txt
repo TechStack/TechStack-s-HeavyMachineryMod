@@ -3,9 +3,9 @@ Log for this log :
 
 
 Lots of new features in this update
-Some of which are still WIP & will be enahanced or built on in future releases I wanted to release this now to address some bugs & allow players to get started with the new features!
+Some of which are still WIP & will be enhanced or built on in future releases I wanted to release this now to address some bugs & allow players to get started with the new features!
 
-Few examples of changes/ addtions since the last publich release.
+Few examples of changes/ additions since the last public release.
 New Content:
 	New Dimension added
 		- Bleak Dimension
@@ -30,16 +30,18 @@ New Content:
 		- Bleak dirt
 		- Various Bleak ores
 		- Bleak crystals
-		- Generator - WIP no gui but useable for now.
-		- Conduit - WIP - Power tansmision system not ready for real use yet. - Will not work in all cases
-		- Battery Bank- WIP - Power tansmision system not ready for real use yet. - Will not work in all cases
+		- Generator - WIP no gui but usable for now.
+		- Conduit - WIP - Power transmission system not ready for real use yet. - Will not work in all cases
+		- Battery Bank- WIP - Power transmission system not ready for real use yet. - Will not work in all cases
 		- Assembly table
-		- Factory (robot arm) Used to autoamte work in the assembly table.
-		- Turbo Furnace - Much faster than vanilla furnance but requires blaze powder as fuel- No other fuel will work. - Smelts stacks at a time.
+		- Factory (robot arm) Used to automate work in the assembly table.
+		- Turbo Furnace - Much faster than vanilla furnace but requires blaze powder as fuel- No other fuel will work. - Smelts stacks at a time.
 			Can be used to smelt bleak stone into Asphalt
 		- Bleak portal block
 		- Industrial Shredder - Kills anything that falls into the block above it. 
-	
+		-- Asphalt & Compressed Asphalt Slabs were added for making roads go up gradients. The uncompressed version must be manually placed , The paver will not place them. Roll them with the road roller to make the compressed version with the speed boost.
+	       - only the asphalt (non compressed) version is craftable by using 3 raw asphalt at the bottom of the crafting grid.
+	       
 	World Gen:
 		Added Villager Named Engineer with custom trades. Spawns near the new Villager house or randomly when villagers breed.
 		Added a villager house for the engineer - Only spawns in newly generated chunks.
@@ -57,7 +59,7 @@ Changes
 Bug Fixes:
 	Fixed: Crash when machine falls into the void
 	Possible Fix: for corn not getting picked up as a crop for other mods.
-	Fixed: Crash caused by Render of the : distiller , fermeter ect
+	Fixed: Crash caused by Render of the : distiller , fermenter ect
 	Fixed: Visual position of the paver on the flatbed truck.
 	Fixed: Dupe Bug in Crates
 	Fixed: Possible issue where drilled stone is not updated for other clients in MP worlds
