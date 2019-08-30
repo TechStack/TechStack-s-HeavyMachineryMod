@@ -4,15 +4,26 @@ Track loader works for front bucket but not back rake.
 underground loader Needs work, render seat functions
 underground dump truck Needs work, render seat functions
 
+block:
 Towercrane needs bug fixes, GUI enhanced for chooosing  blueprint 
-
+item:
 laser scanner needs to allow for choice of filename etc..
 
+Recipies for everything above
 
 
+
+
+
+
+---------
+issue machines over hoppers do not drain inventory anymore.
+Found out why its happening but not a fix yet. It seems that when i switched from using the normal IInventory for the machines over to using forge's new capability system it broke the interactions with vanilla hoppers for entities. Will need to research it more on how /if it can be fixed.
+possible work around . Unloader.
+----------
 
 		
-Fix distiller slot location & texture!		
+Fix distiller gui slot location & texture!		
 		
 
 Remote Detonator 
