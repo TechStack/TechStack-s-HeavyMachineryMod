@@ -26,6 +26,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -47,7 +48,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class EntityMachineModRideable extends Entity {
+public class EntityMachineModRideable extends Entity implements IInventory {
 
 	public double velocity;
 	public float yaw;
@@ -954,5 +955,109 @@ public class EntityMachineModRideable extends Entity {
 	public boolean isUsableByPlayer(EntityPlayer player) {
 		// check if the player is near the entity.
 		return player.getDistanceSq(posX, posY, posZ) < 64;
+	}
+
+	@Override
+	public int getSizeInventory() {
+		return inventory.getSlots();
+	}
+
+	@Override
+	public boolean isEmpty() {
+
+		for (int i = 0; i < inventory.getSlots(); i++) {
+
+			if (!inventory.getStackInSlot(i).isEmpty()) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	@Override
+	public ItemStack getStackInSlot(int index) {
+		return inventory.getStackInSlot(index);
+	}
+
+	@Override
+	public ItemStack decrStackSize(int slot, int amt) {
+		ItemStack stack = getStackInSlot(slot);
+		if (!stack.isEmpty()) {
+			if (stack.getCount() <= amt) {
+				setInventorySlotContents(slot, ItemStack.EMPTY);
+			} else {
+				stack = stack.splitStack(amt);
+				if (stack.getCount() == 0) {
+					setInventorySlotContents(slot, ItemStack.EMPTY);
+				}
+
+			}
+		}
+		return stack;
+	}
+
+	@Override
+	public ItemStack removeStackFromSlot(int slot) {
+		ItemStack stack = getStackInSlot(slot);
+		if (!stack.isEmpty()) {
+			setInventorySlotContents(slot, ItemStack.EMPTY);
+		}
+		return stack;
+	}
+
+	@Override
+	public void setInventorySlotContents(int slot, ItemStack stack) {
+		inventory.insertItem(slot, stack, false);
+		if (!stack.isEmpty() && stack.getCount() > getInventoryStackLimit()) {
+			stack.setCount(getInventoryStackLimit());
+		}
+
+	}
+
+	@Override
+	public int getInventoryStackLimit() {
+		return 64;
+	}
+
+	@Override
+	public void markDirty() {
+
+	}
+
+	@Override
+	public void openInventory(EntityPlayer player) {
+
+	}
+
+	@Override
+	public void closeInventory(EntityPlayer player) {
+
+	}
+
+	@Override
+	public boolean isItemValidForSlot(int index, ItemStack stack) {
+
+		return true;
+	}
+
+	@Override
+	public int getField(int id) {
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {
+
+	}
+
+	@Override
+	public int getFieldCount() {
+		return 0;
+	}
+
+	@Override
+	public void clear() {
+
 	}
 }
