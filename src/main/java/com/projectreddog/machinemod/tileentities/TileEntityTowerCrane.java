@@ -321,8 +321,9 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 							// TODO call block place code!
 
 			// BlockBlueprintHelper.BuildBlocks("TESTFILE", this.world, this.pos, Rotation.NONE, false, currentX, currentY, currentZ);
-			BlockBlueprintHelper.setBlockState(this.world, this.pos.add(placingposX, currentY, placingposZ), BlockBluePrintArray[currentX][currentY][currentZ], getFacing());
-
+			if (BlockBluePrintArray != null) {
+				BlockBlueprintHelper.setBlockState(this.world, this.pos.add(placingposX, currentY, placingposZ), BlockBluePrintArray[currentX][currentY][currentZ], getFacing());
+			}
 			// prevArmRotation=targetGantryPos;
 			// prevGantryPos=targetGantryPos;
 			// prevWencPos;
@@ -344,23 +345,25 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 
 			}
 
-			while (BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.AIR) {
+			if (BlockBluePrintArray != null) {
+				while (BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.AIR) {
 
-				currentX = currentX + 1;
-				if (currentX > 16) {
-					currentX = 0;
-					currentZ = currentZ + 1;
-				}
-				if (currentZ > 16) {
-					currentZ = 0;
-					currentY = currentY + 1;
-				}
+					currentX = currentX + 1;
+					if (currentX > 16) {
+						currentX = 0;
+						currentZ = currentZ + 1;
+					}
+					if (currentZ > 16) {
+						currentZ = 0;
+						currentY = currentY + 1;
+					}
 
-				if (currentY > 16) {
-					currentY = 0;
-					currentX = 0;
-					currentZ = 0;
+					if (currentY > 16) {
+						currentY = 0;
+						currentX = 0;
+						currentZ = 0;
 
+					}
 				}
 			}
 

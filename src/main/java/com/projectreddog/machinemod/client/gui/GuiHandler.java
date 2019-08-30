@@ -272,8 +272,9 @@ public class GuiHandler implements IGuiHandler {
 			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
 			if (entity != null) {
 				if (entity instanceof TileEntityTowerCrane) {
-
 					return new ContainerTowerCraneSettings(player.inventory, (TileEntityTowerCrane) entity);
+				}
+			}
 		} else if (id == Reference.GUI_TRACK_LOADER) {
 
 			Entity entity = world.getEntityByID(x);
@@ -489,6 +490,8 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null) {
 				if (entity instanceof TileEntityTowerCrane) {
 					return new GuiTowerCraneSettings(player.inventory, (TileEntityTowerCrane) entity);
+				}
+			}
 		} else if (id == Reference.GUI_TRACK_LOADER) {
 
 			Entity entity = world.getEntityByID(x);

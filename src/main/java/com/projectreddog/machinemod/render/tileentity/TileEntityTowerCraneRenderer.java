@@ -106,7 +106,11 @@ public class TileEntityTowerCraneRenderer extends TileEntitySpecialRenderer {
 		if (tileentity instanceof TileEntityTowerCrane) {
 			TileEntityTowerCrane tetc = (TileEntityTowerCrane) tileentity;
 			if (tetc.state == 2 || tetc.state == 3 || tetc.state == 4) {
-				is = new ItemStack(tetc.BlockBluePrintArray[tetc.currentX][tetc.currentY][tetc.currentZ].getBlock(), 1, tetc.BlockBluePrintArray[tetc.currentX][tetc.currentY][tetc.currentZ].getBlock().damageDropped(tetc.BlockBluePrintArray[tetc.currentX][tetc.currentY][tetc.currentZ]));
+				if (tetc.BlockBluePrintArray != null) {
+					is = new ItemStack(tetc.BlockBluePrintArray[tetc.currentX][tetc.currentY][tetc.currentZ].getBlock(), 1, tetc.BlockBluePrintArray[tetc.currentX][tetc.currentY][tetc.currentZ].getBlock().damageDropped(tetc.BlockBluePrintArray[tetc.currentX][tetc.currentY][tetc.currentZ]));
+				} else {
+					is = ItemStack.EMPTY;
+				}
 			} else {
 				is = ItemStack.EMPTY;
 			}

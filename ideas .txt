@@ -1,16 +1,16 @@
+Entity:
+Laser miner mostly done.
+Track loader works for front bucket but not back rake.
+underground loader Needs work, render seat functions
+underground dump truck Needs work, render seat functions
 
-cow feeder?
-	Done block created 
-		Done needs texture & model
-		Done needs inventory on tileentity 
-		Done must check the inventory for the item to feed the animals Maybe 1 slot.
-		maybe power later?
-		Done Block height
-		Done show if it has items in it.
-		Done FIx GUI slot location and texture
-		
-		
-		
+Towercrane needs bug fixes, GUI enhanced for chooosing  blueprint 
+
+laser scanner needs to allow for choice of filename etc..
+
+
+
+
 		
 Fix distiller slot location & texture!		
 		
@@ -36,6 +36,10 @@ In bulldozer
 Dropped 2 blocks down fall damage in machines
 
 
+old branch merge 1.12 work !
+Under ground loader WIP 
+under ground dump truck wip
+Laser miner need better recipie
 
 
 
