@@ -27,21 +27,21 @@ public class GuiLaserLevel extends GuiContainer {
 		this.xSize = 256;
 		this.ySize = 222;
 
-		int buttonX = this.width / 2 + 52;
-		int buttonY = this.height / 2 - 94;
+		int targetX = this.width / 2 + 52;
+		int targetY = this.height / 2 - 94;
 
 		// this.buttonList.add(new GuiButton(Reference.GUI_TOWER_CRANE_BUTTON_SETTINGS, buttonX, buttonY, 15, 20, DeprecatedWrapper.translateToLocal("gui.towercrane.settings")));
 
-		this.fileName = new GuiTextField(0, this.fontRenderer, this.guiLeft, this.guiTop, 80, this.fontRenderer.FONT_HEIGHT);
+		this.fileName = new GuiTextField(0, this.fontRenderer, targetX - 172, targetY + 12, 250, this.fontRenderer.FONT_HEIGHT);
 		// this
 		this.fileName.setMaxStringLength(100);
-		this.fileName.width = 100;
+		this.fileName.width = 185;
 		this.fileName.setEnableBackgroundDrawing(true);
 		this.fileName.setVisible(true);
 		this.fileName.setTextColor(16777215);
 		this.fileName.setCanLoseFocus(true);
 		this.fileName.setFocused(true);
-		this.fileName.setText("dsafdsfsd");
+		this.fileName.setText("MyBlueprint");
 
 		super.initGui();
 
@@ -75,13 +75,16 @@ public class GuiLaserLevel extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int param1, int param2) {
 
+		fontRenderer.drawString("Save Block Blueprint", 8, 5, 4210752);
+		fontRenderer.drawString("Name:", 8, 19, 4210752);
+
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
 
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID, "textures/gui/towercrane.png"));
+		this.mc.renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID, "textures/gui/blueprintsave.png"));
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
