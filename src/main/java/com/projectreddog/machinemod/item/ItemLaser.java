@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
 
+import com.projectreddog.machinemod.MachineMod;
+import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -52,6 +54,8 @@ public class ItemLaser extends ItemMachineMod {
 			if (Point1Map.containsKey(tmpUUID)) {
 				Point2Map.put(tmpUUID, pos);
 				// Both set do the scan now ?
+				player.openGui(MachineMod.instance, Reference.GUI_LASAER_LEVEL, world, pos.getX(), pos.getY(), pos.getZ());
+
 				ScanBlocks(world, Point1Map.get(tmpUUID), Point2Map.get(tmpUUID));
 			} else {
 				// no map create new!
@@ -66,6 +70,7 @@ public class ItemLaser extends ItemMachineMod {
 	}
 
 	private boolean ScanBlocks(World world, BlockPos pos1, BlockPos pos2) {
+
 		boolean result = true;
 		int dx;
 		int dy;

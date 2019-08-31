@@ -14,6 +14,7 @@ import com.projectreddog.machinemod.container.ContainerFeedTrough;
 import com.projectreddog.machinemod.container.ContainerFermenter;
 import com.projectreddog.machinemod.container.ContainerFractionalDistiller;
 import com.projectreddog.machinemod.container.ContainerGrader;
+import com.projectreddog.machinemod.container.ContainerLaserLevel;
 import com.projectreddog.machinemod.container.ContainerLaserMiner;
 import com.projectreddog.machinemod.container.ContainerLoader;
 import com.projectreddog.machinemod.container.ContainerPaver;
@@ -295,6 +296,10 @@ public class GuiHandler implements IGuiHandler {
 					return new ContainerLaserMiner(player.inventory, (EntityLaserMiner) entity);
 				}
 			}
+		} else if (id == Reference.GUI_LASAER_LEVEL) {
+
+			return new ContainerLaserLevel(player.inventory);
+
 		}
 
 		return null;
@@ -508,6 +513,10 @@ public class GuiHandler implements IGuiHandler {
 					return new GuiLaserMiner(player.inventory, (EntityLaserMiner) entity);
 				}
 			}
+		} else if (id == Reference.GUI_LASAER_LEVEL) {
+
+			return new GuiLaserLevel(player.inventory);
+
 		}
 
 		return null;

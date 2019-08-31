@@ -13,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
 public class GuiLaserMiner extends GuiContainer {
 
 	public GuiLaserMiner(InventoryPlayer inventoryPlayer, EntityLaserMiner laserminer) {
-		// the container is instanciated and passed to the superclass for
+		// the container is instantiated and passed to the superclass for
 		// handling
 
 		super(new ContainerLaserMiner(inventoryPlayer, laserminer));

@@ -2,6 +2,7 @@ package com.projectreddog.machinemod.client.gui;
 
 import java.io.IOException;
 
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.MachineMod;
@@ -9,17 +10,24 @@ import com.projectreddog.machinemod.container.ContainerTowerCrane;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityTowerCrane;
 import com.projectreddog.machinemod.utility.DeprecatedWrapper;
+import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 
 public class GuiTowerCrane extends GuiContainer {
 
 	private TileEntityTowerCrane towerCrane;
 	private InventoryPlayer iplayer;
+	float scrollPosY = 0;
+
+	int slotvertcount = 6;
+
+	boolean wasMouseDownLastFrame = false;
 
 	public GuiTowerCrane(InventoryPlayer inventoryPlayer, TileEntityTowerCrane towerCrane) {
 		super(new ContainerTowerCrane(inventoryPlayer, towerCrane));
@@ -59,10 +67,55 @@ public class GuiTowerCrane extends GuiContainer {
 	}
 
 	@Override
+	public void handleMouseInput() throws IOException {
+		super.handleMouseInput();
+		int i = Mouse.getEventDWheel();
+
+		if (i != 0) {
+
+			int j = (((towerCrane.getSizeInventory() + 9 - 1) / 9 - slotvertcount));
+
+			if (i > 0) {
+				i = 1;
+			}
+
+			if (i < 0) {
+				i = -1;
+			}
+
+			this.scrollPosY = (float) ((double) this.scrollPosY - (double) i / (double) j);
+			this.scrollPosY = MathHelper.clamp(this.scrollPosY, 0.0F, 1.0F);
+		}
+
+	}
+
+	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		this.drawDefaultBackground();
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		this.renderHoveredToolTip(mouseX, mouseY);
+
+		boolean isMouseDown = Mouse.isButtonDown(0);
+
+		if (isMouseDown && !wasMouseDownLastFrame) {
+			// just started a new click.
+			wasMouseDownLastFrame = true;
+			// Define scroll bar area here and check if Wwe are in it.
+			int left = this.guiLeft + 171;
+			int top = this.guiTop + 18;
+			int bottom = this.guiTop + 18 + 100;
+			int right = this.guiLeft + 171 + 7;
+
+			if (mouseX > left && mouseX < right && mouseY > top && mouseY < bottom) {
+				// We are in the scroll region
+				int j = (((towerCrane.getSizeInventory() + 9 - 1) / 9 - slotvertcount));
+
+				this.scrollPosY = j * (((float) mouseY - top) / ((float) bottom - top));
+				LogHelper.info(scrollPosY);
+			}
+		} else {
+			wasMouseDownLastFrame = false;
+		}
 	}
 
 	@Override
@@ -81,7 +134,7 @@ public class GuiTowerCrane extends GuiContainer {
 
 		this.mc.renderEngine.bindTexture(getTextureLocationScrollBar());
 
-		this.drawTexturedModalRect(x + 171, y + 18, 0, 0, 100, 180);
+		this.drawTexturedModalRect(x + 171, y + 18 + scrollPosY, 0, 0, 100, 180);
 	}
 
 	private ResourceLocation scrollbar;

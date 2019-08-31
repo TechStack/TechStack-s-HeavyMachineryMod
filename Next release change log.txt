@@ -46,7 +46,7 @@ New Content:
 		Added Villager Named Engineer with custom trades. Spawns near the new Villager house or randomly when villagers breed.
 		Added a villager house for the engineer - Only spawns in newly generated chunks.
 Changes 
-	Updated to the latest Forge stable release. 
+	Updated to the latest Forge stable release: 
 		2768
 	Machine interaction changes:
 		all machines
