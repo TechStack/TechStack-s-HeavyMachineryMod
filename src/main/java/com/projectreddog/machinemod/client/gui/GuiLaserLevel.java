@@ -5,9 +5,13 @@ import java.io.IOException;
 import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.container.ContainerLaserLevel;
+import com.projectreddog.machinemod.init.ModNetwork;
+import com.projectreddog.machinemod.network.MachineModMessageBlockBlueprintSaveToServer;
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.utility.DeprecatedWrapper;
 
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -30,7 +34,7 @@ public class GuiLaserLevel extends GuiContainer {
 		int targetX = this.width / 2 + 52;
 		int targetY = this.height / 2 - 94;
 
-		// this.buttonList.add(new GuiButton(Reference.GUI_TOWER_CRANE_BUTTON_SETTINGS, buttonX, buttonY, 15, 20, DeprecatedWrapper.translateToLocal("gui.towercrane.settings")));
+		this.buttonList.add(new GuiButton(Reference.GUI_TOWER_CRANE_BUTTON_SETTINGS, targetX - 20, targetY + 177, 30, 20, DeprecatedWrapper.translateToLocal("gui.laserlevel.savebutton")));
 
 		this.fileName = new GuiTextField(0, this.fontRenderer, targetX - 172, targetY + 12, 250, this.fontRenderer.FONT_HEIGHT);
 		// this
@@ -51,17 +55,93 @@ public class GuiLaserLevel extends GuiContainer {
 	protected void keyTyped(char typedChar, int keyCode) throws IOException
 
 	{
-		fileName.textboxKeyTyped(typedChar, keyCode);
-		super.keyTyped(typedChar, keyCode);
+
+		if (isvalidTypedkey(typedChar)) {
+			fileName.textboxKeyTyped(typedChar, keyCode);
+		}
+		if (keyCode != 18) {
+			super.keyTyped(typedChar, keyCode);
+		}
+	}
+
+	public boolean isvalidTypedkey(char typedChar) {
+		switch (typedChar) {
+		case '!':
+			return false;
+		case '@':
+			return false;
+		case '#':
+			return false;
+		case '$':
+			return false;
+		case '%':
+			return false;
+		case '^':
+			return false;
+		case '&':
+			return false;
+		case '*':
+			return false;
+		case '(':
+			return false;
+		case ')':
+			return false;
+		case '=':
+			return false;
+		case '+':
+			return false;
+		case '/':
+			return false;
+		case '\\':
+			return false;
+
+		case '`':
+			return false;
+		case '\'':
+			return false;
+		case '"':
+			return false;
+		case '{':
+			return false;
+		case '}':
+			return false;
+		case '[':
+			return false;
+		case ']':
+			return false;
+		case ',':
+			return false;
+		case '.':
+			return false;
+		case '<':
+			return false;
+		case '?':
+			return false;
+		case ';':
+			return false;
+		case ':':
+			return false;
+		case '|':
+			return false;
+		case '>':
+			return false;
+
+		default:
+			return true;
+		}
 	}
 
 	/**
 	 * Called by the controls from the buttonList when activated. (Mouse pressed for buttons)
 	 */
 	protected void actionPerformed(GuiButton button) throws IOException {
-//		if (button.id == Reference.GUI_TOWER_CRANE_BUTTON_SETTINGS) {
-//		
-//		}
+		if (button.id == Reference.GUI_LASER_LEVEL_BUTTON_SAVE) {
+			// Button has been clicked.
+			this.mc.displayGuiScreen((GuiScreen) null);
+			// Send packet with filename & parms to server from client telling it to "Save" The blueprint at the cords.
+			ModNetwork.simpleNetworkWrapper.sendToServer(new MachineModMessageBlockBlueprintSaveToServer(this.fileName.getText(), 0, 0, 0, 1, 1, 1));
+
+		}
 
 	}
 
@@ -75,7 +155,7 @@ public class GuiLaserLevel extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int param1, int param2) {
 
-		fontRenderer.drawString("Save Block Blueprint", 8, 5, 4210752);
+		fontRenderer.drawString(DeprecatedWrapper.translateToLocal("gui.laserlevel.savetext"), 8, 5, 4210752);
 		fontRenderer.drawString("Name:", 8, 19, 4210752);
 
 	}

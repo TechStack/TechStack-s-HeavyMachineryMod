@@ -34,6 +34,9 @@ gui.assemblytable.assemble=Assemble
 gui.assemblytable.name=Assembly Table
 gui.towercrane.inventory=I
 gui.towercrane.settings=S
+
+gui.laserlevel.savetext=Save Block Blueprint
+gui.laserlevel.savebutton=Save
 item.machinemod:collapsedstar.name=Collapsed Star
 item.machinemod:camshaft.name=Camshaft
 item.machinemod:piston.name=piston

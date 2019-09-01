@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.client.gui.GuiHandler;
+import com.projectreddog.machinemod.network.MachineModMessageBlockBlueprintSaveToServer;
+import com.projectreddog.machinemod.network.MachineModMessageBlockBlueprintSaveToServerHandler;
 import com.projectreddog.machinemod.network.MachineModMessageEntityCurrentTargetPosToClient;
 import com.projectreddog.machinemod.network.MachineModMessageEntityCurrentTargetPosToClientHandler;
 import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClient;
@@ -73,6 +75,7 @@ public class ModNetwork {
 
 		simpleNetworkWrapper.registerMessage(MachineModMessageTEIntFieldToClientHandler.class, MachineModMessageTEIntFieldToClient.class, 11, Side.CLIENT);// message // to
 		simpleNetworkWrapper.registerMessage(MachineModMessageTETowerCranePosToClientHandler.class, MachineModMessageTETowerCranePosToClient.class, 12, Side.CLIENT);// message // to
+		simpleNetworkWrapper.registerMessage(MachineModMessageBlockBlueprintSaveToServerHandler.class, MachineModMessageBlockBlueprintSaveToServer.class, 13, Side.SERVER);// message to server
 
 		// to
 		// client

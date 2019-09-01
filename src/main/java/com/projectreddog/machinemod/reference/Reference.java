@@ -277,4 +277,7 @@ public class Reference {
 
 	public static final int GUI_TOWER_CRANE_BUTTON_SETTINGS = 1;
 	public static final int GUI_TOWER_CRANE_BUTTON_INVENTORY = 1;
+
+	public static final int GUI_LASER_LEVEL_BUTTON_SAVE = 1;
+
 }
