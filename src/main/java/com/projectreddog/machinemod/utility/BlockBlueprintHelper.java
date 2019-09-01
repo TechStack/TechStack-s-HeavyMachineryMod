@@ -195,8 +195,31 @@ public class BlockBlueprintHelper {
 		return result;
 	}
 
-	public static boolean ScanBlocks(World world, BlockPos pos1, BlockPos pos2, String FileName) {
+	public static void CreateBlueprintLocation() {
 
+		File f = new File("config/Machinemod");
+		LogHelper.info(f.mkdir());
+
+		f = new File("config/Machinemod/Blueprints");
+		LogHelper.info(f.mkdir());
+
+	}
+
+	public static String[] GetBlockBlueprintFileList() {
+
+		CreateBlueprintLocation();
+
+		File f = new File("config/Machinemod/Blueprints/");
+		f.list();
+		LogHelper.info(f.list());
+
+		return null;
+
+	}
+
+	public static boolean ScanBlocks(World world, BlockPos pos1, BlockPos pos2, String FileName) {
+		CreateBlueprintLocation();
+		GetBlockBlueprintFileList();
 		boolean result = true;
 		int dx;
 		int dy;
@@ -237,7 +260,7 @@ public class BlockBlueprintHelper {
 		dz = maxZ - minZ;
 		DataOutputStream dos = null;
 		try {
-			FileOutputStream fos = new FileOutputStream(new File(FileName));
+			FileOutputStream fos = new FileOutputStream(new File("config/Machinemod/Blueprints/" + FileName));
 			dos = new DataOutputStream(fos);
 
 			dos.writeInt(dx);
