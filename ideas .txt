@@ -15,12 +15,18 @@ Recipies for everything above
 
 test
 
+Idea: Add pickaxes for bleak dimension.
+ 
 
 ---------
 issue machines over hoppers do not drain inventory anymore.
 Found out why its happening but not a fix yet. It seems that when i switched from using the normal IInventory for the machines over to using forge's new capability system it broke the interactions with vanilla hoppers for entities. Will need to research it more on how /if it can be fixed.
 possible work around . Unloader.
 ----------
+
+
+Possible bug:
+hammer can go negaitve when your hacarky on durabliity 
 
 		
 Fix distiller gui slot location & texture!		

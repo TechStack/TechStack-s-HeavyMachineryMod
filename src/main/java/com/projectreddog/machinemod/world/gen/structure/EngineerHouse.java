@@ -37,8 +37,7 @@ import net.minecraft.world.gen.structure.StructureVillagePieces.Village;
 public class EngineerHouse extends Village {
 	int villagersSpawned = 0;
 
-	String[] TSCraftMembers = new String[] { "TechStack", "diegocob", "Chazmanm", "robbversion1", "MusicDiskMaster", "Alchao", "Czarified", "chanmaster99", "Griffen8280", "KingCam26", "SmashShock", "Dorff333", "scoote205", "drcobra", "FrozenDesign", "Doomthrak", "Pixule", "trayer3", "zenstic0", "samzataru", "XxDJ_DINOxX", "binaryactions", "tater_canon", "mwigby", "iJord4nn", "FallDownGuy",
-			"geekpeek", "mcfly64321", "DePowah", "help_12_21_2012", "MrMouselab", "nickgodin10", "Coolbum67", "King_Me56", "malcomful", "Owenrocks11", "supak1154", "Me_Is_Jake27", "frostydeath108", "spykid8", "Lazsa", "shadowmage4513", "Aragorn006", "Golden_Tree_Ink", "fierykilljoy", "Airbrat", "frost11111", "Gazer29", "Lunesta210x2", "matthewl6970", "kreezxil", "ProRed" };
+	String[] TSCraftMembers = new String[] { "TechStack", "diegocob", "Chazmanm", "robbversion1", "MusicDiskMaster", "Alchao", "Czarified", "chanmaster99", "Griffen8280", "KingCam26", "SmashShock", "Dorff333", "scoote205", "drcobra", "FrozenDesign", "Doomthrak", "Pixule", "trayer3", "zenstic0", "samzataru", "XxDJ_DINOxX", "binaryactions", "tater_canon", "mwigby", "iJord4nn", "FallDownGuy", "geekpeek", "mcfly64321", "DePowah", "help_12_21_2012", "MrMouselab", "nickgodin10", "Coolbum67", "King_Me56", "malcomful", "Owenrocks11", "supak1154", "Me_Is_Jake27", "frostydeath108", "spykid8", "Lazsa", "shadowmage4513", "Aragorn006", "Golden_Tree_Ink", "fierykilljoy", "Airbrat", "frost11111", "Gazer29", "Lunesta210x2", "matthewl6970", "kreezxil", "ProRed", "BiggZac", "Tr165Egle" };
 
 	public EngineerHouse(StructureVillagePieces.Start start, int type, StructureBoundingBox bounds, EnumFacing facing) {
 		super(start, type);
