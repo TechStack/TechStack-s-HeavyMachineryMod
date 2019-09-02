@@ -103,13 +103,16 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 
 	@Override
 	public void update() {
+
 		if (world.isRemote || !world.isRemote) {
 
 			if (BlockBluePrintArray == null) {
 				BlockBluePrintArray = BlockBlueprintHelper.getBlockStateArray("TESTFILE");
 			}
 		}
-		if (!world.isRemote) { // only run on server
+
+		// TODO remove the true == false later
+		if (!world.isRemote && true == false) { // only run on server
 
 			// TODO FIx to make server only latter and then use packets to update clients around !! yeah
 			//

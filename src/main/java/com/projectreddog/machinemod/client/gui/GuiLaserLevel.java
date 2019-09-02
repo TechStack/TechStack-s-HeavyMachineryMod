@@ -125,7 +125,8 @@ public class GuiLaserLevel extends GuiContainer {
 			return false;
 		case '>':
 			return false;
-
+		case '~':
+			return false;
 		default:
 			return true;
 		}

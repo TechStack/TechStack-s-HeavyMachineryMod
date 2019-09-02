@@ -38,7 +38,7 @@ public class MachineModMessageBlockBlueprintSaveToServerHandler implements IMess
 			BlockPos bp2 = BlockBlueprintHelper.Point2Map.get(tmpUUID);
 			LogHelper.info(bp2);
 			LogHelper.info("Calling save");
-			BlockBlueprintHelper.ScanBlocks(entity.world, bp1, bp2, tmpUUID.toString() + "-" + message.fileName + ".blockblueprint");
+			BlockBlueprintHelper.ScanBlocks(entity.world, bp1, bp2, tmpUUID.toString() + "~" + message.fileName + ".blockblueprint");
 			LogHelper.info("Save complete");
 
 		}

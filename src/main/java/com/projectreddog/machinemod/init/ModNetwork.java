@@ -12,6 +12,8 @@ import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChan
 import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClientHandler;
 import com.projectreddog.machinemod.network.MachineModMessageEntityToClient;
 import com.projectreddog.machinemod.network.MachineModMessageEntityToClientHandler;
+import com.projectreddog.machinemod.network.MachineModMessageFileListToClient;
+import com.projectreddog.machinemod.network.MachineModMessageFileListToClientHandler;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServer;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServerHandler;
 import com.projectreddog.machinemod.network.MachineModMessageInputToServerOpenGui;
@@ -22,6 +24,8 @@ import com.projectreddog.machinemod.network.MachineModMessageMouseInputToServer;
 import com.projectreddog.machinemod.network.MachineModMessageMouseInputToServerHandler;
 import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServer;
 import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServerHandler;
+import com.projectreddog.machinemod.network.MachineModMessageRequestFileListToServer;
+import com.projectreddog.machinemod.network.MachineModMessageRequestFileListToServerHandler;
 import com.projectreddog.machinemod.network.MachineModMessageRequestTEAllInventoryToServer;
 import com.projectreddog.machinemod.network.MachineModMessageRequestTEAllInventoryToServerHandler;
 import com.projectreddog.machinemod.network.MachineModMessageTEGuiButtonClickToServer;
@@ -76,6 +80,8 @@ public class ModNetwork {
 		simpleNetworkWrapper.registerMessage(MachineModMessageTEIntFieldToClientHandler.class, MachineModMessageTEIntFieldToClient.class, 11, Side.CLIENT);// message // to
 		simpleNetworkWrapper.registerMessage(MachineModMessageTETowerCranePosToClientHandler.class, MachineModMessageTETowerCranePosToClient.class, 12, Side.CLIENT);// message // to
 		simpleNetworkWrapper.registerMessage(MachineModMessageBlockBlueprintSaveToServerHandler.class, MachineModMessageBlockBlueprintSaveToServer.class, 13, Side.SERVER);// message to server
+		simpleNetworkWrapper.registerMessage(MachineModMessageRequestFileListToServerHandler.class, MachineModMessageRequestFileListToServer.class, 14, Side.SERVER);// message to server
+		simpleNetworkWrapper.registerMessage(MachineModMessageFileListToClientHandler.class, MachineModMessageFileListToClient.class, 15, Side.CLIENT);// message // to
 
 		// to
 		// client

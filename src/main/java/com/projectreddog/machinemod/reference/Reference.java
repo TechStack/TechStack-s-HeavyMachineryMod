@@ -276,7 +276,20 @@ public class Reference {
 	public static final int GUI_ASSEMBLY_TABLE_BUTTON_PREV_PAGE = 3;
 
 	public static final int GUI_TOWER_CRANE_BUTTON_SETTINGS = 1;
-	public static final int GUI_TOWER_CRANE_BUTTON_INVENTORY = 1;
+
+	public static final int GUI_TOWER_CRANE_BUTTON_BP1 = 1;
+	public static final int GUI_TOWER_CRANE_BUTTON_BP2 = 2;
+	public static final int GUI_TOWER_CRANE_BUTTON_BP3 = 3;
+	public static final int GUI_TOWER_CRANE_BUTTON_BP4 = 4;
+	public static final int GUI_TOWER_CRANE_BUTTON_BP5 = 5;
+	public static final int GUI_TOWER_CRANE_BUTTON_BP6 = 6;
+	public static final int GUI_TOWER_CRANE_BUTTON_BP7 = 7;
+	public static final int GUI_TOWER_CRANE_BUTTON_BP8 = 8;
+
+	public static final int GUI_TOWER_CRANE_BUTTON_INVENTORY = 9;
+
+	public static final int GUI_TOWER_CRANE_SCROLL_UP = 10;
+	public static final int GUI_TOWER_CRANE_SCROLL_DOWN = 11;
 
 	public static final int GUI_LASER_LEVEL_BUTTON_SAVE = 1;
 

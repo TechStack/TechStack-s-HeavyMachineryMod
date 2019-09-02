@@ -24,6 +24,12 @@ public class BlockBlueprintHelper {
 	public static HashMap<UUID, BlockPos> Point1Map;
 	public static HashMap<UUID, BlockPos> Point2Map;
 
+	public static String[] clientCacheBlueprintsFileName;
+
+	public static String[] clientCacheBlueprintsOwner;
+
+	public static String[] clientCacheBlueprintsDisplayName;
+
 	//
 	// public static boolean BuildBlocks(String fileName, World world, BlockPos pos1, Rotation rotation, boolean instant, int x, int y, int z) {
 	// // x first , then z , then y
@@ -210,16 +216,14 @@ public class BlockBlueprintHelper {
 		CreateBlueprintLocation();
 
 		File f = new File("config/Machinemod/Blueprints/");
-		f.list();
-		LogHelper.info(f.list());
 
-		return null;
+		return f.list();
 
 	}
 
 	public static boolean ScanBlocks(World world, BlockPos pos1, BlockPos pos2, String FileName) {
 		CreateBlueprintLocation();
-		GetBlockBlueprintFileList();
+		// GetBlockBlueprintFileList();
 		boolean result = true;
 		int dx;
 		int dy;
