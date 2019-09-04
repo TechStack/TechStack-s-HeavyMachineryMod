@@ -5,6 +5,7 @@ import com.projectreddog.machinemod.block.BlockMachineModTowerCrane;
 import com.projectreddog.machinemod.iface.IFuelContainer;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModNetwork;
+import com.projectreddog.machinemod.network.MachineModMessageTEInventoryChangedToClient;
 import com.projectreddog.machinemod.network.MachineModMessageTETowerCranePosToClient;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.BlockBlueprintHelper;
@@ -36,6 +37,8 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 	public final int coolDownReset = 1200;
 	public int cooldown = coolDownReset;
 	public IBlockState[][][] BlockBluePrintArray;
+
+	private ItemStack clawHolding;
 
 	public int state = -1;
 	// 0 Arm rotate to loading position and gantry moving to 0 as well.
@@ -91,6 +94,9 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		dx = bp.getX();
 		dy = bp.getY();
 		dz = bp.getZ();
+		currentX = 0;
+		currentY = 0;
+		currentZ = 0;
 
 	}
 
@@ -338,6 +344,8 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			targetGantryPos = 2;
 			targetWenchPos = currentY + 5;
 
+			setInventorySlotContents(-1, BlockBluePrintArray[currentX][currentY][currentZ].getBlock().getItem(null, null, BlockBluePrintArray[currentX][currentY][currentZ]));
+
 		}
 		if (state == 3) {
 			// // GL11.glRotated(90d - MathHelper.atan2(x, z) * 180d / 3.14, 0, 1, 0);
@@ -578,9 +586,19 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
-		inventory[slot] = stack;
-		if (!stack.isEmpty() && stack.getCount() > getInventoryStackLimit()) {
-			stack.setCount(getInventoryStackLimit());
+		// NOTE This is not normal code for slot handeling due to this thing needing the claw inventory set blah
+
+		if (slot == -1) {
+			setClawHolding(stack);
+			if (!this.world.isRemote) {
+				ModNetwork.simpleNetworkWrapper.sendToAllAround(new MachineModMessageTEInventoryChangedToClient(this.pos.getX(), this.pos.getY(), this.pos.getZ(), -1, stack, 0), new TargetPoint(this.world.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 48));
+			}
+
+		} else {
+			inventory[slot] = stack;
+			if (!stack.isEmpty() && stack.getCount() > getInventoryStackLimit()) {
+				stack.setCount(getInventoryStackLimit());
+			}
 		}
 
 	}
@@ -701,5 +719,13 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		}
 
 		return true;
+	}
+
+	public ItemStack getClawHolding() {
+		return clawHolding;
+	}
+
+	public void setClawHolding(ItemStack clawHolding) {
+		this.clawHolding = clawHolding;
 	}
 }
