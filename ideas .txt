@@ -26,7 +26,7 @@ possible work around . Unloader.
 
 
 Possible bug:
-hammer can go negaitve when your hacarky on durabliity 
+hammer can go negative when your hacarky on durabliity 
 
 		
 Fix distiller gui slot location & texture!		

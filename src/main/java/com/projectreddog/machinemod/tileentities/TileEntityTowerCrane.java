@@ -8,6 +8,7 @@ import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageTETowerCranePosToClient;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.BlockBlueprintHelper;
+import com.projectreddog.machinemod.utility.LogHelper;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,6 +20,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
@@ -55,10 +57,42 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 	public int currentX = 0;
 	public int currentY = 0;
 	public int currentZ = 0;
+	public int dx;
+	public int dy;
+	public int dz;
 
 	private double prevArmRotation;
 	private double prevGantryPos;
 	private double prevWencPos;
+
+	private String fileName = "";
+	private boolean running = false;
+
+	public boolean isRunning() {
+		return running;
+	}
+
+	public void setRunning(boolean running) {
+		this.running = running;
+		this.markDirty();
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		if (fileName == null) {
+			fileName = "";
+		}
+		this.fileName = fileName;
+		BlockBluePrintArray = BlockBlueprintHelper.getBlockStateArray(fileName);
+		BlockPos bp = BlockBlueprintHelper.getBlueprintArea(fileName);
+		dx = bp.getX();
+		dy = bp.getY();
+		dz = bp.getZ();
+
+	}
 
 	public TileEntityTowerCrane() {
 		inventory = new ItemStack[inventorySize];
@@ -104,15 +138,15 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 	@Override
 	public void update() {
 
-		if (world.isRemote || !world.isRemote) {
-
-			if (BlockBluePrintArray == null) {
-				BlockBluePrintArray = BlockBlueprintHelper.getBlockStateArray("TESTFILE");
-			}
+		// FAILSAFE CHECK.
+		// IF NOT FILE NAME IS SET TURN OFF RUNNING !
+		if ((fileName == null || fileName.equals("")) && isRunning()) {
+			setRunning(false);
+			LogHelper.info("WARNING FOUND NO FILENAME WHIE RUNNING WAS TRUE!");
 		}
 
 		// TODO remove the true == false later
-		if (!world.isRemote && true == false) { // only run on server
+		if (!world.isRemote && isRunning()) { // only run on server
 
 			// TODO FIx to make server only latter and then use packets to update clients around !! yeah
 			//
@@ -332,16 +366,16 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			// prevWencPos;
 
 			currentX = currentX + 1;
-			if (currentX > 16) {
+			if (currentX > dx) {
 				currentX = 0;
 				currentZ = currentZ + 1;
 			}
-			if (currentZ > 16) {
+			if (currentZ > dz) {
 				currentZ = 0;
 				currentY = currentY + 1;
 			}
 
-			if (currentY > 16) {
+			if (currentY > dy) {
 				currentY = 0;
 				currentX = 0;
 				currentZ = 0;
@@ -352,16 +386,16 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 				while (BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.AIR) {
 
 					currentX = currentX + 1;
-					if (currentX > 16) {
+					if (currentX > dx) {
 						currentX = 0;
 						currentZ = currentZ + 1;
 					}
-					if (currentZ > 16) {
+					if (currentZ > dz) {
 						currentZ = 0;
 						currentY = currentY + 1;
 					}
 
-					if (currentY > 16) {
+					if (currentY > dy) {
 						currentY = 0;
 						currentX = 0;
 						currentZ = 0;
@@ -444,7 +478,8 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		currentX = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentX");
 		currentY = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentY");
 		currentZ = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentZ");
-
+		running = compound.getBoolean(Reference.MACHINE_MOD_NBT_PREFIX + "running");
+		setFileName(compound.getString(Reference.MACHINE_MOD_NBT_PREFIX + "filename"));
 		// inventory
 		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
 		for (int i = 0; i < tagList.tagCount(); i++) {
@@ -472,7 +507,8 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentX", currentX);
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentY", currentY);
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentZ", currentZ);
-
+		compound.setBoolean(Reference.MACHINE_MOD_NBT_PREFIX + "running", running);
+		compound.setString(Reference.MACHINE_MOD_NBT_PREFIX + "filename", fileName);
 		// inventory
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < inventory.length; i++) {

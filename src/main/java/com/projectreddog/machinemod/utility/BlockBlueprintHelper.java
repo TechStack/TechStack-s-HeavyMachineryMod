@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
 
+import com.projectreddog.machinemod.reference.Reference;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -79,6 +81,7 @@ public class BlockBlueprintHelper {
 	//
 	// }
 
+	@Deprecated
 	public static ItemStack GetBuildBlockForBlueprintPosition(String fileName, World world, int x, int y, int z) {
 		// x first , then z , then y
 
@@ -89,7 +92,7 @@ public class BlockBlueprintHelper {
 		DataInputStream dis = null;
 		try {
 			// String fileName = "TESTFILE";
-			FileInputStream fis = new FileInputStream(new File(fileName));
+			FileInputStream fis = new FileInputStream(new File(Reference.BLUEPRINTLOCATION + fileName));
 			dis = new DataInputStream(fis);
 
 			dx = dis.readInt();// dx
@@ -128,6 +131,30 @@ public class BlockBlueprintHelper {
 		return ItemStack.EMPTY;
 	}
 
+	public static BlockPos getBlueprintArea(String fileName) {
+		boolean result = true;
+		int dx;
+		int dy;
+		int dz;
+
+		DataInputStream dis = null;
+		try {
+			// String fileName = "TESTFILE";
+			FileInputStream fis = new FileInputStream(new File(Reference.BLUEPRINTLOCATION + fileName));
+			dis = new DataInputStream(fis);
+
+			dx = dis.readInt();// dx
+			dy = dis.readInt();
+			dz = dis.readInt();
+
+			dis.close();
+			return new BlockPos(dx, dy, dz);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	public static IBlockState[][][] getBlockStateArray(String fileName) {
 		// x first , then z , then y
 		boolean result = true;
@@ -138,7 +165,7 @@ public class BlockBlueprintHelper {
 		DataInputStream dis = null;
 		try {
 			// String fileName = "TESTFILE";
-			FileInputStream fis = new FileInputStream(new File(fileName));
+			FileInputStream fis = new FileInputStream(new File(Reference.BLUEPRINTLOCATION + fileName));
 			dis = new DataInputStream(fis);
 
 			dx = dis.readInt();// dx
@@ -203,10 +230,10 @@ public class BlockBlueprintHelper {
 
 	public static void CreateBlueprintLocation() {
 
-		File f = new File("config/Machinemod");
+		File f = new File(Reference.CONFIG_MACHINEMOD_LOCATION);
 		LogHelper.info(f.mkdir());
 
-		f = new File("config/Machinemod/Blueprints");
+		f = new File(Reference.BLUEPRINTLOCATION);
 		LogHelper.info(f.mkdir());
 
 	}
@@ -215,7 +242,7 @@ public class BlockBlueprintHelper {
 
 		CreateBlueprintLocation();
 
-		File f = new File("config/Machinemod/Blueprints/");
+		File f = new File(Reference.BLUEPRINTLOCATION);
 
 		return f.list();
 
@@ -264,7 +291,7 @@ public class BlockBlueprintHelper {
 		dz = maxZ - minZ;
 		DataOutputStream dos = null;
 		try {
-			FileOutputStream fos = new FileOutputStream(new File("config/Machinemod/Blueprints/" + FileName));
+			FileOutputStream fos = new FileOutputStream(new File(Reference.BLUEPRINTLOCATION + FileName));
 			dos = new DataOutputStream(fos);
 
 			dos.writeInt(dx);

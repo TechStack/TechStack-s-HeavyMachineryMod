@@ -293,4 +293,7 @@ public class Reference {
 
 	public static final int GUI_LASER_LEVEL_BUTTON_SAVE = 1;
 
+	public static final String BLUEPRINTLOCATION = "config/Machinemod/Blueprints/";
+	public static final String CONFIG_MACHINEMOD_LOCATION = "config/Machinemod";
+
 }

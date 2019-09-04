@@ -2,8 +2,6 @@ package com.projectreddog.machinemod.network;
 
 import java.nio.charset.Charset;
 
-import com.projectreddog.machinemod.utility.LogHelper;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
@@ -41,8 +39,6 @@ public class MachineModMessageBlockBlueprintSaveToServer implements IMessage {
 
 		this.fileName = buf.readCharSequence(lenght, Charset.forName("UTF-8")).toString();
 
-		LogHelper.info(" From Bytes : " + fileName);
-
 		this.pos1X = buf.readInt();
 		this.pos1Y = buf.readInt();
 		this.pos1Z = buf.readInt();
@@ -56,7 +52,6 @@ public class MachineModMessageBlockBlueprintSaveToServer implements IMessage {
 	public void toBytes(ByteBuf buf) {
 		buf.writeInt(this.fileName.length());
 		buf.writeCharSequence(this.fileName, Charset.forName("UTF-8"));
-		LogHelper.info(" to Bytes : " + fileName);
 
 		buf.writeInt(this.pos1X);
 		buf.writeInt(this.pos1Y);

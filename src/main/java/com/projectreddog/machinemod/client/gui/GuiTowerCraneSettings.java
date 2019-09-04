@@ -9,6 +9,7 @@ import org.lwjgl.opengl.GL11;
 import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.container.ContainerTowerCraneSettings;
 import com.projectreddog.machinemod.init.ModNetwork;
+import com.projectreddog.machinemod.network.MachineModMessageBlockBlueprintSelectionToServer;
 import com.projectreddog.machinemod.network.MachineModMessageRequestFileListToServer;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityTowerCrane;
@@ -90,6 +91,11 @@ public class GuiTowerCraneSettings extends GuiContainer {
 			ScrollOffset = ScrollOffset + 8;
 		} else if (button.id == Reference.GUI_TOWER_CRANE_SCROLL_UP) {
 			ScrollOffset = ScrollOffset - 8;
+		} else if (button.id < Reference.GUI_TOWER_CRANE_BUTTON_INVENTORY) {
+			int selected = button.id + ScrollOffset - 1;
+			String fileName = BlockBlueprintHelper.clientCacheBlueprintsFileName[selected];
+			ModNetwork.simpleNetworkWrapper.sendToServer(new MachineModMessageBlockBlueprintSelectionToServer(fileName, towerCrane.getPos().getX(), towerCrane.getPos().getY(), towerCrane.getPos().getZ()));
+
 		}
 
 	}
@@ -102,9 +108,9 @@ public class GuiTowerCraneSettings extends GuiContainer {
 
 			if (this.buttonList.get(i).isMouseOver() && this.buttonList.get(i).enabled) {
 				List<String> toolTiptext = new ArrayList<String>();
-				toolTiptext.add("\u00A7fBlueprint: \u00A79" + BlockBlueprintHelper.clientCacheBlueprintsDisplayName[i]);
-				toolTiptext.add("\u00A7fOwner: \u00A7d" + BlockBlueprintHelper.clientCacheBlueprintsOwner[i]);
-				toolTiptext.add("\u00A7fFileName: \u00A78" + BlockBlueprintHelper.clientCacheBlueprintsFileName[i]);
+				toolTiptext.add("\u00A7fBlueprint: \u00A79" + BlockBlueprintHelper.clientCacheBlueprintsDisplayName[i + ScrollOffset]);
+				toolTiptext.add("\u00A7fOwner: \u00A7d" + BlockBlueprintHelper.clientCacheBlueprintsOwner[i + ScrollOffset]);
+				toolTiptext.add("\u00A7fFileName: \u00A78" + BlockBlueprintHelper.clientCacheBlueprintsFileName[i + ScrollOffset]);
 				this.drawHoveringText(toolTiptext, mouseX, mouseY, (fontRenderer));
 			}
 		}
