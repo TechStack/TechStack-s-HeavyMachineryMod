@@ -1,8 +1,5 @@
 package com.projectreddog.machinemod.container;
 
-import com.projectreddog.machinemod.inventory.SlotBlazePowder;
-import com.projectreddog.machinemod.inventory.SlotNotBlazePowder;
-import com.projectreddog.machinemod.inventory.SlotOutputOnlyTurobFurnace;
 import com.projectreddog.machinemod.tileentities.TileEntityTowerCrane;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,13 +26,11 @@ public class ContainerTowerCrane extends Container {
 		lastFuleBurnTimeRemaining = -1;
 		lastProcessingTimeRemaining = -1;
 
-		// for (int i = 0; i < 1; i++) {
-		// for (int j = 0; j < 3; j++) {
-		addSlotToContainer(new SlotNotBlazePowder(towercrane, 0, 47, 34));
-		addSlotToContainer(new SlotOutputOnlyTurobFurnace(inventoryPlayer.player, towercrane, 1, 110, 53));
-		addSlotToContainer(new SlotBlazePowder(towercrane, 2, 47, 74));
-		// }
-		// }
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 9; j++) {
+				addSlotToContainer(new Slot(towercrane, j + i * 9, 8 + j * 18, 18 + i * 18));
+			}
+		}
 
 		// commonly used vanilla code that adds the player's inventory
 		bindPlayerInventory(inventoryPlayer);
@@ -49,12 +44,12 @@ public class ContainerTowerCrane extends Container {
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 139 + i * 18));
+				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 140 + i * 18));
 			}
 		}
 
 		for (int i = 0; i < 9; i++) {
-			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 197));
+			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 198));
 		}
 	}
 
@@ -70,7 +65,7 @@ public class ContainerTowerCrane extends Container {
 
 			// merges the item into player inventory since its in the Entity
 			if (slot < 3) {
-				if (!this.mergeItemStack(stackInSlot, 3, this.inventorySlots.size(), true)) {
+				if (!this.mergeItemStack(stackInSlot, 54, this.inventorySlots.size(), true)) {
 					return ItemStack.EMPTY;
 				}
 
@@ -78,7 +73,7 @@ public class ContainerTowerCrane extends Container {
 			}
 			// places it into the tileEntity is possible since its in the player
 			// inventory
-			else if (!this.mergeItemStack(stackInSlot, 0, 3, false)) {
+			else if (!this.mergeItemStack(stackInSlot, 0, 54, false)) {
 				return ItemStack.EMPTY;
 			}
 
