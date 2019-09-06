@@ -150,6 +150,35 @@ public class TileEntityTowerCraneRenderer extends TileEntitySpecialRenderer {
 		}
 
 		GL11.glPopMatrix();
+//		GL11.glPushMatrix();
+//		// try rendering the build area?
+//		Tessellator tessellator = Tessellator.getInstance();
+//
+//		BufferBuilder bufferBuilder = tessellator.getBuffer();
+//
+//		GlStateManager.enableBlend();
+//
+//		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+//		GlStateManager.glLineWidth(8.0F);
+//		GlStateManager.color(1f, 0, 0, 0.4F);
+//		GlStateManager.depthMask(false);
+//
+//		// DO rendering here
+//
+//		bufferBuilder.begin(GL11.GL_LINES, DefaultVertexFormats.POSITION);
+//
+//		bufferBuilder.pos(x, y, z).endVertex();
+//		bufferBuilder.pos(x, y + 1, z).endVertex();
+//		bufferBuilder.pos(x, y, z).endVertex();
+//		bufferBuilder.pos(x, y + 1, z + 1).endVertex();
+//
+//		tessellator.draw();
+//		GlStateManager.depthMask(true);
+//
+//		GlStateManager.disableBlend();
+//		GlStateManager.enableTexture2D();
+//
+//		GL11.glPopMatrix();
 
 	}
 
