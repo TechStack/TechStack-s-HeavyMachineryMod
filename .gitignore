@@ -4,6 +4,7 @@ build/
 /eclipse
 /bin
 /.settings
+/out
 /.classpath
 /build
 /.gradle
