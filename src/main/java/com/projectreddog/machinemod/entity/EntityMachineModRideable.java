@@ -340,6 +340,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 				if (entityPlayer.capabilities.isCreativeMode) {
 					currentFuelLevel = maxFuelLevel;
 				}
+				entityPlayer.fallDistance = 0;
 			}
 
 		}
