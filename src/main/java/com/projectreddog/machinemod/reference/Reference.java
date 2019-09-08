@@ -40,6 +40,7 @@ public class Reference {
 	public static final String MODEL_WELL_HEAD_TEXTURE_LOCATION = "models/wellhead.png";
 	public static final String MODEL_PIPE_TEXTURE_LOCATION = "models/pipe.png";
 	public static final String MODEL_CRATE_TEXTURE_LOCATION = "models/crate.png";
+	public static final String MODEL_HOLOSCANNER_TEXTURE_LOCATION = "models/holoscanner.png";
 
 	public static final String MODEL_COMBINE_TEXTURE_LOCATION = "models/combine.png";
 	public static final String MODEL_DRILLINGRIG_TEXTURE_LOCATION = "models/drillingrig.png";
@@ -174,6 +175,7 @@ public class Reference {
 
 	public static final String MODBLOCK_MACHINE_CONVEYOR = "machineconveyor";
 	public static final String MODBLOCK_MACHINE_FEED_TROUGH = "machinefeedtrough";
+	public static final String MODBLOCK_MACHINE_HOLO_SCANNER = "machineholoscanner";
 
 	public static final String MODBLOCK_MACHINE_GENERATOR = "machinegenerator";
 
@@ -277,6 +279,13 @@ public class Reference {
 
 	public static final int GUI_TOWER_CRANE_BUTTON_SETTINGS = 1;
 
+	public static final int GUI_HOLO_SCANNER_BUTTON_FRONT_PLUS = 2;
+	public static final int GUI_HOLO_SCANNER_BUTTON_FRONT_MINUS = 3;
+	public static final int GUI_HOLO_SCANNER_BUTTON_RIGHT_PLUS = 4;
+	public static final int GUI_HOLO_SCANNER_BUTTON_RIGHT_MINUS = 5;
+	public static final int GUI_HOLO_SCANNER_BUTTON_UP_PLUS = 6;
+	public static final int GUI_HOLO_SCANNER_BUTTON_UP_MINUS = 7;
+
 	public static final int GUI_TOWER_CRANE_BUTTON_BP1 = 1;
 	public static final int GUI_TOWER_CRANE_BUTTON_BP2 = 2;
 	public static final int GUI_TOWER_CRANE_BUTTON_BP3 = 3;
@@ -291,7 +300,7 @@ public class Reference {
 	public static final int GUI_TOWER_CRANE_SCROLL_UP = 10;
 	public static final int GUI_TOWER_CRANE_SCROLL_DOWN = 11;
 
-	public static final int GUI_LASER_LEVEL_BUTTON_SAVE = 1;
+	public static final int GUI_HOLO_SCANNER_BUTTON_SAVE = 1;
 
 	public static final String BLUEPRINTLOCATION = "config/Machinemod/Blueprints/";
 	public static final String CONFIG_MACHINEMOD_LOCATION = "config/Machinemod";

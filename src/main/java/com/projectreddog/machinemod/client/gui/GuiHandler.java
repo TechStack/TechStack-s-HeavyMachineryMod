@@ -14,7 +14,7 @@ import com.projectreddog.machinemod.container.ContainerFeedTrough;
 import com.projectreddog.machinemod.container.ContainerFermenter;
 import com.projectreddog.machinemod.container.ContainerFractionalDistiller;
 import com.projectreddog.machinemod.container.ContainerGrader;
-import com.projectreddog.machinemod.container.ContainerLaserLevel;
+import com.projectreddog.machinemod.container.ContainerHoloMiner;
 import com.projectreddog.machinemod.container.ContainerLaserMiner;
 import com.projectreddog.machinemod.container.ContainerLoader;
 import com.projectreddog.machinemod.container.ContainerPaver;
@@ -47,6 +47,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityFeedTrough;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
+import com.projectreddog.machinemod.tileentities.TileEntityHoloScanner;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 import com.projectreddog.machinemod.tileentities.TileEntityScreen;
 import com.projectreddog.machinemod.tileentities.TileEntityTowerCrane;
@@ -298,7 +299,13 @@ public class GuiHandler implements IGuiHandler {
 			}
 		} else if (id == Reference.GUI_LASAER_LEVEL) {
 
-			return new ContainerLaserLevel(player.inventory);
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityHoloScanner) {
+
+					return new ContainerHoloMiner(player.inventory, (TileEntityHoloScanner) entity);
+				}
+			}
 
 		}
 
@@ -514,9 +521,13 @@ public class GuiHandler implements IGuiHandler {
 				}
 			}
 		} else if (id == Reference.GUI_LASAER_LEVEL) {
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
 
-			return new GuiLaserLevel(player.inventory);
-
+			if (entity != null) {
+				if (entity instanceof TileEntityHoloScanner) {
+					return new GuiHoloScanner(player.inventory, (TileEntityHoloScanner) entity);
+				}
+			}
 		}
 
 		return null;

@@ -12,10 +12,6 @@ public class MachineModMessageBlockBlueprintSaveToServer implements IMessage {
 	public int pos1Y;
 	public int pos1Z;
 
-	public int pos2X;
-	public int pos2Y;
-	public int pos2Z;
-
 	public MachineModMessageBlockBlueprintSaveToServer() {
 
 	}
@@ -26,10 +22,6 @@ public class MachineModMessageBlockBlueprintSaveToServer implements IMessage {
 		this.pos1X = pos1X;
 		this.pos1Y = pos1Y;
 		this.pos1Z = pos1Z;
-
-		this.pos2X = pos2X;
-		this.pos2Y = pos2Y;
-		this.pos2Z = pos2Z;
 
 	}
 
@@ -42,9 +34,6 @@ public class MachineModMessageBlockBlueprintSaveToServer implements IMessage {
 		this.pos1X = buf.readInt();
 		this.pos1Y = buf.readInt();
 		this.pos1Z = buf.readInt();
-		this.pos2X = buf.readInt();
-		this.pos2Y = buf.readInt();
-		this.pos2Z = buf.readInt();
 
 	}
 
@@ -56,9 +45,6 @@ public class MachineModMessageBlockBlueprintSaveToServer implements IMessage {
 		buf.writeInt(this.pos1X);
 		buf.writeInt(this.pos1Y);
 		buf.writeInt(this.pos1Z);
-		buf.writeInt(this.pos2X);
-		buf.writeInt(this.pos2Y);
-		buf.writeInt(this.pos2Z);
 
 	}
 

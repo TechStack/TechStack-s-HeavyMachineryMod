@@ -36,6 +36,9 @@ gui.towercrane.inventory=Back To inventory
 gui.towercrane.settings=S
 
 gui.laserlevel.savetext=Save Block Blueprint
+gui.laserlevel.front=Front
+gui.laserlevel.right=Right
+gui.laserlevel.up=Up
 gui.laserlevel.savebutton=Save
 item.machinemod:collapsedstar.name=Collapsed Star
 item.machinemod:camshaft.name=Camshaft
@@ -136,6 +139,7 @@ tile.machinemod:machineassemblytable.name=Machine Assembly Table
 tile.machinemod:machinescreen.name=Screen
 tile.machinemod:steelblock.name=Steel Block
 tile.machinemod:machinecrate.name=Crate
+tile.machinemod:machineholoscanner.name=Holo Scanner
 tile.machinemod:machinedrilledstone.name=Drilled Stone
 tile.machinemod:machinedrilledandesite.name=Andesite Stone
 tile.machinemod:machinedrilleddiorite.name=Diorite Stone
