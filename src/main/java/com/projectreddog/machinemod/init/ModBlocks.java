@@ -50,6 +50,7 @@ import com.projectreddog.machinemod.block.BlockMachineModFermenter;
 import com.projectreddog.machinemod.block.BlockMachineModFractionalDistillation;
 import com.projectreddog.machinemod.block.BlockMachineModFuelPump;
 import com.projectreddog.machinemod.block.BlockMachineModGenerator;
+import com.projectreddog.machinemod.block.BlockMachineModHoloScanner;
 import com.projectreddog.machinemod.block.BlockMachineModLiquidPipe;
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.block.BlockMachineModScreen;
@@ -75,6 +76,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 import com.projectreddog.machinemod.tileentities.TileEntityGenerator;
+import com.projectreddog.machinemod.tileentities.TileEntityHoloScanner;
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 import com.projectreddog.machinemod.tileentities.TileEntityScreen;
@@ -169,6 +171,8 @@ public class ModBlocks {
 	public static final Block machineconveyor = new BlockMachineModConveyor();
 
 	public static final Block machinefeedtrough = new BlockMachineModFeedTrough();
+
+	public static final Block machineholoscanner = new BlockMachineModHoloScanner();
 
 	public static final Block machineshredder = new BlockMachineModShredder();
 
@@ -305,6 +309,9 @@ public class ModBlocks {
 		ForgeRegistries.BLOCKS.register(machinefeedtrough);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinefeedtrough).setRegistryName(ModBlocks.machinefeedtrough.getRegistryName()));
 
+		ForgeRegistries.BLOCKS.register(machineholoscanner);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineholoscanner).setRegistryName(ModBlocks.machineholoscanner.getRegistryName()));
+
 		ForgeRegistries.BLOCKS.register(machineshredder);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machineshredder).setRegistryName(ModBlocks.machineshredder.getRegistryName()));
 
@@ -348,6 +355,8 @@ public class ModBlocks {
 
 		GameRegistry.registerTileEntity(TileEntityConveyor.class, Reference.MODBLOCK_MACHINE_CONVEYOR);
 		GameRegistry.registerTileEntity(TileEntityFeedTrough.class, Reference.MODBLOCK_MACHINE_FEED_TROUGH);
+
+		GameRegistry.registerTileEntity(TileEntityHoloScanner.class, Reference.MODBLOCK_MACHINE_HOLO_SCANNER);
 
 		GameRegistry.registerTileEntity(TileEntityScreen.class, Reference.MODBLOCK_MACHINE_SCREEN);
 		GameRegistry.registerTileEntity(TileEntityFractionalDistillation.class, Reference.MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION);
@@ -483,6 +492,7 @@ public class ModBlocks {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineconveyor), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_CONVEYOR, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineshredder), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_SHREDDER, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinefeedtrough), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FEED_TROUGH, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineholoscanner), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_HOLO_SCANNER, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinescreen), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_SCREEN, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakportalframe), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_PORTAL_FRAME, "inventory"));
