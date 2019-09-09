@@ -6,11 +6,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.UUID;
 
 import com.projectreddog.machinemod.reference.Reference;
 
+import io.netty.buffer.ByteBuf;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -202,6 +204,58 @@ public class BlockBlueprintHelper {
 
 		return null;
 
+	}
+
+	public void WriteBlockStateArrayToByteBuff(ByteBuf buf, IBlockState[][][] blockStateArray) {
+
+		int x = blockStateArray.length;
+		int y = blockStateArray[0].length;
+		int z = blockStateArray[0][0].length;
+
+		buf.writeInt(x);
+		buf.writeInt(y);
+		buf.writeInt(z);
+
+		for (int i = 0; i < blockStateArray.length; i++) {
+			for (int j = 0; j < blockStateArray[i].length; j++) {
+				for (int k = 0; k < blockStateArray[i][j].length; k++) {
+
+					String registryName = blockStateArray[i][j][k].getBlock().getRegistryName().toString();
+					buf.writeInt(registryName.length());
+
+					buf.writeCharSequence(registryName, Charset.forName("UTF-8"));
+					int metaValue = blockStateArray[i][j][k].getBlock().getMetaFromState(blockStateArray[i][j][k]);
+					buf.writeInt(metaValue);
+
+				}
+			}
+		}
+	}
+
+	public IBlockState[][][] ReadBlockStateArrayFromByteBuff(ByteBuf buf) {
+
+		int x = buf.readInt();
+		int y = buf.readInt();
+		int z = buf.readInt();
+		IBlockState[][][] blockStateArray = new IBlockState[x][y][z];
+
+		for (int i = 0; i < blockStateArray.length; i++) {
+			for (int j = 0; j < blockStateArray[i].length; j++) {
+				for (int k = 0; k < blockStateArray[i][j].length; k++) {
+					int lenght = buf.readInt();
+
+					String RegisteryName = buf.readCharSequence(lenght, Charset.forName("UTF-8")).toString();
+					int metaValue = buf.readInt();
+
+					blockStateArray[i][j][k] = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(RegisteryName)).getStateFromMeta(metaValue);
+
+					buf.writeInt(metaValue);
+
+				}
+			}
+		}
+
+		return blockStateArray;
 	}
 
 	public static boolean setBlockState(World world, BlockPos bp, IBlockState state, EnumFacing ef) {
