@@ -15,6 +15,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -206,11 +207,14 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			}
 
 			if ((armRotation == targetArmRotation && gantryPos == targetGantryPos && wenchPos == targetWenchPos) || state == -1) {
-				state = state + 1;
-				// set new targets for state
+				if (BlockBluePrintArray[currentX][currentY][currentZ] != null) {
+					if (containsBlock(BlockBluePrintArray[currentX][currentY][currentZ]) || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.AIR || state != 1) {
+						state = state + 1;
+						// set new targets for state
 
-				setTargetsForState();
-
+						setTargetsForState();
+					}
+				}
 			}
 			ModNetwork.sendPacketToAllAround(new MachineModMessageTETowerCranePosToClient(this.pos.getX(), this.pos.getY(), this.pos.getZ(), state, armRotation, gantryPos, wenchPos, targetArmRotation, targetGantryPos, targetWenchPos, currentX, currentY, currentZ), new TargetPoint(world.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 224)); // sendInterval = 0;
 		}
@@ -344,7 +348,11 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			targetGantryPos = 2;
 			targetWenchPos = currentY + 5;
 
-			setInventorySlotContents(-1, BlockBluePrintArray[currentX][currentY][currentZ].getBlock().getItem(null, null, BlockBluePrintArray[currentX][currentY][currentZ]));
+			if (DrainsBlock(BlockBluePrintArray[currentX][currentY][currentZ])) {
+
+				setInventorySlotContents(-1, BlockBluePrintArray[currentX][currentY][currentZ].getBlock().getItem(null, null, BlockBluePrintArray[currentX][currentY][currentZ]));
+
+			}
 
 		}
 		if (state == 3) {
@@ -366,7 +374,12 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 							// TODO call block place code!
 
 			// BlockBlueprintHelper.BuildBlocks("TESTFILE", this.world, this.pos, Rotation.NONE, false, currentX, currentY, currentZ);
+
+			/// TESTING CODE
+			///
 			if (BlockBluePrintArray != null) {
+				// TODO add call to event to allow it to be canceled by things like FTB utilities.
+
 				BlockBlueprintHelper.setBlockState(this.world, this.pos.add(placingposX, currentY, placingposZ), BlockBluePrintArray[currentX][currentY][currentZ], getFacing());
 			}
 			// prevArmRotation=targetGantryPos;
@@ -496,7 +509,11 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			if (slot >= 0 && slot < inventory.length) {
 				inventory[slot] = new ItemStack(tag);
 			}
+			if (slot == -1) {
+				clawHolding = new ItemStack(tag);
+			}
 		}
+
 	}
 
 	@Override
@@ -528,6 +545,15 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 				itemList.appendTag(tag);
 			}
 		}
+
+		ItemStack stack = clawHolding;
+		if (!stack.isEmpty()) {
+			NBTTagCompound tag = new NBTTagCompound();
+			tag.setByte("Slot", (byte) -1);
+			stack.writeToNBT(tag);
+			itemList.appendTag(tag);
+		}
+
 		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);
 		return compound;
 
@@ -582,6 +608,51 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			setInventorySlotContents(slot, ItemStack.EMPTY);
 		}
 		return stack;
+	}
+
+	public boolean containsBlock(IBlockState blockState) {
+		boolean result = false;
+		for (int i = 0; i < inventory.length; i++) {
+//loop thru all inventory
+			if (inventory[i] != null) {
+				if (inventory[i].getItem() instanceof ItemBlock) {
+					ItemBlock ib = (ItemBlock) inventory[i].getItem();
+					if (ib.getBlock() == blockState.getBlock()) {
+						// same block check meta
+						if (inventory[i].getItem().getMetadata(inventory[i]) == blockState.getBlock().getItem(null, null, blockState).getMetadata()) {
+							result = true;
+							return result;
+						}
+
+					}
+				}
+			}
+
+		}
+		return result;
+	}
+
+	public boolean DrainsBlock(IBlockState blockState) {
+		boolean result = false;
+		for (int i = 0; i < inventory.length; i++) {
+//loop thru all inventory
+			if (inventory[i] != null) {
+				if (inventory[i].getItem() instanceof ItemBlock) {
+					ItemBlock ib = (ItemBlock) inventory[i].getItem();
+					if (ib.getBlock() == blockState.getBlock()) {
+						// same block check meta
+						if (inventory[i].getItem().getMetadata(inventory[i]) == blockState.getBlock().getItem(null, null, blockState).getMetadata()) {
+							decrStackSize(i, 1);
+							result = true;
+							return result;
+						}
+
+					}
+				}
+			}
+
+		}
+		return result;
 	}
 
 	@Override

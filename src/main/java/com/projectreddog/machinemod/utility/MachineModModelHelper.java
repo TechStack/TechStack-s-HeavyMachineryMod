@@ -8,13 +8,16 @@ import com.google.common.base.Function;
 import com.google.common.collect.ImmutableList;
 
 import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.renderer.vertex.VertexFormat;
 import net.minecraft.client.renderer.vertex.VertexFormatElement;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.client.model.obj.OBJModel;
 import net.minecraftforge.client.model.pipeline.LightUtil;
 
@@ -28,6 +31,62 @@ public class MachineModModelHelper {
 		MYFORMAT.addElement(new VertexFormatElement(0, VertexFormatElement.EnumType.FLOAT, VertexFormatElement.EnumUsage.UV, 2));
 		MYFORMAT.addElement(new VertexFormatElement(0, VertexFormatElement.EnumType.BYTE, VertexFormatElement.EnumUsage.NORMAL, 3));
 		MYFORMAT.addElement(new VertexFormatElement(0, VertexFormatElement.EnumType.BYTE, VertexFormatElement.EnumUsage.PADDING, 1));
+	}
+
+	public static void DrawBoundingBox(AxisAlignedBB boundingBox) {
+		Tessellator tessellator = Tessellator.getInstance();
+		BufferBuilder bb = tessellator.getBuffer();
+		GL11.glDisable(GL11.GL_LIGHTING);
+		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GlStateManager.glLineWidth(8.0F);
+		GlStateManager.color(1f, 1f, 1f, .2F);
+
+		// GlStateManager.depthMask(false);
+		bb.begin(GL11.GL_LINES, DefaultVertexFormats.POSITION);
+		// Bottom FACE box
+		bb.pos(boundingBox.minX, boundingBox.minY, boundingBox.minZ).endVertex();
+		bb.pos(boundingBox.maxX, boundingBox.minY, boundingBox.minZ).endVertex();
+
+		bb.pos(boundingBox.minX, boundingBox.minY, boundingBox.minZ).endVertex();
+		bb.pos(boundingBox.minX, boundingBox.minY, boundingBox.maxZ).endVertex();
+
+		bb.pos(boundingBox.maxX, boundingBox.minY, boundingBox.minZ).endVertex();
+		bb.pos(boundingBox.maxX, boundingBox.minY, boundingBox.maxZ).endVertex();
+
+		bb.pos(boundingBox.minX, boundingBox.minY, boundingBox.maxZ).endVertex();
+		bb.pos(boundingBox.maxX, boundingBox.minY, boundingBox.maxZ).endVertex();
+
+		// TOP FACE box
+		bb.pos(boundingBox.minX, boundingBox.maxY, boundingBox.minZ).endVertex();
+		bb.pos(boundingBox.maxX, boundingBox.maxY, boundingBox.minZ).endVertex();
+
+		bb.pos(boundingBox.minX, boundingBox.maxY, boundingBox.minZ).endVertex();
+		bb.pos(boundingBox.minX, boundingBox.maxY, boundingBox.maxZ).endVertex();
+
+		bb.pos(boundingBox.maxX, boundingBox.maxY, boundingBox.minZ).endVertex();
+		bb.pos(boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ).endVertex();
+
+		bb.pos(boundingBox.minX, boundingBox.maxY, boundingBox.maxZ).endVertex();
+		bb.pos(boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ).endVertex();
+
+		// Vert Lines
+		bb.pos(boundingBox.minX, boundingBox.minY, boundingBox.minZ).endVertex();
+		bb.pos(boundingBox.minX, boundingBox.maxY, boundingBox.minZ).endVertex();
+
+		bb.pos(boundingBox.minX, boundingBox.minY, boundingBox.maxZ).endVertex();
+		bb.pos(boundingBox.minX, boundingBox.maxY, boundingBox.maxZ).endVertex();
+
+		bb.pos(boundingBox.maxX, boundingBox.minY, boundingBox.minZ).endVertex();
+		bb.pos(boundingBox.maxX, boundingBox.maxY, boundingBox.minZ).endVertex();
+
+		bb.pos(boundingBox.maxX, boundingBox.minY, boundingBox.maxZ).endVertex();
+		bb.pos(boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ).endVertex();
+
+		tessellator.draw();
+		GlStateManager.glLineWidth(1.0F);
+
+		GL11.glEnable(GL11.GL_LIGHTING);
+
 	}
 
 	public static void renderBakedModel(IBakedModel bakedModel) {
