@@ -11,7 +11,11 @@ laser scanner needs to allow for choice of filename etc..
 
 Recipies for everything above
 
-
+A). send packet to client with details about selected blueprint.
+B). Client parse this to blockstae array.
+C). Client renders block "Ghosts" of what it will try to build when some option is used.
+	see https://www.minecraftforge.net/forum/topic/55609-1112-rendering-ghost-blocks/ as reference on block rendering (didnt know it was exposed )
+D). 
 
 test
 

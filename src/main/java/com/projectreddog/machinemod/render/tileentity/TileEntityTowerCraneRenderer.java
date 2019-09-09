@@ -11,7 +11,9 @@ import com.projectreddog.machinemod.model.tileentity.ModelTowerCrane;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityTowerCrane;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BlockRendererDispatcher;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -150,36 +152,31 @@ public class TileEntityTowerCraneRenderer extends TileEntitySpecialRenderer {
 		}
 
 		GL11.glPopMatrix();
-//		GL11.glPushMatrix();
-//		// try rendering the build area?
-//		Tessellator tessellator = Tessellator.getInstance();
-//
-//		BufferBuilder bufferBuilder = tessellator.getBuffer();
-//
-//		GlStateManager.enableBlend();
-//
-//		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-//		GlStateManager.glLineWidth(8.0F);
-//		GlStateManager.color(1f, 0, 0, 0.4F);
-//		GlStateManager.depthMask(false);
-//
-//		// DO rendering here
-//
-//		bufferBuilder.begin(GL11.GL_LINES, DefaultVertexFormats.POSITION);
-//
-//		bufferBuilder.pos(x, y, z).endVertex();
-//		bufferBuilder.pos(x, y + 1, z).endVertex();
-//		bufferBuilder.pos(x, y, z).endVertex();
-//		bufferBuilder.pos(x, y + 1, z + 1).endVertex();
-//
-//		tessellator.draw();
-//		GlStateManager.depthMask(true);
-//
-//		GlStateManager.disableBlend();
-//		GlStateManager.enableTexture2D();
-//
-//		GL11.glPopMatrix();
 
+		GL11.glPushMatrix();
+		IBlockState blockStateToRender = ModBlocks.machineasphalt.getDefaultState();
+		Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
+		GlStateManager.disableLighting();
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glDepthMask(false);
+		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GlStateManager.color(1f, 1f, 1f, 0.4f);
+		GL11.glDisable(GL11.GL_DEPTH_TEST);
+		GL11.glDisable(GL11.GL_ALPHA_TEST);
+
+		Tessellator tessellator = Tessellator.getInstance();
+		BufferBuilder bufferBuilder = tessellator.getBuffer();
+		bufferBuilder.begin(7, DefaultVertexFormats.BLOCK);
+		GL11.glTranslated(x + .5d + 1, y, z + .5d);
+
+		BlockRendererDispatcher blockRendererDispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
+		blockRendererDispatcher.getBlockModelRenderer().renderModel(this.getWorld(), blockRendererDispatcher.getModelForState(blockStateToRender), blockStateToRender, tileentity.getPos(), bufferBuilder, false);
+		tessellator.draw();
+		GlStateManager.enableLighting();
+		GL11.glDisable(GL11.GL_BLEND);
+		GL11.glEnable(GL11.GL_DEPTH_TEST);
+		GL11.glDepthMask(true);
+		GL11.glPopMatrix();
 	}
 
 	private void RenderHelper_B(BufferBuilder p_175033_1_, BakedQuad p_175033_2_, int p_175033_3_) {

@@ -90,43 +90,6 @@ public class RenderOverlayHandler extends Gui {
 			}
 		}
 
-		// TODO make this work so it will render the frame of where the tower crane can place blocks .. yeah
-//		else if (Minecraft.getMinecraft().player.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND).getItem() == Item.getItemFromBlock(ModBlocks.machinetowercrane))
-//
-//		{
-//			int x = (int) Minecraft.getMinecraft().player.posX;
-//			int y = (int) Minecraft.getMinecraft().player.posY;
-//			int z = (int) Minecraft.getMinecraft().player.posZ;
-//
-//			x = 0;
-//			y = 60;
-//			z = 0;
-//			// HOLDING THE towercrane try to render something usefull
-//			GL11.glPushMatrix();
-//			Tessellator tessellator = Tessellator.getInstance();
-//			BufferBuilder bufferBuilder = tessellator.getBuffer();
-//			GlStateManager.enableBlend();
-//
-//			GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-//			GlStateManager.glLineWidth(8.0F);
-//			GlStateManager.color(1f, 0, 0, 0.4F);
-//			GlStateManager.depthMask(false);
-//
-//			// DO rendering here
-//			bufferBuilder.begin(GL11.GL_LINES, DefaultVertexFormats.POSITION);
-//
-//			bufferBuilder.pos(0d, 60d, 0d).endVertex();
-//			bufferBuilder.pos(0d, 61d, 0d).endVertex();
-//			bufferBuilder.pos(0d, 60d, 0d).endVertex();
-//			bufferBuilder.pos(200d, 60d, 0d).endVertex();
-//
-//			tessellator.draw();
-//			GlStateManager.depthMask(true);
-//
-//			GlStateManager.disableBlend();
-//			GlStateManager.enableTexture2D();
-//			GL11.glPopMatrix();
-//		}
 	}
 
 	private ResourceLocation guageRL;
