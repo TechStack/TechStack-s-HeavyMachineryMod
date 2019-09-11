@@ -126,8 +126,10 @@ public class BlockBlueprintHelper {
 			}
 
 			dis.close();
+			fis.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+
 			return ItemStack.EMPTY;
 		}
 		return ItemStack.EMPTY;
