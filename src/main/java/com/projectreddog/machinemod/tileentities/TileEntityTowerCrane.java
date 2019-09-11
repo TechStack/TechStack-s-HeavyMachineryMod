@@ -5,6 +5,7 @@ import com.projectreddog.machinemod.block.BlockMachineModTowerCrane;
 import com.projectreddog.machinemod.iface.IFuelContainer;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModNetwork;
+import com.projectreddog.machinemod.network.MachineModMessageEntityBluerprintBlockStateToClient;
 import com.projectreddog.machinemod.network.MachineModMessageTEInventoryChangedToClient;
 import com.projectreddog.machinemod.network.MachineModMessageTETowerCranePosToClient;
 import com.projectreddog.machinemod.reference.Reference;
@@ -98,6 +99,14 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		currentX = 0;
 		currentY = 0;
 		currentZ = 0;
+		SendBlockBluePrintArrayToClients();
+
+	}
+
+	public void SendBlockBluePrintArrayToClients() {
+		if (BlockBluePrintArray != null) {
+			ModNetwork.simpleNetworkWrapper.sendToAllAround(new MachineModMessageEntityBluerprintBlockStateToClient(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), BlockBluePrintArray), new TargetPoint(this.world.provider.getDimension(), this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 48));
+		}
 
 	}
 

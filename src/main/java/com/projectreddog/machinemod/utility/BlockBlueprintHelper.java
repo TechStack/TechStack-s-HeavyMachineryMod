@@ -206,7 +206,7 @@ public class BlockBlueprintHelper {
 
 	}
 
-	public void WriteBlockStateArrayToByteBuff(ByteBuf buf, IBlockState[][][] blockStateArray) {
+	public static void WriteBlockStateArrayToByteBuff(ByteBuf buf, IBlockState[][][] blockStateArray) {
 
 		int x = blockStateArray.length;
 		int y = blockStateArray[0].length;
@@ -232,7 +232,7 @@ public class BlockBlueprintHelper {
 		}
 	}
 
-	public IBlockState[][][] ReadBlockStateArrayFromByteBuff(ByteBuf buf) {
+	public static IBlockState[][][] ReadBlockStateArrayFromByteBuff(ByteBuf buf) {
 
 		int x = buf.readInt();
 		int y = buf.readInt();

@@ -8,6 +8,8 @@ import com.projectreddog.machinemod.network.MachineModMessageBlockBlueprintSaveT
 import com.projectreddog.machinemod.network.MachineModMessageBlockBlueprintSaveToServerHandler;
 import com.projectreddog.machinemod.network.MachineModMessageBlockBlueprintSelectionToServer;
 import com.projectreddog.machinemod.network.MachineModMessageBlockBlueprintSelectionToServerHandler;
+import com.projectreddog.machinemod.network.MachineModMessageEntityBluerprintBlockStateToClient;
+import com.projectreddog.machinemod.network.MachineModMessageEntityBluerprintBlockStateToClientHandler;
 import com.projectreddog.machinemod.network.MachineModMessageEntityCurrentTargetPosToClient;
 import com.projectreddog.machinemod.network.MachineModMessageEntityCurrentTargetPosToClientHandler;
 import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClient;
@@ -85,6 +87,7 @@ public class ModNetwork {
 		simpleNetworkWrapper.registerMessage(MachineModMessageRequestFileListToServerHandler.class, MachineModMessageRequestFileListToServer.class, 14, Side.SERVER);// message to server
 		simpleNetworkWrapper.registerMessage(MachineModMessageFileListToClientHandler.class, MachineModMessageFileListToClient.class, 15, Side.CLIENT);// message // to
 		simpleNetworkWrapper.registerMessage(MachineModMessageBlockBlueprintSelectionToServerHandler.class, MachineModMessageBlockBlueprintSelectionToServer.class, 16, Side.SERVER);// message to server
+		simpleNetworkWrapper.registerMessage(MachineModMessageEntityBluerprintBlockStateToClientHandler.class, MachineModMessageEntityBluerprintBlockStateToClient.class, 17, Side.CLIENT);// message // to
 
 		// to
 		// client

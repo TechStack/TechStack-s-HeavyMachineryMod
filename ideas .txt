@@ -9,6 +9,13 @@ Towercrane needs bug fixes, GUI enhanced for chooosing  blueprint
 item:
 laser scanner needs to allow for choice of filename etc..
 
+
+"Just some aesthetic ideas, something visual to pull the blocks out of would be cool, like maybe a 2x3x2 shipping container with an open top placed somewhere in its range with a large inventory to fill with blocks and compatibility with hoppers/other item transport.
+
+If this mod will have an item that let's you see the equipment's range and a ghost view of the selected blueprint or anything like that a hardhat and safety goggles that you wear in the helmet slot would be cool."
+
+
+
 Recipies for everything above
 
 
