@@ -249,8 +249,6 @@ public class BlockBlueprintHelper {
 
 					blockStateArray[i][j][k] = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(RegisteryName)).getStateFromMeta(metaValue);
 
-					buf.writeInt(metaValue);
-
 				}
 			}
 		}

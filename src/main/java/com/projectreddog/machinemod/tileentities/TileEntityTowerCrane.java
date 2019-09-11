@@ -87,20 +87,25 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 	}
 
 	public void setFileName(String fileName) {
-		if (fileName == null) {
-			fileName = "";
+		if (this.world != null) {
+			if (!this.world.isRemote) {
+				if (fileName == null) {
+					fileName = "";
+				}
+				this.fileName = fileName;
+				BlockBluePrintArray = BlockBlueprintHelper.getBlockStateArray(fileName);
+				BlockPos bp = BlockBlueprintHelper.getBlueprintArea(fileName);
+				if (bp != null) {
+					dx = bp.getX();
+					dy = bp.getY();
+					dz = bp.getZ();
+				}
+				currentX = 0;
+				currentY = 0;
+				currentZ = 0;
+				SendBlockBluePrintArrayToClients();
+			}
 		}
-		this.fileName = fileName;
-		BlockBluePrintArray = BlockBlueprintHelper.getBlockStateArray(fileName);
-		BlockPos bp = BlockBlueprintHelper.getBlueprintArea(fileName);
-		dx = bp.getX();
-		dy = bp.getY();
-		dz = bp.getZ();
-		currentX = 0;
-		currentY = 0;
-		currentZ = 0;
-		SendBlockBluePrintArrayToClients();
-
 	}
 
 	public void SendBlockBluePrintArrayToClients() {
@@ -505,11 +510,12 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		targetArmRotation = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "targetArmRotation");
 		targetGantryPos = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "targetGantryPos");
 		targetWenchPos = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "targetWenchPos");
+		setFileName(compound.getString(Reference.MACHINE_MOD_NBT_PREFIX + "filename"));
+
 		currentX = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentX");
 		currentY = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentY");
 		currentZ = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentZ");
 		running = compound.getBoolean(Reference.MACHINE_MOD_NBT_PREFIX + "running");
-		setFileName(compound.getString(Reference.MACHINE_MOD_NBT_PREFIX + "filename"));
 		// inventory
 		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
 		for (int i = 0; i < tagList.tagCount(); i++) {
@@ -556,11 +562,13 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		}
 
 		ItemStack stack = clawHolding;
-		if (!stack.isEmpty()) {
-			NBTTagCompound tag = new NBTTagCompound();
-			tag.setByte("Slot", (byte) -1);
-			stack.writeToNBT(tag);
-			itemList.appendTag(tag);
+		if (stack != null) {
+			if (!stack.isEmpty()) {
+				NBTTagCompound tag = new NBTTagCompound();
+				tag.setByte("Slot", (byte) -1);
+				stack.writeToNBT(tag);
+				itemList.appendTag(tag);
+			}
 		}
 
 		compound.setTag(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", itemList);

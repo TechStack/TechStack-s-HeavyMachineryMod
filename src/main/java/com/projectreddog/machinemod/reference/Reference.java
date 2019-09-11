@@ -48,6 +48,7 @@ public class Reference {
 	public static final String MODEL_UNDERGROUND_DUMPTRUCK_TEXTURE_LOCATION = "models/undergrounddumptruck.png";
 
 	public static final String MODEL_LOADER_TEXTURE_LOCATION = "models/modelloader.png";
+
 	public static final String MODEL_UNDER_GROUND_LOADER_TEXTURE_LOCATION = "models/undergroundloader.png";
 	public static final String MODEL_CONTINUOUSMINER_TEXTURE_LOCATION = "models/continuousminer.png";
 
@@ -77,6 +78,7 @@ public class Reference {
 	public static final String GUI_TURBO_FURNACE_FLAME = "textures/gui/turbofurnaceflame.png";
 	public static final String GUI_TURBO_FURNACE_FLAME_CUTOUT = "textures/gui/flamecutout.png";
 
+	public static final String BLOCK_BLUEPRINT_TRANSPARENT_LOCATION = "textures/blocks/blockblueprinttransparent.png";
 	// textures for Tile Entities
 	public static final String MODEL_TILEENTITY_PRIMARY_CRUSHER_TEXTURE_LOCATION = "models/primarycrusher.png";
 	public static final String MODEL_TILEENTITY_CENRIFUGE_TEXTURE_LOCATION = "models/centrifuge.png";
