@@ -751,6 +751,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		compound.setFloat(Reference.MACHINE_MOD_NBT_PREFIX + "ATTRIBUTE1", Attribute1);
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "CURRENT_FUEL", currentFuelLevel);
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "RUN_TIMER_EMAIN", runTimeTillNextFuelUsage);
+		// TOOD SAVE Attribute2 ? on the entities?
 		// inventory
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < SIZE; i++) {

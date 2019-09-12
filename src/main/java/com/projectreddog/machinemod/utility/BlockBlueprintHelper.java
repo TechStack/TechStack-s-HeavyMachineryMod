@@ -7,13 +7,17 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.UUID;
 
 import com.projectreddog.machinemod.reference.Reference;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -133,6 +137,71 @@ public class BlockBlueprintHelper {
 			return ItemStack.EMPTY;
 		}
 		return ItemStack.EMPTY;
+	}
+
+//	public HashMap<String, Integer> getMissingBlocks(IBlockState[][][] blockStateArray, IInventory inventory) {
+//		HashMap<String, Integer> myMap = new HashMap<String, Integer>();
+//		for (int x = 0; x < blockStateArray.length; x++) {
+//			for (int y = 0; y < blockStateArray[x].length; y++) {
+//				for (int z = 0; z < blockStateArray[x][y].length; z++) {
+//
+//					if (!blockStateArray[x][y][z].getBlock().isAir(blockStateArray[x][y][z], null, null)) {
+//						Item item = blockStateArray[x][y][z].getBlock().getPickBlock(blockStateArray[x][y][z], null, null, null, null).getItem();
+//						String itemName = item.getItemStackDisplayName(new ItemStack(item));
+//						if (myMap.containsKey(itemName)) {
+//							int count = myMap.get(itemName);
+//							myMap.put(itemName, count + 1);
+//
+//						} else {
+//							// not found in the list so add it
+//							myMap.put(itemName, 1);
+//						}
+//					}
+//				}
+//
+//			}
+//		}
+//
+//		return myMap;
+//	}
+//
+//	
+
+	public static List<ItemStack> getMissingBlocks(IBlockState[][][] blockStateArray, IInventory inventory) {
+		List<ItemStack> neededItems = new ArrayList<ItemStack>();
+
+		if (blockStateArray != null) {
+			for (int x = 0; x < blockStateArray.length; x++) {
+				for (int y = 0; y < blockStateArray[x].length; y++) {
+					for (int z = 0; z < blockStateArray[x][y].length; z++) {
+
+						if (!blockStateArray[x][y][z].getBlock().isAir(blockStateArray[x][y][z], null, null)) {
+							Item item = blockStateArray[x][y][z].getBlock().getPickBlock(blockStateArray[x][y][z], null, null, null, null).getItem();
+							// String itemName = item.getItemStackDisplayName(new ItemStack(item));
+
+							if (neededItems.size() == 0) {
+								neededItems.add(new ItemStack(item));
+							} else {
+								for (Iterator iterator = neededItems.iterator(); iterator.hasNext();) {
+									ItemStack is = (ItemStack) iterator.next();
+									if (is.getItem() == item) {
+										// same items
+										is.setCount(is.getCount() + 1);
+										// add one more to teh needed list
+									} else {
+										neededItems.add(new ItemStack(item));
+									}
+								}
+							}
+
+						}
+					}
+
+				}
+			}
+		}
+		LogHelper.info("Needed Items: " + neededItems.toString());
+		return neededItems;
 	}
 
 	public static BlockPos getBlueprintArea(String fileName) {

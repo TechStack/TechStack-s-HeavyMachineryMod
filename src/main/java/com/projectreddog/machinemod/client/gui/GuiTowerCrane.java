@@ -9,6 +9,7 @@ import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.container.ContainerTowerCrane;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityTowerCrane;
+import com.projectreddog.machinemod.utility.BlockBlueprintHelper;
 import com.projectreddog.machinemod.utility.DeprecatedWrapper;
 import com.projectreddog.machinemod.utility.LogHelper;
 
@@ -41,7 +42,7 @@ public class GuiTowerCrane extends GuiContainer {
 		this.xSize = 256;
 		this.ySize = 222;
 
-		int buttonX = this.width / 2 + 52;
+		int buttonX = this.width / 2 + 42;
 		int buttonY = this.height / 2 - 94;
 		this.buttonList.add(new GuiButton(Reference.GUI_TOWER_CRANE_BUTTON_SETTINGS, buttonX, buttonY, 15, 20, DeprecatedWrapper.translateToLocal("gui.towercrane.settings")));
 		// this
@@ -127,14 +128,16 @@ public class GuiTowerCrane extends GuiContainer {
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
 
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID, "textures/gui/towercrane.png"));
+		this.mc.renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID, "textures/gui/towercrane2.png"));
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 
-		this.mc.renderEngine.bindTexture(getTextureLocationScrollBar());
+		// this.mc.renderEngine.bindTexture(getTextureLocationScrollBar());
 
-		this.drawTexturedModalRect(x + 171, y + 18 + scrollPosY, 0, 0, 100, 180);
+		// this.drawTexturedModalRect(x + 171, y + 18 + scrollPosY, 0, 0, 100, 180);
+
+		BlockBlueprintHelper.getMissingBlocks(towerCrane.BlockBluePrintArray, towerCrane);
 	}
 
 	private ResourceLocation scrollbar;
