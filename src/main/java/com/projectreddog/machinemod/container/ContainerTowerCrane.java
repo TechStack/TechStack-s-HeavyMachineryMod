@@ -64,7 +64,7 @@ public class ContainerTowerCrane extends Container {
 			stack = stackInSlot.copy();
 
 			// merges the item into player inventory since its in the Entity
-			if (slot < 3) {
+			if (slot < 54) {
 				if (!this.mergeItemStack(stackInSlot, 54, this.inventorySlots.size(), true)) {
 					return ItemStack.EMPTY;
 				}
