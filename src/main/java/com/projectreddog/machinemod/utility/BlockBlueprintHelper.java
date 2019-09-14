@@ -182,16 +182,23 @@ public class BlockBlueprintHelper {
 							if (neededItems.size() == 0) {
 								neededItems.add(new ItemStack(item));
 							} else {
+								boolean found = false;
 								for (Iterator iterator = neededItems.iterator(); iterator.hasNext();) {
 									ItemStack is = (ItemStack) iterator.next();
 									if (is.getItem() == item) {
 										// same items
 										is.setCount(is.getCount() + 1);
 										// add one more to teh needed list
+
+										found = true;
 									} else {
-										neededItems.add(new ItemStack(item));
 									}
 								}
+
+								if (!found) {
+									neededItems.add(new ItemStack(item));
+								}
+
 							}
 
 						}
@@ -200,7 +207,7 @@ public class BlockBlueprintHelper {
 				}
 			}
 		}
-		LogHelper.info("Needed Items: " + neededItems.toString());
+		// LogHelper.info("Needed Items: " + neededItems.toString());
 		return neededItems;
 	}
 

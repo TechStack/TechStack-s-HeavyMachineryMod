@@ -33,7 +33,7 @@ item.machinemod:choppersawblade.name=Chopper Sawblade - WIP
 gui.assemblytable.assemble=Assemble
 gui.assemblytable.name=Assembly Table
 gui.towercrane.inventory=Back To inventory
-gui.towercrane.settings=S
+gui.towercrane.settings=Blueprint
 
 gui.laserlevel.savetext=Save Block Blueprint
 gui.laserlevel.front=Front

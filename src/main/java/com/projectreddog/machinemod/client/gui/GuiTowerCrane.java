@@ -1,6 +1,8 @@
 package com.projectreddog.machinemod.client.gui;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
@@ -16,6 +18,7 @@ import com.projectreddog.machinemod.utility.LogHelper;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -43,8 +46,8 @@ public class GuiTowerCrane extends GuiContainer {
 		this.ySize = 222;
 
 		int buttonX = this.width / 2 + 42;
-		int buttonY = this.height / 2 - 94;
-		this.buttonList.add(new GuiButton(Reference.GUI_TOWER_CRANE_BUTTON_SETTINGS, buttonX, buttonY, 15, 20, DeprecatedWrapper.translateToLocal("gui.towercrane.settings")));
+		int buttonY = this.height / 2 + 84;
+		this.buttonList.add(new GuiButton(Reference.GUI_TOWER_CRANE_BUTTON_SETTINGS, buttonX, buttonY, 52, 20, DeprecatedWrapper.translateToLocal("gui.towercrane.settings")));
 		// this
 
 		super.initGui();
@@ -133,11 +136,28 @@ public class GuiTowerCrane extends GuiContainer {
 		int y = (height - ySize) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 
+		this.mc.renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID, "textures/gui/towercrane3.png"));
+		x = ((width - xSize) / 2) + 253;
+		y = (height - ySize) / 2;
+		this.drawTexturedModalRect(x, y, 0, 0, 64, ySize);
 		// this.mc.renderEngine.bindTexture(getTextureLocationScrollBar());
 
 		// this.drawTexturedModalRect(x + 171, y + 18 + scrollPosY, 0, 0, 100, 180);
 
-		BlockBlueprintHelper.getMissingBlocks(towerCrane.BlockBluePrintArray, towerCrane);
+		List<ItemStack> neededItems = BlockBlueprintHelper.getMissingBlocks(towerCrane.BlockBluePrintArray, towerCrane);
+
+		x = ((width - xSize) / 2) + 172;
+		y = ((height - ySize) / 2) + 40;
+		this.fontRenderer.FONT_HEIGHT = 8;
+
+		for (Iterator iterator = neededItems.iterator(); iterator.hasNext();) {
+			ItemStack itemStack = (ItemStack) iterator.next();
+
+			this.fontRenderer.drawString(itemStack.getDisplayName() + " X " + itemStack.getCount(), x, y, 4210752);
+			y = y + 10;
+
+		}
+
 	}
 
 	private ResourceLocation scrollbar;
