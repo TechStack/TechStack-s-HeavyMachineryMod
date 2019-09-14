@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/Techstack-s-HeavyMachineryMod1.12"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.buildship.core.classpathprovider"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="GradleStart"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="${build_files}"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Techstack-s-HeavyMachineryMod1.12"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value=" -DFORGE_FORCE_FRAME_RECALC=true"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-DFORGE_FORCE_FRAME_RECALC=true -Dforge.verboseMissingModelLoggingCount=200"/>
 <stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="D:\ALL\Code\Minecraft\Techstack-s-HeavyMachineryMod1.12\run"/>
 </launchConfiguration>
