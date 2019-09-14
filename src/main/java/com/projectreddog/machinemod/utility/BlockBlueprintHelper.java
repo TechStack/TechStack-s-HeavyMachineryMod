@@ -166,6 +166,66 @@ public class BlockBlueprintHelper {
 //	}
 //
 //	
+	public static ItemStack getNextBlockNeeded(IBlockState[][][] blockStateArray, int currentX, int currentY, int currentZ, int state) {
+		if (blockStateArray != null) {
+			if (currentX >= blockStateArray.length) {
+				currentX = 0;
+				currentY++;
+			}
+			if (currentY >= blockStateArray[currentX].length) {
+				currentY = 0;
+				currentZ++;
+			}
+			if (currentZ >= blockStateArray[currentX][currentY].length) {
+				currentZ = 0;
+				// ERRORR
+				return ItemStack.EMPTY;
+			}
+			if (state > 2) {
+
+				currentX = currentX + 1;
+
+				if (currentX >= blockStateArray.length) {
+					currentX = 0;
+					currentY++;
+				}
+				if (currentY >= blockStateArray[currentX].length) {
+					currentY = 0;
+					currentZ++;
+				}
+				if (currentZ >= blockStateArray[currentX][currentY].length) {
+					currentZ = 0;
+					// ERRORR
+					return ItemStack.EMPTY;
+				}
+			}
+
+			while (blockStateArray[currentX][currentY][currentZ].getBlock().isAir(blockStateArray[currentX][currentY][currentZ], null, null)) {
+				currentX = currentX + 1;
+
+				if (currentX >= blockStateArray.length) {
+					currentX = 0;
+					currentY++;
+				}
+				if (currentY >= blockStateArray[currentX].length) {
+					currentY = 0;
+					currentZ++;
+				}
+				if (currentZ >= blockStateArray[currentX][currentY].length) {
+					currentZ = 0;
+					// ERRORR
+					return ItemStack.EMPTY;
+				}
+			}
+
+			Item item = blockStateArray[currentX][currentY][currentZ].getBlock().getPickBlock(blockStateArray[currentX][currentY][currentZ], null, null, null, null).getItem();
+			return new ItemStack(item);
+		} else {
+			return ItemStack.EMPTY;
+
+		}
+
+	}
 
 	public static List<ItemStack> getMissingBlocks(IBlockState[][][] blockStateArray, IInventory inventory) {
 		List<ItemStack> neededItems = new ArrayList<ItemStack>();

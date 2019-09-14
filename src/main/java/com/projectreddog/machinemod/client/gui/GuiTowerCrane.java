@@ -33,6 +33,8 @@ public class GuiTowerCrane extends GuiContainer {
 
 	boolean wasMouseDownLastFrame = false;
 
+	public String tmpNextItemName = "";
+
 	public GuiTowerCrane(InventoryPlayer inventoryPlayer, TileEntityTowerCrane towerCrane) {
 		super(new ContainerTowerCrane(inventoryPlayer, towerCrane));
 		this.towerCrane = towerCrane;
@@ -143,6 +145,20 @@ public class GuiTowerCrane extends GuiContainer {
 		// this.mc.renderEngine.bindTexture(getTextureLocationScrollBar());
 
 		// this.drawTexturedModalRect(x + 171, y + 18 + scrollPosY, 0, 0, 100, 180);
+
+		x = (width - xSize) / 2 + 5;
+		y = (height - ySize) / 2 + 5;
+		String blueprintName = "";
+		if (towerCrane != null) {
+			if (tmpNextItemName.equals("") || towerCrane.state < 4) {
+				ItemStack is = BlockBlueprintHelper.getNextBlockNeeded(towerCrane.BlockBluePrintArray, towerCrane.currentX, towerCrane.currentY, towerCrane.currentZ, towerCrane.state);
+				tmpNextItemName = is.getDisplayName();
+			}
+			blueprintName = "Cords X: " + towerCrane.currentX + " Y: " + towerCrane.currentY + " Z: " + towerCrane.currentZ + " Next Item :" + tmpNextItemName + " state: " + towerCrane.state;
+
+		}
+
+		this.fontRenderer.drawString(blueprintName, x, y, 4210752);
 
 		List<ItemStack> neededItems = BlockBlueprintHelper.getMissingBlocks(towerCrane.BlockBluePrintArray, towerCrane);
 
