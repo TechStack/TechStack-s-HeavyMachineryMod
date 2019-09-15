@@ -5,6 +5,7 @@ item.machinemod:trackloader.name=Track Loader
 item.machinemod:drillingrig.name=Drilling Rig
 item.machinemod:dumptruck.name=Dump Truck
 item.machinemod:loader.name=Loader
+item.machinemod:undergroundloader.name=Underground Loader
 item.machinemod:drillpipe.name=Drilling Pipe
 item.machinemod:drillhead.name=Drill Head
 item.machinemod:tractor.name=Tractor
