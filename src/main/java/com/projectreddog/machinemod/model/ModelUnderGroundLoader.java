@@ -40,7 +40,7 @@ public class ModelUnderGroundLoader extends ModelTransportable {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		// this.renderGroupObject(groupNameBody);
 
-		GL11.glTranslatef(0f, 0f, .80f);
+		GL11.glTranslatef(0f, 0f, -.45f);
 		this.renderGroupObject(groupNameBody);
 
 		GL11.glTranslatef(0f, -2.6f, -1.6f);
@@ -52,7 +52,7 @@ public class ModelUnderGroundLoader extends ModelTransportable {
 		this.renderGroupObject(groupNameArm);
 
 		// GL11.glTranslatef(0f, 1.2f, -1.2f);
-		GL11.glTranslatef(0f, 2.1f, -1.15f);
+		GL11.glTranslatef(0f, 1.22f, -2.17f);
 		if (entity != null) {
 			if (((EntityUnderGroundLoader) entity).Attribute1 < -30) {
 				GL11.glRotatef((((EntityUnderGroundLoader) entity).Attribute1 + 30) * -2f, 1, 0, 0);

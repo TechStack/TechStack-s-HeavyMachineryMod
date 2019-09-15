@@ -75,7 +75,7 @@ public class RenderUnderGroundLoader extends Render {
 
 		this.modelundergroundLoader.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 
-		GlStateManager.translate(-2f, -0.00F, -1.57F);
+		GlStateManager.translate(-2f, 1.150F, -1.0F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glScalef(.5f, .5f, .5f);
 		EntityUnderGroundLoader eL = ((EntityUnderGroundLoader) entity);

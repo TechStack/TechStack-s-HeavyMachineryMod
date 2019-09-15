@@ -28,10 +28,10 @@ public class EntityUnderGroundLoader extends EntityMachineModRideable {
 		// inventory = new ItemStack[9];
 		inventory = new ItemStackHandler(SIZE);
 
-		this.mountedOffsetY = 1D;
-		this.mountedOffsetX = 0.4D;
-		this.mountedOffsetZ = 0.4D;
-		this.maxAngle = 15;
+		this.mountedOffsetY = .55D;
+		this.mountedOffsetX = -0.9D;
+		this.mountedOffsetZ = -0.6D;
+		this.maxAngle = 8;
 		this.minAngle = -90;
 		this.droppedItem = ModItems.undergroundloader;
 		this.shouldSendClientInvetoryUpdates = true;
@@ -62,12 +62,8 @@ public class EntityUnderGroundLoader extends EntityMachineModRideable {
 						angle = 90;
 					}
 					BlockPos bp;
-					bp = new BlockPos(posX + calcTwoOffsetX(5, angle, i), posY + bucketOffsetY, posZ + calcTwoOffsetZ(5, angle, i));
-					if (world.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || world.getBlockState(bp).getBlock() == Blocks.SNOW || world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.SAND || world.getBlockState(bp).getBlock() == Blocks.GRAVEL || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.CLAY
-							|| world.getBlockState(bp).getBlock() == Blocks.NETHERRACK || world.getBlockState(bp).getBlock() == Blocks.MYCELIUM || world.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedgranite || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblasteddiorite
-							|| this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedandesite || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedgold || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastediron || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedcoal
-							|| this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedlapis || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblasteddiamond || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedredstone || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedemerald || world.getBlockState(bp).getBlock() == Blocks.SOUL_SAND
-							|| world.getBlockState(bp).getBlock() == Blocks.TALLGRASS) {
+					bp = new BlockPos(posX + calcTwoOffsetX(6, angle, i), posY + bucketOffsetY, posZ + calcTwoOffsetZ(6, angle, i));
+					if (world.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || world.getBlockState(bp).getBlock() == Blocks.SNOW || world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.SAND || world.getBlockState(bp).getBlock() == Blocks.GRAVEL || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.CLAY || world.getBlockState(bp).getBlock() == Blocks.NETHERRACK || world.getBlockState(bp).getBlock() == Blocks.MYCELIUM || world.getBlockState(bp).getBlock() == ModBlocks.machineblastedstone || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedgranite || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblasteddiorite || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedandesite || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedgold || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastediron || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedcoal || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedlapis || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblasteddiamond || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedredstone || this.world.getBlockState(bp).getBlock() == ModBlocks.machineblastedemerald || world.getBlockState(bp).getBlock() == Blocks.SOUL_SAND || world.getBlockState(bp).getBlock() == Blocks.TALLGRASS) {
 						BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
 					}
@@ -111,6 +107,22 @@ public class EntityUnderGroundLoader extends EntityMachineModRideable {
 
 		}
 
+	}
+
+	@Override
+	public double getMountedXOffset() {
+		// should be overridden in extended class if not default;
+
+		return calcTwoOffsetX(this.mountedOffsetZ, 90, this.mountedOffsetX);
+		// return calcOffsetX(mountedOffsetX);
+	}
+
+	@Override
+	public double getMountedZOffset() {
+		// should be overridden in extended class if not default;
+
+		return calcTwoOffsetZ(this.mountedOffsetZ, 90, this.mountedOffsetX);
+		// return calcOffsetX(mountedOffsetX);
 	}
 
 	public AxisAlignedBB getBoundingBox() {
