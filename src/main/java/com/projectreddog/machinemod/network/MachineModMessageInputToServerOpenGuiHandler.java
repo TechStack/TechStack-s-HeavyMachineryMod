@@ -15,6 +15,7 @@ import com.projectreddog.machinemod.entity.EntityPaver;
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.entity.EntityTrackLoader;
 import com.projectreddog.machinemod.entity.EntityTractor;
+import com.projectreddog.machinemod.entity.EntityUnderGroundLoader;
 import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.Entity;
@@ -73,6 +74,8 @@ public class MachineModMessageInputToServerOpenGuiHandler implements IMessageHan
 							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_TRACK_LOADER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						} else if (entity instanceof EntityLaserMiner) {
 							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_LASAERMINER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
+						} else if (entity instanceof EntityUnderGroundLoader) {
+							((EntityPlayer) entity.getControllingPassenger()).openGui(MachineMod.instance, Reference.GUI_UNDERGROUND_LOADER, entity.world, (int) entity.getEntityId(), (int) 0, (int) 0);
 						}
 
 					}

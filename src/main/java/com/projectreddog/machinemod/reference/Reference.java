@@ -109,6 +109,7 @@ public class Reference {
 	public static final int GUI_TOWER_CRANE = 23;
 	public static final int GUI_TOWER_CRANE_SETTINGS = 24;
 	public static final int GUI_LASAER_LEVEL = 25;
+	public static final int GUI_UNDERGROUND_LOADER = 26;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;
