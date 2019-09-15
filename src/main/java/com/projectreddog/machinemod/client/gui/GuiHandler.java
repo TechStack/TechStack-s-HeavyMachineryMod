@@ -25,6 +25,7 @@ import com.projectreddog.machinemod.container.ContainerTowerCraneSettings;
 import com.projectreddog.machinemod.container.ContainerTrackLoader;
 import com.projectreddog.machinemod.container.ContainerTractor;
 import com.projectreddog.machinemod.container.ContainerTurboFurnace;
+import com.projectreddog.machinemod.container.ContainerUndergroundLoader;
 import com.projectreddog.machinemod.container.ContainerWideBedTruck;
 import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.entity.EntityChopper;
@@ -39,6 +40,7 @@ import com.projectreddog.machinemod.entity.EntityPaver;
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.entity.EntityTrackLoader;
 import com.projectreddog.machinemod.entity.EntityTractor;
+import com.projectreddog.machinemod.entity.EntityUnderGroundLoader;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityAssemblyTable;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
@@ -307,6 +309,15 @@ public class GuiHandler implements IGuiHandler {
 				}
 			}
 
+		} else if (id == Reference.GUI_UNDERGROUND_LOADER) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityUnderGroundLoader) {
+
+					return new ContainerUndergroundLoader(player.inventory, (EntityUnderGroundLoader) entity);
+				}
+			}
 		}
 
 		return null;
@@ -526,6 +537,14 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null) {
 				if (entity instanceof TileEntityHoloScanner) {
 					return new GuiHoloScanner(player.inventory, (TileEntityHoloScanner) entity);
+				}
+			}
+		} else if (id == Reference.GUI_UNDERGROUND_LOADER) {
+
+			Entity entity = world.getEntityByID(x);
+			if (entity != null) {
+				if (entity instanceof EntityUnderGroundLoader) {
+					return new GuiUndergroundLoader(player.inventory, (EntityUnderGroundLoader) entity);
 				}
 			}
 		}
