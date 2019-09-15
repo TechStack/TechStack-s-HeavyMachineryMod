@@ -51,16 +51,17 @@ public class RenderLaserMiner extends Render {
 				rotatemarker = 1;
 			}
 		}
-
-		this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, rotatemarker);
-		GL11.glTranslatef(.775f, 0f, 0f);
-		this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, rotatemarker);
-		GL11.glTranslatef(.775f, 0f, 0f);
-		this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, rotatemarker);
-		GL11.glTranslatef(.775f, 0f, 0f);
-		this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, rotatemarker);
-		GL11.glTranslatef(.775f, 0f, 0f);
-		this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, rotatemarker);
+		if (entity.isBeingRidden()) {
+			this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, rotatemarker);
+			GL11.glTranslatef(.775f, 0f, 0f);
+			this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, rotatemarker);
+			GL11.glTranslatef(.775f, 0f, 0f);
+			this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, rotatemarker);
+			GL11.glTranslatef(.775f, 0f, 0f);
+			this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, rotatemarker);
+			GL11.glTranslatef(.775f, 0f, 0f);
+			this.modelBeam.render(entity, 0, 0, 0, yaw, pitch, rotatemarker);
+		}
 		GL11.glPopMatrix();
 	}
 

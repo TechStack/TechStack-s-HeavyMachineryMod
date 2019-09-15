@@ -139,28 +139,33 @@ public class GuiTowerCrane extends GuiContainer {
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 
 		this.mc.renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID, "textures/gui/towercrane3.png"));
-		x = ((width - xSize) / 2) + 253;
+		x = ((width - xSize) / 2) + 252;
 		y = (height - ySize) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, 64, ySize);
 		// this.mc.renderEngine.bindTexture(getTextureLocationScrollBar());
 
 		// this.drawTexturedModalRect(x + 171, y + 18 + scrollPosY, 0, 0, 100, 180);
 
-		x = (width - xSize) / 2 + 5;
-		y = (height - ySize) / 2 + 5;
+		x = (width - xSize) / 2 + 172;
+		y = (height - ySize) / 2 + 18;
 		String blueprintName = "";
 		if (towerCrane != null) {
 			if (tmpNextItemName.equals("") || towerCrane.state < 4) {
 				ItemStack is = BlockBlueprintHelper.getNextBlockNeeded(towerCrane.BlockBluePrintArray, towerCrane.currentX, towerCrane.currentY, towerCrane.currentZ, towerCrane.state);
 				tmpNextItemName = is.getDisplayName();
 			}
-			blueprintName = "Cords X: " + towerCrane.currentX + " Y: " + towerCrane.currentY + " Z: " + towerCrane.currentZ + " Next Item :" + tmpNextItemName + " state: " + towerCrane.state;
+			// blueprintName = "Cords X: " + towerCrane.currentX + " Y: " + towerCrane.currentY + " Z: " + towerCrane.currentZ + " Next Item :" + tmpNextItemName + " state: " + towerCrane.state;
 
+			blueprintName = tmpNextItemName;
 		}
+
+		this.fontRenderer.drawString("Cords X: " + towerCrane.currentX + " Y: " + towerCrane.currentY + " Z: " + towerCrane.currentZ, 10, 10, 0);
+
+		this.fontRenderer.drawString("Next Item:", x, y - 11, 4210752);
 
 		this.fontRenderer.drawString(blueprintName, x, y, 4210752);
 
-		List<ItemStack> neededItems = BlockBlueprintHelper.getMissingBlocks(towerCrane.BlockBluePrintArray, towerCrane);
+		List<ItemStack> neededItems = BlockBlueprintHelper.getMissingBlocks(towerCrane.BlockBluePrintArray, towerCrane, towerCrane.currentX, towerCrane.currentY, towerCrane.currentZ);
 
 		x = ((width - xSize) / 2) + 172;
 		y = ((height - ySize) / 2) + 40;

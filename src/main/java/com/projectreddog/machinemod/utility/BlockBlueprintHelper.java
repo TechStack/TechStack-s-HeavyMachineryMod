@@ -14,10 +14,10 @@ import java.util.List;
 import java.util.UUID;
 
 import com.projectreddog.machinemod.reference.Reference;
+import com.projectreddog.machinemod.tileentities.TileEntityTowerCrane;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -227,12 +227,16 @@ public class BlockBlueprintHelper {
 
 	}
 
-	public static List<ItemStack> getMissingBlocks(IBlockState[][][] blockStateArray, IInventory inventory) {
+	public static List<ItemStack> getMissingBlocks(IBlockState[][][] blockStateArray, TileEntityTowerCrane inventory, int currentX, int currentY, int currentZ) {
 		List<ItemStack> neededItems = new ArrayList<ItemStack>();
 
 		if (blockStateArray != null) {
+
+			// add all required items
 			for (int x = 0; x < blockStateArray.length; x++) {
+
 				for (int y = 0; y < blockStateArray[x].length; y++) {
+
 					for (int z = 0; z < blockStateArray[x][y].length; z++) {
 
 						if (!blockStateArray[x][y][z].getBlock().isAir(blockStateArray[x][y][z], null, null)) {
@@ -260,6 +264,88 @@ public class BlockBlueprintHelper {
 								}
 
 							}
+						}
+					}
+
+				}
+			}
+
+			// remove built
+			for (int y = 0; y <= currentY; y++) {
+
+				for (int z = 0; z <= currentZ; z++) {
+					for (int x = 0; x <= currentX; x++) {
+						// REMOVE as needed
+
+						if (!blockStateArray[x][y][z].getBlock().isAir(blockStateArray[x][y][z], null, null)) {
+							Item item = blockStateArray[x][y][z].getBlock().getPickBlock(blockStateArray[x][y][z], null, null, null, null).getItem();
+							// String itemName = item.getItemStackDisplayName(new ItemStack(item));
+							for (int j = 0; j < neededItems.size(); j++) {
+								ItemStack is = neededItems.get(j);
+								if (is.getItem() == item) {
+									// same items
+									is.setCount(is.getCount() - 1);
+									// add one more to the needed list
+									if (is.getCount() <= 0) {
+										neededItems.remove(j);
+										j = neededItems.size();
+
+									}
+								}
+							}
+
+						}
+
+					}
+				}
+			}
+		}
+
+		// remove what was in invnentory
+		for (int i = 0; i < inventory.getSizeInventory(); i++) {
+
+			for (int j = 0; j < neededItems.size(); j++) {
+				ItemStack is = neededItems.get(j);
+
+				if (inventory.getStackInSlot(i) != ItemStack.EMPTY && inventory.getStackInSlot(i) != null) {
+
+					if (is.getItem() == inventory.getStackInSlot(i).getItem()) {
+						// same item check meta
+						if (is.getItemDamage() == inventory.getStackInSlot(i).getItemDamage()) {
+							// same meta /damage
+							is.setCount(is.getCount() - inventory.getStackInSlot(i).getCount());
+							if (is.getCount() <= 0) {
+								is.setCount(0);
+
+								neededItems.remove(j);
+								// max out to end the loop please
+								j = neededItems.size();
+
+							}
+						}
+
+					}
+				}
+			}
+
+		}
+		// remove what was in claw invnentory
+		for (int j = 0; j < neededItems.size(); j++) {
+			ItemStack is = neededItems.get(j);
+
+			if (inventory.getClawHolding() != ItemStack.EMPTY && inventory.getClawHolding() != null) {
+
+				if (is.getItem() == inventory.getClawHolding().getItem()) {
+					// same item check meta
+					if (is.getItemDamage() == inventory.getClawHolding().getItemDamage()) {
+						// same meta /damage
+						is.setCount(is.getCount() - 1);
+						if (is.getCount() <= 0) {
+							is.setCount(0);
+
+							neededItems.remove(j);
+							// max out to end the loop please
+							j = neededItems.size();
 
 						}
 					}
@@ -267,7 +353,7 @@ public class BlockBlueprintHelper {
 				}
 			}
 		}
-		// LogHelper.info("Needed Items: " + neededItems.toString());
+
 		return neededItems;
 	}
 
