@@ -395,6 +395,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 				// TODO add call to event to allow it to be canceled by things like FTB utilities.
 
 				BlockBlueprintHelper.setBlockState(this.world, this.pos.add(placingposX, currentY, placingposZ), BlockBluePrintArray[currentX][currentY][currentZ], getFacing());
+				setInventorySlotContents(-1, ItemStack.EMPTY);
 			}
 			// prevArmRotation=targetGantryPos;
 			// prevGantryPos=targetGantryPos;

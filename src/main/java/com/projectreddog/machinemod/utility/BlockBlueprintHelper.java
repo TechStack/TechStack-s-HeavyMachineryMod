@@ -229,76 +229,90 @@ public class BlockBlueprintHelper {
 
 	public static List<ItemStack> getMissingBlocks(IBlockState[][][] blockStateArray, TileEntityTowerCrane inventory, int currentX, int currentY, int currentZ) {
 		List<ItemStack> neededItems = new ArrayList<ItemStack>();
-
+		int x = 0;
+		int y = 0;
+		int z = 0;
+		int activeBlockCount = 1;
 		if (blockStateArray != null) {
+			if (blockStateArray.length > 0 && blockStateArray[0].length > 0 && blockStateArray[0][0].length > 0) {
+				int maxX = blockStateArray.length;
+				int maxY = blockStateArray[0].length;
+				int maxZ = blockStateArray[0][0].length;
+
+				activeBlockCount = (currentX + (maxX * currentZ) + (maxX * maxZ * currentY));
+
+			}
 
 			// add all required items
-			for (int x = 0; x < blockStateArray.length; x++) {
+			for (x = 0; x < blockStateArray.length; x++) {
+				for (y = 0; y < blockStateArray[x].length; y++) {
 
-				for (int y = 0; y < blockStateArray[x].length; y++) {
+					for (z = 0; z < blockStateArray[x][y].length; z++) {
 
-					for (int z = 0; z < blockStateArray[x][y].length; z++) {
+						int loopCount = (x + (blockStateArray.length * z) + (blockStateArray.length * blockStateArray[x][y].length * y));
+						if (activeBlockCount <= loopCount) {
+							// LogHelper.info("Loop Count: " + loopCount);
 
-						if (!blockStateArray[x][y][z].getBlock().isAir(blockStateArray[x][y][z], null, null)) {
-							Item item = blockStateArray[x][y][z].getBlock().getPickBlock(blockStateArray[x][y][z], null, null, null, null).getItem();
-							// String itemName = item.getItemStackDisplayName(new ItemStack(item));
+							if (!blockStateArray[x][y][z].getBlock().isAir(blockStateArray[x][y][z], null, null)) {
+								Item item = blockStateArray[x][y][z].getBlock().getPickBlock(blockStateArray[x][y][z], null, null, null, null).getItem();
+								// String itemName = item.getItemStackDisplayName(new ItemStack(item));
 
-							if (neededItems.size() == 0) {
-								neededItems.add(new ItemStack(item));
-							} else {
-								boolean found = false;
-								for (Iterator iterator = neededItems.iterator(); iterator.hasNext();) {
-									ItemStack is = (ItemStack) iterator.next();
-									if (is.getItem() == item) {
-										// same items
-										is.setCount(is.getCount() + 1);
-										// add one more to teh needed list
-
-										found = true;
-									} else {
-									}
-								}
-
-								if (!found) {
+								if (neededItems.size() == 0) {
 									neededItems.add(new ItemStack(item));
-								}
+								} else {
+									boolean found = false;
+									for (Iterator iterator = neededItems.iterator(); iterator.hasNext();) {
+										ItemStack is = (ItemStack) iterator.next();
+										if (is.getItem() == item) {
+											// same items
+											is.setCount(is.getCount() + 1);
+											// add one more to teh needed list
 
+											found = true;
+										} else {
+										}
+									}
+
+									if (!found) {
+										neededItems.add(new ItemStack(item));
+									}
+
+								}
 							}
 						}
 					}
-
 				}
 			}
 
 			// remove built
-			for (int y = 0; y <= currentY; y++) {
-
-				for (int z = 0; z <= currentZ; z++) {
-					for (int x = 0; x <= currentX; x++) {
-						// REMOVE as needed
-
-						if (!blockStateArray[x][y][z].getBlock().isAir(blockStateArray[x][y][z], null, null)) {
-							Item item = blockStateArray[x][y][z].getBlock().getPickBlock(blockStateArray[x][y][z], null, null, null, null).getItem();
-							// String itemName = item.getItemStackDisplayName(new ItemStack(item));
-							for (int j = 0; j < neededItems.size(); j++) {
-								ItemStack is = neededItems.get(j);
-								if (is.getItem() == item) {
-									// same items
-									is.setCount(is.getCount() - 1);
-									// add one more to the needed list
-									if (is.getCount() <= 0) {
-										neededItems.remove(j);
-										j = neededItems.size();
-
-									}
-								}
-							}
-
-						}
-
-					}
-				}
-			}
+//			for (int y = 0; y <= currentY; y++) {
+//
+//				for (int z = 0; z <= currentZ; z++) {
+//					for (int x = 0; x <= currentX; x++) {
+//						// REMOVE as needed
+//
+//						if (!blockStateArray[x][y][z].getBlock().isAir(blockStateArray[x][y][z], null, null)) {
+//							Item item = blockStateArray[x][y][z].getBlock().getPickBlock(blockStateArray[x][y][z], null, null, null, null).getItem();
+//							// String itemName = item.getItemStackDisplayName(new ItemStack(item));
+//							for (int j = 0; j < neededItems.size(); j++) {
+//								ItemStack is = neededItems.get(j);
+//								if (is.getItem() == item) {
+//									// same items
+//									is.setCount(is.getCount() - 1);
+//									// add one more to the needed list
+//									if (is.getCount() <= 0) {
+//										neededItems.remove(j);
+//										j = neededItems.size();
+//
+//									}
+//								}
+//							}
+//
+//						}
+//
+//					}
+//				}
+//			}
 		}
 
 		// remove what was in invnentory
