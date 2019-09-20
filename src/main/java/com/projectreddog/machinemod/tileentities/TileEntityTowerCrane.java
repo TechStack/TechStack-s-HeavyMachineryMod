@@ -73,6 +73,9 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 	private String fileName = "";
 	private boolean running = false;
 
+	private int xOffset = 17;
+	private int zOffset = 17;
+
 	public boolean isRunning() {
 		return running;
 	}
@@ -100,6 +103,8 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 					dy = bp.getY();
 					dz = bp.getZ();
 				}
+				xOffset = dx + 1;
+				zOffset = dz + 1;
 				currentX = 0;
 				currentY = 0;
 				currentZ = 0;
@@ -251,13 +256,13 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		EnumFacing enumfacing = getFacing();
 		switch (enumfacing) {
 		case NORTH:
-			return x - 17;
+			return x - xOffset;
 		case SOUTH:
-			return 17 - x;// return this.boundingBox.minX + x;
+			return xOffset - x;// return this.boundingBox.minX + x;
 		case WEST:
-			return z - 17;
+			return z - zOffset;
 		case EAST:
-			return 17 - z;
+			return zOffset - z;
 		default:
 			return x;
 		}
@@ -268,13 +273,13 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		EnumFacing enumfacing = getFacing();
 		switch (enumfacing) {
 		case NORTH:
-			return 17 - z;
+			return zOffset - z;
 		case SOUTH:
-			return z - 17;// return this.boundingBox.minX + x;
+			return z - zOffset;// return this.boundingBox.minX + x;
 		case WEST:
-			return x - 17;
+			return x - xOffset;
 		case EAST:
-			return 17 - x;
+			return xOffset - x;
 		default:
 			return z;
 		}
@@ -290,13 +295,13 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		EnumFacing enumfacing = getFacing();
 		switch (enumfacing) {
 		case NORTH:
-			return x - 17;
+			return x - xOffset;
 		case SOUTH:
-			return 17 - x;// return this.boundingBox.minX + x;
+			return xOffset - x;// return this.boundingBox.minX + x;
 		case WEST:
-			return z - 17;
+			return z - zOffset;
 		case EAST:
-			return 17 - z;
+			return zOffset - z;
 		default:
 			return x;
 		}
@@ -307,13 +312,13 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		EnumFacing enumfacing = getFacing();
 		switch (enumfacing) {
 		case NORTH:
-			return z - 17;
+			return z - zOffset;
 		case SOUTH:
-			return 17 - z;// return this.boundingBox.minX + x;
+			return zOffset - z;// return this.boundingBox.minX + x;
 		case WEST:
-			return 17 - x;
+			return xOffset - x;
 		case EAST:
-			return x - 17;
+			return x - xOffset;
 		default:
 			return z;
 		}
