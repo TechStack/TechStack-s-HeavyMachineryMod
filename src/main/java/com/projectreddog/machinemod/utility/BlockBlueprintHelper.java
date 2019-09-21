@@ -218,8 +218,9 @@ public class BlockBlueprintHelper {
 				}
 			}
 
-			Item item = blockStateArray[currentX][currentY][currentZ].getBlock().getPickBlock(blockStateArray[currentX][currentY][currentZ], null, null, null, null).getItem();
-			return new ItemStack(item);
+			ItemStack item = blockStateArray[currentX][currentY][currentZ].getBlock().getPickBlock(blockStateArray[currentX][currentY][currentZ], null, null, null, null);
+
+			return item;
 		} else {
 			return ItemStack.EMPTY;
 
@@ -254,16 +255,16 @@ public class BlockBlueprintHelper {
 							// LogHelper.info("Loop Count: " + loopCount);
 
 							if (!blockStateArray[x][y][z].getBlock().isAir(blockStateArray[x][y][z], null, null)) {
-								Item item = blockStateArray[x][y][z].getBlock().getPickBlock(blockStateArray[x][y][z], null, null, null, null).getItem();
+								ItemStack item = blockStateArray[x][y][z].getBlock().getPickBlock(blockStateArray[x][y][z], null, null, null, null);
 								// String itemName = item.getItemStackDisplayName(new ItemStack(item));
 
 								if (neededItems.size() == 0) {
-									neededItems.add(new ItemStack(item));
+									neededItems.add(item);
 								} else {
 									boolean found = false;
 									for (Iterator iterator = neededItems.iterator(); iterator.hasNext();) {
 										ItemStack is = (ItemStack) iterator.next();
-										if (is.getItem() == item) {
+										if (is.getItem() == item.getItem()) {
 											// same items
 											is.setCount(is.getCount() + 1);
 											// add one more to teh needed list
@@ -274,7 +275,7 @@ public class BlockBlueprintHelper {
 									}
 
 									if (!found) {
-										neededItems.add(new ItemStack(item));
+										neededItems.add(item);
 									}
 
 								}

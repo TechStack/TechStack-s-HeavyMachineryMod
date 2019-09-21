@@ -163,18 +163,21 @@ public class GuiTowerCrane extends GuiContainer {
 
 		this.fontRenderer.drawString("Next Item:", x, y - 11, 4210752);
 
-		this.fontRenderer.drawString(blueprintName, x, y, 4210752);
+		this.fontRenderer.drawString(blueprintName, x + 5, y, 4210752);
 
 		List<ItemStack> neededItems = BlockBlueprintHelper.getMissingBlocks(towerCrane.BlockBluePrintArray, towerCrane, towerCrane.currentX, towerCrane.currentY, towerCrane.currentZ);
 
 		x = ((width - xSize) / 2) + 172;
 		y = ((height - ySize) / 2) + 40;
+
+		this.fontRenderer.drawString("Missing Blocks:", x, y - 10, 4210752);
+
 		this.fontRenderer.FONT_HEIGHT = 8;
 
 		for (Iterator iterator = neededItems.iterator(); iterator.hasNext();) {
 			ItemStack itemStack = (ItemStack) iterator.next();
 
-			this.fontRenderer.drawString(itemStack.getDisplayName() + " X " + itemStack.getCount(), x, y, 4210752);
+			this.fontRenderer.drawString(itemStack.getDisplayName() + " X " + itemStack.getCount(), x + 5, y, 4210752);
 			y = y + 10;
 
 		}
