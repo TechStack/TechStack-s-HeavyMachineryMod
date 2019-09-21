@@ -5,7 +5,7 @@ underground loader Needs work, render seat functions
 underground dump truck Needs work, render seat functions
 
 block:
-Towercrane needs bug fixes, GUI enhanced for chooosing  blueprint 
+Towercrane needs bug fixes, GUI enhanced for choosing  blueprint 
 item:
 laser scanner needs to allow for choice of filename etc..
 
@@ -33,7 +33,6 @@ possible work around . Unloader.
 
 
 Possible bug:
-hammer can go negative when your hacarky on durabliity 
 
 		
 Fix distiller gui slot location & texture!		
