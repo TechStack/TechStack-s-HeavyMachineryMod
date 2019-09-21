@@ -110,6 +110,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 					dy = bp.getY();
 					dz = bp.getZ();
 				}
+				setRunning(false);
 				xOffset = dx + 1;
 				zOffset = dz + 1;
 				currentX = 0;
