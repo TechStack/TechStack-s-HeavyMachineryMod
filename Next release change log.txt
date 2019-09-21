@@ -69,4 +69,5 @@ Bug Fixes:
 	Fixed: Dupe Bug in Crates
 	Fixed: Possible issue where drilled stone is not updated for other clients in MP worlds
 	Fixed: Running speed is now increased again when running on compressed asphalt
+	
 

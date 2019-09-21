@@ -56,8 +56,8 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 	public double wenchPos;
 
 	public double targetArmRotation;
-	public double targetGantryPos;
-	public double targetWenchPos;
+	public double targetGantryPos = 2;
+	public double targetWenchPos = 0;
 
 	public int currentX = 0;
 	public int currentY = 0;
@@ -171,7 +171,6 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			LogHelper.info("WARNING FOUND NO FILENAME WHIE RUNNING WAS TRUE!");
 		}
 
-		// TODO remove the true == false later
 		if (!world.isRemote && isRunning()) { // only run on server
 
 			// TODO FIx to make server only latter and then use packets to update clients around !! yeah
@@ -235,7 +234,19 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 					}
 				}
 			}
+
 			ModNetwork.sendPacketToAllAround(new MachineModMessageTETowerCranePosToClient(this.pos.getX(), this.pos.getY(), this.pos.getZ(), state, armRotation, gantryPos, wenchPos, targetArmRotation, targetGantryPos, targetWenchPos, currentX, currentY, currentZ), new TargetPoint(world.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 224)); // sendInterval = 0;
+		} else if (!world.isRemote && state == -1) {
+			targetArmRotation = getPickupRotationLocation();
+			armRotation = targetArmRotation;
+			targetGantryPos = 2;
+			wenchPos = targetWenchPos;
+
+			targetWenchPos = 0;
+			gantryPos = targetGantryPos;
+
+			ModNetwork.sendPacketToAllAround(new MachineModMessageTETowerCranePosToClient(this.pos.getX(), this.pos.getY(), this.pos.getZ(), state, armRotation, gantryPos, wenchPos, targetArmRotation, targetGantryPos, targetWenchPos, currentX, currentY, currentZ), new TargetPoint(world.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 224)); // sendInterval = 0;
+
 		}
 	}
 
@@ -334,7 +345,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		case WEST:
 			return 180d;
 		case EAST:
-			return 90d;
+			return 0;
 		default:
 			return 0d;
 		}
@@ -350,6 +361,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		if (state > 6) {
 			state = 0;
 		}
+
 		if (state == 0) {
 			targetArmRotation = getPickupRotationLocation();
 			targetGantryPos = 2;
