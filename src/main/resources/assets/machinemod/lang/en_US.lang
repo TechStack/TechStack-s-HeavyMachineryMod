@@ -37,7 +37,7 @@ gui.towercrane.inventory=Back To inventory
 gui.towercrane.settings=Blueprint
 gui.towercrane.start=Start
 gui.towercrane.nextitem=Next Item:
-gui.towercrane.MissingBlock=Missing Blocks:
+gui.towercrane.missingblock=Missing Blocks:
 
 gui.laserlevel.savetext=Save Block Blueprint
 gui.laserlevel.front=Front
