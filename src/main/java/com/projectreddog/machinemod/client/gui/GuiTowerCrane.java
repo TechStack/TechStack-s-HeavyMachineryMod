@@ -9,6 +9,8 @@ import org.lwjgl.opengl.GL11;
 
 import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.container.ContainerTowerCrane;
+import com.projectreddog.machinemod.init.ModNetwork;
+import com.projectreddog.machinemod.network.MachineModMessageTEGuiButtonClickToServer;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityTowerCrane;
 import com.projectreddog.machinemod.utility.BlockBlueprintHelper;
@@ -52,6 +54,8 @@ public class GuiTowerCrane extends GuiContainer {
 		this.buttonList.add(new GuiButton(Reference.GUI_TOWER_CRANE_BUTTON_SETTINGS, buttonX, buttonY, 52, 20, DeprecatedWrapper.translateToLocal("gui.towercrane.settings")));
 		// this
 
+		this.buttonList.add(new GuiButton(Reference.GUI_TOWER_CRANE_BUTTON_START, buttonX + 100, buttonY, 52, 20, DeprecatedWrapper.translateToLocal("gui.towercrane.start")));
+
 		super.initGui();
 
 	}
@@ -68,6 +72,9 @@ public class GuiTowerCrane extends GuiContainer {
 			iplayer.player.openGui(MachineMod.instance, Reference.GUI_TOWER_CRANE_SETTINGS, towerCrane.getWorld(), towerCrane.getPos().getX(), towerCrane.getPos().getY(), towerCrane.getPos().getZ());
 
 			// ModNetwork.simpleNetworkWrapper.sendToServer((new MachineModMessageTEGuiButtonClickToServer(x, y, z, button.id)));
+		} else if (button.id == Reference.GUI_TOWER_CRANE_BUTTON_START) {
+			ModNetwork.simpleNetworkWrapper.sendToServer((new MachineModMessageTEGuiButtonClickToServer(towerCrane.getPos().getX(), towerCrane.getPos().getY(), towerCrane.getPos().getZ(), button.id)));
+
 		}
 
 	}
@@ -159,9 +166,9 @@ public class GuiTowerCrane extends GuiContainer {
 			blueprintName = tmpNextItemName;
 		}
 
-		this.fontRenderer.drawString("Cords X: " + towerCrane.currentX + " Y: " + towerCrane.currentY + " Z: " + towerCrane.currentZ, 10, 10, 0);
+		// this.fontRenderer.drawString("Cords X: " + towerCrane.currentX + " Y: " + towerCrane.currentY + " Z: " + towerCrane.currentZ, 10, 10, 0);
 
-		this.fontRenderer.drawString("Next Item:", x, y - 11, 4210752);
+		this.fontRenderer.drawString(DeprecatedWrapper.translateToLocal("gui.towercrane.nextitem"), x, y - 11, 4210752);
 
 		this.fontRenderer.drawString(blueprintName, x + 5, y, 4210752);
 
@@ -170,7 +177,7 @@ public class GuiTowerCrane extends GuiContainer {
 		x = ((width - xSize) / 2) + 172;
 		y = ((height - ySize) / 2) + 40;
 
-		this.fontRenderer.drawString("Missing Blocks:", x, y - 10, 4210752);
+		this.fontRenderer.drawString(DeprecatedWrapper.translateToLocal("gui.towercrane.missingblock"), x, y - 10, 4210752);
 
 		this.fontRenderer.FONT_HEIGHT = 8;
 

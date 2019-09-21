@@ -103,14 +103,9 @@ public class ContainerTowerCrane extends Container {
 				icrafting.sendWindowProperty(this, 0, this.towercrane.getField(0));
 			}
 
-			if (this.lastProcessingTimeRemaining != this.towercrane.getField(1)) {
-				icrafting.sendWindowProperty(this, 1, this.towercrane.getField(1));
-			}
-
 		}
 
 		this.lastFuleBurnTimeRemaining = this.towercrane.getField(0);
-		this.lastProcessingTimeRemaining = this.towercrane.getField(1);
 	}
 
 	@SideOnly(Side.CLIENT)

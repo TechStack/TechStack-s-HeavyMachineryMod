@@ -36,7 +36,7 @@ public class MachineModMessageBlockBlueprintSelectionToServerHandler implements 
 
 				if (!tetc.isRunning()) {
 					// start this thing if it is not running.
-					tetc.setRunning(true);
+					// tetc.setRunning(true);
 				}
 
 				LogHelper.info(" file set to :" + tetc.getFileName());

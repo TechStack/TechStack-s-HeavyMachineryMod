@@ -282,6 +282,8 @@ public class Reference {
 
 	public static final int GUI_TOWER_CRANE_BUTTON_SETTINGS = 1;
 
+	public static final int GUI_TOWER_CRANE_BUTTON_START = 2;
+
 	public static final int GUI_HOLO_SCANNER_BUTTON_FRONT_PLUS = 2;
 	public static final int GUI_HOLO_SCANNER_BUTTON_FRONT_MINUS = 3;
 	public static final int GUI_HOLO_SCANNER_BUTTON_RIGHT_PLUS = 4;

@@ -100,6 +100,11 @@ public class TileEntityTowerCraneRenderer extends TileEntitySpecialRenderer {
 			break;
 		}
 
+		if (tileentity instanceof TileEntityTowerCrane) {
+			TileEntityTowerCrane tc = (TileEntityTowerCrane) tileentity;
+			renderBlueprint = !tc.isRunning();
+		}
+
 		if (renderBlueprint) {
 
 			GL11.glPushMatrix();

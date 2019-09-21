@@ -3,9 +3,11 @@ package com.projectreddog.machinemod.tileentities;
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.block.BlockMachineModTowerCrane;
 import com.projectreddog.machinemod.iface.IFuelContainer;
+import com.projectreddog.machinemod.iface.ITEGuiButtonHandler;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.network.MachineModMessageEntityBluerprintBlockStateToClient;
+import com.projectreddog.machinemod.network.MachineModMessageTEIntFieldToClient;
 import com.projectreddog.machinemod.network.MachineModMessageTEInventoryChangedToClient;
 import com.projectreddog.machinemod.network.MachineModMessageTETowerCranePosToClient;
 import com.projectreddog.machinemod.reference.Reference;
@@ -30,7 +32,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class TileEntityTowerCrane extends TileEntity implements ITickable, ISidedInventory, IFuelContainer {
+public class TileEntityTowerCrane extends TileEntity implements ITickable, ISidedInventory, IFuelContainer, ITEGuiButtonHandler {
 	protected ItemStack[] inventory;
 	private static int[] sideSlots = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
 	public final int maxFuelStorage = 10000; // store up to 10k (can fill all 9 cans & have room for one more
@@ -81,6 +83,11 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 	}
 
 	public void setRunning(boolean running) {
+		if (!this.world.isRemote) {
+			// server send packet to clients (FRom server)
+			ModNetwork.simpleNetworkWrapper.sendToAllAround(new MachineModMessageTEIntFieldToClient(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 1, running ? 1 : 0), new TargetPoint(this.world.provider.getDimension(), this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 48));
+
+		}
 		this.running = running;
 		this.markDirty();
 	}
@@ -166,7 +173,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 
 		// FAILSAFE CHECK.
 		// IF NOT FILE NAME IS SET TURN OFF RUNNING !
-		if ((fileName == null || fileName.equals("")) && isRunning()) {
+		if ((fileName == null || fileName.equals("")) && isRunning() && !this.world.isRemote) {
 			setRunning(false);
 			LogHelper.info("WARNING FOUND NO FILENAME WHIE RUNNING WAS TRUE!");
 		}
@@ -758,7 +765,14 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		case 0:
 			this.fuelStorage = value;
 			break;
-
+		case 1:
+			if (value == 0) {
+				// Set running to false;
+				setRunning(false);
+			} else if (value == 1) {
+				// set running to true;
+				setRunning(true);
+			}
 		default:
 			break;
 		}
@@ -838,5 +852,17 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 
 	public void setClawHolding(ItemStack clawHolding) {
 		this.clawHolding = clawHolding;
+	}
+
+	@Override
+	public void HandleGuiButton(int buttonId, EntityPlayer player) {
+		// TODO Auto-generated method stub
+
+		if (buttonId == Reference.GUI_TOWER_CRANE_BUTTON_START) {
+			// if (!isRunning()) {
+			setRunning(true);
+			// }
+		}
+
 	}
 }
