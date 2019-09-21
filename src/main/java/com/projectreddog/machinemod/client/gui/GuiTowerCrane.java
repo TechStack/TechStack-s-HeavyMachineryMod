@@ -51,10 +51,10 @@ public class GuiTowerCrane extends GuiContainer {
 
 		int buttonX = this.width / 2 + 42;
 		int buttonY = this.height / 2 + 84;
-		this.buttonList.add(new GuiButton(Reference.GUI_TOWER_CRANE_BUTTON_SETTINGS, buttonX, buttonY, 52, 20, DeprecatedWrapper.translateToLocal("gui.towercrane.settings")));
+		this.buttonList.add(new GuiButton(Reference.GUI_TOWER_CRANE_BUTTON_SETTINGS, buttonX, buttonY, 53, 20, DeprecatedWrapper.translateToLocal("gui.towercrane.settings")));
 		// this
 
-		this.buttonList.add(new GuiButton(Reference.GUI_TOWER_CRANE_BUTTON_START, buttonX + 100, buttonY, 52, 20, DeprecatedWrapper.translateToLocal("gui.towercrane.start")));
+		this.buttonList.add(new GuiButton(Reference.GUI_TOWER_CRANE_BUTTON_START, buttonX + 89, buttonY, 52, 20, DeprecatedWrapper.translateToLocal("gui.towercrane.start")));
 
 		super.initGui();
 
