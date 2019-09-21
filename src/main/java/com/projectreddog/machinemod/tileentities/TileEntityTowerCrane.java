@@ -227,7 +227,12 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			if ((armRotation == targetArmRotation && gantryPos == targetGantryPos && wenchPos == targetWenchPos) || state == -1) {
 				if (BlockBluePrintArray[currentX][currentY][currentZ] != null) {
 					if (containsBlock(BlockBluePrintArray[currentX][currentY][currentZ]) || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.AIR || state != 1) {
-						state = state + 1;
+						int tmpX = getPlacingXWithOffset(currentX, currentZ);
+						int tmpZ = getPlacingZWithOffset(currentX, currentZ);
+						int tmpY = currentY;
+						if ((state == 3 && this.world.getBlockState(this.pos.add(tmpX, tmpY, tmpZ)).getBlock().isAir(this.world.getBlockState(this.pos.add(tmpX, tmpY, tmpZ)), null, null)) || state != 3) {
+							state = state + 1;
+						}
 						// set new targets for state
 
 						setTargetsForState();
