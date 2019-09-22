@@ -91,35 +91,39 @@ public class TileEntityTowerCraneRenderer extends TileEntitySpecialRenderer {
 			} else {
 				ef = EnumFacing.NORTH;
 			}
-			switch (ef) {
-			case NORTH:
-				// no rotate?
-				GL11.glTranslatef(-5, 0, -10);
-				GL11.glRotatef(0f, 0, 1, 0);
+			if (tileentity instanceof TileEntityTowerCrane) {
+				TileEntityTowerCrane tc = (TileEntityTowerCrane) tileentity;
 
-				break;
-			case SOUTH:
-				// rotate to south
-				// TODO test the state to see if we are active if norotate 180
-				GL11.glTranslatef(6, 0, 11);
+				switch (ef) {
+				case NORTH:
+					// no rotate?
+					GL11.glTranslatef(-(tc.dx + 1), 0, -(tc.dz + 1));
+					GL11.glRotatef(0f, 0, 1, 0);
 
-				GL11.glRotatef(180f, 0, 1, 0);
-				break;
-			case EAST:
-				// TODO test the state to see if we are active if norotate 1
-				GL11.glTranslatef(11, 0, -5);
+					break;
+				case SOUTH:
+					// rotate to south
+					// TODO test the state to see if we are active if norotate 180
+					GL11.glTranslatef(tc.dx + 2, 0, tc.dz + 2);
 
-				GL11.glRotatef(270f, 0, 1, 0);
-				break;
-			case WEST:
-				// TODO test the state to see if we are active if norotate 1
-				GL11.glTranslatef(-10, 0, 6);
+					GL11.glRotatef(180f, 0, 1, 0);
+					break;
+				case EAST:
+					// TODO test the state to see if we are active if norotate 1
+					GL11.glTranslatef(tc.dz + 2, 0, -(tc.dx + 1));
 
-				GL11.glRotatef(90f, 0, 1, 0);
-				break;
-			default:
-				// should never happen because we are constrained to the horizontal plane so just break with no addtional rotation applied
-				break;
+					GL11.glRotatef(270f, 0, 1, 0);
+					break;
+				case WEST:
+					// TODO test the state to see if we are active if norotate 1
+					GL11.glTranslatef(-(tc.dz + 1), 0, (tc.dx + 2));
+
+					GL11.glRotatef(90f, 0, 1, 0);
+					break;
+				default:
+					// should never happen because we are constrained to the horizontal plane so just break with no addtional rotation applied
+					break;
+				}
 			}
 
 //		GL11.glScalef(2F, 2F, 2F);

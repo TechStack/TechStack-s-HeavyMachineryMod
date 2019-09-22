@@ -37,6 +37,11 @@ public class MachineModMessageEntityBluerprintBlockStateToClientHandler implemen
 				if (te instanceof TileEntityTowerCrane) {
 					TileEntityTowerCrane tetc = (TileEntityTowerCrane) te;
 					tetc.BlockBluePrintArray = message.blockBlueprintArray;
+
+					tetc.dx = message.blockBlueprintArray.length;
+					tetc.dy = message.blockBlueprintArray[0].length;
+					tetc.dz = message.blockBlueprintArray[0][0].length;
+
 				}
 			}
 

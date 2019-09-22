@@ -266,10 +266,15 @@ public class BlockBlueprintHelper {
 										ItemStack is = (ItemStack) iterator.next();
 										if (is.getItem() == item.getItem()) {
 											// same items
-											is.setCount(is.getCount() + 1);
-											// add one more to teh needed list
+											if (is.getMetadata() == item.getMetadata()) {
+												is.setCount(is.getCount() + 1);
 
-											found = true;
+												// add one more to teh needed list
+
+												found = true;
+											} else {
+
+											}
 										} else {
 										}
 									}
