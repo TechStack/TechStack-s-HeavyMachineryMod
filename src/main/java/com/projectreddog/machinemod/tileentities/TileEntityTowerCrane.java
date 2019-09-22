@@ -445,7 +445,8 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 				currentY = 0;
 				currentX = 0;
 				currentZ = 0;
-
+				state = -1;
+				setRunning(false);
 			}
 
 			if (BlockBluePrintArray != null) {
@@ -465,6 +466,8 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 						currentY = 0;
 						currentX = 0;
 						currentZ = 0;
+						state = -1;
+						setRunning(false);
 
 					}
 				}

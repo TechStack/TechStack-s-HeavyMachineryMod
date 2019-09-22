@@ -94,26 +94,28 @@ public class TileEntityTowerCraneRenderer extends TileEntitySpecialRenderer {
 			switch (ef) {
 			case NORTH:
 				// no rotate?
-				GL11.glTranslatef(1, 0, 1);
-				GL11.glRotatef(180f, 0, 1, 0);
+				GL11.glTranslatef(-5, 0, -10);
+				GL11.glRotatef(0f, 0, 1, 0);
 
 				break;
 			case SOUTH:
 				// rotate to south
 				// TODO test the state to see if we are active if norotate 180
-				// GL11.glRotatef(-90f, 0, 1, 0);
+				GL11.glTranslatef(6, 0, 11);
+
+				GL11.glRotatef(180f, 0, 1, 0);
 				break;
 			case EAST:
 				// TODO test the state to see if we are active if norotate 1
-				GL11.glTranslatef(0, 0, 1);
+				GL11.glTranslatef(11, 0, -5);
 
-				GL11.glRotatef(90f, 0, 1, 0);
+				GL11.glRotatef(270f, 0, 1, 0);
 				break;
 			case WEST:
 				// TODO test the state to see if we are active if norotate 1
-				GL11.glTranslatef(1, 0, 0);
+				GL11.glTranslatef(-10, 0, 6);
 
-				GL11.glRotatef(270f, 0, 1, 0);
+				GL11.glRotatef(90f, 0, 1, 0);
 				break;
 			default:
 				// should never happen because we are constrained to the horizontal plane so just break with no addtional rotation applied
