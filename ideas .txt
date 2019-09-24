@@ -1,3 +1,9 @@
+
+possible fix for Entity desync?
+https://github.com/cam72cam/ImmersiveRailroading/blob/master/src/main/java/cam72cam/immersiverailroading/proxy/CommonProxy.java
+registerEntities(RegistryEvent.Register<EntityEntry> event)
+
+
 Entity:
 Laser miner mostly done.
 Track loader works for front bucket but not back rake.

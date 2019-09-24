@@ -19,5 +19,7 @@ public class ModBlueprint {
 
 		ModItems.blueprintlaserminer.Init();
 
+		ModItems.blueprinttowercrane.Init();
+
 	}
 }
