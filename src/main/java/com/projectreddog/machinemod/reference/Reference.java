@@ -164,6 +164,8 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_BLASTED_REDSTONE = "machineblastedredstone";
 	public static final String MODBLOCK_MACHINE_BLASTED_EMERALD = "machineblastedemerald";
 
+	public static final String MODBLOCK_MACHINE_BLEAK_CRYSTAL_INFUSED_SAND = "machinebleakcrystalinfusedsand";
+
 	public static final String MODBLOCK_MACHINE_CORN = "corn";
 	public static final String MODBLOCK_MACHINE_BLASTED_STONE2 = "machineblastedstone2";
 	public static final String MODBLOCK_MACHINE_PRIMARY_CRUSHER = "machineprimarycrusher";

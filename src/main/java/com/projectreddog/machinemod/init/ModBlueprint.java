@@ -21,5 +21,7 @@ public class ModBlueprint {
 
 		ModItems.blueprinttowercrane.Init();
 
+		ModItems.blueprintholoscanner.Init();
+
 	}
 }

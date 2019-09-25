@@ -40,6 +40,7 @@ import com.projectreddog.machinemod.block.BlockMachineModBlastedIron;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedLapis;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedRedstone;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
+import com.projectreddog.machinemod.block.BlockMachineModBleakCrystalInfusedSand;
 import com.projectreddog.machinemod.block.BlockMachineModCentrifuge;
 import com.projectreddog.machinemod.block.BlockMachineModConduit;
 import com.projectreddog.machinemod.block.BlockMachineModConveyor;
@@ -107,6 +108,8 @@ public class ModBlocks {
 	public static final BlockMachineMod machinebleakglass = new BlockMachineBleakGlass();
 
 	public static final BlockMachineMod machinebleakdirt = new BlockMachineBleakDirt();
+
+	public static final BlockMachineMod machinebleakcrystalinfusedsand = new BlockMachineModBleakCrystalInfusedSand();
 
 	public static final BlockMachineMod machinebleakstone = new BlockMachineBleakStone();
 	public static final BlockMachineMod machinebleakoreiridonium = new BlockMachineBleakOreIridonium();
@@ -230,6 +233,9 @@ public class ModBlocks {
 
 		ForgeRegistries.BLOCKS.register(machinebleakdirt);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinebleakdirt).setRegistryName(ModBlocks.machinebleakdirt.getRegistryName()));
+
+		ForgeRegistries.BLOCKS.register(machinebleakcrystalinfusedsand);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinebleakcrystalinfusedsand).setRegistryName(ModBlocks.machinebleakcrystalinfusedsand.getRegistryName()));
 
 		ForgeRegistries.BLOCKS.register(machinebleakglass);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinebleakglass).setRegistryName(ModBlocks.machinebleakglass.getRegistryName()));
@@ -437,6 +443,7 @@ public class ModBlocks {
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakdirt), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_DIRT, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakcrystal), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_CRYSTAL, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakcrystalinfusedsand), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_CRYSTAL_INFUSED_SAND, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakglass), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_GLASS, "inventory"));
 

@@ -30,6 +30,10 @@ item.machinemod:blueprintbatterybank.name= Blue Print - Battery Bank - WIP
 item.machinemod:blueprintturbofurnace.name= Blue Print - Turbo Furnace - WIP
 item.machinemod:blueprintshredder.name= Blue Print - Shredder - WIP
 item.machinemod:blueprinttowercrane.name= Blue Print - Tower Crane- WIP
+item.machinemod:blueprintholoscanner.name= Blue Print - Holo Scanner- WIP
+
+item.machinemod:bleakcrystaldust.name=Bleak Crystal Dust
+
 
 item.machinemod:choppersawblade.name=Chopper Sawblade - WIP
 gui.assemblytable.assemble=Assemble
@@ -171,9 +175,9 @@ tile.machinemod:machinebleakorecrimsonite.name=Crimsonite Ore
 tile.machinemod:machinebleakoreazurium.name=Azurium Ore
 tile.machinemod:machinebleakorecitronite.name=Citronite Ore
 tile.machinemod:machinebleakoreunobtanium.name=Unobtanium Ore
+tile.machinemod:machinebleakcrystalinfusedsand.name=Bleak Crystal infused Sand
 
-
-
+tile.machinemod:machinebleakglass.name=Bleak Glass
 
 
 tile.machinemod:machineliquidpipe.name=Liquid Pipe
