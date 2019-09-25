@@ -7,7 +7,6 @@ import com.projectreddog.machinemod.init.ModBiomes;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModBlueprint;
 import com.projectreddog.machinemod.init.ModDimensions;
-import com.projectreddog.machinemod.init.ModEntities;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.init.ModNetwork;
 import com.projectreddog.machinemod.init.ModVillage;
@@ -56,7 +55,7 @@ public class MachineMod {
 	public void init(FMLInitializationEvent event) {
 		// register gui, tile entites , crafting recipies (general event
 		// hanlders)
-		ModEntities.init(this);
+		// ModEntities.init(this);
 		FMLCommonHandler.instance().bus().register(new InputEventHandler());
 		EventHandler eh = new EventHandler();
 		MinecraftForge.EVENT_BUS.register(eh);

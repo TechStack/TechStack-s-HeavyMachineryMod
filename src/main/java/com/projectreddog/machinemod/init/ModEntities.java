@@ -1,5 +1,6 @@
 package com.projectreddog.machinemod.init;
 
+import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.entity.EntityBagger;
 import com.projectreddog.machinemod.entity.EntityBulldozer;
 import com.projectreddog.machinemod.entity.EntityChopper;
@@ -28,16 +29,27 @@ import com.projectreddog.machinemod.reference.Reference;
 
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
+
+@EventBusSubscriber(modid = Reference.MOD_ID)
 public class ModEntities {
 
 	public static int entityID = 0;
 
 	// public static final EntityBulldozer entityBulldozer= new
 	// EntityBulldozer(new World);
+	@SubscribeEvent
+	public static void registerEntities(RegistryEvent.Register<EntityEntry> event) {
+		init(MachineMod.instance);
+	}
+
 	public static void init(Object mod) {
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "drillingrig"), EntityDrillingRig.class, "drillingrig", ++entityID, mod, 224, 1, false);
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + "bulldozer"), EntityBulldozer.class, "bulldozer", ++entityID, mod, 224, 1, false);
