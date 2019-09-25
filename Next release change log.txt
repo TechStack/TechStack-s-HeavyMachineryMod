@@ -26,6 +26,8 @@ New Content:
 		- Add a crash helmet - Try elytra flying into a wall while wearing it :D
 		- Added steel toe boots - Wear it to be protected from machines 
 	New Blocks
+	    - Tower Crane - Builds from Block Blue prints.
+	    - Holo Scanner - Creates Block Blue prints for use in the Tower Crane.
 		- Bleak Stone
 		- Bleak dirt
 		- Various Bleak ores
@@ -45,6 +47,8 @@ New Content:
 	World Gen:
 		Added Villager Named Engineer with custom trades. Spawns near the new Villager house or randomly when villagers breed.
 		Added a villager house for the engineer - Only spawns in newly generated chunks.
+	New Machines:
+		Laser Miner - Tier 2
 Changes 
 	Updated to the latest Forge stable release: 
 		2768
