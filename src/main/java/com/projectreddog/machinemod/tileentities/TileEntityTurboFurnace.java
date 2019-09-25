@@ -91,12 +91,20 @@ public class TileEntityTurboFurnace extends TileEntity implements ITickable, ISi
 			ItemStack inputItemStack = getStackInSlot(0);
 			ItemStack resultItemStack = checkTruboFurnaceRecipes(inputItemStack);
 			if (!resultItemStack.isEmpty()) {
-				resultsize = resultItemStack.getCount();
+				int size1 = inputItemStack.getCount();
+				resultsize = resultItemStack.getMaxStackSize();
+				if (size1 < resultsize) {
+					resultsize = size1;
+				}
 			}
 
 			if (resultItemStack.isEmpty()) {
 				resultItemStack = FurnaceRecipes.instance().getSmeltingResult(inputItemStack);
+				int size1 = inputItemStack.getCount();
 				resultsize = resultItemStack.getMaxStackSize();
+				if (size1 < resultsize) {
+					resultsize = size1;
+				}
 			}
 
 			resultItemStack = resultItemStack.copy();
