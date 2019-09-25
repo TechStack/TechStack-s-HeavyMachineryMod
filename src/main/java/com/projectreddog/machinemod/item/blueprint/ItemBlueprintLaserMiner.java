@@ -3,8 +3,6 @@ package com.projectreddog.machinemod.item.blueprint;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.utility.LogHelper;
 
-import net.minecraft.init.Items;
-
 public class ItemBlueprintLaserMiner extends ItemBlueprint {
 	public String registryName = "blueprintlaserminer";
 
@@ -19,10 +17,12 @@ public class ItemBlueprintLaserMiner extends ItemBlueprint {
 	public void Init() {
 		this.outputItemName = ModItems.laserminer.getRegistryName().toString();
 		ingredents.add(new BlueprintIngredent(ModItems.steelingot.getRegistryName().toString(), 128));
-		// ingredents.add(new BlueprintIngredent(Items..getRegistryName().toString(), 27));
-		ingredents.add(new BlueprintIngredent(Items.REDSTONE.getRegistryName().toString(), 16));
-		ingredents.add(new BlueprintIngredent(Items.LEATHER.getRegistryName().toString(), 24));
-		ingredents.add(new BlueprintIngredent(Items.SLIME_BALL.getRegistryName().toString(), 16));
+		ingredents.add(new BlueprintIngredent(ModItems.unobtaniumgem.getRegistryName().toString(), 10));
+		ingredents.add(new BlueprintIngredent(ModItems.limoniteumingot.getRegistryName().toString(), 5));
+		ingredents.add(new BlueprintIngredent(ModItems.azuriumlump.getRegistryName().toString(), 24));
+		ingredents.add(new BlueprintIngredent(ModItems.citroniteingot.getRegistryName().toString(), 4));
+		ingredents.add(new BlueprintIngredent(ModItems.crimsonitepebble.getRegistryName().toString(), 2));
+		ingredents.add(new BlueprintIngredent(ModItems.magentiaingot.getRegistryName().toString(), 2));
 
 		LogHelper.info(this);
 	}
