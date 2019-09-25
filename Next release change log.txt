@@ -1,9 +1,5 @@
-Log for this log :
-	steel toe boots 8/25/19
-
-
 Lots of new features in this update
-Some of which are still WIP & will be enhanced or built on in future releases I wanted to release this now to address some bugs & allow players to get started with the new features!
+Some of which are still WIP (work in progress) & will be enhanced or built on in future releases I wanted to release this now to address some bugs & allow players to get started with the new features!
 
 Few examples of changes/ additions since the last public release.
 New Content:
@@ -61,7 +57,7 @@ Changes
 			now capable of breaking sand.
 	Block machine changes
 	   Screens can now insert directly into adjacent inventories including crates.
-	Added recipie to go from steel block back to steel ingot
+	Added recipe to go from steel block back to steel ingot
     Adjusted paver and road roller hit boxes
 
 Bug Fixes:
@@ -73,5 +69,5 @@ Bug Fixes:
 	Fixed: Dupe Bug in Crates
 	Fixed: Possible issue where drilled stone is not updated for other clients in MP worlds
 	Fixed: Running speed is now increased again when running on compressed asphalt
-	
+	Fixed: getting Kicked for Flying on server when Jumping and entering a machine before landing.
 
