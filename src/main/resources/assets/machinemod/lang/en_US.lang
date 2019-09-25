@@ -1,9 +1,11 @@
 # Item Localizations
 
 item.machinemod:bulldozer.name=Bulldozer
+item.machinemod:trackloader.name=Track Loader
 item.machinemod:drillingrig.name=Drilling Rig
 item.machinemod:dumptruck.name=Dump Truck
 item.machinemod:loader.name=Loader
+item.machinemod:undergroundloader.name=Underground Loader
 item.machinemod:drillpipe.name=Drilling Pipe
 item.machinemod:drillhead.name=Drill Head
 item.machinemod:tractor.name=Tractor
@@ -20,16 +22,33 @@ item.machinemod:irondust.name=Iron Dust
 item.machinemod:golddust.name=Gold Dust
 item.machinemod:rawasphalt.name=Raw Asphalt
 item.machinemod:blueprintcontinuousminer.name= Blue Print - Continuous Miner - WIP
+item.machinemod:blueprintlaserminer.name= Blue Print - Laser Miner - Tech II - WIP
 item.machinemod:blueprintconduit.name= Blue Print - Conduit - WIP
 item.machinemod:blueprintfactory.name= Blue Print - Factory - WIP
 item.machinemod:blueprintgenerator.name= Blue Print - Generator - WIP
 item.machinemod:blueprintbatterybank.name= Blue Print - Battery Bank - WIP
 item.machinemod:blueprintturbofurnace.name= Blue Print - Turbo Furnace - WIP
 item.machinemod:blueprintshredder.name= Blue Print - Shredder - WIP
+item.machinemod:blueprinttowercrane.name= Blue Print - Tower Crane- WIP
+item.machinemod:blueprintholoscanner.name= Blue Print - Holo Scanner- WIP
+
+item.machinemod:bleakcrystaldust.name=Bleak Crystal Dust
+
 
 item.machinemod:choppersawblade.name=Chopper Sawblade - WIP
 gui.assemblytable.assemble=Assemble
 gui.assemblytable.name=Assembly Table
+gui.towercrane.inventory=Back To inventory
+gui.towercrane.settings=Blueprint
+gui.towercrane.start=Start
+gui.towercrane.nextitem=Next Item:
+gui.towercrane.missingblock=Missing Blocks:
+
+gui.laserlevel.savetext=Save Block Blueprint
+gui.laserlevel.front=Front
+gui.laserlevel.right=Right
+gui.laserlevel.up=Up
+gui.laserlevel.savebutton=Save
 item.machinemod:collapsedstar.name=Collapsed Star
 item.machinemod:camshaft.name=Camshaft
 item.machinemod:piston.name=piston
@@ -60,6 +79,7 @@ item.machinemod:lawnmower.name=Riding Lawn Mower
 item.machinemod:mowerdeck.name=Mower Deck
 item.machinemod:liquidtanksegment.name=Liquid tank segment
 item.machinemod:continuousminer.name=Continuous Miner - WIP
+item.machinemod:laserminer.name=Laser Miner - WIP
 item.machinemod:chopper.name=Chopper
 
 item.machinemod:citroniteingot.name=Citronite Ingot
@@ -128,10 +148,12 @@ tile.machinemod:machineassemblytable.name=Machine Assembly Table
 tile.machinemod:machinescreen.name=Screen
 tile.machinemod:steelblock.name=Steel Block
 tile.machinemod:machinecrate.name=Crate
+tile.machinemod:machineholoscanner.name=Holo Scanner
 tile.machinemod:machinedrilledstone.name=Drilled Stone
 tile.machinemod:machinedrilledandesite.name=Andesite Stone
 tile.machinemod:machinedrilleddiorite.name=Diorite Stone
 tile.machinemod:machinedrilledgranite.name=Granite Stone
+tile.machinemod:machinetowercrane.name=Tower Crane
 
 tile.machinemod:machinegenerator.name=Generator
 tile.machinemod:machinebatterybank.name=Battery Bank
@@ -140,6 +162,7 @@ tile.machinemod:machineconduit.name=Conduit
 tile.machinemod:machineturbofurnace.name=Turbo furnace
 
 tile.machinemod:machineasphalt.name=Asphalt
+tile.machinemod:machineasphaltslab.name=Asphalt Slab
 tile.machinemod:machinebleakdirt.name=Bleak Dirt
 tile.machinemod:machinebleakcrystal.name=Bleak Crystal
 tile.machinemod:machinebleakportalframe.name=Bleak Portal Frame
@@ -152,14 +175,15 @@ tile.machinemod:machinebleakorecrimsonite.name=Crimsonite Ore
 tile.machinemod:machinebleakoreazurium.name=Azurium Ore
 tile.machinemod:machinebleakorecitronite.name=Citronite Ore
 tile.machinemod:machinebleakoreunobtanium.name=Unobtanium Ore
+tile.machinemod:machinebleakcrystalinfusedsand.name=Bleak Crystal infused Sand
 
-
-
+tile.machinemod:machinebleakglass.name=Bleak Glass
 
 
 tile.machinemod:machineliquidpipe.name=Liquid Pipe
 tile.machineliquidpipe.name=Liquid Pipe
 tile.machinemod:machinecompressedasphalt.name=Compressed Asphalt
+tile.machinemod:machinecompressedasphaltslab.name=Compressed Asphalt Slab
 
 tile.machinemod:machineblastedstone.name=Blasted Stone
 tile.machinemod:machineexplosivepackeddrilledstone.name=Explosive Packed Drilled Stone

@@ -190,6 +190,8 @@ public class Recipes {
 		GameRegistry.addSmelting(ModItems.irondust, new ItemStack(Items.IRON_INGOT), 1);
 		GameRegistry.addSmelting(ModItems.golddust, new ItemStack(Items.GOLD_INGOT), 2);
 		GameRegistry.addSmelting(ModItems.steeldust, new ItemStack(ModItems.steelingot), 5);
+		GameRegistry.addSmelting(ModBlocks.machinebleakcrystalinfusedsand, new ItemStack(ModBlocks.machinebleakglass), 5);
+
 		// GameRegistry.addSmelting(ModItems.golddust, new ItemStack(ModItems.aluminumingot), 0);
 	}
 }

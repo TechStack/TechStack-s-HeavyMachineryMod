@@ -1,0 +1,22 @@
+{
+    "result": {
+        "item": "machinemod:machinebleakcrystalinfusedsand",
+        "count":5
+    },
+    "pattern" :[
+	  "sds",
+	  "dsd",
+	  "sds"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+            "item":"minecraft:sand",
+         "data": 0
+      },
+    "d": {
+            "item":"machinemod:bleakcrystaldust"
+      }    
+           
+    }
+}

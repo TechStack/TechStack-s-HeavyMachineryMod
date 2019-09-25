@@ -50,11 +50,24 @@ public class EntityRoadRoller extends EntityMachineModRideable {
 						angle = 90;
 					}
 					BlockPos bp;
-					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY - 1, posZ + calcTwoOffsetZ(3.5, angle, i));
+					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY - .5d, posZ + calcTwoOffsetZ(3.5, angle, i));
 					if (world.getBlockState(bp).getBlock() == ModBlocks.machineasphalt) {
 						world.setBlockState(bp, ModBlocks.machinecompressedasphalt.getDefaultState());
 
+					} else if (world.getBlockState(bp).getBlock() == ModBlocks.machineasphaltslab) {
+						world.setBlockState(bp, ModBlocks.machinecompressedasphaltslab.getDefaultState());
+
 					}
+
+					bp = new BlockPos(posX + calcTwoOffsetX(-3.5, angle, i), posY - .5d, posZ + calcTwoOffsetZ(-3.5, angle, i));
+					if (world.getBlockState(bp).getBlock() == ModBlocks.machineasphalt) {
+						world.setBlockState(bp, ModBlocks.machinecompressedasphalt.getDefaultState());
+
+					} else if (world.getBlockState(bp).getBlock() == ModBlocks.machineasphaltslab) {
+						world.setBlockState(bp, ModBlocks.machinecompressedasphaltslab.getDefaultState());
+
+					}
+
 				}
 				return;
 

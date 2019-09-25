@@ -49,7 +49,7 @@ public class ItemBlueprint extends ItemMachineMod {
 				output = "\u00A7aMakes: " + displayName + "\n";
 			}
 
-			output = output + "Ingredent: \n";
+			output = output + "Ingredient: \n";
 			for (int i = 0; i < ingredents.size(); i++) {
 
 				item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(ingredents.get(i).getName()));
@@ -57,7 +57,7 @@ public class ItemBlueprint extends ItemMachineMod {
 					String displayName = item.getItemStackDisplayName(new ItemStack(item));
 					output = output + "   " + displayName + " X " + ingredents.get(i).getCount() + "\n";
 				} else {
-					LogHelper.info("An Output of an ingredent is null Tell Tech please!" + outputItemName);
+					LogHelper.info("An Output of an ingredient is null Tell Tech please!" + outputItemName);
 				}
 
 				// output = output + "Ingredent: " + ingredents.get(i).getName() + " X " + ingredents.get(i).getCount() + "\n";

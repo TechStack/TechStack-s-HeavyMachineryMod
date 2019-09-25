@@ -39,7 +39,7 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 		// this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
 		this.setCreativeTab((CreativeTabs) null);
 		this.setHardness(0.0F);
-		this.setSoundType(SoundType.GROUND);// was grass
+		this.setSoundType(SoundType.PLANT);// was grass
 		this.disableStats();
 
 	}
@@ -137,10 +137,8 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 	/**
 	 * Spawns this Block's drops into the World as EntityItems.
 	 * 
-	 * @param chance
-	 *            The chance that each Item is actually spawned (1.0 = always, 0.0 = never)
-	 * @param fortune
-	 *            The player's fortune level
+	 * @param chance  The chance that each Item is actually spawned (1.0 = always, 0.0 = never)
+	 * @param fortune The player's fortune level
 	 */
 	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune) {
 		super.dropBlockAsItemWithChance(worldIn, pos, state, chance, 0);
@@ -149,8 +147,7 @@ public class BlockMachineModCorn extends BlockBush implements IGrowable {
 	/**
 	 * Get the Item that this Block should drop when harvested.
 	 * 
-	 * @param fortune
-	 *            the level of the Fortune enchantment on the player's tool
+	 * @param fortune the level of the Fortune enchantment on the player's tool
 	 */
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return ((Integer) state.getValue(AGE)).intValue() == 6 ? this.getCrop() : this.getSeed();

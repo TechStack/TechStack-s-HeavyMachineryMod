@@ -17,6 +17,8 @@ public class Reference {
 	public static final String GUI_FACTORY_CLASS = "com.projectreddog.machinemod.client.gui.GuiFactory";
 	// textures for Entities
 	public static final String MODEL_BULLDOZER_TEXTURE_LOCATION = "models/bulldozer.png";
+	public static final String MODEL_TRACK_LOADER_TEXTURE_LOCATION = "models/trackloader.png";
+
 	public static final String MODEL_TRACTOR_TEXTURE_LOCATION = "models/modeltractor.png";
 	public static final String MODEL_LAWNMOWER_TEXTURE_LOCATION = "models/lawnmower.png";
 	public static final String MODEL_TESTCUBE_TEXTURE_LOCATION = "models/uv.png";
@@ -38,11 +40,16 @@ public class Reference {
 	public static final String MODEL_WELL_HEAD_TEXTURE_LOCATION = "models/wellhead.png";
 	public static final String MODEL_PIPE_TEXTURE_LOCATION = "models/pipe.png";
 	public static final String MODEL_CRATE_TEXTURE_LOCATION = "models/crate.png";
+	public static final String MODEL_HOLOSCANNER_TEXTURE_LOCATION = "models/holoscanner.png";
 
 	public static final String MODEL_COMBINE_TEXTURE_LOCATION = "models/combine.png";
 	public static final String MODEL_DRILLINGRIG_TEXTURE_LOCATION = "models/drillingrig.png";
 	public static final String MODEL_DUMPTRUCK_TEXTURE_LOCATION = "models/dumptruck.png";
+	public static final String MODEL_UNDERGROUND_DUMPTRUCK_TEXTURE_LOCATION = "models/undergrounddumptruck.png";
+
 	public static final String MODEL_LOADER_TEXTURE_LOCATION = "models/modelloader.png";
+
+	public static final String MODEL_UNDER_GROUND_LOADER_TEXTURE_LOCATION = "models/undergroundloader.png";
 	public static final String MODEL_CONTINUOUSMINER_TEXTURE_LOCATION = "models/continuousminer.png";
 
 	public static final String MODEL_BAGGER_TEXTURE_LOCATION = "models/bagger.png";
@@ -65,12 +72,13 @@ public class Reference {
 	public static final String GUI_FUEL_GUAGE_TEXTURE_LOCATION = "textures/gui/gui_overlay_fuel_gage.png";
 	public static final String GUI_FUEL_LEVEL_TEXTURE_LOCATION = "textures/gui/gui_fuel_level_marker.png";
 	public static final String GUI_WORK_PROGRESS_TEXTURE_LOCATION = "textures/gui/workprogress.png";
-
+	public static final String GUI_SCROLL_BAR_MARKER_LOCATION = "textures/gui/scrollbarmarker.png";
 	public static final String GUI_TURBO_FURNACE_ARROW_CUTOUT = "textures/gui/turbofurnacearrow.png";
 	public static final String GUI_TURBO_FURNACE_ARROW_FILL = "textures/gui/arrow fill.png";
 	public static final String GUI_TURBO_FURNACE_FLAME = "textures/gui/turbofurnaceflame.png";
 	public static final String GUI_TURBO_FURNACE_FLAME_CUTOUT = "textures/gui/flamecutout.png";
 
+	public static final String BLOCK_BLUEPRINT_TRANSPARENT_LOCATION = "textures/blocks/blockblueprinttransparent.png";
 	// textures for Tile Entities
 	public static final String MODEL_TILEENTITY_PRIMARY_CRUSHER_TEXTURE_LOCATION = "models/primarycrusher.png";
 	public static final String MODEL_TILEENTITY_CENRIFUGE_TEXTURE_LOCATION = "models/centrifuge.png";
@@ -95,7 +103,13 @@ public class Reference {
 	public static final int GUI_CONTINUOUSMINER = 17;
 	public static final int GUI_ASSEMBLY_TABLE = 18;
 	public static final int GUI_TURBO_FURNACE = 19;
-	public static final int GUI_FEED_TROUGH = 20;
+	public static final int GUI_TRACK_LOADER = 20;
+	public static final int GUI_LASAERMINER = 21;
+	public static final int GUI_FEED_TROUGH = 22;
+	public static final int GUI_TOWER_CRANE = 23;
+	public static final int GUI_TOWER_CRANE_SETTINGS = 24;
+	public static final int GUI_LASAER_LEVEL = 25;
+	public static final int GUI_UNDERGROUND_LOADER = 26;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;
@@ -103,6 +117,9 @@ public class Reference {
 	public static final String MODBLOCK_STEEL_BLOCK = "steelblock";
 
 	public static final String MODBLOCK_MACHINE_ASPHALT = "machineasphalt";
+	public static final String MODBLOCK_MACHINE_ASPHALT_SLAB = "machineasphaltslab";
+	public static final String MODBLOCK_MACHINE_BLEAK_GLASS = "machinebleakglass";
+
 	public static final String MODBLOCK_MACHINE_BLEAK_DIRT = "machinebleakdirt";
 
 	public static final String MODBLOCK_MACHINE_BLEAK_CRYSTAL = "machinebleakcrystal";
@@ -124,6 +141,7 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_ASPHALT_MIXER = "machineasphaltmixer";
 
 	public static final String MODBLOCK_MACHINE_COMPRESSED_ASPHALT = "machinecompressedasphalt";
+	public static final String MODBLOCK_MACHINE_COMPRESSED_ASPHALT_SLAB = "machinecompressedasphaltslab";
 
 	public static final String MODBLOCK_MACHINE_MOWED_GRASS = "machinemowedgrass";
 
@@ -146,6 +164,8 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_BLASTED_REDSTONE = "machineblastedredstone";
 	public static final String MODBLOCK_MACHINE_BLASTED_EMERALD = "machineblastedemerald";
 
+	public static final String MODBLOCK_MACHINE_BLEAK_CRYSTAL_INFUSED_SAND = "machinebleakcrystalinfusedsand";
+
 	public static final String MODBLOCK_MACHINE_CORN = "corn";
 	public static final String MODBLOCK_MACHINE_BLASTED_STONE2 = "machineblastedstone2";
 	public static final String MODBLOCK_MACHINE_PRIMARY_CRUSHER = "machineprimarycrusher";
@@ -157,9 +177,11 @@ public class Reference {
 
 	public static final String MODBLOCK_MACHINE_FERMENTER = "machinefermenter";
 	public static final String MODBLOCK_MACHINE_FUEL_PUMP = "machinefuelpump";
+	public static final String MODBLOCK_MACHINE_TOWER_CRANE = "machinetowercrane";
 
 	public static final String MODBLOCK_MACHINE_CONVEYOR = "machineconveyor";
 	public static final String MODBLOCK_MACHINE_FEED_TROUGH = "machinefeedtrough";
+	public static final String MODBLOCK_MACHINE_HOLO_SCANNER = "machineholoscanner";
 
 	public static final String MODBLOCK_MACHINE_GENERATOR = "machinegenerator";
 
@@ -188,16 +210,20 @@ public class Reference {
 	public static boolean enableDebugPipeCode = false;
 
 	public static boolean enableBulldozer = true;
+	public static boolean enableTrackLoader = true;
 	public static boolean enableBagger = true;
 
 	public static boolean enableCombine = true;
 	public static boolean enableCrane = true;
 	public static boolean enableDrillingRig = true;
 	public static boolean enableDumptruck = true;
+	public static boolean enableUnderGroundDumptruck = true;
+
 	public static boolean enableExcavator = true;
 	public static boolean enableGrader = true;
 	public static boolean enableLawnmower = true;
 	public static boolean enableLoader = true;
+	public static boolean enableUnderGroundLoader = true;
 
 	public static boolean enableLaserMiner = true;
 
@@ -256,5 +282,35 @@ public class Reference {
 	public static final int GUI_ASSEMBLY_TABLE_BUTTON_ASSEMBLE = 1;
 	public static final int GUI_ASSEMBLY_TABLE_BUTTON_NEXT_PAGE = 2;
 	public static final int GUI_ASSEMBLY_TABLE_BUTTON_PREV_PAGE = 3;
+
+	public static final int GUI_TOWER_CRANE_BUTTON_SETTINGS = 1;
+
+	public static final int GUI_TOWER_CRANE_BUTTON_START = 2;
+
+	public static final int GUI_HOLO_SCANNER_BUTTON_FRONT_PLUS = 2;
+	public static final int GUI_HOLO_SCANNER_BUTTON_FRONT_MINUS = 3;
+	public static final int GUI_HOLO_SCANNER_BUTTON_RIGHT_PLUS = 4;
+	public static final int GUI_HOLO_SCANNER_BUTTON_RIGHT_MINUS = 5;
+	public static final int GUI_HOLO_SCANNER_BUTTON_UP_PLUS = 6;
+	public static final int GUI_HOLO_SCANNER_BUTTON_UP_MINUS = 7;
+
+	public static final int GUI_TOWER_CRANE_BUTTON_BP1 = 1;
+	public static final int GUI_TOWER_CRANE_BUTTON_BP2 = 2;
+	public static final int GUI_TOWER_CRANE_BUTTON_BP3 = 3;
+	public static final int GUI_TOWER_CRANE_BUTTON_BP4 = 4;
+	public static final int GUI_TOWER_CRANE_BUTTON_BP5 = 5;
+	public static final int GUI_TOWER_CRANE_BUTTON_BP6 = 6;
+	public static final int GUI_TOWER_CRANE_BUTTON_BP7 = 7;
+	public static final int GUI_TOWER_CRANE_BUTTON_BP8 = 8;
+
+	public static final int GUI_TOWER_CRANE_BUTTON_INVENTORY = 9;
+
+	public static final int GUI_TOWER_CRANE_SCROLL_UP = 10;
+	public static final int GUI_TOWER_CRANE_SCROLL_DOWN = 11;
+
+	public static final int GUI_HOLO_SCANNER_BUTTON_SAVE = 1;
+
+	public static final String BLUEPRINTLOCATION = "config/Machinemod/Blueprints/";
+	public static final String CONFIG_MACHINEMOD_LOCATION = "config/Machinemod";
 
 }

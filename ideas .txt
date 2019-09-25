@@ -1,18 +1,47 @@
 
-cow feeder?
-	Done block created 
-		Done needs texture & model
-		Done needs inventory on tileentity 
-		Done must check the inventory for the item to feed the animals Maybe 1 slot.
-		maybe power later?
-		Done Block height
-		Done show if it has items in it.
-		Done FIx GUI slot location and texture
+possible fix for Entity desync?
+https://github.com/cam72cam/ImmersiveRailroading/blob/master/src/main/java/cam72cam/immersiverailroading/proxy/CommonProxy.java
+registerEntities(RegistryEvent.Register<EntityEntry> event)
+
+
+Entity:
+Laser miner mostly done.
+Track loader works for front bucket but not back rake.
+underground loader Needs work, render seat functions
+underground dump truck Needs work, render seat functions
+
+block:
+Towercrane needs bug fixes, GUI enhanced for choosing  blueprint 
+item:
+laser scanner needs to allow for choice of filename etc..
+
+
+"Just some aesthetic ideas, something visual to pull the blocks out of would be cool, like maybe a 2x3x2 shipping container with an open top placed somewhere in its range with a large inventory to fill with blocks and compatibility with hoppers/other item transport.
+
+If this mod will have an item that let's you see the equipment's range and a ghost view of the selected blueprint or anything like that a hardhat and safety goggles that you wear in the helmet slot would be cool."
+
+
+
+Recipies for everything above
+
+
+
+test
+
+Idea: Add pickaxes for bleak dimension.
+ 
+
+---------
+issue machines over hoppers do not drain inventory anymore.
+Found out why its happening but not a fix yet. It seems that when i switched from using the normal IInventory for the machines over to using forge's new capability system it broke the interactions with vanilla hoppers for entities. Will need to research it more on how /if it can be fixed.
+possible work around . Unloader.
+----------
+
+
+Possible bug:
+
 		
-		
-		
-		
-Fix distiller slot location & texture!		
+Fix distiller gui slot location & texture!		
 		
 
 Remote Detonator 
@@ -36,6 +65,10 @@ In bulldozer
 Dropped 2 blocks down fall damage in machines
 
 
+old branch merge 1.12 work !
+Under ground loader WIP 
+under ground dump truck wip
+Laser miner need better recipie
 
 
 

@@ -7,6 +7,7 @@ import com.projectreddog.machinemod.item.ItemAluminumIngot;
 import com.projectreddog.machinemod.item.ItemBaggerBody;
 import com.projectreddog.machinemod.item.ItemBaggerStorage;
 import com.projectreddog.machinemod.item.ItemBleakCrystal;
+import com.projectreddog.machinemod.item.ItemBleakCrystalDust;
 import com.projectreddog.machinemod.item.ItemBoomArmSegment;
 import com.projectreddog.machinemod.item.ItemBucketWheel;
 import com.projectreddog.machinemod.item.ItemCarbonDust;
@@ -23,6 +24,7 @@ import com.projectreddog.machinemod.item.ItemHammer;
 import com.projectreddog.machinemod.item.ItemHandDrill;
 import com.projectreddog.machinemod.item.ItemHose;
 import com.projectreddog.machinemod.item.ItemIronDust;
+import com.projectreddog.machinemod.item.ItemLaser;
 import com.projectreddog.machinemod.item.ItemLidWithSpout;
 import com.projectreddog.machinemod.item.ItemLight;
 import com.projectreddog.machinemod.item.ItemLightModule;
@@ -55,7 +57,10 @@ import com.projectreddog.machinemod.item.blueprint.ItemBlueprintConduit;
 import com.projectreddog.machinemod.item.blueprint.ItemBlueprintContinuousMiner;
 import com.projectreddog.machinemod.item.blueprint.ItemBlueprintFactory;
 import com.projectreddog.machinemod.item.blueprint.ItemBlueprintGenerator;
+import com.projectreddog.machinemod.item.blueprint.ItemBlueprintHoloScanner;
+import com.projectreddog.machinemod.item.blueprint.ItemBlueprintLaserMiner;
 import com.projectreddog.machinemod.item.blueprint.ItemBlueprintShredder;
+import com.projectreddog.machinemod.item.blueprint.ItemBlueprintTowerCrane;
 import com.projectreddog.machinemod.item.blueprint.ItemBlueprintTurboFurnace;
 import com.projectreddog.machinemod.item.chopperattachments.ItemChopperAttachmentSawBlades;
 import com.projectreddog.machinemod.item.components.ItemCamshaft;
@@ -103,7 +108,10 @@ import com.projectreddog.machinemod.item.machines.ItemPaver;
 import com.projectreddog.machinemod.item.machines.ItemRoadRoller;
 import com.projectreddog.machinemod.item.machines.ItemSemiTractor;
 import com.projectreddog.machinemod.item.machines.ItemSub;
+import com.projectreddog.machinemod.item.machines.ItemTrackLoader;
 import com.projectreddog.machinemod.item.machines.ItemTractor;
+import com.projectreddog.machinemod.item.machines.ItemUnderGroundDumpTruck;
+import com.projectreddog.machinemod.item.machines.ItemUnderGroundLoader;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerCargo;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerLivestock;
@@ -123,6 +131,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class ModItems {
 
 	public static final ItemMachineMod bulldozer = new ItemBulldozer();
+	public static final ItemMachineMod trackloader = new ItemTrackLoader();
 	public static final ItemMachineMod tractor = new ItemTractor();
 	public static final ItemMachineMod lawnmower = new ItemLawnmower();
 	public static final ItemMachineMod anfo = new ItemANFO();
@@ -135,8 +144,11 @@ public class ModItems {
 	public static final ItemMachineMod sub = new ItemSub();
 	public static final ItemMachineMod chopper = new ItemChopper();
 	public static final ItemMachineMod bleakcrystal = new ItemBleakCrystal();
+	public static final ItemMachineMod bleakcrystaldust = new ItemBleakCrystalDust();
 
 	public static final ItemMachineMod carbondust = new ItemCarbonDust();
+	public static final ItemMachineMod laser = new ItemLaser();
+
 	public static final ItemMachineMod steeldust = new ItemSteelDust();
 	public static final ItemMachineMod steelingot = new ItemSteelIngot();
 
@@ -170,6 +182,10 @@ public class ModItems {
 	public static final ItemMachineMod collapsedstar = new ItemCollapsedStar();
 
 	public static final ItemBlueprintContinuousMiner blueprintcontinuousminer = new ItemBlueprintContinuousMiner();
+	public static final ItemBlueprintTowerCrane blueprinttowercrane = new ItemBlueprintTowerCrane();
+	public static final ItemBlueprintLaserMiner blueprintlaserminer = new ItemBlueprintLaserMiner();
+
+	public static final ItemBlueprintHoloScanner blueprintholoscanner = new ItemBlueprintHoloScanner();
 
 	public static final ItemBlueprintConduit blueprintconduit = new ItemBlueprintConduit();
 
@@ -209,7 +225,11 @@ public class ModItems {
 
 	public static final ItemMachineMod drillingrig = new ItemDrillingRig();
 	public static final ItemMachineMod dumptruck = new ItemDumpTruck();
+	public static final ItemMachineMod undergrounddumptruck = new ItemUnderGroundDumpTruck();
+
 	public static final ItemMachineMod loader = new ItemLoader();
+	public static final ItemMachineMod undergroundloader = new ItemUnderGroundLoader();
+
 	public static final ItemMachineMod laserminer = new ItemLaserMiner();
 
 	public static final ItemMachineMod grader = new ItemGrader();
@@ -280,6 +300,10 @@ public class ModItems {
 			ForgeRegistries.ITEMS.register(bulldozer);// , "bulldozer");
 		}
 
+		if (Reference.enableTrackLoader) {
+			ForgeRegistries.ITEMS.register(trackloader);// , "bulldozer");
+		}
+
 		if (Reference.enableCombine) {
 			ForgeRegistries.ITEMS.register(combine);// , "combine");
 
@@ -295,6 +319,11 @@ public class ModItems {
 
 		if (Reference.enableDumptruck) {
 			ForgeRegistries.ITEMS.register(dumptruck);// , "dumptruck");
+
+		}
+
+		if (Reference.enableUnderGroundDumptruck) {
+			ForgeRegistries.ITEMS.register(undergrounddumptruck);// , "dumptruck");
 
 		}
 
@@ -316,6 +345,12 @@ public class ModItems {
 			ForgeRegistries.ITEMS.register(loader);// , "loader");
 
 		}
+
+		if (Reference.enableUnderGroundLoader) {
+			ForgeRegistries.ITEMS.register(undergroundloader);// , "loader");
+
+		}
+
 		if (Reference.enableLaserMiner) {
 			ForgeRegistries.ITEMS.register(laserminer);
 
@@ -362,6 +397,7 @@ public class ModItems {
 		}
 
 		ForgeRegistries.ITEMS.register(bleakcrystal);// , "paverscreed");
+		ForgeRegistries.ITEMS.register(bleakcrystaldust);// , "paverscreed");
 
 		ForgeRegistries.ITEMS.register(paverscreed);// , "paverscreed");
 		ForgeRegistries.ITEMS.register(rollerwheel);// , "rollerwheel");
@@ -451,6 +487,7 @@ public class ModItems {
 		ForgeRegistries.ITEMS.register(wrench);// , "wrench");
 
 		ForgeRegistries.ITEMS.register(carbondust);// , "carbondust");
+		ForgeRegistries.ITEMS.register(laser);
 
 		ForgeRegistries.ITEMS.register(steeldust);// , "steeldust");
 
@@ -468,6 +505,10 @@ public class ModItems {
 		ForgeRegistries.ITEMS.register(aluminumingot);// , "aluminumingot");
 
 		ForgeRegistries.ITEMS.register(blueprintcontinuousminer);
+		ForgeRegistries.ITEMS.register(blueprinttowercrane);
+		ForgeRegistries.ITEMS.register(blueprintholoscanner);
+
+		ForgeRegistries.ITEMS.register(blueprintlaserminer);
 
 		ForgeRegistries.ITEMS.register(blueprintconduit);
 		ForgeRegistries.ITEMS.register(blueprintfactory);
@@ -511,6 +552,11 @@ public class ModItems {
 
 		}
 
+		if (Reference.enableTrackLoader) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(trackloader, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "trackloader", "inventory"));
+
+		}
+
 		if (Reference.enableCombine) {
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(combine, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "combine", "inventory"));
 
@@ -529,6 +575,10 @@ public class ModItems {
 
 		}
 
+		if (Reference.enableUnderGroundDumptruck) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(undergrounddumptruck, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "undergrounddumptruck", "inventory"));
+		}
+
 		if (Reference.enableExcavator) {
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(excavator, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "excavator", "inventory"));
 
@@ -545,6 +595,11 @@ public class ModItems {
 		}
 		if (Reference.enableLoader) {
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(loader, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "loader", "inventory"));
+
+		}
+
+		if (Reference.enableUnderGroundLoader) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(undergroundloader, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "undergroundloader", "inventory"));
 
 		}
 
@@ -592,8 +647,11 @@ public class ModItems {
 		}
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bleakcrystal, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bleakcrystal", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bleakcrystaldust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bleakcrystaldust", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(carbondust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "carbondust", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(laser, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "laser", "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(steeldust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "steeldust", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(steelingot, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "steelingot", "inventory"));
 
@@ -630,6 +688,10 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(collapsedstar, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "collapsedstar", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(blueprintcontinuousminer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "blueprintcontinuousminer", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(blueprinttowercrane, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "blueprinttowercrane", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(blueprintholoscanner, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "blueprintholoscanner", "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(blueprintlaserminer, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "blueprintlaserminer", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(blueprintconduit, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "blueprintconduit", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(blueprintfactory, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "blueprintfactory", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(blueprintgenerator, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "blueprintgenerator", "inventory"));

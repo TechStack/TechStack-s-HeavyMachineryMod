@@ -20,7 +20,10 @@ import com.projectreddog.machinemod.entity.EntityPaver;
 import com.projectreddog.machinemod.entity.EntityRoadRoller;
 import com.projectreddog.machinemod.entity.EntitySemiTractor;
 import com.projectreddog.machinemod.entity.EntitySub;
+import com.projectreddog.machinemod.entity.EntityTrackLoader;
 import com.projectreddog.machinemod.entity.EntityTractor;
+import com.projectreddog.machinemod.entity.EntityUnderGroundDumpTruck;
+import com.projectreddog.machinemod.entity.EntityUnderGroundLoader;
 import com.projectreddog.machinemod.entity.monster.EntityExpStalker;
 import com.projectreddog.machinemod.handler.events.RenderOverlayHandler;
 import com.projectreddog.machinemod.init.ModBlocks;
@@ -45,7 +48,10 @@ import com.projectreddog.machinemod.render.machines.RenderPaver;
 import com.projectreddog.machinemod.render.machines.RenderRoadRoller;
 import com.projectreddog.machinemod.render.machines.RenderSemiTractor;
 import com.projectreddog.machinemod.render.machines.RenderSub;
+import com.projectreddog.machinemod.render.machines.RenderTrackLoader;
 import com.projectreddog.machinemod.render.machines.RenderTractor;
+import com.projectreddog.machinemod.render.machines.RenderUnderGroundDumpTruck;
+import com.projectreddog.machinemod.render.machines.RenderUnderGroundLoader;
 import com.projectreddog.machinemod.render.mob.RenderExpStalker;
 import com.projectreddog.machinemod.render.tileentity.TileEntityCentrifugeRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityCrateRenderer;
@@ -53,14 +59,18 @@ import com.projectreddog.machinemod.render.tileentity.TileEntityDistillerRendere
 import com.projectreddog.machinemod.render.tileentity.TileEntityFactoryRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityFermenterRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityFuelPumpRenderer;
+import com.projectreddog.machinemod.render.tileentity.TileEntityHoloScannerRenderer;
 import com.projectreddog.machinemod.render.tileentity.TileEntityLiquidPipeRenderer;
+import com.projectreddog.machinemod.render.tileentity.TileEntityTowerCraneRenderer;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 import com.projectreddog.machinemod.tileentities.TileEntityCrate;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 import com.projectreddog.machinemod.tileentities.TileEntityFactory;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
+import com.projectreddog.machinemod.tileentities.TileEntityHoloScanner;
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
+import com.projectreddog.machinemod.tileentities.TileEntityTowerCrane;
 import com.projectreddog.machinemod.utility.MachineModModelHelper;
 
 import net.minecraft.block.state.IBlockState;
@@ -122,6 +132,10 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityLaserMiner.class, new RenderLaserMiner(Minecraft.getMinecraft().getRenderManager()));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityExpStalker.class, new RenderExpStalker(Minecraft.getMinecraft().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityTrackLoader.class, new RenderTrackLoader(Minecraft.getMinecraft().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityUnderGroundDumpTruck.class, new RenderUnderGroundDumpTruck(Minecraft.getMinecraft().getRenderManager()));
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityUnderGroundLoader.class, new RenderUnderGroundLoader(Minecraft.getMinecraft().getRenderManager()));
 
 		// RenderingRegistry.registerEntityRenderingHandler(EntityPumpJack.class, new RenderPumpJack(Minecraft.getMinecraft().getRenderManager()));
 		// TODO fix post JSON
@@ -153,6 +167,8 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLiquidPipe.class, new TileEntityLiquidPipeRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCrate.class, new TileEntityCrateRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFactory.class, new TileEntityFactoryRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTowerCrane.class, new TileEntityTowerCraneRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHoloScanner.class, new TileEntityHoloScannerRenderer());
 
 		// regsiter event for overlay
 		MinecraftForge.EVENT_BUS.register(new RenderOverlayHandler());

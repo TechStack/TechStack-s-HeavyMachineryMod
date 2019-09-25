@@ -2,9 +2,11 @@ package com.projectreddog.machinemod.init;
 
 import com.projectreddog.machinemod.block.BlockBioFuel;
 import com.projectreddog.machinemod.block.BlockMachineAsphalt;
+import com.projectreddog.machinemod.block.BlockMachineAsphaltSlab;
 import com.projectreddog.machinemod.block.BlockMachineAssemblyTable;
 import com.projectreddog.machinemod.block.BlockMachineBleakCrystal;
 import com.projectreddog.machinemod.block.BlockMachineBleakDirt;
+import com.projectreddog.machinemod.block.BlockMachineBleakGlass;
 import com.projectreddog.machinemod.block.BlockMachineBleakOreAzurium;
 import com.projectreddog.machinemod.block.BlockMachineBleakOreCitronite;
 import com.projectreddog.machinemod.block.BlockMachineBleakOreCrimsonite;
@@ -16,6 +18,7 @@ import com.projectreddog.machinemod.block.BlockMachineBleakPortal;
 import com.projectreddog.machinemod.block.BlockMachineBleakPortalFrame;
 import com.projectreddog.machinemod.block.BlockMachineBleakStone;
 import com.projectreddog.machinemod.block.BlockMachineCompressedAsphalt;
+import com.projectreddog.machinemod.block.BlockMachineCompressedAsphaltSlab;
 import com.projectreddog.machinemod.block.BlockMachineCrate;
 import com.projectreddog.machinemod.block.BlockMachineCrudeOilStone;
 import com.projectreddog.machinemod.block.BlockMachineDrilledAndesite;
@@ -37,6 +40,7 @@ import com.projectreddog.machinemod.block.BlockMachineModBlastedIron;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedLapis;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedRedstone;
 import com.projectreddog.machinemod.block.BlockMachineModBlastedStone;
+import com.projectreddog.machinemod.block.BlockMachineModBleakCrystalInfusedSand;
 import com.projectreddog.machinemod.block.BlockMachineModCentrifuge;
 import com.projectreddog.machinemod.block.BlockMachineModConduit;
 import com.projectreddog.machinemod.block.BlockMachineModConveyor;
@@ -48,10 +52,12 @@ import com.projectreddog.machinemod.block.BlockMachineModFermenter;
 import com.projectreddog.machinemod.block.BlockMachineModFractionalDistillation;
 import com.projectreddog.machinemod.block.BlockMachineModFuelPump;
 import com.projectreddog.machinemod.block.BlockMachineModGenerator;
+import com.projectreddog.machinemod.block.BlockMachineModHoloScanner;
 import com.projectreddog.machinemod.block.BlockMachineModLiquidPipe;
 import com.projectreddog.machinemod.block.BlockMachineModPrimaryCrusher;
 import com.projectreddog.machinemod.block.BlockMachineModScreen;
 import com.projectreddog.machinemod.block.BlockMachineModShredder;
+import com.projectreddog.machinemod.block.BlockMachineModTowerCrane;
 import com.projectreddog.machinemod.block.BlockMachineModTruboFurnace;
 import com.projectreddog.machinemod.block.BlockMachineModWellHead;
 import com.projectreddog.machinemod.block.BlockMachineMowedGrass;
@@ -72,10 +78,12 @@ import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 import com.projectreddog.machinemod.tileentities.TileEntityGenerator;
+import com.projectreddog.machinemod.tileentities.TileEntityHoloScanner;
 import com.projectreddog.machinemod.tileentities.TileEntityLiquidPipe;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
 import com.projectreddog.machinemod.tileentities.TileEntityScreen;
 import com.projectreddog.machinemod.tileentities.TileEntityShredder;
+import com.projectreddog.machinemod.tileentities.TileEntityTowerCrane;
 import com.projectreddog.machinemod.tileentities.TileEntityTurboFurnace;
 import com.projectreddog.machinemod.tileentities.TileEntityWellHead;
 
@@ -96,8 +104,12 @@ import net.minecraftforge.oredict.OreDictionary;
 public class ModBlocks {
 	public static final Block machineassemblytable = new BlockMachineAssemblyTable();
 	public static final BlockMachineMod machineasphalt = new BlockMachineAsphalt();
+	public static final BlockMachineMod machineasphaltslab = new BlockMachineAsphaltSlab();
+	public static final BlockMachineMod machinebleakglass = new BlockMachineBleakGlass();
 
 	public static final BlockMachineMod machinebleakdirt = new BlockMachineBleakDirt();
+
+	public static final BlockMachineMod machinebleakcrystalinfusedsand = new BlockMachineModBleakCrystalInfusedSand();
 
 	public static final BlockMachineMod machinebleakstone = new BlockMachineBleakStone();
 	public static final BlockMachineMod machinebleakoreiridonium = new BlockMachineBleakOreIridonium();
@@ -120,6 +132,8 @@ public class ModBlocks {
 	public static final Block machineconduit = new BlockMachineModConduit();
 
 	public static final BlockMachineMod machinecompressedasphalt = new BlockMachineCompressedAsphalt();
+	public static final BlockMachineMod machinecompressedasphaltslab = new BlockMachineCompressedAsphaltSlab();
+
 	public static final BlockMachineMod machinecrudeoilstone = new BlockMachineCrudeOilStone();
 
 	public static final BlockMachineMod machinedrilledstone = new BlockMachineDrilledStone();
@@ -151,6 +165,7 @@ public class ModBlocks {
 
 	public static final Block machinefermenter = new BlockMachineModFermenter();
 	public static final Block machinefuelpump = new BlockMachineModFuelPump();
+	public static final Block machinetowercrane = new BlockMachineModTowerCrane();
 
 	public static final Block machinewellhead = new BlockMachineModWellHead();
 
@@ -161,6 +176,8 @@ public class ModBlocks {
 	public static final Block machineconveyor = new BlockMachineModConveyor();
 
 	public static final Block machinefeedtrough = new BlockMachineModFeedTrough();
+
+	public static final Block machineholoscanner = new BlockMachineModHoloScanner();
 
 	public static final Block machineshredder = new BlockMachineModShredder();
 
@@ -211,8 +228,17 @@ public class ModBlocks {
 		ForgeRegistries.BLOCKS.register(machineasphalt);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machineasphalt).setRegistryName(ModBlocks.machineasphalt.getRegistryName()));
 
+		ForgeRegistries.BLOCKS.register(machineasphaltslab);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineasphaltslab).setRegistryName(ModBlocks.machineasphaltslab.getRegistryName()));
+
 		ForgeRegistries.BLOCKS.register(machinebleakdirt);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinebleakdirt).setRegistryName(ModBlocks.machinebleakdirt.getRegistryName()));
+
+		ForgeRegistries.BLOCKS.register(machinebleakcrystalinfusedsand);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinebleakcrystalinfusedsand).setRegistryName(ModBlocks.machinebleakcrystalinfusedsand.getRegistryName()));
+
+		ForgeRegistries.BLOCKS.register(machinebleakglass);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinebleakglass).setRegistryName(ModBlocks.machinebleakglass.getRegistryName()));
 
 		ForgeRegistries.BLOCKS.register(machinebleakcrystal);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinebleakcrystal).setRegistryName(ModBlocks.machinebleakcrystal.getRegistryName()));
@@ -237,6 +263,10 @@ public class ModBlocks {
 
 		ForgeRegistries.BLOCKS.register(machinecompressedasphalt);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinecompressedasphalt).setRegistryName(ModBlocks.machinecompressedasphalt.getRegistryName()));
+
+		ForgeRegistries.BLOCKS.register(machinecompressedasphaltslab);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinecompressedasphaltslab).setRegistryName(ModBlocks.machinecompressedasphaltslab.getRegistryName()));
+
 		ForgeRegistries.BLOCKS.register(machinecrudeoilstone);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinecrudeoilstone).setRegistryName(ModBlocks.machinecrudeoilstone.getRegistryName()));
 		ForgeRegistries.BLOCKS.register(machinecrate);
@@ -290,6 +320,9 @@ public class ModBlocks {
 		ForgeRegistries.BLOCKS.register(machinefeedtrough);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinefeedtrough).setRegistryName(ModBlocks.machinefeedtrough.getRegistryName()));
 
+		ForgeRegistries.BLOCKS.register(machineholoscanner);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineholoscanner).setRegistryName(ModBlocks.machineholoscanner.getRegistryName()));
+
 		ForgeRegistries.BLOCKS.register(machineshredder);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machineshredder).setRegistryName(ModBlocks.machineshredder.getRegistryName()));
 
@@ -310,6 +343,10 @@ public class ModBlocks {
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinemowedgrass).setRegistryName(ModBlocks.machinemowedgrass.getRegistryName()));
 		ForgeRegistries.BLOCKS.register(machinefuelpump);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinefuelpump).setRegistryName(ModBlocks.machinefuelpump.getRegistryName()));
+
+		ForgeRegistries.BLOCKS.register(machinetowercrane);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machinetowercrane).setRegistryName(ModBlocks.machinetowercrane.getRegistryName()));
+
 		ForgeRegistries.BLOCKS.register(machinedistiller);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinedistiller).setRegistryName(ModBlocks.machinedistiller.getRegistryName()));
 
@@ -329,6 +366,8 @@ public class ModBlocks {
 
 		GameRegistry.registerTileEntity(TileEntityConveyor.class, Reference.MODBLOCK_MACHINE_CONVEYOR);
 		GameRegistry.registerTileEntity(TileEntityFeedTrough.class, Reference.MODBLOCK_MACHINE_FEED_TROUGH);
+
+		GameRegistry.registerTileEntity(TileEntityHoloScanner.class, Reference.MODBLOCK_MACHINE_HOLO_SCANNER);
 
 		GameRegistry.registerTileEntity(TileEntityScreen.class, Reference.MODBLOCK_MACHINE_SCREEN);
 		GameRegistry.registerTileEntity(TileEntityFractionalDistillation.class, Reference.MODBLOCK_MACHINE_FRACTIONAL_DISTILLATION);
@@ -354,6 +393,8 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileEntityTurboFurnace.class, Reference.MODBLOCK_MACHINE_TURBO_FURNACE);
 
 		GameRegistry.registerTileEntity(TileEntityShredder.class, Reference.MODBLOCK_MACHINE_SHREDDER);
+
+		GameRegistry.registerTileEntity(TileEntityTowerCrane.class, Reference.MODBLOCK_MACHINE_TOWER_CRANE);
 
 		// /Register Fluids
 		FluidRegistry.registerFluid(fluidOil);
@@ -397,8 +438,14 @@ public class ModBlocks {
 	public static void initBlockRender() {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineassemblytable), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineasphalt), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_ASPHALT, "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineasphaltslab), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_ASPHALT_SLAB, "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakdirt), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_DIRT, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakcrystal), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_CRYSTAL, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakcrystalinfusedsand), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_CRYSTAL_INFUSED_SAND, "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakglass), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_GLASS, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakstone), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_STONE, "inventory"));
 
@@ -413,6 +460,8 @@ public class ModBlocks {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakoreunobtanium), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_ORE_UNOBTANIUM, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinecompressedasphalt), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_COMPRESSED_ASPHALT, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinecompressedasphaltslab), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_COMPRESSED_ASPHALT_SLAB, "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(steelblock), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_STEEL_BLOCK, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinegenerator), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_GENERATOR, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebatterybank), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BATTERY_BANK, "inventory"));
@@ -457,6 +506,7 @@ public class ModBlocks {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineconveyor), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_CONVEYOR, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineshredder), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_SHREDDER, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinefeedtrough), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FEED_TROUGH, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineholoscanner), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_HOLO_SCANNER, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinescreen), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_SCREEN, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinebleakportalframe), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_BLEAK_PORTAL_FRAME, "inventory"));
@@ -465,6 +515,8 @@ public class ModBlocks {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinemowedgrass), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_MOWED_GRASS, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinefuelpump), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FUEL_PUMP, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinetowercrane), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_TOWER_CRANE, "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinedistiller), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_DISTILLER, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinefactory), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FACTORY, "inventory"));

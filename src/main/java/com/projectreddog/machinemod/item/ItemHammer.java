@@ -52,6 +52,13 @@ public class ItemHammer extends ItemMachineMod {
 				if (teat.isWorkNeeded()) {
 					teat.appyWork(10);
 					player.getHeldItem(EnumHand.MAIN_HAND).setItemDamage(player.getHeldItem(EnumHand.MAIN_HAND).getItemDamage() + 1);
+
+					// TODO add check here for when max damge is reached.
+
+					if (player.getHeldItem(EnumHand.MAIN_HAND).getItemDamage() >= player.getHeldItem(EnumHand.MAIN_HAND).getMaxDamage()) {
+						player.setHeldItem(EnumHand.MAIN_HAND, ItemStack.EMPTY);
+
+					}
 					result = true;
 					world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.BLOCKS, .5f, 1.0f);
 

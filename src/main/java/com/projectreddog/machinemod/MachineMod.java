@@ -49,6 +49,7 @@ public class MachineMod {
 		ModNetwork.init();
 		ModVillage.init();
 		proxy.PreInit();
+
 	}
 
 	@Mod.EventHandler
