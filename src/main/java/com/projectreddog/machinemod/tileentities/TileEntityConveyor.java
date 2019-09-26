@@ -130,7 +130,6 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 							entity.motionY = 0;
 							y = MoveSpeed;
 						} else {
-							y = ySave;
 
 						}
 					}
