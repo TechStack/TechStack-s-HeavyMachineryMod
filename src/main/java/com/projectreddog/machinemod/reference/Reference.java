@@ -240,7 +240,7 @@ public class Reference {
 	public static boolean enableTractor = true;
 
 	public static boolean enablePlayerSkullsInWorldGen = true;
-
+	public static double TowerCraneSpeedMultiplier = 5;
 	public static int crudeOilStoneGenMinlevel = 5;
 	public static int crudeOilStoneGenMaxlevel = 30;
 
