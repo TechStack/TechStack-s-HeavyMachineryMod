@@ -50,11 +50,16 @@ public class EntityTrackLoader extends EntityMachineModRideable {
 		super.onUpdate();
 		if (!world.isRemote) {
 			int bucketOffsetY = 0;
+			int bladeOffsetY = 0;
+
 			if (this.Attribute1 > 7) {
 				bucketOffsetY = -1;
 			} else if (this.Attribute1 < -7) {
 				bucketOffsetY = 1;
+			} else if (this.Attribute1 < -8) {
+				bladeOffsetY = -1;
 			}
+
 			// bucket Down
 			// break blocks first
 			int angle;
@@ -66,7 +71,7 @@ public class EntityTrackLoader extends EntityMachineModRideable {
 						angle = 90;
 					}
 					BlockPos bp;
-					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + j + bucketOffsetY, posZ + calcTwoOffsetZ(3.5, angle, i));
+					bp = new BlockPos(posX + calcTwoOffsetX(5, angle, i), posY + j + bucketOffsetY, posZ + calcTwoOffsetZ(5, angle, i));
 					if (!world.isAirBlock(bp) && world.getBlockState(bp).getBlock() != Blocks.BEDROCK && world.getBlockState(bp).getMaterial() != Material.WATER && world.getBlockState(bp).getMaterial() != Material.LAVA && world.getBlockState(bp).getBlock() != ModBlocks.machinebleakportal && world.getBlockState(bp).getBlock() != ModBlocks.machinebleakportalframe) {
 						BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
