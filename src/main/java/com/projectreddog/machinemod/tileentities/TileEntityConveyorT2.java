@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.tileentities;
 
 import java.util.List;
 
-import com.projectreddog.machinemod.block.BlockMachineModConveyor;
+import com.projectreddog.machinemod.block.BlockMachineModConveyorT2;
 import com.projectreddog.machinemod.init.ModBlocks;
 
 import net.minecraft.entity.Entity;
@@ -10,28 +10,21 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 
-public class TileEntityConveyor extends TileEntity implements ITickable {
+public class TileEntityConveyorT2 extends TileEntityConveyor {
 
-	public AxisAlignedBB boundingBox;
-	public final double MoveSpeed = .1d;
+	public final double MoveSpeed = .2d;
 
-	public TileEntityConveyor() {
-
-	}
-
-	public boolean getPowered() {
-		return world.isBlockPowered(this.pos);
+	@Override
+	public double getMoveSpeed() {
+		return this.MoveSpeed;
 	}
 
 	@Override
 	public void update() {
-
 		// MAJOR WIP need to handle other entities
 		// need to take initial velocity of the entity into account
 		// need to change bounding box to not use int from block pos and instead
@@ -45,9 +38,9 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 
 		if (!world.isBlockPowered(this.pos)) {
 
-			if (world.getBlockState(pos).getBlock() == ModBlocks.machineconveyor) {
-				if (BlockMachineModConveyor.shouldLift(world, this.pos)) {
-					EnumFacing checkDirection = (EnumFacing) world.getBlockState(this.pos).getValue(BlockMachineModConveyor.FACING);
+			if (world.getBlockState(pos).getBlock() == ModBlocks.machineconveyort2) {
+				if (BlockMachineModConveyorT2.shouldLift(world, this.pos)) {
+					EnumFacing checkDirection = (EnumFacing) world.getBlockState(this.pos).getValue(BlockMachineModConveyorT2.FACING);
 					BlockPos bp = this.pos;// this.pos.offset(checkDirection);
 					BlockPos bp2 = this.pos.up().add(1, 1, 1);
 					BlockPos temp;
@@ -85,10 +78,6 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 
 	}
 
-	public double getMoveSpeed() {
-		return this.MoveSpeed;
-	}
-
 	private void processEntitiesInList(List par1List) {
 		for (int i = 0; i < par1List.size(); ++i) {
 			Entity entity = (Entity) par1List.get(i);
@@ -98,7 +87,7 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 				// if (entity instanceof EntityLivingBase) {
 				// ((EntityLivingBase) entity).moveEntity(.1d, 0, 0);
 				// } else {
-				EnumFacing ef = (EnumFacing) world.getBlockState(this.pos).getValue(BlockMachineModConveyor.FACING);
+				EnumFacing ef = (EnumFacing) world.getBlockState(this.pos).getValue(BlockMachineModConveyorT2.FACING);
 				double ySave = entity.motionY;
 				double x = 0, y = 0, z = 0;
 				if (ef == EnumFacing.EAST) {
@@ -119,7 +108,7 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 					z = 0;
 				}
 
-				if (BlockMachineModConveyor.shouldLift(world, this.pos)) {
+				if (BlockMachineModConveyorT2.shouldLift(world, this.pos)) {
 					// Should lift maybe?
 					if (new BlockPos(entity.posX, entity.posY, entity.posZ).getX() == this.pos.getX() && new BlockPos(entity.posX, entity.posY, entity.posZ).getZ() == this.pos.getZ()) {
 						// entity in same pos no Y adustment
@@ -149,5 +138,4 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 			}
 		}
 	}
-
 }

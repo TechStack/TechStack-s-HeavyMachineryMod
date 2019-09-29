@@ -44,6 +44,7 @@ import com.projectreddog.machinemod.block.BlockMachineModBleakCrystalInfusedSand
 import com.projectreddog.machinemod.block.BlockMachineModCentrifuge;
 import com.projectreddog.machinemod.block.BlockMachineModConduit;
 import com.projectreddog.machinemod.block.BlockMachineModConveyor;
+import com.projectreddog.machinemod.block.BlockMachineModConveyorT2;
 import com.projectreddog.machinemod.block.BlockMachineModCorn;
 import com.projectreddog.machinemod.block.BlockMachineModDistiller;
 import com.projectreddog.machinemod.block.BlockMachineModFactory;
@@ -70,6 +71,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityBatteryBank;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 import com.projectreddog.machinemod.tileentities.TileEntityConduit;
 import com.projectreddog.machinemod.tileentities.TileEntityConveyor;
+import com.projectreddog.machinemod.tileentities.TileEntityConveyorT2;
 import com.projectreddog.machinemod.tileentities.TileEntityCrate;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 import com.projectreddog.machinemod.tileentities.TileEntityFactory;
@@ -174,6 +176,7 @@ public class ModBlocks {
 	public static final Block machinecrate = new BlockMachineCrate();
 
 	public static final Block machineconveyor = new BlockMachineModConveyor();
+	public static final Block machineconveyort2 = new BlockMachineModConveyorT2();
 
 	public static final Block machinefeedtrough = new BlockMachineModFeedTrough();
 
@@ -316,6 +319,8 @@ public class ModBlocks {
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinecentrifuge).setRegistryName(ModBlocks.machinecentrifuge.getRegistryName()));
 		ForgeRegistries.BLOCKS.register(machineconveyor);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machineconveyor).setRegistryName(ModBlocks.machineconveyor.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(machineconveyort2);
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineconveyort2).setRegistryName(ModBlocks.machineconveyort2.getRegistryName()));
 
 		ForgeRegistries.BLOCKS.register(machinefeedtrough);
 		ForgeRegistries.ITEMS.register(new ItemBlock(machinefeedtrough).setRegistryName(ModBlocks.machinefeedtrough.getRegistryName()));
@@ -365,6 +370,7 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileEntityCrate.class, Reference.MODBLOCK_MACHINE_CRATE);
 
 		GameRegistry.registerTileEntity(TileEntityConveyor.class, Reference.MODBLOCK_MACHINE_CONVEYOR);
+		GameRegistry.registerTileEntity(TileEntityConveyorT2.class, Reference.MODBLOCK_MACHINE_CONVEYOR_T2);
 		GameRegistry.registerTileEntity(TileEntityFeedTrough.class, Reference.MODBLOCK_MACHINE_FEED_TROUGH);
 
 		GameRegistry.registerTileEntity(TileEntityHoloScanner.class, Reference.MODBLOCK_MACHINE_HOLO_SCANNER);
@@ -504,7 +510,10 @@ public class ModBlocks {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinecentrifuge), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_CENTRIFUGE, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineconveyor), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_CONVEYOR, "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineconveyort2), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_CONVEYOR_T2, "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineshredder), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_SHREDDER, "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machinefeedtrough), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_FEED_TROUGH, "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineholoscanner), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_HOLO_SCANNER, "inventory"));
 

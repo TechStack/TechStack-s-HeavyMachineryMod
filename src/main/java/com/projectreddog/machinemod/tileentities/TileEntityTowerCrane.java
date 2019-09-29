@@ -201,7 +201,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			// public double targetGantryPos;
 			// public double targetWenchPos;
 
-			double stepAmt = 1d;
+			double stepAmt = Reference.TowerCraneSpeedMultiplier;
 
 			if (Math.abs(targetArmRotation - armRotation) < stepAmt) {
 				armRotation = targetArmRotation;
