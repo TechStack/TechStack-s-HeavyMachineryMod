@@ -19,7 +19,8 @@ public class ItemBlueprintTowerCrane extends ItemBlueprint {
 
 	public void Init() {
 		this.outputItemName = ModBlocks.machinetowercrane.getRegistryName().toString();
-		ingredents.add(new BlueprintIngredent(ModItems.rigging.getRegistryName().toString(), 16));
+		ingredents.add(new BlueprintIngredent(ModItems.rigging.getRegistryName().toString(), 1));
+		ingredents.add(new BlueprintIngredent(ModItems.boomarmsegment.getRegistryName().toString(), 16));
 		ingredents.add(new BlueprintIngredent(ModBlocks.steelblock.getRegistryName().toString(), 20));
 		ingredents.add(new BlueprintIngredent(Items.STRING.getRegistryName().toString(), 128));
 		LogHelper.info(this);
