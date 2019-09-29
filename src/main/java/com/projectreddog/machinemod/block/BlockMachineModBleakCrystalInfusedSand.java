@@ -16,7 +16,7 @@ public class BlockMachineModBleakCrystalInfusedSand extends BlockMachineModFalli
 		// this.setHardness(15f);// not sure on the hardness
 		this.setSoundType(SoundType.SAND);
 		this.setHardness(0.5f);
-		this.setHarvestLevel("shovel", 1);
+
 	}
 
 }
