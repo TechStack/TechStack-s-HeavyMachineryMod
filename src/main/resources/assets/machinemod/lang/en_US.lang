@@ -93,6 +93,7 @@ item.machinemod:azuriumlump.name=Azurium Lump
 item.machinemod:unobtaniumgem.name=Unobtanium Gem
 
 
+item.machinemod:stalkerhide.name=Stalker Hide
 
 
 item.machinemod:paverscreed.name=Paver Screed
@@ -208,6 +209,8 @@ tile.machinemod:machineblastedemerald.name=Blasted Emerald
 
 tile.machinemod:machineblastedstone2.name=Blasted Stone for Mods - (WIP)
 tile.machinemod:machineconveyor.name=Conveyor
+tile.machinemod:machineconveyort2.name=Conveyor - Tier 2
+
 tile.machinemod:machineshredder.name=Industrial Mob Shredder
 tile.machinemod:machinefeedtrough.name=Feed Trough
 
