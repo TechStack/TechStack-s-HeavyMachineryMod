@@ -180,8 +180,6 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_TOWER_CRANE = "machinetowercrane";
 
 	public static final String MODBLOCK_MACHINE_CONVEYOR = "machineconveyor";
-	public static final String MODBLOCK_MACHINE_CONVEYOR_T2 = "machineconveyort2";
-
 	public static final String MODBLOCK_MACHINE_FEED_TROUGH = "machinefeedtrough";
 	public static final String MODBLOCK_MACHINE_HOLO_SCANNER = "machineholoscanner";
 
@@ -242,7 +240,7 @@ public class Reference {
 	public static boolean enableTractor = true;
 
 	public static boolean enablePlayerSkullsInWorldGen = true;
-	public static double TowerCraneSpeedMultiplier = 5;
+
 	public static int crudeOilStoneGenMinlevel = 5;
 	public static int crudeOilStoneGenMaxlevel = 30;
 

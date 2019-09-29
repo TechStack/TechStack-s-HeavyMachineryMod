@@ -39,7 +39,6 @@ import com.projectreddog.machinemod.item.ItemProp;
 import com.projectreddog.machinemod.item.ItemPropCage;
 import com.projectreddog.machinemod.item.ItemRawAsphalt;
 import com.projectreddog.machinemod.item.ItemRigging;
-import com.projectreddog.machinemod.item.ItemStalkerHide;
 import com.projectreddog.machinemod.item.ItemSteelDust;
 import com.projectreddog.machinemod.item.ItemSubBody;
 import com.projectreddog.machinemod.item.ItemTrackSegment;
@@ -146,7 +145,6 @@ public class ModItems {
 	public static final ItemMachineMod chopper = new ItemChopper();
 	public static final ItemMachineMod bleakcrystal = new ItemBleakCrystal();
 	public static final ItemMachineMod bleakcrystaldust = new ItemBleakCrystalDust();
-	public static final ItemMachineMod stalkerhide = new ItemStalkerHide();
 
 	public static final ItemMachineMod carbondust = new ItemCarbonDust();
 	public static final ItemMachineMod laser = new ItemLaser();
@@ -400,7 +398,6 @@ public class ModItems {
 
 		ForgeRegistries.ITEMS.register(bleakcrystal);// , "paverscreed");
 		ForgeRegistries.ITEMS.register(bleakcrystaldust);// , "paverscreed");
-		ForgeRegistries.ITEMS.register(stalkerhide);// , "paverscreed");
 
 		ForgeRegistries.ITEMS.register(paverscreed);// , "paverscreed");
 		ForgeRegistries.ITEMS.register(rollerwheel);// , "rollerwheel");
@@ -651,8 +648,6 @@ public class ModItems {
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bleakcrystal, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bleakcrystal", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bleakcrystaldust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bleakcrystaldust", "inventory"));
-
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(stalkerhide, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "stalkerhide", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(carbondust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "carbondust", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(laser, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "laser", "inventory"));

@@ -4,7 +4,6 @@ import java.util.Random;
 
 import com.projectreddog.machinemod.entity.ai.EntityAiNearestAttackablePlayerInDarkWithExp;
 import com.projectreddog.machinemod.entity.ai.EntityFlyFastTurnHelper;
-import com.projectreddog.machinemod.init.ModItems;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,11 +11,8 @@ import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityMoveHelper;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -31,16 +27,6 @@ public class EntityExpStalker extends EntityMob {
 		this.moveHelper = new EntityFlyFastTurnHelper(this);
 		this.setNoGravity(true);
 		this.experienceValue = 20;
-	}
-
-	@Override
-	protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
-		int count = this.rand.nextInt(3) * (lootingModifier + 1);
-		count = MathHelper.clamp(count, 0, 4);
-
-		EntityItem entityitem = new EntityItem(this.world, this.posX, this.posY, this.posZ, new ItemStack(ModItems.stalkerhide, count));
-		entityitem.setDefaultPickupDelay();
-		this.world.spawnEntity(entityitem);
 	}
 
 	@Override

@@ -85,10 +85,6 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 
 	}
 
-	public double getMoveSpeed() {
-		return this.MoveSpeed;
-	}
-
 	private void processEntitiesInList(List par1List) {
 		for (int i = 0; i < par1List.size(); ++i) {
 			Entity entity = (Entity) par1List.get(i);
@@ -99,7 +95,6 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 				// ((EntityLivingBase) entity).moveEntity(.1d, 0, 0);
 				// } else {
 				EnumFacing ef = (EnumFacing) world.getBlockState(this.pos).getValue(BlockMachineModConveyor.FACING);
-				double ySave = entity.motionY;
 				double x = 0, y = 0, z = 0;
 				if (ef == EnumFacing.EAST) {
 					x = MoveSpeed;
@@ -124,7 +119,7 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 					if (new BlockPos(entity.posX, entity.posY, entity.posZ).getX() == this.pos.getX() && new BlockPos(entity.posX, entity.posY, entity.posZ).getZ() == this.pos.getZ()) {
 						// entity in same pos no Y adustment
 						// LogHelper.info("ent Y" + entity.posY + " bock pos " + this.pos.getY());
-						y = ySave;
+
 					} else {
 						// LogHelper.info("ent Y" + entity.posY + " bock pos " + this.pos.getY());
 
@@ -133,13 +128,8 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 							entity.fallDistance = 0; // set so no damage to players going up long virt shafts
 							entity.motionY = 0;
 							y = MoveSpeed;
-						} else {
-
 						}
 					}
-
-				} else {
-					y = ySave;
 
 				}
 
