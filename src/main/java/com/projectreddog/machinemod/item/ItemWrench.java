@@ -67,6 +67,37 @@ public class ItemWrench extends ItemMachineMod {
 				default:
 					break;
 				}
+			} else if (world.getBlockState(pos).getBlock() == ModBlocks.machineconveyort2) {
+				EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineModConveyor.FACING);
+				switch (ef) {
+				case NORTH:
+					world.setBlockState(pos, ModBlocks.machineconveyort2.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.EAST), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					IBlockState state = world.getBlockState(pos);
+					world.notifyBlockUpdate(pos, state, state, 3);
+					result = true;
+					break;
+				case EAST:
+					world.setBlockState(pos, ModBlocks.machineconveyort2.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.SOUTH), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					state = world.getBlockState(pos);
+					world.notifyBlockUpdate(pos, state, state, 3);
+					result = true;
+					break;
+				case SOUTH:
+					world.setBlockState(pos, ModBlocks.machineconveyort2.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.WEST), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					state = world.getBlockState(pos);
+					world.notifyBlockUpdate(pos, state, state, 3);
+					result = true;
+					break;
+				case WEST:
+					world.setBlockState(pos, ModBlocks.machineconveyort2.getDefaultState().withProperty(BlockMachineModConveyor.FACING, EnumFacing.NORTH), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
+					state = world.getBlockState(pos);
+					world.notifyBlockUpdate(pos, state, state, 3);
+					result = true;
+					break;
+
+				default:
+					break;
+				}
 			} else if (world.getBlockState(pos).getBlock() == ModBlocks.machinefractionaldistillation) {
 				EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineModFractionalDistillation.FACING);
 				switch (ef) {
