@@ -86,11 +86,8 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 
 	public void setRunning(boolean running) {
 
-		LogHelper.info("in set running" + running);
 		if (this.world != null) {
-			LogHelper.info("in set running  !null" + running);
 			if (!this.world.isRemote) {
-				LogHelper.info("in set running  !is remote" + running);
 				// server send packet to clients (FRom server)
 				ModNetwork.simpleNetworkWrapper.sendToAllAround(new MachineModMessageTEIntFieldToClient(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 1, running ? 1 : 0), new TargetPoint(this.world.provider.getDimension(), this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 48));
 
@@ -106,12 +103,8 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 	}
 
 	public void setFileName(String fileName) {
-		LogHelper.info("in set file name" + fileName);
 		if (this.world != null) {
-			LogHelper.info("world is not null" + fileName);
 			if (!this.world.isRemote) {
-				LogHelper.info("set file name world is not remote" + fileName);
-
 				if (fileName == null) {
 					fileName = "";
 				}
@@ -136,7 +129,6 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 				loadedNullWorld = false;
 			}
 		} else {
-			LogHelper.info("world is null" + fileName);
 			this.fileName = fileName;
 			loadedNullWorld = true;
 		}
@@ -192,7 +184,6 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 
 	@Override
 	public void update() {
-		LogHelper.info("entering update");
 		if (loadedNullWorld) {
 			setFileName(this.fileName);
 		}
@@ -206,7 +197,6 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		}
 
 		if (!world.isRemote && isRunning()) { // only run on server
-			LogHelper.info("Server Running");
 			// TODO FIx to make server only latter and then use packets to update clients around !! yeah
 			//
 
@@ -572,7 +562,6 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
-		LogHelper.info("Read NBT");
 		super.readFromNBT(compound);
 
 		setFileName(compound.getString(Reference.MACHINE_MOD_NBT_PREFIX + "filename"));
@@ -611,7 +600,6 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		LogHelper.info("Write NBT");
 		super.writeToNBT(compound);
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE", fuelStorage);
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN", cooldown);
