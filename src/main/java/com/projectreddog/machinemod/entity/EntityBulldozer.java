@@ -19,13 +19,13 @@ public class EntityBulldozer extends EntityMachineModRideable {
 
 	public EntityBulldozer(World world) {
 		super(world);
-		setSize(4.2F, 2.5F);
+		setSize(3.8F, 2.5F);
 		// inventory = new ItemStack[0];
 		SIZE = 0;
 		inventory = new ItemStackHandler(SIZE);
 		this.mountedOffsetY = .87D;
-		this.mountedOffsetX = -.75D;
-		this.mountedOffsetZ = -.75D;
+		this.mountedOffsetX = -1.75D;
+		this.mountedOffsetZ = -1.75D;
 		this.maxAngle = 15;
 		this.minAngle = -15;
 		this.droppedItem = ModItems.bulldozer;
@@ -63,10 +63,8 @@ public class EntityBulldozer extends EntityMachineModRideable {
 						angle = 90;
 					}
 					BlockPos bp;
-					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + j + bucketOffsetY, posZ + calcTwoOffsetZ(3.5, angle, i));
-					if (world.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || world.getBlockState(bp).getBlock() == Blocks.SNOW || world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.SAND || world.getBlockState(bp).getBlock() == Blocks.GRAVEL || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.CLAY
-							|| world.getBlockState(bp).getBlock() == Blocks.NETHERRACK || world.getBlockState(bp).getBlock() == Blocks.MYCELIUM || world.getBlockState(bp).getBlock() == Blocks.SOUL_SAND || world.getBlockState(bp).getBlock() == Blocks.TALLGRASS || world.getBlockState(bp).getBlock() == Blocks.FARMLAND || world.getBlockState(bp).getBlock() == Blocks.BROWN_MUSHROOM
-							|| world.getBlockState(bp).getBlock() == Blocks.RED_MUSHROOM) {
+					bp = new BlockPos(posX + calcTwoOffsetX(4, angle, i), posY + j + bucketOffsetY, posZ + calcTwoOffsetZ(4, angle, i));
+					if (world.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || world.getBlockState(bp).getBlock() == Blocks.SNOW || world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.SAND || world.getBlockState(bp).getBlock() == Blocks.GRAVEL || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.CLAY || world.getBlockState(bp).getBlock() == Blocks.NETHERRACK || world.getBlockState(bp).getBlock() == Blocks.MYCELIUM || world.getBlockState(bp).getBlock() == Blocks.SOUL_SAND || world.getBlockState(bp).getBlock() == Blocks.TALLGRASS || world.getBlockState(bp).getBlock() == Blocks.FARMLAND || world.getBlockState(bp).getBlock() == Blocks.BROWN_MUSHROOM || world.getBlockState(bp).getBlock() == Blocks.RED_MUSHROOM) {
 						BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
 					}
