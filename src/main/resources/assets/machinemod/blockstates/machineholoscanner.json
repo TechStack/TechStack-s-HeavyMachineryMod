@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "custom": { "flip-v": true },
+    "model": "machinemod:holoscanner.obj"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{"x":180}],
+        "facing=north,powered=true": {"model": "machinemod:holoscanner.obj","x":180, "y":180},
+        "facing=south,powered=true": {"model": "machinemod:holoscanner.obj","x":180 },
+        "facing=west,powered=true":  {"model": "machinemod:holoscanner.obj","x":180,"y": 90 },
+        "facing=east,powered=true":  {"model": "machinemod:holoscanner.obj","x":180,"y": 270 },
+        "facing=north,powered=false": {"model": "machinemod:holoscanner.obj","x":180, "y":180},
+        "facing=south,powered=false": {"model": "machinemod:holoscanner.obj","x":180 },
+        "facing=west,powered=false":  {"model": "machinemod:holoscanner.obj","x":180,"y": 90 },
+        "facing=east,powered=false":  {"model": "machinemod:holoscanner.obj","x":180,"y": 270 }
+        }
+}

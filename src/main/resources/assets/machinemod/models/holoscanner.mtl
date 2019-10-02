@@ -1,32 +1,13 @@
 # Blender MTL File: 'holoscanner.blend'
-# Material Count: 3
+# Material Count: 1
 
-newmtl Material
+newmtl 4.001
 Ns 96.078431
 Ka 1.000000 1.000000 1.000000
-Kd 0.011157 0.017722 0.254831
+Kd 0.640000 0.640000 0.640000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-
-newmtl Material.001
-Ns 96.078431
-Ka 1.000000 1.000000 1.000000
-Kd 0.029388 0.430579 0.383081
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.000000
-d 1.000000
-illum 2
-
-newmtl Material.002
-Ns 96.078431
-Ka 1.000000 1.000000 1.000000
-Kd 0.088551 0.088551 0.088551
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.000000
-d 1.000000
-illum 2
+map_Kd D:\ALL\Code\Minecraft\Techstack-s-HeavyMachineryMod1.12\Blockbenchfiles\holoscanner.png
