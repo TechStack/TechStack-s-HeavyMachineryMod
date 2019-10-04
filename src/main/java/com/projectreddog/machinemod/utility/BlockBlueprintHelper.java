@@ -619,13 +619,20 @@ public class BlockBlueprintHelper {
 						dos.writeInt(x);
 						dos.writeInt(y);
 						dos.writeInt(z);
+						String BlockRegistryName;
+						int metaValue = 0;
+						if (world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.BED || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.ACACIA_DOOR || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.BIRCH_DOOR || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.DARK_OAK_DOOR || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.IRON_DOOR || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.JUNGLE_DOOR || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.OAK_DOOR || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.SPRUCE_DOOR || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.PISTON_HEAD) {
+							BlockRegistryName = Blocks.AIR.getRegistryName().toString();
+							LogHelper.info("non Supported block scanned Beds and doors are two blocks Piston Heads are also not supported and wont scan correctly skipping ! ");
 
-						String BlockRegistryName = world.getBlockState(new BlockPos(x, y, z)).getBlock().getRegistryName().toString();
+						} else {
+							BlockRegistryName = world.getBlockState(new BlockPos(x, y, z)).getBlock().getRegistryName().toString();
+							metaValue = world.getBlockState(new BlockPos(x, y, z)).getBlock().getMetaFromState(world.getBlockState(new BlockPos(x, y, z)));
+						}
 						// DEBUGGING line
 						dos.writeUTF(BlockRegistryName);
 						// HOW MANY TO READ
 
-						int metaValue = world.getBlockState(new BlockPos(x, y, z)).getBlock().getMetaFromState(world.getBlockState(new BlockPos(x, y, z)));
 						dos.writeInt(metaValue);
 						// for (IProperty p : world.getBlockState(new BlockPos(i, j, k)).getBlock().getBlockState().getProperties()) {
 						// LogHelper.info("name : " + p.getName() + " VALUE= " + world.getBlockState(new BlockPos(i, j, k)).getValue(p));

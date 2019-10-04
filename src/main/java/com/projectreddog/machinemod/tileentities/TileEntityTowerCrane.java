@@ -19,6 +19,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemBlockSpecial;
+import net.minecraft.item.ItemRedstone;
+import net.minecraft.item.ItemSign;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -713,10 +716,45 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 						}
 
 					}
-				}
-			}
+				} else if (inventory[i].getItem() instanceof ItemBlockSpecial) {
+					ItemBlockSpecial ib = (ItemBlockSpecial) inventory[i].getItem();
+					if (ib.getBlock() == blockState.getBlock()) {
+						// same block check meta
+						if (inventory[i].getItem().getMetadata(inventory[i]) == blockState.getBlock().getItem(null, null, blockState).getMetadata()) {
+							result = true;
+							return result;
+						}
 
+					} else if (ib.getBlock() == Blocks.UNPOWERED_REPEATER && blockState.getBlock() == Blocks.POWERED_REPEATER) {
+
+						if (inventory[i].getItem().getMetadata(inventory[i]) == blockState.getBlock().getItem(null, null, blockState).getMetadata()) {
+							result = true;
+							return result;
+						}
+
+					}
+				} else if (inventory[i].getItem() instanceof ItemRedstone) {
+					ItemRedstone ib = (ItemRedstone) inventory[i].getItem();
+					if (Blocks.REDSTONE_WIRE == blockState.getBlock()) {
+						result = true;
+						return result;
+
+					}
+				} else if (inventory[i].getItem() instanceof ItemSign) {
+					ItemSign ib = (ItemSign) inventory[i].getItem();
+					if (Blocks.STANDING_SIGN == blockState.getBlock() || Blocks.WALL_SIGN == blockState.getBlock()) {
+						// same block check meta
+						if (inventory[i].getItem().getMetadata(inventory[i]) == blockState.getBlock().getItem(null, null, blockState).getMetadata()) {
+							result = true;
+							return result;
+						}
+
+					}
+				}
+
+			}
 		}
+
 		return result;
 	}
 
