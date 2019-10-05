@@ -54,12 +54,14 @@ public class ModelBulldozer extends ModelTransportable {
 
 		this.renderGroupObject("Body");
 		float trackOffset = 1.47f;
-		drawTrack(entity, trackOffset);
-		drawTrack(entity, -trackOffset);
 
 		if (entity != null)
 
 		{
+
+			drawTrack(entity, trackOffset);
+			drawTrack(entity, -trackOffset);
+
 			GL11.glRotatef((((EntityMachineModRideable) entity).Attribute1), 1, 0, 0);
 
 		}
@@ -77,14 +79,20 @@ public class ModelBulldozer extends ModelTransportable {
 		GL11.glPushMatrix();
 		float trackSeparation = .26f;
 		float trackOffset = 0f;
-		// if (((EntityMachineModRideable) entity).isPlayerAccelerating) {
-		trackOffset = (entity.ticksExisted % 13) / 50f;
-		// trackOffset = (12 % 13) / 50f;
-		// }
+		if (((EntityMachineModRideable) entity).moveDirection == 1) {
+			trackOffset = ((entity.ticksExisted * 4) % 13) / 50f;
+		} else if (((EntityMachineModRideable) entity).moveDirection == -1) {
+			trackOffset = -((entity.ticksExisted * 4) % 13) / 50f;
+			// trackOffset = (12 % 13) / 50f;
+		} else if (((EntityMachineModRideable) entity).moveDirection == 0) {
+			trackOffset = 0;
+		}
 
 		GL11.glTranslatef(xOffset, -.11f, trackOffset + -2.72f);
 
-		for (int i = 0; i < 14; i++) {
+		for (
+
+				int i = 0; i < 14; i++) {
 			GL11.glTranslatef(0, 0, trackSeparation);
 			// bottom track
 			renderTrackObject(MachineModModelHelper.ALL_PARTS);

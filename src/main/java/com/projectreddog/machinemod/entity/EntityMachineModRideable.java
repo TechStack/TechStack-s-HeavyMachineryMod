@@ -77,6 +77,8 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 	public boolean shouldSendClientInvetoryUpdates = false;
 	public int tickssincelastbroadcast = 0;
 
+	public int moveDirection = 0; // 1 = forward ,0 = not moving -1 backwards
+
 	public boolean isPlayerAccelerating = false;
 	public boolean isPlayerBreaking = false;
 	public boolean isPlayerTurningRight = false;
@@ -384,16 +386,19 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		}
 
 		// end New for gravity
-
+		this.moveDirection = 0;
 		if (getControllingPassenger() != null && currentFuelLevel > 0)
 
 		{
 
 			if (isPlayerAccelerating) {
 				this.velocity += accelerationAmount;
+
+				this.moveDirection = 1;
 			}
 			if (isPlayerBreaking) {
 				this.velocity -= accelerationAmount;
+				this.moveDirection = -1;
 			}
 			if (isPlayerTurningRight) {
 				yaw += turnRate;
@@ -491,7 +496,7 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 		// if (tickssincelastbroadcast > 20 || lastPosX != posX || lastPosY != posY || lastPosZ != posZ || lastAttribute1 != Attribute1 || lastYaw != yaw || lastCurrentFuelLevel != currentFuelLevel) {
 		// something changed (or its been 1 second) so send it to clients in need
-		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityToClient(this.getEntityId(), this.posX, this.posY, this.posZ, this.yaw, this.Attribute1, this.Attribute2, this.currentFuelLevel)), new TargetPoint(world.provider.getDimension(), posX, posY, posZ, 224)); // sendInterval = 0;
+		ModNetwork.sendPacketToAllAround((new MachineModMessageEntityToClient(this.getEntityId(), this.posX, this.posY, this.posZ, this.yaw, this.Attribute1, this.Attribute2, this.currentFuelLevel, this.moveDirection)), new TargetPoint(world.provider.getDimension(), posX, posY, posZ, 224)); // sendInterval = 0;
 		// tickssincelastbroadcast = 0;
 		// }
 		// tickssincelastbroadcast = tickssincelastbroadcast + 1;
