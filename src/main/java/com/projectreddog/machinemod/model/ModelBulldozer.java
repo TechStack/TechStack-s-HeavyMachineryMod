@@ -27,12 +27,16 @@ public class ModelBulldozer extends ModelTransportable {
 
 	public OBJModel objModel;
 	private HashMap<String, IBakedModel> modelParts;
+	private HashMap<String, IBakedModel> modelTracks;
 
 	public ModelBulldozer() {
 
 		try {
 			objModel = (OBJModel) OBJLoader.INSTANCE.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/bulldozer.obj"));
 			modelParts = MachineModModelHelper.getModelsForGroups(objModel);
+			objModel = (OBJModel) OBJLoader.INSTANCE.loadModel(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "models/tracksegment.obj"));
+			modelTracks = MachineModModelHelper.getModelsForGroups(objModel);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -49,14 +53,157 @@ public class ModelBulldozer extends ModelTransportable {
 		GL11.glTranslatef(0f, 0f, .75f);
 
 		this.renderGroupObject("Body");
+		float trackOffset = 1.47f;
+		drawTrack(entity, trackOffset);
+		drawTrack(entity, -trackOffset);
 
-		if (entity != null) {
+		if (entity != null)
+
+		{
 			GL11.glRotatef((((EntityMachineModRideable) entity).Attribute1), 1, 0, 0);
 
 		}
 		// this.renderGroupObject("Bucket_Cube.002");
 
 		this.renderGroupObject("Bucket");
+	}
+
+	public void renderTrackObject(String groupName) {
+		MachineModModelHelper.renderBakedModel(modelTracks.get(groupName));
+
+	}
+
+	public void drawTrack(Entity entity, float xOffset) {
+		GL11.glPushMatrix();
+		float trackSeparation = .26f;
+		float trackOffset = 0f;
+		// if (((EntityMachineModRideable) entity).isPlayerAccelerating) {
+		trackOffset = (entity.ticksExisted % 13) / 50f;
+		// trackOffset = (12 % 13) / 50f;
+		// }
+
+		GL11.glTranslatef(xOffset, -.11f, trackOffset + -2.72f);
+
+		for (int i = 0; i < 14; i++) {
+			GL11.glTranslatef(0, 0, trackSeparation);
+			// bottom track
+			renderTrackObject(MachineModModelHelper.ALL_PARTS);
+
+		}
+		GL11.glTranslatef(0, 0, -trackOffset);
+
+		GL11.glPushMatrix();
+		GL11.glTranslatef(0, -.5f, .2f);
+
+		float angleStepAmt = 19.4f;
+		GL11.glRotatef(-11 + (angleStepAmt * (trackOffset / trackSeparation)), 1, 0, 0);
+		for (int i = 0; i < 7; i++) {
+
+			GL11.glRotatef((angleStepAmt), 1, 0, 0);
+			GL11.glTranslatef(0, .5f, 0f);
+			// back rounded part track
+			if (i == 6) {
+				GL11.glRotatef(-(angleStepAmt * (trackOffset / trackSeparation)), 1, 0, 0);
+			}
+			renderTrackObject(MachineModModelHelper.ALL_PARTS);
+			if (i == 6) {
+				GL11.glRotatef((angleStepAmt * (trackOffset / trackSeparation)), 1, 0, 0);
+			}
+			GL11.glTranslatef(0, -.5f, 0f);
+
+		}
+		GL11.glPopMatrix();
+
+		GL11.glPushMatrix();
+		GL11.glRotatef(-47 + 180, 1, 0, 0);
+		GL11.glTranslatef(0, 1f, trackOffset + .05f);
+
+		for (int i = 0; i < 5; i++) {
+			GL11.glTranslatef(0, 0, trackSeparation);
+			// back updward slope part track
+
+			renderTrackObject(MachineModModelHelper.ALL_PARTS);
+
+		}
+		GL11.glPopMatrix();
+
+		GL11.glPushMatrix();
+		// GL11.glTranslatef(0, -1.41f, -.62f);
+		GL11.glTranslatef(0, -1.39f, -.75f);
+		angleStepAmt = 19.4f;
+		float rotationRadius = .60f;
+		GL11.glRotatef(-60.4f + (angleStepAmt * (trackOffset / trackSeparation)) - 180, 1, 0, 0);
+		for (int i = 0; i < 4; i++) {
+
+			GL11.glRotatef((angleStepAmt), 1, 0, 0);
+
+			float extratTranslate = 0f;
+
+			if (i == 3) {
+				extratTranslate = .025f;
+			}
+
+			GL11.glTranslatef(0, rotationRadius + extratTranslate, 0f);
+			// top rounded part track
+			float offsetA = 0f;
+			float offsetB = -15f;
+
+			if (i == 0) {
+				GL11.glRotatef((offsetA), 1, 0, 0);
+			}
+			if (i == 3) {
+				GL11.glRotatef((offsetB), 1, 0, 0);
+			}
+			renderTrackObject(MachineModModelHelper.ALL_PARTS);
+			if (i == 0) {
+				GL11.glRotatef((-offsetA), 1, 0, 0);
+			}
+			if (i == 3) {
+				GL11.glRotatef(-(offsetB), 1, 0, 0);
+			}
+			GL11.glTranslatef(0, -(rotationRadius + extratTranslate), 0f);
+
+		}
+		GL11.glPopMatrix();
+
+		GL11.glPushMatrix();
+		GL11.glRotatef(21 + 180, 1, 0, 0);
+		GL11.glTranslatef(0, 2.17f, trackOffset + .12f);
+
+		for (int i = 0; i < 10; i++) {
+			GL11.glTranslatef(0, 0, trackSeparation);
+			// front downward slope part track
+
+			renderTrackObject(MachineModModelHelper.ALL_PARTS);
+
+		}
+		GL11.glPopMatrix();
+
+		GL11.glPushMatrix();
+		GL11.glTranslatef(0, -.51f, -3.2f);
+
+		angleStepAmt = 21f;
+		rotationRadius = .55f;
+
+		GL11.glRotatef(-160 + (angleStepAmt * (trackOffset / trackSeparation)), 1, 0, 0);
+		for (int i = 0; i < 6; i++) {
+
+			GL11.glRotatef((angleStepAmt), 1, 0, 0);
+			GL11.glTranslatef(0, rotationRadius, 0f);
+			// front rounded part track
+			if (i == 6) {
+				GL11.glRotatef(-(angleStepAmt * (trackOffset / trackSeparation)), 1, 0, 0);
+			}
+			renderTrackObject(MachineModModelHelper.ALL_PARTS);
+			if (i == 6) {
+				GL11.glRotatef((angleStepAmt * (trackOffset / trackSeparation)), 1, 0, 0);
+			}
+			GL11.glTranslatef(0, -rotationRadius, 0f);
+
+		}
+		GL11.glPopMatrix();
+
+		GL11.glPopMatrix();
 	}
 
 	public void renderGroupObject(String groupName) {
