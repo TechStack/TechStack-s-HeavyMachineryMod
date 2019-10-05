@@ -1,7 +1,7 @@
-# Blender MTL File: 'bulldozer.blend'
+# Blender MTL File: 'tracksegment.blend'
 # Material Count: 2
 
-newmtl 0.011
+newmtl 0.472
 Ns 92.156863
 Ka 1.000000 1.000000 1.000000
 Kd 0.640000 0.640000 0.640000
@@ -10,9 +10,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd D:\craftd6nlgp.png
+map_Kd C:\MinecraftModding\1.12.2\Caterpillar\src\main\resources\assets\blueboyscaterpillarmtspack\textures\vehicles\catd6nlgp.png
 
-newmtl 0.468
+newmtl 0.475
 Ns 92.156863
 Ka 1.000000 1.000000 1.000000
 Kd 0.640000 0.640000 0.640000

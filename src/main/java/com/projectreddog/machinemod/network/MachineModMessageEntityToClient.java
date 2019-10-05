@@ -14,6 +14,7 @@ public class MachineModMessageEntityToClient implements IMessage {
 	public float Attribute1 = 0;
 	public float Attribute2 = 0;
 	public int currentFuelLevel = 0;
+	public int moveDirection = 0;
 
 	public MachineModMessageEntityToClient() {
 		// LogHelper.info("in machineModMessageEntityToClientConstructor basic");
@@ -23,7 +24,7 @@ public class MachineModMessageEntityToClient implements IMessage {
 		return "MachineModMessageEntityToClient Class Details: \n posX=" + posX + "\n posY =" + posY + "\n posZ=" + posZ + "\n yaw=" + yaw + "\n Attribute1=" + Attribute1 + "\n Attribute2=" + Attribute2;
 	}
 
-	public MachineModMessageEntityToClient(int entityid, double posX, double posY, double posZ, float yaw, float Attribute1, float Attribute2, int currentFuelLevel) {
+	public MachineModMessageEntityToClient(int entityid, double posX, double posY, double posZ, float yaw, float Attribute1, float Attribute2, int currentFuelLevel, int moveDirection) {
 		super();
 		// LogHelper.info("in machineModMessageEntityToClientConstructor with parms");
 		this.entityid = entityid;
@@ -34,6 +35,7 @@ public class MachineModMessageEntityToClient implements IMessage {
 		this.Attribute1 = Attribute1;
 		this.Attribute2 = Attribute2;
 		this.currentFuelLevel = currentFuelLevel;
+		this.moveDirection = moveDirection;
 	}
 
 	@Override
@@ -47,6 +49,7 @@ public class MachineModMessageEntityToClient implements IMessage {
 		this.Attribute1 = buf.readFloat();
 		this.Attribute2 = buf.readFloat();
 		this.currentFuelLevel = buf.readInt();
+		this.moveDirection = buf.readInt();
 
 	}
 
@@ -61,6 +64,7 @@ public class MachineModMessageEntityToClient implements IMessage {
 		buf.writeFloat(Attribute1);
 		buf.writeFloat(Attribute2);
 		buf.writeInt(currentFuelLevel);
+		buf.writeInt(moveDirection);
 	}
 
 }
