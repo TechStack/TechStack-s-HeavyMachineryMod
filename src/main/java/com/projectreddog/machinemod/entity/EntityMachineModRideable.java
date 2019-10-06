@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.init.ModNetwork;
+import com.projectreddog.machinemod.init.ModSounds;
 import com.projectreddog.machinemod.network.MachineModMessageEntityInventoryChangedToClient;
 import com.projectreddog.machinemod.network.MachineModMessageEntityToClient;
 import com.projectreddog.machinemod.network.MachineModMessageRequestAllInventoryToServer;
@@ -339,6 +340,12 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 		} else {
 			if (this.getControllingPassenger() instanceof EntityPlayer) {
 				EntityPlayer entityPlayer = (EntityPlayer) this.getControllingPassenger();
+
+				if ((this.ticksExisted % 10) == 0) {
+
+					this.playSound(ModSounds.ENGINE_RUNNING, 1, 1f);
+
+				}
 				if (entityPlayer.capabilities.isCreativeMode) {
 					currentFuelLevel = maxFuelLevel;
 				}
@@ -557,7 +564,6 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 		// updateServer();
 		// play the sound
-		// world.playSoundAtEntity(this, "engine", 1f, 1f);
 
 		// this.noClip = true;
 		this.motionX = 0;
