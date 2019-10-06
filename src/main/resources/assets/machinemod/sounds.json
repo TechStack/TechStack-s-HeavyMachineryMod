@@ -1,3 +1,7 @@
 {
-    "engine": {"category": "ambient","sounds":["engine"]}
+    "engine": {
+    "category": "ambient",
+    "subtitle":"machinemod.subtitle.engine",
+    "sounds":["machinemod:engine"]
+    }
 }
