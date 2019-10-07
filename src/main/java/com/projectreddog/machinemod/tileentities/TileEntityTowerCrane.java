@@ -14,6 +14,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.BlockBlueprintHelper;
 import com.projectreddog.machinemod.utility.LogHelper;
 
+import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -257,7 +258,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 						int tmpX = getPlacingXWithOffset(currentX, currentZ);
 						int tmpZ = getPlacingZWithOffset(currentX, currentZ);
 						int tmpY = currentY;
-						if ((state == 3 && this.world.getBlockState(this.pos.add(tmpX, tmpY, tmpZ)).getBlock().isAir(this.world.getBlockState(this.pos.add(tmpX, tmpY, tmpZ)), null, null)) || state != 3) {
+						if ((state == 3 && (this.world.getBlockState(this.pos.add(tmpX, tmpY, tmpZ)).getBlock().isAir(this.world.getBlockState(this.pos.add(tmpX, tmpY, tmpZ)), null, null)) || this.world.getBlockState(this.pos.add(tmpX, tmpY, tmpZ)).getBlock() == Blocks.WATER || this.world.getBlockState(this.pos.add(tmpX, tmpY, tmpZ)).getBlock() == Blocks.FLOWING_WATER || this.world.getBlockState(this.pos.add(tmpX, tmpY, tmpZ)).getBlock().isReplaceable(this.world, this.pos.add(tmpX, tmpY, tmpZ))) || state != 3) {
 							state = state + 1;
 						}
 						// set new targets for state
@@ -426,7 +427,11 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 
 				if (DrainsBlock(BlockBluePrintArray[currentX][currentY][currentZ])) {
 
-					setInventorySlotContents(-1, BlockBluePrintArray[currentX][currentY][currentZ].getBlock().getItem(null, null, BlockBluePrintArray[currentX][currentY][currentZ]));
+					if (BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.BLACK_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.BLUE_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.BROWN_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.CYAN_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.GRAY_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.GREEN_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.LIGHT_BLUE_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.LIME_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.MAGENTA_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.ORANGE_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.PINK_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.PURPLE_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.RED_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.WHITE_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.YELLOW_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.SILVER_SHULKER_BOX) {
+						setInventorySlotContents(-1, new ItemStack(new ItemBlock(BlockBluePrintArray[currentX][currentY][currentZ].getBlock())));
+					} else {
+						setInventorySlotContents(-1, BlockBluePrintArray[currentX][currentY][currentZ].getBlock().getItem(null, null, BlockBluePrintArray[currentX][currentY][currentZ]));
+					}
 
 				}
 
@@ -710,7 +715,15 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 					ItemBlock ib = (ItemBlock) inventory[i].getItem();
 					if (ib.getBlock() == blockState.getBlock()) {
 						// same block check meta
-						if (inventory[i].getItem().getMetadata(inventory[i]) == blockState.getBlock().getItem(null, null, blockState).getMetadata()) {
+						if (blockState.getBlock() == Blocks.BLACK_SHULKER_BOX || blockState.getBlock() == Blocks.BLUE_SHULKER_BOX || blockState.getBlock() == Blocks.BROWN_SHULKER_BOX || blockState.getBlock() == Blocks.CYAN_SHULKER_BOX || blockState.getBlock() == Blocks.GRAY_SHULKER_BOX || blockState.getBlock() == Blocks.GREEN_SHULKER_BOX || blockState.getBlock() == Blocks.LIGHT_BLUE_SHULKER_BOX || blockState.getBlock() == Blocks.LIME_SHULKER_BOX || blockState.getBlock() == Blocks.MAGENTA_SHULKER_BOX || blockState.getBlock() == Blocks.ORANGE_SHULKER_BOX || blockState.getBlock() == Blocks.PINK_SHULKER_BOX || blockState.getBlock() == Blocks.PURPLE_SHULKER_BOX || blockState.getBlock() == Blocks.RED_SHULKER_BOX || blockState.getBlock() == Blocks.WHITE_SHULKER_BOX || blockState.getBlock() == Blocks.YELLOW_SHULKER_BOX || blockState.getBlock() == Blocks.SILVER_SHULKER_BOX) {
+							result = true;
+							return result;
+						} else if (blockState.getBlock() instanceof BlockDoublePlant) {
+							if (blockState.getBlock().getMetaFromState(blockState) == inventory[i].getItem().getMetadata(inventory[i])) {
+								result = true;
+								return result;
+							}
+						} else if (inventory[i].getItem().getMetadata(inventory[i]) == blockState.getBlock().getItem(null, null, blockState).getMetadata()) {
 							result = true;
 							return result;
 						}
@@ -767,7 +780,11 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 					ItemBlock ib = (ItemBlock) inventory[i].getItem();
 					if (ib.getBlock() == blockState.getBlock()) {
 						// same block check meta
-						if (inventory[i].getItem().getMetadata(inventory[i]) == blockState.getBlock().getItem(null, null, blockState).getMetadata()) {
+						if (blockState.getBlock() == Blocks.BLACK_SHULKER_BOX || blockState.getBlock() == Blocks.BLUE_SHULKER_BOX || blockState.getBlock() == Blocks.BROWN_SHULKER_BOX || blockState.getBlock() == Blocks.CYAN_SHULKER_BOX || blockState.getBlock() == Blocks.GRAY_SHULKER_BOX || blockState.getBlock() == Blocks.GREEN_SHULKER_BOX || blockState.getBlock() == Blocks.LIGHT_BLUE_SHULKER_BOX || blockState.getBlock() == Blocks.LIME_SHULKER_BOX || blockState.getBlock() == Blocks.MAGENTA_SHULKER_BOX || blockState.getBlock() == Blocks.ORANGE_SHULKER_BOX || blockState.getBlock() == Blocks.PINK_SHULKER_BOX || blockState.getBlock() == Blocks.PURPLE_SHULKER_BOX || blockState.getBlock() == Blocks.RED_SHULKER_BOX || blockState.getBlock() == Blocks.WHITE_SHULKER_BOX || blockState.getBlock() == Blocks.YELLOW_SHULKER_BOX || blockState.getBlock() == Blocks.SILVER_SHULKER_BOX) {
+							decrStackSize(i, 1);
+							result = true;
+							return result;
+						} else if (inventory[i].getItem().getMetadata(inventory[i]) == blockState.getBlock().getItem(null, null, blockState).getMetadata()) {
 							decrStackSize(i, 1);
 							result = true;
 							return result;
