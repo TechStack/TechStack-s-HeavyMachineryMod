@@ -50,6 +50,7 @@ public class ConfigurationHandler {
 		Reference.enableSub = configuration.get(Configuration.CATEGORY_GENERAL, "enableSub", true, "If true Sub is Enabled, if false Sub is disabled").getBoolean();
 		Reference.enableChopper = configuration.get(Configuration.CATEGORY_GENERAL, "enableSub", true, "If true Sub is Enabled, if false Sub is disabled").getBoolean();
 		Reference.enableTractor = configuration.get(Configuration.CATEGORY_GENERAL, "enableTractor", true, "If true Tractor is Enabled, if false Tractor is disabled").getBoolean();
+		Reference.enableMachineSounds = configuration.get(Configuration.CATEGORY_GENERAL, "enableMachineSounds", true, "If true the machiens will play engine sounds , if false it will be disabled ").getBoolean();
 
 		Reference.enablePlayerSkullsInWorldGen = configuration.get(Configuration.CATEGORY_GENERAL, "enablePlayerSkullsInWorldGen", Reference.enablePlayerSkullsInWorldGen, "If true player skulls above villager workshops is Enabled, if false player skulls above villager workshops will not spawn.").getBoolean();
 		Reference.TowerCraneSpeedMultiplier = configuration.get(Configuration.CATEGORY_GENERAL, "TowerCraneSpeedMultiplier", 5, "used to adjust the speed of the tower crane. Values: 1-90", 1, 90).getDouble();

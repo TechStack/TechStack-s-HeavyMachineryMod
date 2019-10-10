@@ -24,6 +24,8 @@ public class BlockMachineBleakGlass extends BlockMachineMod {
 		// this.setBlockTextureName(Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE);
 		this.setHardness(15f);// not sure on the hardness
 		this.setSoundType(SoundType.GLASS);
+		this.setLightOpacity(255);
+
 	}
 
 	@SideOnly(Side.CLIENT)
