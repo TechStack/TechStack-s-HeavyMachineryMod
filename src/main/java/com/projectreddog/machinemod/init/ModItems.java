@@ -24,7 +24,6 @@ import com.projectreddog.machinemod.item.ItemHammer;
 import com.projectreddog.machinemod.item.ItemHandDrill;
 import com.projectreddog.machinemod.item.ItemHose;
 import com.projectreddog.machinemod.item.ItemIronDust;
-import com.projectreddog.machinemod.item.ItemLaser;
 import com.projectreddog.machinemod.item.ItemLidWithSpout;
 import com.projectreddog.machinemod.item.ItemLight;
 import com.projectreddog.machinemod.item.ItemLightModule;
@@ -149,7 +148,6 @@ public class ModItems {
 	public static final ItemMachineMod stalkerhide = new ItemStalkerHide();
 
 	public static final ItemMachineMod carbondust = new ItemCarbonDust();
-	public static final ItemMachineMod laser = new ItemLaser();
 
 	public static final ItemMachineMod steeldust = new ItemSteelDust();
 	public static final ItemMachineMod steelingot = new ItemSteelIngot();
@@ -490,7 +488,6 @@ public class ModItems {
 		ForgeRegistries.ITEMS.register(wrench);// , "wrench");
 
 		ForgeRegistries.ITEMS.register(carbondust);// , "carbondust");
-		ForgeRegistries.ITEMS.register(laser);
 
 		ForgeRegistries.ITEMS.register(steeldust);// , "steeldust");
 
@@ -655,7 +652,6 @@ public class ModItems {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(stalkerhide, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "stalkerhide", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(carbondust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "carbondust", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(laser, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "laser", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(steeldust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "steeldust", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(steelingot, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "steelingot", "inventory"));

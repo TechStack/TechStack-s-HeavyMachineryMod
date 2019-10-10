@@ -17,8 +17,11 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityTowerCrane;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
@@ -94,12 +97,14 @@ public class BlockBlueprintHelper {
 		int dx;
 		int dy;
 		int dz;
+		int fileformatVersion;
 
 		DataInputStream dis = null;
 		try {
 			// String fileName = "TESTFILE";
 			FileInputStream fis = new FileInputStream(new File(Reference.BLUEPRINTLOCATION + fileName));
 			dis = new DataInputStream(fis);
+			fileformatVersion = dis.readInt();
 
 			dx = dis.readInt();// dx
 			dy = dis.readInt();
@@ -218,8 +223,19 @@ public class BlockBlueprintHelper {
 				}
 			}
 
-			ItemStack item = blockStateArray[currentX][currentY][currentZ].getBlock().getPickBlock(blockStateArray[currentX][currentY][currentZ], null, null, null, null);
+			ItemStack item;
+			if (blockStateArray[currentX][currentY][currentZ].getBlock() == Blocks.BLACK_SHULKER_BOX || blockStateArray[currentX][currentY][currentZ].getBlock() == Blocks.BLUE_SHULKER_BOX || blockStateArray[currentX][currentY][currentZ].getBlock() == Blocks.BROWN_SHULKER_BOX || blockStateArray[currentX][currentY][currentZ].getBlock() == Blocks.CYAN_SHULKER_BOX || blockStateArray[currentX][currentY][currentZ].getBlock() == Blocks.GRAY_SHULKER_BOX || blockStateArray[currentX][currentY][currentZ].getBlock() == Blocks.GREEN_SHULKER_BOX || blockStateArray[currentX][currentY][currentZ].getBlock() == Blocks.LIGHT_BLUE_SHULKER_BOX || blockStateArray[currentX][currentY][currentZ].getBlock() == Blocks.LIME_SHULKER_BOX || blockStateArray[currentX][currentY][currentZ].getBlock() == Blocks.MAGENTA_SHULKER_BOX || blockStateArray[currentX][currentY][currentZ].getBlock() == Blocks.ORANGE_SHULKER_BOX || blockStateArray[currentX][currentY][currentZ].getBlock() == Blocks.PINK_SHULKER_BOX || blockStateArray[currentX][currentY][currentZ].getBlock() == Blocks.PURPLE_SHULKER_BOX || blockStateArray[currentX][currentY][currentZ].getBlock() == Blocks.RED_SHULKER_BOX || blockStateArray[currentX][currentY][currentZ].getBlock() == Blocks.WHITE_SHULKER_BOX || blockStateArray[currentX][currentY][currentZ].getBlock() == Blocks.YELLOW_SHULKER_BOX || blockStateArray[currentX][currentY][currentZ].getBlock() == Blocks.SILVER_SHULKER_BOX) {
 
+				item = new ItemStack(ItemBlock.getItemFromBlock(blockStateArray[currentX][currentY][currentZ].getBlock()));
+			} else if (blockStateArray[currentX][currentY][currentZ].getBlock() instanceof BlockDoublePlant) {
+				item = new ItemStack(ItemBlock.getItemFromBlock(blockStateArray[currentX][currentY][currentZ].getBlock()));
+				item.setItemDamage(blockStateArray[currentX][currentY][currentZ].getBlock().getMetaFromState(blockStateArray[currentX][currentY][currentZ]));
+
+			}
+
+			else {
+				item = blockStateArray[currentX][currentY][currentZ].getBlock().getPickBlock(blockStateArray[currentX][currentY][currentZ], null, null, null, null);
+			}
 			return item;
 		} else {
 			return ItemStack.EMPTY;
@@ -255,7 +271,17 @@ public class BlockBlueprintHelper {
 							// LogHelper.info("Loop Count: " + loopCount);
 
 							if (!blockStateArray[x][y][z].getBlock().isAir(blockStateArray[x][y][z], null, null)) {
-								ItemStack item = blockStateArray[x][y][z].getBlock().getPickBlock(blockStateArray[x][y][z], null, null, null, null);
+								ItemStack item;
+								if (blockStateArray[x][y][z].getBlock() == Blocks.BLACK_SHULKER_BOX || blockStateArray[x][y][z].getBlock() == Blocks.BLUE_SHULKER_BOX || blockStateArray[x][y][z].getBlock() == Blocks.BROWN_SHULKER_BOX || blockStateArray[x][y][z].getBlock() == Blocks.CYAN_SHULKER_BOX || blockStateArray[x][y][z].getBlock() == Blocks.GRAY_SHULKER_BOX || blockStateArray[x][y][z].getBlock() == Blocks.GREEN_SHULKER_BOX || blockStateArray[x][y][z].getBlock() == Blocks.LIGHT_BLUE_SHULKER_BOX || blockStateArray[x][y][z].getBlock() == Blocks.LIME_SHULKER_BOX || blockStateArray[x][y][z].getBlock() == Blocks.MAGENTA_SHULKER_BOX || blockStateArray[x][y][z].getBlock() == Blocks.ORANGE_SHULKER_BOX || blockStateArray[x][y][z].getBlock() == Blocks.PINK_SHULKER_BOX || blockStateArray[x][y][z].getBlock() == Blocks.PURPLE_SHULKER_BOX || blockStateArray[x][y][z].getBlock() == Blocks.RED_SHULKER_BOX || blockStateArray[x][y][z].getBlock() == Blocks.WHITE_SHULKER_BOX || blockStateArray[x][y][z].getBlock() == Blocks.YELLOW_SHULKER_BOX || blockStateArray[x][y][z].getBlock() == Blocks.SILVER_SHULKER_BOX) {
+									item = new ItemStack(ItemBlock.getItemFromBlock(blockStateArray[x][y][z].getBlock()));
+								} else if (blockStateArray[x][y][z].getBlock() instanceof BlockDoublePlant) {
+									item = new ItemStack(ItemBlock.getItemFromBlock(blockStateArray[x][y][z].getBlock()));
+									item.setItemDamage(blockStateArray[x][y][z].getBlock().getMetaFromState(blockStateArray[x][y][z]));
+
+								} else {
+
+									item = blockStateArray[x][y][z].getBlock().getPickBlock(blockStateArray[x][y][z], null, null, null, null);
+								}
 								// String itemName = item.getItemStackDisplayName(new ItemStack(item));
 
 								if (neededItems.size() == 0) {
@@ -382,13 +408,13 @@ public class BlockBlueprintHelper {
 		int dx;
 		int dy;
 		int dz;
-
+		int fileformatVersion;
 		DataInputStream dis = null;
 		try {
 			// String fileName = "TESTFILE";
 			FileInputStream fis = new FileInputStream(new File(Reference.BLUEPRINTLOCATION + fileName));
 			dis = new DataInputStream(fis);
-
+			fileformatVersion = dis.readInt();
 			dx = dis.readInt();// dx
 			dy = dis.readInt();
 			dz = dis.readInt();
@@ -407,12 +433,13 @@ public class BlockBlueprintHelper {
 		int dx;
 		int dy;
 		int dz;
-
+		int fileformatVersion;
 		DataInputStream dis = null;
 		try {
 			// String fileName = "TESTFILE";
 			FileInputStream fis = new FileInputStream(new File(Reference.BLUEPRINTLOCATION + fileName));
 			dis = new DataInputStream(fis);
+			fileformatVersion = dis.readInt();
 
 			dx = dis.readInt();// dx
 			dy = dis.readInt();
@@ -544,19 +571,22 @@ public class BlockBlueprintHelper {
 
 	}
 
-	public static boolean ScanBlocks(World world, BlockPos pos1, BlockPos pos2, String FileName) {
+	public static boolean ScanBlocks(World world, BlockPos pos1, BlockPos pos2, String FileName, EnumFacing enumFacing) {
 		CreateBlueprintLocation();
 		// GetBlockBlueprintFileList();
 		boolean result = true;
 		int dx;
 		int dy;
 		int dz;
+		int fileformatVersion;
+
 		int maxX;
 		int maxY;
 		int maxZ;
 		int minX;
 		int minY;
 		int minZ;
+		fileformatVersion = Reference.BLOCK_BLUEPRINT_FILE_FORMAT_VERSION;
 		minX = pos1.getX();
 		maxX = pos1.getX();
 		if (pos2.getX() < minX) {
@@ -589,26 +619,43 @@ public class BlockBlueprintHelper {
 		try {
 			FileOutputStream fos = new FileOutputStream(new File(Reference.BLUEPRINTLOCATION + FileName));
 			dos = new DataOutputStream(fos);
+			dos.writeInt(fileformatVersion);
 
 			dos.writeInt(dx);
 			dos.writeInt(dy);
 			dos.writeInt(dz);
-			for (int j = minY; j <= maxY; j++) {
-				for (int i = minX; i <= maxX; i++) {
-					for (int k = minZ; k <= maxZ; k++) {
-						LogHelper.info(" The block at cords X,Y,Z:" + i + "," + j + "," + k + ", is a block named:" + world.getBlockState(new BlockPos(i, j, k)).getBlock().getRegistryName() + " " + world.getBlockState(new BlockPos(i, j, k)).getBlock().getMetaFromState(world.getBlockState(new BlockPos(i, j, k)).getBlock().getBlockState().getBaseState()));
+			for (int j = 0; j <= dy; j++) {
+				for (int i = 0; i <= dx; i++) {
+					for (int k = 0; k <= dz; k++) {
+
+						int y = j + minY;
+						int x = getScannX(i, k, dx, dz, enumFacing) + maxX;
+						int z = getScannZ(i, k, dx, dz, enumFacing) + maxZ;
+
+						LogHelper.info(" The block at cords X,Y,Z:" + x + "," + y + "," + z + ", is a block named:" + world.getBlockState(new BlockPos(x, y, z)).getBlock().getRegistryName() + " " + world.getBlockState(new BlockPos(x, y, z)).getBlock().getMetaFromState(world.getBlockState(new BlockPos(x, y, z)).getBlock().getBlockState().getBaseState()));
 						LogHelper.info("Properties of this block are :");
 						// DEBUGGING line
-						dos.writeInt(i);
-						dos.writeInt(j);
-						dos.writeInt(k);
+						dos.writeInt(x);
+						dos.writeInt(y);
+						dos.writeInt(z);
+						String BlockRegistryName;
+						int metaValue = 0;
+						if (world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.BED || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.ACACIA_DOOR || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.BIRCH_DOOR || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.DARK_OAK_DOOR || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.IRON_DOOR || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.JUNGLE_DOOR || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.OAK_DOOR || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.SPRUCE_DOOR || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.PISTON_HEAD) {
+							BlockRegistryName = Blocks.AIR.getRegistryName().toString();
+							LogHelper.info("non Supported block scanned Beds and doors are two blocks Piston Heads are also not supported and wont scan correctly skipping ! ");
 
-						String BlockRegistryName = world.getBlockState(new BlockPos(i, j, k)).getBlock().getRegistryName().toString();
+						} else if (world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.WATER || world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.FLOWING_WATER) {
+							LogHelper.info("Not scanning water for underwater base support!");
+							BlockRegistryName = Blocks.AIR.getRegistryName().toString();
+
+						} else {
+							BlockRegistryName = world.getBlockState(new BlockPos(x, y, z)).getBlock().getRegistryName().toString();
+							metaValue = world.getBlockState(new BlockPos(x, y, z)).getBlock().getMetaFromState(world.getBlockState(new BlockPos(x, y, z)));
+						}
 						// DEBUGGING line
 						dos.writeUTF(BlockRegistryName);
 						// HOW MANY TO READ
 
-						int metaValue = world.getBlockState(new BlockPos(i, j, k)).getBlock().getMetaFromState(world.getBlockState(new BlockPos(i, j, k)));
 						dos.writeInt(metaValue);
 						// for (IProperty p : world.getBlockState(new BlockPos(i, j, k)).getBlock().getBlockState().getProperties()) {
 						// LogHelper.info("name : " + p.getName() + " VALUE= " + world.getBlockState(new BlockPos(i, j, k)).getValue(p));
@@ -629,5 +676,37 @@ public class BlockBlueprintHelper {
 
 		return result;
 
+	}
+
+	public static int getScannX(int x, int z, int maxX, int maxZ, EnumFacing enumFacing) {
+
+		switch (enumFacing) {
+		case NORTH:
+			return x - maxX;
+		case SOUTH:
+			return x - maxX;// return this.boundingBox.minX + x;
+		case WEST:
+			return x - maxX;
+		case EAST:
+			return x - maxX;
+		default:
+			return x;
+		}
+	}
+
+	public static int getScannZ(int x, int z, int maxX, int maxZ, EnumFacing enumFacing) {
+
+		switch (enumFacing) {
+		case NORTH:
+			return z - maxZ;
+		case SOUTH:
+			return z - maxZ;// return this.boundingBox.minX + x;
+		case WEST:
+			return z - maxZ;
+		case EAST:
+			return z - maxZ;
+		default:
+			return z;
+		}
 	}
 }

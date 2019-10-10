@@ -43,7 +43,7 @@ public class MachineModMessageBlockBlueprintSaveToServerHandler implements IMess
 				TileEntityHoloScanner tehs = (TileEntityHoloScanner) te;
 
 				LogHelper.info("Calling save");
-				BlockBlueprintHelper.ScanBlocks(entity.world, tehs.point1, tehs.point2, tmpUUID.toString() + "~" + message.fileName + ".blockblueprint");
+				BlockBlueprintHelper.ScanBlocks(entity.world, tehs.point1, tehs.point2, tmpUUID.toString() + "~" + message.fileName + ".blockblueprint", tehs.getFacing());
 				LogHelper.info("Save complete");
 
 			}

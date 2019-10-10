@@ -14,11 +14,15 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.utility.BlockBlueprintHelper;
 import com.projectreddog.machinemod.utility.LogHelper;
 
+import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemBlockSpecial;
+import net.minecraft.item.ItemRedstone;
+import net.minecraft.item.ItemSign;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -74,20 +78,26 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 
 	private String fileName = "";
 	private boolean running = false;
-
+	private boolean lastRunningValue = false;
 	private int xOffset = 17;
 	private int zOffset = 17;
+
+	private boolean loadedNullWorld = false;
 
 	public boolean isRunning() {
 		return running;
 	}
 
 	public void setRunning(boolean running) {
-		if (!this.world.isRemote) {
-			// server send packet to clients (FRom server)
-			ModNetwork.simpleNetworkWrapper.sendToAllAround(new MachineModMessageTEIntFieldToClient(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 1, running ? 1 : 0), new TargetPoint(this.world.provider.getDimension(), this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 48));
 
+		if (this.world != null) {
+			if (!this.world.isRemote) {
+				// server send packet to clients (FRom server)
+				ModNetwork.simpleNetworkWrapper.sendToAllAround(new MachineModMessageTEIntFieldToClient(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 1, running ? 1 : 0), new TargetPoint(this.world.provider.getDimension(), this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 48));
+
+			}
 		}
+		lastRunningValue = this.running;
 		this.running = running;
 		this.markDirty();
 	}
@@ -110,14 +120,21 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 					dy = bp.getY();
 					dz = bp.getZ();
 				}
-				setRunning(false);
-				xOffset = dx + 1;
-				zOffset = dz + 1;
-				currentX = 0;
-				currentY = 0;
-				currentZ = 0;
+				if (!loadedNullWorld) {
+					setRunning(false);
+
+					xOffset = dx + 1;
+					zOffset = dz + 1;
+					currentX = 0;
+					currentY = 0;
+					currentZ = 0;
+				}
 				SendBlockBluePrintArrayToClients();
+				loadedNullWorld = false;
 			}
+		} else {
+			this.fileName = fileName;
+			loadedNullWorld = true;
 		}
 	}
 
@@ -171,16 +188,19 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 
 	@Override
 	public void update() {
-
+		if (loadedNullWorld) {
+			setFileName(this.fileName);
+		}
 		// FAILSAFE CHECK.
 		// IF NOT FILE NAME IS SET TURN OFF RUNNING !
 		if ((fileName == null || fileName.equals("")) && isRunning() && !this.world.isRemote) {
-			setRunning(false);
-			LogHelper.info("WARNING FOUND NO FILENAME WHIE RUNNING WAS TRUE!");
+			if (!loadedNullWorld) {
+				setRunning(false);
+				LogHelper.info("WARNING FOUND NO FILENAME WHIE RUNNING WAS TRUE!");
+			}
 		}
 
 		if (!world.isRemote && isRunning()) { // only run on server
-
 			// TODO FIx to make server only latter and then use packets to update clients around !! yeah
 			//
 
@@ -238,7 +258,7 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 						int tmpX = getPlacingXWithOffset(currentX, currentZ);
 						int tmpZ = getPlacingZWithOffset(currentX, currentZ);
 						int tmpY = currentY;
-						if ((state == 3 && this.world.getBlockState(this.pos.add(tmpX, tmpY, tmpZ)).getBlock().isAir(this.world.getBlockState(this.pos.add(tmpX, tmpY, tmpZ)), null, null)) || state != 3) {
+						if ((state == 3 && (this.world.getBlockState(this.pos.add(tmpX, tmpY, tmpZ)).getBlock().isAir(this.world.getBlockState(this.pos.add(tmpX, tmpY, tmpZ)), null, null)) || this.world.getBlockState(this.pos.add(tmpX, tmpY, tmpZ)).getBlock() == Blocks.WATER || this.world.getBlockState(this.pos.add(tmpX, tmpY, tmpZ)).getBlock() == Blocks.FLOWING_WATER || this.world.getBlockState(this.pos.add(tmpX, tmpY, tmpZ)).getBlock().isReplaceable(this.world, this.pos.add(tmpX, tmpY, tmpZ))) || state != 3) {
 							state = state + 1;
 						}
 						// set new targets for state
@@ -249,6 +269,8 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			}
 
 			ModNetwork.sendPacketToAllAround(new MachineModMessageTETowerCranePosToClient(this.pos.getX(), this.pos.getY(), this.pos.getZ(), state, armRotation, gantryPos, wenchPos, targetArmRotation, targetGantryPos, targetWenchPos, currentX, currentY, currentZ), new TargetPoint(world.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 224)); // sendInterval = 0;
+			this.markDirty();
+
 		} else if (!world.isRemote && state == -1) {
 			targetArmRotation = getPickupRotationLocation();
 			armRotation = targetArmRotation;
@@ -259,7 +281,18 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 			gantryPos = targetGantryPos;
 
 			ModNetwork.sendPacketToAllAround(new MachineModMessageTETowerCranePosToClient(this.pos.getX(), this.pos.getY(), this.pos.getZ(), state, armRotation, gantryPos, wenchPos, targetArmRotation, targetGantryPos, targetWenchPos, currentX, currentY, currentZ), new TargetPoint(world.provider.getDimension(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), 224)); // sendInterval = 0;
+			this.markDirty();
 
+		}
+
+		if (this.world != null) {
+			if (!this.world.isRemote) {
+				if (lastRunningValue != this.running) {
+					ModNetwork.simpleNetworkWrapper.sendToAllAround(new MachineModMessageTEIntFieldToClient(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 1, running ? 1 : 0), new TargetPoint(this.world.provider.getDimension(), this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 48));
+					lastRunningValue = this.running;
+				}
+
+			}
 		}
 	}
 
@@ -365,128 +398,133 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 	}
 
 	public void setTargetsForState() {
+		if (!loadedNullWorld) {
+			int adjustedX = getXWithOffset(currentX, currentZ);
+			int adjustedZ = getZWithOffset(currentX, currentZ);
 
-		int adjustedX = getXWithOffset(currentX, currentZ);
-		int adjustedZ = getZWithOffset(currentX, currentZ);
-
-		int placingposX = getPlacingXWithOffset(currentX, currentZ);
-		int placingposZ = getPlacingZWithOffset(currentX, currentZ);
-		if (state > 6) {
-			state = 0;
-		}
-
-		if (state == 0) {
-			targetArmRotation = getPickupRotationLocation();
-			targetGantryPos = 2;
-			targetWenchPos = currentY + 5;
-
-		}
-		if (state == 1) {
-			targetArmRotation = getPickupRotationLocation();
-			targetGantryPos = 2;
-			targetWenchPos = 0;
-
-		}
-		if (state == 2) {
-			targetArmRotation = getPickupRotationLocation();
-			targetGantryPos = 2;
-			targetWenchPos = currentY + 5;
-
-			if (DrainsBlock(BlockBluePrintArray[currentX][currentY][currentZ])) {
-
-				setInventorySlotContents(-1, BlockBluePrintArray[currentX][currentY][currentZ].getBlock().getItem(null, null, BlockBluePrintArray[currentX][currentY][currentZ]));
-
+			int placingposX = getPlacingXWithOffset(currentX, currentZ);
+			int placingposZ = getPlacingZWithOffset(currentX, currentZ);
+			if (state > 6) {
+				state = 0;
 			}
 
-		}
-		if (state == 3) {
-			// // GL11.glRotated(90d - MathHelper.atan2(x, z) * 180d / 3.14, 0, 1, 0);
+			if (state == 0) {
+				targetArmRotation = getPickupRotationLocation();
+				targetGantryPos = 2;
+				targetWenchPos = currentY + 5;
 
-			targetArmRotation = 90d - MathHelper.atan2(adjustedX, adjustedZ) * 180d / 3.14;
-			targetGantryPos = Math.sqrt(adjustedX * adjustedX + (adjustedZ) * (adjustedZ));
-			targetWenchPos = currentY + 5;
-
-		}
-		if (state == 4) {
-			targetArmRotation = 90d - MathHelper.atan2(adjustedX, adjustedZ) * 180d / 3.14;
-			targetGantryPos = Math.sqrt(adjustedX * adjustedX + (adjustedZ) * (adjustedZ));
-			targetWenchPos = currentY;
-
-		}
-
-		if (state == 5) {//
-							// TODO call block place code!
-
-			// BlockBlueprintHelper.BuildBlocks("TESTFILE", this.world, this.pos, Rotation.NONE, false, currentX, currentY, currentZ);
-
-			/// TESTING CODE
-			///
-			if (BlockBluePrintArray != null) {
-				// TODO add call to event to allow it to be canceled by things like FTB utilities.
-
-				BlockBlueprintHelper.setBlockState(this.world, this.pos.add(placingposX, currentY, placingposZ), BlockBluePrintArray[currentX][currentY][currentZ], getFacing());
-				setInventorySlotContents(-1, ItemStack.EMPTY);
 			}
-			// prevArmRotation=targetGantryPos;
-			// prevGantryPos=targetGantryPos;
-			// prevWencPos;
+			if (state == 1) {
+				targetArmRotation = getPickupRotationLocation();
+				targetGantryPos = 2;
+				targetWenchPos = 0;
 
-			currentX = currentX + 1;
-			if (currentX > dx) {
-				currentX = 0;
-				currentZ = currentZ + 1;
 			}
-			if (currentZ > dz) {
-				currentZ = 0;
-				currentY = currentY + 1;
-			}
+			if (state == 2) {
+				targetArmRotation = getPickupRotationLocation();
+				targetGantryPos = 2;
+				targetWenchPos = currentY + 5;
 
-			if (currentY > dy) {
-				currentY = 0;
-				currentX = 0;
-				currentZ = 0;
-				state = -1;
-				setRunning(false);
-			}
+				if (DrainsBlock(BlockBluePrintArray[currentX][currentY][currentZ])) {
 
-			if (BlockBluePrintArray != null) {
-				while (BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.AIR) {
-
-					currentX = currentX + 1;
-					if (currentX > dx) {
-						currentX = 0;
-						currentZ = currentZ + 1;
-					}
-					if (currentZ > dz) {
-						currentZ = 0;
-						currentY = currentY + 1;
+					if (BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.BLACK_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.BLUE_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.BROWN_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.CYAN_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.GRAY_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.GREEN_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.LIGHT_BLUE_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.LIME_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.MAGENTA_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.ORANGE_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.PINK_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.PURPLE_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.RED_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.WHITE_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.YELLOW_SHULKER_BOX || BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.SILVER_SHULKER_BOX) {
+						setInventorySlotContents(-1, new ItemStack(new ItemBlock(BlockBluePrintArray[currentX][currentY][currentZ].getBlock())));
+					} else {
+						setInventorySlotContents(-1, BlockBluePrintArray[currentX][currentY][currentZ].getBlock().getItem(null, null, BlockBluePrintArray[currentX][currentY][currentZ]));
 					}
 
-					if (currentY > dy) {
-						currentY = 0;
-						currentX = 0;
-						currentZ = 0;
-						state = -1;
-						setRunning(false);
+				}
 
+			}
+			if (state == 3) {
+				// // GL11.glRotated(90d - MathHelper.atan2(x, z) * 180d / 3.14, 0, 1, 0);
+
+				targetArmRotation = 90d - MathHelper.atan2(adjustedX, adjustedZ) * 180d / 3.14;
+				targetGantryPos = Math.sqrt(adjustedX * adjustedX + (adjustedZ) * (adjustedZ));
+				targetWenchPos = currentY + 5;
+
+			}
+			if (state == 4) {
+				targetArmRotation = 90d - MathHelper.atan2(adjustedX, adjustedZ) * 180d / 3.14;
+				targetGantryPos = Math.sqrt(adjustedX * adjustedX + (adjustedZ) * (adjustedZ));
+				targetWenchPos = currentY;
+
+			}
+
+			if (state == 5) {//
+								// TODO call block place code!
+
+				// BlockBlueprintHelper.BuildBlocks("TESTFILE", this.world, this.pos, Rotation.NONE, false, currentX, currentY, currentZ);
+
+				/// TESTING CODE
+				///
+				if (BlockBluePrintArray != null) {
+					// TODO add call to event to allow it to be canceled by things like FTB utilities.
+
+					BlockBlueprintHelper.setBlockState(this.world, this.pos.add(placingposX, currentY, placingposZ), BlockBluePrintArray[currentX][currentY][currentZ], getFacing());
+					setInventorySlotContents(-1, ItemStack.EMPTY);
+				}
+				// prevArmRotation=targetGantryPos;
+				// prevGantryPos=targetGantryPos;
+				// prevWencPos;
+
+				currentX = currentX + 1;
+				if (currentX > dx) {
+					currentX = 0;
+					currentZ = currentZ + 1;
+				}
+				if (currentZ > dz) {
+					currentZ = 0;
+					currentY = currentY + 1;
+				}
+
+				if (currentY > dy) {
+					currentY = 0;
+					currentX = 0;
+					currentZ = 0;
+					state = -1;
+
+					setRunning(false);
+				}
+
+				if (BlockBluePrintArray != null) {
+					while (BlockBluePrintArray[currentX][currentY][currentZ].getBlock() == Blocks.AIR) {
+
+						currentX = currentX + 1;
+						if (currentX > dx) {
+							currentX = 0;
+							currentZ = currentZ + 1;
+						}
+						if (currentZ > dz) {
+							currentZ = 0;
+							currentY = currentY + 1;
+						}
+
+						if (currentY > dy) {
+							currentY = 0;
+							currentX = 0;
+							currentZ = 0;
+							state = -1;
+							setRunning(false);
+
+						}
 					}
 				}
+
+				// state = 4;
+				targetArmRotation = 90d - MathHelper.atan2(adjustedX, adjustedZ) * 180d / 3.14;
+				targetGantryPos = Math.sqrt(adjustedX * adjustedX + (adjustedZ) * (adjustedZ));
+				targetWenchPos = currentY + 5;
+
 			}
+			if (state == 6) {//
+				// state = 0;
+				// targetArmRotation = 90d - MathHelper.atan2(adjustedX, adjustedZ) * 180d / 3.14;
+				// targetGantryPos = Math.sqrt(adjustedX * adjustedX + (adjustedZ) * (adjustedZ));
+				// targetWenchPos = currentY + 5;
 
-			// state = 4;
-			targetArmRotation = 90d - MathHelper.atan2(adjustedX, adjustedZ) * 180d / 3.14;
-			targetGantryPos = Math.sqrt(adjustedX * adjustedX + (adjustedZ) * (adjustedZ));
-			targetWenchPos = currentY + 5;
-
+			}
 		}
-		if (state == 6) {//
-			// state = 0;
-			// targetArmRotation = 90d - MathHelper.atan2(adjustedX, adjustedZ) * 180d / 3.14;
-			// targetGantryPos = Math.sqrt(adjustedX * adjustedX + (adjustedZ) * (adjustedZ));
-			// targetWenchPos = currentY + 5;
-
-		}
-
 	}
 
 	protected ItemStack addToinventory(ItemStack is) {
@@ -532,8 +570,14 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
-
 		super.readFromNBT(compound);
+
+		setFileName(compound.getString(Reference.MACHINE_MOD_NBT_PREFIX + "filename"));
+
+		currentX = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentX");
+		currentY = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentY");
+		currentZ = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentZ");
+		setRunning(compound.getBoolean(Reference.MACHINE_MOD_NBT_PREFIX + "running"));
 		fuelStorage = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "FUEL_STORAGE");
 		cooldown = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "COOL_DOWN");
 
@@ -544,12 +588,9 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		targetArmRotation = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "targetArmRotation");
 		targetGantryPos = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "targetGantryPos");
 		targetWenchPos = compound.getDouble(Reference.MACHINE_MOD_NBT_PREFIX + "targetWenchPos");
-		setFileName(compound.getString(Reference.MACHINE_MOD_NBT_PREFIX + "filename"));
+		xOffset = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "xOffset");
 
-		currentX = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentX");
-		currentY = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentY");
-		currentZ = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentZ");
-		running = compound.getBoolean(Reference.MACHINE_MOD_NBT_PREFIX + "running");
+		zOffset = compound.getInteger(Reference.MACHINE_MOD_NBT_PREFIX + "zOffset");
 		// inventory
 		NBTTagList tagList = compound.getTagList(Reference.MACHINE_MOD_NBT_PREFIX + "Inventory", compound.getId());
 		for (int i = 0; i < tagList.tagCount(); i++) {
@@ -583,6 +624,10 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "currentZ", currentZ);
 		compound.setBoolean(Reference.MACHINE_MOD_NBT_PREFIX + "running", running);
 		compound.setString(Reference.MACHINE_MOD_NBT_PREFIX + "filename", fileName);
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "xOffset", xOffset);
+
+		compound.setInteger(Reference.MACHINE_MOD_NBT_PREFIX + "zOffset", zOffset);
+
 		// inventory
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < inventory.length; i++) {
@@ -670,6 +715,48 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 					ItemBlock ib = (ItemBlock) inventory[i].getItem();
 					if (ib.getBlock() == blockState.getBlock()) {
 						// same block check meta
+						if (blockState.getBlock() == Blocks.BLACK_SHULKER_BOX || blockState.getBlock() == Blocks.BLUE_SHULKER_BOX || blockState.getBlock() == Blocks.BROWN_SHULKER_BOX || blockState.getBlock() == Blocks.CYAN_SHULKER_BOX || blockState.getBlock() == Blocks.GRAY_SHULKER_BOX || blockState.getBlock() == Blocks.GREEN_SHULKER_BOX || blockState.getBlock() == Blocks.LIGHT_BLUE_SHULKER_BOX || blockState.getBlock() == Blocks.LIME_SHULKER_BOX || blockState.getBlock() == Blocks.MAGENTA_SHULKER_BOX || blockState.getBlock() == Blocks.ORANGE_SHULKER_BOX || blockState.getBlock() == Blocks.PINK_SHULKER_BOX || blockState.getBlock() == Blocks.PURPLE_SHULKER_BOX || blockState.getBlock() == Blocks.RED_SHULKER_BOX || blockState.getBlock() == Blocks.WHITE_SHULKER_BOX || blockState.getBlock() == Blocks.YELLOW_SHULKER_BOX || blockState.getBlock() == Blocks.SILVER_SHULKER_BOX) {
+							result = true;
+							return result;
+						} else if (blockState.getBlock() instanceof BlockDoublePlant) {
+							if (blockState.getBlock().getMetaFromState(blockState) == inventory[i].getItem().getMetadata(inventory[i])) {
+								result = true;
+								return result;
+							}
+						} else if (inventory[i].getItem().getMetadata(inventory[i]) == blockState.getBlock().getItem(null, null, blockState).getMetadata()) {
+							result = true;
+							return result;
+						}
+
+					}
+				} else if (inventory[i].getItem() instanceof ItemBlockSpecial) {
+					ItemBlockSpecial ib = (ItemBlockSpecial) inventory[i].getItem();
+					if (ib.getBlock() == blockState.getBlock()) {
+						// same block check meta
+						if (inventory[i].getItem().getMetadata(inventory[i]) == blockState.getBlock().getItem(null, null, blockState).getMetadata()) {
+							result = true;
+							return result;
+						}
+
+					} else if (ib.getBlock() == Blocks.UNPOWERED_REPEATER && blockState.getBlock() == Blocks.POWERED_REPEATER) {
+
+						if (inventory[i].getItem().getMetadata(inventory[i]) == blockState.getBlock().getItem(null, null, blockState).getMetadata()) {
+							result = true;
+							return result;
+						}
+
+					}
+				} else if (inventory[i].getItem() instanceof ItemRedstone) {
+					ItemRedstone ib = (ItemRedstone) inventory[i].getItem();
+					if (Blocks.REDSTONE_WIRE == blockState.getBlock()) {
+						result = true;
+						return result;
+
+					}
+				} else if (inventory[i].getItem() instanceof ItemSign) {
+					ItemSign ib = (ItemSign) inventory[i].getItem();
+					if (Blocks.STANDING_SIGN == blockState.getBlock() || Blocks.WALL_SIGN == blockState.getBlock()) {
+						// same block check meta
 						if (inventory[i].getItem().getMetadata(inventory[i]) == blockState.getBlock().getItem(null, null, blockState).getMetadata()) {
 							result = true;
 							return result;
@@ -677,9 +764,10 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 
 					}
 				}
-			}
 
+			}
 		}
+
 		return result;
 	}
 
@@ -692,7 +780,11 @@ public class TileEntityTowerCrane extends TileEntity implements ITickable, ISide
 					ItemBlock ib = (ItemBlock) inventory[i].getItem();
 					if (ib.getBlock() == blockState.getBlock()) {
 						// same block check meta
-						if (inventory[i].getItem().getMetadata(inventory[i]) == blockState.getBlock().getItem(null, null, blockState).getMetadata()) {
+						if (blockState.getBlock() == Blocks.BLACK_SHULKER_BOX || blockState.getBlock() == Blocks.BLUE_SHULKER_BOX || blockState.getBlock() == Blocks.BROWN_SHULKER_BOX || blockState.getBlock() == Blocks.CYAN_SHULKER_BOX || blockState.getBlock() == Blocks.GRAY_SHULKER_BOX || blockState.getBlock() == Blocks.GREEN_SHULKER_BOX || blockState.getBlock() == Blocks.LIGHT_BLUE_SHULKER_BOX || blockState.getBlock() == Blocks.LIME_SHULKER_BOX || blockState.getBlock() == Blocks.MAGENTA_SHULKER_BOX || blockState.getBlock() == Blocks.ORANGE_SHULKER_BOX || blockState.getBlock() == Blocks.PINK_SHULKER_BOX || blockState.getBlock() == Blocks.PURPLE_SHULKER_BOX || blockState.getBlock() == Blocks.RED_SHULKER_BOX || blockState.getBlock() == Blocks.WHITE_SHULKER_BOX || blockState.getBlock() == Blocks.YELLOW_SHULKER_BOX || blockState.getBlock() == Blocks.SILVER_SHULKER_BOX) {
+							decrStackSize(i, 1);
+							result = true;
+							return result;
+						} else if (inventory[i].getItem().getMetadata(inventory[i]) == blockState.getBlock().getItem(null, null, blockState).getMetadata()) {
 							decrStackSize(i, 1);
 							result = true;
 							return result;

@@ -36,8 +36,11 @@ public class MachineModMessageRequestFileListToServerHandler implements IMessage
 			UUID uuid = UUID.fromString(filelisttmp[i].split("~")[0]);
 
 			EntityPlayer ep = ctx.getServerHandler().player.world.getPlayerEntityByUUID(uuid);
+			owner[i] = "Unknown Player";
 
-			owner[i] = ctx.getServerHandler().player.mcServer.getPlayerProfileCache().getProfileByUUID(uuid).getName();
+			if (uuid != null && ctx.getServerHandler().player.mcServer.getPlayerProfileCache() != null && ctx.getServerHandler().player.mcServer.getPlayerProfileCache().getProfileByUUID(uuid) != null && ctx.getServerHandler().player.mcServer.getPlayerProfileCache().getProfileByUUID(uuid).getName() != null) {
+				owner[i] = ctx.getServerHandler().player.mcServer.getPlayerProfileCache().getProfileByUUID(uuid).getName();
+			}
 			displayName[i] = filelisttmp[i].split("~")[1].split("\\.")[0];
 		}
 

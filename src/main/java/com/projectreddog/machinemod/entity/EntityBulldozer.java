@@ -3,7 +3,9 @@ package com.projectreddog.machinemod.entity;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.utility.BlockUtil;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -19,22 +21,51 @@ public class EntityBulldozer extends EntityMachineModRideable {
 
 	public EntityBulldozer(World world) {
 		super(world);
-		setSize(4.2F, 2.5F);
+		setSize(3.8F, 2.5F);
 		// inventory = new ItemStack[0];
 		SIZE = 0;
 		inventory = new ItemStackHandler(SIZE);
 		this.mountedOffsetY = .87D;
-		this.mountedOffsetX = -.75D;
-		this.mountedOffsetZ = -.75D;
+		this.mountedOffsetX = -1.75D;
+		this.mountedOffsetZ = -1.75D;
 		this.maxAngle = 15;
 		this.minAngle = -15;
 		this.droppedItem = ModItems.bulldozer;
+		this.nextParticleAtTick = 5;
 
 	}
 
 	public void doParticleEffects() {
 		if (this.currentFuelLevel > 0 && this.getControllingPassenger() != null) {
-			world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX + calcTwoOffsetX(1, -90, .4), this.posY + 3.9, this.posZ + calcTwoOffsetZ(1, -90, .4), 0, 0, 0, 0);
+			world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX + calcTwoOffsetX(.8, -90, -.4), this.posY + 4.9, this.posZ + calcTwoOffsetZ(.8, -90, -.4), 0, 0, 0, 0);
+
+			if (this.moveDirection != 0) {
+
+				float x = (float) (this.posX + calcTwoOffsetX(-3, -90, 1.4));
+				float y = (float) this.posY - 1;
+				float z = (float) (this.posZ + calcTwoOffsetZ(-3, -90, 1.4));
+
+				IBlockState ib = this.world.getBlockState(new BlockPos(x, y, z));
+				float r1 = this.rand.nextFloat();
+				float r2 = this.rand.nextFloat();
+				float speedY = .4f;
+				world.spawnParticle(EnumParticleTypes.BLOCK_DUST, x, y + 1.5, z, 0, speedY, 0, Block.getStateId(ib));
+				world.spawnParticle(EnumParticleTypes.BLOCK_DUST, x + .1f + r1, y + 1.5, z + .1f + r2, 0, speedY, 0, Block.getStateId(ib));
+				world.spawnParticle(EnumParticleTypes.BLOCK_DUST, x - .1f + r2, y + 1.5, z - .1f + r1, 0, speedY, 0, Block.getStateId(ib));
+
+				x = (float) (this.posX + calcTwoOffsetX(-3, -90, -1.4));
+				y = (float) this.posY - 1;
+				z = (float) (this.posZ + calcTwoOffsetZ(-3, -90, -1.4));
+
+				ib = this.world.getBlockState(new BlockPos(x, y, z));
+
+				world.spawnParticle(EnumParticleTypes.BLOCK_DUST, x, y + 1.5, z, 0, speedY, 0, Block.getStateId(ib));
+
+				world.spawnParticle(EnumParticleTypes.BLOCK_DUST, x + .1f + r1, y + 1.5, z + .1f + r2, 0, speedY, 0, Block.getStateId(ib));
+				world.spawnParticle(EnumParticleTypes.BLOCK_DUST, x - .1f + r2, y + 1.5, z - .1f + r1, 0, speedY, 0, Block.getStateId(ib));
+
+			}
+
 		}
 	}
 
@@ -63,10 +94,8 @@ public class EntityBulldozer extends EntityMachineModRideable {
 						angle = 90;
 					}
 					BlockPos bp;
-					bp = new BlockPos(posX + calcTwoOffsetX(3.5, angle, i), posY + j + bucketOffsetY, posZ + calcTwoOffsetZ(3.5, angle, i));
-					if (world.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || world.getBlockState(bp).getBlock() == Blocks.SNOW || world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.SAND || world.getBlockState(bp).getBlock() == Blocks.GRAVEL || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.CLAY
-							|| world.getBlockState(bp).getBlock() == Blocks.NETHERRACK || world.getBlockState(bp).getBlock() == Blocks.MYCELIUM || world.getBlockState(bp).getBlock() == Blocks.SOUL_SAND || world.getBlockState(bp).getBlock() == Blocks.TALLGRASS || world.getBlockState(bp).getBlock() == Blocks.FARMLAND || world.getBlockState(bp).getBlock() == Blocks.BROWN_MUSHROOM
-							|| world.getBlockState(bp).getBlock() == Blocks.RED_MUSHROOM) {
+					bp = new BlockPos(posX + calcTwoOffsetX(4, angle, i), posY + j + bucketOffsetY, posZ + calcTwoOffsetZ(4, angle, i));
+					if (world.getBlockState(bp).getBlock() == Blocks.SNOW_LAYER || world.getBlockState(bp).getBlock() == Blocks.SNOW || world.getBlockState(bp).getBlock() == Blocks.DIRT || world.getBlockState(bp).getBlock() == Blocks.SAND || world.getBlockState(bp).getBlock() == Blocks.GRAVEL || world.getBlockState(bp).getBlock() == Blocks.GRASS || world.getBlockState(bp).getBlock() == Blocks.CLAY || world.getBlockState(bp).getBlock() == Blocks.NETHERRACK || world.getBlockState(bp).getBlock() == Blocks.MYCELIUM || world.getBlockState(bp).getBlock() == Blocks.SOUL_SAND || world.getBlockState(bp).getBlock() == Blocks.TALLGRASS || world.getBlockState(bp).getBlock() == Blocks.FARMLAND || world.getBlockState(bp).getBlock() == Blocks.BROWN_MUSHROOM || world.getBlockState(bp).getBlock() == Blocks.RED_MUSHROOM) {
 						BlockUtil.BreakBlock(world, bp, this.getControllingPassenger());
 
 					}

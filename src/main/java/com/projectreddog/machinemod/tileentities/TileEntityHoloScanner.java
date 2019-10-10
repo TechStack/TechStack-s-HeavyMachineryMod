@@ -265,4 +265,16 @@ public class TileEntityHoloScanner extends TileEntity implements ITickable, IInv
 		markDirty();
 
 	}
+
+	public EnumFacing getFacing() {
+
+		EnumFacing ef;
+		if (this.getWorld().getBlockState(this.getPos()).getBlock() == ModBlocks.machineholoscanner) {
+			ef = (EnumFacing) this.getWorld().getBlockState(this.getPos()).getValue(BlockMachineModHoloScanner.FACING);
+		} else {
+			ef = EnumFacing.NORTH;
+		}
+
+		return ef;
+	}
 }
