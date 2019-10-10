@@ -11,6 +11,7 @@ public class Reference {
 	public static final GameProfile gameProfile = new GameProfile(UUID.nameUUIDFromBytes("TECHSTACKS HEAVY MACHINERY MOD".getBytes()), "[TECHSTACKS HEAVY MACHINERY MOD]");
 	public static final String MOD_ID = "machinemod";
 	public static final String MOD_NAME = "MachineMod";
+	public static final int BLOCK_BLUEPRINT_FILE_FORMAT_VERSION = 1;
 	// public static final String VERSION = "${version}";
 	public static final String CLIENT_PROXY_CLASS = "com.projectreddog.machinemod.proxy.ClientProxy";
 	public static final String SERVER_PROXY_CLASS = "com.projectreddog.machinemod.proxy.ServerProxy";
@@ -210,6 +211,8 @@ public class Reference {
 	public static int clientRemoveInactiveEntityTimer = 100;
 	public static int updateConnectionTimer = 100;
 	public static boolean enableDebugPipeCode = false;
+
+	public static boolean enableMachineSounds = true;
 
 	public static boolean enableBulldozer = true;
 	public static boolean enableTrackLoader = true;

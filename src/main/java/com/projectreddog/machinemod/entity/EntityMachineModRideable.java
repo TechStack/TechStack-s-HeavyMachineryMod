@@ -343,7 +343,15 @@ public class EntityMachineModRideable extends Entity implements IInventory {
 
 				if ((this.ticksExisted % 10) == 0) {
 
-					this.playSound(ModSounds.ENGINE_RUNNING, 1, 1f);
+					if (Reference.enableMachineSounds) {
+
+						if (moveDirection == 0) {
+							this.playSound(ModSounds.ENGINE_IDLE, 1, 1f);
+						} else {
+							this.playSound(ModSounds.ENGINE_REV, 1, 1f);
+						}
+
+					}
 
 				}
 				if (entityPlayer.capabilities.isCreativeMode) {

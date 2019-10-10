@@ -97,12 +97,14 @@ public class BlockBlueprintHelper {
 		int dx;
 		int dy;
 		int dz;
+		int fileformatVersion;
 
 		DataInputStream dis = null;
 		try {
 			// String fileName = "TESTFILE";
 			FileInputStream fis = new FileInputStream(new File(Reference.BLUEPRINTLOCATION + fileName));
 			dis = new DataInputStream(fis);
+			fileformatVersion = dis.readInt();
 
 			dx = dis.readInt();// dx
 			dy = dis.readInt();
@@ -406,13 +408,13 @@ public class BlockBlueprintHelper {
 		int dx;
 		int dy;
 		int dz;
-
+		int fileformatVersion;
 		DataInputStream dis = null;
 		try {
 			// String fileName = "TESTFILE";
 			FileInputStream fis = new FileInputStream(new File(Reference.BLUEPRINTLOCATION + fileName));
 			dis = new DataInputStream(fis);
-
+			fileformatVersion = dis.readInt();
 			dx = dis.readInt();// dx
 			dy = dis.readInt();
 			dz = dis.readInt();
@@ -431,12 +433,13 @@ public class BlockBlueprintHelper {
 		int dx;
 		int dy;
 		int dz;
-
+		int fileformatVersion;
 		DataInputStream dis = null;
 		try {
 			// String fileName = "TESTFILE";
 			FileInputStream fis = new FileInputStream(new File(Reference.BLUEPRINTLOCATION + fileName));
 			dis = new DataInputStream(fis);
+			fileformatVersion = dis.readInt();
 
 			dx = dis.readInt();// dx
 			dy = dis.readInt();
@@ -575,12 +578,15 @@ public class BlockBlueprintHelper {
 		int dx;
 		int dy;
 		int dz;
+		int fileformatVersion;
+
 		int maxX;
 		int maxY;
 		int maxZ;
 		int minX;
 		int minY;
 		int minZ;
+		fileformatVersion = Reference.BLOCK_BLUEPRINT_FILE_FORMAT_VERSION;
 		minX = pos1.getX();
 		maxX = pos1.getX();
 		if (pos2.getX() < minX) {
@@ -613,6 +619,7 @@ public class BlockBlueprintHelper {
 		try {
 			FileOutputStream fos = new FileOutputStream(new File(Reference.BLUEPRINTLOCATION + FileName));
 			dos = new DataOutputStream(fos);
+			dos.writeInt(fileformatVersion);
 
 			dos.writeInt(dx);
 			dos.writeInt(dy);

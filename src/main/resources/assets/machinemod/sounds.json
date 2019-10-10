@@ -1,7 +1,12 @@
 {
-    "engine": {
+    "engineidle": {
     "category": "ambient",
-    "subtitle":"machinemod.subtitle.engine",
-    "sounds":["machinemod:engine"]
+    "subtitle":"machinemod.subtitle.engineidle",
+    "sounds":["machinemod:engineidle"]
+    },
+    "enginerev": {
+    "category": "ambient",
+    "subtitle":"machinemod.subtitle.enginerev",
+    "sounds":["machinemod:enginerev"]
     }
 }
