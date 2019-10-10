@@ -3,6 +3,9 @@ Some of which are still WIP (work in progress) & will be enhanced or built on in
 
 Few examples of changes/ additions since the last public release.
 New Content:
+	New Sounds
+		Machines now have sounds when riding in them. There is a config option if you do not like it. Needs set on server if MP.
+		
 	New Dimension added
 		- Bleak Dimension
 	New Mob added
@@ -22,8 +25,10 @@ New Content:
 		- Add a crash helmet - Try elytra flying into a wall while wearing it :D
 		- Added steel toe boots - Wear it to be protected from machines 
 	New Blocks
-	    - Tower Crane - Builds from Block Blue prints.
+	    - Tower Crane - Builds from Block Blue prints. Speed adjustable in the configs.
+	    	-note: the Blueprint system the tower crane and holoscanner use is experimental 
 	    - Holo Scanner - Creates Block Blue prints for use in the Tower Crane.
+	    		-note: the Blueprint system the tower crane and holoscanner use is experimental 
 		- Bleak Stone
 		- Bleak dirt
 		- Various Bleak ores
@@ -39,7 +44,9 @@ New Content:
 		- Industrial Shredder - Kills anything that falls into the block above it. 
 		-- Asphalt & Compressed Asphalt Slabs were added for making roads go up gradients. The uncompressed version must be manually placed , The paver will not place them. Roll them with the road roller to make the compressed version with the speed boost.
 	       - only the asphalt (non compressed) version is craftable by using 3 raw asphalt at the bottom of the crafting grid.
-	       
+	    -Bleak crystal Infused Sand
+	    -Bleak Glass - a glass that is more blast resistant, blocks light but you can see thru it.
+	    
 	World Gen:
 		Added Villager Named Engineer with custom trades. Spawns near the new Villager house or randomly when villagers breed.
 		Added a villager house for the engineer - Only spawns in newly generated chunks.
@@ -48,6 +55,10 @@ New Content:
 Changes 
 	Updated to the latest Forge stable release: 
 		2768
+	Bulldozer got some much needed love this round.
+		new 3D model 
+		Tracks now animate when moving.
+		Particles are kicked up when it's moving.		
 	Machine interaction changes:
 		all machines
 			Can interact with Hoppers again !
@@ -70,4 +81,5 @@ Bug Fixes:
 	Fixed: Possible issue where drilled stone is not updated for other clients in MP worlds
 	Fixed: Running speed is now increased again when running on compressed asphalt
 	Fixed: getting Kicked for Flying on server when Jumping and entering a machine before landing.
+	--- LOTS more Bugs Not in the prior public release!
 
