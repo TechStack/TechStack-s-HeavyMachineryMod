@@ -72,6 +72,8 @@ Changes
     Adjusted paver and road roller hit boxes
 
 Bug Fixes:
+	**** FIXED MACHINES DISAPEARING on MP or when leaving the area and coming back forcing a relog **** !!!!
+
 	Fixed: Sound of corn breaking playing the wrong sound.
 	Fixed: Crash when machine falls into the void
 	Possible Fix: for corn not getting picked up as a crop for other mods.
