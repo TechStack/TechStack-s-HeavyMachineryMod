@@ -125,6 +125,8 @@ public class Reference {
 
 	public static final String MODBLOCK_MACHINE_BLEAK_CRYSTAL = "machinebleakcrystal";
 
+	public static final String MODBLOCK_MACHINE_INFUSED_CRYSTAL = "machineinfusedcrystal";
+
 	public static final String MODBLOCK_MACHINE_BLEAK_STONE = "machinebleakstone";
 	public static final String MODBLOCK_MACHINE_BLEAK_ORE_IRIDONIUM = "machinebleakoreiridonium";
 	public static final String MODBLOCK_MACHINE_BLEAK_ORE_MAGENTIA = "machinebleakoremagentia";
