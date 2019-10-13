@@ -2,6 +2,8 @@ package com.projectreddog.machinemod.block;
 
 import java.util.Random;
 
+import javax.annotation.Nullable;
+
 import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
@@ -47,6 +49,11 @@ public class BlockMachineBleakInfusedCrystal extends BlockMachineMod {
 		this.setSoundType(SoundType.GLASS);
 	}
 
+	@Nullable
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+		return NULL_AABB;
+	}
+
 	@Override
 	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entity) {
 		if (!worldIn.isRemote) {
@@ -83,12 +90,12 @@ public class BlockMachineBleakInfusedCrystal extends BlockMachineMod {
 		return new BlockStateContainer(this, new IProperty[] { AMTINFUSED });
 	}
 
-	protected Item getSelf() {
+	protected Item getNonInfused() {
 		return ModItems.bleakcrystal;
 	}
 
 	protected Item getInfused() {
-		return ModItems.bleakcrystal;
+		return ModItems.infusedcrystal;
 	}
 
 	/**
@@ -106,12 +113,12 @@ public class BlockMachineBleakInfusedCrystal extends BlockMachineMod {
 	}
 
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return ((Integer) state.getValue(AMTINFUSED)).intValue() == 15 ? this.getInfused() : this.getSelf();
+		return ((Integer) state.getValue(AMTINFUSED)).intValue() == 15 ? this.getInfused() : this.getNonInfused();
 	}
 
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World worldIn, BlockPos pos) {
-		return this.getSelf();
+		return this.getNonInfused();
 	}
 
 	@Override
