@@ -2,6 +2,7 @@ package com.projectreddog.machinemod.block;
 
 import java.util.Random;
 
+import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.reference.Reference;
 
@@ -12,6 +13,8 @@ import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -19,7 +22,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -27,6 +32,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockMachineBleakInfusedCrystal extends BlockMachineMod {
 	public static final PropertyInteger AMTINFUSED = PropertyInteger.create("amtinfused", 0, 15);
+	protected static final AxisAlignedBB BOUNDING_BOX = new AxisAlignedBB(0.30000001192092896D, 0.0D, 0.30000001192092896D, 0.699999988079071D, 0.6000000238418579D, 0.699999988079071D);
 
 	public BlockMachineBleakInfusedCrystal() {
 		super();
@@ -39,6 +45,26 @@ public class BlockMachineBleakInfusedCrystal extends BlockMachineMod {
 		this.setCreativeTab((CreativeTabs) null);
 
 		this.setSoundType(SoundType.GLASS);
+	}
+
+	@Override
+	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entity) {
+		if (!worldIn.isRemote) {
+			if ((entity instanceof EntityXPOrb)) {
+
+				if (worldIn.getBlockState(pos).getBlock() == ModBlocks.machineinfusedcrystal) {
+					int amountinfused = worldIn.getBlockState(pos).getValue(AMTINFUSED).intValue();
+					if (amountinfused < 15) {
+
+						amountinfused = MathHelper.clamp(amountinfused + ((EntityXPOrb) entity).xpValue, 0, 15);
+
+						worldIn.setBlockState(pos, ModBlocks.machineinfusedcrystal.getDefaultState().withProperty(BlockMachineBleakInfusedCrystal.AMTINFUSED, amountinfused));
+						entity.setDead();
+					}
+				}
+
+			}
+		}
 	}
 
 	@Override
@@ -91,18 +117,6 @@ public class BlockMachineBleakInfusedCrystal extends BlockMachineMod {
 	@Override
 	public java.util.List<ItemStack> getDrops(net.minecraft.world.IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		java.util.List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
-		int amtinfused = ((Integer) state.getValue(AMTINFUSED)).intValue();
-		Random rand = world instanceof World ? ((World) world).rand : new Random();
-
-		if (amtinfused >= 15) {
-			int k = 3 + fortune;
-
-			for (int i = 0; i < 5 + fortune; ++i) {
-				if (rand.nextInt(15) <= amtinfused) {
-					ret.add(new ItemStack(this.getSelf(), 1, 0));
-				}
-			}
-		}
 		return ret;
 	}
 
@@ -137,6 +151,11 @@ public class BlockMachineBleakInfusedCrystal extends BlockMachineMod {
 	@Override
 	public String getUnlocalizedName() {
 		return String.format("tile.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	}
+
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return BOUNDING_BOX;
 	}
 
 	protected String getUnwrappedUnlocalizedName(String unlocalizedName) {

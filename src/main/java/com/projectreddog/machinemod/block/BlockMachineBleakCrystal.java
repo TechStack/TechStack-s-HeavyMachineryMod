@@ -16,13 +16,12 @@ import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
@@ -47,18 +46,6 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-		ItemStack heldItem = playerIn.getActiveItemStack();
-		if (heldItem.getItem() == Items.EXPERIENCE_BOTTLE) {
-			worldIn.setBlockState(pos, ModBlocks.machineinfusedcrystal.getDefaultState());
-			return true;
-		} else {
-
-			return false;
-		}
-	}
-
-	@Override
 	public int getExpDrop(IBlockState state, net.minecraft.world.IBlockAccess world, BlockPos pos, int fortune) {
 
 		if ((state.getValue(AGE)).intValue() == 6) {
@@ -73,6 +60,26 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	 */
 	protected boolean canPlaceBlockOn(Block ground) {
 		return ground == ModBlocks.machinebleakdirt;
+	}
+
+	/**
+	 * Called When an Entity Collided with the Block
+	 */
+	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entity) {
+		if (!worldIn.isRemote) {
+			if ((entity instanceof EntityXPOrb)) {
+
+				if (worldIn.getBlockState(pos).getBlock() == ModBlocks.machinebleakcrystal) {
+
+					if (worldIn.getBlockState(pos).getValue(AGE).intValue() == 6) {
+
+						worldIn.setBlockState(pos, ModBlocks.machineinfusedcrystal.getDefaultState());
+						entity.setDead();
+					}
+				}
+
+			}
+		}
 	}
 
 	protected BlockStateContainer createBlockState() {

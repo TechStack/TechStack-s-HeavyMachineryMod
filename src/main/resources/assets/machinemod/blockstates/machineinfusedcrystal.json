@@ -1,0 +1,23 @@
+{
+   "variants": {
+        "amtinfused=0": { "model": "machinemod:machineinfusedcrystal0" },
+        "amtinfused=1": { "model": "machinemod:machineinfusedcrystal1" },
+        "amtinfused=2": { "model": "machinemod:machineinfusedcrystal2" },
+        "amtinfused=3": { "model": "machinemod:machineinfusedcrystal3" },
+        "amtinfused=4": { "model": "machinemod:machineinfusedcrystal4" },
+        "amtinfused=5": { "model": "machinemod:machineinfusedcrystal5" },
+        "amtinfused=6": { "model": "machinemod:machineinfusedcrystal6" },
+        "amtinfused=7": { "model": "machinemod:machineinfusedcrystal7" },
+        "amtinfused=8": { "model": "machinemod:machineinfusedcrystal8" },
+        "amtinfused=9": { "model": "machinemod:machineinfusedcrystal9" },
+        "amtinfused=10": { "model": "machinemod:machineinfusedcrystal10" },
+        "amtinfused=11": { "model": "machinemod:machineinfusedcrystal11" },
+        "amtinfused=12": { "model": "machinemod:machineinfusedcrystal12" },
+        "amtinfused=13": { "model": "machinemod:machineinfusedcrystal13" },
+        "amtinfused=14": { "model": "machinemod:machineinfusedcrystal14" },
+        "amtinfused=15": { "model": "machinemod:machineinfusedcrystal15" }
+        
+        
+  }     
+   
+}
