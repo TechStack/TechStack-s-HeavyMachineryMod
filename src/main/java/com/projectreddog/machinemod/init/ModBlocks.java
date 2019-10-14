@@ -26,6 +26,7 @@ import com.projectreddog.machinemod.block.BlockMachineDrilledAndesite;
 import com.projectreddog.machinemod.block.BlockMachineDrilledDiorite;
 import com.projectreddog.machinemod.block.BlockMachineDrilledGranite;
 import com.projectreddog.machinemod.block.BlockMachineDrilledStone;
+import com.projectreddog.machinemod.block.BlockMachineExpCollector;
 import com.projectreddog.machinemod.block.BlockMachineExplosivePackedDrilledStone;
 import com.projectreddog.machinemod.block.BlockMachineMod;
 import com.projectreddog.machinemod.block.BlockMachineModAsphaltMixer;
@@ -106,6 +107,8 @@ import net.minecraftforge.oredict.OreDictionary;
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
 public class ModBlocks {
 	public static final Block machineassemblytable = new BlockMachineAssemblyTable();
+	public static final Block machineexpcollector = new BlockMachineExpCollector();
+
 	public static final BlockMachineMod machineasphalt = new BlockMachineAsphalt();
 	public static final BlockMachineMod machineasphaltslab = new BlockMachineAsphaltSlab();
 	public static final BlockMachineMod machinebleakglass = new BlockMachineBleakGlass();
@@ -214,6 +217,10 @@ public class ModBlocks {
 		ForgeRegistries.BLOCKS.register(machineassemblytable);// Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE
 
 		ForgeRegistries.ITEMS.register(new ItemBlock(machineassemblytable).setRegistryName(ModBlocks.machineassemblytable.getRegistryName()));
+
+		ForgeRegistries.BLOCKS.register(machineexpcollector);// Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE
+
+		ForgeRegistries.ITEMS.register(new ItemBlock(machineexpcollector).setRegistryName(ModBlocks.machineexpcollector.getRegistryName()));
 
 		// TODO need to register items for all blocks too!
 		ForgeRegistries.BLOCKS.register(steelblock);
@@ -449,6 +456,9 @@ public class ModBlocks {
 
 	public static void initBlockRender() {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineassemblytable), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_ASSEMBLY_TABLE, "inventory"));
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineexpcollector), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_EXP_COLLECTOR, "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineasphalt), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_ASPHALT, "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(machineasphaltslab), 0, new ModelResourceLocation(Reference.MOD_ID + ":" + Reference.MODBLOCK_MACHINE_ASPHALT_SLAB, "inventory"));
