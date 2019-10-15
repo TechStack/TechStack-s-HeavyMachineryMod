@@ -111,6 +111,7 @@ public class Reference {
 	public static final int GUI_TOWER_CRANE_SETTINGS = 24;
 	public static final int GUI_LASAER_LEVEL = 25;
 	public static final int GUI_UNDERGROUND_LOADER = 26;
+	public static final int GUI_EXP_COLLECTOR = 27;
 
 	public static final int MAX_TREE_DEPTH = 256;
 	public static final int MAX_TREE_WIDTH = 4;
@@ -312,6 +313,13 @@ public class Reference {
 	public static final int GUI_TOWER_CRANE_BUTTON_BP6 = 6;
 	public static final int GUI_TOWER_CRANE_BUTTON_BP7 = 7;
 	public static final int GUI_TOWER_CRANE_BUTTON_BP8 = 8;
+
+	public static final int GUI_EXP_COLLECTOR_BUTTON_1 = 1;
+	public static final int GUI_EXP_COLLECTOR_BUTTON_10 = 2;
+	public static final int GUI_EXP_COLLECTOR_BUTTON_100 = 3;
+	public static final int GUI_EXP_COLLECTOR_BUTTON_1000 = 4;
+	public static final int GUI_EXP_COLLECTOR_BUTTON_10000 = 5;
+	public static final int GUI_EXP_COLLECTOR_BUTTON_NEXT_LEVEL = 6;
 
 	public static final int GUI_TOWER_CRANE_BUTTON_INVENTORY = 9;
 
