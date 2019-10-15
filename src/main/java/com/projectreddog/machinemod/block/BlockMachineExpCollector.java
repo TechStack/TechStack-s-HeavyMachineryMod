@@ -2,6 +2,7 @@ package com.projectreddog.machinemod.block;
 
 import com.projectreddog.machinemod.MachineMod;
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
+import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityExpCollector;
 
@@ -12,9 +13,11 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -59,6 +62,41 @@ public class BlockMachineExpCollector extends BlockContainer {
 		// 3 for normal block 2 for TESR 1 liquid -1 nothing ( like air)
 		// return 3;
 		return EnumBlockRenderType.MODEL;
+
+	}
+
+	/**
+	 * Gets the {@link IBlockState} to place
+	 * 
+	 * @param world  The world the block is being placed in
+	 * @param pos    The position the block is being placed at
+	 * @param facing The side the block is being placed on
+	 * @param hitX   The X coordinate of the hit vector
+	 * @param hitY   The Y coordinate of the hit vector
+	 * @param hitZ   The Z coordinate of the hit vector
+	 * @param meta   The metadata of {@link ItemStack} as processed by {@link Item#getMetadata(int)}
+	 * @param placer The entity placing the block
+	 * @param hand   The player hand used to place this block
+	 * @return The state to be placed in the world
+	 */
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+		if (world.getBlockState(pos.down()).getBlock() != ModBlocks.machineexpcollector) {
+			return getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, 0, placer);
+		} else if (world.getBlockState(pos.down()).getBlock() == ModBlocks.machineexpcollector && world.getBlockState(pos.down()).getBlock().getMetaFromState(world.getBlockState(pos.down())) == 0) {
+			// block under this block is the base make this the center
+			return getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, 1, placer);
+		} else if (world.getBlockState(pos.down()).getBlock() == ModBlocks.machineexpcollector && world.getBlockState(pos.down()).getBlock().getMetaFromState(world.getBlockState(pos.down())) == 1) {
+			// block under this block is the center make this the top
+			return getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, 2, placer);
+		} else if (world.getBlockState(pos.up()).getBlock() == ModBlocks.machineexpcollector && world.getBlockState(pos.up()).getBlock().getMetaFromState(world.getBlockState(pos.up())) == 2) {
+			// block above is the top make this the center
+			return getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, 1, placer);
+		} else if (world.getBlockState(pos.up()).getBlock() == ModBlocks.machineexpcollector && world.getBlockState(pos.up()).getBlock().getMetaFromState(world.getBlockState(pos.up())) == 1) {
+			// block above is the center make this the bottom
+			return getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, 0, placer);
+		} else {
+			return getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+		}
 
 	}
 

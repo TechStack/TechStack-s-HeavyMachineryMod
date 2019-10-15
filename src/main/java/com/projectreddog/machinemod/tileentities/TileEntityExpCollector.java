@@ -37,8 +37,8 @@ public class TileEntityExpCollector extends TileEntity implements ITickable, IIn
 
 	public boolean isCenterBlock() {
 		boolean ret = false;
-		if (this.world.getBlockState(this.pos.up()).getBlock() == ModBlocks.machineexpcollector) {
-			if (this.world.getBlockState(this.pos.down()).getBlock() == ModBlocks.machineexpcollector) {
+		if (this.world.getBlockState(this.pos.up()).getBlock() == ModBlocks.machineexpcollector && this.world.getBlockState(this.pos.up()).getBlock().getMetaFromState(this.world.getBlockState(this.pos.up())) == 2) {
+			if (this.world.getBlockState(this.pos.down()).getBlock() == ModBlocks.machineexpcollector && this.world.getBlockState(this.pos.down()).getBlock().getMetaFromState(this.world.getBlockState(this.pos.down())) == 0) {
 				ret = true;
 			}
 		}
@@ -48,8 +48,8 @@ public class TileEntityExpCollector extends TileEntity implements ITickable, IIn
 	public boolean isBottomBlock() {
 		boolean ret = false;
 
-		if (this.world.getBlockState(this.pos.up().up()).getBlock() == ModBlocks.machineexpcollector) {
-			if (this.world.getBlockState(this.pos.up()).getBlock() == ModBlocks.machineexpcollector) {
+		if (this.world.getBlockState(this.pos.up().up()).getBlock() == ModBlocks.machineexpcollector && this.world.getBlockState(this.pos.up().up()).getBlock().getMetaFromState(this.world.getBlockState(this.pos.up().up())) == 2) {
+			if (this.world.getBlockState(this.pos.up()).getBlock() == ModBlocks.machineexpcollector && this.world.getBlockState(this.pos.up()).getBlock().getMetaFromState(this.world.getBlockState(this.pos.up())) == 1) {
 				ret = true;
 			}
 		}
@@ -58,8 +58,8 @@ public class TileEntityExpCollector extends TileEntity implements ITickable, IIn
 
 	public boolean isTopBlock() {
 		boolean ret = false;
-		if (this.world.getBlockState(this.pos.down().down()).getBlock() == ModBlocks.machineexpcollector) {
-			if (this.world.getBlockState(this.pos.down()).getBlock() == ModBlocks.machineexpcollector) {
+		if (this.world.getBlockState(this.pos.down().down()).getBlock() == ModBlocks.machineexpcollector && this.world.getBlockState(this.pos.down().down()).getBlock().getMetaFromState(this.world.getBlockState(this.pos.down().down())) == 0) {
+			if (this.world.getBlockState(this.pos.down()).getBlock() == ModBlocks.machineexpcollector && this.world.getBlockState(this.pos.down()).getBlock().getMetaFromState(this.world.getBlockState(this.pos.down())) == 1) {
 				ret = true;
 			}
 		}
