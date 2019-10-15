@@ -2,7 +2,7 @@ package com.projectreddog.machinemod.block;
 
 import com.projectreddog.machinemod.creativetab.CreativeTabMachineMod;
 import com.projectreddog.machinemod.reference.Reference;
-import com.projectreddog.machinemod.tileentities.TileEntityAssemblyTable;
+import com.projectreddog.machinemod.tileentities.TileEntityExpCollector;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
@@ -36,7 +36,7 @@ public class BlockMachineExpCollector extends BlockContainer {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		// TODO Auto-generated method stub
-		return new TileEntityAssemblyTable();
+		return new TileEntityExpCollector();
 	}
 
 	@Override

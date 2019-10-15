@@ -76,6 +76,7 @@ import com.projectreddog.machinemod.tileentities.TileEntityConveyor;
 import com.projectreddog.machinemod.tileentities.TileEntityConveyorT2;
 import com.projectreddog.machinemod.tileentities.TileEntityCrate;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
+import com.projectreddog.machinemod.tileentities.TileEntityExpCollector;
 import com.projectreddog.machinemod.tileentities.TileEntityFactory;
 import com.projectreddog.machinemod.tileentities.TileEntityFeedTrough;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
@@ -414,6 +415,7 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileEntityShredder.class, Reference.MODBLOCK_MACHINE_SHREDDER);
 
 		GameRegistry.registerTileEntity(TileEntityTowerCrane.class, Reference.MODBLOCK_MACHINE_TOWER_CRANE);
+		GameRegistry.registerTileEntity(TileEntityExpCollector.class, Reference.MODBLOCK_MACHINE_EXP_COLLECTOR);
 
 		// /Register Fluids
 		FluidRegistry.registerFluid(fluidOil);
