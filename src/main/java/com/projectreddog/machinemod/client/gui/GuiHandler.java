@@ -10,6 +10,7 @@ import com.projectreddog.machinemod.container.ContainerContinuousMiner;
 import com.projectreddog.machinemod.container.ContainerDistiller;
 import com.projectreddog.machinemod.container.ContainerDumpTruck;
 import com.projectreddog.machinemod.container.ContainerExcavator;
+import com.projectreddog.machinemod.container.ContainerExpCollector;
 import com.projectreddog.machinemod.container.ContainerFeedTrough;
 import com.projectreddog.machinemod.container.ContainerFermenter;
 import com.projectreddog.machinemod.container.ContainerFractionalDistiller;
@@ -45,6 +46,7 @@ import com.projectreddog.machinemod.reference.Reference;
 import com.projectreddog.machinemod.tileentities.TileEntityAssemblyTable;
 import com.projectreddog.machinemod.tileentities.TileEntityCentrifuge;
 import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
+import com.projectreddog.machinemod.tileentities.TileEntityExpCollector;
 import com.projectreddog.machinemod.tileentities.TileEntityFeedTrough;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
 import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
@@ -269,6 +271,15 @@ public class GuiHandler implements IGuiHandler {
 				if (entity instanceof TileEntityTowerCrane) {
 
 					return new ContainerTowerCrane(player.inventory, (TileEntityTowerCrane) entity);
+				}
+			}
+		} else if (id == Reference.GUI_EXP_COLLECTOR) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityExpCollector) {
+
+					return new ContainerExpCollector(player.inventory, (TileEntityExpCollector) entity);
 				}
 			}
 		} else if (id == Reference.GUI_TOWER_CRANE_SETTINGS) {
@@ -513,6 +524,14 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null) {
 				if (entity instanceof TileEntityTowerCrane) {
 					return new GuiTowerCraneSettings(player.inventory, (TileEntityTowerCrane) entity);
+				}
+			}
+		} else if (id == Reference.GUI_EXP_COLLECTOR) {
+
+			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+			if (entity != null) {
+				if (entity instanceof TileEntityExpCollector) {
+					return new GuiExpCollector(player.inventory, (TileEntityExpCollector) entity);
 				}
 			}
 		} else if (id == Reference.GUI_TRACK_LOADER) {

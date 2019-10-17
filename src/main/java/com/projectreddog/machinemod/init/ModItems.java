@@ -23,6 +23,7 @@ import com.projectreddog.machinemod.item.ItemGraderBlade;
 import com.projectreddog.machinemod.item.ItemHammer;
 import com.projectreddog.machinemod.item.ItemHandDrill;
 import com.projectreddog.machinemod.item.ItemHose;
+import com.projectreddog.machinemod.item.ItemInfusedCrystal;
 import com.projectreddog.machinemod.item.ItemIronDust;
 import com.projectreddog.machinemod.item.ItemLidWithSpout;
 import com.projectreddog.machinemod.item.ItemLight;
@@ -144,6 +145,8 @@ public class ModItems {
 	public static final ItemMachineMod sub = new ItemSub();
 	public static final ItemMachineMod chopper = new ItemChopper();
 	public static final ItemMachineMod bleakcrystal = new ItemBleakCrystal();
+	public static final ItemMachineMod infusedcrystal = new ItemInfusedCrystal();
+
 	public static final ItemMachineMod bleakcrystaldust = new ItemBleakCrystalDust();
 	public static final ItemMachineMod stalkerhide = new ItemStalkerHide();
 
@@ -397,6 +400,8 @@ public class ModItems {
 		}
 
 		ForgeRegistries.ITEMS.register(bleakcrystal);// , "paverscreed");
+		ForgeRegistries.ITEMS.register(infusedcrystal);// , "paverscreed");
+
 		ForgeRegistries.ITEMS.register(bleakcrystaldust);// , "paverscreed");
 		ForgeRegistries.ITEMS.register(stalkerhide);// , "paverscreed");
 
@@ -647,6 +652,8 @@ public class ModItems {
 		}
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bleakcrystal, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bleakcrystal", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(infusedcrystal, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "infusedcrystal", "inventory"));
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(bleakcrystaldust, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "bleakcrystaldust", "inventory"));
 
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(stalkerhide, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + "stalkerhide", "inventory"));

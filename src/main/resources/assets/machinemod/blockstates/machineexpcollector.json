@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "section=0": { "model": "machinemod:expcollectorbase" },
+        "section=1": { "model": "machinemod:expcollectormid"},
+        "section=2":  { "model": "machinemod:expcollectortop" }
+        
+    }
+}

@@ -16,6 +16,8 @@ import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
@@ -56,9 +58,28 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	/**
 	 * is the block grass, dirt or farmland
 	 */
-
 	protected boolean canPlaceBlockOn(Block ground) {
 		return ground == ModBlocks.machinebleakdirt;
+	}
+
+	/**
+	 * Called When an Entity Collided with the Block
+	 */
+	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entity) {
+		if (!worldIn.isRemote) {
+			if ((entity instanceof EntityXPOrb)) {
+
+				if (worldIn.getBlockState(pos).getBlock() == ModBlocks.machinebleakcrystal) {
+
+					if (worldIn.getBlockState(pos).getValue(AGE).intValue() == 6) {
+
+						worldIn.setBlockState(pos, ModBlocks.machineinfusedcrystal.getDefaultState());
+						entity.setDead();
+					}
+				}
+
+			}
+		}
 	}
 
 	protected BlockStateContainer createBlockState() {
@@ -68,10 +89,8 @@ public class BlockMachineBleakCrystal extends BlockBush implements IGrowable {
 	/**
 	 * Spawns this Block's drops into the World as EntityItems.
 	 * 
-	 * @param chance
-	 *            The chance that each Item is actually spawned (1.0 = always, 0.0 = never)
-	 * @param fortune
-	 *            The player's fortune level
+	 * @param chance  The chance that each Item is actually spawned (1.0 = always, 0.0 = never)
+	 * @param fortune The player's fortune level
 	 */
 	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune) {
 		super.dropBlockAsItemWithChance(worldIn, pos, state, chance, 0);

@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",            
+    "ingredients":[ 
+        {
+            "item":"machinemod:expinfusedblock"
+        }
+     ],
+    "result": {
+        "item": "machinemod:infusedcrystal",
+        "count":9
+    }
+}
+
+
+
+

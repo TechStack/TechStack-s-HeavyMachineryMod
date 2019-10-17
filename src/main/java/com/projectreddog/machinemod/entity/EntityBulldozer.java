@@ -41,9 +41,9 @@ public class EntityBulldozer extends EntityMachineModRideable {
 
 			if (this.moveDirection != 0) {
 
-				float x = (float) (this.posX + calcTwoOffsetX(-3, -90, 1.4));
+				float x = (float) (this.posX + calcTwoOffsetX(-3 * this.moveDirection, -90, 1.4));
 				float y = (float) this.posY - 1;
-				float z = (float) (this.posZ + calcTwoOffsetZ(-3, -90, 1.4));
+				float z = (float) (this.posZ + calcTwoOffsetZ(-3 * this.moveDirection, -90, 1.4));
 
 				IBlockState ib = this.world.getBlockState(new BlockPos(x, y, z));
 				float r1 = this.rand.nextFloat();
@@ -53,9 +53,9 @@ public class EntityBulldozer extends EntityMachineModRideable {
 				world.spawnParticle(EnumParticleTypes.BLOCK_DUST, x + .1f + r1, y + 1.5, z + .1f + r2, 0, speedY, 0, Block.getStateId(ib));
 				world.spawnParticle(EnumParticleTypes.BLOCK_DUST, x - .1f + r2, y + 1.5, z - .1f + r1, 0, speedY, 0, Block.getStateId(ib));
 
-				x = (float) (this.posX + calcTwoOffsetX(-3, -90, -1.4));
+				x = (float) (this.posX + calcTwoOffsetX(-3 * this.moveDirection, -90, -1.4));
 				y = (float) this.posY - 1;
-				z = (float) (this.posZ + calcTwoOffsetZ(-3, -90, -1.4));
+				z = (float) (this.posZ + calcTwoOffsetZ(-3 * this.moveDirection, -90, -1.4));
 
 				ib = this.world.getBlockState(new BlockPos(x, y, z));
 
