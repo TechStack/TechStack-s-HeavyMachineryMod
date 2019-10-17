@@ -1,7 +1,9 @@
 {
+ "parent": "block/cube_all",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "machinemod:blocks/expcollectorcore",
+	    "particle": "machinemod:blocks/expcollectorcore",
+	     "1": "machinemod:blocks/expcollectorcore",
 		"2": "machinemod:blocks/expcollectorrods",
 		"3": "machinemod:blocks/expcollectorcoreshell",
 		"4": "machinemod:blocks/expcollectorcore1",

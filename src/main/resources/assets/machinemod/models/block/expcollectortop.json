@@ -8,7 +8,7 @@
 		"5": "machinemod:blocks/expcollectorcore2",
 		"6": "machinemod:blocks/expcollectorcore3",
 		"7": "machinemod:blocks/expcollectorcore4",
-		"particle": "machinemod:blocks/expcollector"
+	    "particle": "machinemod:blocks/expcollectorcore"
 	},
 	"elements": [
 		{

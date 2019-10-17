@@ -1,0 +1,24 @@
+{
+    "result": {
+        "item": "machinemod:machineexpcollector"
+    },
+    "pattern" :[
+      "ubu", 
+      "aba", 
+      "ubu"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+            "item":"machinemod:expinfusedblock" 
+      },
+      "u": {
+            "item":"machinemod:unobtaniumgem" 
+      } ,
+      "a": {
+            "item":"machinemod:azuriumlump" 
+      }  
+    }
+    
+}
+

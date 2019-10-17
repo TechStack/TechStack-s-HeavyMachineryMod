@@ -120,6 +120,7 @@ public class Reference {
 	public static final String MODBLOCK_MACHINE_EXP_COLLECTOR = "machineexpcollector";
 
 	public static final String MODBLOCK_STEEL_BLOCK = "steelblock";
+	public static final String MODBLOCK_EXP_INFUSED_BLOCK = "expinfusedblock";
 
 	public static final String MODBLOCK_MACHINE_ASPHALT = "machineasphalt";
 	public static final String MODBLOCK_MACHINE_ASPHALT_SLAB = "machineasphaltslab";

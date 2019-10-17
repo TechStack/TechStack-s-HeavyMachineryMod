@@ -1,0 +1,17 @@
+{
+    "result": {
+        "item": "machinemod:expinfusedblock"
+    },
+    "pattern" :[
+      "ccc", 
+      "ccc", 
+      "ccc"
+    ],
+    "type": "forge:ore_shaped",
+  "key": {
+    "c": {
+            "item":"machinemod:infusedcrystal" 
+      } 
+    }
+}
+

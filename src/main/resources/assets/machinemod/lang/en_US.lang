@@ -156,12 +156,14 @@ tile.machinemod:machinedrilledandesite.name=Andesite Stone
 tile.machinemod:machinedrilleddiorite.name=Diorite Stone
 tile.machinemod:machinedrilledgranite.name=Granite Stone
 tile.machinemod:machinetowercrane.name=Tower Crane
+tile.machinemod:machineexpcollector.name=XP Collector
 
 tile.machinemod:machinegenerator.name=Generator
 tile.machinemod:machinebatterybank.name=Battery Bank
 tile.machinemod:machineconduit.name=Conduit
 
 tile.machinemod:machineturbofurnace.name=Turbo furnace
+tile.machinemod:expinfusedblock.name=XP Infused Block
 
 tile.machinemod:machineasphalt.name=Asphalt
 tile.machinemod:machineasphaltslab.name=Asphalt Slab
