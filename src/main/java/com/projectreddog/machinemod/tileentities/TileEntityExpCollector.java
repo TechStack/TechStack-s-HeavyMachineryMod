@@ -69,7 +69,7 @@ public class TileEntityExpCollector extends TileEntity implements ITickable, IIn
 	@Override
 	public void update() {
 		if (this.world != null) {
-			if (isCenterBlock()) {
+			if (isCenterBlock() && !getPowered()) {
 				if (world.getBlockState(pos).getBlock() == ModBlocks.machineexpcollector) {
 					BlockPos bp = this.pos;
 					boundingBox = new AxisAlignedBB(bp).grow(2, 1, 2);
