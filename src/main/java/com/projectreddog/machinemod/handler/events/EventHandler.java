@@ -25,19 +25,20 @@ public class EventHandler {
 	@SubscribeEvent
 	public void HarvestDropEvent(BlockEvent.HarvestDropsEvent event) {
 		if (event.getState().getBlock() == Blocks.TALLGRASS) {
-			// event.world.getBiomeGenForCoords(event.pos).
-			if (BiomeDictionary.hasType(event.getWorld().getBiome(event.getPos()), Type.PLAINS)) {
-				Random r = new Random();
-				if (r.nextFloat() > .8) {
-					event.getDrops().add(new ItemStack(ModItems.cornseed));
-				}
-			} else if (BiomeDictionary.hasType(event.getWorld().getBiome(event.getPos()), Type.SAVANNA)) {
-				Random r = new Random();
-				if (r.nextFloat() > .97) {
-					event.getDrops().add(new ItemStack(ModItems.cornseed));
+			if (Reference.enableCornSeedDrops) {
+				// event.world.getBiomeGenForCoords(event.pos).
+				if (BiomeDictionary.hasType(event.getWorld().getBiome(event.getPos()), Type.PLAINS)) {
+					Random r = new Random();
+					if (r.nextFloat() > .8) {
+						event.getDrops().add(new ItemStack(ModItems.cornseed));
+					}
+				} else if (BiomeDictionary.hasType(event.getWorld().getBiome(event.getPos()), Type.SAVANNA)) {
+					Random r = new Random();
+					if (r.nextFloat() > .97) {
+						event.getDrops().add(new ItemStack(ModItems.cornseed));
+					}
 				}
 			}
-
 		}
 
 	}

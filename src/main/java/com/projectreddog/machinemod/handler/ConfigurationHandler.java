@@ -86,6 +86,8 @@ public class ConfigurationHandler {
 		Reference.bleakoreunobtaniumGenMaxlevel = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoreunobtaniumGenMaxlevel", Reference.bleakoreunobtaniumGenMaxlevel, "set Max level for unobtanium").getInt();
 		Reference.bleakoreunobtaniumGenDepositSize = configuration.get(Reference.CONFIG_SECTION_BLEAK, "bleakoreunobtaniumGenDepositSize", Reference.bleakoreunobtaniumGenDepositSize, "set Deposit size for unobtanium").getInt();
 
+		Reference.enableCornSeedDrops = configuration.get(Configuration.CATEGORY_GENERAL, "enableCornSeedDrops", true, "If true Corn seed should drop in the world is Enabled, if false Corn seed dropds are disabled and will not drop!").getBoolean();
+
 		// save the config if it did not exits
 		if (configuration.hasChanged()) {
 			// only save it if it has been modified (may help keep from updating

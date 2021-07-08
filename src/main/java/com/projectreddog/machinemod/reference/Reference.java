@@ -248,6 +248,7 @@ public class Reference {
 	public static boolean enableSemiTractor = true;
 	public static boolean enableSub = true;
 	public static boolean enableChopper = true;
+	public static boolean enableCornSeedDrops = true;
 
 	public static boolean enableTractor = true;
 
