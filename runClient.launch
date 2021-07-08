@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/TechStack-s-HeavyMachineryMod"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<mapAttribute key="org.eclipse.debug.core.environmentVariables">
+<mapEntry key="FORGE_GROUP" value="net.minecraftforge"/>
+<mapEntry key="FORGE_VERSION" value="14.23.5.2855"/>
+<mapEntry key="MCP_MAPPINGS" value="snapshot_20171003-1.12"/>
+<mapEntry key="MCP_TO_SRG" value="D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\build\createSrgToMcp\output.srg"/>
+<mapEntry key="MC_VERSION" value="1.12.2"/>
+<mapEntry key="MOD_CLASSES" value="D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\bin\main;D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\bin\main"/>
+<mapEntry key="assetDirectory" value="C:\Users\TechStack\.gradle\caches\forge_gradle\assets"/>
+<mapEntry key="assetIndex" value="1.12"/>
+<mapEntry key="mainClass" value="net.minecraft.launchwrapper.Launch"/>
+<mapEntry key="nativesDirectory" value="D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\build\natives"/>
+<mapEntry key="tweakClass" value="net.minecraftforge.fml.common.launcher.FMLTweaker"/>
+</mapAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.buildship.core.classpathprovider"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="net.minecraftforge.legacydev.MainClient"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="TechStack-s-HeavyMachineryMod"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dforge.logging.console.level=debug -Dforge.logging.markers=SCAN,REGISTRIES,REGISTRYDUMP"/>
+<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="D:\ALL\Code\Minecraft\TechStack-s-HeavyMachineryMod\run"/>
+</launchConfiguration>
