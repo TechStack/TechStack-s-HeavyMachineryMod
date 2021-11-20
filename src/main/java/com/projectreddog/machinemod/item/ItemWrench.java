@@ -1,7 +1,6 @@
 package com.projectreddog.machinemod.item;
 
 import com.projectreddog.machinemod.block.BlockMachineModConveyor;
-import com.projectreddog.machinemod.block.BlockMachineModFractionalDistillation;
 import com.projectreddog.machinemod.init.ModBlocks;
 
 import net.minecraft.block.state.IBlockState;
@@ -98,38 +97,6 @@ public class ItemWrench extends ItemMachineMod {
 				default:
 					break;
 				}
-			} else if (world.getBlockState(pos).getBlock() == ModBlocks.machinefractionaldistillation) {
-				EnumFacing ef = (EnumFacing) world.getBlockState(pos).getValue(BlockMachineModFractionalDistillation.FACING);
-				switch (ef) {
-				case NORTH:
-					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.EAST), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
-					IBlockState state = world.getBlockState(pos);
-					world.notifyBlockUpdate(pos, state, state, 3);
-					result = true;
-					break;
-				case EAST:
-					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.SOUTH), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
-					state = world.getBlockState(pos);
-					world.notifyBlockUpdate(pos, state, state, 3);
-					result = true;
-					break;
-				case SOUTH:
-					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.WEST), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
-					state = world.getBlockState(pos);
-					world.notifyBlockUpdate(pos, state, state, 3);
-					result = true;
-					break;
-				case WEST:
-					world.setBlockState(pos, ModBlocks.machinefractionaldistillation.getDefaultState().withProperty(BlockMachineModFractionalDistillation.FACING, EnumFacing.NORTH), MARK_BLOCKS_FOR_UPDATE_FLAG | NOTIFY_NEIGHBOURS_FLAG);
-					state = world.getBlockState(pos);
-					world.notifyBlockUpdate(pos, state, state, 3);
-					result = true;
-					break;
-
-				default:
-					break;
-				}
-
 			}
 		}
 		// else if (world.getBlockState(pos).getBlock() == ModBlocks.machinedistiller) {

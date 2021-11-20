@@ -13,7 +13,6 @@ import com.projectreddog.machinemod.container.ContainerExcavator;
 import com.projectreddog.machinemod.container.ContainerExpCollector;
 import com.projectreddog.machinemod.container.ContainerFeedTrough;
 import com.projectreddog.machinemod.container.ContainerFermenter;
-import com.projectreddog.machinemod.container.ContainerFractionalDistiller;
 import com.projectreddog.machinemod.container.ContainerGrader;
 import com.projectreddog.machinemod.container.ContainerHoloMiner;
 import com.projectreddog.machinemod.container.ContainerLaserMiner;
@@ -49,7 +48,6 @@ import com.projectreddog.machinemod.tileentities.TileEntityDistiller;
 import com.projectreddog.machinemod.tileentities.TileEntityExpCollector;
 import com.projectreddog.machinemod.tileentities.TileEntityFeedTrough;
 import com.projectreddog.machinemod.tileentities.TileEntityFermenter;
-import com.projectreddog.machinemod.tileentities.TileEntityFractionalDistillation;
 import com.projectreddog.machinemod.tileentities.TileEntityFuelPump;
 import com.projectreddog.machinemod.tileentities.TileEntityHoloScanner;
 import com.projectreddog.machinemod.tileentities.TileEntityPrimaryCrusher;
@@ -179,15 +177,6 @@ public class GuiHandler implements IGuiHandler {
 				if (entity instanceof TileEntityAssemblyTable) {
 
 					return new ContainerAssemblyTable(player.inventory, (TileEntityAssemblyTable) entity);
-				}
-			}
-		} else if (id == Reference.GUI_FRACTIONALDISTILLATION) {
-
-			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
-			if (entity != null) {
-				if (entity instanceof TileEntityFractionalDistillation) {
-
-					return new ContainerFractionalDistiller(player.inventory, (TileEntityFractionalDistillation) entity);
 				}
 			}
 		}
@@ -436,14 +425,6 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null) {
 				if (entity instanceof TileEntityAssemblyTable) {
 					return new GuiAssemblyTable(player.inventory, (TileEntityAssemblyTable) entity);
-				}
-			}
-		} else if (id == Reference.GUI_FRACTIONALDISTILLATION) {
-
-			TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
-			if (entity != null) {
-				if (entity instanceof TileEntityFractionalDistillation) {
-					return new GuiFractionalDistiller(player.inventory, (TileEntityFractionalDistillation) entity);
 				}
 			}
 		} else if (id == Reference.GUI_FERMENTER) {

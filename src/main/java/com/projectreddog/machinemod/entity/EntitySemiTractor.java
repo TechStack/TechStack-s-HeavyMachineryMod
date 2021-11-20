@@ -2,7 +2,6 @@ package com.projectreddog.machinemod.entity;
 
 import java.util.List;
 
-import com.projectreddog.machinemod.init.ModBlocks;
 import com.projectreddog.machinemod.init.ModItems;
 import com.projectreddog.machinemod.item.machines.ItemTransportable;
 import com.projectreddog.machinemod.item.trailer.ItemSemiTrailerFlatBed;
@@ -30,7 +29,7 @@ public class EntitySemiTractor extends EntityMachineModRideable implements IFlui
 	private float bedRampBackOffset = -18f;
 
 	public final int maxOilStorage = 100000; // store up to 100k
-	protected FluidStack fluid = new FluidStack(ModBlocks.fluidOil, 0);
+	protected FluidStack fluid = new FluidStack(net.minecraftforge.fluids.FluidRegistry.WATER, 0);
 
 	public EntityLiving CarriedEntities[];
 
