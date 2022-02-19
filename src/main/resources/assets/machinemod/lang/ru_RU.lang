@@ -1,0 +1,251 @@
+# Item Localizations
+item.machinemod:undergrounddumptruck.name=Подземный самосвал
+item.machinemod:bulldozer.name=Бульдозер
+item.machinemod:trackloader.name=Гусеничный погрузчик
+item.machinemod:drillingrig.name=Буровая машина
+item.machinemod:dumptruck.name=Самосвал
+item.machinemod:loader.name=Погрузчик
+item.machinemod:undergroundloader.name=Подземный погрузчик
+item.machinemod:drillpipe.name=Труба бура
+item.machinemod:drillhead.name=Буровой наконечник
+item.machinemod:tractor.name=Трактор
+item.machinemod:planter.name=Сеялка
+item.machinemod:plow.name=Плуг
+item.machinemod:sprayer.name=Разбрасыватель удобрений
+item.machinemod:woodengear.name=Деревянная шестерня
+item.machinemod:stonegear.name=Каменная шестерня
+item.machinemod:irongear.name=Железная шестерня
+item.machinemod:transmission.name=Трансмиссия
+item.machinemod:turbofan.name=Вентилятор
+item.machinemod:combine.name=Комбайн
+item.machinemod:irondust.name=Железная пыль
+item.machinemod:golddust.name=Золотая пыль
+item.machinemod:rawasphalt.name=Сырой асфальт
+item.machinemod:blueprintcontinuousminer.name= Чертёж - Проходческий комбайн - WIP 
+item.machinemod:blueprintlaserminer.name= Чертёж - Лазерный бур - WIP 
+item.machinemod:blueprintconduit.name= Чертёж - Провод - WIP
+item.machinemod:blueprintfactory.name= Чертёж - Промышленный робот - WIP
+item.machinemod:blueprintgenerator.name= Чертёж - Генератор - WIP
+item.machinemod:blueprintbatterybank.name= Чертёж - Аккумулятор - WIP
+item.machinemod:blueprintturbofurnace.name= Чертёж - Турбо-печь - WIP
+item.machinemod:blueprintshredder.name= Чертёж - Шредер - WIP
+item.machinemod:blueprinttowercrane.name= Чертёж - Башенный кран - WIP
+item.machinemod:blueprintholoscanner.name= Чертёж - Голографический сканер - WIP
+
+item.machinemod:bleakcrystaldust.name= Пыль Мрачного кристалла
+item.machinemod:infusedcrystal.name=Наполненный кристалл
+
+
+item.machinemod:choppersawblade.name=Измельчающий вал - WIP
+gui.assemblytable.assemble=Собрать
+gui.assemblytable.name=Сборочный стол
+gui.towercrane.inventory=Вернуть в инвентарь
+gui.towercrane.settings=Чертёж
+gui.towercrane.start=Начать
+gui.towercrane.nextitem=Следующий предмет:
+gui.towercrane.missingblock=Не хватает:
+
+gui.laserlevel.savetext=Сохранить чёртёж
+gui.laserlevel.front=Длина
+gui.laserlevel.right=Ширина
+gui.laserlevel.up=Высота
+gui.laserlevel.savebutton=Сохранить
+item.machinemod:collapsedstar.name=Сжатая Звезда
+item.machinemod:camshaft.name=Коленвал
+item.machinemod:piston.name=Поршень
+item.machinemod:turbo.name=Турбина
+item.machinemod:turboengine.name=Турбированный Двигатель
+item.machinemod:flatbedtrailer.name=Трейлер с плоской платформой
+item.machinemod:dozerblade.name=Бульдозерный отвал
+item.machinemod:tracks.name=Гусеница
+item.machinemod:wheel.name=Колесо
+item.machinemod:loaderbucket.name=Ковш погрузчика
+item.machinemod:dumperbed.name=Платформа самосвала
+item.machinemod:transmission.name=Трансмиссия
+item.machinemod:engine.name=Двигатель
+item.machinemod:harvesterhead.name=Жатка
+item.machinemod:cornseed.name=Семена кукурузы
+item.machinemod:fuelcan.name=Канистра с топливом
+item.machinemod:anfo.name=АСДТ Вещество
+item.machinemod:conecrusher.name=Конусный дробитель
+item.machinemod:excavator.name=Экскаватор - WIP
+item.machinemod:widebedtruck.name=Wide Bed Truck
+item.machinemod:trencher.name=Траншеекопатель
+item.machinemod:boomarmsegment.name=Сегмент гидравлики
+item.machinemod:handdrill.name=Ручной бур
+item.machinemod:hammer.name=Молот
+item.machinemod:hose.name=Нагревательная катушка
+item.machinemod:lidwithspout.name=Крышка от канистры
+item.machinemod:lawnmower.name=Газонокосилка
+item.machinemod:mowerdeck.name=Дека
+item.machinemod:liquidtanksegment.name=Сегмент резервуара для жидкости
+item.machinemod:continuousminer.name=Проходческий Комбайн - WIP
+item.machinemod:laserminer.name=Лазерный Бур - WIP
+item.machinemod:chopper.name=Вертолет
+
+item.machinemod:citroniteingot.name=Цитронитовый слиток
+item.machinemod:iridoniumingot.name=Иридониевый слиток
+item.machinemod:limoniteumingot.name=Лимонтиевый слиток
+item.machinemod:magentiaingot.name=Магнитиевый слиток
+
+
+item.machinemod:crimsonitepebble.name=Кримсонитовая галька
+item.machinemod:azuriumlump.name=Азуритовый кусок
+item.machinemod:unobtaniumgem.name=Унобратиумовый самоцвет
+
+
+item.machinemod:stalkerhide.name=Шкура сталкера
+
+
+item.machinemod:paverscreed.name=Вибробрус
+item.machinemod:rollerwheel.name=Валец
+item.machinemod:tracksegment.name=Гусеничная тележка роторного экскаватора
+item.machinemod:cutterbucket.name=Зачистные зубья роторного экскаватора
+item.machinemod:rigging.name=Стрела
+item.machinemod:bucketwheel.name=Ротор роторного экскаватора
+item.machinemod:operatorsbooth.name=Операторская будка роторного экскаватора
+item.machinemod:powerplant.name= Машинный отсек роторного экскаватора
+item.machinemod:processingplant.name=Переработчик роторного экскаватора
+item.machinemod:baggerstorage.name=Грузовой отсек роторного экскаватора
+item.machinemod:baggerbody.name=Кузов роторного экскаватора
+item.machinemod:graderblade.name=Отвал грейдера
+item.machinemod:wrench.name=Разводной ключ
+item.machinemod:prop.name=Гребной винт
+item.machinemod:airtank.name=Баллон с воздухом
+item.machinemod:light.name=Фонарь
+item.machinemod:lightmodule.name=Световой модуль
+item.machinemod:propcage.name=Решётка гребного винта
+item.machinemod:subbody.name=Корпус батискаф
+item.machinemod:powercell.name=Баттарея
+item.machinemod:operatorsbubble.name=Смотроаое окно
+item.machinemod:turboprop.name=Винт батискафа
+
+item.machinemod:afterburner.name=Форсажная камера
+item.machinemod:elytrajetleg.name=Реактивный ранец
+item.machinemod:crashhelmet.name=Строительная каска
+item.machinemod:steeltoeboots.name=Армированные сапоги
+
+item.machinemod:carbondust.name=Углепластиковая пыль
+item.machinemod:steeldust.name=Стальная пыль
+item.machinemod:steelingot.name=Стальной слиток
+item.machinemod:aluminumingot.name=Алюминиевый слиток
+item.machinemod:bleakcrystal.name=Мрачный кристалл
+
+
+item.machinemod:paver.name=Асфальтоукладчик
+item.machinemod:roadroller.name=Каток
+item.machinemod:bagger.name=Роторный экскаватор - WIP
+item.machinemod:grader.name=Грейдер
+item.machinemod:crane.name=Кран - WIP
+item.machinemod:oilrig.name=Нефтяная вышка - WIP
+item.machinemod:sub.name=Субмарина
+item.machinemod:semitractor.name=Тягач
+item.machinemod:livestocktrailer.name=Скотовоз
+item.machinemod:tankertrailer.name=Автоцистерна
+item.machinemod:cargotrailer.name=Полуприцеп
+
+
+# Block Localizations
+tile.machinemod:machineassemblytable.name=Сборочный стол
+tile.machinemod:machinescreen.name=Экран
+tile.machinemod:steelblock.name=Стальной блок
+tile.machinemod:machinecrate.name=Ящик
+tile.machinemod:machineholoscanner.name=Голографический сканер
+tile.machinemod:machinedrilledstone.name=Просверленный камень
+tile.machinemod:machinedrilledandesite.name=Просверленный андезит
+tile.machinemod:machinedrilleddiorite.name=Просверленный диорит
+tile.machinemod:machinedrilledgranite.name=Просверленный гранит
+tile.machinemod:machinetowercrane.name=Башенный кран
+tile.machinemod:machineexpcollector.name=Сборщик опыта
+
+tile.machinemod:machinegenerator.name=Генератор
+tile.machinemod:machinebatterybank.name=Аккумулятор
+tile.machinemod:machineconduit.name=Провод
+
+tile.machinemod:machineturbofurnace.name=Турбо-печь
+tile.machinemod:expinfusedblock.name=Наполненный блок
+
+tile.machinemod:machineasphalt.name=Асфальт
+tile.machinemod:machineasphaltslab.name=Асфальтовая плита
+tile.machinemod:machinebleakdirt.name=Мрачная земля
+tile.machinemod:machinebleakcrystal.name=Мрачный кристалл
+tile.machinemod:machinebleakportalframe.name=Рамка Мрачного портала
+tile.machinemod:machinebleakportal.name=Мрачный портал
+tile.machinemod:machinebleakstone.name=Мрачный камень
+tile.machinemod:machinebleakoreiridonium.name=Иридониевая руда
+tile.machinemod:machinebleakoremagentia.name=Магнитиевая руда
+tile.machinemod:machinebleakorelimoniteum.name=Лимонтиевая руда
+tile.machinemod:machinebleakorecrimsonite.name=Кримсонитовая руда
+tile.machinemod:machinebleakoreazurium.name=Азуритовая руда
+tile.machinemod:machinebleakorecitronite.name=Цитронитовая руа
+tile.machinemod:machinebleakoreunobtanium.name=Унобратиумовая руда
+tile.machinemod:machinebleakcrystalinfusedsand.name= Песок с мрачными кристаллами
+
+tile.machinemod:machinebleakglass.name=Мрачное стекло
+
+
+tile.machinemod:machineliquidpipe.name=Труба для жидкостей
+tile.machineliquidpipe.name=Труба для жидкостей
+tile.machinemod:machinecompressedasphalt.name=Уложенный асфальт
+tile.machinemod:machinecompressedasphaltslab.name=Уложенная асфальтовая плита
+
+tile.machinemod:machineblastedstone.name=Взорванный камень
+tile.machinemod:machineexplosivepackeddrilledstone.name=Заминированный камень
+tile.machinemod:machineprimarycrusher.name=Простой дробитель
+tile.machinemod:machinecentrifuge.name=Центрифуга - WIP
+tile.machinemod:moonshine.name=Самогон
+tile.machinemod:machinefuelpump.name=Топливная колонка
+tile.machinemod:machinedistiller.name=Дистиллятор
+tile.machinemod:machinefermenter.name=Ферментер
+tile.machinemod:machinemowedgrass.name=Подстриженная трава
+tile.machinemod:machineblastedstone.name=Взорванный камень
+tile.machinemod:machineblastedgranite.name=Взорванный гранит
+tile.machinemod:machineblasteddiorite.name=Взорванный диорит
+tile.machinemod:machineblastedandesite.name=Взорванный андезит
+tile.machinemod:machineblastedgold.name=Взорванный золото
+tile.machinemod:machineblastediron.name=Взорванный железо
+tile.machinemod:machineblastedcoal.name=Взорванный уголь
+tile.machinemod:machineblastedlapis.name=Взорванный лазурит
+tile.machinemod:machineblasteddiamond.name=Взорванный алмаз
+tile.machinemod:machineblastedredstone.name=Взорванный редстоун
+tile.machinemod:machineblastedemerald.name=Взорванный изумруды
+
+tile.machinemod:machineblastedstone2.name=Взорванный камень для модов - (WIP)
+tile.machinemod:machineconveyor.name=Конвейер
+tile.machinemod:machineconveyort2.name=Конвейер - уровень 2
+
+tile.machinemod:machineshredder.name=Дробитель мобов
+tile.machinemod:machinefeedtrough.name=Кормушка
+
+
+tile.machinemod:machinecrudeoilstone.name=Сырой нефтяной камень
+tile.machinemod:machinefractionaldistillation.name=Ректификационная колонна
+tile.machinemod:machineasphaltmixer.name=Асфальтовый миксер - WIP
+tile.machinemod:machinewellhead.name=Колодец
+
+tile.machinemod:machineoil.name=Нефть - WIP
+tile.machinemod:machinefactory.name=Промышленный робот - WIP
+entity.expstalker.name=Опытный сталкер
+
+entity.Villager.Miner=Горный инженер
+
+
+
+fluid.naphtha.name=Лигроин
+
+
+death.attack.machinemod:GENERIC_CRUSH_MACHINE1=%s был расплющен тяжелой машиной. Ай!
+death.attack.machinemod:GENERIC_CRUSH_MACHINE2=%s был раздавлен тяжелой машиной. Ой!
+death.attack.machinemod:GENERIC_CRUSH_MACHINE3=%s играл в догонялки с тяжелой машиной ГГ... ГГ..
+death.attack.machinemod:GENERIC_CRUSH_MACHINE4=%s можно обнаружить прилипшего к днищу тяжелой машины.
+death.attack.machinemod:GENERIC_CRUSH_MACHINE5=%s не надевал каску на стройке, RIP.
+
+
+
+death.attack.machinemod:SHREDDER1=%s был разорван на куски!
+death.attack.machinemod:SHREDDER2=%s протестировал термин "Куб Смерти"!
+death.attack.machinemod:SHREDDER3=%s умер от желания увидеть внутренности шредера.
+death.attack.machinemod:SHREDDER4=%s не подчинился предупреждающему знаку.
+death.attack.machinemod:SHREDDER5=%s попал в объятия шреддера.
+death.attack.machinemod:SHREDDER6=%s выяснил, что делает шредер, на собственном горьком опыте.
+

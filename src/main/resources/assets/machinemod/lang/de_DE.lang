@@ -1,0 +1,251 @@
+# Item Localizations
+
+item.machinemod:bulldozer.name=Bulldozer
+item.machinemod:trackloader.name=Raupenlader
+item.machinemod:drillingrig.name=Bohrer
+item.machinemod:dumptruck.name=Kipplaster
+item.machinemod:loader.name=Lader
+item.machinemod:undergroundloader.name=Untergrundlader
+item.machinemod:drillpipe.name=Bohrrohr
+item.machinemod:drillhead.name=Bohrkopf
+item.machinemod:tractor.name=Traktor
+item.machinemod:planter.name=Pflanzer
+item.machinemod:plow.name=Pflug
+item.machinemod:sprayer.name=Streuer
+item.machinemod:woodengear.name=Holzgetriebe
+item.machinemod:stonegear.name=Steingetriebe
+item.machinemod:irongear.name=Eisengetriebe
+item.machinemod:transmission.name=Übertragung
+item.machinemod:turbofan.name=Turboventilator
+item.machinemod:combine.name=Mähdrescher
+item.machinemod:irondust.name=Eisenstaub
+item.machinemod:golddust.name=Goldstaub
+item.machinemod:rawasphalt.name=Roher Asphalt
+item.machinemod:blueprintcontinuousminer.name= Blaupause - Kontinuierlicher Miner - WIP
+item.machinemod:blueprintlaserminer.name= Blaupause - Laser Miner - Tech II - WIP
+item.machinemod:blueprintconduit.name= Blaupause - Rohrleitung - WIP
+item.machinemod:blueprintfactory.name= Blaupause - Fabrik - WIP
+item.machinemod:blueprintgenerator.name= Blaupause - Generator - WIP
+item.machinemod:blueprintbatterybank.name= Blaupause - Batterie Bank - WIP
+item.machinemod:blueprintturbofurnace.name= Blaupause - Turbo Ofen - WIP
+item.machinemod:blueprintshredder.name= Blaupause - Shredder - WIP
+item.machinemod:blueprinttowercrane.name= Blaupause - Turm Kran- WIP
+item.machinemod:blueprintholoscanner.name= Blaupause - Holo Scanner- WIP
+
+item.machinemod:bleakcrystaldust.name=Trüber Kristallstaub
+item.machinemod:infusedcrystal.name=Exp Infundierter Düsterer Kristall
+
+
+item.machinemod:choppersawblade.name=Häcksler Sägeblatt - WIP
+gui.assemblytable.assemble=Montierer
+gui.assemblytable.name=Montiertisch
+gui.towercrane.inventory=Zurück zum Inventar
+gui.towercrane.settings=Blaupause
+gui.towercrane.start=Start
+gui.towercrane.nextitem=Nächstes Item:
+gui.towercrane.missingblock=Fehlender Block:
+
+gui.laserlevel.savetext=Speicher Block Blaupause
+gui.laserlevel.front=Vorne
+gui.laserlevel.right=Rechts
+gui.laserlevel.up=Oben
+gui.laserlevel.savebutton=Speichern
+item.machinemod:collapsedstar.name=Kollabierter Stern
+item.machinemod:camshaft.name=Nockenwelle
+item.machinemod:piston.name=Kolben
+item.machinemod:turbo.name=Turbo
+item.machinemod:turboengine.name=Turbo Motor
+item.machinemod:flatbedtrailer.name=Tieflader
+item.machinemod:dozerblade.name=Planierschild
+item.machinemod:tracks.name=Spuren
+item.machinemod:wheel.name=Rad
+item.machinemod:loaderbucket.name=Ladeeimer
+item.machinemod:dumperbed.name=Kipperbett
+item.machinemod:transmission.name=Übertragung
+item.machinemod:engine.name=Motor
+item.machinemod:harvesterhead.name=Erntekopf
+item.machinemod:cornseed.name=Maissamen
+item.machinemod:fuelcan.name=Benzinkanister
+item.machinemod:anfo.name=ANFO Sprengstoff
+item.machinemod:conecrusher.name=Kegelbrecher
+item.machinemod:excavator.name=Bagger - WIP
+item.machinemod:widebedtruck.name=Breitbett-LKW
+item.machinemod:trencher.name=Grabenfräse
+item.machinemod:boomarmsegment.name=Auslegerarmbereich
+item.machinemod:handdrill.name=Handbohrer
+item.machinemod:hammer.name=Hammer
+item.machinemod:hose.name=Schlauch
+item.machinemod:lidwithspout.name=Deckel mit Auslauf
+item.machinemod:lawnmower.name=Aufsitzrasenmäher
+item.machinemod:mowerdeck.name=Mähwerk
+item.machinemod:liquidtanksegment.name=Flüssigkeitstank
+item.machinemod:continuousminer.name=Kontinuierlicher Miner - WIP
+item.machinemod:laserminer.name=Laser Miner - WIP
+item.machinemod:chopper.name=Hächsler
+
+item.machinemod:citroniteingot.name=Citronitbarren
+item.machinemod:iridoniumingot.name=Iridoniumbarren
+item.machinemod:limoniteumingot.name=Limoniteumbarren
+item.machinemod:magentiaingot.name=Magentiabarren
+
+
+item.machinemod:crimsonitepebble.name=Karminit Kieselstein
+item.machinemod:azuriumlump.name=Azurium Klumpen
+item.machinemod:unobtaniumgem.name=Unobtanium Edelstein
+
+
+item.machinemod:stalkerhide.name=Stalker ausblenden
+
+
+item.machinemod:paverscreed.name=Pflaster Estrich
+item.machinemod:rollerwheel.name=Rollenrad
+item.machinemod:tracksegment.name=Gleisbereich
+item.machinemod:cutterbucket.name=Schaufel
+item.machinemod:rigging.name=Takelwerk
+item.machinemod:bucketwheel.name=Schaufelrad
+item.machinemod:operatorsbooth.name=Bedienerstand
+item.machinemod:powerplant.name=Kraftwerk
+item.machinemod:processingplant.name=Verarbeitungsanlage
+item.machinemod:baggerstorage.name=Baggerlagerung
+item.machinemod:baggerbody.name=Baggerkörper
+item.machinemod:graderblade.name=Graderblatt
+item.machinemod:wrench.name=Schraubenschlüssel
+item.machinemod:prop.name=Propeller
+item.machinemod:airtank.name=Lufttank
+item.machinemod:light.name=Licht
+item.machinemod:lightmodule.name=Lichtmodul
+item.machinemod:propcage.name=Requisitenkäfig
+item.machinemod:subbody.name=Unterkörper
+item.machinemod:powercell.name=Energiezelle
+item.machinemod:operatorsbubble.name=Operator's Blase
+item.machinemod:turboprop.name=Turbo Propeller
+
+item.machinemod:afterburner.name=Nachbrenner
+item.machinemod:elytrajetleg.name=Elytradüsengürtel
+item.machinemod:crashhelmet.name=Sturzhelm
+item.machinemod:steeltoeboots.name=Stahlkappenstiefel
+
+item.machinemod:carbondust.name=Kohlenstaub
+item.machinemod:steeldust.name=Stahlstaub
+item.machinemod:steelingot.name=Stahlbarren
+item.machinemod:aluminumingot.name=Aluminumbarren
+item.machinemod:bleakcrystal.name=Trüber Kristall
+
+
+item.machinemod:paver.name=Pflaser
+item.machinemod:roadroller.name=Straßenwalze
+item.machinemod:bagger.name=Bagger - WIP
+item.machinemod:grader.name=Grader
+item.machinemod:crane.name=Kran - WIP
+item.machinemod:oilrig.name=Bohrinsel - WIP
+item.machinemod:sub.name=unter
+item.machinemod:semitractor.name=Sattelschlepper
+item.machinemod:livestocktrailer.name=Viehanhänger
+item.machinemod:tankertrailer.name=Tankwagenanhänger
+item.machinemod:cargotrailer.name=Frachtanhänger
+
+
+# Block Localizations
+tile.machinemod:machineassemblytable.name=Maschinenmontagetisch
+tile.machinemod:machinescreen.name=Bildschirm
+tile.machinemod:steelblock.name=Stahlblock
+tile.machinemod:machinecrate.name=Kiste
+tile.machinemod:machineholoscanner.name=Holo Scanner
+tile.machinemod:machinedrilledstone.name=Gebohrter Stein
+tile.machinemod:machinedrilledandesite.name=Andesitgestein
+tile.machinemod:machinedrilleddiorite.name=Dioritgestein
+tile.machinemod:machinedrilledgranite.name=Granitgestein
+tile.machinemod:machinetowercrane.name=Turmkran
+tile.machinemod:machineexpcollector.name=XP Sammler
+
+tile.machinemod:machinegenerator.name=Generator
+tile.machinemod:machinebatterybank.name=Batteriebank
+tile.machinemod:machineconduit.name=Rohrleitung
+
+tile.machinemod:machineturbofurnace.name=Turbo Ofen
+tile.machinemod:expinfusedblock.name=XP Infundierter Block
+
+tile.machinemod:machineasphalt.name=Asphalt
+tile.machinemod:machineasphaltslab.name=Asphaltplatte
+tile.machinemod:machinebleakdirt.name=Düsterer Dreck
+tile.machinemod:machinebleakcrystal.name=Düsterer Kristall
+tile.machinemod:machinebleakportalframe.name=Düsterer Portalrahmen
+tile.machinemod:machinebleakportal.name=Düstes Portal
+tile.machinemod:machinebleakstone.name=Düsterer Stein
+tile.machinemod:machinebleakoreiridonium.name=Iridoniumerz
+tile.machinemod:machinebleakoremagentia.name=Magentiaerz
+tile.machinemod:machinebleakorelimoniteum.name=Limoniteumerz
+tile.machinemod:machinebleakorecrimsonite.name=Crimsoniterz
+tile.machinemod:machinebleakoreazurium.name=Azuriumerz
+tile.machinemod:machinebleakorecitronite.name=Citroniterz
+tile.machinemod:machinebleakoreunobtanium.name=Unobtaniumerz
+tile.machinemod:machinebleakcrystalinfusedsand.name=Düster Kristall infundierter Sand
+
+tile.machinemod:machinebleakglass.name=Düsteres Glass
+
+
+tile.machinemod:machineliquidpipe.name=Flüssigkeits Rohr
+tile.machineliquidpipe.name=Flüssigkeits Rohr
+tile.machinemod:machinecompressedasphalt.name=Komprimierter Asphalt
+tile.machinemod:machinecompressedasphaltslab.name=Komprimierte Asphaltplatte
+
+tile.machinemod:machineblastedstone.name=Gesprengter Stein
+tile.machinemod:machineexplosivepackeddrilledstone.name=Explosiv gepacktes gebohrtes Gestein
+tile.machinemod:machineprimarycrusher.name=Primärer Brecher
+tile.machinemod:machinecentrifuge.name=Zentrifuge - WIP
+tile.machinemod:moonshine.name=Mondschein AKA Feuerwasser
+tile.machinemod:machinefuelpump.name=Kraftstoffpumpe
+tile.machinemod:machinedistiller.name=Destilierer
+tile.machinemod:machinefermenter.name=Fermentierer
+tile.machinemod:machinemowedgrass.name=Gemähtes Gras
+tile.machinemod:machineblastedstone.name=Gesprengter Stein
+tile.machinemod:machineblastedgranite.name=Gesprengter Granit
+tile.machinemod:machineblasteddiorite.name=Gesprengter Diorit
+tile.machinemod:machineblastedandesite.name=Gesprengter Andesit
+tile.machinemod:machineblastedgold.name=Gesprengtes Gold
+tile.machinemod:machineblastediron.name=Gesprengtes Eisen
+tile.machinemod:machineblastedcoal.name=Gesprengte Kohle
+tile.machinemod:machineblastedlapis.name=Gesprengtes Lapis
+tile.machinemod:machineblasteddiamond.name=Gesprengter Diamant
+tile.machinemod:machineblastedredstone.name=Gesprengtes Redstone
+tile.machinemod:machineblastedemerald.name=Gesprengter Smaragt
+
+tile.machinemod:machineblastedstone2.name=Gesprengter Stein für Mods - (WIP)
+tile.machinemod:machineconveyor.name=Förderer
+tile.machinemod:machineconveyort2.name=Förderer - Level 2
+
+tile.machinemod:machineshredder.name=Industrieller Mob Häcksler
+tile.machinemod:machinefeedtrough.name=Futterkrippe
+
+
+tile.machinemod:machinecrudeoilstone.name=Rohöl Stein
+tile.machinemod:machinefractionaldistillation.name=Turm für fraktionierte Destillation
+tile.machinemod:machineasphaltmixer.name=Asphaltmischer - WIP
+tile.machinemod:machinewellhead.name=Bohrkopf
+
+tile.machinemod:machineoil.name=Öl - WIP
+tile.machinemod:machinefactory.name=Fabrik - WIP
+entity.expstalker.name=Exp Stalker
+
+entity.Villager.Miner=Mining Ingenieur
+
+
+
+fluid.naphtha.name=Naphtha
+
+
+death.attack.machinemod:GENERIC_CRUSH_MACHINE1=%s wurde von einer schweren Maschine platt gemacht. Autsch!
+death.attack.machinemod:GENERIC_CRUSH_MACHINE2=%s wurde von einer schweren Maschine zerquetscht. Autsch!
+death.attack.machinemod:GENERIC_CRUSH_MACHINE3=%s spielte Huhn mit schwerer Maschine GG... GG.
+death.attack.machinemod:GENERIC_CRUSH_MACHINE4=%s %s klebt an der Unterseite der Räder einer schweren Maschine.
+death.attack.machinemod:GENERIC_CRUSH_MACHINE5=%s trug keinen Schutzhelm auf einer Baustelle, RIP.
+
+
+
+death.attack.machinemod:SHREDDER1=%s wurde in Stücke gehächselt!
+death.attack.machinemod:SHREDDER2=%s testete den Begriff Todeswürfel!
+death.attack.machinemod:SHREDDER3=%s wollte unbedingt das Innere des Hächslers sehen.
+death.attack.machinemod:SHREDDER4=%s hat das Warnschild nicht beachtet.
+death.attack.machinemod:SHREDDER5=%s Wurde vom Hächsler umarmt.
+death.attack.machinemod:SHREDDER6=%s hat auf die harte Tour herausgefunden, was der Shredder macht.
+
