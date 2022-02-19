@@ -57,7 +57,7 @@ public class GuiAssemblyTable extends GuiContainer {
 		buttonY = this.height / 2 - 50;
 		this.buttonList.add(new GuiButton(Reference.GUI_ASSEMBLY_TABLE_BUTTON_PREV_PAGE, buttonX, buttonY, 30, 20, DeprecatedWrapper.translateToLocal("<<")));
 		this.buttonList.get(PREVIOUS_BUTTON_LIST_INDEX).enabled = currentPage > 0 ? true : false;
-		// "↓↑→←"
+		// ""
 	}
 
 	@Override
